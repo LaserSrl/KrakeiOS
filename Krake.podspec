@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
     Libreria krake
     DESC
     s.license      = "MIT"
-    s.source       = { :git => "https://", :tag => "#{s.version}" }
+    s.source       = { :git => "https://github.com/LaserSrl/KrakeiOS.git", :tag => "#{s.version}" }
 
     s.authors = { 'Patrick Negretto' => 'patrick.negretto@laser-group.com', 'Joël Gerbore' => 'joel.gerbore@laser-group.com' }
 
