@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ewv-eO-cg4">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Content Modification Container View Controller-->
+        <scene sceneID="Igk-yd-RVI">
+            <objects>
+                <viewController id="ewv-eO-cg4" customClass="ContentModificationContainerViewController" customModule="Krake" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sIN-U3-51B"/>
+                        <viewControllerLayoutGuide type="bottom" id="LQD-Lz-jmY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ce0-D7-yDL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iRS-PJ-1yW" customClass="Segmentio" customModule="Segmentio">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="pdW-Gz-40a"/>
+                                </constraints>
+                            </view>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="7QC-9d-W3L">
+                                <rect key="frame" x="0.0" y="649" width="375" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="mpO-mN-fdZ"/>
+                                </constraints>
+                            </pageControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glu-hD-5cb">
+                                <rect key="frame" x="0.0" y="44" width="375" height="605"/>
+                                <connections>
+                                    <segue destination="VST-q0-DL7" kind="embed" id="w4o-Hf-kZM"/>
+                                </connections>
+                            </containerView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeA-bY-3PW">
+                                <rect key="frame" x="0.0" y="20" width="375" height="629"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9bg-JK-as2">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="629"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27R-wZ-BtA">
+                                            <rect key="frame" x="164" y="299" width="47" height="30"/>
+                                            <state key="normal" title="Reload"/>
+                                            <connections>
+                                                <action selector="reloadData" destination="ewv-eO-cg4" eventType="touchUpInside" id="MLU-Dp-acu"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="27R-wZ-BtA" firstAttribute="centerY" secondItem="9bg-JK-as2" secondAttribute="centerY" id="PZW-dw-rT7"/>
+                                        <constraint firstItem="27R-wZ-BtA" firstAttribute="centerX" secondItem="9bg-JK-as2" secondAttribute="centerX" id="x3s-3L-han"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="glu-hD-5cb" secondAttribute="trailing" id="1PR-Ms-sT8"/>
+                            <constraint firstAttribute="trailing" secondItem="iRS-PJ-1yW" secondAttribute="trailing" id="3YT-yV-OtH"/>
+                            <constraint firstItem="LQD-Lz-jmY" firstAttribute="top" secondItem="7QC-9d-W3L" secondAttribute="bottom" id="IX6-K9-GYo"/>
+                            <constraint firstItem="iRS-PJ-1yW" firstAttribute="leading" secondItem="ce0-D7-yDL" secondAttribute="leading" id="QHd-NM-VBG"/>
+                            <constraint firstAttribute="trailing" secondItem="xeA-bY-3PW" secondAttribute="trailing" id="SYR-gY-Y2V"/>
+                            <constraint firstItem="7QC-9d-W3L" firstAttribute="top" secondItem="glu-hD-5cb" secondAttribute="bottom" id="cE5-X1-nBO"/>
+                            <constraint firstItem="iRS-PJ-1yW" firstAttribute="top" secondItem="ce0-D7-yDL" secondAttribute="top" id="mms-VM-sKx"/>
+                            <constraint firstItem="7QC-9d-W3L" firstAttribute="top" secondItem="xeA-bY-3PW" secondAttribute="bottom" id="ojU-Tf-bp1"/>
+                            <constraint firstItem="glu-hD-5cb" firstAttribute="top" secondItem="iRS-PJ-1yW" secondAttribute="bottom" id="sRZ-rN-GtS"/>
+                            <constraint firstItem="glu-hD-5cb" firstAttribute="leading" secondItem="ce0-D7-yDL" secondAttribute="leading" id="seN-lG-RWg"/>
+                            <constraint firstItem="7QC-9d-W3L" firstAttribute="leading" secondItem="ce0-D7-yDL" secondAttribute="leading" id="srZ-w9-spV"/>
+                            <constraint firstItem="xeA-bY-3PW" firstAttribute="leading" secondItem="ce0-D7-yDL" secondAttribute="leading" id="uoR-ld-ZuP"/>
+                            <constraint firstAttribute="trailing" secondItem="7QC-9d-W3L" secondAttribute="trailing" id="w0J-gA-SHw"/>
+                            <constraint firstItem="xeA-bY-3PW" firstAttribute="top" secondItem="sIN-U3-51B" secondAttribute="bottom" id="yRO-oo-nq6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="blurView" destination="xeA-bY-3PW" id="7xt-x6-huD"/>
+                        <outlet property="pageControl" destination="7QC-9d-W3L" id="UY7-7N-Def"/>
+                        <outlet property="pageControlHeightConstraint" destination="mpO-mN-fdZ" id="paV-vE-Qx7"/>
+                        <outlet property="reloadDataButton" destination="27R-wZ-BtA" id="OFo-kM-FKN"/>
+                        <outlet property="segmented" destination="iRS-PJ-1yW" id="rss-Bl-M0J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zAD-Fo-6fN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="234" y="-19"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="xpn-X2-Ept">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="VST-q0-DL7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bAr-uv-WNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1001" y="9"/>
+        </scene>
+    </scenes>
+</document>

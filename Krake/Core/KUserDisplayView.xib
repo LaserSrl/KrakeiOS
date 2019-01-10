@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KUserDisplayView" customModule="Krake" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="218" height="208"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u3l-2K-X89">
+                    <rect key="frame" x="45" y="30" width="128" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="Bw6-n7-NHC"/>
+                        <constraint firstAttribute="width" secondItem="u3l-2K-X89" secondAttribute="height" id="WMw-vj-81W"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdi-21-zrs">
+                    <rect key="frame" x="45" y="30" width="128" height="128"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="loginOrEdit:" destination="iN0-l3-epB" eventType="touchUpInside" id="4yz-yA-OxA"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Es7-JC-RY9">
+                    <rect key="frame" x="85" y="166" width="48" height="24"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMU-0Y-sng">
+                    <rect key="frame" x="168" y="20" width="30" height="34"/>
+                    <connections>
+                        <action selector="logout:" destination="iN0-l3-epB" eventType="touchUpInside" id="RmK-4l-3Bh"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Xdi-21-zrs" firstAttribute="bottom" secondItem="u3l-2K-X89" secondAttribute="bottom" id="25w-gb-qhU"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Es7-JC-RY9" secondAttribute="bottom" constant="8" id="3wH-eD-QuF"/>
+                <constraint firstItem="Xdi-21-zrs" firstAttribute="trailing" secondItem="u3l-2K-X89" secondAttribute="trailing" id="5zu-Os-oCj"/>
+                <constraint firstItem="u3l-2K-X89" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="FhD-5L-WF4"/>
+                <constraint firstItem="Xdi-21-zrs" firstAttribute="top" secondItem="u3l-2K-X89" secondAttribute="top" id="Jxe-Uk-mLa"/>
+                <constraint firstItem="Es7-JC-RY9" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ZLH-tj-i92"/>
+                <constraint firstItem="u3l-2K-X89" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dsA-Gk-7bO"/>
+                <constraint firstItem="Es7-JC-RY9" firstAttribute="top" secondItem="u3l-2K-X89" secondAttribute="bottom" constant="8" id="eoo-Ea-fLv"/>
+                <constraint firstItem="Xdi-21-zrs" firstAttribute="leading" secondItem="u3l-2K-X89" secondAttribute="leading" id="fdG-zE-PY8"/>
+                <constraint firstItem="YMU-0Y-sng" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" symbolic="YES" id="mqA-Tx-vc4"/>
+                <constraint firstAttribute="trailing" secondItem="YMU-0Y-sng" secondAttribute="trailing" constant="20" symbolic="YES" id="xzC-Ep-1cD"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="logoutButton" destination="YMU-0Y-sng" id="rrK-XQ-NYp"/>
+                <outlet property="nameFirstLettersButton" destination="Xdi-21-zrs" id="C1t-WG-lce"/>
+                <outlet property="topImageConstraint" destination="FhD-5L-WF4" id="Xk9-x7-A3l"/>
+                <outlet property="topLogoutConstraint" destination="mqA-Tx-vc4" id="3Vl-ce-7ZJ"/>
+                <outlet property="userImageView" destination="u3l-2K-X89" id="w3s-nI-Hde"/>
+                <outlet property="userNameLabel" destination="Es7-JC-RY9" id="nQs-pu-Ly2"/>
+            </connections>
+            <point key="canvasLocation" x="-53" y="-178"/>
+        </view>
+    </objects>
+</document>

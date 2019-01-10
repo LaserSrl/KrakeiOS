@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A319" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController title="MapInfo" id="vSq-pt-P05" customClass="MapInfo" customModule="Krake">
+            <layoutGuides>
+                <viewControllerLayoutGuide type="top" id="G29-bk-a78"/>
+                <viewControllerLayoutGuide type="bottom" id="vfh-Sn-Goh"/>
+            </layoutGuides>
+            <view key="view" contentMode="scaleToFill" id="DC9-dQ-S6w">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="raI-PR-foz">
+                        <frame key="frameInset" minX="20" minY="84" width="560" height="496"/>
+                        <gestureRecognizers/>
+                    </mapView>
+                    <searchBar contentMode="redraw" misplaced="YES" placeholder="Search position" translatesAutoresizingMaskIntoConstraints="NO" id="gqr-JT-ECL">
+                        <frame key="frameInset" minY="20" width="600" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="p7k-CK-z8N"/>
+                        </constraints>
+                        <textInputTraits key="textInputTraits"/>
+                    </searchBar>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJn-fe-qdy">
+                        <frame key="frameInset" minY="20" width="600"/>
+                        <constraints>
+                            <constraint firstAttribute="height" id="jwa-mp-BKH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="gqr-JT-ECL" firstAttribute="leading" secondItem="DC9-dQ-S6w" secondAttribute="leading" id="1Rh-4M-0zs"/>
+                    <constraint firstAttribute="trailing" secondItem="raI-PR-foz" secondAttribute="trailing" constant="20" id="2Ga-az-VwT"/>
+                    <constraint firstAttribute="trailing" secondItem="wJn-fe-qdy" secondAttribute="trailing" id="H6t-b6-bZF"/>
+                    <constraint firstAttribute="trailing" secondItem="gqr-JT-ECL" secondAttribute="trailing" id="L7p-8H-hh7"/>
+                    <constraint firstItem="raI-PR-foz" firstAttribute="leading" secondItem="DC9-dQ-S6w" secondAttribute="leading" constant="20" id="TLA-64-fal"/>
+                    <constraint firstItem="vfh-Sn-Goh" firstAttribute="top" secondItem="raI-PR-foz" secondAttribute="bottom" constant="20" id="WtK-dc-CO9"/>
+                    <constraint firstItem="raI-PR-foz" firstAttribute="top" secondItem="gqr-JT-ECL" secondAttribute="bottom" constant="20" id="fKF-fQ-fZx"/>
+                    <constraint firstItem="gqr-JT-ECL" firstAttribute="top" secondItem="wJn-fe-qdy" secondAttribute="bottom" id="ly1-ws-b3o"/>
+                    <constraint firstItem="wJn-fe-qdy" firstAttribute="top" secondItem="G29-bk-a78" secondAttribute="bottom" id="prS-J9-7CB"/>
+                    <constraint firstItem="wJn-fe-qdy" firstAttribute="leading" secondItem="DC9-dQ-S6w" secondAttribute="leading" id="yXu-Re-gRZ"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="mapView" destination="raI-PR-foz" id="hRe-Pe-2OW"/>
+                <outlet property="searchBar" destination="gqr-JT-ECL" id="BGT-xG-4Na"/>
+                <outlet property="titleLabel" destination="wJn-fe-qdy" id="ELN-bS-IlV"/>
+            </connections>
+            <point key="canvasLocation" x="485" y="1755"/>
+        </viewController>
+    </objects>
+</document>

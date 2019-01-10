@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rOQ-Ji-0OB">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Detail View Controller-->
+        <scene sceneID="bay-JI-MyD">
+            <objects>
+                <viewController id="rOQ-Ji-0OB" customClass="KDetailViewController" customModule="Krake" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4kV-IY-LFB"/>
+                        <viewControllerLayoutGuide type="bottom" id="hrx-v3-cuX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0gq-Ac-v4V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Xk-Dr-sbT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KI8-nH-wWM">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="660"/>
+                                        <subviews>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3wC-0S-AK1" customClass="KMediaCollectionView" customModule="Krake">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="999" constant="200" id="nHJ-BA-S2S"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2Rw-Wc-R5v">
+                                                    <size key="itemSize" width="50" height="50"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showGallery" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showYoutubeVideos" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </collectionView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QkQ-8E-XDy" customClass="KDetailHeaderView" customModule="Krake">
+                                                <rect key="frame" x="0.0" y="208" width="375" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="999" constant="50" id="GtU-hy-TLZ"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="l3J-mn-wVO" customClass="KSocialView" customModule="Krake">
+                                                <rect key="frame" x="0.0" y="266" width="375" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="999" constant="60" id="wES-8C-25g"/>
+                                                </constraints>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ad1-aZ-jb5" customClass="KUserReactions" customModule="Krake">
+                                                <rect key="frame" x="0.0" y="334" width="375" height="80"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="999" constant="80" id="6US-AH-sme"/>
+                                                </constraints>
+                                            </view>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="URf-Hb-HIR" customClass="KMediaCollectionView" customModule="Krake">
+                                                <rect key="frame" x="0.0" y="422" width="375" height="180"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="999" constant="180" id="B6O-5c-qQa"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TnX-WI-NpJ">
+                                                    <size key="itemSize" width="50" height="50"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showGallery" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showYoutubeVideos" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </collectionView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h29-nC-kTV" customClass="KDetailWebView" customModule="Krake">
+                                                <rect key="frame" x="0.0" y="610" width="375" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="999" constant="50" placeholder="YES" id="XTi-yd-OBa"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="KI8-nH-wWM" firstAttribute="top" secondItem="6Xk-Dr-sbT" secondAttribute="top" id="6gp-fT-y7J"/>
+                                    <constraint firstAttribute="trailing" secondItem="KI8-nH-wWM" secondAttribute="trailing" id="d3I-G8-9xb"/>
+                                    <constraint firstItem="KI8-nH-wWM" firstAttribute="width" secondItem="6Xk-Dr-sbT" secondAttribute="width" id="gQe-Kf-8Gk"/>
+                                    <constraint firstAttribute="bottom" secondItem="KI8-nH-wWM" secondAttribute="bottom" constant="8" id="qJn-up-FrH"/>
+                                    <constraint firstItem="KI8-nH-wWM" firstAttribute="leading" secondItem="6Xk-Dr-sbT" secondAttribute="leading" id="vAQ-qs-S2T"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="6Xk-Dr-sbT" secondAttribute="bottom" id="ImJ-BB-NRN"/>
+                            <constraint firstItem="6Xk-Dr-sbT" firstAttribute="top" secondItem="0gq-Ac-v4V" secondAttribute="top" id="ji3-za-5O5"/>
+                            <constraint firstItem="6Xk-Dr-sbT" firstAttribute="leading" secondItem="0gq-Ac-v4V" secondAttribute="leading" id="sGH-oW-jWh"/>
+                            <constraint firstAttribute="trailing" secondItem="6Xk-Dr-sbT" secondAttribute="trailing" id="uD6-ss-10w"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mainScrollView" destination="6Xk-Dr-sbT" id="I4v-Z0-F1L"/>
+                        <outlet property="mainStackView" destination="KI8-nH-wWM" id="VKG-y0-mks"/>
+                        <outletCollection property="detailSubviews" destination="ad1-aZ-jb5" collectionClass="NSMutableArray" id="6Ge-VG-ugD"/>
+                        <outletCollection property="detailSubviews" destination="3wC-0S-AK1" collectionClass="NSMutableArray" id="zlB-TY-4cu"/>
+                        <outletCollection property="detailSubviews" destination="URf-Hb-HIR" collectionClass="NSMutableArray" id="OMN-UM-dlH"/>
+                        <outletCollection property="detailSubviews" destination="QkQ-8E-XDy" collectionClass="NSMutableArray" id="66J-18-zJp"/>
+                        <outletCollection property="detailSubviews" destination="h29-nC-kTV" collectionClass="NSMutableArray" id="AWd-fU-VpR"/>
+                        <outletCollection property="detailSubviews" destination="l3J-mn-wVO" collectionClass="NSMutableArray" id="UgN-2o-MfV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nrx-NP-OrZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-164" y="118"/>
+        </scene>
+    </scenes>
+</document>

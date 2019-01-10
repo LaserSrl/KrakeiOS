@@ -1,0 +1,275 @@
+/*
+ Krake
+ */
+
+"VUOI_APRIRE_PUSH" = "%@\n\nVuoi saperne di più?";
+"ERRORE_INVIO_SEGN" = "ERRORE: Non è stato possibile inviare la segnalazione.\n";
+"SEGN_SENDED" = "La tua segnalazione è stata inviata correttamente.\n";
+
+"PUSH_ACTIVATION" = "Per accedere a questa sezione devi prima aver attivato le Push!";
+"ENABLE_TWITTER" = "Per accedere a questa sezione devi prima aver autorizzato Twitter dalle impostazioni!";
+"ENABLE_FACEBOOK" = "Per poter procedere verifica di:\n- avere configurato nei setting del device l’account di Facebook oppure di avere l’app di Facebook installata\n- avere abilitato l’app su Facebook\n\nAttenzione: se di recente hai cambiato la password di Facebook ricordati di aggiornarla anche nei setting del device o nell’app Facebook.";
+"ENABLE_NOW" = "Vuoi procedere?";
+
+"YOUR_MAIL" = "La tua e-mail";
+"YOUR_NAME" = "Il tuo nome";
+"LOCATION" = "Posizione";
+"TO_MAIL" = "A e-mail";
+"TO_NAME" = "A nome";
+"SEND" = "Invia";
+"MESSAGE" = "Messaggio";
+
+"Completed" = "Completato";
+"Error" = "Errore";
+
+"FBLOGIN"="Facebook login";
+"HELPFB"="Ricorda che devi abilitare l'app dalle impostazioni di sistema.";
+
+"FROM"="Da";
+"TO"="A";
+"To-date" = "al";
+"SEARCH"="Cerca";
+"ARRIVEBY"="Ora di arrivo?";
+"Insert text to search" = "Inserisci il testo da cercare";
+"Mappa" = "Mappa";
+"tripModePartenza" = "Partenza";
+"tripModeArrivo" = "Arrivo entro";
+
+"Tutti" = "Tutti";
+"No" = "No";
+"Si" = "Si";
+
+"Anonymous" = "Sconosciuto";
+
+"wait" = "Attendere";
+"on_loading" = "Caricamento in corso...";
+
+//ORCHARD LOGIN
+"LOGIN"="Accedi con";
+"Login" = "Accedi";
+"Register" = "Registrati";
+"Registration" = "Registrazione";
+"Cancel" = "Annulla";
+"Recover_password" = "Recupera password";
+"Done" = "Conferma";
+
+"reset_pwd_message" = "Password dimenticata? Compila il form e riceverai un link per il reset della password.";
+"placeholder_sms_or_mail_restore_password" = "Numero di telefono o la E-Mail";
+"placeholder_mail_restore_password" = "E-Mail";
+"reset_password_sended" = "Ti abbiamo appena inviato la tua nuova password.";
+"sms_not_valid" = "Numero non valido";
+"empty_field" = "Campo non compilato";
+"check_your_number" = "Confermi di voler inviare la procedura di recupero password al seguente numero?\n\n";
+
+"e_mail" = "E-Mail";
+"password" = "Password";
+"confirm_password" = "Conferma la password";
+"phone_number" = "Numero di cellulare";
+"lost_pwd" = "Password dimenticata?";
+
+//RULES
+"ACCEPT"="Accetta";
+"DENY"="Nega";
+"UNDO" = "Annulla";
+"SAVE" = "Salva";
+"CLOSE"="Chiudi";
+
+"Lunedì" = "Lunedì";
+"Martedì" = "Martedì";
+"Mercoledì" = "Mercoledì";
+"Giovedì" = "Giovedì";
+"Venerdì" = "Venerdì";
+"Sabato" = "Sabato";
+"Domenica" = "Domenica";
+"Gennaio" = "Gennaio";
+"Febbraio" = "Febbraio";
+"Marzo" = "Marzo";
+"Aprile" = "Aprile";
+"Maggio" = "Maggio";
+"Giugno" = "Giugno";
+"Luglio" = "Luglio";
+"Agosto" = "Agosto";
+"Settembre" = "Settembre";
+"Ottobre" = "Ottobre";
+"Novembre" = "Novembre";
+"Dicembre" = "Dicembre";
+
+// - MARK: Orchard detail
+"Condividi" = "Condividi";
+"Aggiungi al calendario" = "Aggiungi al calendario";
+"Telefono" = "Telefono";
+"Sito web" = "Sito web";
+
+//PRIVACY
+"required" = " *obbligatorio";
+"policy-term" = "Accetto i suddetti termini.";
+"regulation-term" = "Accetto i suddetti termini.";
+"next" = "Avanti";
+"gestione_policy" = "Gestione policy";
+"undo_privacy" = "Per procedere devi accettare l'informativa.";
+
+"Policy" = "Policies";
+"CommercialUse" = "Uso commerciale";
+"ThirdParty" = "Cessione dati";
+
+//SEGNALAZIONI
+"Devi scattare o scegliere una foto" = "Devi scattare o scegliere una foto";
+"Manca la E-Mail del mittente" = "Inserisci la tua mail";
+"Manca il nome del mittente" = "Inserisci il tuo nome";
+"Manca la E-Mail del destinatario" = "Inserisci la mail del destinatario";
+"Manca il nome del destinatario" = "Inserisci il nome del destinatario";
+"Manca il testo del messaggio" = "Inserisci il tuo commento";
+"Mancano i seguenti campi:" = "Mancano i seguenti campi:";
+"ERRORE_GPS" = "Inserisci la tua posizione";
+"La mia posizione" = "La mia posizione";
+"Bad location accuracy" = "Scarsa qualità del segnale GPS";
+"media_max_number_of_elem" = "Hai raggiunto il numero massimo di elementi multimediali. Prima di procedere con l'aggiunta di un nuovo elemento devi cancellarne uno.";
+
+//CALENDARIO
+"event_added" = "Evento aggiunto al calendario";
+
+//Status
+"Created" = "Creato";
+"Loaded" = "Caricato";
+"Accepted" = "Accettato";
+"Rejected" = "Rifiutato";
+
+//Reportage
+"Titolo" = "Titolo";
+"Sottotitolo" = "Sottotitolo";
+"Descrizione" = "Descrizione";
+"Categoria" = "Categoria";
+"Gallery" = "galleria";
+"TitlePart.Title" = "titolo";
+"sottotitolo" = "sottotitolo";
+"categoria" = "categoria";
+"BodyPart.Text" = "messaggio";
+"MapPart.Latitude" = "posizione GPS";
+"RELATED_FIELDS" = "Info generali";
+"CHOOSE_TAKE_PHOTO" = "Scegli o scatta una foto";
+"LAMIAPOS"="La mia posizione";
+
+//COMMON
+"no_elements" = "Non ci sono elementi in questa sezione";
+"invalid_entry_point" = "Entry Point non valido";
+
+//Date extension
+"on" = "%@";
+"fromToDate" = "dal %@ al %@";
+"fromToHour" = "dalle %@ alle %@";
+
+/*
+ TwitterKit
+ */
+
+"error-data-tweets" = "Non ci sono tweet da visualizzare";
+"error-zero-tweets" = "Non ci sono tweet da visualizzare";
+"error-guest-session-tweets" = "Non ci sono tweet da visualizzare";
+"error-request-tweets" = "Non ci sono tweet da visualizzare";
+"error-download-config-tweets" = "Non ci sono tweet da visualizzare";
+
+/*
+ Questionnaires
+ */
+
+"QUESTIONNAIRE_NOT_COMPILED" = "Non hai risposto a nessuna domanda";
+"QUESTIONNAIRE_COMPLETED" = "Grazie per aver compilato il questionario";
+"QUESTIONNAIRE_NOT_AVAILABLE" = "Complimenti, hai già compilato tutti i questionari. Torna presto a trovarci per contribuire ancora!";
+"QUESTIONNAIRE_QUESTION_REQUIRED" = "Devi compilare la domanda '%@' prima di poter inviare il questionario";
+"QUESTIONNAIRE_ERROR" = "Non è stato possibile spedire il tuo questionario";
+
+/*
+ OTP
+ */
+
+"Partenza" = "Partenza";
+"Arrivo" = "Arrivo";
+"Durata" = "Durata";
+"Percorso a piedi" = "Percorso a piedi";
+"Cambi" = "Cambi";
+"WALK" = "Cammina per";
+"BUS" = "In bus";
+"TRAM" = "In tram";
+"SUBWAY" = "Metro";
+"CAR" = "Guida fino a";
+"BICYCLE" = "Vai in bici fino a ";
+"BY" = " per ";
+"FIND_STOPS_NEARBY" = "Cerca fermate vicino a";
+"CAN_NOT_FIND_STOPS" = "Non vi sono fermate nei pressi della zona evidenziata";
+
+"CAN_NOT_TRIP" = "Non è stato possibile caricare l'itinerario";
+
+"direction_description_circle" = "Alla rotonda prendi la %@ uscita";
+"direction_description_right" = "Svolta a destra";
+"direction_description_left" = "Svolta a sinistra";
+"direction_description_continue" = "Continua";
+"direction_description_depart" = "Parti";
+"direction_description_slightly_left" = "Gira lievemente a sinistra";
+"direction_description_slightly_right" = "Gira lievemente a destra";
+"direction_description_hard_left" = "Gira a sinistra";
+"direction_description_hard_right" = "Gira a destra";
+"direction_description_uturn" = "Fai inversione a U";
+"direction_description_after" = "Dopo %s";
+"direction_by" = "in direzione";
+
+"Trip is not possible.  You might be trying to plan a trip outside the map data boundary." = "Non è stato possibile calcolare il tragitto richiesto in quanto è fuori dall'area prevista.";
+
+"please_waiting" = "ATTENDERE PREGO";
+"trip_route" = "Stiamo calcolando il percorso";
+
+/*
+ GameQuiz
+ */
+
+"insert_phone_number" = "inserisci il tuo numero";
+"sms_not_valid" = "Numero non valido";
+"check_your_number" = "Confermi di voler inviare il seguente numero?\n\n";
+
+"punti" = "punti";
+"totale" = "Totale";
+
+"ready" = "Sei pronto per iniziare la partita?";
+"r_u_ready" = "Sei pronto per continuare la partita?";
+"leave" = "Abbandona";
+"continua" = "Continua";
+
+"game_center_request" = "Game Center è richiesto per partecipare al quiz.";
+"game_center_login_now" = "Vuoi autenticarti adesso?";
+"login" = "Autenticati";
+"contest_participate" = "I tuoi punti sono stati salvati correttamente.";
+
+"bravo" = "Bravo!";
+"ops" = "Ops!";
+"risposta_corretta" = "Risposta corretta.";
+"risposta_errata" = "Risposta errata.";
+
+"start" = "Inizia";
+
+"your_score_is" = "Il tuo punteggio è";
+"partecipate" = "Partecipa";
+
+"available_soon" = "Il gioco sarà disponibile dal";
+
+
+/*
+ HID
+ */
+"SERVICE_NOT_AVAILABLE" = "Errore.\nContatta l'amministratore.";
+"WAIT_CONFIGURING" = "Attendi alcuni istanti.\nElaborazione in corso.";
+"USER_NOT_UNIQUE" = "Utente duplicato\nContatta l'amministratore";
+"USER_NOT_EXIST" = "Utente non registrato sui sistemi.\nContatta l'amministratore";
+"SEARCH_ERROR" = "Errore nella ricerca dell'utente\nContatta l'amministratore";
+"DUPLICATE_CONTAINER" = "Hai già un device registrato.\nContatta l'amministratore.";
+"REBOOT_APP_DEVICE" = "Errore, prova a riavviare l'app o il device. Se il problema persiste contatta l'amministratore";
+"DEVICE_ERROR" = "Errore nel device.\nContatta l'amministratore.";
+"NO_CREDENTIAL_ENABLED" = "Non hai diritto a credenziali di accesso.\nContatta l'amministratore.";
+"Place your smartphone near the turnstile to open it." = "Avvicina il tuo device al lettore per utilizzare la funzionalità";
+"Unable to open the turnstile. Retry later." = "Non è stato possibile aprire il tornello. Riprova più tardi.";
+"The service is temporarily busy. Retry later." = "Il servizio è momentaneamente occupato. Riprova più tardi.";
+"Network unreachable" = "Ci sono stati problemi di connessione";
+"Problems with Bluetooth" = "Ci sono stati problemi con il Bluetooth.";
+"Bluetooth is not supported by your device" = "Il Bluetooth non è supportato da questo dispositivo";
+"Enable Bluetooth to open the turnstiles" = "Abilita la localizzazione e il Bluetooth per poter utilizzare la funzionalità";
+"Turnstile opened!" = "Tornello aperto!";
+"TURNSLIDE_ERROR_ANTIPASSBACK" = "Non è stato possibile aprire il tornello (Anti Passback). Riprova più tardi.";
+

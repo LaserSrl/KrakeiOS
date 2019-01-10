@@ -1,0 +1,9 @@
+.DS_Store
+*.xcworkspace/
+Podfile.lock
+Pods/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/*
+*.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad/UserInterfaceState.xcuserstate
+*/Categories.xcassets/CachingInfo.json
+fastlane/screenshots

@@ -1,0 +1,203 @@
+/*
+ Localizable.strings
+ OrchardCore
+ 
+ Created by Patrick on 17/12/14.
+ Copyright (c) 2014 Laser Group srl. All rights reserved.
+ */
+
+"VUOI_APRIRE_PUSH" = "%@\n\nEn savoir plus?";
+"ERRORE_GPS" = "ERROR: Il ne était pas possible de présenter le rapport.\n Manquant la position";
+"ERRORE_INVIO_SEGN" = "ERRORE: Nous ne pouvions pas envoyer le rapport.\n";
+"SEGN_SENDED" = "Ta signalisation a été envoyée avec succès.\n";
+"CHOOSE_TAKE_PHOTO" = "Choisissez ou prendre une photo";
+
+"PUSH_ACTIVATION" = "In order to enter this service you have to activate Push first.";
+"ENABLE_TWITTER" = "In order to enter this service you have to activate Twitter first.";
+"ENABLE_FACEBOOK" = "To be able to proceed verify that:\n- you have configured the Facebook account on the setting of the device or you have installed the Facebook app\n- you have activated the app on Facebook\n\nBe careful : if you have recently changed your password on Facebook, remember to update it on the setting of the device or in the Facebook app.";
+"ENABLE_NOW" = "Do you want to proceed?";
+
+"YOUR_MAIL" = "Votre e-mail";
+"YOUR_NAME" = "Votre name";
+"LOCATION" = "Position";
+"TO_MAIL" = "To e-mail";
+"TO_NAME" = "To name";
+"SEND" = "Envoyer";
+"MESSAGE" = "Message";
+
+"Completed" = "Completed";
+"Error" = "Error";
+
+"FBLOGIN"="Facebook login";
+"HELPFB"="Ricorda che devi abilitare l'app dalle impostazioni di sistema.";
+
+"LAMIAPOS"="Ma position";
+"FROM"="A partir de";
+"TO"="Vers";
+"To-date" = "à";
+"SEARCH"="Rechercher";
+"ARRIVEBY"="Heure d'arrivée?";
+"tripModePartenza" = "Départ";
+"tripModeArrivo" = "Arrivée";
+
+"Tutti" = "Tous";
+"No" = "No";
+"Si" = "Oui";
+
+"wait" = "Attendre";
+"on_loading" = "Chargement en cour...";
+
+//ORCHARD LOGIN
+"LOGIN"="Connectez-vous avec";
+"Login" = "Connexion";
+"Registration" = "Enregistrement";
+"register" = "Inscrit";
+"Cancel" = "Annule";
+"Recover_password" = "Recover password";
+
+"reset_pwd_message" = "Mot de passe oublié? Remplissez le fourmulaire pour recevoir un link pour choisir un nouveaux mot de passe.";
+"placeholder_sms_or_mail_restore_password" = "Téléphone ou adresse E-Mail";
+"placeholder_mail_restore_password" = "Adresse E-Mail";
+"reset_password_sended" = "Votre nouveau mot de passe à été envoyé";
+"sms_not_valid" = "Numéro invalide";
+"empty_field" = "Un champ obligatoire est manquant";
+"check_your_number" = "Vous confirmez que vous voulez envoyer la procédure de récupération de mot de passe au numéro suivant?\n\n";
+
+"e_mail" = "Adresse E-Mail";
+"password" = "Mot de passe";
+"confirm_password" = "Confirme le mot de passe";
+"phone_number" = "Portable";
+"lost_pwd" = "Mot de passe oublié?";
+
+//RULES
+"ACCEPT"="Accepter";
+"DENY"="Disagree";
+"CLOSE"="Sortir";
+
+//OTP
+"Partenza" = "Partenza";
+"Durata" = "Durata";
+"Percorso a piedi" = "Percorso a piedi";
+"Cambi" = "Cambi";
+"WALK" = "A piedi per ";
+"BUS" = "Bus per ";
+"TRAM" = "Tram per ";
+"SUBWAY" = "Metro per ";
+"CAR" = "In macchina per ";
+"BICYCLE" = "In bici per ";
+"FIND_STOPS_NEARBY" = "Cerca fermate vicino a";
+"CAN_NOT_FIND_STOPS" = "Non è stato possibile caricare gli orari della fermata";
+
+"Lunedì" = "Lunedì";
+"Martedì" = "Martedì";
+"Mercoledì" = "Mercoledì";
+"Giovedì" = "Giovedì";
+"Venerdì" = "Venerdì";
+"Sabato" = "Sabato";
+"Domenica" = "Domenica";
+
+"Gennaio" = "Gennaio";
+"Febbraio" = "Febbraio";
+"Marzo" = "Marzo";
+"Aprile" = "Aprile";
+"Maggio" = "Maggio";
+"Giugno" = "Giugno";
+"Luglio" = "Luglio";
+"Agosto" = "Agosto";
+"Settembre" = "Settembre";
+"Ottobre" = "Ottobre";
+"Novembre" = "Novembre";
+"Dicembre" = "Dicembre";
+
+//PRIVACY
+"required" = " *obligatoire";
+"policy-term" = "Je accepte les termes.";
+"regulation-term" = "Je accepte les termes.";
+"next" = "Avant";
+"gestione_policy" = "Gestion des termes";
+"undo_privacy" = "Pour continuer, vous devez accepter les termes.";
+
+//SEGNALAZIONI
+"Devi scattare o scegliere una foto" = "Vous devez prendre ou choisir une photo";
+"Manca la E-Mail del mittente" = "Entrez votre e-mail";
+"Manca il nome del mittente" = "Entrez votre nom";
+"Manca il testo del messaggio" = "Entrez votre commentaire";
+"Mancano i seguenti campi:" = "Champs qui suivent manquants:";
+"ERRORE_GPS" = "Ajouter votre position";
+"La mia posizione" = "Ma localisation";
+"Bad location accuracy" = "Mauvaise précision de localisation";
+
+//CALENDARIO
+"event_added" = "Événement ajouté au calendrier";
+
+//Status
+"Created" = "Created";
+"Loaded" = "Loaded";
+"Accepted" = "Accepted";
+"Rejected" = "Rejected";
+
+//Reportage
+"Titolo" = "Title";
+"Sottotitolo" = "Sous title";
+"Descrizione" = "Description";
+"Categoria" = "Categorie";
+"Gallery" = "medias";
+"TitlePart.Title" = "title";
+"Sottotitolo" = "sous title";
+"categoria" = "categorie";
+"BodyPart.Text" = "message";
+"MapPart.Latitude" = "position GPS";
+"RELATED_FIELDS" = "Info general";
+
+
+"no_elements" = "There are no elements in this section";
+
+"invalid_entry_point" = "Invalid Entry Point";
+
+//Date extension
+"on" = "on %@";
+"fromToDate" = "from %@ to %@";
+"fromToHour" = "from %@ to %@";
+
+/*
+ TwitterKit
+ */
+
+"error-data-tweets" = "There are no tweets";
+"error-zero-tweets" = "There are no tweets";
+"error-guest-session-tweets" = "There are no tweets";
+"error-request-tweets" = "There are no tweets";
+"error-download-config-tweets" = "There are no tweets";
+
+/*
+ GameQuiz
+ */
+
+"bravo" = "Congrats!";
+"check_your_number" = "Confirm the follow mobile phone number?";
+"contest_participate" = "Points stored correctly";
+"continua" = "Next";
+"game_center_login_now" = "Would you like login now?";
+"game_center_request" = "GameCenter is required to partecipate";
+"insert_phone_number" = "Insert your mobile phone number";
+"leave" = "Undo";
+"login" = "Login";
+"ops" = "Ops!";
+"punti" = "points";
+"r_u_ready" = "Are you ready?";
+"risposta_corretta" = "Correct answer";
+"risposta_errata" = "Wrong answer";
+"sms_not_valid" = "Mobile phone number not valid";
+"totale" = "Total";
+
+
+
+"partecipate" = "Partecipate";
+"ready" = "Are you ready to start the game?";
+"start" = "Start";
+"your_score_is" = "Your score is";
+
+
+"available_soon" = "The game will be available from";
+
+
