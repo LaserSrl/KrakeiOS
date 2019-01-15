@@ -117,12 +117,12 @@ open class KTabManager: NSObject{
         KLog("RELEASED")
     }
     
-    open func setupInViewDidLoad(){
+    open func setupInViewDidLoad(logged: Bool = false){
         if tabManagerOptions.tabsEndPoint != nil {
 
             let extras = KRequestParameters.parametersToLoadCategorySubTerms()
 
-            task = OGLCoreDataMapper.sharedInstance().loadData(withDisplayAlias: tabManagerOptions.tabsEndPoint!, extras: extras) { [weak self](parsedObject , error, completed) -> Void in
+            task = OGLCoreDataMapper.sharedInstance().loadData(withDisplayAlias: tabManagerOptions.tabsEndPoint!, extras: extras, loginRequired: logged) { [weak self](parsedObject , error, completed) -> Void in
                 guard let mySelf = self else {return}
                 if parsedObject != nil
                 {

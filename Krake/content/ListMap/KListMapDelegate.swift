@@ -55,6 +55,7 @@ public extension KListMapDelegate {
         if let segueVC = KDetailViewControllerFactory.factory
             .newDetailViewController(detailObject: object,
                                      endPoint: (object as? ContentItem)?.autoroutePartDisplayAlias,
+                                     loginRequired: fromViewController.isLoginRequired(),
                                      detailDelegate: fromViewController.detailDelegate,
                                      analyticsExtras: fromViewController.analyticsExtras) {
             

@@ -346,7 +346,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         
         if categoriesTabManager != nil
         {
-            categoriesTabManager!.setupInViewDidLoad()
+            categoriesTabManager!.setupInViewDidLoad(logged: listMapOptions.data.loginRequired)
         }
         else if listMapOptions.data.endPoint != nil
         {
@@ -1187,5 +1187,10 @@ extension KListMapViewController: UICollectionViewDelegate, UICollectionViewData
     func selectObject(_ object: AnyObject)
     {
         listMapDelegate.didSelect(object, fromViewController: self)
+    }
+    
+    public func isLoginRequired() -> Bool
+    {
+        return listMapOptions.data.loginRequired
     }
 }

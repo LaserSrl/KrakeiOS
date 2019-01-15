@@ -28,7 +28,7 @@ public extension UIImageView{
     public func setImage(media: Any? = nil,
                          placeholderImage: UIImage? = KTheme.current.placeholder(.default),
                          options: KMediaImageLoadOptions = KMediaImageLoadOptions(),
-                         sdOptions: SDWebImageOptions = [.allowInvalidSSLCertificates, .retryFailed],
+                         sdOptions: SDWebImageOptions = [.allowInvalidSSLCertificates, .retryFailed, .handleCookies],
                          completed: KICompletionBlock? = nil){
         image = placeholderImage
         var targetUrl: URL? = nil
