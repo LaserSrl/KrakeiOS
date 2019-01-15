@@ -81,7 +81,7 @@ Pod::Spec.new do |s|
 
         os.dependency "LaserWebViewController", '2.0.0'
         os.dependency "LaserFloatingTextField", '1.0.0'
-        os.dependency "LaserVideoPhotoGallery", '3.0.0'
+        os.dependency "LaserVideoPhotoGallery", '3.0.1'
         os.dependency "LaserSwippableCell", '1.0.0'
         os.dependency "LaserCalendarTimeSelector", '1.5.0'
     end
