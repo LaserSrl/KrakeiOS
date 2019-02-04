@@ -343,7 +343,7 @@ class KExtendedMapViewDelegateSupport: NSObject, TSClusterMapViewDelegate {
 
                         let completeUrl = KInfoPlist.KrakePlist.path.appendingPathComponent(media?.mediaUrl?.removingPercentEncoding ?? "")
 
-                        KMLDocument.parse(completeUrl, callback: { (kml) in
+                        KMLDocument.parse(url: completeUrl, callback: { (kml) in
                             self.mapView?.addOverlays(kml.overlays)
 
                             if KInfoPlist.Location.showMarkerFromKML {

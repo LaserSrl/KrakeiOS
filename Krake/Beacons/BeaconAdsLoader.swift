@@ -38,10 +38,10 @@ open class BeaconAdsLoader: NSObject, NearestBeaconManagerDelegate {
     
     open weak var delegate: BeaconAdsLoaderDelegate?
     
-    fileprivate var currentSuperBeacon: CLBeacon?
+    public var currentSuperBeacon: CLBeacon?
     fileprivate var currentKrakeBeacon: KrakeBeaconProtocol?
-    fileprivate var currentLoadingTask: OMLoadDataTask? {didSet { oldValue?.cancel() }}
-    fileprivate var lastTimeNotifiedBeacon =  [NSNumber: Date]()
+    public var currentLoadingTask: OMLoadDataTask? {didSet { oldValue?.cancel() }}
+    public var lastTimeNotifiedBeacon =  [NSNumber: Date]()
     fileprivate var exitRegionClearDataTimer : Timer?
     
     
@@ -119,7 +119,7 @@ open class BeaconAdsLoader: NSObject, NearestBeaconManagerDelegate {
         lastTimeNotifiedBeacon.removeAll()
     }
     
-    fileprivate func shouldShowAds(_ beacon: CLBeacon) -> Bool
+    public func shouldShowAds(_ beacon: CLBeacon) -> Bool
     {
         if lastTimeNotifiedBeacon.count < maxNumberOfNotification {
             var notifiy = true
