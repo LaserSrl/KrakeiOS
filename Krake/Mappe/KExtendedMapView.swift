@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-import TSClusterMapView
+import Cluster
 import Kml_swift
 
 extension UIBarButtonItem {
@@ -24,7 +24,7 @@ extension UIBarButtonItem {
 
 public typealias OpenMapCompletionBlock = (MKAnnotation?, UIViewController?) -> Void
 
-open class KExtendedMapView: TSClusterMapView {
+open class KExtendedMapView: MKMapView {
 
     /// Default Block per l'apertura dell'annotation
     public static var defaultOpenAnnotation: OpenMapCompletionBlock? = {(annotation, fromViewController) -> Void in
@@ -92,14 +92,12 @@ open class KExtendedMapView: TSClusterMapView {
         }
         self.updateToolbarButtons()
     }
-    
-    open override func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
-        checkUserLocation()
-    }
 
     open override func awakeFromNib () {
         super.awakeFromNib()
         loadMapView()
+        //TODO: verificare
+        checkUserLocation()
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -277,7 +275,7 @@ open class KExtendedMapView: TSClusterMapView {
 }
 
 
-class KExtendedMapViewDelegateSupport: NSObject, TSClusterMapViewDelegate {
+class KExtendedMapViewDelegateSupport: NSObject, MKMapViewDelegate, ClusterManagerDelegate {
 
     weak var mapView : KExtendedMapView!
     init(mapView map: KExtendedMapView!) {
@@ -285,23 +283,8 @@ class KExtendedMapViewDelegateSupport: NSObject, TSClusterMapViewDelegate {
     }
     //MARK: - MKMap Cluster Delegate
 
-    func mapView(_ mapView: TSClusterMapView!, viewForClusterAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-
-        let identifier = "TSClusteredAnnotationView"
-
-        if let view = mapView .dequeueReusableAnnotationView(withIdentifier: identifier) {
-            return view
-        }
-
-        return TSClusteredAnnotationView(annotation: annotation, reuseIdentifier: identifier);
-    }
-
-    func mapView(_ mapView: TSClusterMapView!, shouldForceSplitClusterAnnotation clusterAnnotation: ADClusterAnnotation!) -> Bool {
-        return true
-    }
-
-    func mapView(_ mapView: TSClusterMapView!, shouldRepositionAnnotations annotations: [ADClusterAnnotation]!, toAvoidClashAt coordinate: CLLocationCoordinate2D) -> Bool {
-        return true
+    func shouldClusterAnnotation(_ annotation: MKAnnotation) -> Bool {
+        return !(annotation is MKUserLocation)
     }
 
     //MARK: - MKMap View Delegate
@@ -409,11 +392,16 @@ class KExtendedMapViewDelegateSupport: NSObject, TSClusterMapViewDelegate {
                 KExtendedMapView.defaultOpenAnnotation?(view.annotation, fromViewController)
             }
         }
+    }
 
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        if self.mapView.extendedDelegate?.responds(to: #selector(MKMapViewDelegate.mapView(_:regionDidChangeAnimated:))) ?? false {
+            self.mapView.extendedDelegate!.mapView!(mapView, regionDidChangeAnimated: animated)
+        }
     }
 }
 
-public protocol KExtendedMapViewDelegate : TSClusterMapViewDelegate {
+public protocol KExtendedMapViewDelegate : MKMapViewDelegate {
     func showFullScreen(_ map: KExtendedMapView)
 
     func close(_ map: KExtendedMapView)

@@ -12,6 +12,7 @@ import MapKit
 import MBProgressHUD
 import Segmentio
 import LaserSwippableCell
+import Cluster
 
 @objc(KListMapViewController)
 open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
@@ -95,6 +96,8 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     
     fileprivate var searchController: UISearchController?
     fileprivate let refreshControl = UIRefreshControl()
+
+    fileprivate var clusterManager: ClusterManager? = nil
     
     @available(*, deprecated, renamed: "init(listMapOptions:)")
     public static func prepareViewController(_ endPoint: String? = nil,
@@ -215,6 +218,10 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         UIView.setAnimationsEnabled(false)
         
         mapView?.extendedDelegate = self
+
+        if listMapOptions.useCluster {
+            clusterManager = ClusterManager()
+        }
         
         if let navBar = navigationController?.navigationBar
         {
@@ -611,7 +618,14 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                 var array = [MKAnnotation]()
                 if currentPage == 1
                 {
-                    mapView!.removeAnnotations(mapView!.annotations)
+                    
+                    if !useCluster {
+                        mapView!.removeAnnotations(mapView!.annotations)
+                    }
+                    else {
+                        clusterManager?.removeAll()
+                        clusterManager?.reload(mapView: mapView!)
+                    }
                 }
                 else
                 {
@@ -633,7 +647,13 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                     }
                     else
                     {
-                        mapView!.removeAnnotations(mapView!.annotations)
+                        if !useCluster {
+                            mapView!.removeAnnotations(mapView!.annotations)
+                        }
+                        else {
+                            clusterManager?.remove(mapView!.annotations)
+                            clusterManager?.reload(mapView: mapView!)
+                        }
                     }
                 }
                 if (array.count == 0 )
@@ -651,7 +671,8 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                 }
                 if useCluster
                 {
-                    mapView!.addClusteredAnnotations(array)
+                    clusterManager?.add(array)
+                    clusterManager?.reload(mapView: mapView!)
                 }
                 else
                 {
@@ -661,13 +682,6 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                 {
                     mapView!.centerMap(defaultArea: mapOpt.defaultCenterOfMap)
                 }
-                
-                if useCluster
-                {
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [weak self] () -> Void in
-                        self?.mapView?.needsRefresh()
-                    }
-                }
             }
             reloadElementsOnCollectionView()
             collectionView?.collectionViewLayout.invalidateLayout()
@@ -676,7 +690,14 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         {
             if let annotations = mapView?.annotations
             {
-                mapView?.removeAnnotations(annotations)
+                if !useCluster {
+                    mapView?.removeAnnotations(annotations)
+                }
+                else {
+                    clusterManager?.remove(annotations)
+                    clusterManager?.reload(mapView: mapView!)
+                }
+
             }
             reloadElementsOnCollectionView()
             collectionView?.collectionViewLayout.invalidateLayout()
@@ -907,11 +928,21 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     
     open func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
-        if annotation is MKUserLocation
+        if let annotation = annotation as? ClusterAnnotation {
+            if let view = mapView.dequeueReusableAnnotationView(withIdentifier: "cluster") {
+                view.annotation = annotation
+                (view as? KClusterAnnotationView)?.configure()
+                return view
+            }
+            return KClusterAnnotationView(annotation: annotation, reuseIdentifier: "cluster")
+        }
+        else if annotation is MKUserLocation
         {
             return nil
         }
-        return listMapDelegate.viewForAnnotation(annotation, mapView: mapView as! KExtendedMapView )
+        else {
+             return listMapDelegate.viewForAnnotation(annotation, mapView: mapView as! KExtendedMapView )
+        }
     }
     
     open func extendedMapView(_ mapView: KExtendedMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl, fromViewController: UIViewController) -> Bool
@@ -933,6 +964,28 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         polylineRender.lineWidth = 4.0
         polylineRender.strokeColor = UIColor.blue
         return polylineRender
+    }
+
+    public func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        clusterManager?.reload(mapView: mapView)
+    }
+
+    open func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let annotation = view.annotation else { return }
+
+        if let cluster = annotation as? ClusterAnnotation {
+            var zoomRect = MKMapRect.null
+            for annotation in cluster.annotations {
+                let annotationPoint = MKMapPoint(annotation.coordinate)
+                let pointRect = MKMapRect(x: annotationPoint.x, y: annotationPoint.y, width: 0, height: 0)
+                if zoomRect.isNull {
+                    zoomRect = pointRect
+                } else {
+                    zoomRect = zoomRect.union(pointRect)
+                }
+            }
+            mapView.setVisibleMapRect(zoomRect, edgePadding: UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30), animated: true)
+        }
     }
     
 }
