@@ -8,33 +8,48 @@
 
 import Foundation
 import MapKit
+import Cluster
 
 public extension MKMapView{
     
+    fileprivate func addAnnotationInRect(_ annotation: MKAnnotation, _ flyTo: MKMapRect) -> MKMapRect {
+        let annotationPoint = KMapPointForCoordinate(annotation.coordinate)
+        #if swift(>=4.2)
+        let pointRect = MKMapRect(x: annotationPoint.x, y: annotationPoint.y, width: 0.1, height: 0.1)
+        let isNull = flyTo.isNull
+        #else
+        let pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1)
+        let isNull = MKMapRectIsNull(flyTo)
+        #endif
+        if isNull {
+            return pointRect
+        }
+        else {
+            #if swift(>=4.2)
+            return flyTo.union(pointRect)
+            #else
+            return MKMapRectUnion(flyTo, pointRect)
+            #endif
+        }
+    }
+
     /**
      Metodo per centrare lo zoom della mappa sugli overlay e le annotation in essa presenti.
      */
     
+    
     public func centerMap(defaultArea: MKMapRect = KMapRectNull){
         var flyTo = KMapRectNull
         for annotation in annotations{
-            if !(annotation is MKUserLocation){
-                let annotationPoint = KMapPointForCoordinate(annotation.coordinate)
-                #if swift(>=4.2)
-                let pointRect = MKMapRect(x: annotationPoint.x, y: annotationPoint.y, width: 0.1, height: 0.1)
-                let isNull = flyTo.isNull
-                #else
-                let pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1)
-                let isNull = MKMapRectIsNull(flyTo)
-                #endif
-                if isNull{
-                    flyTo = pointRect
-                }else{
-                    #if swift(>=4.2)
-                    flyTo = flyTo.union(pointRect)
-                    #else
-                    flyTo = MKMapRectUnion(flyTo, pointRect)
-                    #endif
+            if !(annotation is MKUserLocation) {
+
+                if let cluster = annotation as? ClusterAnnotation {
+                    for annotation in cluster.annotations {
+                        flyTo = addAnnotationInRect(annotation, flyTo)
+                    }
+                }
+                else {
+                    flyTo = addAnnotationInRect(annotation, flyTo)
                 }
             }
         }

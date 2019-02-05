@@ -618,14 +618,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                 var array = [MKAnnotation]()
                 if currentPage == 1
                 {
-                    
-                    if !useCluster {
-                        mapView!.removeAnnotations(mapView!.annotations)
-                    }
-                    else {
-                        clusterManager?.removeAll()
-                        clusterManager?.reload(mapView: mapView!)
-                    }
+                    removeAllAnnotations()
                 }
                 else
                 {
@@ -647,13 +640,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                     }
                     else
                     {
-                        if !useCluster {
-                            mapView!.removeAnnotations(mapView!.annotations)
-                        }
-                        else {
-                            clusterManager?.remove(mapView!.annotations)
-                            clusterManager?.reload(mapView: mapView!)
-                        }
+                        removeAllAnnotations()
                     }
                 }
                 if (array.count == 0 )
@@ -669,36 +656,15 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                         }
                     }
                 }
-                if useCluster
-                {
-                    clusterManager?.add(array)
-                    clusterManager?.reload(mapView: mapView!)
-                }
-                else
-                {
-                    mapView!.addAnnotations(array)
-                }
-                if let mapOpt = listMapOptions.mapOptions
-                {
-                    mapView!.centerMap(defaultArea: mapOpt.defaultCenterOfMap)
-                }
+                addAnnotations(array)
+
             }
             reloadElementsOnCollectionView()
             collectionView?.collectionViewLayout.invalidateLayout()
         }
         else
         {
-            if let annotations = mapView?.annotations
-            {
-                if !useCluster {
-                    mapView?.removeAnnotations(annotations)
-                }
-                else {
-                    clusterManager?.remove(annotations)
-                    clusterManager?.reload(mapView: mapView!)
-                }
-
-            }
+            removeAllAnnotations()
             reloadElementsOnCollectionView()
             collectionView?.collectionViewLayout.invalidateLayout()
         }
@@ -715,6 +681,40 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         else
         {
             toggleButton?.hiddenAnimated = false
+        }
+    }
+
+    func addAnnotations(_ annotations: [MKAnnotation]) {
+        if let cluster = clusterManager {
+
+            cluster.add(annotations)
+            cluster.reload(mapView: mapView!) {
+                finished in
+                if finished {
+                    if let mapOpt = self.listMapOptions.mapOptions
+                    {
+                        self.mapView!.centerMap(defaultArea: mapOpt.defaultCenterOfMap)
+                    }
+                }
+            }
+        }
+        else
+        {
+            mapView!.addAnnotations(annotations)
+            if let mapOpt = listMapOptions.mapOptions
+            {
+                mapView!.centerMap(defaultArea: mapOpt.defaultCenterOfMap)
+            }
+        }
+    }
+
+    func removeAllAnnotations() {
+        if let cluster = clusterManager {
+            cluster.removeAll()
+            cluster.reload(mapView: mapView!)
+        }
+        else if let annotations = mapView?.annotations {
+            mapView?.removeAnnotations(annotations)
         }
     }
     
