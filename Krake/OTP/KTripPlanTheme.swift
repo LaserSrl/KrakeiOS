@@ -8,7 +8,21 @@
 
 import Foundation
 import DateTimePicker
+import Segmentio
 
+extension KTheme {
+    public static var travelModeSegmentOptions: SegmentioOptions = {
+
+        SegmentioOptions(backgroundColor: .clear,
+                         segmentPosition: .dynamic,
+                         scrollEnabled: false,
+                         indicatorOptions: SegmentioIndicatorOptions(color: .white),
+                         segmentStates: SegmentioStates(defaultState: SegmentioState(titleTextColor: .white),
+                                                       selectedState: SegmentioState(titleTextColor: .white),
+                                                       highlightedState: SegmentioState(titleTextColor: .white))
+                         )
+    }()
+}
 class KTripTheme {
     static var shared: KTripPlanTheme = KTripDefaultTheme()
 }

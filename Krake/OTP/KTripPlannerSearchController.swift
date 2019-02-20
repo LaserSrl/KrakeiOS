@@ -11,6 +11,7 @@ import UIKit
 import DateTimePicker
 import MapKit
 import CoreLocation
+import Segmentio
 
 open class KTripPlannerSearchController : UIViewController,
     UITableViewDelegate,
@@ -40,7 +41,7 @@ open class KTripPlannerSearchController : UIViewController,
     @IBOutlet weak var toTextField: UITextField!
     @IBOutlet weak var searchContainer: UIView!
 
-    @IBOutlet weak var travelModeSegmented: UISegmentedControl!
+    @IBOutlet weak var travelModeSegmented: Segmentio!
     @IBOutlet weak var collectionViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var searchTopContraint: NSLayoutConstraint!
     @IBOutlet weak var resultsView: UITableView!
@@ -144,19 +145,21 @@ open class KTripPlannerSearchController : UIViewController,
         resultMapView.delegate = routeMapDelegate
         routeMapDelegate.resultMapView = resultMapView
 
-        travelModeSegmented.removeAllSegments()
-
-        travelModeSegmented.contentMode = .scaleAspectFit
-
-        for mode in travelModes
-        {
-            let image = KTripTheme.shared.imageFor(travelMode: mode)
-            travelModeSegmented.insertSegment(with:image  , at: travelModeSegmented.numberOfSegments, animated: false)
+        let segmentTravelMode = travelModes.map { (mode) -> SegmentioItem in
+            SegmentioItem(title: nil, image: KTripTheme.shared.imageFor(travelMode: mode))
         }
 
-        travelModeSegmented.selectedSegmentIndex = travelModes.index(of: tripPlanRequest.travelMode) ?? 0
-        travelModeSegmented.tintColor = self.navigationController?.navigationBar.tintColor
-        
+        travelModeSegmented.setup(content: segmentTravelMode,
+                                  style: .onlyImage,
+                                  options:  KTheme.travelModeSegmentOptions)
+
+        travelModeSegmented.valueDidChange = { segmentio, segmentIndex in
+            self.tripPlanRequest.travelMode = self.travelModes[segmentIndex]
+            self.dateSelectionStackView.isHidden = self.tripPlanRequest.travelMode != .transit
+            self.planTripIfValid()
+        }
+
+        travelModeSegmented.selectedSegmentioIndex = travelModes.index(of: tripPlanRequest.travelMode) ?? 0
         dateModeSelection.setTitle("tripModePartenza".localizedString(), forSegmentAt: 0)
         dateModeSelection.setTitle("tripModeArrivo".localizedString(), forSegmentAt: 1)
         dateModeSelection.tintColor = self.navigationController?.navigationBar.tintColor
@@ -342,13 +345,6 @@ open class KTripPlannerSearchController : UIViewController,
             })
         }
         listUIState = newState
-    }
-
-    @IBAction func changeTravelMode(_ sender: UISegmentedControl)
-    {
-        self.tripPlanRequest.travelMode = self.travelModes[sender.selectedSegmentIndex]
-        dateSelectionStackView.isHidden = tripPlanRequest.travelMode != .transit
-        self.planTripIfValid()
     }
 
     @objc func showPlannedTripTransists()
