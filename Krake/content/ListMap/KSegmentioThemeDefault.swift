@@ -77,7 +77,7 @@ open class KSegmentioThemeDefault: NSObject, KSegmentioTheme
         return SegmentioIndicatorOptions(
             type: .bottom,
             ratio: 1,
-            height: 1,
+            height: 5,
             color: KTheme.current.color(.textTint)
         )
     }
