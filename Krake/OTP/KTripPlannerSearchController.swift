@@ -146,7 +146,7 @@ open class KTripPlannerSearchController : UIViewController,
         routeMapDelegate.resultMapView = resultMapView
 
         let segmentTravelMode = travelModes.map { (mode) -> SegmentioItem in
-            SegmentioItem(title: nil, image: KTripTheme.shared.imageFor(travelMode: mode))
+            SegmentioItem(title: nil, image: KTripTheme.shared.imageFor(travelMode: mode).withRenderingMode(.alwaysOriginal))
         }
 
         travelModeSegmented.setup(content: segmentTravelMode,

@@ -17,6 +17,8 @@ extension KTheme {
                          segmentPosition: .dynamic,
                          scrollEnabled: false,
                          indicatorOptions: SegmentioIndicatorOptions(color: .white),
+                         horizontalSeparatorOptions: SegmentioHorizontalSeparatorOptions(type: .none),
+                         verticalSeparatorOptions: SegmentioVerticalSeparatorOptions(ratio: 1, color: UIColor(white: 1, alpha: 0.3)),
                          segmentStates: SegmentioStates(defaultState: SegmentioState(titleTextColor: .white),
                                                        selectedState: SegmentioState(titleTextColor: .white),
                                                        highlightedState: SegmentioState(titleTextColor: .white))
