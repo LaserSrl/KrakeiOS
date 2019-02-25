@@ -261,7 +261,16 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
 
                 numberOfLinesFromPattern = 0
                 for stopTime in stopTimes {
-                    if let stopTimeScheduledArrival = stopTime.scheduledArrival,
+                    var stopArrival: NSNumber? = nil
+
+                    if let realTime = stopTime.scheduledArrival, realTime.intValue > 0 {
+                        stopArrival = realTime
+                    }
+                    else {
+                        stopArrival = stopTime.scheduledArrival
+                    }
+
+                    if let stopTimeScheduledArrival = stopArrival,
                         let scheduledArrival = minutes(until: stopTimeScheduledArrival) {
                         let secondsUntilArrival = scheduledArrival.timeIntervalSinceNow
                         if secondsUntilArrival > 0 && secondsUntilArrival < 121 * 60 {
