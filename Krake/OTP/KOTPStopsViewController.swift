@@ -280,7 +280,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
             prevRadius = searchRadius
 
             MBProgressHUD.showAdded(to: view, animated: true)
-            var extras = KRequestParameters.parameters(
+            let extras = KRequestParameters.parameters(
                 userLocation: center,
                 radius: prevRadius)
             OGLCoreDataMapper.sharedInstance()

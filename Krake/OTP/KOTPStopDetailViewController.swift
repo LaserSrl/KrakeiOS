@@ -323,7 +323,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
             if let firstParentesisIndex = destination
                 .range(of: "(", options: [.backwards])
             {
-                destination = String(destination[...firstParentesisIndex.lowerBound])
+                destination = String(destination[..<firstParentesisIndex.lowerBound]).trimmingCharacters(in: .whitespacesAndNewlines)
             }
             return KOTPPatternStep(id: id, destination: destination)
         }
