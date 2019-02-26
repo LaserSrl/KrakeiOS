@@ -16,15 +16,7 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
 
     open override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [KApplicationLaunchOptionsKey : Any]?) -> Bool {
         let value = super.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        // Istanzio Crashlytics
-        #if !DEBUG
-        if let fabricDictionary = Bundle.main.infoDictionary?["Fabric"] as? [AnyHashable:Any],
-            let _ = fabricDictionary["APIKey"] as? String{
-            Fabric.with([Crashlytics()])
-        }
-        #endif
-        
+                
         // Istanzio la classe di default degli analytics se non già fatto in app.
         if (AnalyticsCore.shared == nil)
         {

@@ -64,10 +64,10 @@ Pod::Spec.new do |s|
         
         #other
         os.dependency "AFNetworking", '3.2.1'
-        os.dependency "Crashlytics", '3.11.1'
+        os.dependency "Crashlytics", '3.12.0'
         os.dependency "CryptoSwift", '0.13.0'
-        os.dependency "Fabric", '1.8.2'
-        os.dependency "Firebase", '5.14.0'
+        os.dependency "Fabric", '1.9.0'
+        os.dependency "Firebase", '5.17.0'
         os.dependency "KNSemiModalViewController_hons82", '0.4.6'
         os.dependency "libPhoneNumber-iOS", '0.9.13'
         os.dependency "MBProgressHUD", '1.1.0'
