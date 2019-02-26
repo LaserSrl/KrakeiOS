@@ -117,6 +117,10 @@ open class KSearchPlaceViewController: UIViewController, UITableViewDelegate, UI
         searchBar.placeholder = searchField?.placeholder
         searchBar.becomeFirstResponder()
     }
+
+    open override var preferredStatusBarStyle: UIStatusBarStyle{
+        return KTheme.current.statusBarStyle(.default)
+    }
     
     //MARK: - UISearchBar Delegate
     
