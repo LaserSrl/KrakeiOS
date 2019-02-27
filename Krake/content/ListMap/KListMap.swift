@@ -684,7 +684,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         }
     }
 
-    func addAnnotations(_ annotations: [MKAnnotation]) {
+    public func addAnnotations(_ annotations: [MKAnnotation]) {
         if let cluster = clusterManager {
 
             cluster.add(annotations)
@@ -708,12 +708,22 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         }
     }
 
-    func removeAllAnnotations() {
+    public func removeAllAnnotations() {
         if let cluster = clusterManager {
             cluster.removeAll()
             cluster.reload(mapView: mapView!)
         }
         else if let annotations = mapView?.annotations {
+            mapView?.removeAnnotations(annotations)
+        }
+    }
+
+    public func removeAnnotations(_ annotations: [MKAnnotation]) {
+        if let cluster = clusterManager {
+            cluster.remove(annotations)
+            cluster.reload(mapView: mapView!)
+        }
+        else {
             mapView?.removeAnnotations(annotations)
         }
     }

@@ -263,11 +263,11 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                 for stopTime in stopTimes {
                     var stopArrival: NSNumber? = nil
 
-                    if let realTime = stopTime.scheduledArrival, realTime.intValue > 0 {
+                    if let realTime = stopTime.realtimeDeparture, realTime.intValue > 0 {
                         stopArrival = realTime
                     }
                     else {
-                        stopArrival = stopTime.scheduledArrival
+                        stopArrival = stopTime.scheduledDeparture
                     }
 
                     if let stopTimeScheduledArrival = stopArrival,
@@ -283,10 +283,6 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                             numberOfLinesFromPattern += 1
                         }
                     }
-                }
-
-                if numberOfLinesFromPattern == 2 {
-                    break
                 }
             }
         }
