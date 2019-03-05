@@ -289,7 +289,7 @@ open class KDetailViewController: UIViewController, UIScrollViewDelegate, KDetai
      
       - parameter detail: The object to use to generate the new `UIBarButtonItem`.
  	*/
-    private func updateActions(for detail: AnyObject?) {
+    open func updateActions(for detail: AnyObject?) {
         guard let detail = detail else {
             return
         }
