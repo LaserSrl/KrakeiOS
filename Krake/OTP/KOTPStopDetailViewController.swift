@@ -40,6 +40,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
     public var patternGeometryLoader: KLinePathLoader? = KOpenTripPlannerLinePathLoader()
 
     private var selectedLine: BusLine? = nil
+    private var lineOverlay: MKPolyline? = nil
 
     private lazy var sourceRegex: NSRegularExpression? = try? NSRegularExpression(
         pattern: "^([\\s\\S]+) to ([\\s\\S]+) from ([\\s\\S]+)$",
@@ -135,6 +136,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         // per la fermata selezionata.
         hideTableView(animated: false)
         // Scarico le previsioni per la fermata corrente.
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshTimes))
         loadTimes()
     }
 
@@ -220,6 +222,15 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
 
     // MARK: - Lines loading
 
+    @objc func refreshTimes() {
+        if lineOverlay != nil {
+            mapView.removeOverlay(lineOverlay!)
+            lineOverlay = nil
+        }
+        intermediateStops = nil
+        loadTimes()
+    }
+
     private func loadTimes() {
         guard let sourceStop = sourceStop else { return }
 
@@ -263,7 +274,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                 for stopTime in stopTimes {
                     var stopArrival: NSNumber? = nil
 
-                    if let realTime = stopTime.realtimeDeparture, realTime.intValue > 0 {
+                     if let realTime = stopTime.realtimeDeparture, realTime.intValue > 0 {
                         stopArrival = realTime
                     }
                     else {
@@ -373,7 +384,9 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         patternGeometryLoader?.retrievePathPoints(for: line, with: { [weak self](line, polyline) in
 
             if let sSelf = self, let polyline = polyline {
+
                 if line.lineNumber == sSelf.selectedLine?.lineNumber {
+                    sSelf.lineOverlay = polyline
                     #if swift(>=4.2)
                     sSelf.mapView.addOverlay(polyline)
                     #else
