@@ -273,3 +273,21 @@
 "Turnstile opened!" = "Tornello aperto!";
 "TURNSLIDE_ERROR_ANTIPASSBACK" = "Non è stato possibile aprire il tornello (Anti Passback). Riprova più tardi.";
 
+//UserReactions
+
+"angry" = "Arrabbiato";
+"boring" = "Noioso";
+"curious" = "Curioso";
+"excited" = "Emozionato";
+"exhausted" = "Esausto";
+"happy" = "Felice";
+"i Like" = "Mi piace";
+"i Was There" = "Ci sono stato";
+"interested" = "Interessato";
+"joke" = "Scherzo";
+"kiss" = "Bacio";
+"love" = "Amore";
+"pain" = "Panico";
+"sad" = "Triste";
+"shocked" = "Scioccato";
+"silent" = "Silenzioso";

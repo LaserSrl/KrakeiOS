@@ -77,6 +77,7 @@ extension KAPIConstants
  `updateUserReactions(newUserReactions: [UserReaction])`
  
  */
+
 @available(iOS 9.0, *)
 open class KUserReactions: UIView, KDetailViewProtocol {
     
@@ -106,6 +107,9 @@ open class KUserReactions: UIView, KDetailViewProtocol {
     }
     fileprivate var reactionAuthorized: Bool = false
     fileprivate weak var stackView: UIStackView!
+    
+    @IBInspectable
+    public var stringFormat: String = "%1$d"
     
     /**
      Inizializza la classe impostando l'identifier del contenuto, non serve richiamare il metodo loadUserReactions().
@@ -266,8 +270,10 @@ open class KUserReactions: UIView, KDetailViewProtocol {
             }
             button?.isSelected = reaction.clicked
             button?.isEnabled = reactionAuthorized
-            button?.setTitle(String(format:"%d", reaction.quantity.intValue), for: KControlState.normal)
-            button?.setTitle(String(format:"%d", reaction.quantity.intValue), for: .selected)
+            button?.setTitle(String(format:stringFormat, reaction.quantity.intValue, reaction.typeName.localizedString()), for: KControlState.normal)
+            button?.setTitle(String(format:stringFormat, reaction.quantity.intValue, reaction.typeName.localizedString()), for: .selected)
+            button?.titleLabel?.numberOfLines = 2
+            button?.titleLabel?.textAlignment = .center
             button?.alignImageAndTitleVertically()
         }
         userReactions = newUserReactions

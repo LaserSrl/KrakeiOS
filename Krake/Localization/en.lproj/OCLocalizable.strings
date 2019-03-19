@@ -246,3 +246,21 @@
 "available_soon" = "The game will be available from";
 
 
+//UserReactions
+
+"angry" = "Angry";
+"boring" = "Boring";
+"curious" = "Curious";
+"excited" = "Excited";
+"exhausted" = "Exhausted";
+"happy" = "Happy";
+"i Like" = "I Like";
+"i Was There" = "I Was There";
+"interested" = "Interested";
+"joke" = "Joke";
+"kiss" = "Kiss";
+"love" = "Love";
+"pain" = "Pain";
+"sad" = "Sad";
+"shocked" = "Shocked";
+"silent" = "Silent";
