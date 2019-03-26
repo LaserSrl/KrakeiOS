@@ -91,7 +91,7 @@ Pod::Spec.new do |s|
         os.resource  = "Krake/FacebookKit/*.{xcassets}"
         os.ios.resource_bundle = { 'FacebookKit' => ['Krake/FacebookKit/*.{png,jpg}']}
         os.dependency "Krake/Core"
-        os.dependency "FBSDKLoginKit", '4.38.1'
+        os.dependency "FBSDKLoginKit", '4.42.0'
     end
     
     s.subspec 'GameQuiz' do |os|

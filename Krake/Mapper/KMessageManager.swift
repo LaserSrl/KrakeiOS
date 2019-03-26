@@ -91,11 +91,7 @@ import SwiftMessages
         
         var config = SwiftMessages.Config()
         config.presentationStyle = convertPositionBlock(position)
-        #if swift(>=4.2)
-        config.presentationContext = SwiftMessages.PresentationContext.window(windowLevel: windowLevel.rawValue)
-        #else
         config.presentationContext = SwiftMessages.PresentationContext.window(windowLevel: windowLevel)
-        #endif
         config.duration = convertDurationBlock(duration)
         
         SwiftMessages.show(config: config) {

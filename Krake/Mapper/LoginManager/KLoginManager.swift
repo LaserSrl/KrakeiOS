@@ -140,7 +140,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
     public func storeUserAdditionalInfos(with infos: [AnyHashable : Any]?)
     {
         if let infos = infos{
-            let registeredServices: [String]?
+            var registeredServices: [String]?
             if let arrayOfRegisteredServices = infos["RegisteredServices"] as? [[String : Any]]
             {
                 registeredServices = [String]()
