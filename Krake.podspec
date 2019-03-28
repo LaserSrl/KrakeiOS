@@ -74,8 +74,8 @@ Pod::Spec.new do |s|
         os.dependency "NTPKit", '1.0.1'
         os.dependency "SDWebImage", '4.4.2'
         os.dependency "SwiftyJSON", '4.2.0'
-        os.dependency "SwiftMessages", '5.0.1'
-        os.dependency "Cluster", '2.4.3'
+        os.dependency "SwiftMessages", '~>6.0.0'
+        os.dependency "Cluster", '2.4.8'
         os.dependency "Kml.swift", '0.3.0'
         os.dependency "Segmentio", '3.3'
 
