@@ -43,7 +43,7 @@ open class KAnnotationView: MKAnnotationView
         tintColor = forcedColor ?? tintColor
         downloading = false
         super.init(annotation: annotation, reuseIdentifier: identifier)
-        if let img = SDImageCache.shared().imageFromMemoryCache(forKey: reuseIdentifier) {
+        if let img = SDImageCache.shared.imageFromMemoryCache(forKey: reuseIdentifier) {
             image = img
             centerOffset = CGPoint(x: 0, y: -(image!.size.height/2))
         }else{
@@ -57,7 +57,7 @@ open class KAnnotationView: MKAnnotationView
                 
                 if let termIconIdentifier = termIconIdentifier, let url = KMediaImageLoader.generateURL(forMediaPath: termIconIdentifier, mediaImageOptions: KMediaImageLoadOptions(size: CGSize(width: 200, height: 200),mode: ImageResizeMode.Pan))
                 {
-                    if let image = SDImageCache.shared().imageFromDiskCache(forKey: termIconIdentifier){
+                    if let image = SDImageCache.shared.imageFromDiskCache(forKey: termIconIdentifier){
                         pinImage.image = image.withRenderingMode(.alwaysTemplate)
                     }else{
                         downloading = true
@@ -110,7 +110,7 @@ open class KAnnotationView: MKAnnotationView
             UIGraphicsEndImageContext()
             centerOffset = CGPoint(x: 0, y: -(image!.size.height/2))
             if !downloading{
-                SDImageCache.shared().store(image, forKey: reuseIdentifier!, toDisk: false)
+                SDImageCache.shared.store(image, forKey: reuseIdentifier!, toDisk: false)
             }
         }
     }

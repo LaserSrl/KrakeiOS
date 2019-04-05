@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name         = "Krake"
-    s.version      = "10.1.5"
+    s.version      = "10.1.8"
     s.summary      = "Laser mobile framework."
     s.homepage     = "http://mykrake.com"
 
@@ -38,7 +38,7 @@ Pod::Spec.new do |s|
     s.subspec 'Braintree' do |os|
         os.source_files  = "Krake/Braintree/*.{swift}"
         os.dependency "Krake/Core"
-        os.dependency "Braintree", '4.20.0'
+        os.dependency "Braintree", '4.23.0'
     end
     
     s.subspec 'Commons' do |os|
@@ -65,17 +65,17 @@ Pod::Spec.new do |s|
         #other
         os.dependency "AFNetworking", '3.2.1'
         os.dependency "Crashlytics", '3.12.0'
-        os.dependency "CryptoSwift", '0.13.0'
+        os.dependency "CryptoSwift", '1.0.0'
         os.dependency "Fabric", '1.9.0'
-        os.dependency "Firebase", '5.17.0'
+        os.dependency "Firebase", '5.20.1'
         os.dependency "KNSemiModalViewController_hons82", '0.4.6'
         os.dependency "libPhoneNumber-iOS", '0.9.13'
         os.dependency "MBProgressHUD", '1.1.0'
         os.dependency "NTPKit", '1.0.1'
-        os.dependency "SDWebImage", '4.4.2'
-        os.dependency "SwiftyJSON", '4.2.0'
+        os.dependency "SDWebImage", '5.0.0'
+        os.dependency "SwiftyJSON", '4.3.0'
         os.dependency "SwiftMessages", '~>6.0.0'
-        os.dependency "Cluster", '2.4.8'
+        os.dependency "Cluster", '2.4.9'
         os.dependency "Kml.swift", '0.3.0'
         os.dependency "Segmentio", '3.3'
 
@@ -91,7 +91,7 @@ Pod::Spec.new do |s|
         os.resource  = "Krake/FacebookKit/*.{xcassets}"
         os.ios.resource_bundle = { 'FacebookKit' => ['Krake/FacebookKit/*.{png,jpg}']}
         os.dependency "Krake/Core"
-        os.dependency "FBSDKLoginKit", '4.42.0'
+        os.dependency "FBSDKLoginKit", '5.0.0-rc.1'
     end
     
     s.subspec 'GameQuiz' do |os|
@@ -106,7 +106,7 @@ Pod::Spec.new do |s|
         os.source_files  = "GoogleKit", "Krake/GoogleKit/*.{swift}"
         os.resource  = "Krake/GoogleKit/*.{xcassets}"
         os.dependency "Krake/Core"
-        os.dependency "GoogleSignIn", '4.3.0'
+        os.dependency "GoogleSignIn", '4.4.0'
     end
     
     s.subspec 'InstagramKit' do |os|
@@ -144,7 +144,7 @@ Pod::Spec.new do |s|
         os.resource  = "Krake/OTP/*.{xcassets}"
         os.dependency "Krake/Core"
         os.dependency "Polyline", '4.2.0'
-        os.dependency "DateTimePicker", '2.1.2'
+        os.dependency "DateTimePicker", '2.1.3'
     end
     
     s.subspec 'Policies' do |os|

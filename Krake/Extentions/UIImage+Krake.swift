@@ -30,15 +30,15 @@ public enum AspectToFill: Int{
 
 public extension UIImage{
     
-    public convenience init?(krakeNamed named: String){
+    convenience init?(krakeNamed named: String){
         self.init(named: named, in: Bundle(for: Krake.self), compatibleWith: nil)
     }
     
-    @objc public static func imageOBJC(_ color: UIColor, size: CGSize) -> UIImage{
+    @objc static func imageOBJC(_ color: UIColor, size: CGSize) -> UIImage{
         return image(color, size: size)
     }
     
-    public static func image(_ color: UIColor, size: CGSize? = CGSize(width: 1, height: 1)) -> UIImage{
+    static func image(_ color: UIColor, size: CGSize? = CGSize(width: 1, height: 1)) -> UIImage{
         UIGraphicsBeginImageContext(size!)
         let context = UIGraphicsGetCurrentContext()!
         context.setFillColor(color.cgColor)
@@ -48,7 +48,7 @@ public extension UIImage{
         return image!
     }
     
-    public func imageTinted(_ color: UIColor, fraction: CGFloat? = 0.0) -> UIImage{
+    func imageTinted(_ color: UIColor, fraction: CGFloat? = 0.0) -> UIImage{
         let image: UIImage
         UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
         var rect = CGRect.zero
@@ -64,7 +64,7 @@ public extension UIImage{
         return image
     }
     
-    public func makeImageRoundCornersAndBorded() -> UIImage{
+    func makeImageRoundCornersAndBorded() -> UIImage{
         let rect = CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         KTheme.current.color(.tint).setFill()
@@ -139,14 +139,18 @@ public extension UIImage{
         return newImage
     }
     
-    public static func downloadImage(_ imageURL: URL?, completed: KICompletionBlock? = nil ){
+    static func downloadImage(_ imageURL: URL?, completed: KICompletionBlock? = nil ){
 
         if let imageURL = imageURL {
-            _ = SDWebImageManager.shared().imageDownloader?.downloadImage(with: imageURL, options: [.allowInvalidSSLCertificates], progress: nil) { (image, data, error, finished) in
-                if finished{
-                    completed?(image, error, .disk, nil)
-                }
-            }
+            _ = SDWebImageManager.shared.loadImage(with: imageURL,
+                                                   options: [.allowInvalidSSLCertificates],
+                                                   context: nil,
+                                                   progress: nil,
+                                                   completed: { (image, data, error, cacheType, finished, url) in
+                                                    if finished{
+                                                        completed?(image, error, .disk, url)
+                                                    }
+            })
         }
     }
 }

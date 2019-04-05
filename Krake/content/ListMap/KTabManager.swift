@@ -161,7 +161,7 @@ open class KTabManager: NSObject{
                                 if let media = elem.iconMediaParts?.firstObject as? MediaPartProtocol
                                 {
                                     let termIconIdentifier = "termicon_" + (media.identifier ?? 0).stringValue
-                                    image = SDImageCache.shared().imageFromDiskCache(forKey: termIconIdentifier)
+                                    image = SDImageCache.shared.imageFromDiskCache(forKey: termIconIdentifier)
                                     if image == nil{
                                         image = UIImage(named: termIconIdentifier)
                                         if let url = KMediaImageLoader.generateURL(forMediaPath: (media.identifier ?? 0).stringValue, mediaImageOptions: KMediaImageLoadOptions(size: CGSize(width: 2000, height: 2000),mode: ImageResizeMode.Pan))

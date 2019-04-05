@@ -38,11 +38,11 @@ open class FacebookKit: NSObject{
     
     fileprivate var completionBlock: AuthProviderBlock? = nil
     fileprivate var options: [AnyHashable: Any]!
-    fileprivate var manager: FBSDKLoginManager!
+    fileprivate var manager: LoginManager!
     
     public static let shared: FacebookKit = {
         let facebook = FacebookKit()
-        facebook.manager = FBSDKLoginManager()
+        facebook.manager = LoginManager()
         return facebook
     }()
     
@@ -62,12 +62,12 @@ open class FacebookKit: NSObject{
         return UIBarButtonItem(image: UIImage(krakeNamed:"facebook_icon"), style: .plain, target: self, action: #selector(FacebookKit.signIn))
     }
     
-    static public func application(application: UIApplication!, didFinishLaunchingWithOptions: [AnyHashable : Any]!){
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: didFinishLaunchingWithOptions)
+    static public func application(application: UIApplication!, didFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey : Any]?){
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: didFinishLaunchingWithOptions)
     }
     
     static public func handleURL(_ app: UIApplication, url: URL, options: [KApplicationOpenURLOptionsKey: Any]) -> Bool{
-        return FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        return ApplicationDelegate.shared.application(app, open: url, options: options)
     }
     
     /**
@@ -76,7 +76,7 @@ open class FacebookKit: NSObject{
     @objc func signIn(){
         KLoginManager.shared.showProgressHUD()
         manager.logOut()
-        manager.logIn(withReadPermissions: ["public_profile", "email"], from: nil) { (result, error) in
+        manager.logIn(readPermissions: ["public_profile", "email"], from: nil) { (result, error) in
             if let token = result?.token?.tokenString {
                 let params = ["token" : token]
                 self.makeCompletion(true, params: params)

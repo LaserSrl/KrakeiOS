@@ -88,8 +88,8 @@ open class KScrollToTopButton: NSObject {
         // Adding constraints to position the button at the bottom right edge
         // of the container view.
         containerView.addConstraints([
-            view.bottomAnchor.constraint(equalTo: scrollToTopButton.bottomAnchor, constant: 8),
-            view.trailingAnchor.constraint(equalTo: scrollToTopButton.trailingAnchor, constant: 8),
+            view.bottomAnchor.constraint(equalTo: scrollToTopButton.bottomAnchor, constant: 12),
+            view.trailingAnchor.constraint(equalTo: scrollToTopButton.trailingAnchor, constant: 12),
             scrollToTopButton.widthAnchor.constraint(equalToConstant: 36),
             scrollToTopButton.heightAnchor.constraint(equalToConstant: 36)
             ])
