@@ -76,6 +76,8 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     fileprivate var defaultCollectionInset: UIEdgeInsets?
     fileprivate var heightTabView: CGFloat = 44.0
     
+    public let noElementCelIdentifier = "kNoElemCell"
+    
     //MARK: - IBOUTLET
     
     @IBOutlet weak public fileprivate(set) var heightTopView: NSLayoutConstraint?
@@ -93,6 +95,10 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     @IBOutlet weak public fileprivate(set) var searchButton: UIButton?
     @IBOutlet weak public fileprivate(set) var mapView: KExtendedMapView?
     @IBOutlet weak public fileprivate(set) var toggleButton: UIButton?
+    
+    @IBOutlet weak public fileprivate(set) var toggleButtonCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak public fileprivate(set) var toggleButtonLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak public fileprivate(set) var toggleButtonTrailingConstraint: NSLayoutConstraint!
     
     fileprivate var searchController: UISearchController?
     fileprivate let refreshControl = UIRefreshControl()
@@ -219,9 +225,26 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         
         mapView?.extendedDelegate = self
 
-        if listMapOptions.useCluster {
+        if let mapOptions = listMapOptions.mapOptions, mapOptions.useCluster {
             clusterManager = ClusterManager()
         }
+        
+        //Sposto il pulsante di switch lista/mappa nella posizione corretta in base al settaggio in listmapoptions
+        switch listMapOptions.toggleButtonPosition {
+        case .bottomLeading:
+            toggleButtonCenterConstraint.priority = UILayoutPriority.defaultLow
+            toggleButtonTrailingConstraint.priority = UILayoutPriority.defaultLow
+            toggleButtonLeadingConstraint.priority = UILayoutPriority.defaultHigh
+        case .bottomCenter:
+            toggleButtonLeadingConstraint.priority = UILayoutPriority.defaultLow
+            toggleButtonTrailingConstraint.priority = UILayoutPriority.defaultLow
+            toggleButtonCenterConstraint.priority = UILayoutPriority.defaultHigh
+        case .bottomTrailing:
+            toggleButtonLeadingConstraint.priority = UILayoutPriority.defaultLow
+            toggleButtonCenterConstraint.priority = UILayoutPriority.defaultLow
+            toggleButtonTrailingConstraint.priority = UILayoutPriority.defaultHigh
+        }
+        view.layoutIfNeeded()
         
         if let navBar = navigationController?.navigationBar
         {
@@ -599,7 +622,6 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     open func refreshAllData()
     {
         let mapIsVisible = listMapOptions.mapOptions != nil
-        let useCluster = listMapOptions.mapOptions?.useCluster ?? false
         if filteredElements != nil
         {
             if mapView != nil && mapIsVisible
@@ -736,7 +758,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
             let numberOfCurrentElements = filteredElements?.count ?? 0
             let numberOfObjectsInCollectionView = collectionView?.numberOfItems(inSection: 0) ?? 0
             let isNoElementsCellVisible =
-                numberOfObjectsInCollectionView == 1 && collectionView?.cellForItem(at: IndexPath(row: 0, section: 0))?.reuseIdentifier == "kNoElemCell"
+                numberOfObjectsInCollectionView == 1 && collectionView?.cellForItem(at: IndexPath(row: 0, section: 0))?.reuseIdentifier == noElementCelIdentifier
             let numberOfObjectsChanged = isNoElementsCellVisible && numberOfCurrentElements == 0 ? 0 : numberOfCurrentElements - numberOfObjectsInCollectionView
             
             if numberOfObjectsChanged == 0
@@ -1124,10 +1146,11 @@ extension KListMapViewController: UICollectionViewDelegate, UICollectionViewData
     {
         if filteredElements == nil || filteredElements?.count == 0
         {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "kNoElemCell", for: indexPath)
-            let title = cell.viewWithTag(100) as! UILabel
-            title.text = "no_elements".localizedString()
-            title.textColor = KTheme.current.color(.normal)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: noElementCelIdentifier, for: indexPath)
+            if let cell = cell as? KNoElementCell
+            {
+                cell.textLabel?.text = "no_elements".localizedString()
+            }
             return cell
         }
         else

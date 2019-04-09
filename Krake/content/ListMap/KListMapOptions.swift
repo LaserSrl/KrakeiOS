@@ -153,6 +153,13 @@ public struct KListMapOptions
         }
     }
     
+    public enum ToggleButtonPosition
+    {
+        case bottomLeading
+        case bottomCenter
+        case bottomTrailing
+    }
+
     public var supplementaryHeaderView: UIView? = nil
     public var analyticsExtras: [String: Any]? = nil
     public var tabViewHeight: CGFloat! = 44.0
@@ -165,6 +172,8 @@ public struct KListMapOptions
     public var searchFilterOptions: KSearchFilterOptions? = nil
     public var dateFilterOptions: KDateFilterOptions? = nil
     public var mapOptions: KMapOptions? = nil
+    
+    public var toggleButtonPosition: ToggleButtonPosition = .bottomCenter
     
     @available(*, deprecated, renamed: "init(data:)")
     public init(endPoint: String? = nil,

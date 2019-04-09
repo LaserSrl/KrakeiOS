@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,6 +20,9 @@
                 <outlet property="searchButton" destination="90k-Ah-mR7" id="Uk6-tw-a1t"/>
                 <outlet property="segmentedControl" destination="dUa-f6-wwr" id="yxw-yU-Pq9"/>
                 <outlet property="toggleButton" destination="Zae-Hi-Fko" id="T3s-20-tRm"/>
+                <outlet property="toggleButtonCenterConstraint" destination="QZa-vE-qTX" id="lXl-Zg-8Ib"/>
+                <outlet property="toggleButtonLeadingConstraint" destination="Svu-Y1-CUz" id="BjT-It-RRG"/>
+                <outlet property="toggleButtonTrailingConstraint" destination="t3V-RD-jvb" id="cBf-Xf-vQl"/>
                 <outlet property="topView" destination="c6A-WR-kFh" id="g4P-pj-lxd"/>
                 <outlet property="view" destination="gDP-rc-2Kh" id="XA3-tw-q8V"/>
             </connections>
@@ -71,13 +72,13 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="0.0"/>
                     <subviews>
                         <view hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjC-vS-Kk6">
-                            <rect key="frame" x="0.0" y="-20" width="414" height="0.0"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="998" constant="20" id="ehy-gm-aDg"/>
                             </constraints>
                         </view>
                         <view hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6A-WR-kFh">
-                            <rect key="frame" x="0.0" y="-20" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <subviews>
                                 <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HBq-Qd-4EO">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -123,9 +124,10 @@
                 <constraint firstItem="tFO-1V-hAt" firstAttribute="width" secondItem="gDP-rc-2Kh" secondAttribute="width" multiplier="3:7" id="Dtp-CP-dwb"/>
                 <constraint firstItem="KHp-4Q-2iB" firstAttribute="bottom" secondItem="Zae-Hi-Fko" secondAttribute="bottom" constant="20" id="FSk-Ka-ggw"/>
                 <constraint firstAttribute="bottom" secondItem="khQ-Cx-XB5" secondAttribute="bottom" id="OSR-i7-MlV"/>
-                <constraint firstItem="Zae-Hi-Fko" firstAttribute="centerX" secondItem="KHp-4Q-2iB" secondAttribute="centerX" id="QZa-vE-qTX"/>
+                <constraint firstItem="Zae-Hi-Fko" firstAttribute="centerX" secondItem="KHp-4Q-2iB" secondAttribute="centerX" priority="750" id="QZa-vE-qTX"/>
                 <constraint firstItem="KHp-4Q-2iB" firstAttribute="bottom" secondItem="tFO-1V-hAt" secondAttribute="bottom" id="RbJ-pB-s09"/>
                 <constraint firstItem="tFO-1V-hAt" firstAttribute="top" secondItem="z2C-2n-UmX" secondAttribute="bottom" id="S1l-t8-6eG"/>
+                <constraint firstItem="Zae-Hi-Fko" firstAttribute="leading" secondItem="KHp-4Q-2iB" secondAttribute="leading" priority="250" constant="20" id="Svu-Y1-CUz"/>
                 <constraint firstItem="khQ-Cx-XB5" firstAttribute="leading" secondItem="KHp-4Q-2iB" secondAttribute="leading" priority="999" id="TYf-ji-N4x"/>
                 <constraint firstItem="KHp-4Q-2iB" firstAttribute="trailing" secondItem="tFO-1V-hAt" secondAttribute="trailing" priority="999" id="Uwd-6x-aEP"/>
                 <constraint firstItem="KHp-4Q-2iB" firstAttribute="trailing" secondItem="z2C-2n-UmX" secondAttribute="trailing" id="XoU-N0-FUH"/>
@@ -133,6 +135,7 @@
                 <constraint firstItem="khQ-Cx-XB5" firstAttribute="leading" secondItem="tFO-1V-hAt" secondAttribute="trailing" id="c3A-3R-2as"/>
                 <constraint firstItem="KHp-4Q-2iB" firstAttribute="trailing" secondItem="khQ-Cx-XB5" secondAttribute="trailing" id="eGB-lp-n2j"/>
                 <constraint firstItem="z2C-2n-UmX" firstAttribute="leading" secondItem="KHp-4Q-2iB" secondAttribute="leading" id="s0C-4g-c8p"/>
+                <constraint firstItem="KHp-4Q-2iB" firstAttribute="trailing" secondItem="Zae-Hi-Fko" secondAttribute="trailing" priority="250" constant="20" id="t3V-RD-jvb"/>
                 <constraint firstItem="tFO-1V-hAt" firstAttribute="leading" secondItem="KHp-4Q-2iB" secondAttribute="leading" id="yv1-gW-KSy"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="KHp-4Q-2iB"/>
