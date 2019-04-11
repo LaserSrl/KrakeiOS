@@ -78,20 +78,15 @@ open class KDetailWebView: KWebView, KDetailViewProtocol, KDetailViewSizeChanges
         }
 
         if let body = body {
-            let familyName = UIFont.preferredFont(forTextStyle: KFontTextStyle.body).familyName
-            let linkColor = KTheme.current.color(.tint).hexColor()
-            let textColor = KTheme.current.color(.normal).hexColor()
             let stringStyle = KInfoPlist.detailBodyStyle
             
             let fontSize = String(format: "%.f", UIFont.preferredFont(forTextStyle: KFontTextStyle.body).pointSize)
             
             let stringHTML =
-                    "<style>" +
-                    String(format: "a, a:hover, a:link, a:visited { text-decoration: none; color: %@; }", linkColor) +
-                    "</style><body>" +
-                    String(format: "<div style='color:%@;%@font-family:\"%@\";font-size:%@px;'>", textColor, stringStyle, familyName, fontSize) +
+                "<html><head></head><body>" +
+                    String(format: "<div style='%@; font-size:%@px;'>", stringStyle, fontSize) +
                     body +
-                    "</div></body>"
+                    "</div></body></html>"
             _ = internalWebView?.loadHTMLString(stringHTML, baseURL: nil)
             hiddenAnimated = false
         } else {
@@ -103,7 +98,6 @@ open class KDetailWebView: KWebView, KDetailViewProtocol, KDetailViewSizeChanges
 
     open override func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         super.webView(webView, didFinish: navigation)
-
         invalidateWebViewHeight()
     }
 
@@ -136,6 +130,8 @@ open class KDetailWebView: KWebView, KDetailViewProtocol, KDetailViewSizeChanges
                                         strongSelf.setNeedsUpdateConstraints()
                                     }
             })
+        
+        
     }
 
 }
