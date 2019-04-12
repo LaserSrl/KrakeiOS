@@ -166,7 +166,7 @@ public extension WKWebViewConfiguration {
             cssString = text.replacingOccurrences(of: "\n", with: " ")
         }
         let textColor = KTheme.current.color(.normal).hexColor()
-        let autoresizeDisableScript = "var style=document.createElement(\"style\"),css=\"" + cssString + "html {-webkit-text-size-adjust: none; color: " + textColor + ";}\";style.type=\"text/css\",style.styleSheet?style.styleSheet.cssText=css:style.appendChild(document.createTextNode(css)),document.getElementsByTagName(\"head\")[0].appendChild(style);"
+        let autoresizeDisableScript = "var style=document.createElement(\"style\"),css=\"" + cssString + "html {-webkit-text-size-adjust: none; font-family:-apple-system; color: " + textColor + ";}\";style.type=\"text/css\",style.styleSheet?style.styleSheet.cssText=css:style.appendChild(document.createTextNode(css)),document.getElementsByTagName(\"head\")[0].appendChild(style);"
         let autoresizeDisableUserScript = WKUserScript(
             source: autoresizeDisableScript,
             injectionTime: .atDocumentEnd,
