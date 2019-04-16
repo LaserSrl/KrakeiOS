@@ -12,11 +12,37 @@ import Foundation
 public struct KDateTimeSelector
 {
     public var tintColor: UIColor
+    
+    /// Set font color for title area
     public var topPanelFontColor: UIColor? = nil
+    /// Set background color for title area
     public var topPanelBackgroundColor: UIColor? = nil
-    public var bottomPanelBackgroundColor: UIColor? = nil
-    public var mainPanelBackgroundColor: UIColor? = nil
+    /// Set font color for header panel
+    public var selectorPanelFontColor: UIColor? = nil
+    /// Set background color for header panel
     public var selectorPanelBackgroundColor: UIColor? = nil
+    /// Set font color for selected dates
+    public var mainPanelHighlightFontColor: UIColor? = nil
+    /// Set background color for selected dates
+    public var mainPanelHighlightBackgroundColor: UIColor? = nil
+    /// Set font color for date in calendar
+    public var mainPanelFontColor: UIColor? = nil
+    /// Set background color for calendar
+    public var mainPanelBackgroundColor: UIColor? = nil
+    /// Set font color for Done & Cancel button
+    public var bottomPanelFontColor: UIColor? = nil
+    {
+        didSet{
+            bottomPanelDoneFontColor = bottomPanelFontColor
+            bottomPanelCancelFontColor = bottomPanelFontColor
+        }
+    }
+    /// Set font color for Cancel button
+    public var bottomPanelCancelFontColor: UIColor? = nil
+    /// Set font color for Done button
+    public var bottomPanelDoneFontColor: UIColor? = nil
+    /// Set background color for Done & Cancel footer area
+    public var bottomPanelBackgroundColor: UIColor? = nil
     
     public var topPanelTitle: String? = nil
     public var buttonTitleDone: String = "Done".localizedString()
