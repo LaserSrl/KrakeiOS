@@ -17,6 +17,7 @@ open class KAnnotationView: MKAnnotationView
     public static let CalloutNavigationButtonTag = 10
     public static let CalloutDetailButtonTag = 11
     
+    fileprivate var isLabelSetted = false
     fileprivate var bottomLayer:CAShapeLayer!
     fileprivate var bottomCircle:CAShapeLayer!
     fileprivate var whiteCircle:CAShapeLayer!
@@ -72,6 +73,29 @@ open class KAnnotationView: MKAnnotationView
             defaultPin(subtext)
         }
         canShowCallout = true
+    }
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        if !isSelected || isLabelSetted
+        {
+            return
+        }
+        loopViewHierarchy { (view) -> Bool in
+            if let label = view as? UILabel, let annotation = self.annotation{
+                if label.text == annotation.title
+                {
+                    KTheme.current.applyTheme(toLabel: label, style: .annotationTitle)
+                }
+                else if label.text == annotation.subtitle
+                {
+                    KTheme.current.applyTheme(toLabel: label, style: .annotationSubtitle)
+                }
+                self.isLabelSetted = true
+                return false
+            }
+            return true
+        }
     }
     
     required public init?(coder aDecoder: NSCoder) {

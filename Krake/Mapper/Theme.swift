@@ -66,6 +66,8 @@ import SwiftMessages
     case loginTitle
     case cellTitle
     case cellSubtitle
+    case annotationTitle
+    case annotationSubtitle
     case custom1
     case custom2
     case custom3

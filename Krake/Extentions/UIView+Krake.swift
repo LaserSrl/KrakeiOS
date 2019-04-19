@@ -52,4 +52,14 @@ extension UIView {
         return nextResponder
     }
     
+    typealias ViewBlock = (_ view: UIView) -> Bool
+    
+    func loopViewHierarchy(block: ViewBlock?) {
+        if block?(self) ?? true {
+            for subview in subviews {
+                subview.loopViewHierarchy(block: block)
+            }
+        }
+    }
+    
 }

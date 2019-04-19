@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name         = "Krake"
-    s.version      = "10.1.11"
+    s.version      = "10.1.12"
     s.summary      = "Laser mobile framework."
     s.homepage     = "http://mykrake.com"
 
@@ -49,7 +49,7 @@ Pod::Spec.new do |s|
         os.source_files  = "Krake/ContentManager/**/*.{h,m,swift}"
         os.ios.resource_bundle = { 'ContentManager' => ['Krake/ContentManager/**/*.{storyboard,xib}']}
         os.dependency "Krake/Core"
-        os.dependency "FDTake", '2.0.2'
+        os.dependency "FDTake", '3.0.0'
         os.dependency "LaserPicker", '1.0.0'
         os.dependency "IQAudioRecorderController", '1.2.3'
     end
