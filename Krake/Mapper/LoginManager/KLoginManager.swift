@@ -26,27 +26,27 @@ public protocol KLoginManagerDelegate: KeyValueCodingProtocol{
 
 public extension KLoginManagerDelegate{
     
-    public var canUserRegisterWithKrake: Bool{
+    var canUserRegisterWithKrake: Bool{
         return true
     }
     
-    public var canUserLoginWithKrake: Bool{
+    var canUserLoginWithKrake: Bool{
         return true
     }
     
-    public var canUserLogout: Bool{
+    var canUserLogout: Bool{
         return true
     }
     
-    public var canUserRecoverPasswordWithSMS: Bool{
+    var canUserRecoverPasswordWithSMS: Bool{
         return false
     }
     
-    public var userHaveToRegisterWithSMS: Bool{
+    var userHaveToRegisterWithSMS: Bool{
         return false
     }
     
-    public var socialButtons: [UIBarButtonItem]?{
+    var socialButtons: [UIBarButtonItem]?{
         return nil
     }
     
@@ -54,7 +54,7 @@ public extension KLoginManagerDelegate{
         
     }
 
-    public var canUserRecoverPassword: Bool{
+    var canUserRecoverPassword: Bool{
         return true
     }
 
@@ -130,7 +130,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
         }
         else if let tokenInfos = UserDefaults.standard.value(forKey: KLoginManager.KUserTokenKey) as? [AnyHashable: Any]
         {
-            login(with: tokenInfos[KParamsKey.provider] as! String,
+            login(with: tokenInfos[KParametersKeys.Login.provider] as! String,
                   params: tokenInfos,
                   saveTokenParams: true)
         }
@@ -208,7 +208,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
 
         if saveTokenParams {
             var mutableParams = params
-            mutableParams[KParamsKey.provider] = providerName
+            mutableParams[KParametersKeys.Login.provider] = providerName
             UserDefaults.standard.set(mutableParams, forKey: KLoginManager.KUserTokenKey)
         }
 
@@ -266,7 +266,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
 
     public func userLogout()
     {
-        if let cache = OGLCoreDataMapper.sharedInstance().cacheEntry(withParameters: [KParamsKey.displayAlias : KCommonDisplayAlias.userInfo], context: OGLCoreDataMapper.sharedInstance().managedObjectContext){
+        if let cache = OGLCoreDataMapper.sharedInstance().cacheEntry(withParameters: [KParametersKeys.displayAlias : KCommonDisplayAlias.userInfo], context: OGLCoreDataMapper.sharedInstance().managedObjectContext){
             cache.date = Date(timeIntervalSince1970: 0)
             do {
                 try OGLCoreDataMapper.sharedInstance().managedObjectContext.save()
@@ -288,7 +288,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
     }
     
     @objc public func showMessage(_ message: String, withType: KMessageManager.Mode){
-        if let view = loginViewController?.view {
+        if (loginViewController?.view) != nil {
             KMessageManager.showMessage(message, type: withType, layout: .tabView, fromViewController: loginViewController)
         }
     }

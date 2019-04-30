@@ -168,7 +168,7 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
             alert.addAction(UIAlertAction(title: "login".localizedString(),
                                           style: .default,
                                           handler: { (action) in
-                                            UIApplication.shared.openURL(URL(string: "gamecenter:")!)
+                                            UIApplication.shared.open(URL(string: "gamecenter:")!)
                                             let notificationName = NSNotification.Name(rawValue: "") //TODO: "" sostituire con GKPlayerAuthenticationDidChangeNotificationName
                                             assertionFailure("\"\" sostituire con GKPlayerAuthenticationDidChangeNotificationName")
                                             NotificationCenter.default.addObserver(self, selector: #selector(self.gameCenterAuthenticationChanged), name: notificationName, object: nil)
@@ -250,20 +250,14 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
         present(alert, animated: true, completion: nil)
     }
     
-    func sendGamePointsToWS(phoneNumber: String){
-        #if swift(>=4.2)
-        let localPlayer = GKLocalPlayer.local
-        let playerID = localPlayer.playerID
-        #else
-        let localPlayer = GKLocalPlayer.localPlayer()
-        let playerID = localPlayer.playerID
-        #endif
-        if playerID != nil
+    func sendGamePointsToWS(phoneNumber: String)
+    {
+        if GKLocalPlayer.local.isAuthenticated
         {
             let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: true)
             manager.responseSerializer = AFJSONResponseSerializer()
             manager.requestSerializer = AFHTTPRequestSerializer()
-            let params: [String: Any] = ["Point" : Int64(totalPoint), "Identifier": phoneNumber, "UsernameGameCenter": playerID,
+            let params: [String: Any] = ["Point" : Int64(totalPoint), "Identifier": phoneNumber, "UsernameGameCenter": GKLocalPlayer.local.playerID,
                                          "Device": "Apple", "ContentIdentifier": selectedGame.identifier ?? 0]
             _ = manager.post(KAPIConstants.questionnairesGameRanking, parameters: params, progress: nil, success: { (task, responseObject) in
                 if let object = responseObject{

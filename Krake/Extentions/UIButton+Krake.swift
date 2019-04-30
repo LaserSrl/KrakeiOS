@@ -8,8 +8,9 @@
 
 import UIKit
 
-public extension UIButton {
-    public func alignImageAndTitleVertically(_ padding: CGFloat = 0.0) {
+public extension UIButton
+{
+    func alignImageAndTitleVertically(_ padding: CGFloat = 0.0) {
         if let iv = self.imageView,
             let lbl = self.titleLabel {
 

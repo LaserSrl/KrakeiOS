@@ -102,8 +102,8 @@ open class KSegmentioThemeDefault: NSObject, KSegmentioTheme
 
 //MARK: - Deprecated
 
-@available(*, deprecated: 1.0, renamed: "KSegmentioTheme")
+@available(*, deprecated, renamed: "KSegmentioTheme")
 public protocol SegmentioTheme: KSegmentioTheme{}
 
-@available(*, deprecated: 1.0, renamed: "KSegmentioThemeDefault")
+@available(*, deprecated, renamed: "KSegmentioThemeDefault")
 open class DefaultSegmentioOptions: KSegmentioThemeDefault{}

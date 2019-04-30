@@ -12,7 +12,7 @@ import Foundation
 public extension UIResponder {
     fileprivate weak static var _currentFirstResponder: UIResponder? = nil
     
-    public class func currentFirstResponder() -> UIResponder? {
+    class func currentFirstResponder() -> UIResponder? {
         UIResponder._currentFirstResponder = nil
         UIApplication.shared.sendAction(#selector(UIResponder.findFirstResponder(_:)), to: nil, from: nil, for: nil)
         return UIResponder._currentFirstResponder

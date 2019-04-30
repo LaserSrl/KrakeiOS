@@ -284,5 +284,5 @@ open class GameViewController: UIViewController, UITableViewDataSource, UITableV
 }
 
 public extension Notification.Name {
-    public static let KGameCompleted = Notification.Name(rawValue: "KGameCompletedNotification")
+    static let KGameCompleted = Notification.Name(rawValue: "KGameCompletedNotification")
 }

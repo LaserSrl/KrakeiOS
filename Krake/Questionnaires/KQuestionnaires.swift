@@ -28,11 +28,11 @@ public protocol KQuestionnaireDelegate: NSObjectProtocol
 
 public extension KQuestionnaireDelegate
 {
-    public func questionnaire(questionnaire: QuestionnaireProtocol, willSendWith params: inout [Any]){
+    func questionnaire(questionnaire: QuestionnaireProtocol, willSendWith params: inout [Any]){
         
     }
 
-    public func questionnaireViewController(_ vc: QuestionnaireViewController, didSendQuestionnaire quesitonnaire: QuestionnaireProtocol)
+    func questionnaireViewController(_ vc: QuestionnaireViewController, didSendQuestionnaire quesitonnaire: QuestionnaireProtocol)
     {
 
     }

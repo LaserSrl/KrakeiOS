@@ -72,7 +72,7 @@ public class KAutoUpdateManager {
             let downloadUrl = URL(string: "itms-services://?action=download-manifest&url=\(appUpdatePlistPath)") else { return }
 
         if UIApplication.shared.canOpenURL(downloadUrl) {
-            UIApplication.shared.openURL(downloadUrl)
+            UIApplication.shared.open(downloadUrl)
         }
     }
 }

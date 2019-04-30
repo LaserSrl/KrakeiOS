@@ -225,7 +225,7 @@ open class TakeInfo: ContentModificationViewController, FieldItemWithSelectionDe
         return textViewField
     }
     
-    @available(*, deprecated: 1.0, renamed: "newFieldItemWithDateTimePicker(_:coreDataKeyPath:placeholder:fieldTitle:visualDateFormat:krakeDateFormat:required:disableHistorySelection:disableFutureSelection:visibleOnly:showTime:)")
+    @available(*, deprecated, renamed: "newFieldItemWithDateTimePicker(_:coreDataKeyPath:placeholder:fieldTitle:visualDateFormat:krakeDateFormat:required:disableHistorySelection:disableFutureSelection:visibleOnly:showTime:)")
     open func newFieldItemWithDatePicker(_ keyPath: String!,
                                            coreDataKeyPath: String? = nil,
                                            placeholder: String? = nil,

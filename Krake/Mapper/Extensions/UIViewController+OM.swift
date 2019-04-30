@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIViewController{
     
-    @objc public func presentPolicyViewController(policyEndPoint: String? = nil, policyTitle: String? = nil, policyText: String? = nil, largeMargin: Bool = false){
+    @objc func presentPolicyViewController(policyEndPoint: String? = nil, policyTitle: String? = nil, policyText: String? = nil, largeMargin: Bool = false){
         let vc = PolicyViewController(policyEndPoint: policyEndPoint, policyTitle: policyTitle, policyText: policyText, largeMargin: largeMargin)
         let nav = UINavigationController(rootViewController: vc)
         KTheme.current.applyTheme(toNavigationBar: nav.navigationBar, style: .default)

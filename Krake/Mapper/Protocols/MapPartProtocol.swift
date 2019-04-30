@@ -21,7 +21,7 @@ public protocol MapPartProtocol: KeyValueCodingProtocol
 }
 
 public extension  MapPartProtocol {
-    public func isValid() -> Bool {
+    func isValid() -> Bool {
         if let loc = location {
             return loc.coordinate.latitude != 0.0 && loc.coordinate.longitude != 0.0
         }

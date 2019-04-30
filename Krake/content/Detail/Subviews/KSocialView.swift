@@ -148,7 +148,7 @@ open class KSocialView: UIStackView, KDetailViewProtocol {
                                     title: containerViewController.title)
                         }
                     }else{
-                        UIApplication.shared.openURL(url)
+                        UIApplication.shared.open(url)
                     }
                 } else {
                     var string = stringURL

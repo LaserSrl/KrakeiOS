@@ -32,7 +32,7 @@ public extension String
      
      - returns: String
      */
-    public func htmlToString() -> String? {
+    func htmlToString() -> String? {
         let attributedText: NSAttributedString?
         do {
             #if swift(>=4.0)
@@ -51,7 +51,7 @@ public extension String
      
      - returns: NSAttributedString
      */
-    public func htmlToAttributedString() -> NSAttributedString? {
+    func htmlToAttributedString() -> NSAttributedString? {
         let attributedText: NSAttributedString?
                 do {
                     #if swift(>=4.0)
@@ -65,7 +65,7 @@ public extension String
         return attributedText
     }
     
-    public func decodeBase64() -> [UInt8]? {
+    func decodeBase64() -> [UInt8]? {
         if let data = Data(base64Encoded: self, options: []) {
             return data.bytes
         }
@@ -79,7 +79,7 @@ public extension String
      
      - returns: ritorna la stringa generata
      */
-    public static func randomStringWithLength (_ len : Int) -> String {
+     static func randomStringWithLength (_ len : Int) -> String {
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         let randomString : NSMutableString = NSMutableString(capacity: len)
         for _ in 0 ..< len {

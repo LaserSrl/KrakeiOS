@@ -18,7 +18,7 @@ public protocol QuestionnaireProtocol: KeyValueCodingProtocol{
 }
 
 public extension QuestionnaireProtocol{
-    public var questionnairePartReference: QuestionnairePartProtocol? {
+    var questionnairePartReference: QuestionnairePartProtocol? {
         get{
             return value(forKey: "questionnairePart") as? QuestionnairePartProtocol
         }

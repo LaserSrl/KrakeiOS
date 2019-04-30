@@ -165,7 +165,7 @@ open class KUserReactions: UIView, KDetailViewProtocol {
         let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: true)
         manager.responseSerializer = AFJSONResponseSerializer()
         manager.requestSerializer = AFJSONRequestSerializer()
-        _ = manager.get(KAPIConstants.userReactions, parameters: ["pageId" : krakeContentIdentifier, KParamsKey.language : KConstants.currentLanguage], progress:nil, success: { (task: URLSessionDataTask, object: Any?) in
+        _ = manager.get(KAPIConstants.userReactions, parameters: ["pageId" : krakeContentIdentifier, KParametersKeys.language : KConstants.currentLanguage], progress:nil, success: { (task: URLSessionDataTask, object: Any?) in
             if let response = task.response as? HTTPURLResponse,
                 let headers = response.allHeaderFields as? [String : String]{
                 let array = HTTPCookie.cookies(withResponseHeaderFields: headers, for: KInfoPlist.KrakePlist.path)
@@ -210,7 +210,7 @@ open class KUserReactions: UIView, KDetailViewProtocol {
         let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: true)
         manager.responseSerializer = AFJSONResponseSerializer()
         manager.requestSerializer = AFJSONRequestSerializer()
-        _ = manager.post(KAPIConstants.userReactions, parameters: [KParamsKey.language : KConstants.currentLanguage, "pageId" : krakeContentIdentifier, "TypeId" : reactionIdentifier], progress:nil, success: { (task: URLSessionDataTask, object: Any?) in
+        _ = manager.post(KAPIConstants.userReactions, parameters: [KParametersKeys.language : KConstants.currentLanguage, "pageId" : krakeContentIdentifier, "TypeId" : reactionIdentifier], progress:nil, success: { (task: URLSessionDataTask, object: Any?) in
             if let response = task.response as? HTTPURLResponse,
                 let headers = response.allHeaderFields as? [String : String]{
                 let array = HTTPCookie.cookies(withResponseHeaderFields: headers, for: KInfoPlist.KrakePlist.path)

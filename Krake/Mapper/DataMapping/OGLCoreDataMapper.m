@@ -88,7 +88,7 @@ static __strong id currentOGLCoreDataMapper_;
     if(extrasParameters)
         [parameters addEntriesFromDictionary:extrasParameters];
     
-    parameters[KParamsKey.displayAlias] = displayAlias;
+    parameters[KParametersKeys.displayAlias] = displayAlias;
     
     return [self loadDataWithCommand:self.configurations.commandGetByAlias
                           parameters:parameters
@@ -104,7 +104,7 @@ static __strong id currentOGLCoreDataMapper_;
     if(extrasParameters)
         [parameters addEntriesFromDictionary:extrasParameters];
     
-    parameters[KParamsKey.displayAlias] = controller;
+    parameters[KParametersKeys.displayAlias] = controller;
     
     return [self loadDataWithCommand:controller
                           parameters:parameters
@@ -118,8 +118,8 @@ static __strong id currentOGLCoreDataMapper_;
                        completionBlock:(void(^)(id parsedObject, NSError*error,BOOL completed))completion
 {
     
-    if(!parameters[KParamsKey.lang])
-        parameters[KParamsKey.lang] = self.configurations.language;
+    if(!parameters[KParametersKeys.lang])
+        parameters[KParametersKeys.lang] = self.configurations.language;
     
     parameters[REQUEST_REAL_FORMAT ] = @"true";
     parameters[REQUEST_COMPLEX_BEHAVIOURS] = @"returnnulls";
@@ -587,7 +587,7 @@ static __strong id currentOGLCoreDataMapper_;
 
 - (DisplayPathCache*)cacheEntryWithParameters:(NSDictionary*)parameters context:(NSManagedObjectContext*)context
 {
-    NSString *displayAlias =parameters[KParamsKey.displayAlias];
+    NSString *displayAlias =parameters[KParametersKeys.displayAlias];
     if ([displayAlias length])
     {
         NSString *cacheName;
@@ -620,7 +620,7 @@ static __strong id currentOGLCoreDataMapper_;
         if(!savedCache)
         {
             savedCache = [NSEntityDescription insertNewObjectForEntityForName:[[DisplayPathCache class] description] inManagedObjectContext:context];
-            savedCache.displayPath = [self.delegate displayCacheNameWithDisplayAlias:parameters[KParamsKey.displayAlias]
+            savedCache.displayPath = [self.delegate displayCacheNameWithDisplayAlias:parameters[KParametersKeys.displayAlias]
                                                                           parameters:parameters];
         }
         savedCache.extrasParameters = parameters;

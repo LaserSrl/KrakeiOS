@@ -16,7 +16,7 @@ public extension UIViewController{
     /// of the `navigationItem`.
     /// - precondition: self has been presented and it is the only view
     /// controller in the current navigation controller.
-    public func insertLeftNavigationItemToCloseModalDetail() {
+    func insertLeftNavigationItemToCloseModalDetail() {
         if navigationController?.presentingViewController != nil &&
             (navigationController?.viewControllers.count ?? 0) == 1
         {
@@ -33,7 +33,7 @@ public extension UIViewController{
      function or a `UIViewController` on which `insertLeftNavigationItemToCloseModalDetail` has
      been called.
  	*/
-    @objc public func dismissDetailViewController() {
+    @objc func dismissDetailViewController() {
         navigationController?.dismiss(animated: true, completion: nil)
     }
 
@@ -41,7 +41,7 @@ public extension UIViewController{
      Utility function used to dismiss a `UIViewController` animated and without
      the necessity of specifying a completion block.
     */
-    @objc public func dismissViewController() {
+    @objc func dismissViewController() {
         let vc = presentedViewController ?? self
         vc.dismiss(animated: true, completion: nil)
     }
@@ -53,7 +53,7 @@ public extension UIViewController{
     /// - parameter url: URL used as first page of the browser.
     /// - parameter title: title to assign to the created view controller. The default
     /// value is the name of the application.
-    public func present(browserViewController url: URL,
+    func present(browserViewController url: URL,
                         title: String? = KInfoPlist.appName,
                         showToolbar: Bool = true,
                         delegate: GDWebViewControllerDelegate? = nil,
@@ -95,7 +95,7 @@ public extension UIViewController{
     /// - parameter extras: dictionary containing extra information to send to Krake.
     /// - parameter detailDelegate: delegate of the `KDetailViewController`. If this
     /// attribute is not specified, the default `KDetailPresenterDefaultDelegate` will be used.
-    public func present(detailViewController endPoint: String? = nil,
+    func present(detailViewController endPoint: String? = nil,
                         detail: ContentItem? = nil,
                         extras: [String: Any]? = nil,
                         detailDelegate: KDetailPresenterDelegate? = KDetailPresenterDefaultDelegate(),
@@ -128,7 +128,7 @@ public extension UIViewController{
     ///   - selectedIndex: index of first element to show in fullscreen mode
     ///   - target: UIView to use as a source of the transition
     ///   - callback: block to be invoke at the gallery controller closing
-    public func present(galleryController withImages: [Any],
+    func present(galleryController withImages: [Any],
                         selectedIndex: Int = 0,
                         target: UIImageView? = nil,
                         callback: KGalleryCallback? = nil )

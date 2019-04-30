@@ -11,7 +11,7 @@ import LaserWebViewController
 
 public extension UINavigationController{
     
-    public func pushDetailViewController(_ endPoint: String? = nil, detail: ContentItem? = nil, extras: [String: Any]? = nil, detailDelegate: KDetailPresenterDelegate? = KDetailPresenterDefaultDelegate(), analyticsExtras: [String: Any]? = nil){
+    func pushDetailViewController(_ endPoint: String? = nil, detail: ContentItem? = nil, extras: [String: Any]? = nil, detailDelegate: KDetailPresenterDelegate? = KDetailPresenterDefaultDelegate(), analyticsExtras: [String: Any]? = nil){
         if let vc = KDetailViewControllerFactory.factory.newDetailViewController(detailObject: detail, endPoint: endPoint, extras: extras, detailDelegate: detailDelegate, analyticsExtras: analyticsExtras) {
             pushViewController(vc, animated: true)
         }
@@ -25,7 +25,7 @@ public extension UINavigationController{
      - parameter url:   NSURL da aprire
      - parameter title: Titolo da assegnare al UIViewController del browser, di default è il nome dell'app (opzionale)
      */
-    public func pushBrowserViewController(_ url: URL,
+    func pushBrowserViewController(_ url: URL,
                                           title: String? = KInfoPlist.appName,
                                           showToolbar: Bool = true,
                                           delegate: GDWebViewControllerDelegate? = nil){

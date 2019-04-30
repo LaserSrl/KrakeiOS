@@ -24,17 +24,17 @@ public protocol KStreamingProvider {
 
 //Mark: - Deprecated
 
-@available(*, deprecated:1.0, renamed: "KStreamingProviderErrors")
+@available(*, deprecated, renamed: "KStreamingProviderErrors")
 enum StreamingProviderErrors: Error {
     case unknownProvider, malformedProviderString
 }
 
-@available(*, deprecated:1.0, renamed: "KStreamingProviderSupplier")
+@available(*, deprecated, renamed: "KStreamingProviderSupplier")
 public protocol StreamingProviderSupplier: KStreamingProviderSupplier {
     
 }
 
-@available(*, deprecated:1.0, renamed: "KStreamingProvider")
+@available(*, deprecated, renamed: "KStreamingProvider")
 public protocol StreamingProvider: KStreamingProvider {
     
 }

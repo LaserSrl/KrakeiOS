@@ -11,7 +11,7 @@ import MBProgressHUD
 
 public extension MBProgressHUD{
 
-    public func showAsUploadProgress()
+    func showAsUploadProgress()
     {
         self.mode = .indeterminate
         self.label.text = "wait".localizedString()
@@ -19,7 +19,7 @@ public extension MBProgressHUD{
         self.show(animated: true)
     }
     
-    public func dismissAsUploadProgress(completedWithSuccess success: Bool)
+    func dismissAsUploadProgress(completedWithSuccess success: Bool)
     {
         self.mode = .customView
         if success {

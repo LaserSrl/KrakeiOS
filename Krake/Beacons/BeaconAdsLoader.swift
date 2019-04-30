@@ -199,7 +199,7 @@ open class BeaconAdsLoader: NSObject, NearestBeaconManagerDelegate {
                 notificationBody = currentKrakeBeacon?.testodellaNotificaValue ?? ""
             }
             notificaiton.alertBody = notificationBody
-            notificaiton.userInfo = [LocalNotificationCacheID:cache.objectID.uriRepresentation().description, KParamsKey.displayAlias: cache.displayPath]
+            notificaiton.userInfo = [LocalNotificationCacheID:cache.objectID.uriRepresentation().description, KParametersKeys.displayAlias: cache.displayPath]
             notificaiton.soundName = UILocalNotificationDefaultSoundName
             UIApplication.shared.scheduleLocalNotification(notificaiton)
         }

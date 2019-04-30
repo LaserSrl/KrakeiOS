@@ -109,5 +109,5 @@ open class KScrollToTopButton: NSObject {
 }
 
 //Mark: - Deprecated
-@available(*, deprecated: 1.0, renamed:"KScrollToTopButton")
+@available(*, deprecated, renamed:"KScrollToTopButton")
 open class ScrollToTopButton: KScrollToTopButton {}

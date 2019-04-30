@@ -11,7 +11,7 @@ import MapKit
 
 public extension MKAnnotationView{
     
-    public func addButtonDetail(){
+    func addButtonDetail(){
         if rightCalloutAccessoryView == nil {
             let rightButton = UIButton(type: .detailDisclosure)
             rightButton.backgroundColor = KTheme.current.color(.tint)
@@ -23,7 +23,7 @@ public extension MKAnnotationView{
         }
     }
     
-    public func addNavigationButton(){
+    func addNavigationButton(){
         if KInfoPlist.Location.enableNavigationOnPin && leftCalloutAccessoryView == nil {
             let leftButton = UIButton(frame: CGRect(x: 0,y: 0,width: 32,height: 56))
             leftButton.tag = KAnnotationView.CalloutNavigationButtonTag

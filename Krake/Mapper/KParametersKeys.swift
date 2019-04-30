@@ -8,7 +8,12 @@
 
 import Foundation
 
-@objc open class KParamsKey: NSObject
+@available(*, deprecated, renamed: "KParametersKeys")
+@objc open class KParamsKey: KParametersKeys
+{
+}
+
+@objc open class KParametersKeys: NSObject
 {
     /// is "Language"
     public static let language = "Language"
@@ -25,15 +30,10 @@ import Foundation
     public static let signalName = "SignalName"
     public static let fromLatitude = "FromLatitude"
     public static let fromLongitude = "FromLongitude"
-    public static let point = "Point"
-    public static let award = "Award"
     public static let fromNameLocation = "FromNameLocation"
     public static let attachment = "Attachment"
     public static let attachmentName = "AttachmentName"
     public static let additionalData = "AdditionalData"
-    /// is "\_\_provider\_\_"
-    public static let provider = "__provider__"
-    public static let createPersistentCookie = "createPersistentCookie"
     
     @objc public static let terms = "TermIds"
     @objc public static let displayAlias = "displayAlias"
@@ -52,4 +52,24 @@ import Foundation
     @objc public static let aroundMeLatitude = "lat"
     @objc public static let aroundMeLongitude = "lng"
     @objc public static let aroundMeRadius = "dist"
+
+}
+
+extension KParametersKeys
+{
+    /// All Login keys
+    open class Login {
+        /// is "\_\_provider\_\_"
+        public static let provider = "__provider__"
+        public static let persistentCookie = "createPersistentCookie"
+    }
+}
+
+extension KParametersKeys
+{
+    /// All Fidelity keys
+    open class Fidelity {
+        public static let point = "Point"
+        public static let award = "Award"
+    }
 }

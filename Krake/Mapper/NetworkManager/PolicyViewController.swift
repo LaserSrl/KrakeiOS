@@ -179,7 +179,7 @@ open class PolicyViewController: UIViewController, WKNavigationDelegate, UIScrol
 
             decisionHandler(.allow)
         } else if UIApplication.shared.canOpenURL(requestURL) {
-            UIApplication.shared.openURL(requestURL)
+            UIApplication.shared.open(requestURL)
             decisionHandler(.cancel)
         } else {
             decisionHandler(.allow)

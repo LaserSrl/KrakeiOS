@@ -10,7 +10,7 @@ import Foundation
 
 public extension Date {
     
-    public func stringFromDateTo(otherDate date: Date?) -> String{
+    func stringFromDateTo(otherDate date: Date?) -> String{
         var text: String
         let parsedDates = self.getReadableDate(otherDate: date)
         

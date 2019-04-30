@@ -19,19 +19,19 @@ open class KMAutoQueryDivideCacheManager: NSObject, KMCacheManagerDelegate {
     override public init() {
         super.init()
         
-        ignoredParams.append(KParamsKey.displayAlias)
-        ignoredParams.append(KParamsKey.page)
-        ignoredParams.append(KParamsKey.pageSize)
-        ignoredParams.append(KParamsKey.itemsFieldsFilter)
-        ignoredParams.append(KParamsKey.showPrivacy)
-        ignoredParams.append(KParamsKey.realFormat)
-        ignoredParams.append(KParamsKey.complexBehaviour)
-        ignoredParams.append(KParamsKey.noCache)
-        ignoredParams.append(KParamsKey.deepLevel)
-        ignoredParams.append(KParamsKey.aroundMeLatitude)
-        ignoredParams.append(KParamsKey.aroundMeLongitude)
-        ignoredParams.append(KParamsKey.aroundMeRadius)
-        ignoredParams.append(KParamsKey.lang)
+        ignoredParams.append(KParametersKeys.displayAlias)
+        ignoredParams.append(KParametersKeys.page)
+        ignoredParams.append(KParametersKeys.pageSize)
+        ignoredParams.append(KParametersKeys.itemsFieldsFilter)
+        ignoredParams.append(KParametersKeys.showPrivacy)
+        ignoredParams.append(KParametersKeys.realFormat)
+        ignoredParams.append(KParametersKeys.complexBehaviour)
+        ignoredParams.append(KParametersKeys.noCache)
+        ignoredParams.append(KParametersKeys.deepLevel)
+        ignoredParams.append(KParametersKeys.aroundMeLatitude)
+        ignoredParams.append(KParametersKeys.aroundMeLongitude)
+        ignoredParams.append(KParametersKeys.aroundMeRadius)
+        ignoredParams.append(KParametersKeys.lang)
     }
     
     open func displayCacheNameWithDisplayAlias(_ displayAlias: String, parameters: [String : AnyObject]) -> String
@@ -56,7 +56,7 @@ open class KMAutoQueryDivideCacheManager: NSObject, KMCacheManagerDelegate {
     
     open func isCacheValid(_ cache: DisplayPathCache, newRequestParameters parameters: [String : AnyObject]) -> Bool{
         var cacheValidity = defaultCacheValidity;
-        if let displayAlias = parameters[KParamsKey.displayAlias] as? String, let validity = cacheValidityForDisplayAlias[displayAlias]{
+        if let displayAlias = parameters[KParametersKeys.displayAlias] as? String, let validity = cacheValidityForDisplayAlias[displayAlias]{
             cacheValidity =  validity
         }
         else if let validity = cacheValidityForDisplayAlias[cache.displayPath] {

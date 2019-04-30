@@ -10,7 +10,7 @@ import Foundation
 
 public extension URL {
     
-    public func resourceReachable() -> Bool {
+    func resourceReachable() -> Bool {
         var checkResourceReachabilityError: NSError? = nil
         (self as NSURL).checkResourceIsReachableAndReturnError(&checkResourceReachabilityError)
         return checkResourceReachabilityError == nil

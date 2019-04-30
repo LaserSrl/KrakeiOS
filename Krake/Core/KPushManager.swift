@@ -50,11 +50,11 @@ open class KPushManager: NSObject{
             let httpClient = KNetworkManager(baseURL: wsURL, auth: true)
             httpClient.requestSerializer = AFJSONRequestSerializer()
             httpClient.responseSerializer = AFJSONResponseSerializer()
-            let requestParameters : [String: Any] = [KParamsKey.token : serializedToken,
-                                                     KParamsKey.device : "Apple",
-                                                     KParamsKey.UUID : uuid,
-                                                     KParamsKey.language : KConstants.currentLanguage,
-                                                     KParamsKey.produzione : !KConstants.isDebugMode]
+            let requestParameters : [String: Any] = [KParametersKeys.token : serializedToken,
+                                                     KParametersKeys.device : "Apple",
+                                                     KParametersKeys.UUID : uuid,
+                                                     KParametersKeys.language : KConstants.currentLanguage,
+                                                     KParametersKeys.produzione : !KConstants.isDebugMode]
             
             _ = httpClient.put(KAPIConstants.push,
                                parameters: requestParameters,
@@ -122,7 +122,7 @@ open class KPushManager: NSObject{
         if let cacheIdri = userInfo?[LocalNotificationCacheID] as? String {
             moId = OGLAppDelegate.sharedApplicationDelegate().persistentStoreCoordinator.managedObjectID(forURIRepresentation: URL(string: cacheIdri)!)
         }
-        showOrOpenDetailWithMessage(notification.alertBody, displayAlias: userInfo?[KParamsKey.displayAlias] as? String, cacheObjectID: moId, applicationState: applicationState, userInfoNotification: userInfo)
+        showOrOpenDetailWithMessage(notification.alertBody, displayAlias: userInfo?[KParametersKeys.displayAlias] as? String, cacheObjectID: moId, applicationState: applicationState, userInfoNotification: userInfo)
     }
     
     fileprivate static func showOrOpenDetailWithMessage(_ message: String? = "", displayAlias: String?, cacheObjectID: NSManagedObjectID? = nil, applicationState: KApplicationState, userInfoNotification: [AnyHashable: Any]?){

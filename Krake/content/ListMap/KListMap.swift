@@ -1094,11 +1094,11 @@ extension KListMapViewController: KTabManagerDelegate
     {
         if termPart == nil
         {
-            listMapOptions.data.extras.removeValue(forKey: KParamsKey.terms)
+            listMapOptions.data.extras.removeValue(forKey: KParametersKeys.terms)
         }
         else
         {
-            listMapOptions.data.extras[KParamsKey.terms] = termPart!.identifier!.stringValue
+            listMapOptions.data.extras[KParametersKeys.terms] = termPart!.identifier!.stringValue
         }
         listMapDelegate.didSelectTab(manager, fromViewController: self, object: termPart)
         loadFromWS()

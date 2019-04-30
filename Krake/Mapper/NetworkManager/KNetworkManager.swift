@@ -115,8 +115,8 @@ public let KNEKrakeResponse = "KrakeResponse"
             super.post(queryString, parameters: extras, progress: nil, success: success, failure: failure)
         default:
             let queryString = KAPIConstants.externalTokenLogon
-            extras[KParamsKey.language] = KConstants.currentLanguage
-            extras[KParamsKey.provider] = providerName
+            extras[KParametersKeys.language] = KConstants.currentLanguage
+            extras[KParametersKeys.Login.provider] = providerName
             super.get(queryString, parameters: extras, progress: nil, success: success, failure: failure)
         }
     }

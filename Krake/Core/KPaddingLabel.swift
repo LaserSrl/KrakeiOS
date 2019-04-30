@@ -35,5 +35,5 @@ open class KPaddingLabel: UILabel {
 }
 
 //MARK: - Deprecated
-@available(*, deprecated: 1.0, renamed: "KPaddingLabel")
+@available(*, deprecated, renamed: "KPaddingLabel")
 open class PaddingLabel: KPaddingLabel {}

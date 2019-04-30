@@ -11,7 +11,7 @@ import MapKit
 
 public extension MKMapItem{
     
-    public static func openInMaps(_ annotation: MKAnnotation?){
+    static func openInMaps(_ annotation: MKAnnotation?){
         if let annotation = annotation{
             let placemark = MKPlacemark(coordinate: annotation.coordinate, addressDictionary: nil)
             let item = MKMapItem(placemark: placemark)

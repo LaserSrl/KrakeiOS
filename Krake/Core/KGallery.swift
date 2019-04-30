@@ -16,7 +16,7 @@ open class KGallery {
     // Empty public constructor for initializer accessibility.
     public init() {}
 
-    @available(*, deprecated: 1.0, renamed: "present(galleryController:selectedIndex:target:callback:)")
+    @available(*, deprecated, renamed: "present(galleryController:selectedIndex:target:callback:)")
     public static func openCollectionFullScreen(_ viewController: UIViewController,
                                               images: NSOrderedSet?,
                                               selectedIndex: NSInteger,

@@ -38,7 +38,7 @@ public extension MKMapView{
      */
     
     
-    public func centerMap(defaultArea: MKMapRect = KMapRectNull){
+    func centerMap(defaultArea: MKMapRect = KMapRectNull){
         var flyTo = KMapRectNull
         for annotation in annotations{
             if !(annotation is MKUserLocation) {
@@ -93,7 +93,7 @@ public extension MKMapView{
         }
     }
     
-    public func addOSMCopyright(){
+    func addOSMCopyright(){
         var webView = viewWithTag(10011) as? KWebView
         if webView == nil {
             webView = KWebView(frame: .zero)
@@ -108,7 +108,7 @@ public extension MKMapView{
         webView!.loadHTMLString(KInfoPlist.Location.osmCopyright)
     }
     
-    public func dequeueReusableAnnotationViewWithAnnotation(_ annotation: MKAnnotation, forcedColor: UIColor? = nil) -> MKAnnotationView?{
+    func dequeueReusableAnnotationViewWithAnnotation(_ annotation: MKAnnotation, forcedColor: UIColor? = nil) -> MKAnnotationView?{
         var identifier = "StandardPin"
         if let elem = annotation as? AnnotationProtocol {
             identifier = elem.annotationIdentifier() + (forcedColor?.description ?? "")

@@ -11,7 +11,7 @@ import Foundation
 
 public extension UIImage{
     
-    public convenience init?(otpNamed named: String){
+    convenience init?(otpNamed named: String){
         self.init(named: named, in: Bundle(for: KTripPlannerSearchController.self), compatibleWith: nil)
     }
 }

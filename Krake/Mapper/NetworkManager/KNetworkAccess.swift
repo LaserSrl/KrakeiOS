@@ -57,7 +57,7 @@ public enum OMPrivacyStatus : NSInteger {
     }
     
     @objc public func sendPoliciesToKrake(_ params: NSDictionary, success: ((URLSessionDataTask, AnyObject?) -> Void)?, failure: ((URLSessionDataTask?, Error) -> Void)?){
-        var extras: [String : AnyObject] = [KParamsKey.language : KConstants.currentLanguage as AnyObject]
+        var extras: [String : AnyObject] = [KParametersKeys.language : KConstants.currentLanguage as AnyObject]
         var arrPolicies = [[AnyHashable: Any]]()
         for key in params.allKeys as! [NSCopying]{
             arrPolicies.append(["AnswerId" : 0, "PolicyTextId" : key, "OldAccepted" : false, "Accepted" : params[key]!, "AnswerDate" : "0001-01-01T00:00:00"])

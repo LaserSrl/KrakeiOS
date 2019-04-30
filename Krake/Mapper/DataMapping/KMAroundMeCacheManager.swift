@@ -28,7 +28,7 @@ open class KMAroundMeCacheManager: NSObject , KMCacheManagerDelegate {
     open func isCacheValid(_ cache: DisplayPathCache, newRequestParameters parameters: [String : AnyObject]) -> Bool {
         
         var alias = cache.displayPath
-        if let displayAlias = parameters[KParamsKey.displayAlias] as? String
+        if let displayAlias = parameters[KParametersKeys.displayAlias] as? String
         {
             alias = displayAlias
         }

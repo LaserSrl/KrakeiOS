@@ -22,7 +22,7 @@ public protocol KDetailPresenter: NSObjectProtocol {
     /// Dictionary containing extra parameters that will be sent to the WS.
     var extraDictionary: [String: Any] { get set }
     /// The object acting as delegate of the presenter.
-    weak var detailDelegate: KDetailPresenterDelegate? { get set }
+    var detailDelegate: KDetailPresenterDelegate? { get set }
     
     var analyticsExtras : [String : Any]? { get set }
 

@@ -31,7 +31,7 @@ public struct KButtonItem{
     }
 }
 
-@available(*, deprecated: 1.0, renamed: "KButtonItem")
+@available(*, deprecated, renamed: "KButtonItem")
 public struct ButtonItem{
     public var mediaUrl: String?
     public var title: String

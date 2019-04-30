@@ -51,7 +51,7 @@ public class KStoreKitManager: NSObject
     
     //MARK: - Deprecated
     
-    @available(*, deprecated: 1.0, renamed: "promptReviewRequestIfNeeded")
+    @available(*, deprecated, renamed: "promptReviewRequestIfNeeded")
     public func requestReviewIfNeeded()
     {
         promptReviewRequestIfNeeded()
@@ -60,5 +60,5 @@ public class KStoreKitManager: NSObject
 
 //MARK: - Deprecated
 
-@available(*, deprecated: 1.0, renamed: "KStoreKitManager")
+@available(*, deprecated, renamed: "KStoreKitManager")
 public class StoreKitManager: KStoreKitManager{}

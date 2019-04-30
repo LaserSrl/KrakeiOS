@@ -239,7 +239,7 @@ open class KMediaAdapter: NSObject, KMediaCollectionViewDataSourceAndDelegate, U
 /*
  Replace it with the new KMediaCollectionView, no special action needed
  */
-@available(*,deprecated: 1.0, message: "use KMediaCollectionView")
+@available(*,deprecated, message: "use KMediaCollectionView")
 open class KGalleryCollectionView: UICollectionView, KDetailViewProtocol, KDetailViewSizeChangesListener {
     public weak var detailPresenter: KDetailPresenter?
     public var detailObject: AnyObject? {
@@ -299,7 +299,7 @@ open class KGalleryCollectionView: UICollectionView, KDetailViewProtocol, KDetai
     }
 }
 
-@available(*,deprecated: 1.0, message: "use KMediaAdapter")
+@available(*,deprecated, message: "use KMediaAdapter")
 open class GalleryAdapter: KMediaAdapter {
     open override func registerCellForReuse(inCollection collection: UICollectionView) {
          #if DEBUG
@@ -310,7 +310,7 @@ open class GalleryAdapter: KMediaAdapter {
     }
 }
 
-@available(*,deprecated: 1.0)
+@available(*,deprecated)
 public class KDeprecatedImageCollectionViewCell: KImageCollectionViewCell {
 
     override init(frame: CGRect) {
@@ -352,7 +352,7 @@ public class KDeprecatedImageCollectionViewCell: KImageCollectionViewCell {
  Replace it with the new KMediaCollectionView, then in Interface Builder 
  set showGallery = false and showYoutubeVideos = true
  */
-@available(*,deprecated: 1.0, message: "use KMediaCollectionView")
+@available(*,deprecated, message: "use KMediaCollectionView")
 open class KVideoPlayerCollectionView: KGalleryCollectionView {
 
     override func imagesFromDetailObject() -> NSOrderedSet? {

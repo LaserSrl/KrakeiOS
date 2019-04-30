@@ -125,7 +125,7 @@ open class KWebView: UIView, WKNavigationDelegate, UIScrollViewDelegate {
 
             decisionHandler(.allow)
         } else if UIApplication.shared.canOpenURL(requestURL) {
-            UIApplication.shared.openURL(requestURL)
+            UIApplication.shared.open(requestURL)
             decisionHandler(.cancel)
         } else {
             decisionHandler(.allow)
@@ -144,7 +144,7 @@ open class KWebView: UIView, WKNavigationDelegate, UIScrollViewDelegate {
 
 public extension WKWebViewConfiguration {
 
-    public class var `default`: WKWebViewConfiguration {
+    class var `default`: WKWebViewConfiguration {
         let configuration = WKWebViewConfiguration()
         if #available(iOS 10.0, *) {
             configuration.dataDetectorTypes =

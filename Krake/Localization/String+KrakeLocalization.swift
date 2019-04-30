@@ -15,7 +15,7 @@ fileprivate class KrakeLocalization: NSObject
 
 public extension String{
     
-    public func bundleLocalizedString() -> String{
+    func bundleLocalizedString() -> String{
         let bundle = Bundle(for: KrakeLocalization.self)
         return bundle.localizedString(forKey: self, value: nil, table: "OCLocalizable")
     }
@@ -23,7 +23,7 @@ public extension String{
     /// Localize string by checking in app localizable.strings if is not present check on bundle OCLocalizable.strings
     ///
     /// - Returns: translated string
-    public func localizedString() -> String {
+    func localizedString() -> String {
         return Bundle.main.localizedString(forKey: self, value: bundleLocalizedString(), table: nil)
     }
 }

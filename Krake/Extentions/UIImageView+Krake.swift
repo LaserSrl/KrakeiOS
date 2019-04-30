@@ -11,21 +11,23 @@ import SDWebImage
 import MBProgressHUD
 import LaserVideoPhotoGallery
 
-@objc public enum KImageCacheType : NSInteger {
+@objc public enum KImageCacheType : NSInteger
+{
     case none
     case disk
     case memory
 }
 public typealias KICompletionBlock = (UIImage?, Error?, KImageCacheType, URL?) -> Void
 
-public extension UIImageView{
+public extension UIImageView
+{
 
-    public convenience init(image: UIImage?, contentMode: KViewContentMode!){
+    convenience init(image: UIImage?, contentMode: KViewContentMode!){
         self.init(image: image)
         self.contentMode = contentMode
     }
 
-    public func setImage(media: Any? = nil,
+    func setImage(media: Any? = nil,
                          placeholderImage: UIImage? = KTheme.current.placeholder(.default),
                          options: KMediaImageLoadOptions = KMediaImageLoadOptions(),
                          sdOptions: SDWebImageOptions = [.allowInvalidSSLCertificates, .retryFailed, .handleCookies],
