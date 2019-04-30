@@ -596,7 +596,6 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     
     private func topBarRefreshObject()
     {
-        topView?.backgroundColor = KTheme.current.color(.tint)
         topView?.isHidden = false
         //Set hidden if the number of tabs on segmented control is lower or equal than 1
         segmentedControl.hiddenAnimated = (categoriesTabManager?.numberOfTabs() ?? 0) <= 1
