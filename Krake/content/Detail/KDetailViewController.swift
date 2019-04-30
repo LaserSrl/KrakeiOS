@@ -20,7 +20,7 @@ public protocol KDetailViewSizeChangesListener: NSObjectProtocol {
 public protocol KDetailViewProtocol: NSObjectProtocol {
     /// Reference to the object that has the role to present the detail, that
     /// usually is the `KDetailViewController` that has created that view.
-    var detailPresenter: KDetailPresenter? { get set }
+    weak var detailPresenter: KDetailPresenter? { get set }
     /// The object that is displayed by the `KDetailViewController`.
     var detailObject: AnyObject? { get set }
 }
@@ -65,7 +65,7 @@ open class KDetailViewController: UIViewController, UIScrollViewDelegate, KDetai
     }
     public var loginRequired: Bool = false
     /// The object that acts as delegate of the KDetailViewController.
-    open weak var detailDelegate: KDetailPresenterDelegate? = KDetailPresenterDefaultDelegate()
+    open var detailDelegate: KDetailPresenterDelegate? = KDetailPresenterDefaultDelegate()
     /// Object that handles the creation of the button used to fast scrolling to
     /// the top of the scrollview.
     var scrollToTopButton: KScrollToTopButton?

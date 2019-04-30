@@ -11,12 +11,12 @@ import MapKit
 
 public protocol ResultTableDisplayer: UITableViewDelegate, UITableViewDataSource
 {
-    var searchController: KTripPlannerSearchController! {get set}
+    weak var searchController: KTripPlannerSearchController! {get set}
 }
 
 open class SingleTripModeDatasource : NSObject, ResultTableDisplayer
 {
-    public weak var searchController: KTripPlannerSearchController!
+    public var searchController: KTripPlannerSearchController!
     public var complexStep : KStepGroup
 
     private let distanceFormatter: MKDistanceFormatter
@@ -82,7 +82,7 @@ open class SingleTripModeDatasource : NSObject, ResultTableDisplayer
 
 open class TransitsDatasource: NSObject, UITableViewDataSource, ResultTableDisplayer
 {
-    public weak var searchController: KTripPlannerSearchController!
+    public var searchController: KTripPlannerSearchController!
     let distanceFormatter: MKDistanceFormatter
     let durationFormatter: KDurationFormatter
     let timeFormatter: DateFormatter
