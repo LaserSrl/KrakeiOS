@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rOQ-Ji-0OB">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rOQ-Ji-0OB">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,22 +14,18 @@
         <scene sceneID="bay-JI-MyD">
             <objects>
                 <viewController id="rOQ-Ji-0OB" customClass="KDetailViewController" customModule="Krake" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4kV-IY-LFB"/>
-                        <viewControllerLayoutGuide type="bottom" id="hrx-v3-cuX"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="0gq-Ac-v4V">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="0gq-Ac-v4V">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Xk-Dr-sbT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Xk-Dr-sbT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KI8-nH-wWM">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="660"/>
+                                    <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KI8-nH-wWM">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="660"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3wC-0S-AK1" customClass="KMediaCollectionView" customModule="Krake">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="999" constant="200" id="nHJ-BA-S2S"/>
@@ -46,27 +43,27 @@
                                                 </userDefinedRuntimeAttributes>
                                             </collectionView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QkQ-8E-XDy" customClass="KDetailHeaderView" customModule="Krake">
-                                                <rect key="frame" x="0.0" y="208" width="375" height="50"/>
+                                                <rect key="frame" x="0.0" y="208" width="414" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="999" constant="50" id="GtU-hy-TLZ"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="l3J-mn-wVO" customClass="KSocialView" customModule="Krake">
-                                                <rect key="frame" x="0.0" y="266" width="375" height="60"/>
+                                                <rect key="frame" x="0.0" y="266" width="414" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="999" constant="60" id="wES-8C-25g"/>
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ad1-aZ-jb5" customClass="KUserReactions" customModule="Krake">
-                                                <rect key="frame" x="0.0" y="334" width="375" height="80"/>
+                                                <rect key="frame" x="0.0" y="334" width="414" height="80"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="999" constant="80" id="6US-AH-sme"/>
                                                 </constraints>
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="URf-Hb-HIR" customClass="KMediaCollectionView" customModule="Krake">
-                                                <rect key="frame" x="0.0" y="422" width="375" height="180"/>
+                                                <rect key="frame" x="0.0" y="422" width="414" height="180"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="999" constant="180" id="B6O-5c-qQa"/>
@@ -84,7 +81,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </collectionView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h29-nC-kTV" customClass="KDetailWebView" customModule="Krake">
-                                                <rect key="frame" x="0.0" y="610" width="375" height="50"/>
+                                                <rect key="frame" x="0.0" y="610" width="414" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="999" constant="50" placeholder="YES" id="XTi-yd-OBa"/>
@@ -94,12 +91,12 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="KI8-nH-wWM" firstAttribute="top" secondItem="6Xk-Dr-sbT" secondAttribute="top" id="6gp-fT-y7J"/>
-                                    <constraint firstAttribute="trailing" secondItem="KI8-nH-wWM" secondAttribute="trailing" id="d3I-G8-9xb"/>
-                                    <constraint firstItem="KI8-nH-wWM" firstAttribute="width" secondItem="6Xk-Dr-sbT" secondAttribute="width" id="gQe-Kf-8Gk"/>
-                                    <constraint firstAttribute="bottom" secondItem="KI8-nH-wWM" secondAttribute="bottom" constant="8" id="qJn-up-FrH"/>
-                                    <constraint firstItem="KI8-nH-wWM" firstAttribute="leading" secondItem="6Xk-Dr-sbT" secondAttribute="leading" id="vAQ-qs-S2T"/>
+                                    <constraint firstItem="KI8-nH-wWM" firstAttribute="trailing" secondItem="372-0y-eoJ" secondAttribute="trailing" id="5oQ-J3-mjF"/>
+                                    <constraint firstAttribute="bottom" secondItem="KI8-nH-wWM" secondAttribute="bottom" constant="8" id="BrV-RL-pLS"/>
+                                    <constraint firstItem="KI8-nH-wWM" firstAttribute="top" secondItem="6Xk-Dr-sbT" secondAttribute="top" id="Kgp-7a-msx"/>
+                                    <constraint firstItem="KI8-nH-wWM" firstAttribute="leading" secondItem="372-0y-eoJ" secondAttribute="leading" id="XtV-AK-66q"/>
                                 </constraints>
+                                <viewLayoutGuide key="safeArea" id="372-0y-eoJ"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -109,6 +106,7 @@
                             <constraint firstItem="6Xk-Dr-sbT" firstAttribute="leading" secondItem="0gq-Ac-v4V" secondAttribute="leading" id="sGH-oW-jWh"/>
                             <constraint firstAttribute="trailing" secondItem="6Xk-Dr-sbT" secondAttribute="trailing" id="uD6-ss-10w"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="RED-F0-vQE"/>
                     </view>
                     <connections>
                         <outlet property="mainScrollView" destination="6Xk-Dr-sbT" id="I4v-Z0-F1L"/>

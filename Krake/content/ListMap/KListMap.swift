@@ -409,6 +409,14 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     open override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+            if self.listMapOptions.mapOptions == nil
+            {
+                self.mapView?.delegate = nil
+                self.mapView?.removeFromSuperview()
+                self.collectionView?.collectionViewLayout.invalidateLayout()
+            }
+        }
         listMapDelegate.viewWillAppear(self)
     }
     
@@ -437,8 +445,15 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
     {
         super.viewWillTransition(to: size, with: coordinator)
-        
-        let isMapHidden = mapView?.hiddenAnimated ?? true
+        var isMapHidden = mapView?.isHidden ?? true
+        DispatchQueue.main.async {
+            if self.listMapOptions.mapOptions == nil
+            {
+                self.mapView?.delegate = nil
+                self.mapView?.removeFromSuperview()
+                isMapHidden = true
+            }
+        }
         
         if collectionView != nil
         {
@@ -581,6 +596,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     
     private func topBarRefreshObject()
     {
+        topView?.backgroundColor = KTheme.current.color(.tint)
         topView?.isHidden = false
         //Set hidden if the number of tabs on segmented control is lower or equal than 1
         segmentedControl.hiddenAnimated = (categoriesTabManager?.numberOfTabs() ?? 0) <= 1

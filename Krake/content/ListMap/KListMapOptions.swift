@@ -13,6 +13,7 @@ public struct KMapOptions
     /// Use .default for a default struct settings, by default
     /// - useCluser is true
     public static let `default` = KMapOptions()
+    public static let none: KMapOptions? = nil
     
     public var useCluster: Bool
     
