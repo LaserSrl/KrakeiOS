@@ -86,7 +86,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
             if valuesContentType != nil{
                 contentTypeSelectionFields = [ContentTypeSelectionField]()
                 for key in valuesContentType!.keys{
-                    KLog("%@ - key: %@", contentTypeDefinition.contentType, key)
+                    KLog(contentTypeDefinition.contentType + " - key: " + key)
                     
                     let content = ContentTypeSelectionField(keyPath: key, object: valuesContentType![key] as! [String : AnyObject])
                     if content.settings.required {
@@ -537,7 +537,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: true)
         manager.responseSerializer = AFJSONResponseSerializer()
         manager.requestSerializer = AFJSONRequestSerializer()
-        KLog(type: .info, "%@", params.description )
+        KLog(type: .info, params.description )
         
         _ = manager.post(KAPIConstants.contentExtension,
                      parameters: params,
