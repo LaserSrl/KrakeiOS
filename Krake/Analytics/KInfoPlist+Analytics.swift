@@ -13,7 +13,7 @@ extension KInfoPlist
     open class Analytics: NSObject
     {
         public static let enabled: Bool = {
-            return Bundle.krakeSettings()["EnableAnalytics"]?.boolValue ?? Bundle.analyticsKrakeSettings()?["Enabled"]?.boolValue ?? false
+            return Bundle.analyticsKrakeSettings()?["Enabled"]?.boolValue ?? Bundle.krakeSettings()["EnableAnalytics"]?.boolValue ?? false
         }()
         
         public static let collectUserProperties: Bool = {
