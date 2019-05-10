@@ -71,17 +71,20 @@ open class CategoryPreferencesViewController: ContentModificationViewController,
         }
         
         if let value = item.value(forKeyPath: coreDataKeyPath) {
-            if let array = value as? NSOrderedSet {
-                if array.firstObject is TermPartProtocol {
-                    var categories = [Int]()
-                    for elem in array {
-                        let term = elem as! TermPartProtocol
-                        categories.append(term.identifier!.intValue)
+            if let array = value as? NSOrderedSet,
+                let terms = array.array as? [TermPartProtocol] {
+                var categories = [Int]()
+                let idCategories = self.categories?.map({ (content: ContentTypeSelectionEnumOrTerm) -> NSNumber? in
+                    content.numberValue
+                })
+                for elem in terms {
+                    if idCategories?.contains(elem.identifier) ?? false {
+                        categories.append(elem.identifier!.intValue)
                     }
-                    params[fields.first!.key] = categories
-                    
-                    categoriesTableView.reloadData()
                 }
+                params[fields.first!.key] = categories
+                
+                categoriesTableView.reloadData()
             }
         }
     }
