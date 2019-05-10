@@ -46,8 +46,8 @@
 
 "Anonymous" = "Anonymous";
 
-"wait" = "Wait";
-"on_loading" = "Uploading...";
+"wait" = "Please wait";
+"on_loading" = "Loading...";
 
 //ORCHARD LOGIN
 "LOGIN"="Login with";
