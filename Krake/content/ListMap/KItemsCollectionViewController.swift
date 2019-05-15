@@ -473,6 +473,11 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
                     self?.setLoadedItems(cache.cacheItems, completed: completed)
                     MBProgressHUD.hide(for: mySelf.view, animated: true)
                 }
+                else if completed
+                {
+                    self?.setLoadedItems(NSOrderedSet(), completed: completed)
+                }
+                
                 if completed
                 {
                     mySelf.isLoadingObjects = false

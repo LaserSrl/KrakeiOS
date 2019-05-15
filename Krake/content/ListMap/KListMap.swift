@@ -577,6 +577,11 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                         }
                     }
                 }
+                else if completed
+                {
+                    mySelf.elements = NSMutableOrderedSet()
+                }
+
                 if completed
                 {
                     MBProgressHUD.hide(for: mySelf.view, animated: true)
