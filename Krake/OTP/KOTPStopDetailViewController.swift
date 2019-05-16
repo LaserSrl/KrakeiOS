@@ -24,11 +24,6 @@ public class KOTPStopDetailViewCell: UITableViewCell {
         super.awakeFromNib()
         // Imposto il tint color dell'immagine.
         busImageView.tintColor = .tint
-        // Preparo la view che verrà impostata come background per identificare
-        // la cella selezionata.
-        let selectedStateView = UIView()
-        KTheme.current.applyTheme(toView: selectedStateView, style: .selected)
-        selectedBackgroundView = selectedStateView
     }
 
 }
@@ -37,7 +32,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
 
     public var sourceStop: KOTPStopItem?
 
-    public var patternGeometryLoader: KLinePathLoader? = KOpenTripPlannerLinePathLoader()
+    public var otpLoader: KOTPLoader? = KOpenTripPlannerLoader()
 
     private var selectedLine: BusLine? = nil
     private var lineOverlay: MKPolyline? = nil
@@ -49,32 +44,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         pattern: "^([\\s\\S]+) to ([\\s\\S]+)$" ,
         options: .caseInsensitive)
     private lazy var calendar = Calendar(identifier: .gregorian)
-    private lazy var linesPlaceholderImage: UIImage? = {
-        if let originalImage = UIImage(otpNamed: "bus_stop")?.imageTinted(UIColor.white) {
-            let drawingRect = CGRect(origin: .zero, size: CGSize(width: 28, height: 28))
-            UIGraphicsBeginImageContextWithOptions(drawingRect.size, false, 0)
-            let image: UIImage?
-            if let context = UIGraphicsGetCurrentContext() {
-                context.setFillColor(UIColor.tint.cgColor)
-                let path = UIBezierPath(roundedRect: drawingRect, cornerRadius: 6)
-                context.addPath(path.cgPath)
-                context.fillPath()
-                let edgeInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
-                #if swift(>=4.2)
-                let toDraw = drawingRect.inset(by: edgeInset)
-                #else
-                let toDraw =  UIEdgeInsetsInsetRect(drawingRect, edgeInset)
-                #endif
-                originalImage.draw(in: toDraw)
-                image = UIGraphicsGetImageFromCurrentImageContext()
-                UIGraphicsEndImageContext()
-            } else {
-                image = originalImage
-            }
-            return image
-        }
-        return nil
-    }()
+    
     public override var items: [BusLine]? {
         didSet {
             // Verifico se sono presenti nuove linee.
@@ -109,6 +79,8 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
     }
 
     private var loadingTask: OMLoadDataTask? = nil
+    private var timerForRefresh: Timer? = nil
+    private var routes: [KOTPRoute]? = nil
 
     // MARK: - View controller lifecycle
 
@@ -137,7 +109,16 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         hideTableView(animated: false)
         // Scarico le previsioni per la fermata corrente.
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshTimes))
-        loadTimes()
+        if let secondForRefresh = KInfoPlist.OTP.secondForStopTimesRefresh {
+            timerForRefresh = Timer.scheduledTimer(withTimeInterval: secondForRefresh.doubleValue, repeats: true, block: { [weak self](timer) in
+                self?.loadTimes()
+            })
+        }
+        
+        otpLoader?.retrieveRoutesInfos(with: { [weak self](routes) in
+            self?.routes = routes
+            self?.loadTimes()
+        })
     }
 
     override func tableViewContainerAvailableFrame() -> CGRect {
@@ -173,15 +154,23 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         cell.titleLabel.text = String(format: "Linea %@ verso %@",
                                       line.lineNumber, line.destination)
         cell.arrivalLabel.text = arrivalTimeDescription
-        cell.busImageView.image = linesPlaceholderImage
+        
+        cell.busImageView.image = KTripTheme.shared.imageFor(vehicleType: line.routeInfo?.mode ?? .other).withRenderingMode(.alwaysTemplate)
+        cell.busImageView.backgroundColor = line.routeInfo?.color ?? UIColor.tint
+        cell.busImageView.tintColor = UIColor.white
         return cell
     }
 
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         // Imposto l'altezza della table view come al primo accesso.
         resetTableViewVisibility(animated: true)
         // Carico gli stops per l'item selezionato.
         loadStops(for: items![indexPath.row])
+        if let sourceStop = sourceStop{
+            mapView.removeAnnotation(sourceStop)
+            mapView.addAnnotation(sourceStop)
+        }
     }
 
     // MARK: - Map view delegate
@@ -195,14 +184,14 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
     public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let polylineRenderer = MKPolylineRenderer(overlay: overlay)
         polylineRenderer.lineWidth = 3.0
-        polylineRenderer.strokeColor = KTripTheme.shared.colorFor(travelMode: .transit)
+        polylineRenderer.strokeColor = selectedLine?.routeInfo?.color ?? KTripTheme.shared.colorFor(travelMode: .transit)
         return polylineRenderer
     }
 
     open override func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil }
-
-        let color: UIColor? = isSourceStopAnnotation(annotation) ? nil : .lightGray
+        let pinColor: UIColor? = selectedLine?.routeInfo?.color
+        let color: UIColor? = isSourceStopAnnotation(annotation) ? pinColor : .lightGray
         let pinView =
             mapView.dequeueReusableAnnotationViewWithAnnotation(annotation, forcedColor: color) ?? KAnnotationView(annotation: annotation, forcedColor: color)
         pinView.addNavigationButton()
@@ -238,6 +227,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         var extras = KRequestParameters.parameters(currentPage: 1, pageSize: 9999)
         extras["id"] = sourceStop.originalId ?? NSNull()
         extras.update(other: KRequestParameters.parametersNoCache())
+        loadingTask?.cancel()
         loadingTask = OGLCoreDataMapper.sharedInstance()
             .loadData(withDisplayAlias: "otp/otp-stop-times",
                       extras: extras) { [weak self] (cacheId, error, hasCompleted) in
@@ -285,10 +275,16 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                         let scheduledArrival = minutes(until: stopTimeScheduledArrival) {
                         let secondsUntilArrival = scheduledArrival.timeIntervalSinceNow
                         if secondsUntilArrival > 0 && secondsUntilArrival < 121 * 60 {
+                            
+                            let routeInfo = routes?.filter({ (route) -> Bool in
+                                return pattern.patternId!.starts(with: route.identifier)
+                            }).first
+                            
                             let line = BusLine(lineNumber: step.id,
                                                destination: step.destination,
                                                scheduledArrival: scheduledArrival,
-                                               patternId: pattern.patternId!)
+                                               patternId: pattern.patternId!,
+                                               routeInfo: routeInfo)
 
                             hintableLines.append(line)
                             numberOfLinesFromPattern += 1
@@ -380,11 +376,11 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                             MBProgressHUD.hide(for: strongSelf.view, animated: true)
                         }
         }
-
-        patternGeometryLoader?.retrievePathPoints(for: line, with: { [weak self](line, polyline) in
-
+        
+        otpLoader?.retrievePathPoints(for: line, with: { [weak self](line, polyline) in
+            
             if let sSelf = self, let polyline = polyline {
-
+                
                 if line.lineNumber == sSelf.selectedLine?.lineNumber {
                     sSelf.lineOverlay = polyline
                     #if swift(>=4.2)

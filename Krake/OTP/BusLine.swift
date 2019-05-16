@@ -14,14 +14,17 @@ open class BusLine {
     public let destination: String
     public let scheduledArrival: Date
     public let patternId: String
+    public let routeInfo: KOTPRoute?
 
     public init(lineNumber: String,
                 destination: String,
          scheduledArrival: Date,
-         patternId: String) {
+         patternId: String,
+         routeInfo: KOTPRoute?) {
         self.lineNumber = lineNumber
         self.destination = destination
         self.scheduledArrival = scheduledArrival
         self.patternId = patternId
+        self.routeInfo = routeInfo
     }
 }

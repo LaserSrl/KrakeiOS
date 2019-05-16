@@ -37,6 +37,8 @@ open class KOTPBasePublicTransportListMapViewController<EntityType>: UIViewContr
 
     open override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         mapView.delegate = self
         
         // Applico le impostazioni alla table view di modo che le celle definiscano
@@ -90,6 +92,10 @@ open class KOTPBasePublicTransportListMapViewController<EntityType>: UIViewContr
         // Verifico che non vi sia il constraint per la table view nascosta.
         if let tableViewContainerHiddenConstraint = tableViewContainerHiddenConstraint {
             tableViewContainer.removeConstraint(tableViewContainerHiddenConstraint)
+        }
+        minimumTableViewContainerHeight = 24.0 + tableView.estimatedRowHeight
+        if #available(iOS 11.0, *) {
+            minimumTableViewContainerHeight = minimumTableViewContainerHeight + self.view.safeAreaInsets.bottom
         }
 
         let initialHeightValue =

@@ -10,6 +10,9 @@ import Foundation
 import CoreLocation
 import MapKit
 
-public protocol KLinePathLoader {
+public protocol KOTPLoader
+{
     func retrievePathPoints(for line: BusLine, with completion: @escaping (BusLine, MKPolyline?) -> Void)
+    func retrieveRoutesInfos(with completion: @escaping ([KOTPRoute]?) -> Void)
+    
 }
