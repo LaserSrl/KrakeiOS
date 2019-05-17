@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_5" orientation="landscape">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KListMapViewController" customModule="Krake">
             <connections>
                 <outlet property="collectionView" destination="khQ-Cx-XB5" id="65A-o5-S1U"/>
+                <outlet property="collectionViewTop" destination="boS-zK-H0f" id="Jd8-yn-KoL"/>
                 <outlet property="headerView" destination="pjC-vS-Kk6" id="bFY-FR-psn"/>
                 <outlet property="heightTopView" destination="nLI-29-gMX" id="BdD-Oy-wso"/>
                 <outlet property="mapView" destination="tFO-1V-hAt" id="kBf-CE-VPI"/>
@@ -23,17 +24,18 @@
                 <outlet property="toggleButtonCenterConstraint" destination="QZa-vE-qTX" id="lXl-Zg-8Ib"/>
                 <outlet property="toggleButtonLeadingConstraint" destination="Svu-Y1-CUz" id="BjT-It-RRG"/>
                 <outlet property="toggleButtonTrailingConstraint" destination="t3V-RD-jvb" id="cBf-Xf-vQl"/>
+                <outlet property="topConstraint" destination="Dig-Rm-ZW2" id="7Mf-XE-ZoQ"/>
                 <outlet property="topView" destination="c6A-WR-kFh" id="g4P-pj-lxd"/>
                 <outlet property="view" destination="gDP-rc-2Kh" id="XA3-tw-q8V"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clipsSubviews="YES" contentMode="scaleToFill" id="gDP-rc-2Kh">
-            <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" delaysContentTouches="NO" keyboardDismissMode="interactive" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="khQ-Cx-XB5">
-                    <rect key="frame" x="428" y="0.0" width="424" height="414"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OYN-ql-S7P">
                         <size key="itemSize" width="195" height="149"/>
@@ -48,7 +50,7 @@
                     </connections>
                 </collectionView>
                 <mapView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tFO-1V-hAt" customClass="KExtendedMapView" customModule="Krake">
-                    <rect key="frame" x="44" y="0.0" width="384" height="414"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="canExpandMap" value="NO"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="expandedMap" value="YES"/>
@@ -69,7 +71,7 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="250" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="z2C-2n-UmX">
-                    <rect key="frame" x="0.0" y="0.0" width="896" height="0.0"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="0.0"/>
                     <subviews>
                         <view hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjC-vS-Kk6">
                             <rect key="frame" x="0.0" y="0.0" width="546" height="0.0"/>
@@ -81,10 +83,10 @@
                             <rect key="frame" x="0.0" y="0.0" width="546" height="44"/>
                             <subviews>
                                 <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HBq-Qd-4EO">
-                                    <rect key="frame" x="0.0" y="0.0" width="502" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="546" height="44"/>
                                     <subviews>
                                         <searchBar opaque="NO" clipsSubviews="YES" contentMode="redraw" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dhx-nM-KDJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="502" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="546" height="44"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
                                         <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90k-Ah-mR7">
@@ -142,8 +144,8 @@
             <viewLayoutGuide key="safeArea" id="KHp-4Q-2iB"/>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="c3A-3R-2as"/>
                     <exclude reference="Dtp-CP-dwb"/>
+                    <exclude reference="c3A-3R-2as"/>
                 </mask>
             </variation>
             <variation key="heightClass=compact-widthClass=regular">
@@ -151,8 +153,8 @@
                     <exclude reference="Zae-Hi-Fko"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="c3A-3R-2as"/>
                     <include reference="Dtp-CP-dwb"/>
+                    <include reference="c3A-3R-2as"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=regular">
@@ -160,8 +162,8 @@
                     <exclude reference="Zae-Hi-Fko"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="c3A-3R-2as"/>
                     <include reference="Dtp-CP-dwb"/>
+                    <include reference="c3A-3R-2as"/>
                 </mask>
             </variation>
         </view>

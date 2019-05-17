@@ -403,6 +403,8 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         else
         {
             refreshControl.endRefreshing()
+            navigationController?.navigationBar.setNeedsDisplay()
+            navigationController?.navigationBar.layoutIfNeeded()
         }
     }
     
@@ -586,6 +588,8 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                 {
                     MBProgressHUD.hide(for: mySelf.view, animated: true)
                     mySelf.refreshControl.endRefreshing()
+                    mySelf.navigationController?.navigationBar.setNeedsDisplay()
+                    mySelf.navigationController?.navigationBar.layoutIfNeeded()
                     //TODO: chiamare delegate per il completamento del caricamento.
                 }
             }
@@ -903,8 +907,20 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         dateFilterManager!.showDatePicker(tabBarController ?? navigationController ?? self)
     }
 
+    @IBOutlet weak var topConstraint: NSLayoutConstraint?
+    @IBOutlet weak var collectionViewTop: NSLayoutConstraint?
     public func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
+        if scrollView.contentOffset.y < 0
+        {
+            topConstraint?.constant = -scrollView.contentOffset.y
+            collectionViewTop?.constant = scrollView.contentOffset.y
+        }
+        else
+        {
+            topConstraint?.constant = 0
+            collectionViewTop?.constant = 0
+        }
         if listMapOptions.mapOptions == nil,
             let lastIndex = collectionView.indexPathsForVisibleItems.last,
             lastIndex.row == collectionView(collectionView, numberOfItemsInSection: lastIndex.section) - 1
@@ -925,6 +941,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                     requestObjects(atPage: page + 1)
                 }
             }
+            
         }
         if let scrollDelegate = listMapDelegate as? UIScrollViewDelegate
         {
