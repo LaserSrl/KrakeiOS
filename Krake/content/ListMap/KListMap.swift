@@ -403,6 +403,8 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         else
         {
             refreshControl.endRefreshing()
+            navigationController?.navigationBar.setNeedsDisplay()
+            navigationController?.navigationBar.layoutIfNeeded()
         }
     }
     
@@ -563,7 +565,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                         if (page * pageSize) != 0 {
                             if UInt(totaleElem) < (page * pageSize) || mySelf.listMapOptions.mapOptions == nil
                             {
-                                MBProgressHUD.hide(for: mySelf.view, animated: true)
+                                MBProgressHUD.hide(for: mySelf.view, animated: false)
                             }
                             else if UInt(totaleElem) > (page * pageSize)
                             {
@@ -584,8 +586,9 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
 
                 if completed
                 {
-                    MBProgressHUD.hide(for: mySelf.view, animated: true)
+                    MBProgressHUD.hide(for: mySelf.view, animated: false)
                     mySelf.refreshControl.endRefreshing()
+                    mySelf.collectionView.setContentOffset(CGPoint(x: 0, y: -0.3), animated: false)
                     //TODO: chiamare delegate per il completamento del caricamento.
                 }
             }
@@ -903,8 +906,20 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         dateFilterManager!.showDatePicker(tabBarController ?? navigationController ?? self)
     }
 
+    @IBOutlet weak var topConstraint: NSLayoutConstraint?
+    @IBOutlet weak var collectionViewTop: NSLayoutConstraint?
     public func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
+        if scrollView.contentOffset.y < 0
+        {
+            topConstraint?.constant = -scrollView.contentOffset.y
+            collectionViewTop?.constant = scrollView.contentOffset.y
+        }
+        else
+        {
+            topConstraint?.constant = 0
+            collectionViewTop?.constant = 0
+        }
         if listMapOptions.mapOptions == nil,
             let lastIndex = collectionView.indexPathsForVisibleItems.last,
             lastIndex.row == collectionView(collectionView, numberOfItemsInSection: lastIndex.section) - 1
@@ -925,6 +940,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                     requestObjects(atPage: page + 1)
                 }
             }
+            
         }
         if let scrollDelegate = listMapDelegate as? UIScrollViewDelegate
         {
