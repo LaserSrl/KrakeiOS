@@ -21,7 +21,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
     @IBOutlet var searchViewHiddenBottom: NSLayoutConstraint!
 
     public static var defaultLocation: CLLocation?
-    public static var defaultArea: MKMapRect? = .null
+    public static var defaultArea: MKCoordinateRegion! = KSearchPlaceViewController.prefferedRegion
 
     public static func stopsSearchController() -> KOTPStopsViewController {
         // Loading the class for the detail view controller.
@@ -201,7 +201,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
                 return
             }
 
-            if let initialSearchLocation = initialSearchLocation {
+            if let initialSearchLocation = initialSearchLocation, KOTPStopsViewController.defaultArea.contains(point: initialSearchLocation.coordinate) {
                 // Nascondo la barra di ricerca.
                 strongSelf.hideSearchView()
                 // Aggiungo la descrizione del punto di ricerca nel text field.
