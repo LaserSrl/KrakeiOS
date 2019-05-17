@@ -109,6 +109,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
     }
 
     private var loadingTask: OMLoadDataTask? = nil
+    private var timerForRefresh: Timer? = nil
 
     // MARK: - View controller lifecycle
 
@@ -137,6 +138,11 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         hideTableView(animated: false)
         // Scarico le previsioni per la fermata corrente.
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshTimes))
+        if let secondForRefresh = KInfoPlist.OTP.secondForStopTimesRefresh {
+            timerForRefresh = Timer.scheduledTimer(withTimeInterval: secondForRefresh.doubleValue, repeats: true, block: { [weak self](timer) in
+                self?.loadTimes()
+            })
+        }
         loadTimes()
     }
 

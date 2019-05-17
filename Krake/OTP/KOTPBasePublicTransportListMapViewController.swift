@@ -91,7 +91,11 @@ open class KOTPBasePublicTransportListMapViewController<EntityType>: UIViewContr
         if let tableViewContainerHiddenConstraint = tableViewContainerHiddenConstraint {
             tableViewContainer.removeConstraint(tableViewContainerHiddenConstraint)
         }
-
+        minimumTableViewContainerHeight = 24.0 + tableView.estimatedRowHeight
+        if #available(iOS 11.0, *) {
+            minimumTableViewContainerHeight = minimumTableViewContainerHeight + self.view.safeAreaInsets.bottom
+        }
+        
         let initialHeightValue =
             items?.isEmpty ?? true ? 0 : minimumTableViewContainerHeight
 

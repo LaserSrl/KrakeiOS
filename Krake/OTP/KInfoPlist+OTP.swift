@@ -13,7 +13,7 @@ extension KInfoPlist
     open class OTP: NSObject
     {
         public static let path: URL = {
-            if let otpPath = Bundle.krakeSettings()["WSOTP"] as? String,
+            if let otpPath = Bundle.otpSettings()?["WSOTP"] as? String ?? Bundle.krakeSettings()["WSOTP"] as? String,
                 let otpURL = URL(string: otpPath) {
                 return otpURL
             }
@@ -21,6 +21,19 @@ extension KInfoPlist
             
         }()
         
+        public static let secondForStopTimesRefresh: NSNumber? = {
+            return Bundle.otpSettings()?["SecondForStopTimesRefresh"] as? NSNumber
+        }()
+        
     }
+    
+}
+
+extension Bundle{
+    
+    public static func otpSettings() -> [String : AnyObject]?{
+        return Bundle.krakeSettings()["OTP"] as? [String : AnyObject]
+    }
+    
     
 }
