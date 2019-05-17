@@ -32,8 +32,6 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
 
     public var sourceStop: KOTPStopItem?
 
-    public var otpLoader: KOTPLoader? = KOpenTripPlannerLoader()
-
     private var selectedLine: BusLine? = nil
     private var lineOverlay: MKPolyline? = nil
 
@@ -115,7 +113,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
             })
         }
         
-        otpLoader?.retrieveRoutesInfos(with: { [weak self](routes) in
+        KOpenTripPlannerLoader.shared.retrieveRoutesInfos(with: { [weak self](routes) in
             self?.routes = routes
             self?.loadTimes()
         })
@@ -222,32 +220,16 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
 
     private func loadTimes() {
         guard let sourceStop = sourceStop else { return }
-
         MBProgressHUD.showAdded(to: view, animated: true)
-        var extras = KRequestParameters.parameters(currentPage: 1, pageSize: 9999)
-        extras["id"] = sourceStop.originalId ?? NSNull()
-        extras.update(other: KRequestParameters.parametersNoCache())
-        loadingTask?.cancel()
-        loadingTask = OGLCoreDataMapper.sharedInstance()
-            .loadData(withDisplayAlias: "otp/otp-stop-times",
-                      extras: extras) { [weak self] (cacheId, error, hasCompleted) in
-                        guard let strongSelf = self, hasCompleted else { return }
-
-                        MBProgressHUD.hide(for: strongSelf.view, animated: true)
-                        if let cacheId = cacheId {
-                            let cache = OGLCoreDataMapper.sharedInstance().displayPathCache(from: cacheId)
-                            if let patterns = cache.cacheItems.array as? [PatternProtocol], !patterns.isEmpty {
-                                strongSelf.prepareLines(from: patterns)
-                            } else {
-                                // TODO: considerare se gestire il caso pattern vuoti.
-                            }
-                        } else if let error = error {
-                            KMessageManager
-                                .showMessage(ObjC: error.localizedDescription,
-                                             type: .error,
-                                             layout: .tabView,
-                                             fromViewController: nil)
-                        }
+        if let stopId = sourceStop.originalId
+        {
+            KOpenTripPlannerLoader.shared.retrieveStopTimes(for: stopId, with: { [weak self](result) in
+                guard let strongSelf = self else { return }
+                MBProgressHUD.hide(for: strongSelf.view, animated: true)
+                if let patterns = result, !patterns.isEmpty {
+                    strongSelf.prepareLines(from: patterns)
+                }
+            })
         }
     }
 
@@ -277,7 +259,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                         if secondsUntilArrival > 0 && secondsUntilArrival < 121 * 60 {
                             
                             let routeInfo = routes?.filter({ (route) -> Bool in
-                                return pattern.patternId!.starts(with: route.identifier)
+                                return pattern.patternId!.starts(with: route.id)
                             }).first
                             
                             let line = BusLine(lineNumber: step.id,
@@ -347,37 +329,28 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
 
     private func loadStops(for line: BusLine) {
         mapView.removeOverlays(mapView.overlays)
-        MBProgressHUD.showAdded(to: view, animated: true)
-        var extras = KRequestParameters.parametersNoCache()
-        extras["patternid"] = line.patternId
         selectedLine = line
-        loadingTask = OGLCoreDataMapper.sharedInstance()
-            .loadData(withDisplayAlias: "otp/otpstopspattern",
-                      extras: extras) { [weak self] (cacheId, error, hasCompleted) in
-                        guard let strongSelf = self, hasCompleted else { return }
-
-                        if let cacheId = cacheId {
-                            let cache = OGLCoreDataMapper.sharedInstance().displayPathCache(from: cacheId)
-                            if let stops = cache.cacheItems.array as? [KOTPStopItem], !stops.isEmpty {
-                                var retrievedStops = [KOTPStopItem]()
-                                var isAddable = false
-                                for stop in stops {
-                                    if isAddable {
-                                        retrievedStops.append(stop)
-                                    }
-                                    if stop.originalId == strongSelf.sourceStop?.originalId {
-                                        isAddable = true
-                                    }
-                                }
-                                strongSelf.intermediateStops = retrievedStops
-                            }
-                        }
-                        if hasCompleted {
-                            MBProgressHUD.hide(for: strongSelf.view, animated: true)
-                        }
-        }
+        MBProgressHUD.showAdded(to: view, animated: true)
+        KOpenTripPlannerLoader.shared.retrieveStops(for: line.patternId, with: { [weak self](result) in
+            guard let strongSelf = self else { return }
+            if let stops = result, !stops.isEmpty {
+                var retrievedStops = [KOTPStopItem]()
+                var isAddable = false
+                for stop in stops {
+                    if isAddable {
+                        retrievedStops.append(stop)
+                    }
+                    if stop.originalId == strongSelf.sourceStop?.originalId {
+                        isAddable = true
+                    }
+                }
+                strongSelf.intermediateStops = retrievedStops
+            }
+            MBProgressHUD.hide(for: strongSelf.view, animated: true)
+        })
         
-        otpLoader?.retrievePathPoints(for: line, with: { [weak self](line, polyline) in
+        
+        KOpenTripPlannerLoader.shared.retrievePathPoints(for: line, with: { [weak self](line, polyline) in
             
             if let sSelf = self, let polyline = polyline {
                 

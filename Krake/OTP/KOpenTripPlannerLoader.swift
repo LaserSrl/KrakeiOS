@@ -10,14 +10,19 @@ import Foundation
 import CoreLocation
 import MapKit
 import Polyline
-import SwiftyJSON
+import EVReflection
 
 public class KOpenTripPlannerLoader: KOTPLoader {
+    
+    public static var shared = KOpenTripPlannerLoader()
 
     private let manager = AFHTTPSessionManager(baseURL: KInfoPlist.OTP.path)
 
     private var geometryTask: URLSessionDataTask? = nil
     private var routesInfo: URLSessionDataTask? = nil
+    private var stopTimes: URLSessionDataTask? = nil
+    private var stopsPattern: URLSessionDataTask? = nil
+    private var routesCached: [KOTPRoute]?
     
     public func retrievePathPoints(for line: BusLine, with completion: @escaping (BusLine, MKPolyline?) -> Void)
     {
@@ -44,23 +49,21 @@ public class KOpenTripPlannerLoader: KOTPLoader {
     
     public func retrieveRoutesInfos(with completion: @escaping ([KOTPRoute]?) -> Void)
     {
+        if routesCached != nil {
+            completion(routesCached)
+            return
+        }
         routesInfo?.cancel()
         routesInfo = manager.get("index/routes",
                         parameters: nil,
                         progress: nil,
                         success: { (task, result) in
                             
-                            if let result = result as? [[String : Any]],
-                                let results = JSON(result).array
+                            if let result = result as? [NSDictionary]
                             {
-                                var routes = [KOTPRoute]()
-                                for result in results{
-                                    let route = KOTPRoute(parameter: result)
-                                    routes.append(route)
-                                }
-                                
+                                let routes = [KOTPRoute](dictionaryArray: result)
+                                self.routesCached = routes
                                 completion(routes)
-                                
                             }
                             else {
                                 completion(nil)
@@ -72,27 +75,53 @@ public class KOpenTripPlannerLoader: KOTPLoader {
         }
         
     }
-
-}
-
-protocol JSONable {
-    init?(parameter: JSON)
-}
-
-public class KOTPRoute: JSONable {
-    let identifier :String!
-    let shortName :String!
-    let longName :String!
-    let mode: KVehicleType!
-    let color: UIColor!
-    let agencyName :String!
     
-    required init(parameter: JSON) {
-        identifier = parameter["id"].stringValue
-        shortName = parameter["shortName"].stringValue
-        longName = parameter["longName"].stringValue
-        mode = parameter["mode"].string != nil ? KVehicleType(rawValue: parameter["mode"].stringValue)! : KVehicleType.other
-        color = parameter["color"].string != nil ? UIColor(hexString: parameter["color"].stringValue) : UIColor.tint
-        agencyName = parameter["agencyName"].stringValue
+    public func retrieveStopTimes(for stopId: String! ,with completion: @escaping ([KOTPStopTimes]?) -> Void)
+    {
+        stopTimes?.cancel()
+        stopTimes = manager.get("index/stops/" + stopId + "/stoptimes?detail=long&refs=true",
+                                 parameters: nil,
+                                 progress: nil,
+                                 success: { (task, result) in
+                                    
+                                    if let result = result as? [NSDictionary]
+                                    {
+                                        let stopTimes = [KOTPStopTimes](dictionaryArray: result)
+                                        completion(stopTimes)
+                                    }
+                                    else {
+                                        completion(nil)
+                                    }
+                                    self.stopTimes = nil
+        }) { (task, error) in
+            completion(nil)
+            self.stopTimes = nil
+        }
+        
     }
+    
+    public func retrieveStops(for patternId: String! ,with completion: @escaping ([KOTPStop]?) -> Void)
+    {
+        stopsPattern?.cancel()
+        stopsPattern = manager.get("index/patterns/" + patternId + "/stops?detail=long&refs=true",
+                                parameters: nil,
+                                progress: nil,
+                                success: { (task, result) in
+                                    
+                                    if let result = result as? [NSDictionary]
+                                    {
+                                        let stops = [KOTPStop](dictionaryArray: result)
+                                        completion(stops)
+                                    }
+                                    else {
+                                        completion(nil)
+                                    }
+                                    self.stopsPattern = nil
+        }) { (task, error) in
+            completion(nil)
+            self.stopsPattern = nil
+        }
+        
+    }
+
 }

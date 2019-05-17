@@ -8,12 +8,10 @@
 
 import Foundation
 
-public protocol StopTimeProtocol {
-
-    var identifier: NSNumber! { get }
+public protocol StopTimeProtocol
+{
     var realtimeArrival: NSNumber? { get }
     var departureDelay: NSNumber? { get }
-    var timePoint: NSNumber? { get }
     var arrivalDelay: NSNumber? { get }
     var scheduledArrival: NSNumber? { get }
     var realtimeDeparture: NSNumber? { get }

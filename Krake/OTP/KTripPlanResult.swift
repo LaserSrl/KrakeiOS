@@ -8,6 +8,7 @@
 
 import Foundation
 import MapKit
+import EVReflection
 
 public class KTripPlanResult {
 
@@ -267,5 +268,132 @@ public class KTransitLine {
         self.shortName = shortName
         self.lineIcon = lineIcon
         self.color = color
+    }
+}
+
+public class KOTPRoute: EVObject
+{
+    public var id: String!
+    public var shortName: String!
+    public var longName: String!
+    public var mode: KVehicleType!
+    public var color: UIColor!
+    public var agencyName: String!
+    
+    public override func setValue(_ value: Any?, forKey key: String) {
+        switch key{
+        case "mode":
+            mode = KVehicleType(rawValue: value as! String) ?? KVehicleType.other
+        case "color":
+            color = UIColor(hexString: value as! String)
+        default:
+            super.setValue(value, forKey: key)
+        }
+    }
+}
+
+public class KOTPStopTimes: EVObject, PatternProtocol
+{
+    public var patternST: KOTPPattern?
+    public var timesST: [KOTPTimes]?
+    
+    public var patternId: String?{
+        get{
+            return patternST?.id
+        }
+    }
+    
+    public var descriptionText: String?{
+        get{
+            return patternST?.desc
+        }
+    }
+    
+    public var stopTimesList: NSOrderedSet?{
+        get{
+            return timesST != nil ? NSOrderedSet(array: timesST!) : nil
+        }
+    }
+    
+    public override func setValue(_ value: Any!, forUndefinedKey key: String) {
+        if key == "pattern"{
+            patternST = KOTPPattern(dictionary: value as! NSDictionary)
+        } else if key == "times"{
+            timesST = [KOTPTimes](dictionaryArray: value as! [NSDictionary])
+        }
+    }
+}
+
+public class KOTPPattern: EVObject
+{
+    public var id: String?
+    public var desc: String?
+}
+
+public class KOTPTimes: EVObject, StopTimeProtocol
+{
+    public var identifier: NSNumber!{
+        get{
+            return NSNumber(value: 0)
+        }
+    }
+    
+    public var stopId: String?
+    public var stopIndex: NSNumber?
+    public var stopCount: NSNumber?
+    public var scheduledArrival: NSNumber?
+    public var scheduledDeparture: NSNumber?
+    public var realtimeArrival: NSNumber?
+    public var realtimeDeparture: NSNumber?
+    public var arrivalDelay: NSNumber?
+    public var departureDelay: NSNumber?
+    public var timepoint: Bool = false
+    public var realtime: Bool = false
+    public var realtimeState: String?
+    public var serviceDay: NSNumber?
+    public var tripId: String?
+    public var headsign: String?
+    
+}
+
+public class KOTPStop: EVObject, KOTPStopItem
+{
+    public var originalId: String?{
+        get{
+            return id
+        }
+    }
+    
+    public var identifier: NSNumber!{
+        get{
+            return NSNumber(value: 0)
+        }
+    }
+    
+    public var dist: NSNumber?{
+        get{
+            return nil
+        }
+    }
+    
+    public var code: String?
+    public var id: String?
+    public var lat: NSNumber?
+    public var lon: NSNumber?
+    public var name: String?
+    
+    
+    @objc public var coordinate: CLLocationCoordinate2D{
+        get{
+            return CLLocationCoordinate2D(latitude: lat!.doubleValue, longitude: lon!.doubleValue)
+        }
+    }
+    
+    public var title: String?{
+        return name
+    }
+    
+    public var subtitle: String?{
+        return nil
     }
 }

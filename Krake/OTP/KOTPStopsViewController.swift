@@ -21,6 +21,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
     @IBOutlet var searchViewHiddenBottom: NSLayoutConstraint!
 
     public static var defaultLocation: CLLocation?
+    public static var defaultArea: MKMapRect? = .null
 
     public static func stopsSearchController() -> KOTPStopsViewController {
         // Loading the class for the detail view controller.

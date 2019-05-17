@@ -145,6 +145,7 @@ Pod::Spec.new do |s|
         os.dependency "Krake/Core"
         os.dependency "Polyline", '4.2.1'
         os.dependency "DateTimePicker", '2.1.3'
+        os.dependency "EVReflection", '5.10.1'
     end
     
     s.subspec 'Policies' do |os|
