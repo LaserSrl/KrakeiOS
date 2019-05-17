@@ -23,16 +23,11 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
     public static var defaultLocation: CLLocation?
     public static var defaultArea: MKCoordinateRegion! = KSearchPlaceViewController.prefferedRegion
 
-    public static func stopsSearchController() -> KOTPStopsViewController {
-        // Loading the class for the detail view controller.
-        // Without this line of code, detail view controller will not be loaded
-        // by the storyboard.
-        _ = KOTPStopDetailViewController()
-
+    public static func stopsSearchController() -> KOTPStopsViewController
+    {
         let bundle = Bundle(url: Bundle(for: KTripPlannerSearchController.self).url(forResource: "OTP", withExtension: "bundle")!)
         let storyboard = UIStoryboard(name: "OCOTPStoryboard", bundle: bundle)
-        return storyboard
-            .instantiateViewController(withIdentifier: "KOTPStopsViewController") as! KOTPStopsViewController
+        return storyboard.instantiateViewController(withIdentifier: "KOTPStopsViewController") as! KOTPStopsViewController
     }
 
     fileprivate var prevRadius: UInt = 0
