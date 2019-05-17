@@ -565,7 +565,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                         if (page * pageSize) != 0 {
                             if UInt(totaleElem) < (page * pageSize) || mySelf.listMapOptions.mapOptions == nil
                             {
-                                MBProgressHUD.hide(for: mySelf.view, animated: true)
+                                MBProgressHUD.hide(for: mySelf.view, animated: false)
                             }
                             else if UInt(totaleElem) > (page * pageSize)
                             {
@@ -586,10 +586,9 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
 
                 if completed
                 {
-                    MBProgressHUD.hide(for: mySelf.view, animated: true)
+                    MBProgressHUD.hide(for: mySelf.view, animated: false)
                     mySelf.refreshControl.endRefreshing()
-                    mySelf.navigationController?.navigationBar.setNeedsDisplay()
-                    mySelf.navigationController?.navigationBar.layoutIfNeeded()
+                    mySelf.collectionView.setContentOffset(CGPoint(x: 0, y: -0.3), animated: false)
                     //TODO: chiamare delegate per il completamento del caricamento.
                 }
             }
