@@ -118,6 +118,9 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
             loadingTask?.cancel()
             loadingTask = nil
         }
+        timerForRefresh?.invalidate()
+        timerForRefresh = nil
+        KLog("RELEASED")
     }
 
     open override func viewDidLoad() {
