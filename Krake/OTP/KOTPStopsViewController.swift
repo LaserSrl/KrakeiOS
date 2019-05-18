@@ -468,7 +468,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
         let imageView = cell.viewWithTag(100) as? UIImageView
         let textLabel = cell.viewWithTag(101) as? UILabel
         textLabel?.text = stop.title!
-        imageView?.image = placeholderImage
+        imageView?.image = (stop as? AnnotationProtocol)?.imageInset() ?? placeholderImage
         imageView?.tintColor = KTheme.current.color(.tint)
         cell.selectedBackgroundView = UIView()
         KTheme.current.applyTheme(toView: cell.selectedBackgroundView!, style: .selected)

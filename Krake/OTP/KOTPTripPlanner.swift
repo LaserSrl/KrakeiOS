@@ -37,7 +37,7 @@ public class KOTPTripPlanner: KTripPlannerProtocol
                                          "toPlace": request.to!.otpRequestFormat(),
                                          "date":dateString,
                                          "time":timeString,
-                                         "mode":request.travelMode.otpFormat(),
+                                         "mode":request.selectedTravelMode.otpFormat(),
                                          "arriveBy": request.datePlanChoice == .departure ? "false": "true"]
         planDataTask?.cancel()
         

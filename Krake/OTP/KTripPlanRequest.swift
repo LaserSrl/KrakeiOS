@@ -14,7 +14,8 @@ public class KTripPlanRequest: Equatable {
     public var to: MKAnnotation? = nil
     public var from: MKAnnotation? = nil
 
-    public var travelMode: KTravelMode = .transit
+    public var selectedTravelMode: KTravelMode = .transit
+    public var travelModes: [KTravelMode] = [.car, .transit, .walk, .bicycle]
     public var datePlanChoice: KDatePlanChoice = .departure
     public var dateSelectedForPlan: Date = Date()
 
@@ -41,7 +42,7 @@ public class KTripPlanRequest: Equatable {
 
     static public func ==(lhs: KTripPlanRequest, rhs: KTripPlanRequest) -> Bool {
 
-        return lhs.travelMode == rhs.travelMode &&
+        return lhs.selectedTravelMode == rhs.selectedTravelMode &&
         lhs.datePlanChoice == rhs.datePlanChoice &&
         lhs.to?.coordinate == rhs.to?.coordinate &&
         lhs.from?.coordinate == rhs.from?.coordinate
