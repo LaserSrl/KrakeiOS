@@ -70,7 +70,6 @@ open class KTripPlannerSearchController : UIViewController,
         if let request = request {
             vc.tripPlanRequest = request
         }
-
         return vc
     }
 
@@ -91,7 +90,6 @@ open class KTripPlannerSearchController : UIViewController,
     private static let COLLAPSED_LIST_HEIGHT : CGFloat = 80
 
     private let routeMapDelegate = KTripRouteMapDelegate()
-    private let travelModes = [KTravelMode.car,KTravelMode.transit,KTravelMode.walk,KTravelMode.bicycle]
 
     private var currentCollectionDatasource: ResultTableDisplayer?
 
@@ -145,7 +143,7 @@ open class KTripPlannerSearchController : UIViewController,
         resultMapView.delegate = routeMapDelegate
         routeMapDelegate.resultMapView = resultMapView
 
-        let segmentTravelMode = travelModes.map { (mode) -> SegmentioItem in
+        let segmentTravelMode = tripPlanRequest.travelModes.map { (mode) -> SegmentioItem in
             SegmentioItem(title: nil, image: KTripTheme.shared.imageFor(travelMode: mode).withRenderingMode(.alwaysOriginal))
         }
 
@@ -154,12 +152,14 @@ open class KTripPlannerSearchController : UIViewController,
                                   options:  KTheme.travelModeSegmentOptions)
 
         travelModeSegmented.valueDidChange = { segmentio, segmentIndex in
-            self.tripPlanRequest.travelMode = self.travelModes[segmentIndex]
-            self.dateSelectionStackView.isHidden = self.tripPlanRequest.travelMode != .transit
+            self.tripPlanRequest.selectedTravelMode = self.tripPlanRequest.travelModes[segmentIndex]
+            self.dateSelectionStackView.isHidden = self.tripPlanRequest.selectedTravelMode != .transit
             self.planTripIfValid()
         }
 
-        travelModeSegmented.selectedSegmentioIndex = travelModes.index(of: tripPlanRequest.travelMode) ?? 0
+        travelModeSegmented.selectedSegmentioIndex = tripPlanRequest.travelModes.index(of: tripPlanRequest.selectedTravelMode) ?? 0
+        travelModeSegmented.isHidden = tripPlanRequest.travelModes.count <= 1
+        
         dateModeSelection.setTitle("tripModePartenza".localizedString(), forSegmentAt: 0)
         dateModeSelection.setTitle("tripModeArrivo".localizedString(), forSegmentAt: 1)
         dateModeSelection.tintColor = self.navigationController?.navigationBar.tintColor
@@ -167,7 +167,7 @@ open class KTripPlannerSearchController : UIViewController,
         pickDateButton.setImage(UIImage(otpNamed:"ic_plan_date"), for: .normal)
         pickDateButton.setTitle(dateFormatter.string(from: tripPlanRequest.dateSelectedForPlan), for: .normal)
 
-        dateSelectionStackView.isHidden = tripPlanRequest.travelMode != .transit
+        dateSelectionStackView.isHidden = tripPlanRequest.selectedTravelMode != .transit
 
         dateModeSelection.selectedSegmentIndex = tripPlanRequest.datePlanChoice == .departure ? 0 : 1
 
@@ -458,7 +458,7 @@ open class KTripPlannerSearchController : UIViewController,
         resultMapView.removeAnnotations(resultMapView.annotations)
         resultMapView.removeOverlays(resultMapView.overlays)
 
-        if plannedTrip.routes.count == 1 || plannedTrip.request.travelMode != .transit || mode == .showSingleTransitWithBackNavigation {
+        if plannedTrip.routes.count == 1 || plannedTrip.request.selectedTravelMode != .transit || mode == .showSingleTransitWithBackNavigation {
             let route = index != nil ? plannedTrip.routes[index!.row] : plannedTrip.routes.first!
             routeMapDelegate.route = route
 
