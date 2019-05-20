@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CD312224225C7DFA00DC06C8 /* KNoElementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD312223225C7DFA00DC06C8 /* KNoElementCell.swift */; };
+		CD4C001B2292E286009727A7 /* KVehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C001A2292E286009727A7 /* KVehicleAnnotation.swift */; };
 		CDBB7790219C7EDC00122E7E /* InstagramKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB762A219C7EDA00122E7E /* InstagramKit.xcassets */; };
 		CDBB77C9219C7EDC00122E7E /* OCOTP.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB766B219C7EDA00122E7E /* OCOTP.xcassets */; };
 		CDBB77D4219C7EDC00122E7E /* OCFacebook.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB7677219C7EDA00122E7E /* OCFacebook.xcassets */; };
@@ -28,6 +29,7 @@
 		9710BFD62840C2E61E076164 /* Pods-KrakeProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KrakeProj.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KrakeProj/Pods-KrakeProj.debug.xcconfig"; sourceTree = "<group>"; };
 		BB0E5770986D47B311D3C917 /* Pods-KrakeProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KrakeProj.release.xcconfig"; path = "Pods/Target Support Files/Pods-KrakeProj/Pods-KrakeProj.release.xcconfig"; sourceTree = "<group>"; };
 		CD312223225C7DFA00DC06C8 /* KNoElementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNoElementCell.swift; sourceTree = "<group>"; };
+		CD4C001A2292E286009727A7 /* KVehicleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVehicleAnnotation.swift; sourceTree = "<group>"; };
 		CDBB760F219C7E8800122E7E /* Krake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Krake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBB7626219C7EDA00122E7E /* OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
 		CDBB7627219C7EDA00122E7E /* OAuth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OAuth.storyboard; sourceTree = "<group>"; };
@@ -565,6 +567,7 @@
 				CDBB7674219C7EDA00122E7E /* KTripPlannerProtocol.swift */,
 				CDBB7675219C7EDA00122E7E /* KOTPTripPlanner.swift */,
 				CDDA994922905720008B205B /* KBusTracker.swift */,
+				CD4C001A2292E286009727A7 /* KVehicleAnnotation.swift */,
 			);
 			path = OTP;
 			sourceTree = "<group>";
@@ -1361,6 +1364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD312224225C7DFA00DC06C8 /* KNoElementCell.swift in Sources */,
+				CD4C001B2292E286009727A7 /* KVehicleAnnotation.swift in Sources */,
 				CDDA994A22905720008B205B /* KBusTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

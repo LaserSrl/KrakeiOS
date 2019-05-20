@@ -9,22 +9,25 @@
 import Foundation
 import MapKit
 
-public typealias KBusTrackerComlpetion = (CLLocationCoordinate2D?) -> Void
-
 public protocol KBusTrackerLoader
 {
-    func getVehiclePostion(for line: BusLine, with busTracker: KBusTracker, completion: KBusTrackerComlpetion?)
+    func getVehiclePostion(for line: BusLine, with busTracker: KBusTracker, completion: KBusTracker.Completion?)
 }
 
 public class KBusTracker: NSObject
 {
-    public static var busTrackerLoader: KBusTrackerLoader?
+    public typealias Completion = (CLLocationCoordinate2D?) -> Void
+    public static var loader: KBusTrackerLoader? = nil
+    
     private let line: BusLine
-    private var completion: KBusTrackerComlpetion?
+    private var completion: Completion?
     private var timer: Timer? = nil
     private let timeInterval = 3.0
     
     required init?(line: BusLine) {
+        if KBusTracker.loader == nil{
+            return nil
+        }
         self.line = line
         super.init()
     }
@@ -34,7 +37,7 @@ public class KBusTracker: NSObject
         KLog("RELEASED")
     }
     
-    public func startTrack(completion: @escaping KBusTrackerComlpetion)
+    public func startTrack(completion: @escaping Completion)
     {
         self.completion = completion
         timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { [weak self](timer) in
@@ -57,47 +60,7 @@ public class KBusTracker: NSObject
     
     private func getVehiclePosition()
     {
-        KBusTracker.busTrackerLoader?.getVehiclePostion(for: line, with: self, completion: completion)
+        KBusTracker.loader?.getVehiclePostion(for: line, with: self, completion: completion)
     }
 }
 
-public class KVehicleAnnotation: MKPointAnnotation, AnnotationProtocol {
-    
-    let line: BusLine!
-    
-    required init(_ line: BusLine!) {
-        self.line = line
-        super.init()
-    }
-    
-    public func annotationIdentifier() -> String{
-        return nameAnnotation() + (color().description)
-    }
-    
-    public func termIconIdentifier() -> String? {
-        return nil
-    }
-    
-    public func boxedText() -> String? {
-        return nil
-    }
-    
-    public func color() -> UIColor {
-        return KTheme.current.color(.alternate)
-    }
-    
-    public func nameAnnotation() -> String {
-        return "vehicle"
-    }
-    
-    public func imageInset() -> UIImage? {
-        if let mode = line.routeInfo?.mode{
-            return KTripTheme.shared.imageFor(vehicleType: mode)
-        }
-        return UIImage(otpNamed: "pin_bus")
-    }
-    
-    override public func value(forUndefinedKey key: String) -> Any? {
-        return nil
-    }
-}
