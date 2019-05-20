@@ -191,11 +191,18 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
 
     open override func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil }
+        
         let pinColor: UIColor? = selectedLine?.routeInfo?.color
-        let color: UIColor? = isSourceStopAnnotation(annotation) ? pinColor : .lightGray
+        let color: UIColor? = isSourceStopAnnotation(annotation) || annotation is KVehicleAnnotation ? pinColor : .lightGray
         let pinView =
             mapView.dequeueReusableAnnotationViewWithAnnotation(annotation, forcedColor: color) ?? KAnnotationView(annotation: annotation, forcedColor: color)
-        pinView.addNavigationButton()
+        if annotation is KVehicleAnnotation
+        {
+            pinView.canShowCallout = false
+        }else{
+            pinView.addNavigationButton()
+        }
+        
         return pinView
     }
 
@@ -334,7 +341,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         mapView.removeOverlays(mapView.overlays)
         selectedLine = line
         MBProgressHUD.showAdded(to: view, animated: true)
-        KOpenTripPlannerLoader.shared.retrieveStops(for: line.patternId, with: { [weak self](result) in
+        KOpenTripPlannerLoader.shared.retrieveStops(for: line, with: { [weak self](result) in
             guard let strongSelf = self else { return }
             if let stops = result, !stops.isEmpty {
                 var retrievedStops = [KOTPStopItem]()
@@ -352,7 +359,6 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
             MBProgressHUD.hide(for: strongSelf.view, animated: true)
         })
         
-        
         KOpenTripPlannerLoader.shared.retrievePathPoints(for: line, with: { [weak self](line, polyline) in
             
             if let sSelf = self, let polyline = polyline {
@@ -367,6 +373,23 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                 }
             }
         })
+        
+        if let vehicleAnnotation = vehicleAnnotation{
+            mapView.removeAnnotation(vehicleAnnotation)
+        }
+        vehicleAnnotation = KVehicleAnnotation()
+        mapView.addAnnotation(vehicleAnnotation)
+        busTracker = KBusTracker(line: line)
+        busTracker?.startTrack(completion: { [weak self](location) in
+            if let location = location{
+                UIView.animate(withDuration: 0.5, animations: {
+                    self?.vehicleAnnotation.coordinate = location
+                })
+            }
+        })
     }
-
+    
+    var busTracker: KBusTracker?
+    var vehicleAnnotation: KVehicleAnnotation!
+    
 }

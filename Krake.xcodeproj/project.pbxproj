@@ -20,6 +20,7 @@
 		CDBB7862219C7EDC00122E7E /* OGLMapperConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDBB772A219C7EDB00122E7E /* OGLMapperConfiguration.plist */; };
 		CDBB7870219C7EDC00122E7E /* OrchardMapper.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB773E219C7EDB00122E7E /* OrchardMapper.xcassets */; };
 		CDBB78B7219C7EFE00122E7E /* Krake.podspec in Resources */ = {isa = PBXBuildFile; fileRef = CDBB78B5219C7EFE00122E7E /* Krake.podspec */; };
+		CDDA994A22905720008B205B /* KBusTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDA994922905720008B205B /* KBusTracker.swift */; };
 		DE6E637752B7626A84EC12E6 /* Pods_KrakeProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F328208C2D9FF7D00F148720 /* Pods_KrakeProj.framework */; };
 /* End PBXBuildFile section */
 
@@ -342,6 +343,7 @@
 		CDBB778B219C7EDC00122E7E /* EnumerationFieldProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumerationFieldProtocol.swift; sourceTree = "<group>"; };
 		CDBB778C219C7EDC00122E7E /* ContentItemWithShareLinkPart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItemWithShareLinkPart.swift; sourceTree = "<group>"; };
 		CDBB78B5219C7EFE00122E7E /* Krake.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Krake.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CDDA994922905720008B205B /* KBusTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBusTracker.swift; sourceTree = "<group>"; };
 		F328208C2D9FF7D00F148720 /* Pods_KrakeProj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KrakeProj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -562,6 +564,7 @@
 				CDBB7673219C7EDA00122E7E /* KDurationFormatter.swift */,
 				CDBB7674219C7EDA00122E7E /* KTripPlannerProtocol.swift */,
 				CDBB7675219C7EDA00122E7E /* KOTPTripPlanner.swift */,
+				CDDA994922905720008B205B /* KBusTracker.swift */,
 			);
 			path = OTP;
 			sourceTree = "<group>";
@@ -1358,6 +1361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD312224225C7DFA00DC06C8 /* KNoElementCell.swift in Sources */,
+				CDDA994A22905720008B205B /* KBusTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

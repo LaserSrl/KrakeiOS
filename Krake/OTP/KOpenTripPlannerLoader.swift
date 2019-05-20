@@ -100,10 +100,10 @@ public class KOpenTripPlannerLoader: KOTPLoader {
         
     }
     
-    public func retrieveStops(for patternId: String! ,with completion: @escaping ([KOTPStop]?) -> Void)
+    public func retrieveStops(for line: BusLine ,with completion: @escaping ([KOTPStop]?) -> Void)
     {
         stopsPattern?.cancel()
-        stopsPattern = manager.get("index/patterns/" + patternId + "/stops?detail=long&refs=true",
+        stopsPattern = manager.get("index/patterns/" + line.patternId + "/stops?detail=long&refs=true",
                                 parameters: nil,
                                 progress: nil,
                                 success: { (task, result) in
