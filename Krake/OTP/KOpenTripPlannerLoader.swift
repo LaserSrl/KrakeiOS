@@ -24,7 +24,7 @@ public class KOpenTripPlannerLoader: KOTPLoader {
     private var stopsPattern: URLSessionDataTask? = nil
     private var routesCached: [KOTPRoute]?
     
-    public func retrievePathPoints(for line: BusLine, with completion: @escaping (BusLine, MKPolyline?) -> Void)
+    public func retrievePathPoints(for line: KBusLine, with completion: @escaping (KBusLine, MKPolyline?) -> Void)
     {
         geometryTask?.cancel()
         geometryTask = manager.get(String(format: "index/patterns/%@/geometry",line.patternId),
@@ -100,7 +100,7 @@ public class KOpenTripPlannerLoader: KOTPLoader {
         
     }
     
-    public func retrieveStops(for line: BusLine ,with completion: @escaping ([KOTPStop]?) -> Void)
+    public func retrieveStops(for line: KBusLine ,with completion: @escaping ([KOTPStop]?) -> Void)
     {
         stopsPattern?.cancel()
         stopsPattern = manager.get("index/patterns/" + line.patternId + "/stops?detail=long&refs=true",

@@ -28,11 +28,11 @@ public class KOTPStopDetailViewCell: UITableViewCell {
 
 }
 
-open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewController<BusLine> {
+open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewController<KBusLine> {
 
     public var sourceStop: KOTPStopItem?
 
-    private var selectedLine: BusLine? = nil
+    private var selectedLine: KBusLine? = nil
     private var lineOverlay: MKPolyline? = nil
 
     private lazy var sourceRegex: NSRegularExpression? = try? NSRegularExpression(
@@ -43,7 +43,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         options: .caseInsensitive)
     private lazy var calendar = Calendar(identifier: .gregorian)
     
-    public override var items: [BusLine]? {
+    public override var items: [KBusLine]? {
         didSet {
             // Verifico se sono presenti nuove linee.
             if items?.isEmpty ?? true {
@@ -245,7 +245,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
 
     private func prepareLines(from patterns: [PatternProtocol]) {
         let numberFormatter = NumberFormatter()
-        var hintableLines = [BusLine]()
+        var hintableLines = [KBusLine]()
         var numberOfLinesFromPattern = 0
         for pattern in patterns {
             if let step = self.step(from: pattern.descriptionText,
@@ -272,7 +272,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                                 return pattern.patternId!.starts(with: route.id)
                             }).first
                             
-                            let line = BusLine(lineNumber: step.id,
+                            let line = KBusLine(lineNumber: step.id,
                                                destination: step.destination,
                                                scheduledArrival: scheduledArrival,
                                                patternId: pattern.patternId!,
@@ -337,7 +337,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
 
     // MARK: - Stops loading
 
-    private func loadStops(for line: BusLine) {
+    private func loadStops(for line: KBusLine) {
         mapView.removeOverlays(mapView.overlays)
         selectedLine = line
         MBProgressHUD.showAdded(to: view, animated: true)

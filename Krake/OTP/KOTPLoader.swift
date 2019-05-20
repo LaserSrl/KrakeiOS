@@ -12,8 +12,8 @@ import MapKit
 
 public protocol KOTPLoader
 {
-    func retrievePathPoints(for line: BusLine, with completion: @escaping (BusLine, MKPolyline?) -> Void)
+    func retrievePathPoints(for line: KBusLine, with completion: @escaping (KBusLine, MKPolyline?) -> Void)
     func retrieveRoutesInfos(with completion: @escaping ([KOTPRoute]?) -> Void)
     func retrieveStopTimes(for stopId: String! ,with completion: @escaping ([KOTPStopTimes]?) -> Void)
-    func retrieveStops(for line: BusLine ,with completion: @escaping ([KOTPStop]?) -> Void)
+    func retrieveStops(for line: KBusLine ,with completion: @escaping ([KOTPStop]?) -> Void)
 }

@@ -11,7 +11,7 @@ import MapKit
 
 public protocol KBusTrackerLoader
 {
-    func getVehiclePostion(for line: BusLine, with busTracker: KBusTracker, completion: KBusTracker.Completion?)
+    func getVehiclePostion(for line: KBusLine, with busTracker: KBusTracker, completion: KBusTracker.Completion?)
 }
 
 public class KBusTracker: NSObject
@@ -19,12 +19,12 @@ public class KBusTracker: NSObject
     public typealias Completion = (CLLocationCoordinate2D?) -> Void
     public static var loader: KBusTrackerLoader? = nil
     
-    private let line: BusLine
+    private let line: KBusLine
     private var completion: Completion?
     private var timer: Timer? = nil
     private let timeInterval = 3.0
     
-    required init?(line: BusLine) {
+    required init?(line: KBusLine) {
         if KBusTracker.loader == nil{
             return nil
         }

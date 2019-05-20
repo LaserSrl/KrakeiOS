@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class BusLine {
+open class KBusLine {
 
     public let lineNumber: String
     public let destination: String

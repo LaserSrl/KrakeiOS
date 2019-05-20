@@ -11,9 +11,9 @@ import MapKit
 
 public class KVehicleAnnotation: MKPointAnnotation, AnnotationProtocol {
     
-    let line: BusLine!
+    let line: KBusLine!
     
-    required init(_ line: BusLine!) {
+    required init(_ line: KBusLine!) {
         self.line = line
         super.init()
     }
