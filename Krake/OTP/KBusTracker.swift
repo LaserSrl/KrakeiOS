@@ -11,8 +11,14 @@ import MapKit
 
 public typealias KBusTrackerComlpetion = (CLLocationCoordinate2D?) -> Void
 
+public protocol KBusTrackerLoader
+{
+    func getVehiclePostion(for line: BusLine, with busTracker: KBusTracker, completion: KBusTrackerComlpetion?)
+}
+
 public class KBusTracker: NSObject
 {
+    public static var busTrackerLoader: KBusTrackerLoader?
     private let line: BusLine
     private var completion: KBusTrackerComlpetion?
     private var timer: Timer? = nil
@@ -25,15 +31,16 @@ public class KBusTracker: NSObject
     
     deinit {
         stopTrack()
+        KLog("RELEASED")
     }
     
     public func startTrack(completion: @escaping KBusTrackerComlpetion)
     {
         self.completion = completion
-        getVehiclePosition()
         timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { [weak self](timer) in
             self?.getVehiclePosition()
         })
+        getVehiclePosition()
     }
     
     public func isTracking() -> Bool
@@ -50,19 +57,18 @@ public class KBusTracker: NSObject
     
     private func getVehiclePosition()
     {
-        let manager = AFHTTPSessionManager(baseURL: URL(string: "http://bigosoluzions.url/"))
-        manager.get("tripId="+(line.routeInfo?.id ?? ""), parameters: nil, progress: nil, success: { (task, object) in
-            self.completion?(CLLocationCoordinate2D(latitude: 0, longitude: 0))
-        }) { (task, error) in
-            KLog(error.localizedDescription)
-        }
+        KBusTracker.busTrackerLoader?.getVehiclePostion(for: line, with: self, completion: completion)
     }
-    
-    
-    
 }
 
 public class KVehicleAnnotation: MKPointAnnotation, AnnotationProtocol {
+    
+    let line: BusLine!
+    
+    required init(_ line: BusLine!) {
+        self.line = line
+        super.init()
+    }
     
     public func annotationIdentifier() -> String{
         return nameAnnotation() + (color().description)
@@ -85,6 +91,9 @@ public class KVehicleAnnotation: MKPointAnnotation, AnnotationProtocol {
     }
     
     public func imageInset() -> UIImage? {
+        if let mode = line.routeInfo?.mode{
+            return KTripTheme.shared.imageFor(vehicleType: mode)
+        }
         return UIImage(otpNamed: "pin_bus")
     }
     

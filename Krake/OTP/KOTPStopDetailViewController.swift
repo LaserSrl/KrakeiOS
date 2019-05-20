@@ -377,14 +377,30 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         if let vehicleAnnotation = vehicleAnnotation{
             mapView.removeAnnotation(vehicleAnnotation)
         }
-        vehicleAnnotation = KVehicleAnnotation()
-        mapView.addAnnotation(vehicleAnnotation)
-        busTracker = KBusTracker(line: line)
+        let bus = KBusTracker(line: line)
+        busTracker = bus
         busTracker?.startTrack(completion: { [weak self](location) in
-            if let location = location{
-                UIView.animate(withDuration: 0.5, animations: {
-                    self?.vehicleAnnotation.coordinate = location
-                })
+            if let location = location,
+                location.latitude != 0,
+                location.longitude != 0
+            {
+                if self?.vehicleAnnotation == nil
+                {
+                    let vehicleAnnotation = KVehicleAnnotation(line)
+                    vehicleAnnotation.coordinate = location
+                    self?.vehicleAnnotation = vehicleAnnotation
+                    self?.mapView.addAnnotation(vehicleAnnotation)
+                }
+                else
+                {
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self?.vehicleAnnotation.coordinate = location
+                    })
+                }
+            }else{
+                if let vehicleAnnotation = self?.vehicleAnnotation{
+                    self?.mapView.removeAnnotation(vehicleAnnotation)
+                }
             }
         })
     }
