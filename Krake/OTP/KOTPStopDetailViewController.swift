@@ -376,7 +376,9 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         
         if let vehicleAnnotation = vehicleAnnotation{
             mapView.removeAnnotation(vehicleAnnotation)
+            self.vehicleAnnotation = nil
         }
+        busTracker?.stopTrack()
         let bus = KBusTracker(line: line)
         busTracker = bus
         busTracker?.startTrack(completion: { [weak self](location) in
@@ -400,6 +402,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
             }else{
                 if let vehicleAnnotation = self?.vehicleAnnotation{
                     self?.mapView.removeAnnotation(vehicleAnnotation)
+                    self?.vehicleAnnotation = nil
                 }
             }
         })
