@@ -144,15 +144,15 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         let arrivalTimeDescription: String
         if arrivalTimeSeconds > 0 && arrivalTimeSeconds < 60 * 60 {
             arrivalTimeDescription =
-                String(format: "%0.f minuti", arrivalTimeSeconds / 60)
+                String(format: "%0.f minuti".localizedString(), arrivalTimeSeconds / 60)
         } else {
             let dateFormatter = DateFormatter()
             dateFormatter.timeStyle = .short
             arrivalTimeDescription =
-                String(format: "ore %@", dateFormatter.string(from: line.scheduledArrival))
+                String(format: "ore %@".localizedString(), dateFormatter.string(from: line.scheduledArrival))
         }
         // Customizzo la cella sulla base delle informazioni ricevute.
-        cell.titleLabel.text = String(format: "Linea %@ verso %@",
+        cell.titleLabel.text = String(format: "Linea %@ verso %@".localizedString(),
                                       line.lineNumber, line.destination)
         cell.arrivalLabel.text = arrivalTimeDescription
         

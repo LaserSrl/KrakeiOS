@@ -217,6 +217,11 @@
 "please_waiting" = "PLEASE WAIT";
 "trip_route" = "We are planning your travel";
 
+"%0.f minuti" = "%0.f minutes";
+"ore %@" = "hour %@";
+"Linea %@ verso %@" = "Line %@ to %@";
+"Percorso più veloce" = "Fastest route";
+
 /*
  GameQuiz
  */
