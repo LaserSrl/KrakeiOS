@@ -217,6 +217,11 @@
 "please_waiting" = "ATTENDERE PREGO";
 "trip_route" = "Stiamo calcolando il percorso";
 
+"%0.f minuti" = "%0.f minuti";
+"ore %@" = "ore %@";
+"Linea %@ verso %@" = "Linea %@ verso %@";
+"Percorso più veloce" = "Percorso più veloce";
+
 /*
  GameQuiz
  */

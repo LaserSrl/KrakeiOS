@@ -14,6 +14,11 @@ public class SingleModeHeaderCell : UITableViewCell
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var planTypeLabel: UILabel!
+    
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        planTypeLabel.text = "Percorso più veloce".localizedString()
+    }
 }
 
 public class SingleModeStepCell : UITableViewCell

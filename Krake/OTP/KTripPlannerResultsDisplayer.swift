@@ -119,18 +119,17 @@ open class TransitsDatasource: NSObject, UITableViewDataSource, ResultTableDispl
 
         let transits = route.steps.filter({return $0 is KTransitStep}) as! [KTransitStep]
 
-        if let startDate = transits.first?.startTime
+        let formattedStartDate : String
+        if route.startTime.isToday()
         {
-            let formattedStartDate : String
-            if startDate.isToday() {
-                formattedStartDate = timeFormatter.string(from: startDate)
-            }
-            else {
-                formattedStartDate = dateAndTimeFormatter.string(from: startDate)
-            }
-            
-            cell.dateLabel.text = String(format: "%@ - %@", formattedStartDate, timeFormatter.string(from: (transits.last?.endTime)!))
+            formattedStartDate = timeFormatter.string(from: route.startTime)
         }
+        else
+        {
+            formattedStartDate = dateAndTimeFormatter.string(from: route.startTime)
+        }
+        cell.dateLabel.text = String(format: "%@ - %@", formattedStartDate, timeFormatter.string(from: route.endTime))
+        
         KTripTheme.shared.applyTheme(toLabel: cell.dateLabel, type: .date)
         KTripTheme.shared.applyTheme(toLabel: cell.durationLabel, type: .distance)
 
@@ -139,6 +138,7 @@ open class TransitsDatasource: NSObject, UITableViewDataSource, ResultTableDispl
             child.removeFromSuperview()
         }
 
+        if transits.count > 0 {
         for transit in transits {
             let imageView = UIImageView()
             imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -183,6 +183,28 @@ open class TransitsDatasource: NSObject, UITableViewDataSource, ResultTableDispl
                 name.textColor = color.constrastTextColor()
             }
 
+            cell.partsStackView.addArrangedSubview(imageView)
+            cell.partsStackView.addArrangedSubview(name)
+        }
+        }else if let transit = route.steps.first as? KStepGroup{
+            let imageView = UIImageView()
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            let name = UILabel()
+            imageView.addConstraint(NSLayoutConstraint(item: imageView,
+                                                       attribute: .height,
+                                                       relatedBy: .equal, toItem: nil, attribute: .notAnAttribute,
+                                                       multiplier: 1, constant: 25))
+            
+            imageView.addConstraint(NSLayoutConstraint(item: imageView,
+                                                       attribute: .height,
+                                                       relatedBy: .equal, toItem: imageView, attribute: .width,
+                                                       multiplier: 1, constant: 0))
+            name.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "[name(>=18)]", options: .alignAllCenterX, metrics: nil, views: ["name":name]))
+            name.textAlignment = .center
+            name.text = transit.instruction.string
+            imageView.image = KTripTheme.shared.imageFor(travelMode: transit.travelMode)
+            imageView.setContentHuggingPriority(UILayoutPriority.priority(1000.0), for: .horizontal)
+            name.setContentHuggingPriority(UILayoutPriority.priority(1000.0), for: .horizontal)
             cell.partsStackView.addArrangedSubview(imageView)
             cell.partsStackView.addArrangedSubview(name)
         }
