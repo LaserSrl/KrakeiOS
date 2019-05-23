@@ -158,7 +158,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         
         cell.busImageView.image = KTripTheme.shared.imageFor(vehicleType: line.routeInfo?.mode ?? .other).withRenderingMode(.alwaysTemplate)
         cell.busImageView.backgroundColor = line.routeInfo?.color ?? UIColor.tint
-        cell.busImageView.tintColor = UIColor.white
+        cell.busImageView.tintColor = cell.busImageView.backgroundColor?.constrastTextColor()
         return cell
     }
 

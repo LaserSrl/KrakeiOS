@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="U4d-6b-xFJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="U4d-6b-xFJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -390,6 +390,63 @@
                 </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1455.9220389805098" y="1717.5999999999999"/>
+        </scene>
+        <!--Routes Table View Controller-->
+        <scene sceneID="Srh-Z0-T1X">
+            <objects>
+                <tableViewController storyboardIdentifier="KOTPRoutesTableViewController" id="BGl-jY-GyU" customClass="KOTPRoutesTableViewController" customModule="Krake" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="8RF-CP-gn4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="routeCell" id="8XA-VM-M9M" customClass="KOTPStopDetailViewCell" customModule="Krake">
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8XA-VM-M9M" id="1gl-mz-E3u">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="99" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X2p-ya-5Hh">
+                                            <rect key="frame" x="4" y="16" width="28" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="X2p-ya-5Hh" secondAttribute="height" multiplier="1:1" id="NOR-bp-dYS"/>
+                                                <constraint firstAttribute="height" constant="28" id="UAY-mb-Sb5"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0f-Vx-KJK">
+                                            <rect key="frame" x="40" y="8" width="327" height="43.5"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="X2p-ya-5Hh" secondAttribute="bottom" constant="4" id="0lQ-eL-LvM"/>
+                                        <constraint firstItem="X2p-ya-5Hh" firstAttribute="centerY" secondItem="1gl-mz-E3u" secondAttribute="centerY" id="6Mp-17-ZvI"/>
+                                        <constraint firstItem="P0f-Vx-KJK" firstAttribute="leading" secondItem="X2p-ya-5Hh" secondAttribute="trailing" constant="8" id="DA1-5l-eFZ"/>
+                                        <constraint firstItem="X2p-ya-5Hh" firstAttribute="leading" secondItem="1gl-mz-E3u" secondAttribute="leading" constant="4" id="SsY-cz-qpl"/>
+                                        <constraint firstItem="X2p-ya-5Hh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1gl-mz-E3u" secondAttribute="top" constant="4" id="X8z-fT-1Jl"/>
+                                        <constraint firstItem="P0f-Vx-KJK" firstAttribute="top" secondItem="1gl-mz-E3u" secondAttribute="top" constant="8" id="d4h-DT-OuS"/>
+                                        <constraint firstAttribute="bottom" secondItem="P0f-Vx-KJK" secondAttribute="bottom" constant="8" id="ndY-FH-NLl"/>
+                                        <constraint firstAttribute="trailing" secondItem="P0f-Vx-KJK" secondAttribute="trailing" constant="8" id="u8p-SY-55M"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="busImageView" destination="X2p-ya-5Hh" id="ATl-Tb-iMI"/>
+                                    <outlet property="titleLabel" destination="P0f-Vx-KJK" id="h4O-vV-hNC"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="BGl-jY-GyU" id="hZz-xM-zha"/>
+                            <outlet property="delegate" destination="BGl-jY-GyU" id="F87-81-EAY"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p8J-D4-jlq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2264" y="1618"/>
         </scene>
         <!--Trip Planner Search Controller-->
         <scene sceneID="qYH-ak-mEg">
