@@ -11,7 +11,8 @@ import MapKit
 
 public protocol KBusTrackerLoader
 {
-    func getVehiclePostion(for line: KBusLine, with busTracker: KBusTracker, completion: KBusTracker.Completion?)
+    func currentVehiclePostion(for line: KBusLine,
+                           with tracker: KBusTracker)
 }
 
 public class KBusTracker: NSObject
@@ -20,12 +21,12 @@ public class KBusTracker: NSObject
     public static var loader: KBusTrackerLoader? = nil
     
     private let line: KBusLine
-    private var completion: Completion?
+    private var callerCompletion: Completion?
     private var timer: Timer? = nil
     private let timeInterval = 3.0
     
     required init?(line: KBusLine) {
-        if KBusTracker.loader == nil{
+        if KBusTracker.loader == nil {
             return nil
         }
         self.line = line
@@ -39,7 +40,7 @@ public class KBusTracker: NSObject
     
     public func startTrack(completion: @escaping Completion)
     {
-        self.completion = completion
+        self.callerCompletion = completion
         timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { [weak self](timer) in
             self?.getVehiclePosition()
         })
@@ -48,19 +49,24 @@ public class KBusTracker: NSObject
     
     public func isTracking() -> Bool
     {
-        return completion != nil
+        return callerCompletion != nil
     }
     
     public func stopTrack()
     {
-        completion = nil
+        callerCompletion = nil
         timer?.invalidate()
         timer = nil
     }
     
     private func getVehiclePosition()
     {
-        KBusTracker.loader?.getVehiclePostion(for: line, with: self, completion: completion)
+        KBusTracker.loader?.currentVehiclePostion(for: line, with: self)
+    }
+
+    public func updatedPosition(loader: KBusTrackerLoader, coordinates: CLLocationCoordinate2D?, error: Error?)
+    {
+        callerCompletion?(coordinates)
     }
 }
 

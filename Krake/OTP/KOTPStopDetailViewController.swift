@@ -276,6 +276,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                                                destination: step.destination,
                                                scheduledArrival: scheduledArrival,
                                                patternId: pattern.patternId!,
+                                               tripId: stopTime.tripId!,
                                                routeInfo: routeInfo)
 
                             hintableLines.append(line)

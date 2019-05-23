@@ -16,5 +16,6 @@ public protocol StopTimeProtocol
     var scheduledArrival: NSNumber? { get }
     var realtimeDeparture: NSNumber? { get }
     var scheduledDeparture: NSNumber? { get }
+    var tripId: String? { get }
     
 }

@@ -14,17 +14,20 @@ open class KBusLine {
     public let destination: String
     public let scheduledArrival: Date
     public let patternId: String
+    public let tripId: String
     public let routeInfo: KOTPRoute?
 
     public init(lineNumber: String,
                 destination: String,
          scheduledArrival: Date,
          patternId: String,
+         tripId: String,
          routeInfo: KOTPRoute?) {
         self.lineNumber = lineNumber
         self.destination = destination
         self.scheduledArrival = scheduledArrival
         self.patternId = patternId
+        self.tripId = tripId
         self.routeInfo = routeInfo
     }
 }
