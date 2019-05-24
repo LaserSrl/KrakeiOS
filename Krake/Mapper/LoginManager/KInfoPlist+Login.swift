@@ -47,5 +47,11 @@ extension KInfoPlist
                 let userHaveToRegisterWithSMS = KLoginManager.shared.delegate?.userHaveToRegisterWithSMS ?? Bundle.loginAndRegistrationKrakeSettings()["UserHaveToRegisterWithSMS"]?.boolValue ?? false
                 return userHaveToRegisterWithSMS
         }()
+        
+        @objc public static let canUserCancelLogin: Bool =
+            {
+                let canUserCancelLogin = KLoginManager.shared.delegate?.canUserCancelLogin ?? true
+                return canUserCancelLogin
+        }()
     }
 }

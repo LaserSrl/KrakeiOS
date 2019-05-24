@@ -15,6 +15,7 @@ public protocol KLoginManagerDelegate: KeyValueCodingProtocol{
     var canUserLogout: Bool {get}
     var canUserRecoverPasswordWithSMS: Bool {get}
     var canUserRecoverPassword: Bool {get}
+    var canUserCancelLogin: Bool {get}
 
     var userHaveToRegisterWithSMS: Bool {get}
     var socialButtons: [UIBarButtonItem]? {get}
@@ -40,6 +41,10 @@ public extension KLoginManagerDelegate{
     
     var canUserRecoverPasswordWithSMS: Bool{
         return false
+    }
+    
+    var canUserCancelLogin: Bool{
+        return true
     }
     
     var userHaveToRegisterWithSMS: Bool{
@@ -193,9 +198,8 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
     
     @objc public func userClosePresentedLoginViewController(){
         makeCompletion(false, response: nil, error: nil)
-        loginViewController?.dismiss(animated: true, completion: {
-            self.loginViewController = nil
-        })
+        loginViewController?.dismiss(animated: true, completion: nil)
+        loginViewController = nil
     }
 
     @objc public func objc_login(with providerName: String, params: [AnyHashable : Any], saveTokenParams: Bool){
