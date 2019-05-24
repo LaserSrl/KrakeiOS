@@ -352,8 +352,7 @@ public class KOTPTimes: EVObject, StopTimeProtocol
     public var realtimeState: String?
     public var serviceDay: NSNumber?
     public var tripId: String?
-    public var headsign: String?
-    
+    public var headsign: String?    
 }
 
 public class KOTPStop: EVObject, KOTPStopItem

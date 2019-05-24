@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class KOTPRoutesTableViewController: UITableViewController, UISearchControllerDelegate, UISearchResultsUpdating {
+public class KOTPRoutesTableViewController: UITableViewController, UISearchResultsUpdating {
 
     public static func newViewController() -> KOTPRoutesTableViewController{
         let bundle = Bundle(url: Bundle(for: KOTPRoutesTableViewController.self).url(forResource: "OTP", withExtension: "bundle")!)
@@ -16,12 +16,9 @@ public class KOTPRoutesTableViewController: UITableViewController, UISearchContr
         return storyboard.instantiateViewController(withIdentifier: "KOTPRoutesTableViewController") as! KOTPRoutesTableViewController
     }
 
-    private var filter: String? = nil
-
-
     private var allRoutes = [KOTPRoute]() {
         didSet {
-            filterRoutes(filter)
+            filterRoutes(nil)
         }
     }
     private var filteredRoutes = [KOTPRoute]() {
@@ -39,7 +36,6 @@ public class KOTPRoutesTableViewController: UITableViewController, UISearchContr
         if #available(iOS 11.0, *)
         {
             searchController = UISearchController(searchResultsController: nil)
-            searchController.delegate = self
             searchController.searchResultsUpdater = self
             self.definesPresentationContext = true
             searchController.obscuresBackgroundDuringPresentation = false
@@ -66,8 +62,16 @@ public class KOTPRoutesTableViewController: UITableViewController, UISearchContr
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "showStops",
+            let destination = segue.destination as? KOTPStopsInRouteViewController,
+            let cell = sender as? UITableViewCell,
+        let indexPath = tableView.indexPath(for: cell)
+        {
+        let route = filteredRoutes[indexPath.row]
+           destination.route = route
+        }
     }
 
     // MARK: - UISearchResultsUpdating

@@ -264,7 +264,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                     }
 
                     if let stopTimeScheduledArrival = stopArrival,
-                        let scheduledArrival = minutes(until: stopTimeScheduledArrival) {
+                        let scheduledArrival = stopTimeScheduledArrival.otpSecondsToDate() {
                         let secondsUntilArrival = scheduledArrival.timeIntervalSinceNow
                         if secondsUntilArrival > 0 && secondsUntilArrival < 121 * 60 {
                             

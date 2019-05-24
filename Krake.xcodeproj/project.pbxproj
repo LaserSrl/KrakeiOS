@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D06849D2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D06849C2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift */; };
+		5D06849F2296E32400101D4C /* KOTPStopTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D06849E2296E32400101D4C /* KOTPStopTimesViewController.swift */; };
 		5D1F63FE2296A81800B671FF /* RoutesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F63FD2296A81800B671FF /* RoutesTableViewController.swift */; };
+		5D5E17C62297ED17000851CC /* Number+OtpDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5E17C52297ED17000851CC /* Number+OtpDate.swift */; };
+		5D5FE48B229840660080E4E3 /* KOtpStopTimesDateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5FE48A229840660080E4E3 /* KOtpStopTimesDateHeader.swift */; };
+		5D5FE48D2298406F0080E4E3 /* KOtpStopTimesDateHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D5FE48C2298406F0080E4E3 /* KOtpStopTimesDateHeader.xib */; };
 		CD312224225C7DFA00DC06C8 /* KNoElementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD312223225C7DFA00DC06C8 /* KNoElementCell.swift */; };
 		CD4C001B2292E286009727A7 /* KVehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C001A2292E286009727A7 /* KVehicleAnnotation.swift */; };
 		CDBB7790219C7EDC00122E7E /* InstagramKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB762A219C7EDA00122E7E /* InstagramKit.xcassets */; };
@@ -27,7 +32,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D06849C2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStopsInRouteViewController.swift; sourceTree = "<group>"; };
+		5D06849E2296E32400101D4C /* KOTPStopTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStopTimesViewController.swift; sourceTree = "<group>"; };
 		5D1F63FD2296A81800B671FF /* RoutesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesTableViewController.swift; sourceTree = "<group>"; };
+		5D5E17C52297ED17000851CC /* Number+OtpDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+OtpDate.swift"; sourceTree = "<group>"; };
+		5D5FE48A229840660080E4E3 /* KOtpStopTimesDateHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOtpStopTimesDateHeader.swift; sourceTree = "<group>"; };
+		5D5FE48C2298406F0080E4E3 /* KOtpStopTimesDateHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KOtpStopTimesDateHeader.xib; sourceTree = "<group>"; };
 		9710BFD62840C2E61E076164 /* Pods-KrakeProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KrakeProj.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KrakeProj/Pods-KrakeProj.debug.xcconfig"; sourceTree = "<group>"; };
 		BB0E5770986D47B311D3C917 /* Pods-KrakeProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KrakeProj.release.xcconfig"; path = "Pods/Target Support Files/Pods-KrakeProj/Pods-KrakeProj.release.xcconfig"; sourceTree = "<group>"; };
 		CD312223225C7DFA00DC06C8 /* KNoElementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNoElementCell.swift; sourceTree = "<group>"; };
@@ -544,6 +554,7 @@
 		CDBB765D219C7EDA00122E7E /* OTP */ = {
 			isa = PBXGroup;
 			children = (
+				5D06849C2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift */,
 				CDBB765E219C7EDA00122E7E /* KBusLine.swift */,
 				CDBB765F219C7EDA00122E7E /* KTripRouteMapDelegate.swift */,
 				CDBB7660219C7EDA00122E7E /* KOTPRouterRectLoader.swift */,
@@ -571,6 +582,10 @@
 				CDDA994922905720008B205B /* KBusTracker.swift */,
 				CD4C001A2292E286009727A7 /* KVehicleAnnotation.swift */,
 				5D1F63FD2296A81800B671FF /* RoutesTableViewController.swift */,
+				5D06849E2296E32400101D4C /* KOTPStopTimesViewController.swift */,
+				5D5E17C52297ED17000851CC /* Number+OtpDate.swift */,
+				5D5FE48A229840660080E4E3 /* KOtpStopTimesDateHeader.swift */,
+				5D5FE48C2298406F0080E4E3 /* KOtpStopTimesDateHeader.xib */,
 			);
 			path = OTP;
 			sourceTree = "<group>";
@@ -1155,6 +1170,7 @@
 				CDBB77C9219C7EDC00122E7E /* OCOTP.xcassets in Resources */,
 				CDBB77ED219C7EDC00122E7E /* Images.xcassets in Resources */,
 				CDBB77D4219C7EDC00122E7E /* OCFacebook.xcassets in Resources */,
+				5D5FE48D2298406F0080E4E3 /* KOtpStopTimesDateHeader.xib in Resources */,
 				CDBB78B7219C7EFE00122E7E /* Krake.podspec in Resources */,
 				CDBB77F6219C7EDC00122E7E /* PuzzleGame.xcassets in Resources */,
 			);
@@ -1367,8 +1383,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD312224225C7DFA00DC06C8 /* KNoElementCell.swift in Sources */,
+				5D06849F2296E32400101D4C /* KOTPStopTimesViewController.swift in Sources */,
 				CD4C001B2292E286009727A7 /* KVehicleAnnotation.swift in Sources */,
+				5D06849D2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift in Sources */,
 				CDDA994A22905720008B205B /* KBusTracker.swift in Sources */,
+				5D5FE48B229840660080E4E3 /* KOtpStopTimesDateHeader.swift in Sources */,
+				5D5E17C62297ED17000851CC /* Number+OtpDate.swift in Sources */,
 				5D1F63FE2296A81800B671FF /* RoutesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
