@@ -40,4 +40,13 @@ extension Date{
 
         return day == today
     }
+
+    public func midnight() -> Date {
+        let calendar = Calendar(identifier: .gregorian)
+
+        let today = calendar.date(
+            from: calendar.dateComponents([.year, .month, .day], from: Date()))
+
+        return today!
+    }
 }

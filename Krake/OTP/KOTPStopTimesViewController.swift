@@ -7,16 +7,27 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class KOTPStopTimesViewController: UITableViewController {
 
     var route: KOTPRoute!
     var stopItem: KOTPStopItem!
 
-    private lazy var dateFormatter: DateFormatter = {
+    private var currentDate = Date().midnight()
+    private let minimumDate = Date().midnight()
+
+    private lazy var timeFormatter: DateFormatter = {
         let format = DateFormatter()
         format.timeStyle = DateFormatter.Style.short
         format.dateStyle = DateFormatter.Style.none
+        return format
+    }()
+
+    private lazy var dateFormatter: DateFormatter = {
+        let format = DateFormatter()
+        format.timeStyle = DateFormatter.Style.none
+        format.dateStyle = DateFormatter.Style.medium
         return format
     }()
 
@@ -29,13 +40,11 @@ class KOTPStopTimesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = stopItem.name
+        self.title = route.longName
+
+        tableView.register(KOtpStopTimesDateHeader.self, forHeaderFooterViewReuseIdentifier: "SelectDateHeader")
         
-        KOpenTripPlannerLoader.shared.retrieveTimes(for: stopItem, route: route, date: Date()) { (times) in
-            if let times = times {
-                self.times = times
-            }
-        }
+        reloadStops()
 
         // Do any additional setup after loading the view.
     }
@@ -48,12 +57,54 @@ class KOTPStopTimesViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         let time = times[indexPath.row]
-        if let cell = cell as? KStopTimeCell, let departureDate = time.scheduledDeparture?.otpSecondsToDate() {
-            cell.scheduledTimeLabel.text = dateFormatter.string(from: departureDate)
+        if let cell = cell as? KStopTimeCell,
+            let departureDate = time.scheduledDeparture?.otpSecondsToDate() {
+            cell.scheduledTimeLabel.text = timeFormatter.string(from: departureDate)
         }
 
         return cell
     }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
+    }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SelectDateHeader") as? KOtpStopTimesDateHeader
+        header?.dateLabel.text = dateFormatter.string(from: currentDate)
+        header?.controller = self
+        return header
+    }
+
+    private func reloadStops() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+
+        KOpenTripPlannerLoader.shared.retrieveTimes(for: stopItem, route: route, date: currentDate) { (times) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let times = times {
+                self.times = times
+            }
+        }
+    }
+
+    public func updateDate(header: KOtpStopTimesDateHeader, previous: Bool) {
+
+        let difference: TimeInterval = (previous ? -1 : 1) * 24.0 * 60.0 * 60.0
+
+
+        currentDate = currentDate.addingTimeInterval(difference)
+
+        if currentDate.compare(minimumDate) == .orderedAscending {
+            currentDate = minimumDate
+            return
+        }
+
+        header.dateLabel.text = dateFormatter.string(from: currentDate)
+
+        reloadStops()
+
+    }
+
     /*
     // MARK: - Navigation
 
