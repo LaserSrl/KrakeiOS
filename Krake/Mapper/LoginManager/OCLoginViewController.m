@@ -97,6 +97,11 @@
     self.usernameRegistration.textColor = [UIColor whiteColor];
     self.passwordRegistration.textColor = [UIColor whiteColor];
     
+    if(!Login.canUserCancelLogin)
+    {
+        self.closeButton.hidden = true;
+    }
+    
     if (!Login.canUserLoginWithKrake)
     {
         [self.username setHidden:true];
