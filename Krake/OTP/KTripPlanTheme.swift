@@ -25,8 +25,9 @@ extension KTheme {
                          )
     }()
 }
-class KTripTheme {
-    static var shared: KTripPlanTheme = KTripDefaultTheme()
+
+public class KTripTheme {
+    static public var shared: KTripPlanTheme = KTripDefaultTheme()
 }
 
 public enum KTripText {
@@ -54,6 +55,8 @@ public protocol KTripPlanTheme {
     func imageFor(travelMode mode: KTravelMode) -> UIImage
     func imageFor(vehicleType vehicle: KVehicleType) -> UIImage
 
+    func annotationName(for otpItem: KOTPStopItem)  -> String
+
     func imageFor(maneuver: KManeuver) -> UIImage
 
     func pinName(_ pin: KTripPinName) -> String
@@ -61,8 +64,11 @@ public protocol KTripPlanTheme {
     func applyTheme(toDateTimePicker dateTimePicker: DateTimePicker)
 }
 
-open class KTripDefaultTheme: KTripPlanTheme {
+open class KTripDefaultTheme: NSObject,  KTripPlanTheme {
 
+    open func annotationName(for otpItem: KOTPStopItem)  -> String {
+        return "ic_directions_transit"
+    }
 
     open func applyTheme(toLabel label: UILabel, type: KTripText)
     {

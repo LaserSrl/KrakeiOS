@@ -355,7 +355,7 @@ public class KOTPTimes: EVObject, StopTimeProtocol
     public var headsign: String?    
 }
 
-public class KOTPStop: EVObject, KOTPStopItem
+public class KOTPStop: EVObject, KOTPStopItem, AnnotationProtocol
 {
     public var originalId: String?{
         get{
@@ -380,7 +380,10 @@ public class KOTPStop: EVObject, KOTPStopItem
     public var lat: NSNumber?
     public var lon: NSNumber?
     public var name: String?
-    
+
+    public func nameAnnotation() -> String {
+        return KTripTheme.shared.annotationName(for: self)
+    }
     
     @objc public var coordinate: CLLocationCoordinate2D{
         get{
@@ -393,6 +396,10 @@ public class KOTPStop: EVObject, KOTPStopItem
     }
     
     public var subtitle: String?{
+        return nil
+    }
+
+    public func termIconIdentifier() -> String? {
         return nil
     }
 }
