@@ -24,6 +24,10 @@ extension KInfoPlist
         public static let secondForStopTimesRefresh: NSNumber? = {
             return Bundle.otpSettings()?["SecondForStopTimesRefresh"] as? NSNumber
         }()
+
+        public static let busTrackerRefresh: NSNumber? = {
+            return Bundle.otpSettings()?["BusTrackerRefresh"] as? NSNumber
+        }()
         
     }
     

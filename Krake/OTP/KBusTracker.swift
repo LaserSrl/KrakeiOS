@@ -23,7 +23,7 @@ public class KBusTracker: NSObject
     private let line: KBusLine
     private var callerCompletion: Completion?
     private var timer: Timer? = nil
-    private let timeInterval = 3.0
+    private let timeInterval: TimeInterval = KInfoPlist.OTP.busTrackerRefresh?.doubleValue ?? 0
     
     required init?(line: KBusLine) {
         if KBusTracker.loader == nil {
@@ -41,7 +41,7 @@ public class KBusTracker: NSObject
     public func startTrack(completion: @escaping Completion)
     {
         self.callerCompletion = completion
-        timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { [weak self](timer) in
+        timer = Timer.scheduledTimer(withTimeInterval: timeInterval > 0 ? timeInterval : 10, repeats: true, block: { [weak self](timer) in
             self?.getVehiclePosition()
         })
         getVehiclePosition()
