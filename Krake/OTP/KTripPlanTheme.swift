@@ -56,6 +56,7 @@ public protocol KTripPlanTheme {
     func imageFor(vehicleType vehicle: KVehicleType) -> UIImage
 
     func annotationName(for otpItem: KOTPStopItem)  -> String
+    func color(for otpItem: KOTPStopItem) -> UIColor
 
     func imageFor(maneuver: KManeuver) -> UIImage
 
@@ -106,6 +107,10 @@ open class KTripDefaultTheme: NSObject,  KTripPlanTheme {
         default:
             return KTheme.current.color(.tint)
         }
+    }
+
+    open func color(for otpItem: KOTPStopItem) -> UIColor {
+        return KTheme.current.color(.tint)
     }
 
     open func imageFor(travelMode mode: KTravelMode) -> UIImage {

@@ -384,6 +384,10 @@ public class KOTPStop: EVObject, KOTPStopItem, AnnotationProtocol
     public func nameAnnotation() -> String {
         return KTripTheme.shared.annotationName(for: self)
     }
+
+    public func color() -> UIColor {
+        return KTripTheme.shared.color(for: self)
+    }
     
     @objc public var coordinate: CLLocationCoordinate2D{
         get{
