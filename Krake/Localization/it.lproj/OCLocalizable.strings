@@ -219,7 +219,7 @@
 
 "%0.f minuti" = "%0.f minuti";
 "ore %@" = "ore %@";
-"Linea %@ verso %@" = "Linea %@ verso %@";
+"Linea %@ verso %@" = "Linea %@ - %@";
 "Percorso più veloce" = "Percorso più veloce";
 
 /*

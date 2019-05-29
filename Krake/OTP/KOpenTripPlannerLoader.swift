@@ -184,6 +184,8 @@ public class KOpenTripPlannerLoader: KOTPLoader {
                                                     return false
                                                 })
 
+                                                stops = Array(Set(stops))
+
                                                 let times = stops.map({ (stop: KOTPStopTimes) -> [KOTPTimes] in
                                                     return stop.timesST ?? []
                                                 })

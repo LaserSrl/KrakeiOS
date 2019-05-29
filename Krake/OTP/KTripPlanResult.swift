@@ -322,6 +322,13 @@ public class KOTPStopTimes: EVObject, PatternProtocol
             timesST = [KOTPTimes](dictionaryArray: value as! [NSDictionary])
         }
     }
+    override public var hash: Int{
+        return patternId.hashValue
+    }
+
+    static func ==(lhs: KOTPStopTimes, rhs: KOTPStopTimes) -> Bool {
+        return lhs.patternId == rhs.patternId
+    }
 }
 
 public class KOTPPattern: EVObject
