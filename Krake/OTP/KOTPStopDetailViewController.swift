@@ -50,7 +50,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                 // Nascondo la table view.
                 hideTableView(animated: true)
             } else {
-                if tableViewContainer.bounds.height < minimumTableViewContainerHeight {
+                if tableViewContainer.bounds.height < minimumTableViewContainerHeight || minimumTableViewContainerHeight == 0 {
                 // Disabilito lo scroll della table view.
                 tableView.isScrollEnabled = false
                 // Aggiorno l'altezza della table view di modo che la prima

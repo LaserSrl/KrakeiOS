@@ -101,7 +101,7 @@ open class KOTPBasePublicTransportListMapViewController<EntityType>: UIViewContr
         let initialHeightValue =
             items?.isEmpty ?? true ? 0 : minimumTableViewContainerHeight
 
-        if tableViewContainer.bounds.height != initialHeightValue {
+        if tableViewContainer.bounds.height < initialHeightValue {
             let newContainerTopConstant =
                 view.bounds.height - topLayoutGuide.length - initialHeightValue
             UIView.animate(withDuration: isAnimated ? 0.2 : 0.0) {
@@ -159,7 +159,7 @@ open class KOTPBasePublicTransportListMapViewController<EntityType>: UIViewContr
             let autoLayoutSize = cell.systemLayoutSizeFitting(KLayoutFittingCompressedSize)
             let desiredMinimumTableViewContainerHeight = autoLayoutSize.height + 24.0
             // Verifico se l'altezza minima debba essere aggiornata.
-            if minimumTableViewContainerHeight == 0 {
+            if minimumTableViewContainerHeight != desiredMinimumTableViewContainerHeight {
                 // Aggiorno l'altezza minima del container della table view.
                 minimumTableViewContainerHeight = desiredMinimumTableViewContainerHeight
                 // Aggiorno l'altezza della table view di modo che la prima
