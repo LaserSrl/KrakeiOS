@@ -25,7 +25,7 @@ open class KOTPBasePublicTransportListMapViewController<EntityType>: UIViewContr
 
     public var items: [EntityType]?
 
-    internal lazy var minimumTableViewContainerHeight: CGFloat = 24.0 + self.tableView.estimatedRowHeight
+    internal lazy var minimumTableViewContainerHeight: CGFloat = 0
     internal let tableViewCellIdentifier = "cell"
     internal var isTableViewPanningDisabled: Bool = false
     internal var minimumTableViewTopDistanceFromParent: CGFloat = 0
@@ -159,7 +159,7 @@ open class KOTPBasePublicTransportListMapViewController<EntityType>: UIViewContr
             let autoLayoutSize = cell.systemLayoutSizeFitting(KLayoutFittingCompressedSize)
             let desiredMinimumTableViewContainerHeight = autoLayoutSize.height + 24.0
             // Verifico se l'altezza minima debba essere aggiornata.
-            if minimumTableViewContainerHeight != desiredMinimumTableViewContainerHeight {
+            if minimumTableViewContainerHeight == 0 {
                 // Aggiorno l'altezza minima del container della table view.
                 minimumTableViewContainerHeight = desiredMinimumTableViewContainerHeight
                 // Aggiorno l'altezza della table view di modo che la prima

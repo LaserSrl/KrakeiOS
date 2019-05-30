@@ -50,11 +50,13 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                 // Nascondo la table view.
                 hideTableView(animated: true)
             } else {
+                if tableViewContainer.bounds.height < minimumTableViewContainerHeight {
                 // Disabilito lo scroll della table view.
                 tableView.isScrollEnabled = false
                 // Aggiorno l'altezza della table view di modo che la prima
                 // cella sia visibile.
                 resetTableViewVisibility(animated: true)
+                }
             }
             tableView.reloadData()
         }
@@ -142,7 +144,10 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         // imposto la descrizione del tempo di attesa previsto.
         let arrivalTimeSeconds = line.scheduledArrival.timeIntervalSinceNow
         let arrivalTimeDescription: String
-        if arrivalTimeSeconds > 0 && arrivalTimeSeconds < 60 * 60 {
+        if arrivalTimeSeconds <= 60 {
+            arrivalTimeDescription = "in arrivo".localizedString()
+        }
+        else if arrivalTimeSeconds < 60 * 60 {
             arrivalTimeDescription =
                 String(format: "%0.f minuti".localizedString(), arrivalTimeSeconds / 60)
         } else {

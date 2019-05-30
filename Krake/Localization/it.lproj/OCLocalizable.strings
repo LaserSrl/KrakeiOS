@@ -218,6 +218,7 @@
 "trip_route" = "Stiamo calcolando il percorso";
 
 "%0.f minuti" = "%0.f minuti";
+"in arrivo" = "in arrivo";
 "ore %@" = "ore %@";
 "Linea %@ verso %@" = "Linea %@ - %@";
 "Percorso più veloce" = "Percorso più veloce";

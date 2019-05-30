@@ -218,6 +218,7 @@
 "trip_route" = "We are planning your travel";
 
 "%0.f minuti" = "%0.f minutes";
+"in arrivo" = "arriving";
 "ore %@" = "hour %@";
 "Linea %@ verso %@" = "Line %@ to %@";
 "Percorso più veloce" = "Fastest route";
