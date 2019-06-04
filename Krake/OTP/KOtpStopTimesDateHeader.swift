@@ -11,8 +11,7 @@ import UIKit
 class KOtpStopTimesDateHeader: UITableViewHeaderFooterView {
 
     public weak var controller: KOTPStopTimesViewController?
-    @IBOutlet weak var prevNextSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var dateLabel: UILabel!
+    weak var dateLabel: UILabel!
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -25,25 +24,24 @@ class KOtpStopTimesDateHeader: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
 
-
         let dateView = UIImageView(image:  UIImage(otpNamed: "ic_plan_date")!)
         dateView.setContentHuggingPriority(.required, for: .horizontal)
         dateView.contentMode = .scaleAspectFit
 
         let dateLabel = UILabel()
         self.dateLabel = dateLabel
-        let segmented = UISegmentedControl(items:
-        [UIImage(otpNamed: "date_previous")!,
-            UIImage(otpNamed: "date_forward")!])
 
-        segmented.isMomentary = true
-        segmented.setContentHuggingPriority(.required, for: .horizontal)
+        let prevButton = UIButton()
+        prevButton.setImage(UIImage(otpNamed: "date_previous")!, for: .normal)
+        prevButton.addTarget(self, action: #selector(prevDate(_:)), for: .touchUpInside)
+        prevButton.setContentHuggingPriority(.required, for: .horizontal)
 
-        segmented.addTarget(self, action: #selector(changeDate(_:)), for: .valueChanged)
+        let nextButton = UIButton()
+        nextButton.setImage(UIImage(otpNamed: "date_forward")!, for: .normal)
+        nextButton.addTarget(self, action: #selector(nextDate(_:)), for: .touchUpInside)
+        nextButton.setContentHuggingPriority(.required, for: .horizontal)
 
-        self.prevNextSegmentedControl = segmented
-
-        let stack = UIStackView(arrangedSubviews: [dateView, dateLabel, prevNextSegmentedControl])
+        let stack = UIStackView(arrangedSubviews: [dateView, dateLabel, prevButton, nextButton])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.spacing = 8
         stack.axis = .horizontal
@@ -58,13 +56,29 @@ class KOtpStopTimesDateHeader: UITableViewHeaderFooterView {
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(8)-[stack]-(8)-|",
                                                                   options: .alignAllCenterY,
                                                                   metrics: nil, views: ["stack":stack]))
+
+        let lineView = UIView(frame: CGRect.zero)
+        lineView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(lineView)
+        lineView.backgroundColor = .darkGray
+
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[lineView(1)]-(0)-|",
+                                                                  options: .alignAllCenterX,
+                                                                  metrics: nil, views: ["lineView":lineView]))
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[lineView]-(0)-|",
+                                                                  options: .alignAllCenterY,
+                                                                  metrics: nil, views: ["lineView":lineView]))
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    @IBAction func changeDate(_ sender: UISegmentedControl) {
-        controller?.updateDate(header: self, previous: sender.selectedSegmentIndex == 0)
+    @IBAction func nextDate(_ sender: Any) {
+        controller?.updateDate(header: self, previous: false)
+    }
+
+    @IBAction func prevDate(_ sender: Any) {
+        controller?.updateDate(header: self, previous: true)
     }
 }

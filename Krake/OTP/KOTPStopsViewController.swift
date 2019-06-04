@@ -123,7 +123,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
         isUserCustomLocation = false
         title = "PUBLIC_TRANSPORT".localizedString()
         sourceAddressTextField.placeholder = "FROM".localizedString()
-        KTheme.current.applyTheme(toLabel: labelSlider, style: .title)
+        KTheme.current.applyTheme(toLabel: labelSlider, style: .subtitle)
         let initialSearchRadius =
             KOTPPreferences.retrieveSearchRadius(fallbackValue: 150)
         searchRadiusSlider.value = Float(initialSearchRadius)

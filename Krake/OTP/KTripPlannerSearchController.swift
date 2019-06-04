@@ -61,7 +61,8 @@ open class KTripPlannerSearchController : UIViewController,
         case showSingleTransitWithBackNavigation
     }
 
-    public static func newSearchViewController(_ request : KTripPlanRequest? = nil) -> KTripPlannerSearchController {
+    public static func newSearchViewController(_ request : KTripPlanRequest? = nil,
+                                               travelModes: [KTravelMode] = [.car, .transit, .walk, .bicycle]) -> KTripPlannerSearchController {
         let bundle = Bundle(url: Bundle(for: KTripPlannerSearchController.self).url(forResource: "OTP", withExtension: "bundle")!)
         let storyboard = UIStoryboard(name: "OCOTPStoryboard", bundle: bundle)
 
@@ -70,10 +71,18 @@ open class KTripPlannerSearchController : UIViewController,
         if let request = request {
             vc.tripPlanRequest = request
         }
+        vc.travelModes = travelModes
         return vc
     }
 
-    public var tripPlanRequest = KTripPlanRequest()
+    public var travelModes: [KTravelMode] = [.car, .transit, .walk, .bicycle]
+    public var tripPlanRequest = KTripPlanRequest() {
+        didSet {
+            if isViewLoaded {
+                updateUiForTripRequest()
+            }
+        }
+    }
 
     public var tripPlanner: KTripPlannerProtocol = KOTPTripPlanner()
 
@@ -118,32 +127,11 @@ open class KTripPlannerSearchController : UIViewController,
 
         searchContainer.backgroundColor = self.navigationController?.navigationBar.barTintColor
 
-        if let from = tripPlanRequest.from
-        {
-            fromTextField.text = from.title ?? ""
-        }
-
-        if let to = tripPlanRequest.to
-        {
-            if !(to.title??.isEmpty ?? true)
-            {
-                toTextField.text = to.title!
-            }
-            else
-            {
-                CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: to.coordinate.latitude, longitude: to.coordinate.longitude),
-                                                    completionHandler: { (placemarks, error) in
-                    if let placemark = placemarks?.first{
-                        self.toTextField.text = placemark.name
-                    }
-                })
-            }
-        }
 
         resultMapView.delegate = routeMapDelegate
         routeMapDelegate.resultMapView = resultMapView
 
-        let segmentTravelMode = tripPlanRequest.travelModes.map { (mode) -> SegmentioItem in
+        let segmentTravelMode = travelModes.map { (mode) -> SegmentioItem in
             SegmentioItem(title: nil, image: KTripTheme.shared.imageFor(travelMode: mode).withRenderingMode(.alwaysOriginal))
         }
 
@@ -152,24 +140,18 @@ open class KTripPlannerSearchController : UIViewController,
                                   options:  KTheme.travelModeSegmentOptions)
 
         travelModeSegmented.valueDidChange = { segmentio, segmentIndex in
-            self.tripPlanRequest.selectedTravelMode = self.tripPlanRequest.travelModes[segmentIndex]
+            self.tripPlanRequest.selectedTravelMode = self.travelModes[segmentIndex]
             self.dateSelectionStackView.isHidden = self.tripPlanRequest.selectedTravelMode != .transit
             self.planTripIfValid()
         }
 
-        travelModeSegmented.selectedSegmentioIndex = tripPlanRequest.travelModes.index(of: tripPlanRequest.selectedTravelMode) ?? 0
-        travelModeSegmented.isHidden = tripPlanRequest.travelModes.count <= 1
+        travelModeSegmented.isHidden = travelModes.count <= 1
         
         dateModeSelection.setTitle("tripModePartenza".localizedString(), forSegmentAt: 0)
         dateModeSelection.setTitle("tripModeArrivo".localizedString(), forSegmentAt: 1)
         dateModeSelection.tintColor = self.navigationController?.navigationBar.tintColor
         pickDateButton.tintColor = self.navigationController?.navigationBar.tintColor
         pickDateButton.setImage(UIImage(otpNamed:"ic_plan_date"), for: .normal)
-        pickDateButton.setTitle(dateFormatter.string(from: tripPlanRequest.dateSelectedForPlan), for: .normal)
-
-        dateSelectionStackView.isHidden = tripPlanRequest.selectedTravelMode != .transit
-
-        dateModeSelection.selectedSegmentIndex = tripPlanRequest.datePlanChoice == .departure ? 0 : 1
 
         locationManager.requestAuthorization { (manager, status) in
             if status == .authorizedWhenInUse || status == .authorizedAlways {
@@ -179,12 +161,10 @@ open class KTripPlannerSearchController : UIViewController,
             }
         }
 
-        if self.tripPlanRequest.isValid()
-        {
-            planTripIfValid()
-        }
         resultsView.rowHeight = KTableViewAutomaticDimension
         resultsView.estimatedRowHeight = 80.0
+
+        updateUiForTripRequest()
     }
 
     override open func viewDidLayoutSubviews() {
@@ -203,7 +183,44 @@ open class KTripPlannerSearchController : UIViewController,
     private func isRunningInIPad() -> Bool {
         return view.traitCollection.horizontalSizeClass == .regular && view.traitCollection.verticalSizeClass == .regular
     }
-    
+
+    private func updateUiForTripRequest() {
+
+        if let from = tripPlanRequest.from
+        {
+            fromTextField.text = from.title ?? ""
+        }
+
+        if let to = tripPlanRequest.to
+        {
+            if !(to.title??.isEmpty ?? true)
+            {
+                toTextField.text = to.title!
+            }
+            else
+            {
+                CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: to.coordinate.latitude, longitude: to.coordinate.longitude),
+                                                    completionHandler: { (placemarks, error) in
+                                                        if let placemark = placemarks?.first{
+                                                            self.toTextField.text = placemark.name
+                                                        }
+                })
+            }
+        }
+        travelModeSegmented.selectedSegmentioIndex = travelModes.index(of: tripPlanRequest.selectedTravelMode) ?? 0
+
+        pickDateButton.setTitle(dateFormatter.string(from: tripPlanRequest.dateSelectedForPlan), for: .normal)
+
+        dateSelectionStackView.isHidden = tripPlanRequest.selectedTravelMode != .transit
+
+        dateModeSelection.selectedSegmentIndex = tripPlanRequest.datePlanChoice == .departure ? 0 : 1
+
+        if self.tripPlanRequest.isValid()
+        {
+            planTripIfValid()
+        }
+    }
+
     //MARK: - Scroll delegate and constraint management
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !isRunningInIPad() {

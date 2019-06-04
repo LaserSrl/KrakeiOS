@@ -230,6 +230,13 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
             lineOverlay = nil
         }
         intermediateStops = nil
+        if vehicleAnnotation != nil {
+            mapView.removeAnnotation(vehicleAnnotation)
+
+            vehicleAnnotation = nil
+        }
+          busTracker?.stopTrack()
+
         loadTimes()
     }
 

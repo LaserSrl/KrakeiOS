@@ -15,7 +15,6 @@ public class KTripPlanRequest: Equatable {
     public var from: MKAnnotation? = nil
 
     public var selectedTravelMode: KTravelMode = .transit
-    public var travelModes: [KTravelMode] = [.car, .transit, .walk, .bicycle]
     public var datePlanChoice: KDatePlanChoice = .departure
     public var dateSelectedForPlan: Date = Date()
 
