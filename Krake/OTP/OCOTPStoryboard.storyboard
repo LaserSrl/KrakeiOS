@@ -297,7 +297,7 @@
                                                 <connections>
                                                     <outlet property="busImageView" destination="9Tn-tr-luB" id="8Ci-OA-JEy"/>
                                                     <outlet property="titleLabel" destination="svC-S0-DYt" id="Lcs-To-dfg"/>
-                                                    <segue destination="Qas-rw-DHE" kind="show" id="dkX-kB-Mo1"/>
+                                                    <segue destination="Qas-rw-DHE" kind="show" identifier="ShowStop" id="dkX-kB-Mo1"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>

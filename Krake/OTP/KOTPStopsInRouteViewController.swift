@@ -61,12 +61,17 @@ class KOTPStopsInRouteViewController: KOTPBasePublicTransportListMapViewControll
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? KOTPStopTimesViewController,
-            let cell = sender as? UITableViewCell,
+        if let destination = segue.destination as? KOTPStopTimesViewController
+        {
+            if let cell = sender as? UITableViewCell,
             let indexPath = tableView.indexPath(for: cell) {
-
+                destination.stopItem = items![indexPath.row]
+            }
+            else if let stop = sender as? KOTPStopItem {
+                destination.stopItem = stop
+            }
             destination.route = route
-            destination.stopItem = items![indexPath.row]            
+
         }
     }
 
@@ -91,6 +96,24 @@ class KOTPStopsInRouteViewController: KOTPBasePublicTransportListMapViewControll
             size: CGSize(
                 width: view.bounds.width,
                 height: view.bounds.height))
+    }
+
+    override func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let view = super.mapView(mapView, viewFor: annotation)
+
+        view?.addButtonDetail()
+
+        return view
+    }
+
+    override func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        super.mapView(mapView, annotationView: view, calloutAccessoryControlTapped: control)
+
+        if !(view.annotation is UserSelectedPoint) &&
+            control.tag == KAnnotationView.CalloutDetailButtonTag
+        {
+            performSegue(withIdentifier: "ShowStop", sender: view.annotation)
+        }
     }
 
     /*
