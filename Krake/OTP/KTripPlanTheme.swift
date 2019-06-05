@@ -36,6 +36,8 @@ public enum KTripText {
     case instruction
     case instructionImportant
     case date
+    case timeScheduled
+    case timeReal
 }
 
 public enum KTripPinName {
@@ -173,6 +175,9 @@ open class KTripDefaultTheme: NSObject,  KTripPlanTheme {
     open func colorFor(text: KTripText) ->  UIColor
     {
         switch text {
+        case .timeReal:
+            return KTheme.current.color(.tint)
+
         case .distance:
             return UIColor.darkGray
 
@@ -184,9 +189,11 @@ open class KTripDefaultTheme: NSObject,  KTripPlanTheme {
     open func fontFor(text: KTripText) ->  UIFont
     {
         switch text {
+
         case .instruction:
             return UIFont.systemFont(ofSize: 15)
-        case .instructionImportant:
+
+        case .instructionImportant, .timeReal, .timeScheduled:
             return UIFont.boldSystemFont(ofSize: 15)
 
         case .mainInfo:

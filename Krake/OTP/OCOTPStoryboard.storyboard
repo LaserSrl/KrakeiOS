@@ -394,21 +394,30 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfX-93-gsJ">
-                                            <rect key="frame" x="8" y="8" width="359" height="33.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfX-93-gsJ">
+                                            <rect key="frame" x="165.5" y="8" width="44.5" height="33.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="durata" translatesAutoresizingMaskIntoConstraints="NO" id="0pu-wt-yIf">
+                                            <rect key="frame" x="133.5" y="13" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="24" id="UTF-To-M7U"/>
+                                                <constraint firstAttribute="height" constant="24" id="bsl-c3-ekE"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="QfX-93-gsJ" secondAttribute="trailing" constant="8" id="A4T-WH-LwA"/>
-                                        <constraint firstItem="QfX-93-gsJ" firstAttribute="leading" secondItem="kfh-lb-Et7" secondAttribute="leading" constant="8" id="AJo-Qm-Kxr"/>
+                                        <constraint firstItem="QfX-93-gsJ" firstAttribute="centerX" secondItem="kfh-lb-Et7" secondAttribute="centerX" id="9Is-BS-hjX"/>
                                         <constraint firstAttribute="bottom" secondItem="QfX-93-gsJ" secondAttribute="bottom" constant="8" id="RW1-yF-e5U"/>
                                         <constraint firstItem="QfX-93-gsJ" firstAttribute="top" secondItem="kfh-lb-Et7" secondAttribute="top" constant="8" id="ntO-u6-eme"/>
+                                        <constraint firstItem="QfX-93-gsJ" firstAttribute="leading" secondItem="0pu-wt-yIf" secondAttribute="trailing" constant="8" symbolic="YES" id="o1K-bv-GHL"/>
+                                        <constraint firstItem="0pu-wt-yIf" firstAttribute="centerY" secondItem="kfh-lb-Et7" secondAttribute="centerY" id="uDA-TA-gMc"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="realTimeImage" destination="0pu-wt-yIf" id="ilM-ez-mbs"/>
                                     <outlet property="scheduledTimeLabel" destination="QfX-93-gsJ" id="knC-89-b1M"/>
                                 </connections>
                             </tableViewCell>
@@ -421,7 +430,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pac-rn-ZJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4582" y="1316"/>
+            <point key="canvasLocation" x="4581.6000000000004" y="1315.5922038980511"/>
         </scene>
         <!--Stop Detail View Controller-->
         <scene sceneID="kqs-jD-E25">
@@ -1120,4 +1129,7 @@
             <point key="canvasLocation" x="-375.78125" y="948.04687499999989"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="durata" width="30" height="30"/>
+    </resources>
 </document>

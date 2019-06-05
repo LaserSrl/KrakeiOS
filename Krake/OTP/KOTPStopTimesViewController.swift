@@ -13,6 +13,8 @@ class KOTPStopTimesViewController: UITableViewController {
 
     var route: KOTPRoute!
     var stopItem: KOTPStopItem!
+    private var reloadTimer: Timer? = nil
+    private var secondsForRefresh: TimeInterval = 0
 
     private var currentDate = Date().midnight()
     private let minimumDate = Date().midnight()
@@ -43,23 +45,46 @@ class KOTPStopTimesViewController: UITableViewController {
         self.title = route.longName
 
         tableView.register(KOtpStopTimesDateHeader.self, forHeaderFooterViewReuseIdentifier: "SelectDateHeader")
-        
+
+        secondsForRefresh = KInfoPlist.OTP.secondForStopTimesRefresh
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadStops))
         reloadStops()
+
 
         // Do any additional setup after loading the view.
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return times.count
+    }
+
+    deinit {
+        reloadTimer?.invalidate()
+        reloadTimer = nil
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        let time = times[indexPath.row]
-        if let cell = cell as? KStopTimeCell,
-            let departureDate = time.scheduledDeparture?.otpSecondsToDate() {
-            cell.scheduledTimeLabel.text = timeFormatter.string(from: departureDate)
+        if let cell = cell as? KStopTimeCell
+        {
+            let time = times[indexPath.row]
+
+            if time.realtimeState == "SCHEDULED" {
+                if let departureDate = time.scheduledDeparture?.otpSecondsToDate() {
+                    cell.scheduledTimeLabel.text = timeFormatter.string(from: departureDate)
+                }
+                cell.scheduledTimeLabel.textColor = KTripTheme.shared.colorFor(text: .timeScheduled)
+                cell.realTimeImage.isHidden = true
+            }
+            else {
+                if let departureDate = time.realtimeDeparture?.otpSecondsToDate() {
+                    cell.scheduledTimeLabel.text = timeFormatter.string(from: departureDate)
+                }
+                cell.scheduledTimeLabel.textColor = KTripTheme.shared.colorFor(text: .timeReal)
+                cell.realTimeImage.isHidden = false
+                
+            }
         }
 
         return cell
@@ -76,13 +101,27 @@ class KOTPStopTimesViewController: UITableViewController {
         return header
     }
 
-    private func reloadStops() {
+    @objc private func reloadStops() {
         MBProgressHUD.showAdded(to: self.view, animated: true)
 
-        KOpenTripPlannerLoader.shared.retrieveTimes(for: stopItem, route: route, date: currentDate) { (times) in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            if let times = times {
-                self.times = times
+        reloadTimer?.invalidate()
+        KOpenTripPlannerLoader.shared.retrieveTimes(for: stopItem, route: route, date: currentDate) { [weak self] (times) in
+
+            if let sSelf = self {
+                MBProgressHUD.hide(for: sSelf.view, animated: true)
+                if let times = times {
+                    sSelf.times = times
+                }
+
+                if sSelf.secondsForRefresh > 0 {
+                    sSelf.reloadTimer = Timer.scheduledTimer(timeInterval: sSelf.secondsForRefresh,
+                                              target: sSelf,
+                                              selector: #selector(sSelf.reloadStops),
+                                              userInfo: nil,
+                                              repeats: false)
+
+                }
+
             }
         }
     }
@@ -90,7 +129,6 @@ class KOTPStopTimesViewController: UITableViewController {
     public func updateDate(header: KOtpStopTimesDateHeader, previous: Bool) {
 
         let difference: TimeInterval = (previous ? -1 : 1) * 24.0 * 60.0 * 60.0
-
 
         currentDate = currentDate.addingTimeInterval(difference)
 
@@ -102,22 +140,28 @@ class KOTPStopTimesViewController: UITableViewController {
         header.dateLabel.text = dateFormatter.string(from: currentDate)
 
         reloadStops()
-
     }
 
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
 
 }
 
 class KStopTimeCell: UITableViewCell {
     @IBOutlet weak var scheduledTimeLabel: UILabel!
+    @IBOutlet weak var realTimeImage: UIImageView!
 
+    override func awakeFromNib() {
+        realTimeImage.image = UIImage(otpNamed: "durata")?.withRenderingMode(.alwaysTemplate)
+        realTimeImage.isHidden = true
+        realTimeImage.tintColor = KTripTheme.shared.colorFor(text: .timeReal)
+    }
+    
 }

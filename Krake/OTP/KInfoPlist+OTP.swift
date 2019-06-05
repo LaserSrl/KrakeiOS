@@ -21,8 +21,8 @@ extension KInfoPlist
             
         }()
         
-        public static let secondForStopTimesRefresh: NSNumber? = {
-            return Bundle.otpSettings()?["SecondForStopTimesRefresh"] as? NSNumber
+        public static let secondForStopTimesRefresh: TimeInterval = {
+            return (Bundle.otpSettings()?["SecondForStopTimesRefresh"] as? NSNumber)?.doubleValue ?? 0
         }()
 
         public static let busTrackerRefresh: NSNumber? = {
