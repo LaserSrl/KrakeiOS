@@ -10,10 +10,17 @@ import UIKit
 
 open class KTitleLabel: UILabel, KDetailViewProtocol {
 
+    @IBInspectable var uppercase: Bool = false
+
     public weak var detailPresenter: KDetailPresenter?
     public var detailObject: AnyObject? {
         didSet {
-            text = (detailObject as? ContentItem)?.titlePartTitle
+            if !uppercase {
+                text = (detailObject as? ContentItem)?.titlePartTitle
+            }
+            else {
+                text = (detailObject as? ContentItem)?.titlePartTitle?.uppercased()
+            }
         }
     }
 
@@ -28,7 +35,7 @@ open class KTitleLabel: UILabel, KDetailViewProtocol {
     }
 
     private func commonInit() {
-		KTheme.current.applyTheme(toLabel: self, style: .title)
+        KTheme.current.applyTheme(toLabel: self, style: .title)
 
         numberOfLines = 2
     }
