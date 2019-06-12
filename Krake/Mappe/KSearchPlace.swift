@@ -11,42 +11,43 @@ import MapKit
 import UIKit
 
 @objc public protocol KSearchPlaceDelegate: NSObjectProtocol{
-    
+
     func searchPlace(_ tableView: UITableView, didSelect mapItem: MKMapItem, forTextField: UITextField?)
-    
+
 }
 
 open class KSearchPlaceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
-    
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
+
     fileprivate var myLocation: MKMapItem?
     fileprivate var items: [MKMapItem]?
     fileprivate let locManager = KLocationManager()
     fileprivate var searchPlace: MKLocalSearch?
-    
-    fileprivate var searchRequest:KLocalSearchRequest?{
+
+    fileprivate var searchRequest:KLocalSearchRequest! {
         didSet{
             if KSearchPlaceViewController.prefferedRegion != nil{
                 searchRequest?.region = KSearchPlaceViewController.prefferedRegion!
             }
         }
     }
-    
+
     open weak var delegate: KSearchPlaceDelegate? = nil
     open weak var searchField: UITextField? = nil
-    
+    private var searchTimer: Timer? = nil
+
     public static var prefferedRegion: MKCoordinateRegion? = nil
-    
+
     //MARK: - static method
-    
+
     public static func getViewController() -> KSearchPlaceViewController{
         let bundle = Bundle(url: Bundle(for: KSearchPlaceViewController.self).url(forResource: "Location", withExtension: "bundle")!)
         let story = UIStoryboard(name: "KSearch", bundle: bundle)
         return story.instantiateInitialViewController() as! KSearchPlaceViewController
     }
-    
+
     public static func stringFromPlacemark(_ placemark: CLPlacemark) -> String{
         let startAddressString = NSMutableString()
         if let elem = placemark.thoroughfare{
@@ -72,9 +73,9 @@ open class KSearchPlaceViewController: UIViewController, UITableViewDelegate, UI
         }
         return startAddressString as String
     }
-    
+
     //MARK: - View
-    
+
     open override func viewDidLoad() {
         super.viewDidLoad()
         #if swift(>=4.2)
@@ -84,7 +85,7 @@ open class KSearchPlaceViewController: UIViewController, UITableViewDelegate, UI
         #endif
         view.tintColor = KTheme.current.color(.tint)
         view.backgroundColor = KTheme.current.color(.tint)
-        
+
         searchBar.barTintColor = KTheme.current.color(.tint)
         for sView in searchBar.subviews.first!.subviews{
             if let button = sView as? UIButton{
@@ -92,7 +93,7 @@ open class KSearchPlaceViewController: UIViewController, UITableViewDelegate, UI
                 button.setTitleColor(UIColor.white.withAlphaComponent(0.9), for: .highlighted)
             }
         }
-        
+
         locManager.requestStartUpdatedLocation { [weak self] (manager, location) in
             if let mySelf = self{
                 if let location = location {
@@ -121,45 +122,62 @@ open class KSearchPlaceViewController: UIViewController, UITableViewDelegate, UI
     open override var preferredStatusBarStyle: UIStatusBarStyle{
         return KTheme.current.statusBarStyle(.default)
     }
-    
+
     //MARK: - UISearchBar Delegate
-    
+
     open func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchRequest?.naturalLanguageQuery = searchText
-        
-        if searchPlace?.isSearching ?? false{
-            searchPlace?.cancel()
+        if searchText.count >= 3 {
+            searchRequest.naturalLanguageQuery = searchText
+
+            if searchPlace?.isSearching ?? false {
+                searchPlace?.cancel()
+            }
+
+            searchPlace = MKLocalSearch(request: searchRequest)
+
+            searchTimer?.invalidate()
+            searchTimer = Timer.scheduledTimer(withTimeInterval: 0.2,
+                                               repeats: false,
+                                               block: { (timer) in
+                                                self.searchTimer = nil
+                                                self.searchPlace?.start(completionHandler: { (response, error) in
+                                                    self.items = response?.mapItems
+                                                    self.tableView.reloadData()
+                                                })
+            })
         }
-        if searchRequest != nil {
-            searchPlace = MKLocalSearch(request: searchRequest!)
+        else {
+            searchTimer?.invalidate()
         }
-        searchPlace?.start(completionHandler: { (response, error) in
-            self.items = response?.mapItems
-            self.tableView.reloadData()
-        })
     }
-    
+
     open func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchTimer?.invalidate()
         searchPlace?.cancel()
         dismiss(animated: true, completion: nil)
     }
-    
+
+    open override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        searchTimer?.invalidate()
+        searchTimer = nil
+    }
     //MARK: - UITableView Delegate & DataSource
-    
+
     open func numberOfSections(in tableView: UITableView) -> Int {
         return myLocation != nil ? 2 : 1
     }
-    
+
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (myLocation != nil && section == 0) ? 1 : items?.count ?? 0
     }
-    
+
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let imageView = cell.viewWithTag(100) as? UIImageView
         let title = cell.viewWithTag(101) as! UILabel
         let subtitle = cell.viewWithTag(102) as! UILabel
-        
+
         if myLocation != nil && (indexPath as NSIndexPath).section == 0 {
             title.text = "LAMIAPOS".localizedString()
             subtitle.text = myLocation?.placemark.title
@@ -172,12 +190,12 @@ open class KSearchPlaceViewController: UIViewController, UITableViewDelegate, UI
                 imageView?.image = UIImage(krakeNamed: imageNamed)!.withRenderingMode(.alwaysTemplate)
             }
         }
-        
+
         KTheme.current.applyTheme(toLabel: title, style: .title)
         KTheme.current.applyTheme(toLabel: subtitle, style: .subtitle)
         return cell
     }
-    
+
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         searchPlace?.cancel()
         if myLocation != nil && (indexPath as NSIndexPath).section == 0 {
@@ -189,5 +207,6 @@ open class KSearchPlaceViewController: UIViewController, UITableViewDelegate, UI
         }
         dismiss(animated: true, completion: nil)
     }
-    
+
 }
+
