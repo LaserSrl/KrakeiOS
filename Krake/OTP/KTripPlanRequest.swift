@@ -17,6 +17,7 @@ public class KTripPlanRequest: Equatable {
     public var selectedTravelMode: KTravelMode = .transit
     public var datePlanChoice: KDatePlanChoice = .departure
     public var dateSelectedForPlan: Date = Date()
+    public var maxWalkDistance: Int = 0
 
     public func isValid() -> Bool
     {

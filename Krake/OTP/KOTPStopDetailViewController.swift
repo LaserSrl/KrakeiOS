@@ -171,10 +171,10 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         // Imposto l'altezza della table view come al primo accesso.
-        resetTableViewVisibility(animated: true)
+        resetTableViewVisibility(animated: true, force: true)
         // Carico gli stops per l'item selezionato.
         loadStops(for: items![indexPath.row])
-        if let sourceStop = sourceStop{
+        if let sourceStop = sourceStop {
             mapView.removeAnnotation(sourceStop)
             mapView.addAnnotation(sourceStop)
         }

@@ -33,12 +33,16 @@ public class KOTPTripPlanner: KTripPlannerProtocol
 
         let manager = KNetworkManager(baseURL: otpURL)
 
-        let params : [String: String] = ["fromPlace": request.from!.otpRequestFormat(),
+        var params : [String: String] = ["fromPlace": request.from!.otpRequestFormat(),
                                          "toPlace": request.to!.otpRequestFormat(),
                                          "date":dateString,
                                          "time":timeString,
                                          "mode":request.selectedTravelMode.otpFormat(),
                                          "arriveBy": request.datePlanChoice == .departure ? "false": "true"]
+        if request.maxWalkDistance > 0 {
+            params["maxWalkDistance"] = String(format: "%d", request.maxWalkDistance)
+        }
+
         planDataTask?.cancel()
         
         planDataTask = manager.get("plan", parameters: params,

@@ -87,7 +87,7 @@ open class KOTPBasePublicTransportListMapViewController<EntityType>: UIViewContr
         }
     }
 
-    internal func resetTableViewVisibility(animated isAnimated: Bool) {
+    internal func resetTableViewVisibility(animated isAnimated: Bool, force: Bool = false) {
         guard let tableViewContainerTop = tableViewContainerTop, !isTableViewPanningDisabled else { return }
         // Verifico che non vi sia il constraint per la table view nascosta.
         if let tableViewContainerHiddenConstraint = tableViewContainerHiddenConstraint {
@@ -101,7 +101,7 @@ open class KOTPBasePublicTransportListMapViewController<EntityType>: UIViewContr
         let initialHeightValue =
             items?.isEmpty ?? true ? 0 : minimumTableViewContainerHeight
 
-        if tableViewContainer.bounds.height < initialHeightValue {
+        if tableViewContainer.bounds.height < initialHeightValue || (force && tableViewContainer.bounds.height != initialHeightValue) {
             let newContainerTopConstant =
                 view.bounds.height - topLayoutGuide.length - initialHeightValue
             UIView.animate(withDuration: isAnimated ? 0.2 : 0.0) {
