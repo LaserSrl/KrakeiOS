@@ -48,7 +48,7 @@ open class KDefaultAnalytics: NSObject, KAnalytics {
         var params : [String: Any] = [AnalyticsParameterContentType: contentType,
                                                "social": socialActivity]
         if itemId  != nil {
-            params[AnalyticsParameterItemID] = itemId
+            params[AnalyticsParameterItemName] = itemId
         }
         if (parameters != nil)
         {
@@ -57,7 +57,7 @@ open class KDefaultAnalytics: NSObject, KAnalytics {
         Analytics.logEvent(AnalyticsEventShare, parameters: params as? [String : NSObject])
     }
     
-    @objc open func log(selectContent contentType: String, itemId: String?, parameters: [String : Any]? = nil) {
+    @objc open func log(selectContent contentType: String, itemId: NSNumber?, itemName: String?, parameters: [String : Any]? = nil) {
         if !KInfoPlist.Analytics.enabled
         {
             return
@@ -65,6 +65,9 @@ open class KDefaultAnalytics: NSObject, KAnalytics {
         var params : [String: Any] = [AnalyticsParameterContentType: contentType]
         if itemId != nil {
             params[AnalyticsParameterItemID] = itemId
+        }
+        if itemName != nil {
+            params[AnalyticsParameterItemName] = itemName
         }
         if parameters != nil
         {

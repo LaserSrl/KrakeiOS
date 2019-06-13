@@ -64,17 +64,17 @@ Pod::Spec.new do |s|
         
         #other
         os.dependency "AFNetworking", '3.2.1'
-        os.dependency "Crashlytics", '3.12.0'
+        os.dependency "Crashlytics", '~>3.13.1'
         os.dependency "CryptoSwift", '1.0.0'
-        os.dependency "Fabric", '1.9.0'
-        os.dependency "Firebase", '5.20.2'
+        os.dependency "Fabric", '~>1.10.1'
+        os.dependency "Firebase", '~>6.2.0'
         os.dependency "KNSemiModalViewController_hons82", '0.4.6'
-        os.dependency "libPhoneNumber-iOS", '0.9.13'
+        os.dependency "libPhoneNumber-iOS", '~>0.9.15'
         os.dependency "MBProgressHUD", '1.1.0'
         os.dependency "NTPKit", '1.0.1'
-        os.dependency "SDWebImage", '5.0.2'
+        os.dependency "SDWebImage", '5.0.6'
         os.dependency "SwiftyJSON", '5.0.0'
-        os.dependency "SwiftMessages", '~>6.0.0'
+        os.dependency "SwiftMessages", '~>7.0.0'
         os.dependency "Cluster", '3.0.0'
         os.dependency "Kml.swift", '0.3.0'
         os.dependency "Segmentio", '3.3'
@@ -91,7 +91,7 @@ Pod::Spec.new do |s|
         os.resource  = "Krake/FacebookKit/*.{xcassets}"
         os.ios.resource_bundle = { 'FacebookKit' => ['Krake/FacebookKit/*.{png,jpg}']}
         os.dependency "Krake/Core"
-        os.dependency "FBSDKLoginKit", '5.0.0-rc.1'
+        os.dependency "FBSDKLoginKit", '~>5.0.2'
     end
     
     s.subspec 'GameQuiz' do |os|
@@ -99,7 +99,6 @@ Pod::Spec.new do |s|
         os.ios.resource_bundles = {'GameQuiz' => ['Krake/GameQuiz/*.{storyboard,png,jpg}']}
         os.resource = 'Krake/GameQuiz/*.{xcassets}'
         os.dependency "Krake/Core"
-        os.dependency "libPhoneNumber-iOS", '0.9.13'
     end
     
     s.subspec 'GoogleKit' do |os|
@@ -144,7 +143,7 @@ Pod::Spec.new do |s|
         os.resource  = "Krake/OTP/*.{xcassets}"
         os.dependency "Krake/Core"
         os.dependency "Polyline", '4.2.1'
-        os.dependency "DateTimePicker", '2.1.3'
+        os.dependency "DateTimePicker", '~>2.2.0'
         os.dependency "EVReflection", '5.10.1'
     end
     
