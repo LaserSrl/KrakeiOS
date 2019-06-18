@@ -76,7 +76,7 @@ open class FacebookKit: NSObject{
     @objc func signIn(){
         KLoginManager.shared.showProgressHUD()
         manager.logOut()
-        manager.logIn(readPermissions: ["public_profile", "email"], from: nil) { (result, error) in
+        manager.logIn(permissions: ["public_profile", "email"], from: nil) { (result, error) in
             if let token = result?.token?.tokenString {
                 let params = ["token" : token]
                 self.makeCompletion(true, params: params)

@@ -222,7 +222,8 @@ open class KDetailViewController: UIViewController, UIScrollViewDelegate, KDetai
             sentAnalytics = true
             AnalyticsCore.shared?.log(
                 selectContent: String(describing: type(of: detail)),
-                itemId: detail.titlePartTitle,
+                itemId: detail.identifier,
+                itemName: detail.titlePartTitle,
                 parameters: analyticsExtras)
         }
     }

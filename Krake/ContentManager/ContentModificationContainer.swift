@@ -412,7 +412,8 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         super.viewWillAppear(animated)
         moveToVCAtIndex(pageControl!.currentPage)
         AnalyticsCore.shared?.log(selectContent: aliasContentModification == nil ? ContentModificationContainerViewController.ContentSelectNewItem : ContentModificationContainerViewController.ContentSelectUpdateItem,
-                                  itemId: contentTypeDefinition.contentType,
+                                  itemId: nil,
+                                  itemName: contentTypeDefinition.contentType,
                                   parameters:nil)
     }
     

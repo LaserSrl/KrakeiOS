@@ -21,9 +21,10 @@ import Foundation
      - parameters:
      - contentType: String describing the type of the selected content.
      - itemId: The identifier of the selected content.
+     - itemName: The name of the selected content.
      - parameters: The dictionary of extra parameters
      */
-    func log(selectContent contentType: String, itemId: String?, parameters: [String : Any]?)
+    func log(selectContent contentType: String, itemId: NSNumber?, itemName: String?, parameters: [String : Any]?)
     /**
      Track a list displaying event.
      
