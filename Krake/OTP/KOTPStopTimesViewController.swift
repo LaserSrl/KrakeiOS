@@ -70,7 +70,7 @@ class KOTPStopTimesViewController: UITableViewController {
         {
             let time = times[indexPath.row]
 
-            if time.realtimeState == "SCHEDULED" {
+            if time.realtimeState == "SCHEDULED" || time.realtimeDeparture?.intValue ?? 0 <= 0 {
                 if let departureDate = time.scheduledDeparture?.otpSecondsToDate() {
                     cell.scheduledTimeLabel.text = timeFormatter.string(from: departureDate)
                 }
