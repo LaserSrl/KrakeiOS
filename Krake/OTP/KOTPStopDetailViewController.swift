@@ -118,6 +118,8 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                 self?.loadTimes()
             })
         }
+
+        minimumTableViewContainerHeight = 120
         
         KOpenTripPlannerLoader.shared.retrieveRoutesInfos(with: { [weak self](routes) in
             self?.routes = routes
@@ -172,6 +174,9 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         tableView.deselectRow(at: indexPath, animated: true)
         // Imposto l'altezza della table view come al primo accesso.
         resetTableViewVisibility(animated: true, force: true)
+
+        tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+
         // Carico gli stops per l'item selezionato.
         loadStops(for: items![indexPath.row])
         if let sourceStop = sourceStop {

@@ -93,10 +93,12 @@ open class KOTPBasePublicTransportListMapViewController<EntityType>: UIViewContr
         if let tableViewContainerHiddenConstraint = tableViewContainerHiddenConstraint {
             tableViewContainer.removeConstraint(tableViewContainerHiddenConstraint)
         }
-        minimumTableViewContainerHeight = 24.0 + tableView.estimatedRowHeight
+        var calculatedMinumum : CGFloat = 24.0 + tableView.estimatedRowHeight
         if #available(iOS 11.0, *) {
-            minimumTableViewContainerHeight = minimumTableViewContainerHeight + self.view.safeAreaInsets.bottom
+            calculatedMinumum = calculatedMinumum + self.view.safeAreaInsets.bottom
         }
+
+        minimumTableViewContainerHeight = max(minimumTableViewContainerHeight, calculatedMinumum)
 
         let initialHeightValue =
             items?.isEmpty ?? true ? 0 : minimumTableViewContainerHeight
@@ -159,7 +161,7 @@ open class KOTPBasePublicTransportListMapViewController<EntityType>: UIViewContr
             let autoLayoutSize = cell.systemLayoutSizeFitting(KLayoutFittingCompressedSize)
             let desiredMinimumTableViewContainerHeight = autoLayoutSize.height + 24.0
             // Verifico se l'altezza minima debba essere aggiornata.
-            if minimumTableViewContainerHeight != desiredMinimumTableViewContainerHeight {
+            if minimumTableViewContainerHeight < desiredMinimumTableViewContainerHeight {
                 // Aggiorno l'altezza minima del container della table view.
                 minimumTableViewContainerHeight = desiredMinimumTableViewContainerHeight
                 // Aggiorno l'altezza della table view di modo che la prima
@@ -281,9 +283,15 @@ open class KOTPBasePublicTransportListMapViewController<EntityType>: UIViewContr
         let tableViewContainerVerticalMiddle = tableViewContainerFrame.midY
         let tableViewContainerTopConstant: CGFloat
         if tableViewContainer.frame.origin.y > tableViewContainerVerticalMiddle {
+            NSLog("Top %f", tableViewContainerTop!.constant)
+            NSLog("bounds %f", tableViewContainer.bounds.height)
+            NSLog("Min %f", minimumTableViewContainerHeight)
+
             tableViewContainerTopConstant =
                 tableViewContainerTop!.constant +
                 tableViewContainer.bounds.height - minimumTableViewContainerHeight
+
+            NSLog("Tot %f", tableViewContainerTopConstant)
         } else {
             tableViewContainerTopConstant = minimumTableViewTopDistanceFromParent
         }

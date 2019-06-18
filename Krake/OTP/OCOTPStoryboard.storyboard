@@ -453,7 +453,7 @@
                                 </userDefinedRuntimeAttributes>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wUl-dK-LlM">
-                                <rect key="frame" x="0.0" y="504" width="375" height="163"/>
+                                <rect key="frame" x="0.0" y="460" width="375" height="207"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSL-bB-2xx">
                                         <rect key="frame" x="171.5" y="4" width="32" height="4"/>
@@ -464,7 +464,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Eb-Q5-wn2">
-                                        <rect key="frame" x="0.0" y="24" width="375" height="139"/>
+                                        <rect key="frame" x="0.0" y="24" width="375" height="183"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -558,7 +558,7 @@
                             <constraint firstItem="z8y-HQ-hrD" firstAttribute="leading" secondItem="zsc-FP-U7F" secondAttribute="leading" id="PN7-pJ-FMz"/>
                             <constraint firstAttribute="trailing" secondItem="wUl-dK-LlM" secondAttribute="trailing" id="RgG-3H-Jyw"/>
                             <constraint firstItem="wUl-dK-LlM" firstAttribute="width" secondItem="zsc-FP-U7F" secondAttribute="width" multiplier="1:3" id="UcY-UR-dMk"/>
-                            <constraint firstItem="wUl-dK-LlM" firstAttribute="top" secondItem="74j-qG-ccm" secondAttribute="bottom" priority="999" constant="484" id="Vnn-zH-Sgp"/>
+                            <constraint firstItem="wUl-dK-LlM" firstAttribute="top" secondItem="74j-qG-ccm" secondAttribute="bottom" priority="999" constant="440" id="Vnn-zH-Sgp"/>
                             <constraint firstAttribute="trailing" secondItem="z8y-HQ-hrD" secondAttribute="trailing" id="WPr-WO-Xrp"/>
                             <constraint firstItem="wUl-dK-LlM" firstAttribute="leading" secondItem="zsc-FP-U7F" secondAttribute="leading" id="aWq-qP-Lix"/>
                             <constraint firstItem="z8y-HQ-hrD" firstAttribute="top" secondItem="74j-qG-ccm" secondAttribute="bottom" id="cVp-Za-JBs"/>
