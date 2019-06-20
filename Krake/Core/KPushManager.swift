@@ -182,7 +182,9 @@ open class KPushManager: NSObject{
                     nav.modalPresentationStyle = .fullScreen
                     let closeButton = UIBarButtonItem(barButtonSystemItem: .stop, target: nav, action: #selector(UINavigationController.dismissViewController))
                     vc.navigationItem.leftBarButtonItem = closeButton
-                    delegate.window?.rootViewController?.present(nav, animated: true, completion: nil)
+                    DispatchQueue.main.async(execute: {
+                        delegate.window?.rootViewController?.present(nav, animated: true, completion: nil)
+                    })
                 }
             }
         }
