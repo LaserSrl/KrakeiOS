@@ -190,7 +190,7 @@ public class KOpenTripPlannerLoader: KOTPLoader {
                                                     return stop.timesST ?? []
                                                 })
 
-                                                let allTimes = times.flatMap{$0}
+                                                let allTimes = times.flatMap{$0}.filter({ $0.realtimeState != "CANCELED"})
 
                                                 completion(allTimes.sorted(by: {
                                                     return $0.scheduledDeparture?.intValue ?? 0 < $1.scheduledDeparture?.intValue ?? 0
