@@ -160,8 +160,9 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                 String(format: "ore %@".localizedString(), dateFormatter.string(from: line.scheduledArrival))
         }
         // Customizzo la cella sulla base delle informazioni ricevute.
-        cell.titleLabel.text = String(format: "Linea %@ verso %@".localizedString(),
-                                      line.lineNumber, line.destination)
+        let lastStop = !line.lastStop ? "" : "(Last stop)".localizedString()
+        cell.titleLabel.text = String(format: "Linea %@ verso %@ %@".localizedString(),
+                                      line.lineNumber, line.destination,lastStop)
         cell.arrivalLabel.text = arrivalTimeDescription
         
         cell.busImageView.image = KTripTheme.shared.imageFor(vehicleType: line.routeInfo?.mode ?? .other).withRenderingMode(.alwaysTemplate)
@@ -264,13 +265,11 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
     private func prepareLines(from patterns: [PatternProtocol]) {
         let numberFormatter = NumberFormatter()
         var hintableLines = [KBusLine]()
-        var numberOfLinesFromPattern = 0
         for pattern in patterns {
             if let step = self.step(from: pattern.descriptionText,
                                     formattingNumbersWith: numberFormatter),
                 let stopTimes = pattern.stopTimesList?.array as? [StopTimeProtocol], !stopTimes.isEmpty {
 
-                numberOfLinesFromPattern = 0
                 for stopTime in stopTimes {
                     var stopArrival: NSNumber? = nil
 
@@ -289,22 +288,23 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                             let routeInfo = routes?.filter({ (route) -> Bool in
                                 return pattern.patternId!.starts(with: route.id)
                             }).first
-                            
+
                             let line = KBusLine(lineNumber: step.id,
                                                destination: step.destination,
                                                scheduledArrival: scheduledArrival,
                                                patternId: pattern.patternId!,
                                                tripId: stopTime.tripId!,
-                                               routeInfo: routeInfo)
+                                               routeInfo: routeInfo,
+                                               lastStop: stopTime.lastStop)
 
                             hintableLines.append(line)
-                            numberOfLinesFromPattern += 1
                         }
                     }
                 }
             }
         }
-        items = hintableLines.sorted(by: { $0.scheduledArrival < $1.scheduledArrival })
+
+        items = Array(Set(hintableLines)).sorted(by: { $0.scheduledArrival < $1.scheduledArrival })
     }
 
     private func step(from stepDescription: String?, formattingNumbersWith numberFormatter: NumberFormatter) -> KOTPPatternStep? {

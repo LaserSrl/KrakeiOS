@@ -339,6 +339,8 @@ public class KOTPPattern: EVObject
 
 public class KOTPTimes: EVObject, StopTimeProtocol
 {
+
+
     public var identifier: NSNumber!{
         get{
             return NSNumber(value: 0)
@@ -359,7 +361,20 @@ public class KOTPTimes: EVObject, StopTimeProtocol
     public var realtimeState: String?
     public var serviceDay: NSNumber?
     public var tripId: String?
-    public var headsign: String?    
+    public var headsign: String?
+    public var lastStop: Bool {
+        get {
+            let lastStop: Bool
+            if let index = stopIndex?.intValue ,
+                let count = stopCount?.intValue {
+                lastStop = index == count - 1
+            }
+            else {
+                lastStop = false
+            }
+            return lastStop
+        }
+    }
 }
 
 public class KOTPStop: EVObject, KOTPStopItem, AnnotationProtocol
