@@ -515,7 +515,7 @@ class UserSelectedPoint: NSObject, MKAnnotation, AnnotationProtocol {
     }
     
     func color() -> UIColor {
-        return KTheme.current.color(.alternate)
+        return KTheme.current.color(.userSelectablePin)
     }
     
     func nameAnnotation() -> String {

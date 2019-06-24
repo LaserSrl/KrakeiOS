@@ -28,6 +28,7 @@ import SwiftMessages
     case popoverBorder
     case popoverBackground
     case popoverText
+    case userSelectablePin
 }
 
 @objc public enum ViewStyle: Int{

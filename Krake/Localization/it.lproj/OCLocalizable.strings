@@ -223,6 +223,7 @@
 "Linea %@ verso %@" = "Linea %@ - %@";
 "Percorso più veloce" = "Percorso più veloce";
 "(Last stop)" = "(Capolinea)";
+"Drag to move" = "Trascina per spostare";
 /*
  GameQuiz
  */
