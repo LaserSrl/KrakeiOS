@@ -389,6 +389,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                     #else
                     sSelf.mapView.add(polyline)
                     #endif
+                    sSelf.mapView.centerMap()
                 }
             }
         })

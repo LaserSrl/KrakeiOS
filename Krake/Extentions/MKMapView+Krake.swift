@@ -80,7 +80,7 @@ public extension MKMapView{
         {
             flyTo = defaultArea
         }
-        let padding = min(bounds.width, bounds.height)/4
+        let padding = min(bounds.width, bounds.height)/12
         if flyTo.size.width == 0.1 {
             #if swift(>=4.2)
             let point = MKMapRect(x: flyTo.origin.x - 1000, y: flyTo.origin.y - 1000, width: 2000, height: 2000)
