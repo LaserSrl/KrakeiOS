@@ -87,7 +87,15 @@ import SwiftMessages
         self.showMessage(subtitle, type: type, layout: layout, position: .top, duration: durationTmp, fromViewController: fromViewController)
     }
     
-    public static func showMessage(_ subtitle: String, title: String =  KInfoPlist.appName, type: KMessageManager.Mode = .message, layout: KMessageManager.Layout = .tabView, position: KMessageManager.Position = .top, duration: KMessageManager.Duration = .automatic, windowLevel: KWindowLevel = KWindowLevelStatusBar, fromViewController: UIViewController? = UIApplication.shared.delegate?.window??.rootViewController?.presentedViewController ?? UIApplication.shared.delegate?.window??.rootViewController){
+    public static func showMessage(_ subtitle: String,
+                                   title: String =  KInfoPlist.appName,
+                                   type: KMessageManager.Mode = .message,
+                                   layout: KMessageManager.Layout = .tabView,
+                                   position: KMessageManager.Position = .top,
+                                   duration: KMessageManager.Duration = .automatic,
+                                   windowLevel: KWindowLevel = KWindowLevelStatusBar,
+                                   fromViewController: UIViewController? = UIApplication.shared.delegate?.window??.rootViewController?.presentedViewController ?? UIApplication.shared.delegate?.window??.rootViewController,
+                                   viewId: String? = nil){
         
         var config = SwiftMessages.Config()
         config.presentationStyle = convertPositionBlock(position)
@@ -99,6 +107,9 @@ import SwiftMessages
             view.configureTheme(convertModeBlock(type))
             view.configureContent(title: title, body: subtitle)
             view.button?.isHidden = true // bottone aggiuntivo
+            if let viewId = viewId {
+                view.id = viewId
+            }
             KTheme.current.applyTheme(toMessageView: view)
             return view
         }
