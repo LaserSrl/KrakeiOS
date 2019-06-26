@@ -89,7 +89,7 @@ public extension KTabManagerDelegate{
 
 open class KTabManager: NSObject{
     
-    let tabManagerOptions: KTabManagerOptions!
+    let tabManagerOptions: KTabManagerOptions
     
     var loadedCategories: [TermPartProtocol]?
     weak var delegate: KTabManagerDelegate?
@@ -104,7 +104,7 @@ open class KTabManager: NSObject{
         set { segmentedControl?.selectedSegmentioIndex = newValue }
     }
     
-    public init(segmentedControl : Segmentio? = nil, tabManagerOptions: KTabManagerOptions!, delegate: KTabManagerDelegate){
+    public init(segmentedControl : Segmentio? = nil, tabManagerOptions: KTabManagerOptions, delegate: KTabManagerDelegate){
         self.tabManagerOptions = tabManagerOptions
         self.segmentedControl = segmentedControl
         self.delegate = delegate

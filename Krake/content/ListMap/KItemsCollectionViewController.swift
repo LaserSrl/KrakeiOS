@@ -43,7 +43,7 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
     @IBInspectable public var enableRefreshControl: Bool = false
 
     /**
-     * abilitazione del pull to refresh
+     * dimensione automatica delle celle
      */
     @IBInspectable public var enableCellAutosizing: Bool = false
 

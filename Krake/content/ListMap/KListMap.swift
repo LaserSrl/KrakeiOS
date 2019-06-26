@@ -87,7 +87,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     @IBOutlet weak public fileprivate(set) var segmentedControl: Segmentio!{
         didSet{
             if listMapOptions.tabManagerOptions?.tabsEndPoint != nil && segmentedControl != nil{
-                categoriesTabManager = KTabManager(segmentedControl: segmentedControl, tabManagerOptions: listMapOptions.tabManagerOptions, delegate: self)
+                categoriesTabManager = KTabManager(segmentedControl: segmentedControl, tabManagerOptions: listMapOptions.tabManagerOptions!, delegate: self)
             }
         }
     }
@@ -342,7 +342,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         
         if listMapOptions.tabManagerOptions?.tabs != nil
         {
-            categoriesTabManager = KTabManager(segmentedControl: segmentedControl, tabManagerOptions: listMapOptions.tabManagerOptions, delegate: self)
+            categoriesTabManager = KTabManager(segmentedControl: segmentedControl, tabManagerOptions: listMapOptions.tabManagerOptions!, delegate: self)
         }
         
         if let calendarOptions = listMapOptions.dateFilterOptions
