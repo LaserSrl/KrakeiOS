@@ -22,7 +22,7 @@ public class KTabAndCollectionViewItems: UIViewController, KTabManagerDelegate {
     public var tabDelegate: KTabManagerDelegate?
     public var itemsCollectionInfo: KItemsCollectionInfo!
 
-    private var itemsViewController: KItemsCollectionViewController!
+    public var itemsViewController: KItemsCollectionViewController!
     public var itemsViewControllerDelegate: KItemsCollectionViewDelegate!
 
     override public func viewDidLoad() {
