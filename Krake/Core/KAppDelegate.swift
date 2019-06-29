@@ -34,12 +34,16 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
     }
 
     //MARK: - Push sharedApplicationDelegate
-
-    open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    open override func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        KLog("PUSH: registered")
         KPushManager.setPushDeviceToken(deviceToken as Data)
     }
+    
+    open override func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        KLog("PUSH: fail to register")
+    }
 
-    open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+    open override func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         KPushManager.showOrOpenPush(userInfo, applicationState: application.applicationState)
     }
 

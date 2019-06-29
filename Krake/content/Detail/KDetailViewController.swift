@@ -20,7 +20,7 @@ public protocol KDetailViewSizeChangesListener: NSObjectProtocol {
 public protocol KDetailViewProtocol: NSObjectProtocol {
     /// Reference to the object that has the role to present the detail, that
     /// usually is the `KDetailViewController` that has created that view.
-    weak var detailPresenter: KDetailPresenter? { get set }
+    var detailPresenter: KDetailPresenter? { get set }
     /// The object that is displayed by the `KDetailViewController`.
     var detailObject: AnyObject? { get set }
 }
