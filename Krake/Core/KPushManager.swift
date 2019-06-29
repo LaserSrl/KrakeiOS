@@ -24,7 +24,7 @@ open class KPushManager: NSObject{
         }
     }
     
-    public static func registerRemoteNotification() {
+    fileprivate static func registerRemoteNotification() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             guard settings.authorizationStatus == .authorized else { return }
             DispatchQueue.main.async {
