@@ -17,17 +17,18 @@ extension KAPIConstants
 /// # KPushManager
 open class KPushManager: NSObject{
     
-    public static func pushRegistrationRequest(){
-        
-        let settings = UIUserNotificationSettings(types: [.badge, .sound], categories: nil)
-        UIApplication.shared.registerUserNotificationSettings(settings)
-        UIApplication.shared.registerForRemoteNotifications()
-        
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, error) in
-                if !accepted {
-                    print("Notification access denied.")
-                }
+    public static func pushRegistrationRequest() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) {(granted, error) in
+            guard granted else { return }
+            KPushManager.registerRemoteNotification()
+        }
+    }
+    
+    fileprivate static func registerRemoteNotification() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            guard settings.authorizationStatus == .authorized else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
             }
         }
     }
@@ -41,12 +42,11 @@ open class KPushManager: NSObject{
         let uuid = KConstants.uuid
         let wsURL = KInfoPlist.KrakePlist.path
 		let wsPath = wsURL.absoluteString
-
         if serializedToken != UserDefaults.standard.string(forConstantKey: .pushDeviceToken) ||
             KConstants.currentLanguage != UserDefaults.standard.string(forConstantKey: .pushLanguage) ||
             uuid != UserDefaults.standard.string(forConstantKey: .pushDeviceUUID) ||
-            wsPath != UserDefaults.standard.string(forConstantKey: .pushURL)
-        {
+            wsPath != UserDefaults.standard.string(forConstantKey: .pushURL) {
+            
             let httpClient = KNetworkManager(baseURL: wsURL, auth: true)
             httpClient.requestSerializer = AFJSONRequestSerializer()
             httpClient.responseSerializer = AFJSONResponseSerializer()
@@ -55,7 +55,7 @@ open class KPushManager: NSObject{
                                                      KParametersKeys.UUID : uuid,
                                                      KParametersKeys.language : KConstants.currentLanguage,
                                                      KParametersKeys.produzione : !KConstants.isDebugMode]
-            
+            KLog("SetDevice completed")
             _ = httpClient.put(KAPIConstants.push,
                                parameters: requestParameters,
                                success: { (task: URLSessionDataTask, object: Any?) in

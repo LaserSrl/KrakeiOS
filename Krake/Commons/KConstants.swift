@@ -54,7 +54,7 @@ public enum LogLevel: String
 }
 
 public func KLog<T>(type: LogLevel = .debug, _ object: @autoclosure () -> T, _ file: String = #file, _ function: String = #function, _ line: Int = #line) {
-    #if DEBUG
+    #if DEBUG || VERBOSE
     let value = object()
     let fileURL = NSURL(string: file)?.lastPathComponent ?? "Unknown file"
     let queue = Thread.isMainThread ? "UI" : "BG"

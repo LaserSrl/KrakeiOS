@@ -11,7 +11,7 @@ import MapKit
 
 public protocol ResultTableDisplayer: UITableViewDelegate, UITableViewDataSource
 {
-    weak var searchController: KTripPlannerSearchController! {get set}
+    var searchController: KTripPlannerSearchController! {get set}
 }
 
 open class SingleTripModeDatasource : NSObject, ResultTableDisplayer

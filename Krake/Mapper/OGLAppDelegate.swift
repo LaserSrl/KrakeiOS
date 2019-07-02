@@ -127,9 +127,15 @@ open class OGLAppDelegate: UIResponder, UIApplicationDelegate, KNetworkAccessDel
         self.removeBlurViewOverWindow()
     }
     
-    public func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+    open func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return lockInterfaceOrientationMask
     }
+    
+    open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) { }
+    
+    open func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) { }
+    
+    open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) { }
     
     // MARK: - Core Data stack
     
