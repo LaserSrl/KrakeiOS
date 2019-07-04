@@ -19,6 +19,9 @@ public protocol KItemsCollectionViewDelegate: NSObjectProtocol
     func viewDidDisappear(_ viewController: KItemsCollectionViewController)
 
     func itemsCollectionController(_ itemsCollectionController: KItemsCollectionViewController,
+                                   willChangeEmptyViewVisibility visible: Bool)
+
+    func itemsCollectionController(_ itemsCollectionController: KItemsCollectionViewController,
                                    didLoadItems items: NSOrderedSet,
                                    loadingCompleted completed: Bool)
 
@@ -75,6 +78,12 @@ public extension KItemsCollectionViewDelegate
 
     func viewDidDisappear(_ viewController: KItemsCollectionViewController) { }
 
+    func itemsCollectionController(_ itemsCollectionController: KItemsCollectionViewController,
+                                   willChangeEmptyViewVisibility visible: Bool)
+    {
+
+    }
+    
     func itemsCollectionController(_ itemsCollectionController: KItemsCollectionViewController,
                                    didLoadItems items: NSOrderedSet,
                                    loadingCompleted completed: Bool)

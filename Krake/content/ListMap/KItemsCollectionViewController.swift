@@ -551,6 +551,7 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
 
     private func emptyStateView(_ visible: Bool)
     {
+        collectionItemsDelegate?.itemsCollectionController(self, willChangeEmptyViewVisibility: true)
         UIView.animate(withDuration: 0.2) {
             self.emptyStateView.alpha = visible ? 1.0 : 0
         }
