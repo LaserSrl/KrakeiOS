@@ -13,6 +13,7 @@ import Crashlytics
 open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
 
     private lazy var streamingProviders: [KStreamingProvider] = []
+    public var checkLaunchOptions = true
 
     open override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [KApplicationLaunchOptionsKey : Any]?) -> Bool {
         let value = super.application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -26,7 +27,7 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
         // Registrazione al servizio di notifica push.
         KPushManager.pushRegistrationRequest()
         
-        if let notificationUserInfo = launchOptions?[KApplicationLaunchOptionsKey.remoteNotification] as? [AnyHashable: Any]
+        if let notificationUserInfo = launchOptions?[KApplicationLaunchOptionsKey.remoteNotification] as? [AnyHashable: Any], checkLaunchOptions
         {
             self.application(application, didReceiveRemoteNotification: notificationUserInfo)
         }
