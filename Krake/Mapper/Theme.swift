@@ -188,6 +188,8 @@ public protocol KThemeProtocol: KThemeProtocolObjc
     func reactionColor(_ style: ReactionColorStyle) -> UIColor
     func statusBarStyle(_ style: StatuBarStyle) -> UIStatusBarStyle
     func placeholder(_ style: PlaceholderStyle) -> UIImage?
+
+    func loadEmptyView(for viewController: KItemsCollectionViewController )
 }
 
 @objc(KMainTheme)
@@ -223,6 +225,12 @@ open class KMainTheme: NSObject, KThemeProtocol {
         case .disableSelected:
             return color(.selected)
         }
+    }
+
+    open func loadEmptyView(for viewController: KItemsCollectionViewController) {
+        let nib = UINib(nibName: "KEmptyCollectionView",
+                        bundle:  Bundle(url: Bundle(for: KItemsCollectionViewController.self).url(forResource: "Content", withExtension: "bundle")!))
+        nib.instantiate(withOwner: viewController, options: nil)
     }
     
     open func applyEffect(toView mainView: UIView, style: EffectStyle) {

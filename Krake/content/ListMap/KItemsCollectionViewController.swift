@@ -409,8 +409,7 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
 
     open func loadEmptyView()
     {
-        let nib = UINib(nibName: "KEmptyCollectionView", bundle:  Bundle(url: Bundle(for: KItemsCollectionViewController.self).url(forResource: "Content", withExtension: "bundle")!))
-        nib.instantiate(withOwner: self, options: nil)
+        KTheme.current.loadEmptyView(for: self)
     }
 
     // MARK: Data loading
@@ -552,6 +551,7 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
 
     private func emptyStateView(_ visible: Bool)
     {
+        collectionItemsDelegate?.itemsCollectionController(self, willChangeEmptyViewVisibility: true)
         UIView.animate(withDuration: 0.2) {
             self.emptyStateView.alpha = visible ? 1.0 : 0
         }
