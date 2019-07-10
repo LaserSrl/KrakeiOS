@@ -53,7 +53,7 @@ open class KDetailWebView: KWebView, KDetailViewProtocol, KDetailViewSizeChanges
 
 	// MARK: - Internal web view
 
-    override func prepareWebView(using configuration: WKWebViewConfiguration) -> WKWebView {
+    override open func prepareWebView(using configuration: WKWebViewConfiguration) -> WKWebView {
         let webView = super.prepareWebView(using: configuration)
         webView.scrollView.bounces = false
         webView.scrollView.isScrollEnabled = false

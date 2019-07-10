@@ -13,7 +13,7 @@ open class KWebView: UIView, WKNavigationDelegate, UIScrollViewDelegate {
 
     open private(set) var configuration: WKWebViewConfiguration
 
-    internal weak var internalWebView: WKWebView?
+    weak public var internalWebView: WKWebView?
 
     // MARK: - Initializers
 
