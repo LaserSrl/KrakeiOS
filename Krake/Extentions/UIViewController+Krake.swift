@@ -27,6 +27,17 @@ public extension UIViewController{
         }
     }
 
+    func insertRightNavigationItemToCloseModalDetail() {
+        if navigationController?.presentingViewController != nil &&
+            (navigationController?.viewControllers.count ?? 0) == 1
+        {
+            let button = UIBarButtonItem(barButtonSystemItem: .stop,
+                                         target: self,
+                                         action: #selector(UIViewController.dismissDetailViewController))
+            navigationItem.rightBarButtonItem = button
+        }
+    }
+
     /**
      Utility function used to dismiss a `UIViewController` that has been
      presented via `UIViewController.present(detailViewController:detail:extras:detailDelegate:)`
