@@ -105,7 +105,7 @@ open class KWebView: UIView, WKNavigationDelegate, UIScrollViewDelegate {
         // Modifica del colore dei testi dei link in modo dinamico, poiché i link
         // generati dai data detector presentano un proprio style.
         webView.evaluateJavaScript("var x=document.querySelectorAll(\"a\"),i;" +
-            "for(i=0;i<x.length;i++)x[i].style.color=\"\(UIColor.tint.hexColor())\",x[i].style.textDecoration=\"none\";",
+            "for(i=0;i<x.length;i++)x[i].style.color=\"\(KTheme.current.color(.tint).hexColor())\",x[i].style.textDecoration=\"none\";",
             completionHandler: nil)
     }
 

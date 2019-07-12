@@ -14,7 +14,7 @@ import SwiftMessages
 
 //MARK: - KThemeProtocolObjc
 
-@objc public enum ColorStyle: Int{
+@objc public enum ColorStyle: Int {
     case tint //Colore di tinta dell'App
     case textTint //Colore del testo sopra il tint dell'App
     case alternate //colore di contrasto rispetto al tint (Accent su android)

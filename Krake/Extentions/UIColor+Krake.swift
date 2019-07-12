@@ -25,8 +25,10 @@ extension UIColor{
         }
         return String(format: "#%02x%02x%02x", arguments: [Int(red), Int(green), Int(blue)])
     }
-    
+
+    @available(*, deprecated, message: "KTheme.current.color(.tint)")
     open class var tint: UIColor { get{ return KTheme.current.color(.tint)} }
+    @available(*, deprecated, message: "KTheme.current.color(.alternate)")
     open class var alternate: UIColor { get{ return KTheme.current.color(.alternate)} }
 
     public convenience init(hexString: String) {
