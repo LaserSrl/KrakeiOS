@@ -131,12 +131,6 @@ open class OGLAppDelegate: UIResponder, UIApplicationDelegate, KNetworkAccessDel
         return lockInterfaceOrientationMask
     }
     
-    open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) { }
-    
-    open func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) { }
-    
-    open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) { }
-    
     // MARK: - Core Data stack
     
     lazy open var applicationDocumentsDirectory: Foundation.URL = {
