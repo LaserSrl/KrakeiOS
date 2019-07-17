@@ -45,7 +45,7 @@ extension Date{
         let calendar = Calendar(identifier: .gregorian)
 
         let today = calendar.date(
-            from: calendar.dateComponents([.year, .month, .day], from: Date()))
+            from: calendar.dateComponents([.year, .month, .day], from: self))
 
         return today!
     }
