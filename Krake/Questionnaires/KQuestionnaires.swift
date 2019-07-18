@@ -71,7 +71,8 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
     
     var questionnaireDelegate: KQuestionnaireDelegate? = nil
 
-    var endPoint: String!
+    public var endPoint: String!
+    public var loginRequired: Bool = true
     var apiPath: String!
     var theme: KQuestionnaireTheme!
     var response = NSMutableDictionary()
@@ -116,7 +117,7 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
         }
         
         MBProgressHUD.showAdded(to: view, animated: true)
-        loadTask = OGLCoreDataMapper.sharedInstance().loadData(withDisplayAlias: endPoint!, extras: KRequestParameters.parametersNoCache(), loginRequired: true, completionBlock: { [weak self] (parsed, error, completed) -> Void in
+        loadTask = OGLCoreDataMapper.sharedInstance().loadData(withDisplayAlias: endPoint!, extras: KRequestParameters.parametersNoCache(), loginRequired: loginRequired, completionBlock: { [weak self] (parsed, error, completed) -> Void in
             if let mySelf = self {
                 if parsed != nil && error == nil && completed {
                     let cache = OGLCoreDataMapper.sharedInstance().displayPathCache(from: parsed!)
@@ -179,8 +180,14 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
     override public func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         questionnaireDelegate?.viewDidDisappear(self)
-        NotificationCenter.default.removeObserver(openObserver!)
-        NotificationCenter.default.removeObserver(closeObserver!)
+        if openObserver != nil {
+            NotificationCenter.default.removeObserver(openObserver!)
+            openObserver = nil
+        }
+        if closeObserver != nil {
+            NotificationCenter.default.removeObserver(closeObserver!)
+            closeObserver = nil
+        }
     }
     
     override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
