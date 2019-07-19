@@ -187,8 +187,10 @@ open class KMediaAdapter: NSObject, KMediaCollectionViewDataSourceAndDelegate, U
             let presenterViewController = UIApplication.shared.keyWindow?.rootViewController else {
                 return
         }
+
+        let targertVc = presenterViewController.presentedViewController != nil ? presenterViewController.presentedViewController : presenterViewController
         // Apertura dell'immagine a schermo intero.
-        presenterViewController.present(galleryController: medias!.array,
+        targertVc?.present(galleryController: medias!.array,
                                       selectedIndex: indexPath.row,
                                       target: imageCell.imageView) { [weak collectionView] (index) -> UIImageView? in
                                         guard let collectionView = collectionView else {
