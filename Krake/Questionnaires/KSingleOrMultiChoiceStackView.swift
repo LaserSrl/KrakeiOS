@@ -23,7 +23,6 @@ public class KSingleOrMultiChoiceStackView : UIView{
     @IBOutlet weak var questImageWidth: NSLayoutConstraint!
     
     var theme: KQuestionnaireTheme!
-    var arrayImages: [String]? = nil
     
     var questionRecord: QuestionRecordProtocol!{
         didSet{
@@ -175,24 +174,22 @@ public class KSingleOrMultiChoiceStackView : UIView{
     }
     
     @objc func touchImage(_ gesture: UITapGestureRecognizer){
-        if let nav = (UIApplication.shared.delegate as! OGLAppDelegate).window!.rootViewController as? UINavigationController {
-            var array = [Int]()
-            for img in arrayImages!{
-                array.append(Int(img)!)
-            }
+        if let nav = (UIApplication.shared.delegate as! OGLAppDelegate).window!.rootViewController,
+            let array = questionRecord.images {
+
             nav.present(galleryController: array, target: gesture.view as? UIImageView)
         }
     }
     
     @objc func longPressImage(_ gesture: UILongPressGestureRecognizer){
-        if arrayImages?.count ?? 0 > 1{
+        if questionRecord.images?.count ?? 0 > 1{
             let image = gesture.view as! UIImageView
             
             if gesture.state == .began {
-                image.setImage(media: Int(self.arrayImages![1]), placeholderImage: nil, options: KMediaImageLoadOptions(size: CGSize(width: 3000,height: 3000), mode: .Pan))
+                image.setImage(media: questionRecord.images![1], placeholderImage: nil, options: KMediaImageLoadOptions(size: CGSize(width: 3000,height: 3000), mode: .Pan))
             }
             if gesture.state == .ended {
-                image.setImage(media: Int(self.arrayImages![0]), placeholderImage: nil, options: KMediaImageLoadOptions(size: CGSize(width:3000,height: 3000), mode: .Pan))
+                image.setImage(media: questionRecord.images![0], placeholderImage: nil, options: KMediaImageLoadOptions(size: CGSize(width:3000,height: 3000), mode: .Pan))
             }
         }
     }

@@ -26,7 +26,6 @@ import Foundation
     @IBOutlet weak var questImageView: UIImageView!
     
     var theme: KQuestionnaireTheme!
-    var arrayImages: [String]? = nil
     @IBOutlet weak var titleQuestionWidth: NSLayoutConstraint!
     @IBOutlet weak var questImageWidth: NSLayoutConstraint!
     
@@ -88,26 +87,24 @@ import Foundation
     
     
     @objc func touchImage(_ gesture: UITapGestureRecognizer){
-        if let nav = (UIApplication.shared.delegate as! OGLAppDelegate).window!.rootViewController as? UINavigationController {
-            var array = [Int]()
-            for img in arrayImages!{
-                array.append(Int(img)!)
-            }
+        if let nav = (UIApplication.shared.delegate as! OGLAppDelegate).window!.rootViewController,
+            let  array = questionRecord.images {
+
             nav.present(galleryController: array, target: gesture.view as? UIImageView)
         }
     }
     
-    @objc func longPressImage(_ gesture: UILongPressGestureRecognizer){
-        if (arrayImages?.count ?? 0) > 1{
+    @objc func longPressImage(_ gesture: UILongPressGestureRecognizer) {
+        if (questionRecord.images?.count ?? 0) > 1{
             let image = gesture.view as! UIImageView
-            var mediaImage : String? = nil
+            var mediaImage : Int? = nil
 
-            if gesture.state == .began { mediaImage =  arrayImages![1]  }
-            else if gesture.state == .ended { mediaImage =  arrayImages![0]  }
+            if gesture.state == .began { mediaImage =  questionRecord.images![1]  }
+            else if gesture.state == .ended { mediaImage =  questionRecord.images![0]  }
 
 
             if mediaImage != nil {
-                image.setImage(media: Int(mediaImage!) , placeholderImage: nil, options: KMediaImageLoadOptions(size: CGSize(width: 3000, height: 3000), mode: .Pan))
+                image.setImage(media: mediaImage , placeholderImage: nil, options: KMediaImageLoadOptions(size: CGSize(width: 3000, height: 3000), mode: .Pan))
             }
         }
     }

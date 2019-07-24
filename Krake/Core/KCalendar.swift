@@ -69,6 +69,9 @@ open class KCalendar : NSObject, EKEventEditViewDelegate {
 
             DispatchQueue.main.async(execute: {
                 let eventVC = EKEventEditViewController()
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    eventVC.modalPresentationStyle = .pageSheet
+                }
                 eventVC.event = event
                 eventVC.eventStore = store
                 self?.infoCal = info
