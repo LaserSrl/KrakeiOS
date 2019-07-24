@@ -83,7 +83,7 @@ Pod::Spec.new do |s|
         os.dependency "LaserFloatingTextField", '1.0.0'
         os.dependency "LaserVideoPhotoGallery", '3.0.2'
         os.dependency "LaserSwippableCell", '1.0.0'
-        os.dependency "LaserCalendarTimeSelector", '1.5.0'
+        os.dependency "LaserCalendarTimeSelector", '1.5.1'
     end
     
     s.subspec 'FacebookKit' do |os|

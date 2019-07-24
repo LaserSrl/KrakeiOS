@@ -65,13 +65,15 @@ open class KCalendar : NSObject, EKEventEditViewDelegate {
             event.calendar = store.defaultCalendarForNewEvents
             event.notes = info.abstract
             event.url = info.url
-            let eventVC = EKEventEditViewController()
-            eventVC.event = event
-            eventVC.eventStore = store
-            self?.infoCal = info
-            eventVC.editViewDelegate = self
-            KTheme.current.applyTheme(toNavigationBar: eventVC.navigationBar, style: .default)
+
+
             DispatchQueue.main.async(execute: {
+                let eventVC = EKEventEditViewController()
+                eventVC.event = event
+                eventVC.eventStore = store
+                self?.infoCal = info
+                eventVC.editViewDelegate = self
+                 KTheme.current.applyTheme(toNavigationBar: eventVC.navigationBar, style: .default)
                 nav?.present(eventVC, animated: true, completion: nil)
             })
         })
