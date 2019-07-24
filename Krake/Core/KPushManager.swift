@@ -167,7 +167,7 @@ open class KPushManager: NSObject{
 
                     let closeButton = UIBarButtonItem(barButtonSystemItem: .stop, target: nav, action: #selector(UINavigationController.dismissViewController))
                     vc.navigationItem.leftBarButtonItem = closeButton
-                    presentPushViewController(vc)
+                    presentPushViewController(nav)
                 }
             }
         }
