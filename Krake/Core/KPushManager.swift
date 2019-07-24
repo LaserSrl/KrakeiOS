@@ -78,39 +78,25 @@ open class KPushManager: NSObject{
             if let displayAlias = notification["Al"] as? String{
                 showOrOpenDetailWithMessage(pushTitle, displayAlias: displayAlias, applicationState: applicationState, userInfoNotification: notification)
             }else if let externalUrl = notification["Eu"] as? String, let url = URL(string: externalUrl){
-                if UIApplication.shared.canOpenURL(url){
-                    let mainVC = (UIApplication.shared.delegate as? OGLAppDelegate)?.window?.rootViewController
+                if let browser = UIViewController.newBrowserViewController(browserViewController: url, title: pushTitle) {
                     if applicationState == .active{
                         let alertViewController = UIAlertController(title: KInfoPlist.appName, message: pushTitle, preferredStyle: .alert)
                         alertViewController.message = String(format:"VUOI_APRIRE_PUSH".localizedString(), pushTitle)
                         alertViewController.addAction(UIAlertAction(title: "No".localizedString(), style: .cancel, handler: nil))
                         alertViewController.addAction(UIAlertAction(title: "Si".localizedString(), style: .default, handler: { (action: UIAlertAction) in
-                            mainVC?.present(browserViewController: url, title: pushTitle)
+                            presentPushViewController(browser)
                         }))
-                        DispatchQueue.main.async(execute: {
-                            if let pvc = mainVC?.presentedViewController {
-                                pvc.present(alertViewController, animated: true, completion: nil)
-                            }
-                            else {
-                                mainVC?.present(alertViewController, animated: true, completion: nil)
-                                
-                            }
-                        })
+                        presentPushViewController(alertViewController)
                     }else{
-                        DispatchQueue.main.async(execute: {
-                            mainVC?.present(browserViewController: url, title: pushTitle)
-                        })
+                            presentPushViewController(browser)
                     }
                 }
             }else{
                 if applicationState == .active{
-                    let mainVC = (UIApplication.shared.delegate as? OGLAppDelegate)?.window?.rootViewController
                     let alertViewController = UIAlertController(title: KInfoPlist.appName, message: pushTitle, preferredStyle: .alert)
                     alertViewController.message = pushTitle
                     alertViewController.addAction(UIAlertAction(title: "Ok".localizedString(), style: .default, handler: nil))
-                    DispatchQueue.main.async(execute: {
-                        mainVC?.present(alertViewController, animated: true, completion: nil)
-                    })
+                    presentPushViewController(alertViewController)
                 }
             }
         }
@@ -127,8 +113,6 @@ open class KPushManager: NSObject{
     
     fileprivate static func showOrOpenDetailWithMessage(_ message: String? = "", displayAlias: String?, cacheObjectID: NSManagedObjectID? = nil, applicationState: KApplicationState, userInfoNotification: [AnyHashable: Any]?){
         let appDelegate = UIApplication.shared.delegate as? OGLAppDelegate
-        let mainWindow = appDelegate?.window
-        let mainVC = mainWindow?.rootViewController
         if applicationState == .active{
             let alertViewController = UIAlertController(title: KInfoPlist.appName, message: message, preferredStyle: .alert)
             if (displayAlias != nil && !(displayAlias ?? "").isEmpty) || cacheObjectID != nil {
@@ -141,14 +125,7 @@ open class KPushManager: NSObject{
                 alertViewController.addAction(UIAlertAction(title: "Ok".localizedString(), style: .default, handler: { (action: UIAlertAction) in
                 }))
             }
-            DispatchQueue.main.async(execute: {
-                if let pvc = mainVC?.presentedViewController {
-                    pvc.present(alertViewController, animated: true, completion: nil)
-                }
-                else {
-                    mainVC?.present(alertViewController, animated: true, completion: nil)
-                }
-            })
+            presentPushViewController(alertViewController)
         }else if (displayAlias != nil && !(displayAlias ?? "").isEmpty) || cacheObjectID != nil {
             loadOrDownloadWithAlias(displayAlias, cacheID: cacheObjectID, userInfoNotification: userInfoNotification)
         }
@@ -179,15 +156,29 @@ open class KPushManager: NSObject{
                 {
                     let nav = UINavigationController(rootViewController: vc)
                     KTheme.current.applyTheme(toNavigationBar: nav.navigationBar, style: .default)
-                    nav.modalPresentationStyle = .fullScreen
+                    if let trait = delegate.window?.rootViewController?.traitCollection,
+                        trait.horizontalSizeClass == .regular,
+                        trait.verticalSizeClass == .regular {
+                        nav.modalPresentationStyle = .formSheet
+                    }
+                    else {
+                        nav.modalPresentationStyle = .fullScreen
+                    }
+
                     let closeButton = UIBarButtonItem(barButtonSystemItem: .stop, target: nav, action: #selector(UINavigationController.dismissViewController))
                     vc.navigationItem.leftBarButtonItem = closeButton
-                    DispatchQueue.main.async(execute: {
-                        delegate.window?.rootViewController?.present(nav, animated: true, completion: nil)
-                    })
+                    presentPushViewController(vc)
                 }
             }
         }
+    }
+
+    private static func presentPushViewController(_ vc: UIViewController) {
+        DispatchQueue.main.async(execute: {
+            let window = (UIApplication.shared.delegate as? OGLAppDelegate)?.window
+            let fromViewController = window?.rootViewController?.presentedViewController ?? window?.rootViewController
+            fromViewController?.present(vc, animated: true, completion: nil)
+        })
     }
     
 }

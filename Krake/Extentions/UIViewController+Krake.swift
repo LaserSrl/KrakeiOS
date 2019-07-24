@@ -64,11 +64,12 @@ public extension UIViewController{
     /// - parameter url: URL used as first page of the browser.
     /// - parameter title: title to assign to the created view controller. The default
     /// value is the name of the application.
-    func present(browserViewController url: URL,
-                        title: String? = KInfoPlist.appName,
-                        showToolbar: Bool = true,
-                        delegate: GDWebViewControllerDelegate? = nil,
-                        closeButtonIsOnLeftSide: Bool = true) {
+
+    static public func newBrowserViewController(browserViewController url: URL,
+                                  title: String? = KInfoPlist.appName,
+                                  showToolbar: Bool = true,
+                                  delegate: GDWebViewControllerDelegate? = nil,
+                                  closeButtonIsOnLeftSide: Bool = true) -> UIViewController? {
         if UIApplication.shared.canOpenURL(url) {
             let browser = GDWebViewController()
             browser.loadURL(url)
@@ -86,7 +87,25 @@ public extension UIViewController{
             }
             let nav = UINavigationController(rootViewController: browser)
             KTheme.current.applyTheme(toNavigationBar: nav.navigationBar,
-                                    style: .default)
+                                      style: .default)
+            return nav
+        }
+        return nil
+    }
+
+    func present(browserViewController url: URL,
+                        title: String? = KInfoPlist.appName,
+                        showToolbar: Bool = true,
+                        delegate: GDWebViewControllerDelegate? = nil,
+                        closeButtonIsOnLeftSide: Bool = true) {
+
+
+
+        if let nav = UIViewController.newBrowserViewController(browserViewController: url,
+                                              title: title,
+                                              showToolbar: showToolbar,
+                                              delegate: delegate,
+                                              closeButtonIsOnLeftSide: closeButtonIsOnLeftSide) { 
             present(nav, animated: true, completion: nil)
         } else {
             let errorMessage = String(format: "Non è possibile aprire il seguente url %@".localizedString(),
