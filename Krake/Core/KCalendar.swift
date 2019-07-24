@@ -45,18 +45,8 @@ open class KCalendar : NSObject, EKEventEditViewDelegate {
             let event = EKEvent(eventStore: store)
             event.title = info.title
             event.location = info.location;
-            var fromDate : Date! = info.fromDate;
-            if abs(fromDate.timeIntervalSince(info.toDate))>=(60*60*24)
-            {
-                event.isAllDay = true
-                let calendar = Calendar.current
-                var completeComponents = (calendar as NSCalendar).components(NSCalendar.Unit(rawValue: (NSCalendar.Unit.day.rawValue|NSCalendar.Unit.month.rawValue|NSCalendar.Unit.year.rawValue)), from: Date())
-                let timeComponents = (calendar as NSCalendar).components(NSCalendar.Unit(rawValue: (NSCalendar.Unit.hour.rawValue|NSCalendar.Unit.minute.rawValue)), from: info.fromDate)
-                
-                completeComponents.hour = timeComponents.hour;
-                completeComponents.minute = timeComponents.minute;
-                fromDate = calendar.date(from: completeComponents)
-            }
+            let fromDate : Date! = info.fromDate;
+            event.isAllDay = abs(fromDate.timeIntervalSince(info.toDate))>=(60*60*24)
             event.startDate = fromDate;
             event.endDate = info.toDate
             if info.toDate.timeIntervalSince(fromDate) == 0 {
