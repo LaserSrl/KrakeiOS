@@ -74,6 +74,13 @@ public extension UIImageView
                                 }
                             } catch {}
                         }
+                    }else{
+                        MHGallerySharedManager.sharedInstance().startDownloadingThumbImage(mediaUrl) { (image, intero, error) in
+                            if image != nil{
+                                self.image = image!.addWatermark(MHGalleryImage("playButton"), fill: .none, position: .center)
+                                completed?(self.image, nil, .disk, nil)
+                            }
+                        }
                     }
                 case "video":
                     backgroundColor = UIColor(red: 0.8691, green: 0.8691, blue: 0.8691, alpha: 1.0)
