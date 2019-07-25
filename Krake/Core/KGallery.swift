@@ -94,6 +94,8 @@ open class KGallery {
                                     KLog(type: .error, "Malformed provider string representation found for the media %@.", mediaUrl)
                                 } catch _ {}
                             }
+                        }else{
+                            item = MHGalleryItem(url: mediaUrl, galleryType: .video)
                         }
                     case "video", "audio":
                         let url: String
