@@ -38,25 +38,28 @@ public struct CalendarInfo {
 open class KCalendar : NSObject, EKEventEditViewDelegate {
     
     var infoCal : CalendarInfo!
-    
+
+    open func covert(calendarInfo info: CalendarInfo, to event: EKEvent) {
+        event.title = info.title
+        event.location = info.location;
+        let fromDate : Date! = info.fromDate;
+        event.isAllDay = abs(fromDate.timeIntervalSince(info.toDate))>=(60*60*24)
+        event.startDate = fromDate;
+        event.endDate = info.toDate
+        if info.toDate.timeIntervalSince(fromDate) == 0 {
+            event.isAllDay = true
+        }
+        event.notes = info.abstract
+        event.url = info.url
+    }
+
     open func presentAddToCalendar(_ info : CalendarInfo,  nav : UIViewController? = UIApplication.shared.delegate?.window??.rootViewController){
         let store = EKEventStore()
         store.requestAccess(to: EKEntityType.event, completion: { [weak self](granted : Bool, error : Optional<Error>!) -> Void in
             let event = EKEvent(eventStore: store)
-            event.title = info.title
-            event.location = info.location;
-            let fromDate : Date! = info.fromDate;
-            event.isAllDay = abs(fromDate.timeIntervalSince(info.toDate))>=(60*60*24)
-            event.startDate = fromDate;
-            event.endDate = info.toDate
-            if info.toDate.timeIntervalSince(fromDate) == 0 {
-                event.isAllDay = true
-            }
+
             event.calendar = store.defaultCalendarForNewEvents
-            event.notes = info.abstract
-            event.url = info.url
-
-
+            self?.covert(calendarInfo: info, to: event)
             DispatchQueue.main.async(execute: {
                 let eventVC = EKEventEditViewController()
                 if UIDevice.current.userInterfaceIdiom == .pad {
