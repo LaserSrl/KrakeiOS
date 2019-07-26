@@ -57,10 +57,10 @@ extension KQuestionnaireTheme{
         if !isVerticalOrientation(withQuestion)
         {
             let constraintW = NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: 60)
-            let constraintH = NSLayoutConstraint(item: button, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 60)
-            constraintH.priority = UILayoutPriority(rawValue: 999)
             constraintW.priority = UILayoutPriority(rawValue: 999)
             button.addConstraint(constraintW)
+            let constraintH = NSLayoutConstraint(item: button, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 60)
+            constraintH.priority = UILayoutPriority(rawValue: 999)
             button.addConstraint(constraintH)
         }
     }

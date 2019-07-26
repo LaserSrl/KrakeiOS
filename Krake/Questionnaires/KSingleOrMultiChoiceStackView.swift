@@ -150,7 +150,11 @@ public class KSingleOrMultiChoiceStackView : UIView{
         
         //if the answer was not already selected, it will be selected
         if answerAlreadySelected == nil {
-            transform = CGAffineTransform(scaleX: 1.3,y: 1.3)
+            let ans: AnswerRecordProtocol = questionRecord.answers!.filter({ (answer) -> Bool in
+                return (answer as! AnswerRecordProtocol).identifier.intValue == button.tag
+            }).first as! AnswerRecordProtocol
+            let zoom = theme.zoomLevel(for: ans, in: questionRecord)
+            transform = CGAffineTransform(scaleX: zoom,y: zoom)
             button.isSelected = true
             arrayOfAnswersInQuestion.append(currentAnswerInQuestionToSave)
         }
@@ -226,7 +230,6 @@ class ResizableButton: UIButton {
     private func commonInit() {
         self.titleLabel?.numberOfLines = 0
         self.titleLabel?.lineBreakMode = .byWordWrapping
-        self.titleLabel?.textAlignment = .center
         self.titleLabel?.font = UIFont.preferredFont(forTextStyle: .subheadline)
     }
     
@@ -238,8 +241,7 @@ class ResizableButton: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        titleLabel?.preferredMaxLayoutWidth = titleLabel?.frame.size.width ?? imageView?.frame.size.width ?? 0       
-        super.layoutSubviews()
+        titleLabel?.preferredMaxLayoutWidth = titleLabel?.frame.size.width ?? imageView?.frame.size.width ?? 0
     }
     
 }
