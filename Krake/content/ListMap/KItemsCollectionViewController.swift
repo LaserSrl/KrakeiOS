@@ -459,6 +459,7 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
     {
         extras[REQUEST_PAGE_KEY] = page
         isLoadingObjects = true
+        task?.cancel()
         task = OGLCoreDataMapper.sharedInstance().loadData(withDisplayAlias: endPoint!, extras: extras, loginRequired : loginRequired) { [weak self] (parsedObject, error, completed) -> Void in
             if let mySelf = self
             {
