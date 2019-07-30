@@ -26,13 +26,18 @@ open class KAnnotationView: MKAnnotationView
     fileprivate var pinBase = UIImageView(frame: CGRect(x: 0, y: 0, width: 90, height: 135))
     fileprivate let pinImage = UIImageView(frame: CGRect(x: 15, y: 15, width: 60, height: 56))
     
-    public init(annotation: MKAnnotation!, forcedColor: UIColor? = nil){
+    fileprivate var scaleFactor: CGFloat = 1.0
+    
+    public init(annotation: MKAnnotation!, forcedColor: UIColor? = nil, scaleFactor: CGFloat = 1.0){
         var identifier = "StandardPin"
         var imageNamed = "StandardPin"
         var subtext: String? = nil
         var localImage: UIImage? = nil
         var termIconIdentifier: String? = nil
         var tintColor: UIColor? = KTheme.current.color(.tint)
+        self.scaleFactor = scaleFactor
+        pinBase.frame = CGRect(x: 0, y: 0, width: 90 * scaleFactor, height: 135 * scaleFactor)
+        pinImage.frame = CGRect(x: 15 * scaleFactor, y: 15 * scaleFactor, width: 60 * scaleFactor, height: 56 * scaleFactor)
         if let elem = annotation as? AnnotationProtocol {
             identifier = elem.annotationIdentifier() + (forcedColor?.description ?? "")
             imageNamed = elem.nameAnnotation()
@@ -106,7 +111,7 @@ open class KAnnotationView: MKAnnotationView
         standardPin(pinImage.tintColor)
         pinBase.addSubview(pinImage)
         if (subtext != nil){
-            let overlayText = UILabel(frame: CGRect(x: 10, y: 80, width: 70, height: 25))
+            let overlayText = UILabel(frame: CGRect(x: 10 * scaleFactor, y: 80 * scaleFactor, width: 70 * scaleFactor, height: 25 * scaleFactor))
             overlayText.text = subtext
             overlayText.textColor = UIColor.black
             overlayText.backgroundColor = UIColor.white
@@ -122,7 +127,7 @@ open class KAnnotationView: MKAnnotationView
     }
     
     func generateImage(){
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 90,height: 135), false, 0.0)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 90 * scaleFactor,height: 135 * scaleFactor), false, 0.0)
         pinBase.layer.render(in: UIGraphicsGetCurrentContext()!)
         if let img = UIGraphicsGetImageFromCurrentImageContext(){
             UIGraphicsEndImageContext()

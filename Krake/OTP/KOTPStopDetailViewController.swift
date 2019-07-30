@@ -206,8 +206,9 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         
         let pinColor: UIColor? = selectedLine?.routeInfo?.color
         let color: UIColor? = isSourceStopAnnotation(annotation) || annotation is KVehicleAnnotation ? pinColor : .lightGray
+        let scaleFactor: CGFloat = isSourceStopAnnotation(annotation) || annotation is KVehicleAnnotation ? 1.0 : 0.7
         let pinView =
-            mapView.dequeueReusableAnnotationViewWithAnnotation(annotation, forcedColor: color) ?? KAnnotationView(annotation: annotation, forcedColor: color)
+            mapView.dequeueReusableAnnotationViewWithAnnotation(annotation, forcedColor: color) ?? KAnnotationView(annotation: annotation, forcedColor: color, scaleFactor: scaleFactor)
         if annotation is KVehicleAnnotation
         {
             pinView.canShowCallout = false
@@ -412,6 +413,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                     vehicleAnnotation.coordinate = location
                     self?.vehicleAnnotation = vehicleAnnotation
                     self?.mapView.addAnnotation(vehicleAnnotation)
+                    self?.mapView.selectAnnotation(vehicleAnnotation, animated: true)
                 }
                 else
                 {

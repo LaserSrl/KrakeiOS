@@ -42,7 +42,9 @@ class KOTPStopsInRouteViewController: KOTPBasePublicTransportListMapViewControll
             .shared
             .retrieveStops(for: route) { (stops) in
                 if let stops = stops {
-                    self.items = stops
+                    self.items = stops.sorted(by: { (a, b) -> Bool in
+                        return (a.name ?? "").compare(b.name ?? "") == .orderedAscending
+                    })
                 }
                 else {
                     self.items = []
