@@ -69,7 +69,7 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
     @IBOutlet weak var sendView: UIView!
     @IBOutlet weak var sendButton: UIButton!
     
-    var questionnaireDelegate: KQuestionnaireDelegate? = nil
+    public var questionnaireDelegate: KQuestionnaireDelegate? = nil
 
     public var endPoint: String!
     public var loginRequired: Bool = true
@@ -96,7 +96,8 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
     fileprivate var openObserver: AnyObject?
     fileprivate var closeObserver: AnyObject?
 
-    fileprivate var sendBarButton: UIBarButtonItem?
+    public var sendBarButton: UIBarButtonItem?
+
     deinit{
         KLog("RELEASED")
     }
@@ -111,11 +112,13 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
         }else{
             sendView.removeFromSuperview()
             sendView.isHidden = true
-            sendBarButton = UIBarButtonItem(title: "SEND".localizedString(), style: .done, target: self, action: #selector(QuestionnaireViewController.sendQuestionnaire(_:)))
+            sendBarButton = createSendButtonItem()
             navigationItem.rightBarButtonItem = sendBarButton
             sendBarButton?.isEnabled = false
         }
-        
+
+        questionnaireDelegate?.viewDidLoad(self)
+
         MBProgressHUD.showAdded(to: view, animated: true)
         loadTask = OGLCoreDataMapper.sharedInstance().loadData(withDisplayAlias: endPoint!, extras: KRequestParameters.parametersNoCache(), loginRequired: loginRequired, completionBlock: { [weak self] (parsed, error, completed) -> Void in
             if let mySelf = self {
@@ -138,8 +141,6 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
             })
         
         theme.applyTheme(toView: view)
-
-        questionnaireDelegate?.viewDidLoad(self)
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -199,6 +200,13 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
                 singleChoiceView.setTitleWidth(constant: size.width)
             }
         }
+    }
+
+    public func createSendButtonItem()  -> UIBarButtonItem {
+        return UIBarButtonItem(title: "SEND".localizedString(),
+                            style: .done,
+                            target: self,
+                            action: #selector(QuestionnaireViewController.sendQuestionnaire(_:)))
     }
     
     func loadQuestionsInStackView()

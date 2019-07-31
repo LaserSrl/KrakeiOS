@@ -190,10 +190,10 @@ static __strong id currentOGLCoreDataMapper_;
                               dispatch_async(dispatch_get_main_queue(), ^{
                                   loadDataTask.completionBlock(nil,error,YES);
                               });
-                          else
+                          /*else
                               dispatch_async(dispatch_get_main_queue(), ^{
                                   loadDataTask.completionBlock(nil,nil,YES);
-                              });
+                              });*/
                       }]];
 }
 
