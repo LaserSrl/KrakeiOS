@@ -57,6 +57,10 @@ public class KTabAndCollectionViewItems: UIViewController, KTabManagerDelegate {
         {
             itemsViewController.extras.removeValue(forKey: KParametersKeys.terms)
         }
+
+        if itemsViewController.collectionView( itemsViewController.collectionView, numberOfItemsInSection: 0) > 0 {
+            itemsViewController.collectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: false)
+        }
         itemsViewController.loadFromWS()
     }
 
