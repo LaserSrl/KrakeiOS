@@ -18,4 +18,5 @@ public protocol KOTPLoader
     func retrieveStops(for line: KBusLine ,with completion: @escaping ([KOTPStop]?) -> Void)
     func retrieveStops(for route: KOTPRoute ,with completion: @escaping ([KOTPStop]?) -> Void)
     func retrieveTimes(for stop: KOTPStopItem, route: KOTPRoute, date: Date, with completion: @escaping ([KOTPTimes]?) -> Void)
+    func retrieveAllStops(search text: String, with completion: @escaping ([KOTPStop]?) -> Void)
 }

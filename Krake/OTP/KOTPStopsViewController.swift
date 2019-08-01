@@ -18,18 +18,23 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
     @IBOutlet weak var labelSlider: UILabel!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchRadiusSlider: UISlider!
-    @IBOutlet var searchViewHiddenBottom: NSLayoutConstraint!
-
+    @IBOutlet weak var searchViewHiddenBottom: NSLayoutConstraint!
+    @IBOutlet weak var segmented: UISegmentedControl!
+    @IBOutlet weak var stopSearch: UITextField!
+    @IBOutlet weak var search: UIButton!
+    
     public static var defaultLocation: CLLocation?
     public static var defaultArea: MKCoordinateRegion! = KSearchPlaceViewController.prefferedRegion
 
-    public static func stopsSearchController() -> KOTPStopsViewController
+    public static func stopsSearchController(enableStopSearch: Bool = false) -> KOTPStopsViewController
     {
         let bundle = Bundle(url: Bundle(for: KTripPlannerSearchController.self).url(forResource: "OTP", withExtension: "bundle")!)
         let storyboard = UIStoryboard(name: "OCOTPStoryboard", bundle: bundle)
-        return storyboard.instantiateViewController(withIdentifier: "KOTPStopsViewController") as! KOTPStopsViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "KOTPStopsViewController") as! KOTPStopsViewController
+        vc.enableStopSearch = enableStopSearch
+        return vc
     }
-
+    fileprivate var enableStopSearch: Bool = false
     fileprivate var prevRadius: UInt = 0
     fileprivate var fromLocation: MKPlacemark?{
         didSet {
@@ -69,7 +74,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
             // Verifico se sono presenti nuove annotations. In caso positivo, le
             // mostro su mappa, altrimenti mostro un messaggio di errore all'utente.
             if items?.isEmpty ?? true {
-                KMessageManager.showMessage("CAN_NOT_FIND_STOPS".localizedString(), type: .message)
+                
             } else {
                 mapView.addAnnotations(items!)
                 // Imposto lo stato delle view utilizzando la trait collection
@@ -147,7 +152,13 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
         mapView.addGestureRecognizer(longTap)
 
         hideTableView(animated: false)
-
+        if enableStopSearch {
+            stopSearch.placeholder = "Nome della fermata".localizedString()
+            search.setTitle("SEARCH".localizedString(), for: .normal)
+            KTheme.current.applyTheme(toButton: search, style: .default)
+        }else{
+            segmented.removeFromSuperview()
+        }
         setupSearch()
     }
 
@@ -294,6 +305,9 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
                                 strongSelf.items = newStops
                             } else {
                                 strongSelf.items = nil
+                            }
+                            if strongSelf.items?.isEmpty ?? true {
+                                KMessageManager.showMessage("CAN_NOT_FIND_STOPS".localizedString(), type: .message)
                             }
                             MBProgressHUD.hide(for: strongSelf.view,
                                                animated: true)
@@ -489,6 +503,49 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
         }
     }
 
+    
+    @IBAction fileprivate func changeSection()
+    {
+        if segmented.selectedSegmentIndex == 0
+        {
+            fromLocation = fromLocation != nil ? fromLocation : nil
+            UIView.animate(withDuration: 0.5) {
+                self.search.isHidden = true
+                self.stopSearch.isHidden = true
+                self.sourceAddressTextField.isHidden = false
+                self.labelSlider.isHidden = false
+                self.searchRadiusSlider.isHidden = false
+            }
+        }else{
+            searchStops()
+            UIView.animate(withDuration: 0.5) {
+                self.search.isHidden = false
+                self.stopSearch.isHidden = false
+                self.sourceAddressTextField.isHidden = true
+                self.labelSlider.isHidden = true
+                self.searchRadiusSlider.isHidden = true
+            }
+        }
+    }
+    
+    @IBAction fileprivate func searchStops()
+    {
+        mapView.removeOverlays(mapView.overlays)
+        mapView.removeAnnotations(mapView.annotations)
+        guard let textToSearch = stopSearch.text, !textToSearch.isEmpty else {
+            self.items = nil
+            return
+        }
+        MBProgressHUD.showAdded(to: view, animated: true)
+        KOpenTripPlannerLoader.shared.retrieveAllStops(search: textToSearch) { (stops) in
+            self.items = stops
+            self.mapView.centerMap()
+            if self.items?.isEmpty ?? true {
+                KMessageManager.showMessage("CAN_NOT_FIND_STOPS".localizedString(), type: .message)
+            }
+            MBProgressHUD.hide(for: self.view, animated: true)
+        }
+    }
 }
 
 class UserSelectedPoint: NSObject, MKAnnotation, AnnotationProtocol {

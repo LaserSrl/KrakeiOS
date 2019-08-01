@@ -381,7 +381,7 @@ public class KOTPStop: EVObject, KOTPStopItem, AnnotationProtocol
 {
     public var originalId: String?{
         get{
-            return id
+            return id?.replacingOccurrences(of: "_", with: ":")
         }
     }
     
@@ -427,5 +427,17 @@ public class KOTPStop: EVObject, KOTPStopItem, AnnotationProtocol
 
     public func termIconIdentifier() -> String? {
         return nil
+    }
+    
+    public override func setValue(_ value: Any!, forUndefinedKey key: String) {
+        if key == "description"
+        {
+            name = (value as? String)?.replacingOccurrences(of: "stop ", with: "")
+        }else if key == "lng"
+        {
+            lon = value as? NSNumber
+        }
+        
+        
     }
 }

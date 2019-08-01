@@ -33,10 +33,10 @@
                                 </connections>
                             </mapView>
                             <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Vpu-FN-kuf">
-                                <rect key="frame" x="0.0" y="20" width="375" height="84"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="136"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C1Q-jf-JOS">
-                                        <rect key="frame" x="8" y="8" width="359" height="30"/>
+                                        <rect key="frame" x="20" y="52" width="335" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -44,31 +44,69 @@
                                         </connections>
                                     </textField>
                                     <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="10" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="7tc-OO-gas">
-                                        <rect key="frame" x="6" y="46" width="316" height="31"/>
+                                        <rect key="frame" x="18" y="90" width="292" height="31"/>
                                         <connections>
                                             <action selector="userDidEndTouch:" destination="0iq-K3-maT" eventType="touchUpInside" id="sy4-Kf-fSf"/>
                                             <action selector="valueDidChange:" destination="0iq-K3-maT" eventType="valueChanged" id="r5W-ZJ-ZzH"/>
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="250 m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OU5-uF-eaI">
-                                        <rect key="frame" x="328" y="46" width="39" height="30"/>
+                                        <rect key="frame" x="316" y="90" width="39" height="26"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="w3s-7z-KJU">
+                                        <rect key="frame" x="121" y="8" width="133" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="R4I-T6-Vwe"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Indirizzo"/>
+                                            <segment title="Fermata"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="changeSection" destination="0iq-K3-maT" eventType="valueChanged" id="lGO-eq-j8p"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="paE-bx-fem">
+                                        <rect key="frame" x="20" y="52" width="335" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qz7-pG-mF2">
+                                        <rect key="frame" x="295" y="90" width="60" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="750" constant="60" id="MFB-sl-crQ"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="searchStops" destination="0iq-K3-maT" eventType="touchUpInside" id="y3J-Dt-Fh6"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="OU5-uF-eaI" secondAttribute="trailing" constant="8" id="1ac-zs-1V7"/>
-                                    <constraint firstItem="C1Q-jf-JOS" firstAttribute="leading" secondItem="Vpu-FN-kuf" secondAttribute="leading" constant="8" id="22s-is-ppX"/>
-                                    <constraint firstAttribute="bottom" secondItem="7tc-OO-gas" secondAttribute="bottom" constant="8" id="5Li-qO-fJJ"/>
-                                    <constraint firstAttribute="height" constant="84" id="5qb-Q8-hts"/>
-                                    <constraint firstAttribute="trailing" secondItem="C1Q-jf-JOS" secondAttribute="trailing" constant="8" id="G0d-pD-NFt"/>
-                                    <constraint firstItem="7tc-OO-gas" firstAttribute="leading" secondItem="Vpu-FN-kuf" secondAttribute="leading" constant="8" id="PQJ-wJ-Irb"/>
+                                    <constraint firstAttribute="trailing" secondItem="OU5-uF-eaI" secondAttribute="trailing" constant="20" id="1ac-zs-1V7"/>
+                                    <constraint firstItem="C1Q-jf-JOS" firstAttribute="leading" secondItem="Vpu-FN-kuf" secondAttribute="leading" constant="20" id="22s-is-ppX"/>
+                                    <constraint firstAttribute="bottom" secondItem="7tc-OO-gas" secondAttribute="bottom" constant="16" id="5Li-qO-fJJ"/>
+                                    <constraint firstItem="w3s-7z-KJU" firstAttribute="top" secondItem="Vpu-FN-kuf" secondAttribute="top" constant="8" id="70j-7c-uRm"/>
+                                    <constraint firstItem="paE-bx-fem" firstAttribute="top" secondItem="w3s-7z-KJU" secondAttribute="bottom" constant="16" id="7Zd-o0-530"/>
+                                    <constraint firstAttribute="bottom" secondItem="qz7-pG-mF2" secondAttribute="bottom" constant="16" id="DBz-TQ-Cpv"/>
+                                    <constraint firstAttribute="trailing" secondItem="C1Q-jf-JOS" secondAttribute="trailing" constant="20" id="G0d-pD-NFt"/>
+                                    <constraint firstItem="7tc-OO-gas" firstAttribute="leading" secondItem="Vpu-FN-kuf" secondAttribute="leading" constant="20" id="PQJ-wJ-Irb"/>
+                                    <constraint firstItem="paE-bx-fem" firstAttribute="top" secondItem="Vpu-FN-kuf" secondAttribute="top" priority="750" constant="8" id="Rcx-sQ-GW7"/>
+                                    <constraint firstAttribute="trailing" secondItem="qz7-pG-mF2" secondAttribute="trailing" constant="20" id="ZNv-2E-PC0"/>
+                                    <constraint firstItem="C1Q-jf-JOS" firstAttribute="top" secondItem="Vpu-FN-kuf" secondAttribute="top" priority="750" constant="8" id="cuB-Te-FiK"/>
                                     <constraint firstItem="OU5-uF-eaI" firstAttribute="top" secondItem="7tc-OO-gas" secondAttribute="top" id="eao-zt-gNW"/>
-                                    <constraint firstItem="C1Q-jf-JOS" firstAttribute="top" secondItem="Vpu-FN-kuf" secondAttribute="top" constant="8" id="ek7-CT-xGG"/>
-                                    <constraint firstAttribute="bottom" secondItem="OU5-uF-eaI" secondAttribute="bottom" constant="8" id="ff8-fc-8tC"/>
+                                    <constraint firstAttribute="bottom" secondItem="OU5-uF-eaI" secondAttribute="bottom" constant="20" id="ff8-fc-8tC"/>
+                                    <constraint firstItem="w3s-7z-KJU" firstAttribute="centerX" secondItem="Vpu-FN-kuf" secondAttribute="centerX" id="hFM-Ur-Nm8"/>
+                                    <constraint firstAttribute="trailing" secondItem="paE-bx-fem" secondAttribute="trailing" constant="20" id="jfH-Y3-Xg4"/>
+                                    <constraint firstItem="paE-bx-fem" firstAttribute="leading" secondItem="Vpu-FN-kuf" secondAttribute="leading" constant="20" id="kt0-e0-7AC"/>
                                     <constraint firstItem="OU5-uF-eaI" firstAttribute="leading" secondItem="7tc-OO-gas" secondAttribute="trailing" constant="8" id="vky-AJ-8nk"/>
+                                    <constraint firstItem="qz7-pG-mF2" firstAttribute="top" secondItem="paE-bx-fem" secondAttribute="bottom" constant="8" id="vs4-dq-9Yg"/>
+                                    <constraint firstItem="C1Q-jf-JOS" firstAttribute="top" secondItem="w3s-7z-KJU" secondAttribute="bottom" constant="16" id="yyA-9Q-WrP"/>
                                     <constraint firstItem="7tc-OO-gas" firstAttribute="top" secondItem="C1Q-jf-JOS" secondAttribute="bottom" constant="8" id="zMw-nR-Vne"/>
                                 </constraints>
                             </view>
@@ -100,7 +138,7 @@
                                                             <rect key="frame" x="4" y="11" width="28" height="28"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="x5M-XJ-3kg" secondAttribute="height" multiplier="1:1" id="XSu-fd-g1j"/>
-                                                                <constraint firstAttribute="height" constant="28" id="Yd8-bY-Nje"/>
+                                                                <constraint firstAttribute="height" priority="750" constant="28" id="Yd8-bY-Nje"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTJ-5H-QJY">
@@ -202,10 +240,13 @@
                     <connections>
                         <outlet property="labelSlider" destination="OU5-uF-eaI" id="8Fb-AS-5yG"/>
                         <outlet property="mapView" destination="iw6-Ny-pTH" id="Oo9-18-r3k"/>
+                        <outlet property="search" destination="qz7-pG-mF2" id="jDk-if-p7v"/>
                         <outlet property="searchRadiusSlider" destination="7tc-OO-gas" id="7ua-nA-EPS"/>
                         <outlet property="searchView" destination="Vpu-FN-kuf" id="DkN-dA-NkW"/>
                         <outlet property="searchViewHiddenBottom" destination="hMQ-4v-147" id="KGu-f2-Cdi"/>
+                        <outlet property="segmented" destination="w3s-7z-KJU" id="wbs-K8-r72"/>
                         <outlet property="sourceAddressTextField" destination="C1Q-jf-JOS" id="yTi-vj-rdl"/>
+                        <outlet property="stopSearch" destination="paE-bx-fem" id="aGx-Nw-o9O"/>
                         <outlet property="tableView" destination="pgx-OI-Z5z" id="L78-Ka-0Qv"/>
                         <outlet property="tableViewContainer" destination="uMV-j3-YqL" id="G1j-zq-1vl"/>
                         <outlet property="tableViewContainerTop" destination="pY6-cM-3oI" id="4JV-kU-34R"/>
@@ -220,7 +261,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="738.08095952023996" y="1717.5999999999999"/>
+            <point key="canvasLocation" x="736.79999999999995" y="1716.7916041979013"/>
         </scene>
         <!--Stops In Route View Controller-->
         <scene sceneID="7RW-vD-a6W">

@@ -24,6 +24,7 @@ public class KOpenTripPlannerLoader: KOTPLoader {
     private var stopsPattern: URLSessionDataTask? = nil
     private var stopsInRoutePattern: URLSessionDataTask? = nil
     private var otpItemStopTime: URLSessionDataTask? = nil
+    private var allStops: URLSessionDataTask? = nil
     private var routesCached: [KOTPRoute]?
     
     public func retrievePathPoints(for line: KBusLine, with completion: @escaping (KBusLine, MKPolyline?) -> Void)
@@ -203,6 +204,29 @@ public class KOpenTripPlannerLoader: KOTPLoader {
         }) { (task, error) in
             completion(nil)
             self.otpItemStopTime = nil
+        }
+    }
+    
+    public func retrieveAllStops(search text: String, with completion: @escaping ([KOTPStop]?) -> Void) {
+        allStops?.cancel()
+        
+        allStops = manager.get("geocode?autocomplete=true&corners=false&stops=true&query=" + text,
+                                          parameters: nil,
+                                          progress: nil,
+                                          success: { (task, result) in
+                                            
+                                            if let result = result as? [NSDictionary]
+                                            {
+                                                let stops = [KOTPStop](dictionaryArray: result)
+                                                completion(stops)
+                                            }
+                                            else {
+                                                completion(nil)
+                                            }
+                                            self.stopsInRoutePattern = nil
+        }) { (task, error) in
+            completion(nil)
+            self.allStops = nil
         }
     }
 }

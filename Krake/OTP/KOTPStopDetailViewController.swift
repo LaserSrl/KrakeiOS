@@ -30,6 +30,14 @@ public class KOTPStopDetailViewCell: UITableViewCell {
 
 open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewController<KBusLine> {
 
+    
+    public static var lineName: (_ line: KBusLine) -> String = { (line) -> String in
+        let lastStop = !line.lastStop ? "" : "(Last stop)".localizedString()
+        return String(format: "Linea %@ verso %@ %@".localizedString(),
+               line.lineNumber, line.destination,lastStop)
+    }
+    
+    
     public var sourceStop: KOTPStopItem?
 
     private var selectedLine: KBusLine? = nil
@@ -160,9 +168,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                 String(format: "ore %@".localizedString(), dateFormatter.string(from: line.scheduledArrival))
         }
         // Customizzo la cella sulla base delle informazioni ricevute.
-        let lastStop = !line.lastStop ? "" : "(Last stop)".localizedString()
-        cell.titleLabel.text = String(format: "Linea %@ verso %@ %@".localizedString(),
-                                      line.lineNumber, line.destination,lastStop)
+        cell.titleLabel.text = KOTPStopDetailViewController.lineName(line)
         cell.arrivalLabel.text = arrivalTimeDescription
         
         cell.busImageView.image = KTripTheme.shared.imageFor(vehicleType: line.routeInfo?.mode ?? .other).withRenderingMode(.alwaysTemplate)
