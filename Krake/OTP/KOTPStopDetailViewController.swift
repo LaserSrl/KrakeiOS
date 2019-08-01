@@ -19,11 +19,15 @@ public class KOTPStopDetailViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var arrivalLabel: UILabel!
     @IBOutlet weak var busImageView: UIImageView!
-
+    @IBOutlet weak var arrivalImageView: UIImageView!
+    
     public override func awakeFromNib() {
         super.awakeFromNib()
         // Imposto il tint color dell'immagine.
-        busImageView.tintColor = .tint
+        busImageView.tintColor = KTheme.current.color(.tint)
+        arrivalImageView.tintColor = KTheme.current.color(.tint)
+        arrivalImageView.image = UIImage(otpNamed: "durata")?.withRenderingMode(.alwaysTemplate)
+        arrivalImageView.isHidden = true
     }
 
 }
@@ -133,6 +137,15 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
             self?.routes = routes
             self?.loadTimes()
         })
+        
+        KOTPLocationManager.shared.completion = { [weak self](identifier) in
+            guard let strongSelf = self else { return }
+            for annotation in strongSelf.mapView.annotations where (annotation as? KOTPStopItem)?.originalId == identifier
+            {
+                strongSelf.mapView.removeAnnotation(annotation)
+                strongSelf.mapView.addAnnotation(annotation)
+            }
+        }
     }
 
     override func tableViewContainerAvailableFrame() -> CGRect {
@@ -153,7 +166,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         let line = items![indexPath.row]
         // Sulla base dei secondi rimanenti prima che arrivi il prossimo bus,
         // imposto la descrizione del tempo di attesa previsto.
-        let arrivalTimeSeconds = line.scheduledArrival.timeIntervalSinceNow
+        let arrivalTimeSeconds = line.realtimeArrival?.timeIntervalSinceNow ?? line.scheduledArrival.timeIntervalSinceNow
         let arrivalTimeDescription: String
         if arrivalTimeSeconds <= 60 {
             arrivalTimeDescription = "in arrivo".localizedString()
@@ -170,9 +183,20 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         // Customizzo la cella sulla base delle informazioni ricevute.
         cell.titleLabel.text = KOTPStopDetailViewController.lineName(line)
         cell.arrivalLabel.text = arrivalTimeDescription
+        if line.realtimeArrival != nil{
+            cell.arrivalLabel.textColor = KTheme.current.color(.tint)
+            DispatchQueue.main.async {
+                cell.arrivalImageView.isHidden = false
+            }
+        }else{
+            cell.arrivalLabel.textColor = UIColor.darkGray
+            DispatchQueue.main.async {
+                cell.arrivalImageView.isHidden = true
+            }
+        }
         
         cell.busImageView.image = KTripTheme.shared.imageFor(vehicleType: line.routeInfo?.mode ?? .other).withRenderingMode(.alwaysTemplate)
-        cell.busImageView.backgroundColor = line.routeInfo?.color ?? UIColor.tint
+        cell.busImageView.backgroundColor = line.routeInfo?.color ?? KTheme.current.color(.tint)
         cell.busImageView.tintColor = cell.busImageView.backgroundColor?.constrastTextColor()
         return cell
     }
@@ -198,6 +222,32 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         // Corpo della funzione vuoto, per evitare lo zoom sulla MKAnnotation
         // selezionata.
     }
+    
+    open override func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control.tag == 15, let otpitem = view.annotation as? KOTPStopItem {
+            let identifier = (view.annotation as? KOTPStopItem)?.originalId
+            let region = KOTPLocationManager.shared.monitoring(from: identifier)
+            let message = region == nil ? "Vuoi abilitare la funzionalità di notifica quanto sei nei paraggi della fermata?" : "Vuoi disabilitare la notifica?"
+            let alert = UIAlertController(title: "Notificami quando sto per arrivare", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Si", style: .default, handler: { (action) in
+                if region != nil
+                {
+                    KOTPLocationManager.shared.stopMonitoring(region: region!)
+                    (view.rightCalloutAccessoryView as? UIButton)?.isSelected = false
+                }else{
+                    KOTPLocationManager.shared.startMonitoring(regionFrom: otpitem, completion: { (success) in
+                        (view.rightCalloutAccessoryView as? UIButton)?.isSelected = success
+                    })
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            present(alert, animated: true, completion: nil)
+        }else{
+            super.mapView(mapView, annotationView: view, calloutAccessoryControlTapped: control)
+        }
+    }
 
     @objc(mapView:rendererForOverlay:)
     public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -220,6 +270,20 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
             pinView.canShowCallout = false
         }else{
             pinView.addNavigationButton()
+            if !isSourceStopAnnotation(annotation) {
+                if pinView.rightCalloutAccessoryView == nil {
+                    let rightButton = UIButton(type: .custom)
+                    rightButton.backgroundColor = KTheme.current.color(.tint)
+                    rightButton.tintColor = KTheme.current.color(.textTint)
+                    rightButton.frame = CGRect(x: 0, y: 0, width: 32, height: 56)
+                    rightButton.imageEdgeInsets = UIEdgeInsets(top: 13, left: 2, bottom: 14, right: 2)
+                    rightButton.setImage(UIImage(krakeNamed: "add_alarm")?.withRenderingMode(.alwaysTemplate), for: .normal)
+                    rightButton.setImage(UIImage(krakeNamed: "remove_alarm")?.withRenderingMode(.alwaysTemplate), for: .selected)
+                    rightButton.tag = 15
+                    pinView.rightCalloutAccessoryView = rightButton
+                }
+                (pinView.rightCalloutAccessoryView as? UIButton)?.isSelected = KOTPLocationManager.shared.monitoring(from: (annotation as? KOTPStopItem)?.originalId) != nil
+            }
         }
         
         return pinView
@@ -278,19 +342,16 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                 let stopTimes = pattern.stopTimesList?.array as? [StopTimeProtocol], !stopTimes.isEmpty {
 
                 for stopTime in stopTimes {
-                    var stopArrival: NSNumber? = nil
+                    
 
-                     if let realTime = stopTime.realtimeDeparture, realTime.intValue > 0 {
-                        stopArrival = realTime
-                    }
-                    else {
-                        stopArrival = stopTime.scheduledDeparture
-                    }
-
-                    if let stopTimeScheduledArrival = stopArrival,
+                    if let stopTimeScheduledArrival = stopTime.scheduledDeparture,
                         let scheduledArrival = stopTimeScheduledArrival.otpSecondsToDate() {
                         let secondsUntilArrival = scheduledArrival.timeIntervalSinceNow
                         if secondsUntilArrival > 0 && secondsUntilArrival < 121 * 60 {
+                            var realtimeArrival: Date? = nil
+                            if let realTime = stopTime.realtimeDeparture, realTime.intValue > 0, realTime.compare(stopTimeScheduledArrival) != .orderedSame {
+                                realtimeArrival = realTime.otpSecondsToDate()
+                            }
                             
                             let routeInfo = routes?.filter({ (route) -> Bool in
                                 return pattern.patternId!.starts(with: route.id)
@@ -299,6 +360,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                             let line = KBusLine(lineNumber: step.id,
                                                destination: step.destination,
                                                scheduledArrival: scheduledArrival,
+                                               realtimeArrival: realtimeArrival,
                                                patternId: pattern.patternId!,
                                                tripId: stopTime.tripId!,
                                                routeInfo: routeInfo,

@@ -27,6 +27,7 @@
 		CDBB7862219C7EDC00122E7E /* OGLMapperConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDBB772A219C7EDB00122E7E /* OGLMapperConfiguration.plist */; };
 		CDBB7870219C7EDC00122E7E /* OrchardMapper.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB773E219C7EDB00122E7E /* OrchardMapper.xcassets */; };
 		CDBB78B7219C7EFE00122E7E /* Krake.podspec in Resources */ = {isa = PBXBuildFile; fileRef = CDBB78B5219C7EFE00122E7E /* Krake.podspec */; };
+		CDC4ADB122F338D30087D74A /* KOTPLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4ADB022F338D30087D74A /* KOTPLocationManager.swift */; };
 		CDDA994A22905720008B205B /* KBusTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDA994922905720008B205B /* KBusTracker.swift */; };
 		DE6E637752B7626A84EC12E6 /* Pods_KrakeProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F328208C2D9FF7D00F148720 /* Pods_KrakeProj.framework */; };
 /* End PBXBuildFile section */
@@ -357,6 +358,7 @@
 		CDBB778B219C7EDC00122E7E /* EnumerationFieldProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumerationFieldProtocol.swift; sourceTree = "<group>"; };
 		CDBB778C219C7EDC00122E7E /* ContentItemWithShareLinkPart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItemWithShareLinkPart.swift; sourceTree = "<group>"; };
 		CDBB78B5219C7EFE00122E7E /* Krake.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Krake.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CDC4ADB022F338D30087D74A /* KOTPLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPLocationManager.swift; sourceTree = "<group>"; };
 		CDDA994922905720008B205B /* KBusTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBusTracker.swift; sourceTree = "<group>"; };
 		F328208C2D9FF7D00F148720 /* Pods_KrakeProj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KrakeProj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -586,6 +588,7 @@
 				5D06849E2296E32400101D4C /* KOTPStopTimesViewController.swift */,
 				5D5E17C52297ED17000851CC /* Number+OtpDate.swift */,
 				5D5FE48A229840660080E4E3 /* KOtpStopTimesDateHeader.swift */,
+				CDC4ADB022F338D30087D74A /* KOTPLocationManager.swift */,
 			);
 			path = OTP;
 			sourceTree = "<group>";
@@ -1385,6 +1388,7 @@
 				5D06849F2296E32400101D4C /* KOTPStopTimesViewController.swift in Sources */,
 				CD4C001B2292E286009727A7 /* KVehicleAnnotation.swift in Sources */,
 				5D06849D2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift in Sources */,
+				CDC4ADB122F338D30087D74A /* KOTPLocationManager.swift in Sources */,
 				CDDA994A22905720008B205B /* KBusTracker.swift in Sources */,
 				5D5FE48B229840660080E4E3 /* KOtpStopTimesDateHeader.swift in Sources */,
 				5D6D8BE122C34F7C00D72464 /* KTabAndCollectionViewItems.swift in Sources */,

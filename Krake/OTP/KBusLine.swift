@@ -13,6 +13,7 @@ open class KBusLine: Hashable {
     public let lineNumber: String
     public let destination: String
     public let scheduledArrival: Date
+    public let realtimeArrival: Date?
     public let patternId: String
     public let tripId: String
     public let routeInfo: KOTPRoute?
@@ -20,7 +21,8 @@ open class KBusLine: Hashable {
 
     public init(lineNumber: String,
                 destination: String,
-         scheduledArrival: Date,
+                scheduledArrival: Date,
+                realtimeArrival: Date? = nil,
          patternId: String,
          tripId: String,
          routeInfo: KOTPRoute?,
@@ -28,6 +30,7 @@ open class KBusLine: Hashable {
         self.lineNumber = lineNumber
         self.destination = destination
         self.scheduledArrival = scheduledArrival
+        self.realtimeArrival = realtimeArrival
         self.patternId = patternId
         self.tripId = tripId
         self.routeInfo = routeInfo

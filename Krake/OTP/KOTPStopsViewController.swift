@@ -166,6 +166,29 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
         super.viewDidAppear(animated)
         AnalyticsCore.shared?.log(itemList:"Public Transport", parameters: nil)
     }
+    
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if KOTPLocationManager.shared.monitoredRegions.count>0
+        {
+            let barButton = UIBarButtonItem(image: UIImage(krakeNamed: "remove_alarm"), style: .plain, target: self, action: #selector(stopMonitoring))
+            navigationItem.leftBarButtonItem = barButton
+        }else{
+            navigationItem.leftBarButtonItem = nil
+        }
+    }
+    
+    @objc func stopMonitoring(){
+        let alert = UIAlertController(title: "Notificami quando sto per arrivare", message: "Vuoi disabilitare tutte le notifiche?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Si", style: .default, handler: { (action) in
+            KOTPLocationManager.shared.stopMonitoringRegions()
+            self.navigationItem.leftBarButtonItem = nil
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
 
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         manageViewState(for: size)
