@@ -65,9 +65,15 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
     */
     public var detailDelegate: KDetailPresenterDelegate? = nil
 
+
+    /*
+     * default: self.title
+     */
+    public var analyticsTitle: String? = nil
+
     /**
-    * analytics aggiuntivi da inviare a Firebase
-    */
+     * analytics aggiuntivi da inviare a Firebase
+     */
     public var analyticsExtras: [String: Any]? = nil
 
     /**
@@ -220,9 +226,11 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
     open override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
-        if title != nil
+
+        if let analyticsScreenName = self.analyticsTitle != nil ? self.analyticsTitle : self.title,
+            !analyticsScreenName.isEmpty
         {
-            AnalyticsCore.shared?.log(itemList: title!, parameters: analyticsExtras)
+            AnalyticsCore.shared?.log(itemList: analyticsScreenName, parameters: analyticsExtras)
         }
         collectionItemsDelegate?.viewDidAppear(self)
     }

@@ -72,7 +72,7 @@ open class KDetailViewController: UIViewController, UIScrollViewDelegate, KDetai
     /// Object used to populate the `rightBarButtonItems` of the view controller.
     lazy var mixedBarButton: KMixedBarButton = KMixedBarButton()
 
-    private var sentAnalytics = false
+    public var sentAnalytics = false
     private var task: OMLoadDataTask?
 
     deinit {
@@ -217,7 +217,7 @@ open class KDetailViewController: UIViewController, UIScrollViewDelegate, KDetai
 
     // MARK: - Analytics
 
-    private func trackContentOnAnalytics() {
+    open func trackContentOnAnalytics() {
         if let detail = detailObject as? ContentItem, !sentAnalytics {
             sentAnalytics = true
             AnalyticsCore.shared?.log(
