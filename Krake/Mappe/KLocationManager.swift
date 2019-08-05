@@ -31,21 +31,30 @@ open class KLocationManager : CLLocationManager, CLLocationManagerDelegate
         
         if status == .notDetermined || ( status == .authorizedWhenInUse && always ) {
             authBlock = completion
-            if !always {
+            if !always
+            {
                 self.requestWhenInUseAuthorization()
             }
-            else {
-                self.requestAlwaysAuthorization()
+            else
+            {
+                if !UserDefaults.standard.bool(forKey: "IsFirstTimeAlwaysAuthorizationRequested")
+                {
+                    self.requestAlwaysAuthorization()
+                    UserDefaults.standard.set(true, forKey: "IsFirstTimeAlwaysAuthorizationRequested")
+                }
+                else
+                {
+                    completion(self, status)
+                }
             }
         }
         else {
             completion(self, status)
         }
     }
+    
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if authBlock != nil {
-            authBlock!(self, status)
-        }
+        authBlock?(self, status)
     }
     
     public func requestStartUpdatedLocation(completion: @escaping LocationUpdateBlock) {

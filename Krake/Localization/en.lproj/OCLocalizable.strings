@@ -227,7 +227,7 @@
 
 "OTP_MAX_NUMBER_OF_REGION" = "Warning: you can activate a maximum of 20 stops; disable at least one stop before activating a new one.";
 "OTP_DISABLE_ALL_STOPS_NOTIFICATION" = "Disable notifications for all stops.";
-"OTP_LOCALIZATION_ERROR" = "Enable localization to use this functionality.";
+"OTP_LOCALIZATION_ERROR" = "Enable always localization to use this functionality.";
 "OTP_STOP_NOTIFICATION" = "You are about to arrive at the '%@' stop";
 "OTP_ENABLE_STOP_NOTIFICATION_?" = "Would you like to be notified when you are about to reach the stop?";
 "OTP_DISABLE_STOP_NOTIFICATION_?" = "Do you want to disable the notification?";

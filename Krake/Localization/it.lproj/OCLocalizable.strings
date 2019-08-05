@@ -229,7 +229,7 @@
 
 "OTP_MAX_NUMBER_OF_REGION" = "Attenzione: puoi attivare un massimo di 20 fermate; prima di procedere con l'attivazione di una nuova fermata, devi disabilitarne un'altra.";
 "OTP_DISABLE_ALL_STOPS_NOTIFICATION" = "Disattiva le notifiche per tutte le fermate.";
-"OTP_LOCALIZATION_ERROR" = "Per usufruire della funzionalità devi prima abilitare la localizzazione.";
+"OTP_LOCALIZATION_ERROR" = "Abilita sempre la localizzazione per usufruire della funzionalità.";
 "OTP_STOP_NOTIFICATION" = "Stai per arrivare alla fermata '%@'";
 "OTP_ENABLE_STOP_NOTIFICATION_?" = "Vuoi essere notificato quando sei nei paraggi della fermata?";
 "OTP_DISABLE_STOP_NOTIFICATION_?" = "Vuoi disabilitare la notifica?";
