@@ -27,7 +27,7 @@ class KOTPLocationManager: KLocationManager
     {
         guard let stopItem = stopItem else { return }
         guard let originalId = stopItem.originalId else { return }
-        if monitoredRegions.count >= 1
+        if monitoredRegions.count >= 20
         {
             let alert = UIAlertController(title: KInfoPlist.appName, message: "OTP_MAX_NUMBER_OF_REGION".localizedString(), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok".localizedString(), style: .default, handler: { (action) in
