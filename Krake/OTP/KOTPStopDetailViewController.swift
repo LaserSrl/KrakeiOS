@@ -227,7 +227,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         if control.tag == 15, let otpitem = view.annotation as? KOTPStopItem {
             let identifier = (view.annotation as? KOTPStopItem)?.originalId
             let region = KOTPLocationManager.shared.monitoring(from: identifier)
-            let message = region == nil ? "Vuoi abilitare la funzionalità di notifica quanto sei nei paraggi della fermata?".appLocalizedString() : "Vuoi disabilitare la notifica?".appLocalizedString()
+            let message = region == nil ? "OTP_ENABLE_STOP_NOTIFICATION_?".appLocalizedString() : "OTP_DISABLE_STOP_NOTIFICATION_?".appLocalizedString()
             let alert = UIAlertController(title: KInfoPlist.appName, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Si".localizedString(), style: .default, handler: { (action) in
                 if region != nil

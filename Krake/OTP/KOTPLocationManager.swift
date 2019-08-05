@@ -29,8 +29,8 @@ class KOTPLocationManager: KLocationManager
         guard let originalId = stopItem.originalId else { return }
         if monitoredRegions.count >= 20
         {
-            let alert = UIAlertController(title: KInfoPlist.appName, message: "Puoi attivare al massimo 20 fermate. Prima di procedere con l'attivazione di una nuova fermata devi disabilitarne un'altra.".appLocalizedString(), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Disattiva tutte le fermate".appLocalizedString(), style: .destructive, handler: { (action) in
+            let alert = UIAlertController(title: KInfoPlist.appName, message: "OTP_MAX_NUMBER_OF_REGION".appLocalizedString(), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OTP_DISABLE_ALL_STOPS_NOTIFICATION".appLocalizedString(), style: .destructive, handler: { (action) in
                 self.stopMonitoringRegions()
                 self.startMonitoring(regionFrom: stopItem, completion: completion)
                 alert.dismiss(animated: true, completion: nil)
@@ -49,7 +49,7 @@ class KOTPLocationManager: KLocationManager
                 UserDefaults.standard.set(stopItem.name, forKey: originalId)
                 completion(true)
             }else if status != CLAuthorizationStatus.notDetermined{
-                KMessageManager.showMessage("Non puoi usufruire della funzionalità, devi prima abilitare l'utilizzo della localizzazione!".appLocalizedString(), type: KMessageManager.Mode.error, buttonTitle: "Impostazioni".localizedString(), buttonCompletion: {
+                KMessageManager.showMessage("OTP_LOCALIZATION_ERROR".appLocalizedString(), type: KMessageManager.Mode.error, buttonTitle: "Impostazioni".localizedString(), buttonCompletion: {
                     UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
                 })
                 completion(false)
@@ -90,7 +90,7 @@ class KOTPLocationManager: KLocationManager
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion)
     {
         if let message = UserDefaults.standard.string(forKey: region.identifier){
-            let messaggeBody = String(format: "Stai arrivando alla fermata '%@'".appLocalizedString(), message)
+            let messaggeBody = String(format: "OTP_STOP_NOTIFICATION".appLocalizedString(), message)
             if UIApplication.shared.applicationState == .active
             {
                 self.stopMonitoring(region: region)
