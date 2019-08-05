@@ -95,7 +95,9 @@ import SwiftMessages
                                    duration: KMessageManager.Duration = .automatic,
                                    windowLevel: KWindowLevel = KWindowLevelStatusBar,
                                    fromViewController: UIViewController? = UIApplication.shared.delegate?.window??.rootViewController?.presentedViewController ?? UIApplication.shared.delegate?.window??.rootViewController,
-                                   viewId: String? = nil){
+                                   viewId: String? = nil,
+                                   buttonTitle: String? = nil,
+                                   buttonCompletion: (()->Void)? = nil){
         
         var config = SwiftMessages.Config()
         config.presentationStyle = convertPositionBlock(position)
@@ -106,9 +108,13 @@ import SwiftMessages
             let view = MessageView.viewFromNib(layout: convertLayoutBlock(layout))
             view.configureTheme(convertModeBlock(type))
             view.configureContent(title: title, body: subtitle)
-            view.button?.isHidden = true // bottone aggiuntivo
+            view.button?.isHidden = buttonCompletion == nil // bottone aggiuntivo
+            view.button?.setTitle(buttonTitle, for: .normal)
             if let viewId = viewId {
                 view.id = viewId
+            }
+            view.buttonTapHandler = {(button) in
+                buttonCompletion?()
             }
             KTheme.current.applyTheme(toMessageView: view)
             return view
