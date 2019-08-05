@@ -179,12 +179,12 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
     }
     
     @objc func stopMonitoring(){
-        let alert = UIAlertController(title: "Notificami quando sto per arrivare", message: "Vuoi disabilitare tutte le notifiche?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Si", style: .default, handler: { (action) in
+        let alert = UIAlertController(title: KInfoPlist.appName, message: "Vuoi disabilitare tutte le notifiche?".appLocalizedString(), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Si".localizedString(), style: .default, handler: { (action) in
             KOTPLocationManager.shared.stopMonitoringRegions()
             self.navigationItem.leftBarButtonItem = nil
         }))
-        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "No".localizedString(), style: .cancel, handler: { (action) in
             alert.dismiss(animated: true, completion: nil)
         }))
         present(alert, animated: true, completion: nil)

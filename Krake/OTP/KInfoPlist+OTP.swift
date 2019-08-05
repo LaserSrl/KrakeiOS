@@ -29,6 +29,10 @@ extension KInfoPlist
             return Bundle.otpSettings()?["BusTrackerRefresh"] as? NSNumber
         }()
         
+        public static let stopRegionRadiusMeter: Double = {
+            return (Bundle.otpSettings()?["StopRegionRadiusMeter"] as? NSNumber)?.doubleValue ?? 250.0
+        }()
+        
     }
     
 }

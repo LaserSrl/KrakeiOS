@@ -225,6 +225,21 @@
 "Percorso più veloce" = "Percorso più veloce";
 "(Last stop)" = "(Fine corsa)";
 "Drag to move" = "Trascina per spostare";
+
+
+//da tradurre e/o rivedere
+"Puoi attivare al massimo 20 fermate. Prima di procedere con l'attivazione di una nuova fermata devi disabilitarne un'altra." = "Puoi attivare al massimo 20 fermate. Prima di procedere con l'attivazione di una nuova fermata devi disabilitarne un'altra.";
+"Disattiva tutte le fermate" = "Disattiva tutte le fermate";
+"Non puoi usufruire della funzionalità, devi prima abilitare l'utilizzo del GPS!" = "Non puoi usufruire della funzionalità, devi prima abilitare l'utilizzo del GPS!";
+"Stai arrivando alla fermata '%@'" = "Stai arrivando alla fermata '%@'";
+"Vuoi abilitare la funzionalità di notifica quanto sei nei paraggi della fermata?" = "Vuoi abilitare la funzionalità di notifica quanto sei nei paraggi della fermata?";
+"Vuoi disabilitare la notifica?" = "Vuoi disabilitare la notifica?";
+"Notificami quando sto per arrivare" = "Notificami quando sto per arrivare";
+"Vuoi disabilitare tutte le notifiche?" = "Vuoi disabilitare tutte le notifiche?";
+
+
+
+
 /*
  GameQuiz
  */

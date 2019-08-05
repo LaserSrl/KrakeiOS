@@ -27,7 +27,21 @@ class KOTPLocationManager: KLocationManager
     {
         guard let stopItem = stopItem else { return }
         guard let originalId = stopItem.originalId else { return }
-        let region = CLCircularRegion(center: stopItem.coordinate, radius: 250.0, identifier: originalId)
+        if monitoredRegions.count >= 20
+        {
+            let alert = UIAlertController(title: KInfoPlist.appName, message: "Puoi attivare al massimo 20 fermate. Prima di procedere con l'attivazione di una nuova fermata devi disabilitarne un'altra.".appLocalizedString(), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Disattiva tutte le fermate".appLocalizedString(), style: .destructive, handler: { (action) in
+                self.stopMonitoringRegions()
+                self.startMonitoring(regionFrom: stopItem, completion: completion)
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            alert.addAction(UIAlertAction(title: "Ok".localizedString(), style: .default, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            UIApplication.shared.delegate?.window??.rootViewController?.present(alert, animated: true, completion: nil)
+            return
+        }
+        let region = CLCircularRegion(center: stopItem.coordinate, radius: KInfoPlist.OTP.stopRegionRadiusMeter, identifier: originalId)
         requestAuthorization(always: true) { (manager, status) in
             if status == CLAuthorizationStatus.authorizedAlways{
                 self.startMonitoring(for: region)
@@ -35,7 +49,7 @@ class KOTPLocationManager: KLocationManager
                 UserDefaults.standard.set(stopItem.name, forKey: originalId)
                 completion(true)
             }else if status != CLAuthorizationStatus.notDetermined{
-                KMessageManager.showMessage("Non puoi usufruire della funzionalità, devi prima abilitare l'utilizzo del GPS!", type: .error)
+                KMessageManager.showMessage("Non puoi usufruire della funzionalità, devi prima abilitare l'utilizzo del GPS!".appLocalizedString(), type: .error)
                 completion(false)
             }
         }
@@ -74,12 +88,12 @@ class KOTPLocationManager: KLocationManager
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion)
     {
         if let message = UserDefaults.standard.string(forKey: region.identifier){
-            let messaggeBody = String(format: "Stai arrivando alla fermata '%@'".localizedString(), message)
+            let messaggeBody = String(format: "Stai arrivando alla fermata '%@'".appLocalizedString(), message)
             if UIApplication.shared.applicationState == .active
             {
                 self.stopMonitoring(region: region)
                 let alert = UIAlertController(title: KInfoPlist.appName, message: messaggeBody, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                alert.addAction(UIAlertAction(title: "Ok".appLocalizedString(), style: .default, handler: { (action) in
                     alert.dismiss(animated: true, completion: nil)
                 }))
                 let vc = (UIApplication.shared.delegate as? OGLAppDelegate)?.window?.rootViewController
