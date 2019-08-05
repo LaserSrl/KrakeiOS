@@ -10,10 +10,5 @@ import Foundation
 
 public extension String{
     
-    /// Localize string by checking only in app localizable.strings
-    ///
-    /// - Returns: translated string
-    func appLocalizedString() -> String {
-        return Bundle.main.localizedString(forKey: self, value: nil, table: nil)
-    }
+    
 }
