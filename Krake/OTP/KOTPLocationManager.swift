@@ -49,7 +49,7 @@ class KOTPLocationManager: KLocationManager
                 UserDefaults.standard.set(stopItem.name, forKey: originalId)
                 completion(true)
             }else if status != CLAuthorizationStatus.notDetermined{
-                KMessageManager.showMessage("Non puoi usufruire della funzionalità, devi prima abilitare l'utilizzo del GPS!".appLocalizedString(), type: KMessageManager.Mode.error, buttonTitle: "Impostazioni".localizedString(), buttonCompletion: {
+                KMessageManager.showMessage("Non puoi usufruire della funzionalità, devi prima abilitare l'utilizzo della localizzazione!".appLocalizedString(), type: KMessageManager.Mode.error, buttonTitle: "Impostazioni".localizedString(), buttonCompletion: {
                     UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
                 })
                 completion(false)
