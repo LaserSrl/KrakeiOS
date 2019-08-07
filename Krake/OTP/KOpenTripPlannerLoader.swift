@@ -209,22 +209,28 @@ public class KOpenTripPlannerLoader: KOTPLoader {
     
     public func retrieveAllStops(search text: String, with completion: @escaping ([KOTPStop]?) -> Void) {
         allStops?.cancel()
-        
-        allStops = manager.get("geocode?autocomplete=true&corners=false&stops=true&query=" + text,
-                                          parameters: nil,
-                                          progress: nil,
-                                          success: { (task, result) in
-                                            
-                                            if let result = result as? [NSDictionary]
-                                            {
-                                                let stops = [KOTPStop](dictionaryArray: result)
-                                                completion(stops)
-                                            }
-                                            else {
-                                                completion(nil)
-                                            }
-                                            self.stopsInRoutePattern = nil
-        }) { (task, error) in
+        if let text = text.lowercased().addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            allStops = manager.get("geocode?autocomplete=true&corners=false&stops=true&query=" + text,
+                                   parameters: nil,
+                                   progress: nil,
+                                   success: { (task, result) in
+                                    
+                                    if let result = result as? [NSDictionary]
+                                    {
+                                        let stops = [KOTPStop](dictionaryArray: result)
+                                        completion(stops)
+                                    }
+                                    else {
+                                        completion(nil)
+                                    }
+                                    self.allStops = nil
+            }) { (task, error) in
+                completion(nil)
+                self.allStops = nil
+            }
+        }
+        else
+        {
             completion(nil)
             self.allStops = nil
         }

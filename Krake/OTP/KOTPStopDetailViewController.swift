@@ -19,15 +19,15 @@ public class KOTPStopDetailViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var arrivalLabel: UILabel!
     @IBOutlet weak var busImageView: UIImageView!
-    @IBOutlet weak var arrivalImageView: UIImageView!
+    @IBOutlet weak var arrivalImageView: UIImageView?
     
     public override func awakeFromNib() {
         super.awakeFromNib()
         // Imposto il tint color dell'immagine.
         busImageView.tintColor = KTheme.current.color(.tint)
-        arrivalImageView.tintColor = KTheme.current.color(.tint)
-        arrivalImageView.image = UIImage(otpNamed: "durata")?.withRenderingMode(.alwaysTemplate)
-        arrivalImageView.isHidden = true
+        arrivalImageView?.tintColor = KTheme.current.color(.tint)
+        arrivalImageView?.image = UIImage(otpNamed: "durata")?.withRenderingMode(.alwaysTemplate)
+        arrivalImageView?.isHidden = true
     }
 
 }
@@ -186,12 +186,12 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         if line.realtimeArrival != nil{
             cell.arrivalLabel.textColor = KTheme.current.color(.tint)
             DispatchQueue.main.async {
-                cell.arrivalImageView.isHidden = false
+                cell.arrivalImageView?.isHidden = false
             }
         }else{
             cell.arrivalLabel.textColor = UIColor.darkGray
             DispatchQueue.main.async {
-                cell.arrivalImageView.isHidden = true
+                cell.arrivalImageView?.isHidden = true
             }
         }
         

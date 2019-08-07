@@ -125,14 +125,11 @@ open class KTripPlannerSearchController : UIViewController,
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: loadingProgressView)
         loadingProgressView.hidesWhenStopped = true
 
-        searchContainer.backgroundColor = self.navigationController?.navigationBar.barTintColor
-
-
         resultMapView.delegate = routeMapDelegate
         routeMapDelegate.resultMapView = resultMapView
 
         let segmentTravelMode = travelModes.map { (mode) -> SegmentioItem in
-            SegmentioItem(title: nil, image: KTripTheme.shared.imageFor(travelMode: mode).withRenderingMode(.alwaysOriginal))
+            SegmentioItem(title: nil, image: KTripTheme.shared.imageFor(travelMode: mode).withRenderingMode(.alwaysTemplate))
         }
 
         travelModeSegmented.setup(content: segmentTravelMode,
@@ -149,8 +146,8 @@ open class KTripPlannerSearchController : UIViewController,
         
         dateModeSelection.setTitle("tripModePartenza".localizedString(), forSegmentAt: 0)
         dateModeSelection.setTitle("tripModeArrivo".localizedString(), forSegmentAt: 1)
-        dateModeSelection.tintColor = self.navigationController?.navigationBar.tintColor
-        pickDateButton.tintColor = self.navigationController?.navigationBar.tintColor
+        dateModeSelection.tintColor = KTheme.current.color(.tint)
+        pickDateButton.tintColor = KTheme.current.color(.tint)
         pickDateButton.setImage(UIImage(otpNamed:"ic_plan_date"), for: .normal)
 
         locationManager.requestAuthorization { (manager, status) in
@@ -163,6 +160,12 @@ open class KTripPlannerSearchController : UIViewController,
 
         resultsView.rowHeight = KTableViewAutomaticDimension
         resultsView.estimatedRowHeight = 80.0
+        
+        searchContainer.clipsToBounds = false
+        searchContainer.layer.shadowColor = UIColor.black.cgColor
+        searchContainer.layer.shadowRadius = 5.0
+        searchContainer.layer.shadowOpacity = 0.2
+        searchContainer.layer.shadowOffset = CGSize(width: 0, height: 2)
 
         updateUiForTripRequest()
     }

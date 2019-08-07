@@ -77,7 +77,7 @@ Pod::Spec.new do |s|
         os.dependency "SwiftMessages", '~>7.0.0'
         os.dependency "Cluster", '3.0.0'
         os.dependency "Kml.swift", '0.3.0'
-        os.dependency "Segmentio", '3.3'
+        os.dependency "Segmentio"
 
         os.dependency "LaserWebViewController", '2.0.0'
         os.dependency "LaserFloatingTextField", '1.0.0'

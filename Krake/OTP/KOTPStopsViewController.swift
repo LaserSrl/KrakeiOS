@@ -12,7 +12,7 @@ import MapKit
 
 public typealias KOTPSearchRadius = UInt
 
-open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController<KOTPStopItem>, KSearchPlaceDelegate {
+open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController<KOTPStopItem>, KSearchPlaceDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var sourceAddressTextField: UITextField!
     @IBOutlet weak var labelSlider: UILabel!
@@ -22,6 +22,8 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
     @IBOutlet weak var segmented: UISegmentedControl!
     @IBOutlet weak var stopSearch: UITextField!
     @IBOutlet weak var search: UIButton!
+    @IBOutlet weak var stopSearchStack: UIStackView!
+    @IBOutlet weak var locationSearchStack: UIStackView!
     
     public static var defaultLocation: CLLocation?
     public static var defaultArea: MKCoordinateRegion! = KSearchPlaceViewController.prefferedRegion
@@ -140,8 +142,8 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
         item.addTarget(self,
                        action: #selector(KOTPStopsViewController.refreshUserPosition),
                        for: .touchUpInside)
-        sourceAddressTextField.rightView = item
-        sourceAddressTextField.rightViewMode = .always
+        sourceAddressTextField.leftView = item
+        sourceAddressTextField.leftViewMode = .always
         let button = UIBarButtonItem(image: UIImage(otpNamed: "arrow_up"),
                                      style: .done,
                                      target: self,
@@ -153,13 +155,35 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
 
         hideTableView(animated: false)
         if enableStopSearch {
-            stopSearch.placeholder = "Nome della fermata".localizedString()
             search.setTitle("SEARCH".localizedString(), for: .normal)
             KTheme.current.applyTheme(toButton: search, style: .default)
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+            searchView.addGestureRecognizer(tapGesture)
+            
+            let imv = UIImageView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
+            imv.image = UIImage(otpNamed: "bus_stop")?.withRenderingMode(.alwaysTemplate)
+            imv.contentMode = .center
+            stopSearch.leftViewMode = .always
+            stopSearch.leftView = imv
+            stopSearch.tintColor = KTheme.current.color(.tint)
+            stopSearch.placeholder = "Nome della fermata".localizedString()
+            stopSearch.clearButtonMode = .whileEditing
+            stopSearch.delegate = self
         }else{
             segmented.removeFromSuperview()
         }
         setupSearch()
+        
+        searchView.clipsToBounds = false
+        searchView.layer.shadowColor = UIColor.black.cgColor
+        searchView.layer.shadowRadius = 5.0
+        searchView.layer.shadowOpacity = 0.2
+        searchView.layer.shadowOffset = CGSize(width: 0, height: 2)
+    }
+    
+    @objc func endEditing(){
+        view.endEditing(true)
     }
 
     open override func viewDidAppear(_ animated: Bool) {
@@ -526,33 +550,27 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
         }
     }
 
+    // MARK: - IBAction
     
     @IBAction fileprivate func changeSection()
     {
         if segmented.selectedSegmentIndex == 0
         {
             fromLocation = fromLocation != nil ? fromLocation : nil
-            UIView.animate(withDuration: 0.5) {
-                self.search.isHidden = true
-                self.stopSearch.isHidden = true
-                self.sourceAddressTextField.isHidden = false
-                self.labelSlider.isHidden = false
-                self.searchRadiusSlider.isHidden = false
-            }
+            self.stopSearchStack.isHidden = true
+            self.sourceAddressTextField.isHidden = false
+            self.locationSearchStack.isHidden = false
         }else{
             searchStops()
-            UIView.animate(withDuration: 0.5) {
-                self.search.isHidden = false
-                self.stopSearch.isHidden = false
-                self.sourceAddressTextField.isHidden = true
-                self.labelSlider.isHidden = true
-                self.searchRadiusSlider.isHidden = true
-            }
+            self.stopSearchStack.isHidden = false
+            self.sourceAddressTextField.isHidden = true
+            self.locationSearchStack.isHidden = true
         }
     }
     
     @IBAction fileprivate func searchStops()
     {
+        view.endEditing(true)
         mapView.removeOverlays(mapView.overlays)
         mapView.removeAnnotations(mapView.annotations)
         guard let textToSearch = stopSearch.text, !textToSearch.isEmpty else {
@@ -568,6 +586,13 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
             }
             MBProgressHUD.hide(for: self.view, animated: true)
         }
+    }
+    
+    // MARK: - Text Field data source & delegate
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchStops()
+        return true
     }
 }
 

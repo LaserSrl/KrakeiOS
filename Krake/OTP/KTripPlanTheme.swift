@@ -16,12 +16,12 @@ extension KTheme {
         SegmentioOptions(backgroundColor: .clear,
                          segmentPosition: .dynamic,
                          scrollEnabled: false,
-                         indicatorOptions: SegmentioIndicatorOptions(color: .white),
+                         indicatorOptions: SegmentioIndicatorOptions(color: KTheme.current.color(.tint)),
                          horizontalSeparatorOptions: SegmentioHorizontalSeparatorOptions(type: .none),
-                         verticalSeparatorOptions: SegmentioVerticalSeparatorOptions(ratio: 1, color: UIColor(white: 1, alpha: 0.3)),
-                         segmentStates: SegmentioStates(defaultState: SegmentioState(titleTextColor: .white),
-                                                       selectedState: SegmentioState(titleTextColor: .white),
-                                                       highlightedState: SegmentioState(titleTextColor: .white))
+                         verticalSeparatorOptions: SegmentioVerticalSeparatorOptions(ratio: 1, color: KTheme.current.color(.tint).withAlphaComponent(0.3)),
+                         segmentStates: SegmentioStates(defaultState: SegmentioState(titleTextColor: KTheme.current.color(.tint)),
+                                                       selectedState: SegmentioState(titleTextColor: KTheme.current.color(.alternate)),
+                                                       highlightedState: SegmentioState(titleTextColor: KTheme.current.color(.tint)))
                          )
     }()
 }
