@@ -200,6 +200,7 @@
 "CAN_NOT_FIND_STOPS" = "There are no bus-stops around the highlighted area.";
 "CAN_NOT_TRIP" = "It has not been possible to plan the journey";
 "Nome della fermata" = "Stop name";
+"STOP" = "Stop";
 
 "direction_description_circle" = "At the roundabout take the %@ turn-off";
 "direction_description_right" = "Turn right";

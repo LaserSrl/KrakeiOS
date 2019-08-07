@@ -180,6 +180,9 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
         searchView.layer.shadowRadius = 5.0
         searchView.layer.shadowOpacity = 0.2
         searchView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        
+        segmented.setTitle("LOCATION".localizedString(), forSegmentAt: 0)
+        segmented.setTitle("STOP".localizedString(), forSegmentAt: 1)
     }
     
     @objc func endEditing(){

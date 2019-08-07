@@ -198,6 +198,7 @@
 "FIND_STOPS_NEARBY" = "Cerca fermate vicino a";
 "CAN_NOT_FIND_STOPS" = "Non vi sono fermate nei pressi della zona evidenziata";
 "Nome della fermata" = "Nome della fermata";
+"STOP" = "Fermata";
 
 "CAN_NOT_TRIP" = "Non è stato possibile caricare l'itinerario";
 
