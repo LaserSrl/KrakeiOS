@@ -36,7 +36,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="120"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="w3s-7z-KJU">
-                                        <rect key="frame" x="121" y="8" width="133" height="29"/>
+                                        <rect key="frame" x="20" y="8" width="335" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="R4I-T6-Vwe"/>
                                         </constraints>
@@ -63,16 +63,16 @@
                                                 <rect key="frame" x="0.0" y="38" width="335" height="30"/>
                                                 <subviews>
                                                     <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="10" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="7tc-OO-gas">
-                                                        <rect key="frame" x="-2" y="0.0" width="251" height="31"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="271" height="31"/>
                                                         <connections>
                                                             <action selector="userDidEndTouch:" destination="0iq-K3-maT" eventType="touchUpInside" id="sy4-Kf-fSf"/>
                                                             <action selector="valueDidChange:" destination="0iq-K3-maT" eventType="valueChanged" id="r5W-ZJ-ZzH"/>
                                                         </connections>
                                                     </slider>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="250 m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OU5-uF-eaI">
-                                                        <rect key="frame" x="255" y="0.0" width="80" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="250 m" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OU5-uF-eaI">
+                                                        <rect key="frame" x="275" y="0.0" width="60" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="7WE-rj-JR2"/>
+                                                            <constraint firstAttribute="width" constant="60" id="7WE-rj-JR2"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -84,21 +84,14 @@
                                                 <rect key="frame" x="0.0" y="68" width="335" height="0.0"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="paE-bx-fem">
-                                                        <rect key="frame" x="0.0" y="0.0" width="247" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="0.0"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" priority="999" constant="30" id="WqB-8I-eE6"/>
+                                                        </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                     </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qz7-pG-mF2">
-                                                        <rect key="frame" x="255" y="0.0" width="80" height="0.0"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" priority="750" constant="80" id="MFB-sl-crQ"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Button"/>
-                                                        <connections>
-                                                            <action selector="searchStops" destination="0iq-K3-maT" eventType="touchUpInside" id="y3J-Dt-Fh6"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -107,11 +100,12 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
+                                    <constraint firstItem="w3s-7z-KJU" firstAttribute="width" secondItem="Vpu-FN-kuf" secondAttribute="width" constant="-40" id="2nt-28-A9D"/>
                                     <constraint firstItem="w3s-7z-KJU" firstAttribute="top" secondItem="Vpu-FN-kuf" secondAttribute="top" constant="8" id="70j-7c-uRm"/>
+                                    <constraint firstItem="w3s-7z-KJU" firstAttribute="centerX" secondItem="Vpu-FN-kuf" secondAttribute="centerX" id="Go1-OX-OXu"/>
                                     <constraint firstItem="Iyu-f4-V1Y" firstAttribute="top" secondItem="w3s-7z-KJU" secondAttribute="bottom" constant="8" id="JB3-5M-8xR"/>
                                     <constraint firstAttribute="bottom" secondItem="Iyu-f4-V1Y" secondAttribute="bottom" constant="8" id="SGJ-mr-ENK"/>
                                     <constraint firstAttribute="trailing" secondItem="Iyu-f4-V1Y" secondAttribute="trailing" constant="20" id="e2s-8y-Vbj"/>
-                                    <constraint firstItem="w3s-7z-KJU" firstAttribute="centerX" secondItem="Vpu-FN-kuf" secondAttribute="centerX" id="hFM-Ur-Nm8"/>
                                     <constraint firstItem="Iyu-f4-V1Y" firstAttribute="leading" secondItem="Vpu-FN-kuf" secondAttribute="leading" constant="20" id="uxc-2I-Fwy"/>
                                 </constraints>
                             </view>
@@ -246,7 +240,6 @@
                         <outlet property="labelSlider" destination="OU5-uF-eaI" id="8Fb-AS-5yG"/>
                         <outlet property="locationSearchStack" destination="t79-aF-C0D" id="AqC-xE-hhR"/>
                         <outlet property="mapView" destination="iw6-Ny-pTH" id="Oo9-18-r3k"/>
-                        <outlet property="search" destination="qz7-pG-mF2" id="jDk-if-p7v"/>
                         <outlet property="searchRadiusSlider" destination="7tc-OO-gas" id="7ua-nA-EPS"/>
                         <outlet property="searchView" destination="Vpu-FN-kuf" id="DkN-dA-NkW"/>
                         <outlet property="searchViewHiddenBottom" destination="hMQ-4v-147" id="KGu-f2-Cdi"/>

@@ -21,7 +21,6 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
     @IBOutlet weak var searchViewHiddenBottom: NSLayoutConstraint!
     @IBOutlet weak var segmented: UISegmentedControl!
     @IBOutlet weak var stopSearch: UITextField!
-    @IBOutlet weak var search: UIButton!
     @IBOutlet weak var stopSearchStack: UIStackView!
     @IBOutlet weak var locationSearchStack: UIStackView!
     
@@ -155,9 +154,6 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
 
         hideTableView(animated: false)
         if enableStopSearch {
-            search.setTitle("SEARCH".localizedString(), for: .normal)
-            KTheme.current.applyTheme(toButton: search, style: .default)
-            
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
             searchView.addGestureRecognizer(tapGesture)
             
