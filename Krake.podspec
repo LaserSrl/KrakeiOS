@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name         = "Krake"
-    s.version      = "10.4.2"
+    s.version      = "10.4.3"
     s.summary      = "Laser mobile framework."
     s.homepage     = "http://mykrake.com"
 
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
         os.dependency "Kml.swift", '0.3.0'
         os.dependency "Segmentio"
 
-        os.dependency "LaserWebViewController", '2.0.0'
+        os.dependency "LaserWebViewController", '2.0.1'
         os.dependency "LaserFloatingTextField", '1.0.0'
         os.dependency "LaserVideoPhotoGallery", '3.0.2'
         os.dependency "LaserSwippableCell", '1.0.0'
