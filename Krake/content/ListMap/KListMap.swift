@@ -579,7 +579,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                         }
                     }
                 }
-                else if completed
+                else if completed, mySelf.lastDisplayCache == nil
                 {
                     mySelf.elements = NSMutableOrderedSet()
                 }

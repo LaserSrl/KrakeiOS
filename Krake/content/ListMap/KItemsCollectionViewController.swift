@@ -483,7 +483,7 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
                     self?.setLoadedItems(cache.cacheItems, completed: completed)
                     MBProgressHUD.hide(for: mySelf.view, animated: true)
                 }
-                else if completed
+                else if completed, mySelf.lastDisplayCache == nil
                 {
                     self?.setLoadedItems(NSOrderedSet(), completed: completed)
                 }
