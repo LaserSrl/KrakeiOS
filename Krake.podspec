@@ -9,12 +9,13 @@ Pod::Spec.new do |s|
     Libreria krake
     DESC
     s.license      = "MIT"
-    s.source       = { :git => "https://github.com/LaserSrl/KrakeiOS.git", :tag => "#{s.version}" }
+    s.source       = { :git => "https://github.com/LaserSrl/KrakeiOS.git", :tag => s.version }
 
     s.authors = { 'Patrick Negretto' => 'patrick.negretto@laser-group.com', 'Joël Gerbore' => 'joel.gerbore@laser-group.com' }
 
     s.platform = :ios, "10.0"
     s.ios.deployment_target = "10.0"
+    s.swift_versions = ['4.0', '4.2', '5.0']
 
     s.requires_arc = true
     s.static_framework = true
@@ -38,7 +39,7 @@ Pod::Spec.new do |s|
     s.subspec 'Braintree' do |os|
         os.source_files  = "Krake/Braintree/*.{swift}"
         os.dependency "Krake/Core"
-        os.dependency "Braintree", '4.23.0'
+        os.dependency "Braintree", '4.27.0'
     end
     
     s.subspec 'Commons' do |os|
@@ -64,15 +65,15 @@ Pod::Spec.new do |s|
         
         #other
         os.dependency "AFNetworking", '3.2.1'
-        os.dependency "Crashlytics", '~>3.13.1'
+        os.dependency "Crashlytics", '~> 3.13.1'
         os.dependency "CryptoSwift", '1.0.0'
-        os.dependency "Fabric", '~>1.10.1'
-        os.dependency "Firebase", '~>6.2.0'
+        os.dependency "Fabric", '~> 1.10.1'
+        os.dependency "Firebase", '~> 6.7.0'
         os.dependency "KNSemiModalViewController_hons82", '0.4.6'
         os.dependency "libPhoneNumber-iOS", '~>0.9.15'
         os.dependency "MBProgressHUD", '1.1.0'
         os.dependency "NTPKit", '1.0.1'
-        os.dependency "SDWebImage", '5.0.6'
+        os.dependency "SDWebImage", '~> 5.1.0'
         os.dependency "SwiftyJSON", '5.0.0'
         os.dependency "SwiftMessages", '~>7.0.0'
         os.dependency "Cluster", '3.0.0'
@@ -83,7 +84,7 @@ Pod::Spec.new do |s|
         os.dependency "LaserFloatingTextField", '1.0.0'
         os.dependency "LaserVideoPhotoGallery", '3.0.2'
         os.dependency "LaserSwippableCell", '1.0.0'
-        os.dependency "LaserCalendarTimeSelector", '1.5.1'
+        os.dependency "LaserCalendarTimeSelector", '1.5.2'
     end
     
     s.subspec 'FacebookKit' do |os|
@@ -91,7 +92,7 @@ Pod::Spec.new do |s|
         os.resource  = "Krake/FacebookKit/*.{xcassets}"
         os.ios.resource_bundle = { 'FacebookKit' => ['Krake/FacebookKit/*.{png,jpg}']}
         os.dependency "Krake/Core"
-        os.dependency "FBSDKLoginKit", '~>5.0.2'
+        os.dependency "FBSDKLoginKit", '~> 5.4.0'
     end
     
     s.subspec 'GameQuiz' do |os|
