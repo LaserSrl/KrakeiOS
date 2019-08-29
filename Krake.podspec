@@ -89,59 +89,55 @@ Pod::Spec.new do |s|
     
     s.subspec 'FacebookKit' do |os|
         os.source_files  = "FacebookKit", "Krake/FacebookKit/*.{h,m,swift}"
-        os.resource  = "Krake/FacebookKit/*.{xcassets}"
-        os.ios.resource_bundle = { 'FacebookKit' => ['Krake/FacebookKit/*.{png,jpg}']}
+        os.resource  = 'Krake/FacebookKit/*.{xcassets}'
         os.dependency "Krake/Core"
         os.dependency "FBSDKLoginKit", '~> 5.4.0'
     end
     
     s.subspec 'GameQuiz' do |os|
         os.source_files  = "GameQuiz", "Krake/GameQuiz/**/*.{h,m,swift}"
-        os.ios.resource_bundles = {'GameQuiz' => ['Krake/GameQuiz/*.{storyboard,png,jpg}']}
+        os.ios.resource_bundles = {'GameQuiz' => ['Krake/GameQuiz/*.storyboard']}
         os.resource = 'Krake/GameQuiz/*.{xcassets}'
         os.dependency "Krake/Core"
     end
     
     s.subspec 'GoogleKit' do |os|
         os.source_files  = "GoogleKit", "Krake/GoogleKit/*.{swift}"
-        os.resource  = "Krake/GoogleKit/*.{xcassets}"
         os.dependency "Krake/Core"
         os.dependency "GoogleSignIn", '4.4.0'
     end
     
     s.subspec 'InstagramKit' do |os|
         os.source_files  = "InstagramKit", "Krake/InstagramKit/*.{swift}"
-        os.resource  = "Krake/InstagramKit/*.{xcassets}"
+        os.resource  = 'Krake/InstagramKit/*.{xcassets}'
         os.dependency "Krake/Core"
         os.dependency "Krake/OAuth"
     end
     
     s.subspec 'LinkedInKit' do |os|
         os.source_files  = "LinkedInKit", "Krake/LinkedInKit/*.{swift}"
-        os.resource  = "Krake/LinkedInKit/*.{xcassets}"
+        os.resource  = 'Krake/LinkedInKit/*.{xcassets}'
         os.dependency "Krake/Core"
         os.dependency "Krake/OAuth"
     end
     
     s.subspec 'Localization' do |os|
         os.source_files  = "Localization", "Krake/Localization/*.{swift}"
-        os.resource = "Krake/Localization/**/*.{lproj}"
+        os.resource = 'Krake/Localization/**/*.{lproj}'
     end
     
     s.subspec 'OAuth' do |os|
         os.source_files  = "OAuth", "Krake/OAuth/*.{swift}"
-        os.ios.resource_bundles = {'OAuth' => ['Krake/OAuth/**/*.{storyboard,xib}']}
-        os.resource  = "Krake/OAuth/*.{xcassets}"
+        os.ios.resource_bundles = {'OAuth' => ['Krake/OAuth/*.storyboard']}
         os.dependency "Krake/Commons"
-        
         os.dependency "MBProgressHUD", '1.1.0'
     end
     
     s.subspec 'OTP' do |os|
         os.source_files  = "OTP", "Krake/OTP/**/*.{h,m,swift}"
         os.frameworks  = "MapKit"
-        os.ios.resource_bundle = { 'OTP' => ['Krake/OTP/*.{storyboard,png,jpg,xib}']}
-        os.resource  = "Krake/OTP/*.{xcassets}"
+        os.ios.resource_bundle = { 'OTP' => ['Krake/OTP/*.storyboard']}
+        os.resource  = 'Krake/OTP/*.{xcassets}'
         os.dependency "Krake/Core"
         os.dependency "Polyline", '4.2.1'
         os.dependency "DateTimePicker", '~>2.2.0'
@@ -150,7 +146,7 @@ Pod::Spec.new do |s|
     
     s.subspec 'Policies' do |os|
         os.source_files  = "Krake/Policies/*.{h,m,swift}"
-        os.ios.resource_bundle = { 'Policies' => ['Krake/Policies/*.{png,jpg,storyboard}']}
+        os.ios.resource_bundle = { 'Policies' => ['Krake/Policies/*.storyboard']}
         os.dependency "Krake/Core"
     end
 
@@ -162,7 +158,7 @@ Pod::Spec.new do |s|
     
     s.subspec 'PuzzleGame' do |os|
         os.source_files  = "PuzzleGame", "Krake/PuzzleGame/**/*.{swift}"
-        os.ios.resource_bundles = {'PuzzleGame' => ['Krake/PuzzleGame/*.{storyboard,png,jpg}']}
+        os.ios.resource_bundles = {'PuzzleGame' => ['Krake/PuzzleGame/*.storyboard']}
         os.resource = 'Krake/PuzzleGame/*.{xcassets}'
         os.dependency "Krake/Core"
     end
@@ -170,7 +166,6 @@ Pod::Spec.new do |s|
     s.subspec 'Questionnaires' do |os|
         os.source_files  = "Questionnaires", "Krake/Questionnaires/*.swift"
         os.ios.resource_bundles = {'Questionnaires' => ['Krake/Questionnaires/**/*.{storyboard,xib}']}
-        os.resource = 'Krake/Questionnaires/*.xcassets'
         os.dependency "Krake/Core"
     end
     
@@ -184,8 +179,6 @@ Pod::Spec.new do |s|
     
     s.subspec 'TwitterKit' do |os|
         os.source_files  = "TwitterKit", "Krake/TwitterKit/*.{h,m,swift}"
-        os.resource  = "Krake/TwitterKit/*.{xcassets}"
-        os.ios.resource_bundle = { 'TwitterKit' => ['Krake/TwitterKit/*.{png,jpg}']}
         os.dependency "Krake/Core"
         os.dependency "TwitterKit", '3.4.2'
     end
