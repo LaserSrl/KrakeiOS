@@ -30,10 +30,4 @@ public extension String{
         return Bundle.main.localizedString(forKey: self, value: bundleLocalizedString(), table: nil)
     }
     
-    /// Localize string by checking only in app localizable.strings
-    ///
-    /// - Returns: translated string
-    func appLocalizedString() -> String {
-        return Bundle.main.localizedString(forKey: self, value: nil, table: nil)
-    }
 }
