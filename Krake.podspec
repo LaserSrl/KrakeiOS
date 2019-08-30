@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name         = "Krake"
-    s.version      = "10.4.4"
+    s.version      = "10.4.5"
     s.summary      = "Laser mobile framework."
     s.homepage     = "http://mykrake.com"
 
@@ -58,7 +58,7 @@ Pod::Spec.new do |s|
     s.subspec 'Core' do |os|
         os.source_files  = ['Krake/Core/*.{h,m,swift}', 'Krake/Krake.h', 'Krake/Mapper/**/*.{h,m,swift}', 'Krake/Content/**/*.{h,m,swift}', 'Krake/Extentions/*.{h,m,swift}', 'Krake/Mappe/*.{h,m,swift}', 'Krake/Analytics/*.{h,m,swift}']
         os.ios.resource_bundle = { 'OrchardGen' => ['Krake/Mapper/OGLMapperConfiguration.plist'], 'LoginManager' => ['Krake/Mapper/LoginManager/*.storyboard'], 'PrivacyManager' => ['Krake/Mapper/PrivacyManager/*.storyboard'], 'Content' => ['Krake/Content/**/*.{xib,storyboard}'],  'Location' => ['Krake/Mappe/*.storyboard'] }
-        os.resources = 'Krake/Core/*.xib', 'Krake/Mapper/**/*.{xcassets}'
+        os.resources = 'Krake/*.{xcassets}','Krake/Core/*.xib', 'Krake/Mapper/**/*.{xcassets}'
         
         os.dependency "Krake/Commons"
         os.dependency "Krake/Localization"

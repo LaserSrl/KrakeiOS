@@ -242,13 +242,15 @@ open class KTabManager: NSObject{
                     }
                 }
             }
-            segmentedControl.selectedSegmentioIndex = 0
-            if let tabs: [Any] = self.loadedCategories != nil ? self.loadedCategories : self.tabManagerOptions.tabs{
-                if let selectedIndex = self.delegate?.tabManager(self, defaultSelectedIndex: tabs){
-                    if tabManagerOptions.showAllInFirstTab {
-                        segmentedControl.selectedSegmentioIndex = Int(selectedIndex) + 1
-                    }else{
-                        segmentedControl.selectedSegmentioIndex = Int(selectedIndex)
+            DispatchQueue.main.async {
+                segmentedControl.selectedSegmentioIndex = 0
+                if let tabs: [Any] = self.loadedCategories != nil ? self.loadedCategories : self.tabManagerOptions.tabs{
+                    if let selectedIndex = self.delegate?.tabManager(self, defaultSelectedIndex: tabs){
+                        if self.tabManagerOptions.showAllInFirstTab {
+                            segmentedControl.selectedSegmentioIndex = Int(selectedIndex) + 1
+                        }else{
+                            segmentedControl.selectedSegmentioIndex = Int(selectedIndex)
+                        }
                     }
                 }
             }
