@@ -274,7 +274,12 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
                                 AnalyticsCore.shared?.log(event: "survey_answered",parameters:["item_id":mySelf.questionnaire!.autoroutePartDisplayAlias!,
                                     "content_type":classType.description()])
                             }
-                            _ = mySelf.navigationController?.popViewController(animated: true)
+                            if (mySelf.presentingViewController != nil) {
+                                mySelf.presentingViewController?.dismissViewController()
+                            }
+                            else if (mySelf.navigationController?.viewControllers.last == self) {
+                                _ = mySelf.navigationController?.popViewController(animated: true)
+                            }
                         }else{
                             KMessageManager.showMessage(response.message, type: .error) //Programmata
                         }
