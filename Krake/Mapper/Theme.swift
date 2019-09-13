@@ -356,6 +356,16 @@ open class KMainTheme: NSObject, KThemeProtocol {
             #else
             navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : color(.textTint)]
             #endif
+            
+            if #available(iOS 13.0, *){
+                let navBarAppearance = UINavigationBarAppearance()
+                navBarAppearance.configureWithOpaqueBackground()
+                navBarAppearance.titleTextAttributes = [KAttributedStringKey.foregroundColor: color(.textTint)]
+                navBarAppearance.largeTitleTextAttributes = [KAttributedStringKey.foregroundColor: color(.textTint)]
+                navBarAppearance.backgroundColor = color(.tint)
+                navigationBar.standardAppearance = navBarAppearance
+                navigationBar.scrollEdgeAppearance = navBarAppearance
+            }
         }
     }
     
