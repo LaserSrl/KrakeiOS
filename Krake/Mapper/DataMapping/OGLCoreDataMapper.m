@@ -241,7 +241,9 @@ static __strong id currentOGLCoreDataMapper_;
             }else if(cache == nil && !loadDataTask.isCancelled){
                 NSMutableArray *privacyObjects = [[NSMutableArray alloc] initWithCapacity:[(NSArray*)importedObject count]];
                 for (id elem in importedObject) {
-                    [privacyObjects addObject:[elem objectID]];
+                    if ([elem isKindOfClass: NSManagedObject.class]){
+                        [privacyObjects addObject:[(NSManagedObject*)elem objectID]];
+                    }
                 }
                 OMPrivacyViewController *privacyVC = [OMPrivacyViewController generateViewControllerWithObjectID:privacyObjects];
                 
