@@ -181,9 +181,6 @@ open class KGallery {
                     }
                 }
                 gallery.dismiss(animated: true, dismiss: dismissImageView) {
-                    if UIScreen.main.bounds.width < UIScreen.main.bounds.height {
-                        MHStatusBar().alpha = 1.0
-                    }
                 }
             }
         }
