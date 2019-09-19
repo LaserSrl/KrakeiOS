@@ -68,7 +68,7 @@ Pod::Spec.new do |s|
         os.dependency "Crashlytics", '~> 3.13.1'
         os.dependency "CryptoSwift", '1.0.0'
         os.dependency "Fabric", '~> 1.10.1'
-        os.dependency "Firebase", '~> 6.7.0'
+        os.dependency "Firebase", '~> 6.8.1'
         os.dependency "KNSemiModalViewController_hons82", '0.4.6'
         os.dependency "libPhoneNumber-iOS", '~>0.9.15'
         os.dependency "MBProgressHUD", '1.1.0'
@@ -77,7 +77,7 @@ Pod::Spec.new do |s|
         os.dependency "SwiftyJSON", '5.0.0'
         os.dependency "SwiftMessages", '~>7.0.0'
         os.dependency "Cluster", '3.0.0'
-        os.dependency "Kml.swift", '0.3.1'
+        os.dependency "Kml.swift", '0.3.2'
         os.dependency "Segmentio", '~> 4.1'
 
         os.dependency "LaserWebViewController", '2.0.1'
