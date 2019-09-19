@@ -10,7 +10,7 @@ import UIKit
 
 open class KTitleLabel: UILabel, KDetailViewProtocol {
 
-    @IBInspectable var uppercase: Bool = false
+    @IBInspectable public var uppercase: Bool = false
 
     public weak var detailPresenter: KDetailPresenter?
     public var detailObject: AnyObject? {

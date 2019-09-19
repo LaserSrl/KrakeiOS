@@ -222,7 +222,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     {
         super.viewDidLoad()
         UIView.setAnimationsEnabled(false)
-        
+
         mapView?.extendedDelegate = self
 
         if let mapOptions = listMapOptions.mapOptions, mapOptions.useCluster {
@@ -606,7 +606,8 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     {
         topView?.isHidden = false
         //Set hidden if the number of tabs on segmented control is lower or equal than 1
-        segmentedControl.hiddenAnimated = (categoriesTabManager?.numberOfTabs() ?? 0) <= 1
+        segmentedControl.alpha = (categoriesTabManager?.numberOfTabs() ?? 0) <= 1 ? 0 : 1.0
+        //segmentedControl.hiddenAnimated = false//
         
         if #available(iOS 11.0, *)
         {
@@ -1144,6 +1145,7 @@ extension KListMapViewController: KTabManagerDelegate
     open func tabManager(_ manager: KTabManager, generatedSegmentedControl: Segmentio)
     {
         topBarRefreshObject()
+        generatedSegmentedControl.isHidden = manager.numberOfTabs() <= 1
     }
     
     public func tabManager(_ manager: KTabManager, setup segmentio: Segmentio, with tabs: [SegmentioItem], and theme: KSegmentioTheme)

@@ -65,6 +65,7 @@ public protocol KTabManagerDelegate: NSObjectProtocol{
 public extension KTabManagerDelegate{
     func tabManager(_ manager: KTabManager , generatedSegmentedControl: Segmentio ) {
         generatedSegmentedControl.reloadSegmentio()
+       // generatedSegmentedControl.isHidden = manager.numberOfTabs() <= 1
     }
     
     func tabManager(_ manager: KTabManager , defaultSelectedIndex tabs: [Any]) -> UInt? {
@@ -108,6 +109,7 @@ open class KTabManager: NSObject{
         self.tabManagerOptions = tabManagerOptions
         self.segmentedControl = segmentedControl
         self.delegate = delegate
+        segmentedControl?.isHidden = false
         super.init()
     }
     
@@ -118,6 +120,8 @@ open class KTabManager: NSObject{
     }
     
     open func setupInViewDidLoad(logged: Bool = false){
+
+        segmentedControl?.isHidden = false
         if tabManagerOptions.tabsEndPoint != nil {
 
             let extras = KRequestParameters.parametersToLoadCategorySubTerms()
@@ -175,6 +179,7 @@ open class KTabManager: NSObject{
                         }
                         mySelf.uploadDataInSegmentedControl(arrayTitles)
                     }else{
+                        mySelf.segmentedControl?.isHidden = true
                         mySelf.delegate?.tabManager(mySelf, didSelectTermPart: nil)
                     }
                 }
