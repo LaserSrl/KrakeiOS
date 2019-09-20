@@ -34,10 +34,7 @@ open class KPushManager: NSObject{
     }
     
     public static func setPushDeviceToken(_ deviceToken: Data){
-        var serializedToken: String = NSData(data: deviceToken).description
-        serializedToken = serializedToken.replacingOccurrences(of: " ", with: "")
-            .replacingOccurrences(of: "<", with: "")
-            .replacingOccurrences(of: ">", with: "")
+        let serializedToken: String = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
         
         let uuid = KConstants.uuid
         let wsURL = KInfoPlist.KrakePlist.path
@@ -59,7 +56,7 @@ open class KPushManager: NSObject{
             _ = httpClient.put(KAPIConstants.push,
                                parameters: requestParameters,
                                success: { (task: URLSessionDataTask, object: Any?) in
-                                UserDefaults.standard.setStringAndSync(serializedToken as String, forConstantKey: .pushDeviceToken)
+                                UserDefaults.standard.setStringAndSync(serializedToken, forConstantKey: .pushDeviceToken)
                                 UserDefaults.standard.setStringAndSync(uuid, forConstantKey: .pushDeviceUUID)
                                 UserDefaults.standard.setStringAndSync(KConstants.currentLanguage, forConstantKey: .pushLanguage)
                                 UserDefaults.standard.setStringAndSync(wsPath, forConstantKey: .pushURL)
