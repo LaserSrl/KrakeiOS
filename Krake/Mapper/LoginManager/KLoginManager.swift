@@ -16,12 +16,10 @@ public protocol KLoginManagerDelegate: KeyValueCodingProtocol{
     var canUserRecoverPasswordWithSMS: Bool {get}
     var canUserRecoverPassword: Bool {get}
     var canUserCancelLogin: Bool {get}
-
     var userHaveToRegisterWithSMS: Bool {get}
-    var socialButtons: [UIBarButtonItem]? {get}
+    var socialButtons: [UIButton]? {get}
     
     func loginCompleted(withStatus logged: Bool, roles: [String]?, serviceRegistrated: [String]?, error: String?)
-
     func shouldDisplayLoginControllerAfterFailure(with response: KrakeResponse?, parameter: Any?) -> Bool
 }
 
@@ -100,7 +98,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
     }
     public weak var delegate: KLoginManagerDelegate?
     
-    @objc public var socialButtons_ObjC: [UIBarButtonItem]?{
+    @objc public var socialButtons_ObjC: [UIButton]?{
         return delegate?.socialButtons
     }
     
@@ -197,8 +195,8 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
     }
     
     @objc public func userClosePresentedLoginViewController(){
-        makeCompletion(false, response: nil, error: nil)
-        loginViewController?.dismiss(animated: true, completion: nil)
+        delegate?.loginCompleted(withStatus: false, roles: currentUser?.roles, serviceRegistrated: currentUser?.registeredServices, error: nil)
+        mainCompletion?(false, currentUser?.registeredServices, currentUser?.roles, nil)
         loginViewController = nil
     }
 

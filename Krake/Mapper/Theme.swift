@@ -278,6 +278,7 @@ open class KMainTheme: NSObject, KThemeProtocol {
             button.contentEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
         case .policy:
             button.setTitleColor(UIColor.white, for: .normal)
+            button.setTitleColor(UIColor.lightGray, for: .disabled)
             button.backgroundColor = color(.tint)
         case .social:
             button.tintColor = color(.textTint)

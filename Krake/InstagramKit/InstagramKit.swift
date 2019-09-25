@@ -33,9 +33,13 @@ open class InstagramKit: NSObject, OAuthDelegate{
         return instagram
     }()
     
-    open func generateButton(_ completionBlock: AuthProviderBlock? = nil) -> UIBarButtonItem{
+    open func generateButton(_ completionBlock: AuthProviderBlock? = nil) -> UIButton
+    {
         self.completionBlock = completionBlock
-        return UIBarButtonItem(image: UIImage(krakeNamed:"instagram_circle"), style: .plain, target: self, action: #selector(InstagramKit.signIn))
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(krakeNamed:"instagram_circle"), for: .normal)
+        button.addTarget(self, action: #selector(InstagramKit.signIn), for: .touchUpInside)
+        return button
     }
     
     @objc func signIn(_ sender: UIBarButtonItem?){

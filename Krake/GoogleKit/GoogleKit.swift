@@ -30,9 +30,12 @@ public class GoogleKit: NSObject, GIDSignInDelegate, GIDSignInUIDelegate{
         return false
     }
     
-    public func generateButton(_ completionBlock: AuthProviderBlock? = nil) -> UIBarButtonItem{
+    public func generateButton(_ completionBlock: AuthProviderBlock? = nil) -> UIButton{
         self.completionBlock = completionBlock
-        return UIBarButtonItem(image: UIImage(krakeNamed:"google_circle"), style: .plain, target: self, action: #selector(GoogleKit.logIn))
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(krakeNamed:"google_circle"), for: .normal)
+        button.addTarget(self, action: #selector(GoogleKit.logIn), for: .touchUpInside)
+        return button
     }
     
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {

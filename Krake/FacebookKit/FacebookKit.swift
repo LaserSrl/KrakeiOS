@@ -57,9 +57,12 @@ open class FacebookKit: NSObject{
      - Parameter completionBlock: complettion block to execute when user loggedin or close the loginViewController
      - Returns: return UIBarButtonItem
      */
-    open func generateButton(_ completionBlock: AuthProviderBlock? = nil) -> UIBarButtonItem{
+    open func generateButton(_ completionBlock: AuthProviderBlock? = nil) -> UIButton{
         self.completionBlock = completionBlock
-        return UIBarButtonItem(image: UIImage(krakeNamed:"facebook_icon"), style: .plain, target: self, action: #selector(FacebookKit.signIn))
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(krakeNamed:"facebook_icon"), for: .normal)
+        button.addTarget(self, action: #selector(FacebookKit.signIn), for: .touchUpInside)
+        return button
     }
     
     static public func application(application: UIApplication!, didFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey : Any]?){

@@ -25,10 +25,13 @@ public class TwitterKit: NSObject{
         return TWTRTwitter.sharedInstance().application(app, open:url, options: options)
     }
     
-    public func generateButton(_ completionBlock: AuthProviderBlock? = nil) -> UIBarButtonItem
+    public func generateButton(_ completionBlock: AuthProviderBlock? = nil) -> UIButton
     {
         self.completionBlock = completionBlock
-        return UIBarButtonItem(image: UIImage(krakeNamed:"twitter_circle"), style: .plain, target: self, action: #selector(TwitterKit.signIn))
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(krakeNamed:"twitter_circle"), for: .normal)
+        button.addTarget(self, action: #selector(TwitterKit.signIn), for: .touchUpInside)
+        return button
     }
     
     @objc public func signIn()

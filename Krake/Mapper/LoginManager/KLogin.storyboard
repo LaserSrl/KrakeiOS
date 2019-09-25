@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -123,15 +121,12 @@
                                                                                     <action selector="loginToOrchard:" destination="VFT-nU-Ijz" eventType="touchUpInside" id="jhN-RV-HiG"/>
                                                                                 </connections>
                                                                             </button>
-                                                                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3X-fd-W38">
-                                                                                <rect key="frame" x="0.0" y="423" width="268" height="60"/>
-                                                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1SI-Zn-J6C">
+                                                                                <rect key="frame" x="34" y="423" width="200" height="60"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="height" constant="60" id="bxE-iE-Ie4"/>
+                                                                                    <constraint firstAttribute="height" priority="999" constant="60" id="Kg4-7J-BBM"/>
                                                                                 </constraints>
-                                                                                <items/>
-                                                                                <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            </toolbar>
+                                                                            </stackView>
                                                                         </subviews>
                                                                         <constraints>
                                                                             <constraint firstItem="HRY-cf-dUm" firstAttribute="width" secondItem="x2f-Ki-f7E" secondAttribute="width" id="1Kv-l3-E2g"/>
@@ -229,20 +224,20 @@
                                                                                 </constraints>
                                                                                 <prototypes>
                                                                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" editingAccessoryType="detailButton" textLabel="grl-gi-VxY" detailTextLabel="sja-gW-grU" style="IBUITableViewCellStyleSubtitle" id="TbT-oo-D4b">
-                                                                                        <rect key="frame" x="0.0" y="1" width="268" height="44"/>
+                                                                                        <rect key="frame" x="0.0" y="28" width="268" height="44"/>
                                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TbT-oo-D4b" id="VWS-Wo-vGt">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="229" height="44"/>
                                                                                             <autoresizingMask key="autoresizingMask"/>
                                                                                             <subviews>
-                                                                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="grl-gi-VxY">
+                                                                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="grl-gi-VxY">
                                                                                                     <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
                                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                     <nil key="highlightedColor"/>
                                                                                                 </label>
-                                                                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sja-gW-grU">
+                                                                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sja-gW-grU">
                                                                                                     <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
                                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -435,7 +430,7 @@
                         <outlet property="registerView" destination="KcF-pj-DDi" id="k2k-1m-3ME"/>
                         <outlet property="registrationButton" destination="1EJ-f5-x4m" id="QnN-lk-hiF"/>
                         <outlet property="registrationLabel" destination="zsD-VT-gbf" id="0j8-zZ-k1A"/>
-                        <outlet property="socialToolbar" destination="E3X-fd-W38" id="NKZ-m3-qtD"/>
+                        <outlet property="socialToolbar" destination="1SI-Zn-J6C" id="qp0-jY-mWl"/>
                         <outlet property="tableView" destination="SSo-Ks-qd0" id="vrt-c1-kBU"/>
                         <outlet property="username" destination="xCf-QD-kQn" id="VvA-Mz-42e"/>
                         <outlet property="usernameRegistration" destination="Svt-tB-KmP" id="cEa-7n-OBa"/>

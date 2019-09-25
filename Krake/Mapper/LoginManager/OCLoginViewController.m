@@ -14,7 +14,7 @@
 @import LaserFloatingTextField;
 
 
-@interface OCLoginViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface OCLoginViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIAdaptivePresentationControllerDelegate>
 {
     id openObserver;
     id closeObserver;
@@ -33,7 +33,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *centerx;
 
-@property (weak, nonatomic) IBOutlet UIToolbar *socialToolbar;
+@property (weak, nonatomic) IBOutlet UIStackView *socialToolbar;
 
 @property (weak, nonatomic) IBOutlet EGFloatingTextField *username;
 @property (weak, nonatomic) IBOutlet EGFloatingTextField *password;
@@ -165,25 +165,16 @@
     [self.lostPassword setHidden:!recoverPassword];
     [self.lostPassword setEnabled:recoverPassword];
 
-    NSArray<UIBarButtonItem *> * items;
+    NSArray<UIButton *> * items;
     
     items = [[KLoginManager shared] socialButtons_ObjC];
     if ([items count] == 0 ){
         self.socialToolbar.hidden = true;
     }
-    NSMutableArray *arrayButtons = [[NSMutableArray alloc] init];
-    for (UIBarButtonItem *item in items) {
-        UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-        [arrayButtons addObject:flexible];
-        [arrayButtons addObject:item];
+    
+    for (UIButton *item in items) {
+        [self.socialToolbar addArrangedSubview:item];
     }
-    UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    [arrayButtons addObject:flexible];
-    self.socialToolbar.items = arrayButtons;
-    [self.socialToolbar setBackgroundColor:[UIColor clearColor]];
-    [self.socialToolbar setBarTintColor:[UIColor clearColor]];
-    [self.socialToolbar setTranslucent:true];
-    [self.socialToolbar setBackgroundImage:[UIImage new] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     
     if (![self isLightColor:self.view.backgroundColor]){
         self.baseView.effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
@@ -197,6 +188,11 @@
     self.baseView.clipsToBounds = true;
     
     self.tableView.scrollEnabled = true;
+    
+    if (@available(iOS 13.0, *)) {
+        self.presentationController.delegate = self;
+//        [self setModalInPresentation:true];
+    }
 }
 
 -(BOOL)prefersStatusBarHidden{
@@ -356,6 +352,7 @@
 
 -(IBAction)closeMe:(id)sender{
     [[KLoginManager shared] userClosePresentedLoginViewController];
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 -(IBAction)loginToOrchard:(id)sender{
@@ -529,5 +526,7 @@
     }
 }
 
-
+- (void)presentationControllerDidDismiss:(UIPresentationController *)presentationController {
+    [[KLoginManager shared] userClosePresentedLoginViewController];
+}
 @end

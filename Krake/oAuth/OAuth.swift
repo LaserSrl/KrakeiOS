@@ -36,6 +36,9 @@ class OAuth: NSObject{
         oauth?.oAuthConfig = oAuthConfig
         oauth?.delegate = delegate
         oauth?.title = title
+        if #available(iOS 13.0, *) {
+            oauth?.isModalInPresentation = true
+        }
         return vc
     }
 }

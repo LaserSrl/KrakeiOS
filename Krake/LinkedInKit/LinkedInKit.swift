@@ -34,9 +34,13 @@ open class LinkedInKit: NSObject, OAuthDelegate{
         return shared
     }()
     
-    open func generateButton(_ completionBlock: AuthProviderBlock? = nil) -> UIBarButtonItem{
+    open func generateButton(_ completionBlock: AuthProviderBlock? = nil) -> UIButton
+    {
         self.completionBlock = completionBlock
-        return UIBarButtonItem(image: UIImage(krakeNamed:"linkedin_circle"), style: .plain, target: self, action: #selector(LinkedInKit.signIn))
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(krakeNamed:"linkedin_circle"), for: .normal)
+        button.addTarget(self, action: #selector(LinkedInKit.signIn), for: .touchUpInside)
+        return button
     }
     
     @objc func signIn(){
