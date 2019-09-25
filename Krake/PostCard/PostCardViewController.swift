@@ -42,11 +42,13 @@ class PostCardViewController: UIViewController, UITextFieldDelegate{
         var button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         button.setImage(UIImage(krakeNamed: "person")!, for: .normal)
         button.addTarget(self, action: #selector(PostCardViewController.openContacts(_:)), for: .touchUpInside)
+        KTheme.current.applyTheme(toButton: button, style: .default)
         nomeMittente.rightView = button
         nomeMittente.rightViewMode = .always
         button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         button.setImage(UIImage(krakeNamed: "person"), for: .normal)
         button.addTarget(self, action: #selector(PostCardViewController.openContacts(_:)), for: .touchUpInside)
+        KTheme.current.applyTheme(toButton: button, style: .default)
         nomeDestinatario.rightView = button
         nomeDestinatario.rightViewMode = .always
 

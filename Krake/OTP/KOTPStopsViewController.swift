@@ -27,15 +27,15 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
     public static var defaultLocation: CLLocation?
     public static var defaultArea: MKCoordinateRegion! = KSearchPlaceViewController.prefferedRegion
 
-    public static func stopsSearchController(enableStopSearch: Bool = false) -> KOTPStopsViewController
+    public static func stopsSearchController(searchStopsOnOTP: Bool = false) -> KOTPStopsViewController
     {
         let bundle = Bundle(url: Bundle(for: KTripPlannerSearchController.self).url(forResource: "OTP", withExtension: "bundle")!)
         let storyboard = UIStoryboard(name: "OCOTPStoryboard", bundle: bundle)
         let vc = storyboard.instantiateViewController(withIdentifier: "KOTPStopsViewController") as! KOTPStopsViewController
-        vc.enableStopSearch = enableStopSearch
+        vc.searchStopsOnOTP = searchStopsOnOTP
         return vc
     }
-    fileprivate var enableStopSearch: Bool = false
+    fileprivate var searchStopsOnOTP: Bool = false
     fileprivate var prevRadius: UInt = 0
     fileprivate var fromLocation: MKPlacemark?{
         didSet {
@@ -153,7 +153,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
         mapView.addGestureRecognizer(longTap)
 
         hideTableView(animated: false)
-        if enableStopSearch {
+        if searchStopsOnOTP {
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
             searchView.addGestureRecognizer(tapGesture)
             

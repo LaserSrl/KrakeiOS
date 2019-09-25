@@ -153,15 +153,6 @@ open class KPushManager: NSObject{
                 {
                     let nav = UINavigationController(rootViewController: vc)
                     KTheme.current.applyTheme(toNavigationBar: nav.navigationBar, style: .default)
-                    if let trait = delegate.window?.rootViewController?.traitCollection,
-                        trait.horizontalSizeClass == .regular,
-                        trait.verticalSizeClass == .regular {
-                        nav.modalPresentationStyle = .formSheet
-                    }
-                    else {
-                        nav.modalPresentationStyle = .fullScreen
-                    }
-
                     let closeButton = UIBarButtonItem(barButtonSystemItem: .stop, target: nav, action: #selector(UINavigationController.dismissViewController))
                     vc.navigationItem.leftBarButtonItem = closeButton
                     presentPushViewController(nav)
