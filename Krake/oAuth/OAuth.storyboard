@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="q1W-zz-Paa">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="q1W-zz-Paa">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -10,7 +12,7 @@
             <objects>
                 <navigationController modalPresentationStyle="pageSheet" id="q1W-zz-Paa" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dyr-op-XHd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -30,24 +32,9 @@
                         <viewControllerLayoutGuide type="bottom" id="cia-Bd-r4T"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PxK-Cu-0pV">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BXc-F4-zhT">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                                <connections>
-                                    <outlet property="delegate" destination="rXW-uS-N4f" id="xR3-Q3-2VW"/>
-                                </connections>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="BXc-F4-zhT" firstAttribute="leading" secondItem="PxK-Cu-0pV" secondAttribute="leading" id="GBd-Zg-Phx"/>
-                            <constraint firstAttribute="trailing" secondItem="BXc-F4-zhT" secondAttribute="trailing" id="Kp9-g7-Jia"/>
-                            <constraint firstItem="cia-Bd-r4T" firstAttribute="top" secondItem="BXc-F4-zhT" secondAttribute="bottom" id="njy-Bd-Tgi"/>
-                            <constraint firstItem="BXc-F4-zhT" firstAttribute="top" secondItem="PxK-Cu-0pV" secondAttribute="top" id="tRo-ya-Oy2"/>
-                        </constraints>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="In3-un-dvX">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="3Ej-I0-VD1">
@@ -56,9 +43,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="webView" destination="BXc-F4-zhT" id="7BK-hD-FWk"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5t-K5-k17" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

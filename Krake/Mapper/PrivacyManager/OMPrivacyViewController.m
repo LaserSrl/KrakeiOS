@@ -12,7 +12,7 @@
 #import "NSString+OrchardMapping.h"
 #import <Krake/Krake-Swift.h>
 
-@interface OMPrivacyViewController () <UICollectionViewDataSource,UICollectionViewDelegate, UIWebViewDelegate>
+@interface OMPrivacyViewController () <UICollectionViewDataSource,UICollectionViewDelegate, WKUIDelegate, WKNavigationDelegate, UIAdaptivePresentationControllerDelegate>
 {
     NSArray *arrPolicy;
     NSMutableDictionary *response;
@@ -33,13 +33,15 @@
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"OMPrivacy" bundle:bundle];
     OMPrivacyViewController *privacyVC = [story instantiateInitialViewController];
     [privacyVC setImportedObject:importedObject];
-    [privacyVC setModalPresentationStyle:UIModalPresentationFormSheet];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [privacyVC setModalPresentationStyle:UIModalPresentationFormSheet];
+    });
     return privacyVC;
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
+    self.presentationController.delegate = self;
     response = [[NSMutableDictionary alloc] init];
     
     NSMutableArray *tmpArray = [[NSMutableArray alloc] initWithCapacity:[self.importedObject count]];
@@ -131,7 +133,8 @@
     cell.elem = elem;
     cell.response = response;
     cell.parent = self;
-    cell.privacyBody.delegate = self;
+    cell.privacyBody.navigationDelegate = self;
+    cell.privacyBody.UIDelegate = self;
     [self checkStatus];
     
     
@@ -174,25 +177,28 @@
 }
 
 
-#pragma mark - UIWebViewDelegate
+#pragma mark - WKWebViewDelegate
 
--(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
+{
     
-    
-    NSRange httpRange = [[[request URL] description] rangeOfString:@"http://"];
+    NSRange httpRange = [[[navigationAction.request URL] description] rangeOfString:@"http://"];
     if(httpRange.location != NSNotFound){
-        [[UIApplication sharedApplication] openURL:[request URL]];
-        return NO;
+        [[UIApplication sharedApplication] openURL:[navigationAction.request URL] options:[[NSDictionary alloc] init] completionHandler:nil];
+        decisionHandler(WKNavigationActionPolicyCancel);
     }
     
-    NSRange range   = [[[request URL] description] rangeOfString:@"applewebdata://"];
+    NSRange range   = [[[navigationAction.request URL] description] rangeOfString:@"applewebdata://"];
     if (range.location != NSNotFound){
-        return NO;
-        
+        decisionHandler(WKNavigationActionPolicyCancel);
     }
     
     
-    return YES;
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
+- (void)presentationControllerDidDismiss:(UIPresentationController *)presentationController {
+    [self undoPrivacy:nil];
 }
 
 @end

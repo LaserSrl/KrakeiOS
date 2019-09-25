@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@import WebKit;
 @protocol PolicyProtocol;
 #import "OMPrivacyViewController.h"
 
@@ -14,7 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *labelSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *switcher;
-@property (weak, nonatomic) IBOutlet UIWebView *privacyBody;
+@property (weak, nonatomic) IBOutlet WKWebView *privacyBody;
 
 
 @property (strong, nonatomic) id<PolicyProtocol> elem;

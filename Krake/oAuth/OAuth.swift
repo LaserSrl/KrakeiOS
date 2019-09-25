@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import WebKit
 import MBProgressHUD
 
 struct OAuthConfiguration{
@@ -43,16 +44,24 @@ protocol OAuthDelegate: NSObjectProtocol{
     func didEndOAuth(_ success: Bool, params : [String: String]?, forOAuthConfig: OAuthConfiguration, error: NSError?)
 }
 
-class OAuthViewController: UIViewController, UIWebViewDelegate{
+class OAuthViewController: UIViewController, WKNavigationDelegate{
     
-    @IBOutlet weak var webView: UIWebView!
+    weak var webView: WKWebView?
     
     var oAuthConfig: OAuthConfiguration!
     weak var delegate: OAuthDelegate!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let webView = WKWebView()
+        self.webView = webView
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(webView)
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-(0)-[webView]-(0)-|", options: .directionLeftToRight, metrics: [:], views: ["webView" : webView]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(0)-[webView]-(0)-|", options: .directionLeftToRight, metrics: [:], views: ["webView" : webView]))
         
+        webView.navigationDelegate = self
         let stringURL = NSMutableString(string: oAuthConfig.providerURL)
         stringURL.appendFormat("?client_id=%@", oAuthConfig.clientId)
         stringURL.appendFormat("&redirect_uri=%@", oAuthConfig.redirectURL)
@@ -65,13 +74,13 @@ class OAuthViewController: UIViewController, UIWebViewDelegate{
         }
         if let url = URL(string: stringURL as String){
             let urlRequest = URLRequest(url: url)
-            webView.loadRequest(urlRequest)
+            webView.load(urlRequest)
             MBProgressHUD.showAdded(to: view, animated: true)
         }
     }
     
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: KWebViewNavigationType) -> Bool {
-        if let url = request.url{
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if let url = navigationAction.request.url{
             let absoluteString = url.absoluteString
             if absoluteString.hasPrefix(oAuthConfig.redirectURL){
                 if let queryComponents = url.query?.components(separatedBy: "&"){
@@ -97,13 +106,17 @@ class OAuthViewController: UIViewController, UIWebViewDelegate{
                     navigationController?.dismiss(animated: true, completion: nil)
                     delegate.didEndOAuth(!failed, params: failed ? nil : dic, forOAuthConfig: oAuthConfig, error: error)
                 }
-                return false
+                decisionHandler(.cancel)
             }
         }
-        return true
+        decisionHandler(.allow)
     }
     
-    func webViewDidFinishLoad(_ webView: UIWebView) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        MBProgressHUD.hide(for: view, animated: true)
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         MBProgressHUD.hide(for: view, animated: true)
     }
     
