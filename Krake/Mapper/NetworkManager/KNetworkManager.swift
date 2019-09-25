@@ -337,7 +337,7 @@ public let KNEKrakeResponse = "KrakeResponse"
                                 let manager = KNetworkManager.defaultManager(true)
                                 checkSuccess?(manager)
                             }else{
-                                let error = NSError(domain: KInfoPlist.appName, code: response.errorCode, userInfo: [NSLocalizedDescriptionKey : response.message])
+                                let error = NSError(domain: KInfoPlist.appName, code: response.errorCode, userInfo: [NSLocalizedDescriptionKey : response.message as Any])
                                 checkFailure?(error)
                             }
                         })
