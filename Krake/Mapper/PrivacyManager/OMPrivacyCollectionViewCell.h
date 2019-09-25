@@ -15,7 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *labelSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *switcher;
-@property (weak, nonatomic) IBOutlet WKWebView *privacyBody;
+@property (weak, nonatomic) WKWebView *privacyBody;
 
 
 @property (strong, nonatomic) id<PolicyProtocol> elem;

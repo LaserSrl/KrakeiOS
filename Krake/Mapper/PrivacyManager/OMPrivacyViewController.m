@@ -89,10 +89,7 @@
             size = CGSizeMake(self.collectionView.frame.size.width-16, self.collectionView.frame.size.height/2 - 24);
             break;
         default:{
-            if ([KConstants iPhone4])
-                size = CGSizeMake(self.collectionView.frame.size.width-16, self.collectionView.frame.size.height/2 - 24);
-            else
-                size = CGSizeMake(self.collectionView.frame.size.width-16, self.collectionView.frame.size.height/3 - 32);
+            size = CGSizeMake(self.collectionView.frame.size.width-16, self.collectionView.frame.size.height/2 - 32);
             break;
         }
     }

@@ -144,7 +144,7 @@ open class KWebView: UIView, WKNavigationDelegate, UIScrollViewDelegate {
 
 public extension WKWebViewConfiguration {
 
-    class var `default`: WKWebViewConfiguration {
+    @objc class var `default`: WKWebViewConfiguration {
         let configuration = WKWebViewConfiguration()
         if #available(iOS 10.0, *) {
             configuration.dataDetectorTypes =

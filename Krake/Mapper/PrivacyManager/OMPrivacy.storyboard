@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zP3-Hf-4UN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment version="4352" identifier="iOS"/>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -49,14 +49,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="272"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbd-2j-Xej">
-                                                    <rect key="frame" x="8" y="8" width="304" height="217"/>
-                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <wkWebViewConfiguration key="configuration">
-                                                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                                        <wkPreferences key="preferences"/>
-                                                    </wkWebViewConfiguration>
-                                                </wkWebView>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dvM-9o-30G">
                                                     <rect key="frame" x="8" y="233" width="51" height="31"/>
                                                     <constraints>
@@ -78,19 +70,14 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="prT-d9-Odq" secondAttribute="bottom" constant="8" id="7Fp-hR-poc"/>
-                                            <constraint firstItem="Pbd-2j-Xej" firstAttribute="leading" secondItem="R7l-St-02s" secondAttribute="leading" constant="8" id="Ad4-sw-i1p"/>
                                             <constraint firstAttribute="bottom" secondItem="dvM-9o-30G" secondAttribute="bottom" constant="8" id="E1Y-6N-inu"/>
-                                            <constraint firstAttribute="trailing" secondItem="Pbd-2j-Xej" secondAttribute="trailing" constant="8" id="Kpb-jW-ulb"/>
                                             <constraint firstItem="dvM-9o-30G" firstAttribute="height" secondItem="prT-d9-Odq" secondAttribute="height" id="Z73-U6-Abm"/>
                                             <constraint firstItem="prT-d9-Odq" firstAttribute="leading" secondItem="dvM-9o-30G" secondAttribute="trailing" constant="8" id="hZg-0c-STy"/>
-                                            <constraint firstItem="prT-d9-Odq" firstAttribute="top" secondItem="Pbd-2j-Xej" secondAttribute="bottom" constant="8" id="kSB-YF-m0Y"/>
-                                            <constraint firstItem="Pbd-2j-Xej" firstAttribute="top" secondItem="R7l-St-02s" secondAttribute="top" constant="8" id="ofc-1Y-V8o"/>
                                             <constraint firstItem="dvM-9o-30G" firstAttribute="leading" secondItem="R7l-St-02s" secondAttribute="leading" constant="8" id="vz9-0h-RWE"/>
                                             <constraint firstAttribute="trailing" secondItem="prT-d9-Odq" secondAttribute="trailing" constant="8" id="wro-nc-ghx"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="labelSwitch" destination="prT-d9-Odq" id="N5R-bi-DDH"/>
-                                            <outlet property="privacyBody" destination="Pbd-2j-Xej" id="f4F-EP-PVg"/>
                                             <outlet property="switcher" destination="dvM-9o-30G" id="QHK-rh-gpb"/>
                                         </connections>
                                     </collectionViewCell>

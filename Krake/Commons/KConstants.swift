@@ -29,18 +29,6 @@ import UIKit
         return lang
     }()
     
-    @objc public static func iPhone6OrBigger() -> Bool{
-        return UIScreen.main.bounds.width * UIScreen.main.scale > 640.0 && UIScreen.main.bounds.height * UIScreen.main.scale > 640.0
-    }
-    
-    @objc public static func iPhone6Plus() -> Bool{
-        return UIScreen.main.bounds.width * UIScreen.main.scale > 1000.0 && UIScreen.main.bounds.height * UIScreen.main.scale > 1000.0
-    }
-    
-    @objc public static func iPhone4() -> Bool{
-        return UIScreen.main.bounds.height * UIScreen.main.scale == 960.0 || UIScreen.main.bounds.width * UIScreen.main.scale == 960.0
-    }
-    
 }
 
 

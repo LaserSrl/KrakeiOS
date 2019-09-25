@@ -14,7 +14,14 @@
 
 -(void)awakeFromNib{
     [super awakeFromNib];
-    self.privacyBody.scrollView.bounces = NO;
+    WKWebView *privacyBody = [[WKWebView alloc] initWithFrame:CGRectZero configuration:[WKWebViewConfiguration default]];
+    self.privacyBody = privacyBody;
+    privacyBody.translatesAutoresizingMaskIntoConstraints = false;
+    [self.contentView addSubview:privacyBody];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(8)-[privacyBody]-(8)-|" options:NSLayoutFormatDirectionLeftToRight metrics:nil views:@{@"privacyBody": privacyBody}]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(8)-[privacyBody]-(8)-[label]" options:NSLayoutFormatDirectionLeftToRight metrics:nil views:@{@"privacyBody": privacyBody, @"label" : self.labelSwitch}]];
+    privacyBody.scrollView.bounces = NO;
+    
 }
 
 -(IBAction)changeStatus:(id)sender{
