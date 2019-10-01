@@ -49,7 +49,7 @@ public extension KLoginManagerDelegate{
         return false
     }
     
-    var socialButtons: [UIBarButtonItem]?{
+    var socialButtons: [UIButton]?{
         return nil
     }
     
