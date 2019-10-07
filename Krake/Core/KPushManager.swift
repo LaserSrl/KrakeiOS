@@ -45,22 +45,22 @@ open class KPushManager: NSObject{
             wsPath != UserDefaults.standard.string(forConstantKey: .pushURL) {
             
             let httpClient = KNetworkManager(baseURL: wsURL, auth: true)
-            httpClient.requestSerializer = AFJSONRequestSerializer()
-            httpClient.responseSerializer = AFJSONResponseSerializer()
-            let requestParameters : [String: Any] = [KParametersKeys.token : serializedToken,
+            httpClient.requestSerializer = .json
+            httpClient.responseSerializer = .json
+            let requestParameters : KBodyParameters = [KParametersKeys.token : serializedToken,
                                                      KParametersKeys.device : "Apple",
                                                      KParametersKeys.UUID : uuid,
                                                      KParametersKeys.language : KConstants.currentLanguage,
-                                                     KParametersKeys.produzione : !KConstants.isDebugMode]
+                                                     KParametersKeys.produzione : !KConstants.isDebugMode ? "true" : "false"]
             KLog("SetDevice completed")
             _ = httpClient.put(KAPIConstants.push,
                                parameters: requestParameters,
-                               success: { (task: URLSessionDataTask, object: Any?) in
+                               success: { (task: KDataTask, object: Any?) in
                                 UserDefaults.standard.setStringAndSync(serializedToken, forConstantKey: .pushDeviceToken)
                                 UserDefaults.standard.setStringAndSync(uuid, forConstantKey: .pushDeviceUUID)
                                 UserDefaults.standard.setStringAndSync(KConstants.currentLanguage, forConstantKey: .pushLanguage)
                                 UserDefaults.standard.setStringAndSync(wsPath, forConstantKey: .pushURL)
-            }, failure: { (task:  URLSessionDataTask?, error: Error) in
+            }, failure: { (task:  KDataTask?, error: Error) in
                 KLog(type: .error, error.localizedDescription)
             })
             

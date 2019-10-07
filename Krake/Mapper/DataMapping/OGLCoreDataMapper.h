@@ -8,7 +8,6 @@
 
 @import Foundation;
 @import CoreData;
-@import AFNetworking;
 
 @protocol KMCacheManagerDelegate;
 @class OGLConfigurations;

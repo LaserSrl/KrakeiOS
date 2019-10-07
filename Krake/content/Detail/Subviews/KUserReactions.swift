@@ -163,10 +163,11 @@ open class KUserReactions: UIView, KDetailViewProtocol {
     final public func loadData(_ object: ContentItemWithUserReactions){
         self.krakeContentIdentifier = object.identifier
         let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: true)
-        manager.responseSerializer = AFJSONResponseSerializer()
-        manager.requestSerializer = AFJSONRequestSerializer()
-        _ = manager.get(KAPIConstants.userReactions, parameters: ["pageId" : krakeContentIdentifier, KParametersKeys.language : KConstants.currentLanguage], progress:nil, success: { (task: URLSessionDataTask, object: Any?) in
-            if let response = task.response as? HTTPURLResponse,
+        manager.responseSerializer = .json
+        manager.requestSerializer = .json
+
+        _ = manager.get(KAPIConstants.userReactions, parameters: ["pageId" : String(format: "%d",krakeContentIdentifier!), KParametersKeys.language : KConstants.currentLanguage], progress:nil, success: { (task: KDataTask, object: Any?) in
+            if let response = task.response,
                 let headers = response.allHeaderFields as? [String : String]{
                 let array = HTTPCookie.cookies(withResponseHeaderFields: headers, for: KInfoPlist.KrakePlist.path)
                 URLSessionConfiguration.parse(cookies: array)
@@ -179,7 +180,7 @@ open class KUserReactions: UIView, KDetailViewProtocol {
                     self.dictionaryToReaction(reactions)
                 }
             }
-        }) { (task : URLSessionDataTask?, error: Error) in
+        }) { (task : KDataTask?, error: Error) in
             KLog(type: .error, error.localizedDescription)
         }
     }
@@ -208,10 +209,10 @@ open class KUserReactions: UIView, KDetailViewProtocol {
     
     fileprivate func sendReactionToKrake(_ reactionIdentifier: NSNumber){
         let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: true)
-        manager.responseSerializer = AFJSONResponseSerializer()
-        manager.requestSerializer = AFJSONRequestSerializer()
-        _ = manager.post(KAPIConstants.userReactions, parameters: [KParametersKeys.language : KConstants.currentLanguage, "pageId" : krakeContentIdentifier, "TypeId" : reactionIdentifier], progress:nil, success: { (task: URLSessionDataTask, object: Any?) in
-            if let response = task.response as? HTTPURLResponse,
+        manager.responseSerializer = .json
+        manager.requestSerializer = .json
+        _ = manager.post(KAPIConstants.userReactions, parameters: [KParametersKeys.language : KConstants.currentLanguage, "pageId" : String(format: "%d",krakeContentIdentifier), "TypeId" : String(format: "%d",reactionIdentifier)], progress:nil, success: { (task: KDataTask, object: Any?) in
+            if let response = task.response,
                 let headers = response.allHeaderFields as? [String : String]{
                 let array = HTTPCookie.cookies(withResponseHeaderFields: headers, for: KInfoPlist.KrakePlist.path)
                 URLSessionConfiguration.parse(cookies: array)
@@ -221,7 +222,7 @@ open class KUserReactions: UIView, KDetailViewProtocol {
                 let reactions = status["Reactions"] as? [[String: AnyObject]]{
                 self.dictionaryToReaction(reactions)
             }
-        }) { (task : URLSessionDataTask?, error: Error) in
+        }) { (task : KDataTask?, error: Error) in
             //TODO: verifica code
             if error._code == KErrorCode.userNotHavePermission{
                 self.userAuthorized = false

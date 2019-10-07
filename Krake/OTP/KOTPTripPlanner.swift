@@ -16,7 +16,7 @@ public class KOTPTripPlanner: KTripPlannerProtocol
     static private let uselessStreetNames = ["road","path","sidewalk","platform","underpass","service road","bike path","ramp","steps","footbridge","parking aisle"]
     private let otpURL = KInfoPlist.OTP.path
 
-    private var planDataTask : URLSessionDataTask? = nil
+    private var planDataTask : KDataTask? = nil
 
     public init() {
 
@@ -31,7 +31,7 @@ public class KOTPTripPlanner: KTripPlannerProtocol
         dateFormatter.dateFormat = "hh:mma"
         let timeString = dateFormatter.string(from: request.dateSelectedForPlan)
 
-        let manager = KNetworkManager(baseURL: otpURL)
+        let manager = KNetworkManager(baseURL: otpURL, auth: false)
 
         var params : [String: String] = ["fromPlace": request.from!.otpRequestFormat(),
                                          "toPlace": request.to!.otpRequestFormat(),

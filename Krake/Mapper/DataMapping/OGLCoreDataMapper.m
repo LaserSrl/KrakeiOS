@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Laser. All rights reserved.
 //
 
-@import AFNetworking;
+@import Alamofire;
 #import <Krake/Krake-Swift.h>
 #import "OGLCoreDataMapper_OMPrivateMethods.h"
 #import "NSString+OrchardMapping.h"

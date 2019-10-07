@@ -339,7 +339,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
             let manager = KNetworkManager(
                 baseURL: KInfoPlist.KrakePlist.path,
                 auth: false)
-            manager.responseSerializer = AFJSONResponseSerializer()
+            manager.responseSerializer = .json
             _ = manager.get(KAPIConstants.contentExtension, parameters: [ContentManagerKeys.LANGUAGE : KConstants.currentLanguage, ContentManagerKeys.CONTENT_TYPE : self.contentTypeDefinition.contentType], progress: nil, success: { [weak self](task, object) in
                 if object != nil{
                     self?.valuesContentType = object as? [String : AnyObject]
@@ -540,8 +540,8 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         }
         hud.showAsUploadProgress()
         let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: true)
-        manager.responseSerializer = AFJSONResponseSerializer()
-        manager.requestSerializer = AFJSONRequestSerializer()
+        manager.responseSerializer = .json
+        manager.requestSerializer = .json
         KLog(type: .info, params.description )
         
         _ = manager.post(KAPIConstants.contentExtension,
@@ -609,8 +609,8 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
     
     public final func uploadMediaContentToKrake(_ media: UploadableMedia, forKeyPath path: String) -> URLSessionTask? {
         let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: true)
-        manager.responseSerializer = AFJSONResponseSerializer()
-        manager.requestSerializer = AFJSONRequestSerializer()
+        manager.responseSerializer = .json
+        manager.requestSerializer = .json
         var httpAdditional = manager.session.configuration.httpAdditionalHeaders ?? [AnyHashable : Any]()
         httpAdditional["Content-Type"] = "multipart/form-data"
 

@@ -131,9 +131,9 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
                 currentUser = KUser(registeredServices: registeredServices, roles: roles, identifier: identifier, contactIdentifier: contactIdentifier)
             }
         }
-        else if let tokenInfos = UserDefaults.standard.value(forKey: KLoginManager.KUserTokenKey) as? [AnyHashable: Any]
+        else if let tokenInfos = UserDefaults.standard.value(forKey: KLoginManager.KUserTokenKey) as? KBodyParameters
         {
-            login(with: tokenInfos[KParametersKeys.Login.provider] as! String,
+            login(with: tokenInfos[KParametersKeys.Login.provider]!,
                   params: tokenInfos,
                   saveTokenParams: true)
         }
@@ -200,11 +200,13 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
         loginViewController = nil
     }
 
-    @objc public func objc_login(with providerName: String, params: [AnyHashable : Any], saveTokenParams: Bool){
+    @objc public func objc_login(with providerName: String,
+                                 params: KBodyParameters,
+                                 saveTokenParams: Bool){
         login(with: providerName, params: params, saveTokenParams: saveTokenParams)
     }
 
-    public func login(with providerName: String, params: [AnyHashable : Any], saveTokenParams: Bool = false, completion: AuthRegistrationBlock? = nil){
+    public func login(with providerName: String, params: KBodyParameters, saveTokenParams: Bool = false, completion: AuthRegistrationBlock? = nil){
         showProgressHUD()
         loginIn = true
 
@@ -254,7 +256,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
         }
     }
     
-    @objc public func callRequestPasswordLost(queryString: String, params: [AnyHashable : Any]){
+    @objc public func callRequestPasswordLost(queryString: String, params: KBodyParameters){
         showProgressHUD()
         KNetworkManager.defaultManager(true).requestKrakeLostPassword(queryString, params: params) { [weak self](success, response, error) in
             if success{
