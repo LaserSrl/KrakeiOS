@@ -56,26 +56,50 @@ public enum OMPrivacyStatus : NSInteger {
         }
     }
     
-    @objc public func sendPoliciesToKrake(_ params: NSDictionary, success: ((KDataTask, AnyObject?) -> Void)?, failure: ((KDataTask?, Error) -> Void)?){
-        var extras: KBodyParameters = [KParametersKeys.language : KConstants.currentLanguage]
-        var arrPolicies = [[AnyHashable: Any]]()
+    public func sendPoliciesToKrake(_ params: NSDictionary, success: ((KDataTask, AnyObject?) -> Void)?, failure: ((KDataTask, Error) -> Void)?){
+        var arrPolicies = [PolicyAccepted]()
         for key in params.allKeys as! [NSCopying]{
-            arrPolicies.append(["AnswerId" : 0, "PolicyTextId" : key, "OldAccepted" : false, "Accepted" : params[key]!, "AnswerDate" : "0001-01-01T00:00:00"])
+            arrPolicies.append(PolicyAccepted(PolicyTextId: key as! Int, Accepted: params[key]! as! Bool))
         }
-        extras["PoliciesForUser"] = ["Policies" : arrPolicies] as AnyObject
+        let policiesParameters = PoliciesParameters(PoliciesForUser: PoliciesForUser(Policies: arrPolicies))
+
+
         let manager = KNetworkManager.defaultManager(true)
-        _ = manager.post(KAPIConstants.policies, parameters: extras as AnyObject?, progress: nil, success: { (task, object) in
-            if let responseObject = object as? [String : AnyObject] , let response = KrakeResponse(object: responseObject as AnyObject) , response.success == true{
-                if let response = task.response as? HTTPURLResponse,
-                    let headersFields = response.allHeaderFields as? [String : String]{
-                    let cookies = HTTPCookie.cookies(withResponseHeaderFields: headersFields, for: manager.baseURL!)
-                    URLSessionConfiguration.parse(cookies: cookies)
-                }
-                success?(task, object as AnyObject?)
-            }else{
-                failure?(task, NSError(domain: "Policies", code: KErrorCode.genericError, userInfo: [NSLocalizedDescriptionKey : "Generic error".localizedString()]))
-            }
-            }, failure: failure)
+
+        _ = manager.request(KAPIConstants.policies,
+                        method: .post,
+                        parameters: policiesParameters,
+                        query: [],
+                        successCallback: { (task, object) in
+                            if let responseObject = object as? [String : AnyObject] , let response = KrakeResponse(object: responseObject as AnyObject) , response.success == true {
+                                if let headersFields = task.response?.allHeaderFields as? [String : String]{
+                                    let cookies = HTTPCookie.cookies(withResponseHeaderFields: headersFields, for: manager.baseURL)
+                                    URLSessionConfiguration.parse(cookies: cookies)
+                                }
+                                success?(task, object as AnyObject?)
+                            }else{
+                                failure?(task, NSError(domain: "Policies", code: KErrorCode.genericError, userInfo: [NSLocalizedDescriptionKey : "Generic error".localizedString()]))
+                            }
+        },
+                        failureCallback: failure)
+
     }
-    
+}
+
+
+private struct PoliciesParameters: Encodable {
+    let Language: String = KConstants.currentLanguage
+    let PoliciesForUser: PoliciesForUser
+}
+
+private struct PoliciesForUser: Encodable {
+    let Policies : [PolicyAccepted]
+}
+
+private struct PolicyAccepted: Encodable {
+    let AnswerId = 0
+    let PolicyTextId: Int
+    let OldAccepted = false
+    let Accepted: Bool
+    let AnswerDate = "0001-01-01T00:00:00"
 }

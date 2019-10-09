@@ -131,7 +131,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
                 currentUser = KUser(registeredServices: registeredServices, roles: roles, identifier: identifier, contactIdentifier: contactIdentifier)
             }
         }
-        else if let tokenInfos = UserDefaults.standard.value(forKey: KLoginManager.KUserTokenKey) as? KBodyParameters
+        else if let tokenInfos = UserDefaults.standard.value(forKey: KLoginManager.KUserTokenKey) as? [String: String]
         {
             login(with: tokenInfos[KParametersKeys.Login.provider]!,
                   params: tokenInfos,
@@ -201,12 +201,12 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
     }
 
     @objc public func objc_login(with providerName: String,
-                                 params: KBodyParameters,
+                                 params: [String: String],
                                  saveTokenParams: Bool){
         login(with: providerName, params: params, saveTokenParams: saveTokenParams)
     }
 
-    public func login(with providerName: String, params: KBodyParameters, saveTokenParams: Bool = false, completion: AuthRegistrationBlock? = nil){
+    public func login(with providerName: String, params: [String: String], saveTokenParams: Bool = false, completion: AuthRegistrationBlock? = nil){
         showProgressHUD()
         loginIn = true
 
@@ -256,7 +256,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
         }
     }
     
-    @objc public func callRequestPasswordLost(queryString: String, params: KBodyParameters){
+    @objc public func callRequestPasswordLost(queryString: String, params: [String: String]){
         showProgressHUD()
         KNetworkManager.defaultManager(true).requestKrakeLostPassword(queryString, params: params) { [weak self](success, response, error) in
             if success{

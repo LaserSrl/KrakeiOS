@@ -16,7 +16,7 @@ public protocol ContentModificationContainerViewControllerDelegate: NSObjectProt
     func contentModificationViewController(_ controller: ContentModificationContainerViewController, shouldBackupParams params:NSMutableDictionary?) -> Bool
     func contentModificationViewController(_ controller: ContentModificationContainerViewController, didCloseAfterSendingOfElementCompleted sentCorrectly: Bool, params : NSMutableDictionary)
     func contentModificationViewController(_ controller: ContentModificationContainerViewController, shouldCloseAfterSendingOfElementCompleted sentCorrectly: Bool) -> Bool
-    func contentModificationViewController(_ controller: ContentModificationContainerViewController, taskForMedia media: UploadableMedia, atPath keyPath: String) -> URLSessionTask?
+    func contentModificationViewController(_ controller: ContentModificationContainerViewController, taskForMedia media: UploadableMedia, atPath keyPath: String) -> KDataTask?
 }
 
 public extension ContentModificationContainerViewControllerDelegate{
@@ -34,7 +34,7 @@ public extension ContentModificationContainerViewControllerDelegate{
         return true
     }
     
-    func contentModificationViewController(_ controller: ContentModificationContainerViewController, taskForMedia media: UploadableMedia, atPath keyPath: String) -> URLSessionTask? {
+    func contentModificationViewController(_ controller: ContentModificationContainerViewController, taskForMedia media: UploadableMedia, atPath keyPath: String) -> KDataTask? {
         return controller.uploadMediaContentToKrake(media, forKeyPath: keyPath)
     }
 }
@@ -52,7 +52,8 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
 
     static private let PropertyKeyContentType = "ContentType"
 
-    fileprivate var uploadMediaTasks: [URLSessionTask] = [URLSessionTask]()
+    fileprivate var uploadMediaTasks: [KDataTask] = [KDataTask]()
+    fileprivate var uploadMediaTaskProgress: [UploadProgress] = [UploadProgress]();
     open var isChanged = false{
         didSet{
             if navigationItem.rightBarButtonItem?.isEnabled != isChanged {
@@ -409,6 +410,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
             task.cancel()
         }
         uploadMediaTasks.removeAll()
+        uploadMediaTaskProgress.removeAll()
         KLog("RELEASED")
     }
     
@@ -543,119 +545,123 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         manager.responseSerializer = .json
         manager.requestSerializer = .json
         KLog(type: .info, params.description )
-        
-        _ = manager.post(KAPIConstants.contentExtension,
-                     parameters: params,
-                     progress: nil,
-                     success: { [weak self] (task, responseObject) in
-                        if let mySelf = self{
-                            if let response = responseObject as? [String : AnyObject],
-                                let error = KrakeResponse(object: response) {
-                                
-                                if error.errorCode > 0 {
-                                    // Some error occurred.
-                                    // Loading params from NSUserDefaults to restore the map part.
-                                    if let storedParams = mySelf.restoreParams() {
-                                        mySelf.params = storedParams
-                                    }
-                                    KMessageManager.showMessage(error.message, type: .error, fromViewController: mySelf)
-                                    mySelf.hud.dismissAsUploadProgress(completedWithSuccess: false)
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                        mySelf.navigationItem.rightBarButtonItem?.isEnabled = true
-                                    }
-                                } else {
-                                    mySelf.hud.dismissAsUploadProgress(completedWithSuccess: true)
-                                    mySelf.isChanged = false
 
-                                    AnalyticsCore.shared?.log(event:
-                                        mySelf.aliasContentModification == nil ? ContentModificationContainerViewController.EventNameNewContent : ContentModificationContainerViewController.EventNameUpdateContent,
-                                                              parameters: [ContentModificationContainerViewController.PropertyKeyContentType: mySelf.contentTypeDefinition.contentType])
+        _ = manager.request(KAPIConstants.contentExtension,
+                            method: .post,
+                            parameters: params,
+                            successCallback: { [weak self] (task, responseObject) in
+                                if let mySelf = self{
+                                    if let response = responseObject as? [String : AnyObject],
+                                        let error = KrakeResponse(object: response) {
 
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                        mySelf.closeViewController(true)
+                                        if error.errorCode > 0 {
+                                            // Some error occurred.
+                                            // Loading params from NSUserDefaults to restore the map part.
+                                            if let storedParams = mySelf.restoreParams() {
+                                                mySelf.params = storedParams
+                                            }
+                                            KMessageManager.showMessage(error.message, type: .error, fromViewController: mySelf)
+                                            mySelf.hud.dismissAsUploadProgress(completedWithSuccess: false)
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                                mySelf.navigationItem.rightBarButtonItem?.isEnabled = true
+                                            }
+                                        } else {
+                                            mySelf.hud.dismissAsUploadProgress(completedWithSuccess: true)
+                                            mySelf.isChanged = false
+
+                                            AnalyticsCore.shared?.log(event:
+                                                mySelf.aliasContentModification == nil ? ContentModificationContainerViewController.EventNameNewContent : ContentModificationContainerViewController.EventNameUpdateContent,
+                                                                      parameters: [ContentModificationContainerViewController.PropertyKeyContentType: mySelf.contentTypeDefinition.contentType])
+
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                                mySelf.closeViewController(true)
+                                            }
+                                        }
+                                    } else {
+                                        mySelf.hud.mode = .customView
+                                        mySelf.hud.customView = UIImageView(image: UIImage(krakeNamed: "error"))
+                                        mySelf.hud.label.text = "Error".localizedString()
+
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                            mySelf.hud.hide(animated: true)
+                                            mySelf.closeViewController(false)
+                                            mySelf.navigationItem.rightBarButtonItem?.isEnabled = true
+                                        }
                                     }
                                 }
-                            } else {
-                                mySelf.hud.mode = .customView
-                                mySelf.hud.customView = UIImageView(image: UIImage(krakeNamed: "error"))
-                                mySelf.hud.label.text = "Error".localizedString()
-                                
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                    mySelf.hud.hide(animated: true)
-                                    mySelf.closeViewController(false)
-                                    mySelf.navigationItem.rightBarButtonItem?.isEnabled = true
-                                }
-                            }
-                        }
-        }) { [weak self] (task, error) -> Void in
+        }, failureCallback: { [weak self](task , error) in
             if let mySelf = self {
                 // Loading params from NSUserDefaults to restore the map part.
                 if let storedParams = mySelf.restoreParams() {
                     mySelf.params = storedParams
                 }
-                
+
                 mySelf.hud.mode = .customView
                 mySelf.hud.label.text = "Error".localizedString()
                 KMessageManager.showMessage(error.localizedDescription, type: .error, fromViewController: mySelf )
                 mySelf.hud.hide(animated: true)
                 mySelf.navigationItem.rightBarButtonItem?.isEnabled = true
             }
-        }
+        })
     }
     
-    func sendImageOrVideoToWS(_ media : UploadableMedia, keyPath: String) -> URLSessionTask? {
+    func sendImageOrVideoToWS(_ media : UploadableMedia, keyPath: String) -> KDataTask? {
         return modificationDelegate?.contentModificationViewController(self, taskForMedia: media, atPath: keyPath)
     }
     
-    public final func uploadMediaContentToKrake(_ media: UploadableMedia, forKeyPath path: String) -> URLSessionTask? {
+    public final func uploadMediaContentToKrake(_ media: UploadableMedia, forKeyPath path: String) -> KDataTask? {
         let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: true)
         manager.responseSerializer = .json
-        manager.requestSerializer = .json
-        var httpAdditional = manager.session.configuration.httpAdditionalHeaders ?? [AnyHashable : Any]()
-        httpAdditional["Content-Type"] = "multipart/form-data"
+        manager.requestSerializer = .http
 
-        manager.session.configuration.httpAdditionalHeaders = httpAdditional
         let ct = params[ContentManagerKeys.CONTENT_TYPE] as! String
-        let uploadTask = manager
-            .post(KAPIConstants.uploadFile,
-                  parameters: [ContentManagerKeys.CONTENT_TYPE : ct],
-                  constructingBodyWith: { [weak media] (multipartFormData) in
-                    
-                    if let media = media {
-                        if media.type == .image {
-                            multipartFormData.appendPart(withFileData: media.content!, name: "file", fileName: "image.jpg", mimeType: "image/jpeg")
-                        } else {
-                            let mediaContentURL = media.url!
-                            if let dataBin = try? Data(contentsOf: mediaContentURL) {
-                                let fileExtension = mediaContentURL.pathExtension.lowercased()
-                                let type = media.type == .video ? "video" : "audio"
-                                
-                                multipartFormData.appendPart(withFileData: dataBin,
-                                    name: "file",
-                                    fileName: "media.\(fileExtension)",
-                                    mimeType: "\(type)/\(fileExtension)")
-                            }
-                        }
-                    }
-                },
-                  progress: nil,
-                  success: { [weak self] (dataTask, responseObject) in
-                    if let mySelf = self {
-                        let elem = responseObject as! NSDictionary
-                        
-                        if let errorCode = elem["ErrorCode"] as? NSInteger , errorCode > 0 {
-                            KMessageManager.showMessage(elem["Message"] as! String, type: .error, fromViewController: mySelf)
-                        } else {
-                            if let mediaId = (elem["Id"] as? NSNumber)?.intValue {
-                                mySelf.uploadCompletedForMedia(media, atPath: path, withIdentifier: mediaId)
-                            }
-                        }
-                    }
-            }) { [weak self] (_, error) in
-                if let mySelf = self {
-                    KMessageManager.showMessage(error.localizedDescription, type: .error, fromViewController: mySelf )
-                }
-        }
+        let taskIndex = uploadMediaTaskProgress.count
+        let uploadTask = manager.upload(KAPIConstants.uploadFile,
+                                        constructingBodyWith: { [weak media] (multipartFormData) in
+
+                                            multipartFormData.appendParameters([ContentManagerKeys.CONTENT_TYPE : ct])
+                                            if let media = media {
+                                                if media.type == .image {
+                                                    multipartFormData.appendPart(media.content!, withName: "file", fileName: "image.jpg", mimeType: "image/jpeg")
+                                                } else {
+                                                    let mediaContentURL = media.url!
+                                                    if let dataBin = try? Data(contentsOf: mediaContentURL) {
+                                                        let fileExtension = mediaContentURL.pathExtension.lowercased()
+                                                        let type = media.type == .video ? "video" : "audio"
+
+                                                        multipartFormData.appendPart(dataBin,
+                                                            withName: "file",
+                                                            fileName: "media.\(fileExtension)",
+                                                            mimeType: "\(type)/\(fileExtension)")
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        progress: { [weak self] progress in
+                                            if var uProgress = self?.uploadMediaTaskProgress[taskIndex] {
+                                                uProgress.current = progress.completedUnitCount
+                                                uProgress.total = progress.totalUnitCount
+                                            }
+        },
+                                        successCallback: { [weak self] (dataTask, responseObject) in
+                                                if let mySelf = self {
+                                                    let elem = responseObject as! NSDictionary
+
+                                                    if let errorCode = elem["ErrorCode"] as? NSInteger , errorCode > 0 {
+                                                        KMessageManager.showMessage(elem["Message"] as! String, type: .error, fromViewController: mySelf)
+                                                    } else {
+                                                        if let mediaId = (elem["Id"] as? NSNumber)?.intValue {
+                                                            mySelf.uploadCompletedForMedia(media, atPath: path, withIdentifier: mediaId)
+                                                        }
+                                                    }
+                                                }
+                                        },
+                                        failureCallback: { [weak self] (_, error) in
+                                                if let mySelf = self {
+                                                    KMessageManager.showMessage(error.localizedDescription, type: .error, fromViewController: mySelf )
+                                                }
+                                        })
+          
         
         return uploadTask
     }
@@ -677,11 +683,14 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         var totExpectedToSend: Int64 = 0
         var totSent: Int64 = 0
         for task in uploadMediaTasks {
-            if task.state == .running {
+            if task.isRunning {
                 allTasksFinished = false
             }
-            totExpectedToSend += task.countOfBytesExpectedToSend
-            totSent += task.countOfBytesSent
+        }
+
+        for progress in uploadMediaTaskProgress {
+            totExpectedToSend += progress.total
+            totSent += progress.current
         }
         
         hud.progress = (Float(totSent) / Float(totExpectedToSend))
@@ -695,7 +704,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
                         allUploadFinished = media.completed
                         break
                     } else if let list = elem as? [UploadableMedia] {
-                        if list.index(where: { return !($0.completed) }) != nil {
+                        if list.firstIndex(where: { return !($0.completed) }) != nil {
                             allUploadFinished = false
                             break
                         }
@@ -757,6 +766,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
             // Removing all tasks from the list before trying to upload new medias,
             // otherwise the displayed amount of bytes to send is wrong.
             uploadMediaTasks.removeAll()
+            uploadMediaTaskProgress.removeAll()
             
             var isCompleted = true
             for vc in contentTypeDefinition.viewControllers where vc is TakePhotoOrVideo {
@@ -771,6 +781,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
                                 // Upload started for the current media.
                                 // Adding the task to the list to monitor its state.
                                 uploadMediaTasks.append(task)
+                                uploadMediaTaskProgress.append(UploadProgress())
                                 isCompleted = false
                             }
                         }
@@ -846,4 +857,30 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         return nil
     }
     
+}
+
+extension NSDictionary: Encodable {
+
+    public func encode(to encoder: Encoder) throws {
+
+        var codableDict  = [String: Encodable]()
+
+        for key in allKeys {
+            if let sKey = key as? String {
+                let value = object(forKey: key)
+
+                if value is Encodable {
+                    codableDict[sKey] = (value as! Encodable)
+                }
+                else {
+                    throw NSError(domain: "Codable", code: 0, userInfo: nil)
+                }
+            }
+        }
+    }
+}
+
+struct UploadProgress {
+    var current: Int64 = 0
+    var total: Int64 = 0
 }

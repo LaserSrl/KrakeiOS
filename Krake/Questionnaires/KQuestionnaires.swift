@@ -21,14 +21,14 @@ public protocol KQuestionnaireDelegate: NSObjectProtocol
     func viewWillDisappear(_ viewController: QuestionnaireViewController)
     func viewDidDisappear(_ viewController: QuestionnaireViewController)
 
-    func questionnaire(questionnaire: QuestionnaireProtocol, willSendWith params: inout [Any])
+    func questionnaire(questionnaire: QuestionnaireProtocol, willSendWith params: inout [QuestionAnswer])
 
     func questionnaireViewController(_ vc: QuestionnaireViewController, didSendQuestionnaire quesitonnaire: QuestionnaireProtocol)
 }
 
 public extension KQuestionnaireDelegate
 {
-    func questionnaire(questionnaire: QuestionnaireProtocol, willSendWith params: inout [Any]){
+    func questionnaire(questionnaire: QuestionnaireProtocol, willSendWith params: inout [QuestionAnswer]){
         
     }
 
@@ -247,57 +247,67 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
             KMessageManager.showMessage("QUESTIONNAIRE_NOT_COMPILED".localizedString(), type: .error)
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         }else{
-            var risposte = [Any]()
+            var risposte = [QuestionAnswer]()
             for key in response.allKeys {
                 let resp = response[key as! String]!
                 if let resps = resp as? NSArray{
                     for resp in resps{
-                        risposte.append(resp)
+                        risposte.append(resp as! QuestionAnswer)
                     }
                 }else{
-                    risposte.append(resp)
+                    risposte.append(resp as! QuestionAnswer)
                 }
             }
             questionnaireDelegate?.questionnaire(questionnaire: questionnaire!, willSendWith: &risposte)
             let manager = KNetworkManager.defaultManager(true)
             MBProgressHUD.showAdded(to: view, animated: true)
-            _ = manager.post(apiPath, parameters: risposte, progress: nil, success: { [weak self] (task, responseObject) -> Void in
-                if let mySelf = self {
-                    MBProgressHUD.hide(for: mySelf.view, animated: true)
-                    if let responseObj = responseObject as? [String : AnyObject],
-                        let response = KrakeResponse(object: responseObj){
-                        if response.success {
-                            KMessageManager.showMessage("QUESTIONNAIRE_COMPLETED".localizedString(), type: .success)
-                            mySelf.questionnaireDelegate?.questionnaireViewController(mySelf, didSendQuestionnaire: mySelf.questionnaire!)
-                            
-                            if let classType = object_getClass(mySelf.questionnaire!) {
-                                AnalyticsCore.shared?.log(event: "survey_answered",parameters:["item_id":mySelf.questionnaire!.autoroutePartDisplayAlias!,
-                                    "content_type":classType.description()])
-                            }
-                            if (mySelf.presentingViewController != nil) {
-                                mySelf.presentingViewController?.dismissViewController()
-                            }
-                            else if (mySelf.navigationController?.viewControllers.last == self) {
-                                _ = mySelf.navigationController?.popViewController(animated: true)
-                            }
-                        }else{
-                            KMessageManager.showMessage(response.message, type: .error) //Programmata
-                        }
-                    }else{
-                        KMessageManager.showMessage("QUESTIONNAIRE_ERROR".localizedString(), type: .error)
-                    }
-                    
-                }
-                }, failure: { [weak self](task, error) -> Void in
-                    if let view = self?.view{
-                        MBProgressHUD.hide(for: view, animated: true)
-                    }
-                    KMessageManager.showMessage(error.localizedDescription, type: .error)
-            })
+
+            _ = manager.request(apiPath,
+                                method: .post,
+                                parameters: risposte,
+                                successCallback: { [weak self] (task, responseObject) -> Void in
+                                if let mySelf = self {
+                                    MBProgressHUD.hide(for: mySelf.view, animated: true)
+                                    if let responseObj = responseObject as? [String : AnyObject],
+                                        let response = KrakeResponse(object: responseObj){
+                                        if response.success {
+                                            KMessageManager.showMessage("QUESTIONNAIRE_COMPLETED".localizedString(), type: .success)
+                                            mySelf.questionnaireDelegate?.questionnaireViewController(mySelf, didSendQuestionnaire: mySelf.questionnaire!)
+
+                                            if let classType = object_getClass(mySelf.questionnaire!) {
+                                                AnalyticsCore.shared?.log(event: "survey_answered",parameters:["item_id":mySelf.questionnaire!.autoroutePartDisplayAlias!,
+                                                    "content_type":classType.description()])
+                                            }
+                                            if (mySelf.presentingViewController != nil) {
+                                                mySelf.presentingViewController?.dismissViewController()
+                                            }
+                                            else if (mySelf.navigationController?.viewControllers.last == self) {
+                                                _ = mySelf.navigationController?.popViewController(animated: true)
+                                            }
+                                        }else{
+                                            KMessageManager.showMessage(response.message, type: .error) //Programmata
+                                        }
+                                    }else{
+                                        KMessageManager.showMessage("QUESTIONNAIRE_ERROR".localizedString(), type: .error)
+                                    }
+
+                                }
+                                },
+                                failureCallback: { [weak self](task, error) -> Void in
+                                        if let view = self?.view{
+                                            MBProgressHUD.hide(for: view, animated: true)
+                                        }
+                                        KMessageManager.showMessage(error.localizedDescription, type: .error)
+                                }
+            )
+        
         }
     }
 }
 
 
-
-
+public struct QuestionAnswer: Codable, Equatable {
+    let QuestionRecord_Id: Int
+    let AnswerText: String?
+    let Id: Int?
+}

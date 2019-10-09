@@ -81,7 +81,9 @@ import Foundation
     }
     
     public func textViewDidChange(_ textView: UITextView) {
-        response[questionRecord.identifier.stringValue] = ["QuestionRecord_Id" : questionRecord.identifier ?? 0, "AnswerText" : answerTextView.text]
+        response[questionRecord.identifier.stringValue] = QuestionAnswer(QuestionRecord_Id: questionRecord.identifier?.intValue ?? 0,
+                                                                         AnswerText: answerTextView.text,
+                                                                         Id: nil)
     }
     
     

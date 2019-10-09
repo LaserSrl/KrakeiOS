@@ -132,19 +132,23 @@ public class KSingleOrMultiChoiceStackView : UIView{
 
             index = index + 1
         }
-        response[questionRecord.identifier.stringValue] = ["QuestionRecord_Id" : questionRecord.identifier, "Id" : ans.identifier] as AnyObject
+        response[questionRecord.identifier.stringValue] = QuestionAnswer(QuestionRecord_Id: questionRecord.identifier.intValue,
+                                                                         AnswerText: nil,
+                                                                         Id: ans.identifier.intValue)
     }
     
     @objc func chooseButtonMultiChoice(_ button: UIButton){
         var transform: CGAffineTransform!
-        var currentAnswerInQuestionToSave: [String : NSNumber]
-        var arrayOfAnswersInQuestion: [[String : NSNumber]] = [[String : NSNumber]]()
+        var currentAnswerInQuestionToSave: QuestionAnswer
+        var arrayOfAnswersInQuestion: [QuestionAnswer] = [QuestionAnswer]()
         
         if response[questionRecord.identifier.stringValue] != nil {
-            arrayOfAnswersInQuestion = response[questionRecord.identifier.stringValue] as! [[String : NSNumber]]
+            arrayOfAnswersInQuestion = response[questionRecord.identifier.stringValue] as! [QuestionAnswer]
         }
-        currentAnswerInQuestionToSave = ["QuestionRecord_Id" : questionRecord.identifier, "Id" : button.tag as NSNumber]
-        
+        currentAnswerInQuestionToSave = QuestionAnswer(QuestionRecord_Id: questionRecord.identifier.intValue,
+        AnswerText: nil,
+        Id:  (button.tag as NSNumber).intValue)
+
         //check if the answer was already selected
         let answerAlreadySelected = arrayOfAnswersInQuestion.filter({ $0 == currentAnswerInQuestionToSave}).first
         
@@ -163,7 +167,7 @@ public class KSingleOrMultiChoiceStackView : UIView{
             button.isSelected = false
             var index = 0
             for item in arrayOfAnswersInQuestion{
-                if item["Id"] == button.tag as NSNumber{
+                if item.Id == (button.tag as NSNumber).intValue{
                     arrayOfAnswersInQuestion.remove(at: index)
                 }
                 index = index + 1

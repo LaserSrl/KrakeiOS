@@ -47,7 +47,7 @@ open class KPushManager: NSObject{
             let httpClient = KNetworkManager(baseURL: wsURL, auth: true)
             httpClient.requestSerializer = .json
             httpClient.responseSerializer = .json
-            let requestParameters : KBodyParameters = [KParametersKeys.token : serializedToken,
+            let requestParameters : [String: String] = [KParametersKeys.token : serializedToken,
                                                      KParametersKeys.device : "Apple",
                                                      KParametersKeys.UUID : uuid,
                                                      KParametersKeys.language : KConstants.currentLanguage,

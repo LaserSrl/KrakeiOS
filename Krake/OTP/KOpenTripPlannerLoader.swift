@@ -16,15 +16,15 @@ public class KOpenTripPlannerLoader: KOTPLoader {
     
     public static var shared = KOpenTripPlannerLoader()
 
-    private let manager = AFHTTPSessionManager(baseURL: KInfoPlist.OTP.path)
+    private let manager = KNetworkManager(baseURL: KInfoPlist.OTP.path, auth: false)
 
-    private var geometryTask: URLSessionDataTask? = nil
-    private var routesInfo: URLSessionDataTask? = nil
-    private var stopTimes: URLSessionDataTask? = nil
-    private var stopsPattern: URLSessionDataTask? = nil
-    private var stopsInRoutePattern: URLSessionDataTask? = nil
-    private var otpItemStopTime: URLSessionDataTask? = nil
-    private var allStops: URLSessionDataTask? = nil
+    private var geometryTask: KDataTask? = nil
+    private var routesInfo: KDataTask? = nil
+    private var stopTimes: KDataTask? = nil
+    private var stopsPattern: KDataTask? = nil
+    private var stopsInRoutePattern: KDataTask? = nil
+    private var otpItemStopTime: KDataTask? = nil
+    private var allStops: KDataTask? = nil
     private var routesCached: [KOTPRoute]?
     
     public func retrievePathPoints(for line: KBusLine, with completion: @escaping (KBusLine, MKPolyline?) -> Void)

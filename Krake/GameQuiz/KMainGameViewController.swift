@@ -257,21 +257,30 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
             let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: true)
             manager.responseSerializer = .json
             manager.requestSerializer = .http
-            let params: [String: Any] = ["Point" : Int64(totalPoint), "Identifier": phoneNumber, "UsernameGameCenter": GKLocalPlayer.local.playerID,
-                                         "Device": "Apple", "ContentIdentifier": selectedGame.identifier ?? 0]
-            _ = manager.post(KAPIConstants.questionnairesGameRanking, parameters: params, progress: nil, success: { (task, responseObject) in
-                if let object = responseObject{
-                    let obj = JSON(object)
-                    if let boolean = obj["Success"].bool, boolean{
-                        self.sendPointsToGameCenter()
-                    }else{
-                        KMessageManager.showMessage(obj["Message"].string ?? "", type: .error, layout: .tabView)
-                    }
-                }else{
-                    KMessageManager.showMessage("Generic error".localizedString(), type: .error)
-                }
-            }, failure: { (task, error) in
-                KMessageManager.showMessage(error.localizedDescription, type: .error, layout: .tabView)
+
+            let points = PointResultInfo(Point: Int64(totalPoint),
+                                         Identifier: phoneNumber,
+                                         UsernameGameCenter: GKLocalPlayer.local.playerID,
+                                         ContentIdentifier: selectedGame.identifier?.intValue ?? 0)
+
+            _ = manager.request(KAPIConstants.questionnairesGameRanking,
+                                method: .post,
+                                parameters: points,
+                                query: [],
+                                successCallback: { (task, responseObject) in
+                                    if let object = responseObject{
+                                        let obj = JSON(object)
+                                        if let boolean = obj["Success"].bool, boolean{
+                                            self.sendPointsToGameCenter()
+                                        }else{
+                                            KMessageManager.showMessage(obj["Message"].string ?? "", type: .error, layout: .tabView)
+                                        }
+                                    }else{
+                                        KMessageManager.showMessage("Generic error".localizedString(), type: .error)
+                                    }
+            },
+                                failureCallback: { (task, error) in
+                                    KMessageManager.showMessage(error.localizedDescription, type: .error, layout: .tabView)
             })
             
         }else{
@@ -332,7 +341,7 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
     
     func closeGameAfterPartecipate(){
         dismiss(animated: true) { 
-            self.parentVC?.showLeaderBoards(sender: self.selectedGame)
+            self.parentVC?.showLeaderBoards(sender: self.selectedGame!)
         }
     }
     
@@ -386,4 +395,13 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
         }
     }
     
+}
+
+private struct PointResultInfo: Encodable {
+
+    let Point: Int64
+    let Identifier: String
+    let UsernameGameCenter: String
+    let Device = "Apple"
+    let ContentIdentifier: Int
 }
