@@ -10,6 +10,7 @@
 #import "OMPrivacyCollectionViewCell.h"
 #import "OGLCoreDataMapper.h"
 #import "NSString+OrchardMapping.h"
+#import "OGLCoreDataMapper.h"
 #import <Krake/Krake-Swift.h>
 
 @interface OMPrivacyViewController () <UICollectionViewDataSource,UICollectionViewDelegate, WKUIDelegate, WKNavigationDelegate, UIAdaptivePresentationControllerDelegate>

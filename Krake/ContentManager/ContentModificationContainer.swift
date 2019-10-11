@@ -341,7 +341,10 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
                 baseURL: KInfoPlist.KrakePlist.path,
                 auth: false)
             manager.responseSerializer = .json
-            _ = manager.get(KAPIConstants.contentExtension, parameters: [ContentManagerKeys.LANGUAGE : KConstants.currentLanguage, ContentManagerKeys.CONTENT_TYPE : self.contentTypeDefinition.contentType], progress: nil, success: { [weak self](task, object) in
+            _ = manager.request(KAPIConstants.contentExtension,
+                                method: .get,
+                                parameters: [ContentManagerKeys.LANGUAGE : KConstants.currentLanguage, ContentManagerKeys.CONTENT_TYPE : self.contentTypeDefinition.contentType],
+                                successCallback: { [weak self](task, object) in
                 if object != nil{
                     self?.valuesContentType = object as? [String : AnyObject]
                 }

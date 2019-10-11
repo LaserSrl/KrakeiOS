@@ -7,6 +7,7 @@
 //
 
 #import "OGLConfigurations.h"
+#import "OGLCoreDataMapper.h"
 #import <Krake/Krake-Swift.h>
 
 NSString *const USER_INFO_DISPLAY_ALIAS = @"user+info";

@@ -8,6 +8,7 @@
 
 #import "OMPrivacyCollectionViewCell.h"
 #import "NSString+OrchardMapping.h"
+#import "OGLCoreDataMapper.h"
 #import <Krake/Krake-Swift.h>
 
 @implementation OMPrivacyCollectionViewCell

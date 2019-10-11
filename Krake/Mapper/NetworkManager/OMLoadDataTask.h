@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OGLCoreDataMapper.h"
-
+#import "OMMapperCompletionBlock.h"
 @class KDataTask;
+@class OGLCoreDataMapper;
+@class DisplayPathCache;
 
 @interface OMLoadDataTask : NSObject
 
@@ -19,7 +20,7 @@ typedef NS_ENUM(NSUInteger, OMLoadResultType)
     OMLoadResultTypePrivacy
 };
 
-@property (nonatomic, readonly) NSDictionary *parameters;
+@property (nonatomic, readonly) NSDictionary<NSString*,id> * parameters;
 @property (nonatomic, readonly) NSString *command;
 @property (nonatomic, readonly) BOOL loginRequired;
 @property (nonatomic, readonly, getter=isCancelled) BOOL cancel;

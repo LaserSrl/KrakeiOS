@@ -10,6 +10,7 @@
 #import "NBPhoneNumberUtil.h"
 #import "MBProgressHUD.h"
 #import "NSString+OrchardMapping.h"
+#import "OGLCoreDataMapper.h"
 #import <Krake/Krake-Swift.h>
 @import LaserFloatingTextField;
 

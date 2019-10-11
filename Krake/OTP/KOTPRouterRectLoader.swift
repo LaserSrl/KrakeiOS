@@ -14,7 +14,10 @@ public class KOTPRouterRectLoader: NSObject {
     public static func loadRouterBoundaries(_ callback: @escaping (MKCoordinateRegion?) -> Void ) {
         let manager = KNetworkManager(baseURL: KInfoPlist.OTP.path, auth: false)
 
-        _ = manager.get("", parameters: nil, progress: nil, success: { (task, responseObject) in
+
+        _ = manager.request("",
+                            method:.get,
+                            parameters: nil, successCallback: { (task, responseObject) in
 
             if let returnedInfos = responseObject as? [String: AnyObject] {
                 if let coordinates = ((returnedInfos["polygon"] as? [String: AnyObject] )?["coordinates"] as? [[[Any]]])?[0]
@@ -41,6 +44,6 @@ public class KOTPRouterRectLoader: NSObject {
                 }
             }
 
-        }, failure: nil)
+        }, failureCallback: nil)
     }
 }

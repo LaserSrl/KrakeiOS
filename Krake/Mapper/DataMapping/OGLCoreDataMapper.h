@@ -8,6 +8,7 @@
 
 @import Foundation;
 @import CoreData;
+#import "OMMapperCompletionBlock.h"
 
 @protocol KMCacheManagerDelegate;
 @class OGLConfigurations;
@@ -16,7 +17,6 @@
 
 extern NSUInteger const OMPrivacyClose_Error_Code;
 
-typedef void(^OMMapperCompletionBlock)( NSManagedObjectID* __nullable parsedObject, NSError* __nullable error, BOOL completed);
 
 @interface OGLCoreDataMapper : NSObject
 

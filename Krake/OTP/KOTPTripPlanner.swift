@@ -45,9 +45,10 @@ public class KOTPTripPlanner: KTripPlannerProtocol
 
         planDataTask?.cancel()
         
-        planDataTask = manager.get("plan", parameters: params,
-                    progress: nil,
-             success: { (task, response) in
+        planDataTask = manager.request("plan",
+                                       method: .get,
+                                       parameters: params,
+             successCallback: { (task, response) in
                 if let response = response {
                 let resultJson = JSON(response)
 

@@ -30,10 +30,10 @@ public class KOpenTripPlannerLoader: KOTPLoader {
     public func retrievePathPoints(for line: KBusLine, with completion: @escaping (KBusLine, MKPolyline?) -> Void)
     {
         geometryTask?.cancel()
-        geometryTask = manager.get(String(format: "index/patterns/%@/geometry",line.patternId),
+        geometryTask = manager.request(String(format: "index/patterns/%@/geometry",line.patternId),
+                                       method:.get,
                     parameters: nil,
-                    progress: nil,
-                    success: { (task, result) in
+                    successCallback: { (task, result) in
 
                         if let result = result as? [String: Any] , let geometry = result["points"] as? String {
 
@@ -57,10 +57,10 @@ public class KOpenTripPlannerLoader: KOTPLoader {
             return
         }
         routesInfo?.cancel()
-        routesInfo = manager.get("index/routes",
+        routesInfo = manager.request("index/routes",
+                                     method: .get,
                         parameters: nil,
-                        progress: nil,
-                        success: { (task, result) in
+                        successCallback: { (task, result) in
                             
                             if let result = result as? [NSDictionary]
                             {
@@ -82,10 +82,10 @@ public class KOpenTripPlannerLoader: KOTPLoader {
     public func retrieveStopTimes(for stopId: String!, with completion: @escaping ([KOTPStopTimes]?) -> Void)
     {
         stopTimes?.cancel()
-        stopTimes = manager.get("index/stops/" + stopId + "/stoptimes?detail=long&refs=true",
+        stopTimes = manager.request("index/stops/" + stopId + "/stoptimes?detail=long&refs=true",
+                                    method: .get,
                                  parameters: nil,
-                                 progress: nil,
-                                 success: { (task, result) in
+                                 successCallback: { (task, result) in
                                     
                                     if let result = result as? [NSDictionary]
                                     {
@@ -106,10 +106,9 @@ public class KOpenTripPlannerLoader: KOTPLoader {
     public func retrieveStops(for line: KBusLine, with completion: @escaping ([KOTPStop]?) -> Void)
     {
         stopsPattern?.cancel()
-        stopsPattern = manager.get("index/patterns/" + line.patternId + "/stops?detail=long&refs=true",
-                                parameters: nil,
-                                progress: nil,
-                                success: { (task, result) in
+        stopsPattern = manager.request("index/patterns/" + line.patternId + "/stops?detail=long&refs=true",
+                                       method: .get,
+                                successCallback: { (task, result) in
                                     
                                     if let result = result as? [NSDictionary]
                                     {
@@ -130,10 +129,9 @@ public class KOpenTripPlannerLoader: KOTPLoader {
     public func retrieveStops(for route: KOTPRoute, with completion: @escaping ([KOTPStop]?) -> Void) {
         stopsInRoutePattern?.cancel()
 
-        stopsInRoutePattern = manager.get("index/routes/" + route.id + "/stops?detail=long&refs=true",
-                                          parameters: nil,
-                                          progress: nil,
-                                          success: { (task, result) in
+        stopsInRoutePattern = manager.request("index/routes/" + route.id + "/stops?detail=long&refs=true",
+                                           method: .get,
+                                                                         successCallback: { (task, result) in
 
                                             if let result = result as? [NSDictionary]
                                             {
@@ -159,10 +157,9 @@ public class KOpenTripPlannerLoader: KOTPLoader {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYYMMdd"
         let path = String(format: "index/stops/%@/stoptimes/%@",stop.originalId ?? "", formatter.string(from: date))
-        otpItemStopTime = manager.get(path,
-                                          parameters: nil,
-                                          progress: nil,
-                                          success: { (task, result) in
+        otpItemStopTime = manager.request(path,
+                                           method: .get,
+                                                                         successCallback: { (task, result) in
 
                                             if let result = result as? [NSDictionary]
                                             {
@@ -210,10 +207,9 @@ public class KOpenTripPlannerLoader: KOTPLoader {
     public func retrieveAllStops(search text: String, with completion: @escaping ([KOTPStop]?) -> Void) {
         allStops?.cancel()
         if let text = text.lowercased().addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            allStops = manager.get("geocode?autocomplete=true&corners=false&stops=true&query=" + text,
-                                   parameters: nil,
-                                   progress: nil,
-                                   success: { (task, result) in
+            allStops = manager.request("geocode?autocomplete=true&corners=false&stops=true&query=" + text,
+                                    method: .get,
+                                                                  successCallback: { (task, result) in
                                     
                                     if let result = result as? [NSDictionary]
                                     {

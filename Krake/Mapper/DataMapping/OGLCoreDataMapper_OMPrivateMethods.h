@@ -9,5 +9,5 @@
 #import "OGLCoreDataMapper.h"
 
 @interface OGLCoreDataMapper ()
-- (void) startLoadingDataWithTask:(OMLoadDataTask*)loadDataTask;
+- (void) importAndSaveInCoreData:(id)responseObject parameters:(NSDictionary*)parameters loadDataTask:(OMLoadDataTask*)loadDataTask;
 @end

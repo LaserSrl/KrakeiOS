@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Laser. All rights reserved.
 //
 
-#import <Krake/Krake-Swift.h>
 #import "OGLCoreDataMapper_OMPrivateMethods.h"
+#import <Krake/Krake-Swift.h>
 #import "NSString+OrchardMapping.h"
 #import "OGLConfigurations.h"
 #import "OGLConstants.h"
@@ -142,55 +142,11 @@ static __strong id currentOGLCoreDataMapper_;
                                                                    parameters:parameters
                                                                 loginRequired:isLoginRequired
                                                                    completion:completion];
-        [self startLoadingDataWithTask:loadDataTask];
+        [self startDataLoadingWithTask:loadDataTask];
         return loadDataTask;
     }
     
     return nil;
-}
-
-- (void) startLoadingDataWithTask:(OMLoadDataTask*)loadDataTask
-{
-    KNetworkManager *localSessionManager = [KNetworkManager defaultDataNetworkManager:loadDataTask.loginRequired];
-    /* TODO: controllare dopo aggiornamento gestione cookie
-    if (loadDataTask.parameters[REQUEST_NO_CACHE]) {
-        [localSessionManager.session.configuration addCacheHeaders:loadDataTask.parameters[REQUEST_NO_CACHE]];
-    }else{
-        [localSessionManager.session.configuration removeCacheHeaders];
-    }*/
-    
-#if DEBUG && VERBOSE
-    NSString *logVar = [NSString stringWithFormat:@"\n\nDisplayAlias: %@\nlogged: %d\n\n", loadDataTask.parameters[KrakeParamsKey.displayAlias], loadDataTask.loginRequired];
-    for (NSHTTPCookie *cookies in localSessionManager.session.configuration.HTTPCookieStorage.cookies)
-    {
-        logVar = [logVar stringByAppendingFormat: @"\n%@=%@; path=%@; domain=%@; Expires:%@;", cookies.name, cookies.value, cookies.path, cookies.domain, cookies.expiresDate.description];
-    }
-    for (NSString *key in localSessionManager.session.configuration.HTTPAdditionalHeaders.allKeys)
-    {
-        logVar = [logVar stringByAppendingFormat: @"\n%@:%@", key, localSessionManager.session.configuration.HTTPAdditionalHeaders[key]];
-    }
-    NSLog(@"%@", logVar);
-#endif
-    
-     [localSessionManager get:loadDataTask.command
-                   parameters:loadDataTask.parameters
-                     progress: nil
-                      success:^(KDataTask *task, id responseObject) {
-                          
-                          [self importAndSaveInCoreData:responseObject parameters:loadDataTask.parameters loadDataTask:loadDataTask];
-                      }
-                      failure:^(KDataTask *task, NSError *error) {
-                          [loadDataTask loadingFailed:task withError:error];
-                         // NSLog(@"ERROR : %@ (%@)", error.localizedDescription, task.currentRequest.URL.description);
-                          if (error.code != -999)
-                              dispatch_async(dispatch_get_main_queue(), ^{
-                                  loadDataTask.completionBlock(nil,error,YES);
-                              });
-                          /*else
-                              dispatch_async(dispatch_get_main_queue(), ^{
-                                  loadDataTask.completionBlock(nil,nil,YES);
-                              });*/
-                      }];
 }
 
 - (void) importAndSaveInCoreData:(id)responseObject parameters:(NSDictionary*)parameters loadDataTask:(OMLoadDataTask*)loadDataTask

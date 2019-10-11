@@ -7,8 +7,8 @@
 //
 
 #import "OMLoadDataTask.h"
-#import <Krake/Krake-Swift.h>
 #import "OGLCoreDataMapper.h"
+#import <Krake/Krake-Swift.h>
 #import "NSString+OrchardMapping.h"
 #import "OGLCoreDataMapper_OMPrivateMethods.h"
 
@@ -107,7 +107,7 @@
 
 - (void)restartDataLoading
 {
-    [[OGLCoreDataMapper sharedInstance] startLoadingDataWithTask:self];
+    [[OGLCoreDataMapper sharedInstance] startDataLoadingWithTask:self];
 }
 
 @end

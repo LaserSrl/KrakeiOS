@@ -1,5 +1,6 @@
 
 #import "KxMenu.h"
+#import "OGLCoreDataMapper.h"
 #import <QuartzCore/QuartzCore.h>
 #import <Krake/Krake-Swift.h>
 
