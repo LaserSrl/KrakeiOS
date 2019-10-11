@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name         = "Krake"
-    s.version      = "10.6.0"
+    s.version      = "10.6.1"
     s.summary      = "Laser mobile framework."
     s.homepage     = "http://mykrake.com"
 
@@ -104,6 +104,7 @@ Pod::Spec.new do |s|
     s.subspec 'GoogleKit' do |os|
         os.source_files  = "GoogleKit", "Krake/GoogleKit/*.{swift}"
         os.dependency "Krake/Core"
+#TODO: - da aggiornare alla 5.x ma richiede un intervento sui delegate!
         os.dependency "GoogleSignIn", '4.4.0'
     end
     
