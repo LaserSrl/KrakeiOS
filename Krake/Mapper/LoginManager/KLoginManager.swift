@@ -131,9 +131,9 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
                 currentUser = KUser(registeredServices: registeredServices, roles: roles, identifier: identifier, contactIdentifier: contactIdentifier)
             }
         }
-        else if let tokenInfos = UserDefaults.standard.value(forKey: KLoginManager.KUserTokenKey) as? [String: String]
+        else if let tokenInfos = UserDefaults.standard.value(forKey: KLoginManager.KUserTokenKey) as? [String: Any]
         {
-            login(with: tokenInfos[KParametersKeys.Login.provider]!,
+            login(with: tokenInfos[KParametersKeys.Login.provider] as! String,
                   params: tokenInfos,
                   saveTokenParams: true)
         }
@@ -201,12 +201,12 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
     }
 
     @objc public func objc_login(with providerName: String,
-                                 params: [String: String],
+                                 params: [String: Any],
                                  saveTokenParams: Bool){
         login(with: providerName, params: params, saveTokenParams: saveTokenParams)
     }
 
-    public func login(with providerName: String, params: [String: String], saveTokenParams: Bool = false, completion: AuthRegistrationBlock? = nil){
+    public func login(with providerName: String, params: [String: Any], saveTokenParams: Bool = false, completion: AuthRegistrationBlock? = nil){
         showProgressHUD()
         loginIn = true
 
@@ -256,7 +256,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
         }
     }
     
-    @objc public func callRequestPasswordLost(queryString: String, params: [String: String]){
+    @objc public func callRequestPasswordLost(queryString: String, params: [String: Any]){
         showProgressHUD()
         KNetworkManager.defaultManager(true).requestKrakeLostPassword(queryString, params: params) { [weak self](success, response, error) in
             if success{

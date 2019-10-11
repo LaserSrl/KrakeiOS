@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Laser. All rights reserved.
 //
 
-@import Alamofire;
 #import <Krake/Krake-Swift.h>
 #import "OGLCoreDataMapper_OMPrivateMethods.h"
 #import "NSString+OrchardMapping.h"
@@ -152,15 +151,13 @@ static __strong id currentOGLCoreDataMapper_;
 
 - (void) startLoadingDataWithTask:(OMLoadDataTask*)loadDataTask
 {
-    KNetworkManager *localSessionManager = [[KNetworkManager alloc] initWithBaseURL:self.serviceURL auth:loadDataTask.loginRequired];
-    [localSessionManager setResponseSerializer:[AFJSONResponseSerializer serializer]];
-    [localSessionManager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
-    
+    KNetworkManager *localSessionManager = [KNetworkManager defaultDataNetworkManager:loadDataTask.loginRequired];
+    /* TODO: controllare dopo aggiornamento gestione cookie
     if (loadDataTask.parameters[REQUEST_NO_CACHE]) {
         [localSessionManager.session.configuration addCacheHeaders:loadDataTask.parameters[REQUEST_NO_CACHE]];
     }else{
         [localSessionManager.session.configuration removeCacheHeaders];
-    }
+    }*/
     
 #if DEBUG && VERBOSE
     NSString *logVar = [NSString stringWithFormat:@"\n\nDisplayAlias: %@\nlogged: %d\n\n", loadDataTask.parameters[KrakeParamsKey.displayAlias], loadDataTask.loginRequired];
@@ -175,17 +172,16 @@ static __strong id currentOGLCoreDataMapper_;
     NSLog(@"%@", logVar);
 #endif
     
-    [loadDataTask setSessionTask:
-     [localSessionManager GET:loadDataTask.command
+     [localSessionManager get:loadDataTask.command
                    parameters:loadDataTask.parameters
                      progress: nil
-                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                      success:^(KDataTask *task, id responseObject) {
                           
                           [self importAndSaveInCoreData:responseObject parameters:loadDataTask.parameters loadDataTask:loadDataTask];
                       }
-                      failure:^(NSURLSessionDataTask *task, NSError *error) {
+                      failure:^(KDataTask *task, NSError *error) {
                           [loadDataTask loadingFailed:task withError:error];
-                          NSLog(@"ERROR : %@ (%@)", error.localizedDescription, task.currentRequest.URL.description);
+                         // NSLog(@"ERROR : %@ (%@)", error.localizedDescription, task.currentRequest.URL.description);
                           if (error.code != -999)
                               dispatch_async(dispatch_get_main_queue(), ^{
                                   loadDataTask.completionBlock(nil,error,YES);
@@ -194,7 +190,7 @@ static __strong id currentOGLCoreDataMapper_;
                               dispatch_async(dispatch_get_main_queue(), ^{
                                   loadDataTask.completionBlock(nil,nil,YES);
                               });*/
-                      }]];
+                      }];
 }
 
 - (void) importAndSaveInCoreData:(id)responseObject parameters:(NSDictionary*)parameters loadDataTask:(OMLoadDataTask*)loadDataTask

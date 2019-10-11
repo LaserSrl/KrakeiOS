@@ -546,9 +546,14 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         manager.requestSerializer = .json
         KLog(type: .info, params.description )
 
+        var anyDict = [String: Any]()
+        for (value, key) in params {
+            anyDict[key as! String] = value
+        }
+
         _ = manager.request(KAPIConstants.contentExtension,
                             method: .post,
-                            parameters: params,
+                            parameters: anyDict,
                             successCallback: { [weak self] (task, responseObject) in
                                 if let mySelf = self{
                                     if let response = responseObject as? [String : AnyObject],
@@ -857,27 +862,6 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         return nil
     }
     
-}
-
-extension NSDictionary: Encodable {
-
-    public func encode(to encoder: Encoder) throws {
-
-        var codableDict  = [String: Encodable]()
-
-        for key in allKeys {
-            if let sKey = key as? String {
-                let value = object(forKey: key)
-
-                if value is Encodable {
-                    codableDict[sKey] = (value as! Encodable)
-                }
-                else {
-                    throw NSError(domain: "Codable", code: 0, userInfo: nil)
-                }
-            }
-        }
-    }
 }
 
 struct UploadProgress {

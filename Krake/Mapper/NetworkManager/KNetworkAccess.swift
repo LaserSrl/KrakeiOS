@@ -57,18 +57,19 @@ public enum OMPrivacyStatus : NSInteger {
     }
     
     public func sendPoliciesToKrake(_ params: NSDictionary, success: ((KDataTask, AnyObject?) -> Void)?, failure: ((KDataTask, Error) -> Void)?){
-        var arrPolicies = [PolicyAccepted]()
+       var extras: KParamaters = [KParametersKeys.language : KConstants.currentLanguage as AnyObject]
+        var arrPolicies = [[AnyHashable: Any]]()
         for key in params.allKeys as! [NSCopying]{
-            arrPolicies.append(PolicyAccepted(PolicyTextId: key as! Int, Accepted: params[key]! as! Bool))
+            arrPolicies.append(["AnswerId" : 0, "PolicyTextId" : key, "OldAccepted" : false, "Accepted" : params[key]!, "AnswerDate" : "0001-01-01T00:00:00"])
         }
-        let policiesParameters = PoliciesParameters(PoliciesForUser: PoliciesForUser(Policies: arrPolicies))
+        extras["PoliciesForUser"] = ["Policies" : arrPolicies]
 
 
         let manager = KNetworkManager.defaultManager(true)
 
         _ = manager.request(KAPIConstants.policies,
                         method: .post,
-                        parameters: policiesParameters,
+                        parameters: extras,
                         query: [],
                         successCallback: { (task, object) in
                             if let responseObject = object as? [String : AnyObject] , let response = KrakeResponse(object: responseObject as AnyObject) , response.success == true {
@@ -84,22 +85,4 @@ public enum OMPrivacyStatus : NSInteger {
                         failureCallback: failure)
 
     }
-}
-
-
-private struct PoliciesParameters: Encodable {
-    let Language: String = KConstants.currentLanguage
-    let PoliciesForUser: PoliciesForUser
-}
-
-private struct PoliciesForUser: Encodable {
-    let Policies : [PolicyAccepted]
-}
-
-private struct PolicyAccepted: Encodable {
-    let AnswerId = 0
-    let PolicyTextId: Int
-    let OldAccepted = false
-    let Accepted: Bool
-    let AnswerDate = "0001-01-01T00:00:00"
 }

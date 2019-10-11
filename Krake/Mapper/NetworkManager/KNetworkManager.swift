@@ -40,13 +40,24 @@ public enum KRequestSerializer: Int {
     case http
 }
 
+public typealias KParamaters = [String: Any]
+
 private extension KRequestSerializer {
-    func af() -> ParameterEncoder {
+    func encoding() -> ParameterEncoding {
+        switch self {
+        case .json:
+            return JSONEncoding.default
+        case .http:
+            return URLEncoding.default
+        }
+    }
+
+    func encoder() -> ParameterEncoder {
         switch self {
         case .json:
             return JSONParameterEncoder()
         case .http:
-            return URLEncodedFormParameterEncoder(destination: .httpBody)
+            return URLEncodedFormParameterEncoder(destination: .methodDependent)
         }
     }
 }
@@ -73,20 +84,37 @@ private extension KMethod {
     }
 }
 
-public class KRequest<KParameters:Encodable> {
+open class KRequest {
 
     var path: String = ""
 
     var queryParameters = [URLQueryItem]()
 
     var method: KMethod = .get
-    var parameters: KParameters? = nil
+    var parameters: KParamaters? = nil
     var requestSerializer: KRequestSerializer? = nil
 
     var responseSerializer: KResponseSerializer? = nil
 
     var uploadProgress: ((Progress) -> Void)? = nil
     var downloadProgress: ((Progress) -> Void)? = nil
+
+    func genericParamters() -> Any? {
+        return parameters
+    }
+}
+
+public class KCodableRequest<Parameters: Encodable>: KRequest {
+    var codableParameters: Parameters? = nil
+
+    public init(_ codableParameters: Parameters? = nil) {
+        self.codableParameters = codableParameters
+        super.init()
+    }
+
+    override func genericParamters() -> Any? {
+        return codableParameters
+    }
 }
 
 extension KRequest {
@@ -125,13 +153,15 @@ public class KMultipartFormData {
 @objc
 public class KDataTask: NSObject {
     internal let dataRequest: DataRequest
+    public let request: KRequest
 
-    init(dataRequest: DataRequest) {
-        self.dataRequest = dataRequest
+    init(request: KRequest, data: DataRequest) {
+        self.dataRequest = data
+        self.request = request
     }
     
 
-    public func cancel() {
+    @objc public func cancel() {
         dataRequest.cancel()
     }
 
@@ -164,6 +194,14 @@ public class KDataTask: NSObject {
 
         super.init()
     }
+
+    @objc public static func defaultDataNetworkManager(_ auth: Bool) -> KNetworkManager{
+        let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: auth)
+        manager.requestSerializer = .http
+        manager.responseSerializer = .json
+        manager.authenticated = auth
+        return manager
+    }
     
     @objc public static func defaultManager(_ auth: Bool = false, checkHeaderResponse: Bool = false) -> KNetworkManager{
         let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: auth)
@@ -187,44 +225,30 @@ public class KDataTask: NSObject {
     
     public func postSignalTrigger(signalName: String,
                                         contentId: String,
-                                        params: [String: String]? = nil,
+                                        params: KParamaters? = nil,
                                         success: ((KDataTask, Any?) -> Void)?,
                                         failure: ((KDataTask?, Error) -> Void)?) -> KDataTask?{
-        var tmpParams = params ?? [String: String]()
+        var tmpParams = params ?? KParamaters()
         tmpParams["lang"] = KConstants.currentLanguage
         tmpParams["Name"] = signalName
         tmpParams["ContentId"] = contentId
-        return post(KAPIConstants.signal, parameters: tmpParams, progress: nil, success: { (task, responseObject) in
-            success?(task, responseObject)
-        }) { (task: KDataTask?, error: Error) in
-            failure?(task, error)
-        }
+        return request(KAPIConstants.signal, method: .post, parameters: tmpParams, successCallback: success, failureCallback: failure)
     }
     
     //MARK: - Metodi di autenticazione
 
     public func krakeLogin(providerName: String,
-                           params: [String: String],
+                           params: KParamaters,
                            completion: @escaping KrakeAuthBlock )
     {
-        let success: (KDataTask, Any?) -> Void =
-        {
-            (task, object) in
-            self.loginCompletion(task, object: object, completion: completion)
-        }
-        let failure: (KDataTask?, Error) -> Void =
-        {
-            (task, error) in
-            self.loginCompletion(task, error: error, completion: completion)
-        }
 
-        var extras = [String: String]()
+        var extras = KParamaters()
         extras["UUID"] = KConstants.uuid
-        params.forEach { (key: String, value: String) in
+        params.forEach { (key: String, value: Any) in
             extras[key] = value
         }
 
-        let request = KRequest<[String: String]>()
+        let request = KRequest()
         request.parameters = extras
         switch providerName {
         case KrakeAuthenticationProvider.orchard:
@@ -238,14 +262,27 @@ public class KDataTask: NSObject {
             request.method = .get
         }
 
+        let success: (KDataTask, Any?) -> Void =
+           {
+               (task, object) in
+               self.loginCompletion(task, object: object, completion: completion)
+           }
+           let failure: (KDataTask?, Error) -> Void =
+           {
+               (task, error) in
+               self.loginCompletion(task, error: error, completion: completion)
+           }
+
+
         _ = self.request(request,
+                callbackWrapperLevel: .none,
                      successCallback: success,
                      failureCallback: failure)
     }
 
-    @objc public func krakeRegisterUser(_ params: [String: String],
+    @objc public func krakeRegisterUser(_ params: KParamaters,
                                         completion: @escaping KrakeAuthBlock) {
-        let request = KRequest<[String: String]>()
+        let request = KRequest()
         request.path = KAPIConstants.userExtensions + "/RegisterSsl"
         request.queryParameters.append(URLQueryItem(name: "UUID", value: KConstants.uuid))
         request.queryParameters.append(URLQueryItem(name: "Lang", value: KConstants.currentLanguage))
@@ -253,6 +290,7 @@ public class KDataTask: NSObject {
         request.parameters = params
 
         _ = self.request(request,
+                         callbackWrapperLevel: .none,
                          successCallback: { (task, object) in
                             self.loginCompletion(task, object: object, completion: completion)
         }, failureCallback: { (task, error) in
@@ -271,7 +309,14 @@ public class KDataTask: NSObject {
         }else{
             let response = KrakeResponse(object: object)
             if (response?.success ?? false){
-                completedLogin(task, responseObject: response, completion: completion)
+                if let task = task {
+                           checkHeaderResponse(task)
+                           let error: Error? = !(response?.message ?? "").isEmpty ? NSError(domain: KInfoPlist.appName, code: 0, userInfo: [NSLocalizedDescriptionKey : response!.message!]) : nil
+                           completion(true, response?.data, error)
+                       }
+                       else {
+                           completion(false, nil, nil)
+                       }
             }else{
                 KLoginManager.shared.userLogout()
                 completion(false, nil, NSError(domain: "Login", code: (response?.errorCode ?? 0), userInfo: [NSLocalizedDescriptionKey : (response?.message ?? "Generic error".localizedString())]))
@@ -283,22 +328,24 @@ public class KDataTask: NSObject {
     //MARK: - Krake lost password request
     
     @objc public func requestKrakeLostPassword(_ queryString: String,
-                                               params: [String: String],
+                                               params: KParamaters,
                                                completion: @escaping KrakeAuthBlock) {
-        let request = KRequest<[String: String]>()
+        let request = KRequest()
         request.method = .post
         request.parameters = params
         request.path = KAPIConstants.userExtensions + "/" + queryString
         request.queryParameters.append(URLQueryItem(name: "Lang", value: KConstants.currentLanguage))
 
         _ = self.request(request,
+                         callbackWrapperLevel: .none,
                          successCallback: { (task, object) in
                             if let responseObject = object as? [String : AnyObject] , let response = KrakeResponse(object: responseObject as AnyObject) , response.success == false{
                                 completion(false, nil,
                                            NSError(domain: "Request lost password",
                                                    code: response.errorCode,
                                                    userInfo: [NSLocalizedDescriptionKey : response.message ?? ""]))
-                            }else{
+                            }
+                            else {
                                 completion(true, nil, nil)
                             }
                             self.invalidateSessionCancelingTasks(true)
@@ -309,44 +356,29 @@ public class KDataTask: NSObject {
         })
     }
 
-    private func request(_ URLString: String,
-                         method: KMethod,
-                         parameters: [String: String]?,
-                         success: ((KDataTask, Any?) -> Void)?,
-                         failure: ((KDataTask, Error) -> Void)?) -> KDataTask {
-
-        let request = createRequest(path: URLString,
-                                    method: method,
-                                    queryItems: [],
-                                    parameters: parameters)
-
-        return self.request(request, successCallback: success, failureCallback: failure)
-    }
-
-    func request<KP: Encodable>(_ path: String,
+    func request(_ path: String,
                                 method: KMethod,
-                                parameters: KP? = nil,
+                                parameters: KParamaters? = nil,
                                 query: [URLQueryItem] = [],
-    successCallback: ((KDataTask, Any?) -> Void)?,
-    failureCallback: ((KDataTask, Error) -> Void)?) -> KDataTask {
+        successCallback: ((KDataTask, Any?) -> Void)?,
+        failureCallback: ((KDataTask, Error) -> Void)?) -> KDataTask {
 
-        let request = KRequest<KP>()
-
+        let request = KRequest()
+        request.path = path
         request.method = method
         request.parameters = parameters
         request.queryParameters = query
         return self.request(request, successCallback: successCallback, failureCallback: failureCallback)
-
     }
 
-    func request<KP: Encodable>(_ request: KRequest<KP>,
+    func request<Parameters: Encodable>(_ request: KCodableRequest<Parameters>,
                  successCallback: ((KDataTask, Any?) -> Void)?,
                  failureCallback: ((KDataTask, Error) -> Void)?) -> KDataTask {
 
         let dataRequest = sessionManager.request(request.asURL(baseURL),
                                                  method: request.method.afMethod(),
-                                                 parameters: request.parameters,
-                                                 encoder: (request.requestSerializer ?? requestSerializer).af(),
+                                                 parameters: request.codableParameters,
+                                                 encoder: (request.requestSerializer ?? requestSerializer).encoder(),
                                                  interceptor: nil)
             .validate()
 
@@ -358,22 +390,112 @@ public class KDataTask: NSObject {
             dataRequest.uploadProgress(closure: up)
         }
 
-        return self.wrapAndExecute(dataRequest: dataRequest, successCallback: successCallback, failureCallback: failureCallback)
+        return self.wrapAndExecute(request: request,
+                                   dataRequest: dataRequest,
+                                   successCallback: successCallback,
+                                   failureCallback: failureCallback)
     }
 
-    private func wrapAndExecute(dataRequest: DataRequest,
+    func request(_ request: KRequest,
+                 successCallback: ((KDataTask, Any?) -> Void)?,
+                 failureCallback: ((KDataTask, Error) -> Void)?) -> KDataTask {
+
+        return self.request(request,
+                            callbackWrapperLevel: .standard,
+                            successCallback: successCallback,
+                            failureCallback: failureCallback)
+    }
+
+    private func request(_ request: KRequest,
+                         callbackWrapperLevel: CallbackWrapperLevel,
+                 successCallback: ((KDataTask, Any?) -> Void)?,
+                 failureCallback: ((KDataTask, Error) -> Void)?) -> KDataTask {
+
+        let dataRequest = sessionManager.request(request.asURL(baseURL),
+                                                 method: request.method.afMethod(),
+                                                 parameters: request.parameters,
+                                                 encoding: (request.requestSerializer ?? requestSerializer).encoding(),
+                                                 interceptor: nil)
+            .validate()
+
+        if let dp = request.downloadProgress {
+            dataRequest.downloadProgress(closure: dp)
+        }
+
+        if let up = request.uploadProgress {
+            dataRequest.uploadProgress(closure: up)
+        }
+
+        return self.wrapAndExecute(callbackWrapperLevel: callbackWrapperLevel,
+                                   request: request,
+                                   dataRequest: dataRequest,
+                                   successCallback: successCallback,
+                                   failureCallback: failureCallback)
+    }
+
+    private func wrapAndExecute(
+        callbackWrapperLevel: CallbackWrapperLevel = .standard,
+        request: KRequest,
+        dataRequest: DataRequest,
     successCallback: ((KDataTask, Any?) -> Void)?,
     failureCallback: ((KDataTask, Error) -> Void)?) -> KDataTask {
 
-        let dataTask = KDataTask(dataRequest: dataRequest)
+        let dataTask = KDataTask(request: request, data: dataRequest)
+
+
+        let failureWrapper : ((KDataTask, Error) -> Void)?
+        let successWrapper : ((KDataTask, Any?) -> Void)?
+
+        switch callbackWrapperLevel {
+        case .standard:
+            failureWrapper  = { (task, error) in
+                       self.parseAndCheckKrakeError(error)
+                       failureCallback?(task, error)
+                       self.invalidateSessionCancelingTasks(true)
+                   }
+
+            successWrapper = { (task, object) in
+                                    self.checkHeaderResponse(task)
+                                    if let responseObject = object as? [String : AnyObject] , let kSuccess = responseObject["Success"] as? NSNumber ?? responseObject["success"] as? NSNumber , kSuccess == 0{
+                                        self.checkKrakeResponse(KrakeResponse(object: responseObject), parameters: request.genericParamters(), checkSuccess: { (manager) in
+                                            _ = manager.wrapAndExecute(callbackWrapperLevel: .afterLogin,
+                                                                   request: request,
+                                                                   dataRequest: dataRequest,
+                                                                   successCallback: successCallback,
+                                                                   failureCallback: failureCallback)
+                                        }, checkFailure: { (error: Error) in
+                                            failureCallback?(task, error)
+                                            self.invalidateSessionCancelingTasks(true)
+                                        })
+                                    }
+                                    else{
+                                        successCallback?(task, object)
+                                        self.invalidateSessionCancelingTasks(true)
+                                    }
+            }
+
+        case .afterLogin:
+            failureWrapper = { (task, error) in
+                failureCallback?(task, error)
+                self.invalidateSessionCancelingTasks(true)
+            }
+
+            successWrapper = { (task, object) in
+                successCallback?(task, object)
+                self.invalidateSessionCancelingTasks(true)
+            }
+        default:
+            failureWrapper = failureCallback
+            successWrapper = successCallback
+        }
 
         dataRequest.responseJSON { response in
             switch response.result {
             case let .success(json):
-                successCallback?(dataTask,json)
+                successWrapper?(dataTask,json)
                 print(json)
             case let .failure(error):
-                failureCallback?(dataTask,error)
+                failureWrapper?(dataTask,error)
                 print(error)
             }
         }
@@ -383,48 +505,40 @@ public class KDataTask: NSObject {
     private func createRequest(path: String,
                                method: KMethod,
                                queryItems: [URLQueryItem],
-                               parameters: [String: String]?) -> KRequest<[String: String]> {
-        let request = KRequest<[String: String]>()
+                               parameters: KParamaters?) -> KRequest {
+        let request = KRequest()
+        request.path = path
         request.method = method
         request.queryParameters = queryItems
         request.parameters = parameters
         return request
     }
 
-    public func get(_ URLString: String,
-                    parameters: [String: String]?,
-                    success: ((KDataTask, Any?) -> Void)?,
-                    failure: ((KDataTask, Error) -> Void)? = nil) -> KDataTask {
-        return request(URLString, method: .get, parameters: parameters, success: success, failure: failure)
-    }
-
-    public func post(_ URLString: String,
-                     parameters: [String: String]?,
-                     success: ((KDataTask, Any?) -> Void)?,
-                     failure: ((KDataTask, Error) -> Void)? = nil) -> KDataTask {
-        return request(URLString, method: .post, parameters: parameters, success: success, failure: failure)
-    }
-
-    
     //MARK: - Krake additional registration infos
     
     @objc public func policiesRegistration(_ completion: @escaping (_ success: Bool, _ withResponse: AnyObject?, _ error: Error?) -> Void){
-        let get = String(format: "%@/GetCleanRegistrationPoliciesSsl?Lang=%@", KAPIConstants.userExtensions, KConstants.currentLanguage)
-        _ = request(get,
-                    method: .get,
-                    parameters: nil,
-                    success: { (task, object) in
-                        if let responseObject = object as? [String : AnyObject],
-                            let policies = responseObject["Policies"] {
-                            completion(true, policies, nil)
-                        }else{
-                            completion(false, nil, NSError(domain: "Registration", code: KErrorCode.genericError, userInfo: [NSLocalizedDescriptionKey : "Generic error".localizedString()]))
-                        }
-                        self.invalidateSessionCancelingTasks(true)
-        }) { (task, error) in
-            completion(false, nil, error)
-            self.invalidateSessionCancelingTasks(true)
-        }
+
+        let request = KRequest()
+        request.path = KAPIConstants.userExtensions + "/GetCleanRegistrationPoliciesSsl"
+        request.method = .get
+        request.queryParameters = [URLQueryItem(name: "Lang", value: KConstants.currentLanguage)]
+
+
+        _ = self.request(request,
+                         callbackWrapperLevel: .none,
+                         successCallback: { (task, object) in
+                                         if let responseObject = object as? [String : AnyObject],
+                                             let policies = responseObject["Policies"] {
+                                             completion(true, policies, nil)
+                                         }else{
+                                             completion(false, nil, NSError(domain: "Registration", code: KErrorCode.genericError, userInfo: [NSLocalizedDescriptionKey : "Generic error".localizedString()]))
+                                         }
+                                         self.invalidateSessionCancelingTasks(true)
+                         },
+                         failureCallback: { (task, error) in
+                             completion(false, nil, error)
+                             self.invalidateSessionCancelingTasks(true)
+                         })
     }
 
     func invalidateSessionCancelingTasks(_ cancelTask: Bool) {
@@ -439,34 +553,36 @@ public class KDataTask: NSObject {
     
     //MARK: - aggiornare il profilo utente
     
-    @objc public func updateUserProfile(_ params: [String: String], completion: @escaping KrakeAuthBlock){
+    @objc public func updateUserProfile(_ params: KParamaters, completion: @escaping KrakeAuthBlock){
 
         _ = request(KAPIConstants.userStartupConfig,
                     method: .post,
                     parameters: params,
-                    success: { (task, object) in
+                    successCallback: { (task, object) in
                         if let responseObject = object , let response = KrakeResponse(object: responseObject) {
-                            if response.success == true{
+                            if response.success == true {
                                 completion(true, response.data, nil)
-                            }else{
+                            }
+                            else {
                                 completion(false, nil, NSError(domain: "User update profile",
                                                                code: response.errorCode,
                                                                userInfo: [NSLocalizedDescriptionKey : response.message ?? ""]))
                             }
-                        }else{
+                        }
+                        else {
                             completion(false, nil, NSError(domain: "User update profile",
                                                            code: KErrorCode.genericError,
-                                                           userInfo: [NSLocalizedDescriptionKey : "Generic error".localizedString()]))
+                                                        userInfo: [NSLocalizedDescriptionKey : "Generic error".localizedString()]))
                         }
         }) { (task, error) in
             completion(false, nil, error)
         }
     }
-    
-    //MARK: - Metodi sovrascritti per gestire gli errori di krake e l'invalidateSessionManager
 
+    //MARK: - Metodi sovrascritti per gestire gli errori di krake e l'invalidateSessionManager
+    @available(*, deprecated, renamed: "request(_:method:parameters:query:successCallback:failureCallback:)")
     @objc public func get(_ URLString: String,
-                          parameters: [String: String]?,
+                          parameters: KParamaters?,
                           progress downloadProgress: ((Progress) -> Void)?,
                           success: ((KDataTask, Any?) -> Void)?,
                           failure: ((KDataTask, Error) -> Void)?) -> KDataTask{
@@ -509,9 +625,10 @@ public class KDataTask: NSObject {
             self.invalidateSessionCancelingTasks(true)
         }
     }
-    
-    @objc public func put(_ URLString: String,
-                                   parameters: [String: String]?,
+
+    @available(*, deprecated, renamed: "request(_:method:parameters:query:successCallback:failureCallback:)")
+    public func put(_ URLString: String,
+                                   parameters: KParamaters?,
                                    success: ((KDataTask, Any?) -> Void)?,
                                    failure: ((KDataTask, Error) -> Void)?) -> KDataTask {
         let request = createRequest(path: URLString,
@@ -519,37 +636,13 @@ public class KDataTask: NSObject {
                              queryItems: [],
                              parameters: parameters)
         return self.request(request,
-                            successCallback: { (task, object) in
-                                self.checkHeaderResponse(task)
-                                if let responseObject = object as? [String : AnyObject] , let kSuccess = responseObject["Success"] as? NSNumber ?? responseObject["success"] as? NSNumber , kSuccess == 0{
-                                    self.checkKrakeResponse(KrakeResponse(object: responseObject), parameters: parameters, checkSuccess: { (manager) in
-                                        _ = manager.request(request,
-                                                            successCallback: { (task, object) in
-                                                                success?(task, object)
-                                                                manager.invalidateSessionCancelingTasks(true)
-                                                            },
-                                                            failureCallback:  { (task, error) in
-                                                                                                       failure?(task, error)
-                                                                                                       manager.invalidateSessionCancelingTasks(true)
-                                                                                                   })
-                                    }, checkFailure: { (error: Error) in
-                                        failure?(task, error)
-                                        self.invalidateSessionCancelingTasks(true)
-                                    })
-                                }else{
-                                    success?(task, object)
-                                    self.invalidateSessionCancelingTasks(true)
-                                }
-        },
-                            failureCallback:  { (task, error) in
-            self.parseAndCheckKrakeError(error)
-            failure?(task, error)
-            self.invalidateSessionCancelingTasks(true)
-        })
+                            successCallback: success,
+                            failureCallback:  failure)
     }
-    
-    @objc public func post(_ URLString: String,
-                           parameters: [String: String]?,
+
+    @available(*, deprecated, renamed: "request(_:method:parameters:query:successCallback:failureCallback:)")
+    public func post(_ URLString: String,
+                           parameters: KParamaters?,
                            progress uploadProgress: ((Progress) -> Void)?,
                            success: ((KDataTask, Any?) -> Void)?,
                            failure: ((KDataTask, Error) -> Void)?) -> KDataTask {
@@ -560,83 +653,33 @@ public class KDataTask: NSObject {
         request.uploadProgress = uploadProgress
 
         return self.request(request,
-                            successCallback:  { (task, object) in
-                                       self.checkHeaderResponse(task)
-                                       if let responseObject = object as? [String : AnyObject] , let kSuccess = responseObject["Success"] as? NSNumber ?? responseObject["success"] as? NSNumber , kSuccess == 0{
-                                           self.checkKrakeResponse(KrakeResponse(object: responseObject), parameters: parameters, checkSuccess: { (manager) in
-                                            _ = manager.request(request,
-                                                                successCallback: { (task, object) in
-                                                                    success?(task, object)
-                                                                    manager.invalidateSessionCancelingTasks(true)
-                                                                },
-                                                                failureCallback: { (task, error) in
-                                                                    failure?(task, error)
-                                                                    manager.invalidateSessionCancelingTasks(true)
-                                                                })
-                                           }, checkFailure: { (error: Error) in
-                                               failure?(task, error)
-                                               self.invalidateSessionCancelingTasks(true)
-                                           })
-                                       }else{
-                                           success?(task, object)
-                                           self.invalidateSessionCancelingTasks(true)
-                                       }
-                                   },
-                            failureCallback: {(task, error) in
-                                self.parseAndCheckKrakeError(error)
-                                failure?(task, error)
-                                self.invalidateSessionCancelingTasks(true)
-                            })
+                            successCallback:  success,
+                            failureCallback: failure)
     }
     
-    public func upload(_ URLString: String,
+    public func upload(_ path: String,
                            constructingBodyWith block: ((KMultipartFormData) -> Void)?,
                            progress uploadProgress: ((Progress) -> Void)? = nil,
                            successCallback: ((KDataTask, Any?) -> Void)? = nil,
                            failureCallback: ((KDataTask?, Error) -> Void)? = nil) -> KDataTask?{
 
+        let uploadRequest = KRequest()
+        uploadRequest.method = .post
+        uploadRequest.path = path
+
         let dataRequest = sessionManager.upload(multipartFormData: { (multiFormData) in
             block?(KMultipartFormData(multiFormData))
-        }, to:  self.baseURL.appendingPathComponent(URLString))
+        }, to:  self.baseURL.appendingPathComponent(path))
             .validate()
 
         if let up = uploadProgress {
             dataRequest.uploadProgress(closure: up)
         }
 
-        let success = { (task: KDataTask, object: Any) in
-            self.checkHeaderResponse(task)
-            if let responseObject = object as? [String : AnyObject] , let kSuccess = responseObject["Success"] as? NSNumber ?? responseObject["success"] as? NSNumber , kSuccess == 0 {
-                self.checkKrakeResponse(KrakeResponse(object: responseObject),
-                                        parameters: nil, checkSuccess: { (manager) in
-                                            _ = self.wrapAndExecute(dataRequest: dataRequest,
-                                       successCallback: { (task, object) in
-                                           successCallback?(task, object)
-                                           manager.invalidateSessionCancelingTasks(true)
-                                       },
-                                       failureCallback: { (task, error) in
-                                           failureCallback?(task, error)
-                                           manager.invalidateSessionCancelingTasks(true)
-                                       })
-                }, checkFailure: { (error: Error) in
-                    failureCallback?(task, error)
-                    self.invalidateSessionCancelingTasks(true)
-                })
-            }else{
-                successCallback?(task, object)
-                self.invalidateSessionCancelingTasks(true)
-            }
-        }
-
-        let failure = {(task: KDataTask?, error: Error) in
-            self.parseAndCheckKrakeError(error)
-            failureCallback?(task, error)
-            self.invalidateSessionCancelingTasks(true)
-        }
-
-        return self.wrapAndExecute(dataRequest: dataRequest,
-                                   successCallback: success,
-                                   failureCallback: failure)
+        return self.wrapAndExecute(request: uploadRequest,
+            dataRequest: dataRequest,
+                                   successCallback: successCallback,
+                                   failureCallback: failureCallback)
 
     }
     
@@ -677,7 +720,8 @@ public class KDataTask: NSObject {
             default:
                 checkKrakeError(response, checkFailure: checkFailure)
             }
-        }else{
+        }
+        else {
             checkKrakeError(nil, checkFailure: checkFailure)
         }
     }
@@ -708,22 +752,10 @@ public class KDataTask: NSObject {
             checkKrakeResponse(KrakeResponse(object: dic as AnyObject))
         }
     }
-    
-    fileprivate func completedLogin(_ task: KDataTask?,
-                                    responseObject: KrakeResponse?,
-                                    completion: KrakeAuthBlock){
-        if let task = task {
-            checkHeaderResponse(task)
-            let error: Error? = !(responseObject?.message ?? "").isEmpty ? NSError(domain: KInfoPlist.appName, code: 0, userInfo: [NSLocalizedDescriptionKey : responseObject!.message!]) : nil
-            completion(true, responseObject?.data, error)
-        }
-        else {
-            completion(false, nil, nil)
-        }
-    }
+
 
     fileprivate func checkHeaderResponse(_ task : KDataTask ){
-           if checkHeaderResponse {
+        if checkHeaderResponse  && task.request.method != .get {
             if let response = task.dataRequest.response,
                    let headers = response.allHeaderFields as? [String : String]{
                    let array = HTTPCookie.cookies(withResponseHeaderFields: headers, for: baseURL)
@@ -731,15 +763,10 @@ public class KDataTask: NSObject {
                }
            }
        }
+}
 
-    fileprivate func checkHeaderResponse(_ task : URLSessionDataTask ){
-        if checkHeaderResponse {
-            if let response = task.response as? HTTPURLResponse,
-                let headers = response.allHeaderFields as? [String : String]{
-                let array = HTTPCookie.cookies(withResponseHeaderFields: headers, for: baseURL)
-                URLSessionConfiguration.parse(cookies: array)
-            }
-        }
-    }
-    
+private enum CallbackWrapperLevel {
+    case standard
+    case afterLogin
+    case none
 }

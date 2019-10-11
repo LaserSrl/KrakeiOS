@@ -18,7 +18,7 @@
     BOOL observingPrivacy;
 }
 
-@property (nonatomic, strong) NSURLSessionDataTask *urlSessionTask;
+@property (nonatomic, strong) KDataTask *urlSessionTask;
 
 @end
 
@@ -37,7 +37,7 @@
     return self;
 }
 
-- (void)setSessionTask:(NSURLSessionDataTask *)sessionTask
+- (void)setSessionTask:(KDataTask *)sessionTask
 {
     _urlSessionTask = sessionTask;
 }
@@ -50,7 +50,7 @@
 }
 
 
-- (void)loadingFailed:(NSURLSessionDataTask*)task withError:(NSError*)error
+- (void)loadingFailed:(KDataTask*)task withError:(NSError*)error
 {
     [self closeAndClean];
 }

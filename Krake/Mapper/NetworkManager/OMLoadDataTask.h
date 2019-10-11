@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "OGLCoreDataMapper.h"
 
+@class KDataTask;
+
 @interface OMLoadDataTask : NSObject
 
 typedef NS_ENUM(NSUInteger, OMLoadResultType)
@@ -26,11 +28,11 @@ typedef NS_ENUM(NSUInteger, OMLoadResultType)
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 - (instancetype)initWithCommand:(NSString*)command parameters:(NSDictionary *)parameters loginRequired:(BOOL)loginRequired completion:(OMMapperCompletionBlock)completionBlock;
 
-- (void)setSessionTask:(NSURLSessionDataTask*)sessionTask;
+- (void)setSessionTask:(KDataTask*)sessionTask;
 
 - (void)cancel;
 
-- (void)loadingFailed:(NSURLSessionDataTask*)task withError:(NSError*)error;
+- (void)loadingFailed:(KDataTask*)task withError:(NSError*)error;
 
 - (void)loadingCompletedWithImportedCache:(DisplayPathCache* )cache;
 

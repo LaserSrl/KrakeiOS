@@ -258,14 +258,12 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
             manager.responseSerializer = .json
             manager.requestSerializer = .http
 
-            let points = PointResultInfo(Point: Int64(totalPoint),
-                                         Identifier: phoneNumber,
-                                         UsernameGameCenter: GKLocalPlayer.local.playerID,
-                                         ContentIdentifier: selectedGame.identifier?.intValue ?? 0)
+            let params: KParamaters = ["Point" : Int64(totalPoint), "Identifier": phoneNumber, "UsernameGameCenter": GKLocalPlayer.local.playerID,
+            "Device": "Apple", "ContentIdentifier": selectedGame.identifier ?? 0]
 
             _ = manager.request(KAPIConstants.questionnairesGameRanking,
                                 method: .post,
-                                parameters: points,
+                                parameters: params,
                                 query: [],
                                 successCallback: { (task, responseObject) in
                                     if let object = responseObject{
@@ -395,13 +393,4 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
         }
     }
     
-}
-
-private struct PointResultInfo: Encodable {
-
-    let Point: Int64
-    let Identifier: String
-    let UsernameGameCenter: String
-    let Device = "Apple"
-    let ContentIdentifier: Int
 }

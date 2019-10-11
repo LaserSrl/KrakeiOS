@@ -262,9 +262,11 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
             let manager = KNetworkManager.defaultManager(true)
             MBProgressHUD.showAdded(to: view, animated: true)
 
-            _ = manager.request(apiPath,
-                                method: .post,
-                                parameters: risposte,
+            let request = KCodableRequest(risposte)
+            request.method = .post
+            request.path = apiPath
+
+            _ = manager.request(request,
                                 successCallback: { [weak self] (task, responseObject) -> Void in
                                 if let mySelf = self {
                                     MBProgressHUD.hide(for: mySelf.view, animated: true)
