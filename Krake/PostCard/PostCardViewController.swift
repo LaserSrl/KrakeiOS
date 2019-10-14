@@ -21,8 +21,8 @@ class PostCardViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var messaggio: EGFloatingTextField!
     
     var postCard: PostCardProtocol!
-    var openObserver: AnyObject!
-    var closeObserver: AnyObject!
+    var openObserver: AnyObject? = nil
+    var closeObserver: AnyObject? = nil
 
     var address: ContactPicker!
 

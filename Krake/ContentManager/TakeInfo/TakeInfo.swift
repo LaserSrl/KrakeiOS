@@ -36,7 +36,7 @@ open class TakeInfo: ContentModificationViewController, FieldItemWithSelectionDe
                     view.removeFromSuperview()
                 }
             }
-            var beforeView: UIView! = mainScrollView
+            var beforeView: UIView = mainScrollView
             for dic in fields {
                 let view: UIView = dic.view!
                 mainScrollView.addSubview(view)
@@ -340,9 +340,13 @@ open class TakeInfo: ContentModificationViewController, FieldItemWithSelectionDe
         super.viewDidDisappear(animated)
         mainScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         mainScrollView.scrollIndicatorInsets = mainScrollView.contentInset
-        NotificationCenter.default.removeObserver(openObserver)
+        if let openObserver = openObserver {
+            NotificationCenter.default.removeObserver(openObserver)
+        }
         openObserver = nil
-        NotificationCenter.default.removeObserver(closeObserver)
+        if let closeObserver = closeObserver {
+            NotificationCenter.default.removeObserver(closeObserver)
+        }
         closeObserver = nil
     }
     

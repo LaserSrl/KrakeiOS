@@ -110,7 +110,6 @@ open class KPushManager: NSObject{
     }
     
     fileprivate static func showOrOpenDetailWithMessage(_ message: String? = "", displayAlias: String?, cacheObjectID: NSManagedObjectID? = nil, applicationState: KApplicationState, userInfoNotification: [AnyHashable: Any]?){
-        let appDelegate = UIApplication.shared.delegate as? OGLAppDelegate
         if applicationState == .active{
             let alertViewController = UIAlertController(title: KInfoPlist.appName, message: message, preferredStyle: .alert)
             if (displayAlias != nil && !(displayAlias ?? "").isEmpty) || cacheObjectID != nil {

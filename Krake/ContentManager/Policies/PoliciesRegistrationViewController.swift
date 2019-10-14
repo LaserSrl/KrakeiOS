@@ -52,7 +52,7 @@ class PoliciesRegistrationViewController: ContentModificationViewController{
     func refreshData(){
         if policies != nil{
             for case let policy as PolicyProtocol in policies!{
-                if let fieldIndex = fields.index(where: { (item) -> Bool in
+                if let fieldIndex = fields.firstIndex(where: { (item) -> Bool in
                     return (item as! FieldItemWithPolicy).policy?.identifier == policy.identifier
                 }){
                     let field = fields[fieldIndex] as! FieldItemWithPolicy
@@ -68,7 +68,7 @@ class PoliciesRegistrationViewController: ContentModificationViewController{
         }
         if let policy = initialValue as? ContentItemWithUserPolicyAnswersRecord, let answered = policy.userPolicyPartUserPolicyAnswers{
             for case let answer as UserPolicyAnswersRecordProtocol in answered{
-                if let fieldIndex = fields.index(where: { (item) -> Bool in
+                if let fieldIndex = fields.firstIndex(where: { (item) -> Bool in
                     return (item as! FieldItemWithPolicy).policy?.identifier == answer.policyTextInfoPartRecordIdentifier
                 }){
                     let field = fields[fieldIndex] as! FieldItemWithPolicy
@@ -96,7 +96,7 @@ class PoliciesRegistrationViewController: ContentModificationViewController{
     }
     
     func saveOnParams(policyId: NSNumber, accepted: Bool? = nil){
-        var userPolicyAnswers: NSMutableArray? = params[policyEndPoint] as? NSMutableArray
+        var userPolicyAnswers: NSMutableArray? = params[policyEndPoint!] as? NSMutableArray
         if userPolicyAnswers == nil {
             userPolicyAnswers = NSMutableArray()
         }
@@ -116,7 +116,7 @@ class PoliciesRegistrationViewController: ContentModificationViewController{
                 findUserPolicyAnswer!["Accepted"] = accepted
             }
         }
-        params[policyEndPoint] = userPolicyAnswers
+        params[policyEndPoint!] = userPolicyAnswers
     }
 
 }

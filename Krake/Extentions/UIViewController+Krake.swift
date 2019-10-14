@@ -65,7 +65,7 @@ public extension UIViewController{
     /// - parameter title: title to assign to the created view controller. The default
     /// value is the name of the application.
 
-    static public func newBrowserViewController(browserViewController url: URL,
+    static func newBrowserViewController(browserViewController url: URL,
                                   title: String? = KInfoPlist.appName,
                                   showToolbar: Bool = true,
                                   delegate: GDWebViewControllerDelegate? = nil,

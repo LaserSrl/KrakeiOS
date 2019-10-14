@@ -17,7 +17,7 @@ class KTermPinImageDownloader: NSObject {
     
     func startImageDownload(_ url:URL, identifier: String)
     {
-        if imagesInDownload.index(of: identifier) == nil {
+        if imagesInDownload.firstIndex(of: identifier) == nil {
             imagesInDownload.append(identifier)
             SDWebImageDownloader.shared.downloadImage(with: url, options: SDWebImageDownloaderOptions.useNSURLCache, progress: nil, completed: { (image, data, error, finished) -> Void in
                 if(finished)
@@ -25,7 +25,7 @@ class KTermPinImageDownloader: NSObject {
                     SDImageCache.shared.store(image, forKey: identifier)
                 }
                 
-                self.imagesInDownload.remove(at: self.imagesInDownload.index(of: identifier)!);
+                self.imagesInDownload.remove(at: self.imagesInDownload.firstIndex(of: identifier)!);
             })
             
         }

@@ -92,7 +92,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
             UIGraphicsBeginImageContextWithOptions(drawingRect.size, false, 0)
             let image: UIImage?
             if let context = UIGraphicsGetCurrentContext() {
-                context.setFillColor(UIColor.tint.cgColor)
+                context.setFillColor(KTheme.current.color(.tint).cgColor)
                 let path = UIBezierPath(roundedRect: drawingRect, cornerRadius: 6)
                 context.addPath(path.cgPath)
                 context.fillPath()
