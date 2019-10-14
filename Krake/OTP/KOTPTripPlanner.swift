@@ -32,6 +32,8 @@ public class KOTPTripPlanner: KTripPlannerProtocol
         let timeString = dateFormatter.string(from: request.dateSelectedForPlan)
 
         let manager = KNetworkManager(baseURL: otpURL, auth: false)
+        manager.requestSerializer = .http
+        
 
         var params : [String: String] = ["fromPlace": request.from!.otpRequestFormat(),
                                          "toPlace": request.to!.otpRequestFormat(),

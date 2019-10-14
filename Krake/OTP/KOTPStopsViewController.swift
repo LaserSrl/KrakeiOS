@@ -340,7 +340,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
                 .loadData(withDisplayAlias: "otp/otpstops",
                           extras: extras) { [weak self] (parsedObject, error, completed) in
 
-                            guard let strongSelf = self, completed else { return }
+                             guard let strongSelf = self, completed else { return }
 
                             if let parsedObject = parsedObject {
                                 let cache = OGLCoreDataMapper

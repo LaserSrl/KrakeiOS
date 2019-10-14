@@ -439,7 +439,7 @@ public class KDataTask: NSObject {
                             failureCallback: failureCallback)
     }
 
-    func request<Parameters: Encodable>(_ request: KCodableRequest<Parameters>,
+    func request<Parameters: Encodable>(codable request: KCodableRequest<Parameters>,
                  successCallback: ((KDataTask, Any?) -> Void)?,
                  failureCallback: ((KDataTask, Error) -> Void)?) -> KDataTask {
 

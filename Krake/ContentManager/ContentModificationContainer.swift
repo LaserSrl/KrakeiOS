@@ -341,6 +341,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
                 baseURL: KInfoPlist.KrakePlist.path,
                 auth: false)
             manager.responseSerializer = .json
+            manager.requestSerializer = .http
             _ = manager.request(KAPIConstants.contentExtension,
                                 method: .get,
                                 parameters: [ContentManagerKeys.LANGUAGE : KConstants.currentLanguage, ContentManagerKeys.CONTENT_TYPE : self.contentTypeDefinition.contentType],
@@ -550,7 +551,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         KLog(type: .info, params.description )
 
         var anyDict = [String: Any]()
-        for (value, key) in params {
+        for (key, value) in params {
             anyDict[key as! String] = value
         }
 
@@ -646,10 +647,9 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
                                             }
                                         },
                                         progress: { [weak self] progress in
-                                            if var uProgress = self?.uploadMediaTaskProgress[taskIndex] {
-                                                uProgress.current = progress.completedUnitCount
-                                                uProgress.total = progress.totalUnitCount
-                                            }
+                                            self?.uploadMediaTaskProgress[taskIndex].current = progress.completedUnitCount
+                                                self?.uploadMediaTaskProgress[taskIndex].total = progress.totalUnitCount
+                                            
         },
                                         successCallback: { [weak self] (dataTask, responseObject) in
                                                 if let mySelf = self {

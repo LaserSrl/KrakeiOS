@@ -265,8 +265,9 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
             let request = KCodableRequest(risposte)
             request.method = .post
             request.path = apiPath
+            request.requestSerializer = .json
 
-            _ = manager.request(request,
+            _ = manager.request(codable: request,
                                 successCallback: { [weak self] (task, responseObject) -> Void in
                                 if let mySelf = self {
                                     MBProgressHUD.hide(for: mySelf.view, animated: true)
