@@ -14,7 +14,7 @@ extension OGLCoreDataMapper {
         networkManager.requestSerializer = .http
         networkManager.responseSerializer = .json
 
-        /* TODO: controllare dopo aggiornamento gestione cookie
+        /* TODO:ALAMO controllare dopo aggiornamento gestione cookie
               if (loadDataTask.parameters[REQUEST_NO_CACHE]) {
                   [localSessionManager.session.configuration addCacheHeaders:loadDataTask.parameters[REQUEST_NO_CACHE]];
               }else{

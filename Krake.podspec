@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
         
         #other
         os.dependency 'Alamofire', '~> 5.0.0-rc.2'
-		os.dependency 'AFNetworking'
+		os.dependency 'AlamofireNetworkActivityIndicator', '~> 3.0.0-beta.3'
         os.dependency "Crashlytics", '~> 3.13.1'
         os.dependency "CryptoSwift", '1.0.0'
         os.dependency "Fabric", '~> 1.10.1'

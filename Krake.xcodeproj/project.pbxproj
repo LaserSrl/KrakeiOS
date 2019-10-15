@@ -299,7 +299,6 @@
 		CDBB774A219C7EDB00122E7E /* NSString+OrchardMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+OrchardMapping.m"; sourceTree = "<group>"; };
 		CDBB774B219C7EDB00122E7E /* UIViewController+OM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+OM.swift"; sourceTree = "<group>"; };
 		CDBB774C219C7EDB00122E7E /* UINavigationController+OM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+OM.swift"; sourceTree = "<group>"; };
-		CDBB774D219C7EDB00122E7E /* AFHTTPSessionManager+OM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AFHTTPSessionManager+OM.swift"; sourceTree = "<group>"; };
 		CDBB774F219C7EDB00122E7E /* OCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginViewController.m; sourceTree = "<group>"; };
 		CDBB7750219C7EDB00122E7E /* KLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KLogin.storyboard; sourceTree = "<group>"; };
 		CDBB7751219C7EDB00122E7E /* KInfoPlist+Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+Login.swift"; sourceTree = "<group>"; };
@@ -1021,7 +1020,6 @@
 				CDBB774A219C7EDB00122E7E /* NSString+OrchardMapping.m */,
 				CDBB774B219C7EDB00122E7E /* UIViewController+OM.swift */,
 				CDBB774C219C7EDB00122E7E /* UINavigationController+OM.swift */,
-				CDBB774D219C7EDB00122E7E /* AFHTTPSessionManager+OM.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

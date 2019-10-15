@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import AFNetworking
 import Alamofire
 
 @objc public enum SwiftKrakeAuthenticationProvider: Int{
@@ -414,7 +413,7 @@ public class KDataTask: NSObject {
 
     //MARK: - Generic Requests
 
-    func request(_ path: String,
+    public func request(_ path: String,
                                 method: KMethod,
                                 parameters: KParamaters? = nil,
                                 query: [URLQueryItem] = [],
@@ -429,7 +428,7 @@ public class KDataTask: NSObject {
         return self.request(request, successCallback: successCallback, failureCallback: failureCallback)
     }
 
-    func request(_ request: KRequest,
+    public func request(_ request: KRequest,
                  successCallback: ((KDataTask, Any?) -> Void)?,
                  failureCallback: ((KDataTask, Error) -> Void)?) -> KDataTask {
 
@@ -439,7 +438,7 @@ public class KDataTask: NSObject {
                             failureCallback: failureCallback)
     }
 
-    func request<Parameters: Encodable>(codable request: KCodableRequest<Parameters>,
+    public func request<Parameters: Encodable>(codable request: KCodableRequest<Parameters>,
                  successCallback: ((KDataTask, Any?) -> Void)?,
                  failureCallback: ((KDataTask, Error) -> Void)?) -> KDataTask {
 
@@ -491,7 +490,7 @@ public class KDataTask: NSObject {
     }
 
 
-    //MARK: - Internale methods generic request
+    //MARK: - Internal methods generic request
     private func request(_ request: KRequest,
                          callbackWrapperLevel: CallbackWrapperLevel,
                  successCallback: ((KDataTask, Any?) -> Void)?,
@@ -592,7 +591,7 @@ public class KDataTask: NSObject {
 
 
     private func invalidateSessionCancelingTasks(_ cancelTask: Bool) {
-        //TODO: capire come fare
+        //TODO:ALAMO capire come fare
         /*
         if (cancelTask) {
             [self.session invalidateAndCancel];

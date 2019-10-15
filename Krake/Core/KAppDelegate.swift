@@ -9,6 +9,7 @@
 import Foundation
 import Fabric
 import Crashlytics
+import AlamofireNetworkActivityIndicator
 
 open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
 
@@ -17,7 +18,8 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
 
     open override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [KApplicationLaunchOptionsKey : Any]?) -> Bool {
         let value = super.application(application, didFinishLaunchingWithOptions: launchOptions)
-                
+
+        NetworkActivityIndicatorManager.shared.isEnabled = true
         // Istanzio la classe di default degli analytics se non già fatto in app.
         if (AnalyticsCore.shared == nil)
         {

@@ -29,7 +29,6 @@ public protocol KDetailPresenter: NSObjectProtocol {
     var loginRequired: Bool {get set}
 }
 
-// TODO: - Add documentation
 public protocol KDetailPresenterDelegate: NSObjectProtocol {
     func createAttachmentButtons(_ controller: UIViewController,
                                  element: AnyObject?) -> [KButtonItem]?

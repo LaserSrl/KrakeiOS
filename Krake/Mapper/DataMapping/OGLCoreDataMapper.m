@@ -70,8 +70,6 @@ static __strong id currentOGLCoreDataMapper_;
         _managedObjectModel = model;
         _defaultCacheTime = 60;
     }
-    
-    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     return self;
 }
 

@@ -125,7 +125,6 @@ class MapInfo : ContentModificationViewController, MKMapViewDelegate, UISearchBa
                 let latitudeKey = fields.first!.key + "." + ContentManagerKeys.LATITUDE
                 let longitudeKey = fields.first!.key + "." + ContentManagerKeys.LONGITUDE
                 // Getting the old location parameters, if any.
-                //TODO: VERIFICARE CHE PRENDA I DOUBLE PRIMA ERA NSNUMBER
                 let oldLatitude = params[latitudeKey] as? Double
                 let oldLongitude = params[longitudeKey] as? Double
                 // Getting the new location parameters.
