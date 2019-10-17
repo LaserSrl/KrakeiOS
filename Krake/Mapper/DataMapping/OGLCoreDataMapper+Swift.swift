@@ -14,28 +14,29 @@ extension OGLCoreDataMapper {
         networkManager.requestSerializer = .http
         networkManager.responseSerializer = .json
 
-        /* TODO:ALAMO controllare dopo aggiornamento gestione cookie
-              if (loadDataTask.parameters[REQUEST_NO_CACHE]) {
-                  [localSessionManager.session.configuration addCacheHeaders:loadDataTask.parameters[REQUEST_NO_CACHE]];
-              }else{
-                  [localSessionManager.session.configuration removeCacheHeaders];
-              }*/
+        let request = KRequest()
+        request.path = loadDataTask.command
+        request.method = .get
+        request.parameters = loadDataTask.parameters
 
-        _ = networkManager.request(loadDataTask.command,
-                               method: .get,
-                               parameters: loadDataTask.parameters,
-                               query: [],
-                               successCallback: { (task, responseObject) in
-                                self.importAndSave(inCoreData: responseObject!,
-                                                   parameters: loadDataTask.parameters,
-                                                   loadDataTask: loadDataTask)
-        }) { (task, error) in
-            loadDataTask.loadingFailed(task, withError: error)
-            if (error as NSError).code != -999 {
-                DispatchQueue.main.async {
-                    loadDataTask.completionBlock(nil,error,true)
-                }
-            }
+        if let cacheTime = loadDataTask.parameters[REQUEST_NO_CACHE] as? String {
+            request.headers["Cache-Control"] = "no-cache"
+            request.headers["cache-request-time"] = cacheTime
         }
+
+        _ = networkManager.request(request,
+                               successCallback: { (task, responseObject) in
+                                                       self.importAndSave(inCoreData: responseObject!,
+                                                                          parameters: loadDataTask.parameters,
+                                                                          loadDataTask: loadDataTask)
+                               },
+                               failureCallback: { (task, error) in
+                                   loadDataTask.loadingFailed(task, withError: error)
+                                   if (error as NSError).code != -999 {
+                                       DispatchQueue.main.async {
+                                           loadDataTask.completionBlock(nil,error,true)
+                                       }
+                                   }
+                               })
     }
 }

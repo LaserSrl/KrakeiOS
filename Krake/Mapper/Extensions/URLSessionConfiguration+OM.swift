@@ -9,11 +9,6 @@
 import Foundation
 import CryptoSwift
 
-public enum CookieType: String {
-    case Auth = "OCCookies"
-    case Policy = "PoliciesAnswers"
-    case UserReaction = "userCookie"
-}
 
 extension URLSessionConfiguration{
     fileprivate static var authCookie: HTTPCookie? = nil
@@ -119,7 +114,6 @@ extension URLSessionConfiguration{
     public func configureSession(auth: Bool){
         let cookieStorage = httpCookieStorage
         httpAdditionalHeaders = nil
-        addApiKey()
         if let cookie = URLSessionConfiguration.authCookie , auth {
             cookieStorage?.setCookie(cookie)
             addXSRFToken()
@@ -136,56 +130,6 @@ extension URLSessionConfiguration{
                     if cookie.name == ".ASPXAUTH"{
                         cookieStorage?.deleteCookie(cookie)
                     }
-                }
-            }
-        }
-        addAdditionalHeaders(["OutputFormat" : "lmnv"])
-        if !KConstants.uuid.isEmpty
-        {
-            addAdditionalHeaders(["x-UUID" : KConstants.uuid])
-        }
-    }
-    
-    @objc public func addCacheHeaders(_ cacheRequestTime: String?){
-        addAdditionalHeaders(["Cache-Control" : "no-cache"])
-        if cacheRequestTime != nil{
-            addAdditionalHeaders(["cache-request-time" : cacheRequestTime!])
-        }
-    }
-    
-    @objc public func removeCacheHeaders(){
-        addAdditionalHeaders(["Cache-Control" : ""])
-        addAdditionalHeaders(["cache-request-time" : ""])
-    }
-    
-    public func addApiKey(){
-        if let apikey = KInfoPlist.KrakePlist.apiKey, !apikey.isEmpty
-        {
-            let date = Date.networkTime()
-            let timeStamp: TimeInterval = date.timeIntervalSince1970
-            let key = String(format:"%@:%.f:%lu", apikey, timeStamp, arc4random())
-            if let xsrf = KInfoPlist.KrakePlist.encriptionKey{
-                var xsrfMod = [UInt8]()
-                var startIndex = xsrf.startIndex
-                let endIndex = xsrf.endIndex
-                while startIndex !=  endIndex {
-                    let loopIndex = xsrf.index(startIndex, offsetBy: 2)
-                    let part = String(xsrf[startIndex ..< loopIndex])
-                    xsrfMod.append(UInt8(strtol(part, nil, 16)))
-                    startIndex = loopIndex
-                }
-                var input = [UInt8]()
-                for char in key.utf8{
-                    input.append(char)
-                }
-                let iv: [UInt8] = AES.randomIV(AES.blockSize)
-                do {
-                    let encrypted: [UInt8] = try AES(key: xsrfMod, blockMode: CBC(iv: iv), padding: .pkcs7).encrypt(input)
-                    if let encryptedString = encrypted.toBase64(), let ivString = iv.toBase64(){
-                        self.addAdditionalHeaders(["ApiKey" : encryptedString, "AKIV" : ivString])
-                    }
-                }catch{
-                    
                 }
             }
         }

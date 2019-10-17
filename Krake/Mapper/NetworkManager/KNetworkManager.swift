@@ -92,6 +92,7 @@ open class KRequest {
     var method: KMethod = .get
     var parameters: KParamaters? = nil
     var requestSerializer: KRequestSerializer? = nil
+    var headers =  [String: String]()
 
     var responseSerializer: KResponseSerializer? = nil
 
@@ -124,6 +125,13 @@ extension KRequest {
         components?.queryItems = queryParameters
 
         return try! (components?.asURL())!
+    }
+
+    func afHeaders() -> HTTPHeaders {
+
+        return HTTPHeaders(headers.compactMap{ (key, value) -> HTTPHeader in
+            return HTTPHeader(name: key, value: value)
+        })
     }
 }
 
@@ -194,7 +202,9 @@ public class KDataTask: NSObject {
 
     public init(baseURL: URL, auth: Bool) {
         
-        sessionManager = Session(configuration: URLSessionConfiguration.krakeSessionConfiguration(auth: auth))
+        sessionManager = Session(configuration: URLSessionConfiguration.krakeSessionConfiguration(auth: auth),
+                                 interceptor: RequestHeaderAdapter(auth: auth))
+        
         self.baseURL = baseURL
 
         super.init()
@@ -446,6 +456,7 @@ public class KDataTask: NSObject {
                                                  method: request.method.afMethod(),
                                                  parameters: request.codableParameters,
                                                  encoder: (request.requestSerializer ?? requestSerializer).encoder(),
+                                                 headers: request.afHeaders(),
                                                  interceptor: nil)
             .validate()
 
@@ -500,6 +511,7 @@ public class KDataTask: NSObject {
                                                  method: request.method.afMethod(),
                                                  parameters: request.parameters,
                                                  encoding: (request.requestSerializer ?? requestSerializer).encoding(),
+                                                 headers: request.afHeaders(),
                                                  interceptor: nil)
             .validate()
 
