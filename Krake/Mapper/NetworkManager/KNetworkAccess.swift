@@ -75,7 +75,7 @@ public enum OMPrivacyStatus : NSInteger {
                             if let responseObject = object as? [String : AnyObject] , let response = KrakeResponse(object: responseObject as AnyObject) , response.success == true {
                                 if let headersFields = task.response?.allHeaderFields as? [String : String]{
                                     let cookies = HTTPCookie.cookies(withResponseHeaderFields: headersFields, for: manager.baseURL)
-                                    URLSessionConfiguration.parse(cookies: cookies)
+                                    URLConfigurationCookies.shared.parse(cookies: cookies)
                                 }
                                 success?(task, object as AnyObject?)
                             }else{

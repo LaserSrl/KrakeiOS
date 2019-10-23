@@ -94,7 +94,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
     
     public var currentUser: KUser?
     public var isKrakeLogged: Bool{
-        return URLSessionConfiguration.isValidAuthCookie()
+        return URLConfigurationCookies.shared.isValidAuthCookie()
     }
     public weak var delegate: KLoginManagerDelegate?
     
@@ -108,7 +108,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
     
     public override init() {
         super.init()
-        if URLSessionConfiguration.isValidAuthCookie() {
+        if URLConfigurationCookies.shared.isValidAuthCookie() {
             var registeredServices: [String]? {
                 guard let data = UserDefaults.standard.object(forKey: KLoginManager.KUserDataRegisteredServicesKey) as? Data else{
                     return nil
@@ -176,7 +176,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
     }
     
     public func presentLogin(completion: AuthRegistrationBlock?){
-        if URLSessionConfiguration.isValidAuthCookie(){
+        if URLConfigurationCookies.shared.isValidAuthCookie(){
             completion?(true, currentUser?.registeredServices, currentUser?.roles, nil)
         }else{
             mainCompletion = completion
@@ -280,7 +280,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
 
             }
         }
-        URLSessionConfiguration.removeAuthCookie()
+        URLConfigurationCookies.shared.removeAuthCookie()
         UserDefaults.standard.set(nil, forKey: KLoginManager.KUserDataRolesKey)
         UserDefaults.standard.set(nil, forKey: KLoginManager.KUserDataRegisteredServicesKey)
         UserDefaults.standard.set(nil, forKey: KLoginManager.KUserDataIdentifierKey)

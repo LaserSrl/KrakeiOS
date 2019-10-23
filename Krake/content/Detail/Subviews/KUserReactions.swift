@@ -173,7 +173,7 @@ open class KUserReactions: UIView, KDetailViewProtocol {
             if let response = task.response,
                 let headers = response.allHeaderFields as? [String : String]{
                 let array = HTTPCookie.cookies(withResponseHeaderFields: headers, for: KInfoPlist.KrakePlist.path)
-                URLSessionConfiguration.parse(cookies: array)
+                URLConfigurationCookies.shared.parse(cookies: array)
             }
             
             if let data = (object as? NSDictionary)?["Data"] as? [String: AnyObject]{
@@ -226,7 +226,7 @@ open class KUserReactions: UIView, KDetailViewProtocol {
                                 if let response = task.response,
                                     let headers = response.allHeaderFields as? [String : String]{
                                     let array = HTTPCookie.cookies(withResponseHeaderFields: headers, for: KInfoPlist.KrakePlist.path)
-                                    URLSessionConfiguration.parse(cookies: array)
+                                    URLConfigurationCookies.shared.parse(cookies: array)
                                 }
                                 if let data = (object as? NSDictionary)?["Data"] as? [String: AnyObject],
                                     let status = data["Status"] as? [String: AnyObject],

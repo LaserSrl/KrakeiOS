@@ -11,6 +11,7 @@ import CryptoSwift
 
 
 extension URLSessionConfiguration{
+    /*
     fileprivate static var authCookie: HTTPCookie? = nil
     fileprivate static var policyCookie: HTTPCookie? = nil
     fileprivate static var userReactionCookie: HTTPCookie? = nil
@@ -134,7 +135,7 @@ extension URLSessionConfiguration{
             }
         }
     }
-    
+
     public func addXSRFToken() {
         if let cookie = URLSessionConfiguration.authCookie, let hash = sha512(cookie.value){
             addAdditionalHeaders(["X-XSRF-TOKEN" : hash])
@@ -165,6 +166,6 @@ extension URLSessionConfiguration{
             return base64Hash
         }
         return nil
-    }
+    }*/
     
 }

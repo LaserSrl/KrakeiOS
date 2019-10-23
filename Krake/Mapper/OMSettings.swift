@@ -65,11 +65,11 @@ open class OMSettings: NSObject{
                 UserDefaults.standard.set(false, forKey: "resetAuthCookie_preference")
             }
             if UserDefaults.standard.bool(forKey: "resetPoliciesCookie_preference"){
-                URLSessionConfiguration.removePoliciesCookie()
+                URLConfigurationCookies.shared.removePoliciesCookie()
                 UserDefaults.standard.set(false, forKey: "resetPoliciesCookie_preference")
             }
             if UserDefaults.standard.bool(forKey: "resetReactionsCookie_preference"){
-                URLSessionConfiguration.removeUserReactionCookie()
+                URLConfigurationCookies.shared.removeUserReactionCookie()
                 UserDefaults.standard.set(false, forKey: "resetReactionsCookie_preference")
             }
             UserDefaults.standard.setValue(String(format: "%.f ore", KInfoPlist.defautCacheHour.doubleValue), forKey: "cacheHour_preference")

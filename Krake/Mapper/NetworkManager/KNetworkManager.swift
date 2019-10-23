@@ -202,7 +202,7 @@ public class KDataTask: NSObject {
 
     public init(baseURL: URL, auth: Bool) {
         
-        sessionManager = Session(configuration: URLSessionConfiguration.krakeSessionConfiguration(auth: auth),
+        sessionManager = Session(configuration: URLConfigurationCookies.shared.configuration,
                                  interceptor: RequestHeaderAdapter(auth: auth))
         
         self.baseURL = baseURL
@@ -683,12 +683,12 @@ public class KDataTask: NSObject {
     }
 
 
-    fileprivate func checkHeaderResponse(_ task : KDataTask ){
+    fileprivate func checkHeaderResponse(_ task : KDataTask){
         if checkHeaderResponse  && task.request.method != .get {
             if let response = task.dataRequest.response,
                    let headers = response.allHeaderFields as? [String : String]{
                    let array = HTTPCookie.cookies(withResponseHeaderFields: headers, for: baseURL)
-                   URLSessionConfiguration.parse(cookies: array)
+                   URLConfigurationCookies.shared.parse(cookies: array)
                }
            }
        }
