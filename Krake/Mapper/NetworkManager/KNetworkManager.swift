@@ -603,13 +603,12 @@ public class KDataTask: NSObject {
 
 
     private func invalidateSessionCancelingTasks(_ cancelTask: Bool) {
-        //TODO:ALAMO capire come fare
-        /*
+        //TODO: alamo fire verificare se ha senso chiamato così tanto spesso
         if (cancelTask) {
-            [self.session invalidateAndCancel];
+            sessionManager.session.invalidateAndCancel()
         } else {
-            [self.session finishTasksAndInvalidate];
-        }*/
+            sessionManager.session.finishTasksAndInvalidate()
+        }
     }
 
     //MARK: - Metodi privati

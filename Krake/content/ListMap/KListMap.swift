@@ -820,7 +820,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                             indexPaths.append(IndexPath(row: i, section: 0))
                         }
                         self.collectionView?.deleteItems(at: indexPaths)
-                        if !isNoElementsCellVisible && numberOfCurrentElements == 0
+                        if !isNoElementsCellVisible && numberOfCurrentElements == 0 && filteredElements == nil
                         {
                             self.collectionView?.insertItems(at: [IndexPath(row: 0, section: 0)])
                         }
