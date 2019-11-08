@@ -328,8 +328,21 @@
                 }else{
                     [[KLoginManager shared] makeCompletion:success response:response error:message];
                 }
-            }else{
-                if (message){
+            }
+            else {
+                if ([message code] == 1003) {
+                    UIAlertController * alert = [UIAlertController alertControllerWithTitle:nil
+                                                                                    message:message.localizedDescription
+                                                                             preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:
+                     [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
+                                             style:UIAlertActionStyleDefault
+                                           handler:^(UIAlertAction * _Nonnull action) {
+                        [self closeRegisterView:nil];
+                    }]];
+                    [self showViewController:alert sender:nil];
+                }
+                else if (message){
                     [[KLoginManager shared] showMessage:message.localizedDescription withType:ModeError];
                 }
             }

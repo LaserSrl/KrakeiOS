@@ -259,13 +259,38 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
     @objc public func callRequestPasswordLost(queryString: String, params: [String: Any]){
         showProgressHUD()
         KNetworkManager.defaultManager(true).requestKrakeLostPassword(queryString, params: params) { [weak self](success, response, error) in
-            if success{
+            if success {
                 self?.showMessage("reset_password_sended".localizedString(), withType: .success)
-            }else{
+            }
+            else {
                 self?.showMessage(error?.localizedDescription ?? "Generic error".localizedString(), withType: .error)
             }
             self?.hideProgressHUD()
         }
+    }
+
+    public func extractNonce(url: URL) -> String? {
+        if url.path == KAPIConstants.userChallengeMail,
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: true) {
+
+            return components.queryItems?.first(where: { (item) -> Bool in
+                return item.name == "nonce"
+                })?.value
+        }
+        return nil
+    }
+
+    public func verifyNonce(_ nonce: String,
+                            callback:@escaping ((Bool, Error?) -> Void)) {
+        _ = KNetworkManager.defaultManager(true).request(KAPIConstants.userVerifyNonce,
+                                                     method: .post,
+                                                     parameters: ["nonce": nonce]   ,
+                                                     successCallback: { (data, result) in
+                                                        callback(true, nil)
+        },
+                                                     failureCallback: { (data, error) in
+                                                        callback(false, error)
+        })
     }
 
     public func userLogout()

@@ -24,6 +24,8 @@ open class KAPIConstants: NSObject
     @objc public static let wsBasePath = "Laser.Orchard.WebServices"
     public static let uploadFile = "Laser.Orchard.ContentExtension/UploadFile/PostFile"
     public static let userExtensions = "Laser.Orchard.UsersExtensions/AKUserActions"
+    public static let userChallengeMail = "/Users/Account/ChallengeEmail"
+    public static let userVerifyNonce = "laser.orchard.usersextensions/akuseractions/ChallengeEmailApiSsl"
     public static let policiesList = "Policies/List"
     public static let externalTokenLogon = "AKExternal/TokenLogon"
 }
