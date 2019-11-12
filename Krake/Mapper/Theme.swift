@@ -29,6 +29,40 @@ import SwiftMessages
     case popoverBackground
     case popoverText
     case userSelectablePin
+    
+    public func toString() -> String
+    {
+        switch self {
+        case .tint:
+            return "tint"
+        case .textTint:
+            return "textTint"
+        case .alternate:
+            return "alternate"
+        case .textAlternate:
+            return "textAlternate"
+        case .title:
+            return "title"
+        case .subtitle:
+            return "subtitle"
+        case .headline:
+            return "headline"
+        case .subHeadline:
+            return "subHeadline"
+        case .normal:
+            return "normal"
+        case .selected:
+            return "selected"
+        case .popoverBorder:
+            return "popoverBorder"
+        case .popoverBackground:
+            return "popoverBackground"
+        case .popoverText:
+            return "popoverText"
+        case .userSelectablePin:
+            return "userSelectablePin"
+        }
+    }
 }
 
 @objc public enum ViewStyle: Int{
