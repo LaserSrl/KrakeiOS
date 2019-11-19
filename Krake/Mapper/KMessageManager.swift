@@ -115,6 +115,7 @@ import SwiftMessages
             }
             view.buttonTapHandler = {(button) in
                 buttonCompletion?()
+                SwiftMessages.hideAll()
             }
             KTheme.current.applyTheme(toMessageView: view)
             return view
