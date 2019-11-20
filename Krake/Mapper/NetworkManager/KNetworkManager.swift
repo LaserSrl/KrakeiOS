@@ -590,7 +590,6 @@ public class KDataTask: NSObject {
             switch response.result {
             case let .success(json):
                 successWrapper?(dataTask,json)
-                print(json)
             case let .failure(error):
                 failureWrapper?(dataTask,error)
                 print(error)
