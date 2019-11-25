@@ -20,6 +20,7 @@ public protocol KLoginManagerDelegate: KeyValueCodingProtocol{
     var socialButtons: [UIButton]? {get}
     
     func loginCompleted(withStatus logged: Bool, roles: [String]?, serviceRegistrated: [String]?, error: String?)
+    func userLoggedOut()
     func shouldDisplayLoginControllerAfterFailure(with response: KrakeResponse?, parameter: Any?) -> Bool
 }
 
@@ -54,6 +55,10 @@ public extension KLoginManagerDelegate{
     }
     
     func loginCompleted(withStatus logged: Bool, roles: [String]?, serviceRegistrated: [String]?, error: String?){
+        
+    }
+    
+    func userLoggedOut(){
         
     }
 
@@ -314,6 +319,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
         UserDefaults.standard.synchronize()
         currentUser = nil
         NotificationCenter.default.post(name: KLoginManager.UserLoggedOut, object: self)
+        delegate?.userLoggedOut()
     }
     
     @objc public func showMessage(_ message: String, withType: KMessageManager.Mode){
