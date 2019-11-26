@@ -353,6 +353,18 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
         }
     }
 
+    open override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        if let delegate = collectionItemsDelegate {
+            return delegate.itemsCollectionController(self,
+                                                      collectionView: collectionView,
+                                                      shouldSelect: delegate.itemsCollectionController(self, itemAt: indexPath),
+                                                      atIndexPath: indexPath)
+        }
+        else {
+            return true
+        }
+    }
+
     override open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         if let delegate = collectionItemsDelegate
