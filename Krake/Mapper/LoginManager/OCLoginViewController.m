@@ -374,6 +374,9 @@
     params[@"Username"] = self.username.text;
     params[@"Password"] = self.password.text;
 
+    //TODO: verificare e pensare una soluzione per gli accessi social
+    [[NSUserDefaults standardUserDefaults] setStringAndSync:self.username.text forConstantKey:OMStringConstantKeyUserEmail];
+
     [[KLoginManager shared] objc_loginWith:[KrakeAuthenticationProvider orchard] params:params saveTokenParams: false];
 }
 

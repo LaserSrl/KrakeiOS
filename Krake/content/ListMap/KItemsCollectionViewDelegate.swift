@@ -50,6 +50,11 @@ public protocol KItemsCollectionViewDelegate: NSObjectProtocol
 
     func itemsCollectionController(_ itemsController: KItemsCollectionViewController,
                                    collectionView: UICollectionView,
+                                   shouldSelect object: Any,
+                                   atIndexPath indexPath: IndexPath) -> Bool
+
+    func itemsCollectionController(_ itemsController: KItemsCollectionViewController,
+                                   collectionView: UICollectionView,
                                    didSelectObject object: Any)
 
 
@@ -116,6 +121,14 @@ public extension KItemsCollectionViewDelegate
                                    itemAt indexPath: IndexPath) -> Any
     {
         return itemsController.loadedElements!.object(at: indexPath.row)
+    }
+
+
+    func itemsCollectionController(_ itemsController: KItemsCollectionViewController,
+                                   collectionView: UICollectionView,
+                                   shouldSelect object: Any,
+                                   atIndexPath indexPath: IndexPath) -> Bool {
+        return true
     }
 
     func itemsCollectionController(_ itemsController: KItemsCollectionViewController,
