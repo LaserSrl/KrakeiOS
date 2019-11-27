@@ -266,7 +266,7 @@ public class KDataTask: NSObject {
             request.path = KAPIConstants.externalTokenLogon
             request.queryParameters.append(URLQueryItem(name: KParametersKeys.language, value: KConstants.currentLanguage))
             request.queryParameters.append(URLQueryItem(name: KParametersKeys.Login.provider, value: providerName))
-            request.method = .get
+            request.method = .post
         }
 
         let success: (KDataTask, Any?) -> Void =
