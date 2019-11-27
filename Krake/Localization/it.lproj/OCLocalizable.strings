@@ -68,6 +68,8 @@
 "phone_number" = "Numero di cellulare";
 "lost_pwd" = "Password dimenticata?";
 
+"VerificationMailMessage" = "Il tuo indirizzo di email é stato verificato";
+
 //RULES
 "ACCEPT"="Accetta";
 "DENY"="Nega";

@@ -17,7 +17,38 @@ extension OGLCoreDataMapper {
         let request = KRequest()
         request.path = loadDataTask.command
         request.method = .get
-        request.parameters = loadDataTask.parameters
+
+        for key in loadDataTask.parameters.keys {
+            var string: String? = nil
+            if let value = loadDataTask.parameters[key] {
+                if let sValue = value as? String {
+                    string = sValue
+                }
+                else if let dValue = value as? Double {
+                    string = String(format:"%f",dValue)
+                }
+                else if let fValue = value as? Float {
+                    string = String(format:"%f",fValue)
+                }
+                else if let iValue = value as? Int {
+                    string = String(format:"%d",iValue)
+                }
+                else if let bValue = value as? Bool {
+                    string = bValue ? "true" : "false"
+                }
+                else if let oValue = value as? NSObject {
+                    string = oValue.description
+                }
+                else {
+                }
+
+                if let string = string {
+                    request
+                        .queryParameters
+                        .append(URLQueryItem(name: key, value: string))
+                }
+            }
+        }
 
         if let cacheTime = loadDataTask.parameters[REQUEST_NO_CACHE] as? String {
             request.headers["Cache-Control"] = "no-cache"

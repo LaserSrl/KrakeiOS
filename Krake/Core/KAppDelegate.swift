@@ -50,6 +50,23 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
         KPushManager.showOrOpenPush(userInfo, applicationState: application.applicationState)
     }
 
+    func application(_ application: UIApplication,
+              continue userActivity: NSUserActivity,
+              restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+
+            if let url = userActivity.webpageURL,
+                let nonce = KLoginManager.shared.extractNonce(url: url) {
+                KLoginManager.shared.verifyNonce(nonce) { (success, error) in
+                    if (success) {
+                        KMessageManager.showMessage("VerificationMailMessage".localizedString(),
+                                                    type: .success)
+                    }
+                }
+                return true
+            }
+        return false
+    }
+
     // MARK: - Streaming provider
 
     open func register(streamingProvider provider: KStreamingProvider) {

@@ -452,24 +452,27 @@ public class KDataTask: NSObject {
                  successCallback: ((KDataTask, Any?) -> Void)?,
                  failureCallback: ((KDataTask, Error) -> Void)?) -> KDataTask {
 
-        let dataRequest = sessionManager.request(request.asURL(baseURL),
-                                                 method: request.method.afMethod(),
-                                                 parameters: request.codableParameters,
-                                                 encoder: (request.requestSerializer ?? requestSerializer).encoder(),
-                                                 headers: request.afHeaders(),
-                                                 interceptor: nil)
-            .validate()
+        let dataRequestBuilder = {(manager: KNetworkManager) -> DataRequest in
+            let dataRequest = manager.sessionManager.request(request.asURL(manager.baseURL),
+                                                     method: request.method.afMethod(),
+                                                     parameters: request.codableParameters,
+                                                     encoder: (request.requestSerializer ?? manager.requestSerializer).encoder(),
+                                                     headers: request.afHeaders(),
+                                                     interceptor: nil)
+                .validate()
 
-        if let dp = request.downloadProgress {
-            dataRequest.downloadProgress(closure: dp)
-        }
+            if let dp = request.downloadProgress {
+                dataRequest.downloadProgress(closure: dp)
+            }
 
-        if let up = request.uploadProgress {
-            dataRequest.uploadProgress(closure: up)
+            if let up = request.uploadProgress {
+                dataRequest.uploadProgress(closure: up)
+            }
+            return dataRequest
         }
 
         return self.wrapAndExecute(request: request,
-                                   dataRequest: dataRequest,
+                                   dataRequestBuilder: dataRequestBuilder,
                                    successCallback: successCallback,
                                    failureCallback: failureCallback)
     }
@@ -479,22 +482,24 @@ public class KDataTask: NSObject {
                            progress uploadProgress: ((Progress) -> Void)? = nil,
                            successCallback: ((KDataTask, Any?) -> Void)? = nil,
                            failureCallback: ((KDataTask?, Error) -> Void)? = nil) -> KDataTask?{
-
         let uploadRequest = KRequest()
         uploadRequest.method = .post
         uploadRequest.path = path
 
-        let dataRequest = sessionManager.upload(multipartFormData: { (multiFormData) in
-            block?(KMultipartFormData(multiFormData))
-        }, to:  self.baseURL.appendingPathComponent(path))
-            .validate()
+        let dataRequestBuilder = {(manager: KNetworkManager) -> DataRequest in
 
-        if let up = uploadProgress {
-            dataRequest.uploadProgress(closure: up)
+            let dataRequest = manager.sessionManager.upload(multipartFormData: { (multiFormData) in
+                block?(KMultipartFormData(multiFormData))
+            }, to:  manager.baseURL.appendingPathComponent(path))
+                .validate()
+
+            if let up = uploadProgress {
+                dataRequest.uploadProgress(closure: up)
+            }
+            return dataRequest
         }
-
         return self.wrapAndExecute(request: uploadRequest,
-            dataRequest: dataRequest,
+            dataRequestBuilder: dataRequestBuilder,
                                    successCallback: successCallback,
                                    failureCallback: failureCallback)
 
@@ -507,25 +512,29 @@ public class KDataTask: NSObject {
                  successCallback: ((KDataTask, Any?) -> Void)?,
                  failureCallback: ((KDataTask, Error) -> Void)?) -> KDataTask {
 
-        let dataRequest = sessionManager.request(request.asURL(baseURL),
-                                                 method: request.method.afMethod(),
-                                                 parameters: request.parameters,
-                                                 encoding: (request.requestSerializer ?? requestSerializer).encoding(),
-                                                 headers: request.afHeaders(),
-                                                 interceptor: nil)
-            .validate()
+        let dataRequestBuilder = {(manager: KNetworkManager) -> DataRequest in
+            let dataRequest = manager.sessionManager.request(request.asURL(manager.baseURL),
+                                                            method: request.method.afMethod(),
+                                                            parameters: request.parameters,
+                                                            encoding: (request.requestSerializer ?? manager.requestSerializer).encoding(),
+                                                            headers: request.afHeaders(),
+                                                            interceptor: nil)
+                       .validate()
 
-        if let dp = request.downloadProgress {
-            dataRequest.downloadProgress(closure: dp)
+                   if let dp = request.downloadProgress {
+                       dataRequest.downloadProgress(closure: dp)
+                   }
+
+                   if let up = request.uploadProgress {
+                       dataRequest.uploadProgress(closure: up)
+                   }
+            return dataRequest
         }
 
-        if let up = request.uploadProgress {
-            dataRequest.uploadProgress(closure: up)
-        }
 
         return self.wrapAndExecute(callbackWrapperLevel: callbackWrapperLevel,
                                    request: request,
-                                   dataRequest: dataRequest,
+                                   dataRequestBuilder: dataRequestBuilder,
                                    successCallback: successCallback,
                                    failureCallback: failureCallback)
     }
@@ -533,12 +542,11 @@ public class KDataTask: NSObject {
     private func wrapAndExecute(
         callbackWrapperLevel: CallbackWrapperLevel = .standard,
         request: KRequest,
-        dataRequest: DataRequest,
+        dataRequestBuilder: @escaping ((KNetworkManager) -> DataRequest),
         successCallback: ((KDataTask, Any?) -> Void)?,
         failureCallback: ((KDataTask, Error) -> Void)?) -> KDataTask {
 
-        let dataTask = KDataTask(request: request, data: dataRequest)
-
+        let dataTask = KDataTask(request: request, data: dataRequestBuilder(self))
 
         let failureWrapper : ((KDataTask, Error) -> Void)?
         let successWrapper : ((KDataTask, Any?) -> Void)?
@@ -557,7 +565,7 @@ public class KDataTask: NSObject {
                                         self.checkKrakeResponse(KrakeResponse(object: responseObject), parameters: request.genericParamters(), checkSuccess: { (manager) in
                                             _ = manager.wrapAndExecute(callbackWrapperLevel: .afterLogin,
                                                                    request: request,
-                                                                   dataRequest: dataRequest,
+                                                                   dataRequestBuilder: dataRequestBuilder,
                                                                    successCallback: successCallback,
                                                                    failureCallback: failureCallback)
                                         }, checkFailure: { (error: Error) in
@@ -585,6 +593,8 @@ public class KDataTask: NSObject {
             failureWrapper = failureCallback
             successWrapper = successCallback
         }
+
+        let dataRequest = dataRequestBuilder(self)
 
         dataRequest.responseJSON { response in
             switch response.result {
