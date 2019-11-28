@@ -272,6 +272,7 @@ public class KDataTask: NSObject {
         let success: (KDataTask, Any?) -> Void =
            {
                (task, object) in
+            
                self.loginCompletion(task, object: object, completion: completion)
            }
            let failure: (KDataTask?, Error) -> Void =
@@ -594,9 +595,7 @@ public class KDataTask: NSObject {
             successWrapper = successCallback
         }
 
-        let dataRequest = dataRequestBuilder(self)
-
-        dataRequest.responseJSON { response in
+        dataTask.dataRequest.responseJSON { response in
             switch response.result {
             case let .success(json):
                 successWrapper?(dataTask,json)
