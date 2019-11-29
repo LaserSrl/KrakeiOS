@@ -441,7 +441,7 @@
             mainParams = @{ @"phoneNumber" : @{@"internationalPrefix": [NSString stringWithFormat:@"%@", countryCode], @"phoneNumber" : nationalNumber}};
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:KInfoPlist.appName message:[NSString stringWithFormat:@"%@ +%@ %@", [@"check_your_number" localizedString], countryCode, nationalNumber] preferredStyle:UIAlertControllerStyleAlert];
             [alert addAction:[UIAlertAction actionWithTitle:[@"Cancel" localizedString] style:UIAlertActionStyleCancel handler:nil]];
-            [alert addAction:[UIAlertAction actionWithTitle:[@"Ok" localizedString] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [alert addAction:[UIAlertAction actionWithTitle:[@"OK" localizedString] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 if (self->mainParams){
                     [[KLoginManager shared] callRequestPasswordLostWithQueryString:@"RequestLostPasswordSmsSsl" params:[self->mainParams copy]];
                     self->mainParams = nil;
