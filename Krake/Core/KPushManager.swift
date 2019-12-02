@@ -155,6 +155,7 @@ open class KPushManager: NSObject{
                     KTheme.current.applyTheme(toNavigationBar: nav.navigationBar, style: .default)
                     let closeButton = UIBarButtonItem(barButtonSystemItem: .stop, target: nav, action: #selector(UINavigationController.dismissViewController))
                     vc.navigationItem.leftBarButtonItem = closeButton
+                    vc.view.layoutIfNeeded()
                     presentPushViewController(nav)
                 }
             }
