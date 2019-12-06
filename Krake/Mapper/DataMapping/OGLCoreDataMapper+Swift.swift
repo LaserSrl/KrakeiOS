@@ -24,6 +24,9 @@ extension OGLCoreDataMapper {
                 if let sValue = value as? String {
                     string = sValue
                 }
+                else if let nValue = value as? NSNumber {
+                    string = nValue.description
+                }
                 else if let dValue = value as? Double {
                     string = String(format:"%f",dValue)
                 }
