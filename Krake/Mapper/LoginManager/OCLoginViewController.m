@@ -25,6 +25,7 @@
     UIInterfaceOrientationMask orientationMask;
 }
 
+@property (weak, nonatomic) IBOutlet UIStackView *loginMainStackView;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *baseView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *policiesTableHeight;
 
@@ -67,36 +68,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     
     [self.registerButton setEnabled: false];
-    [[KTheme currentObjc] applyThemeToView:self.view style:ViewStyleLogin];
     
     self.closeButton.clipsToBounds = YES;
     self.closeButton.layer.cornerRadius = 22.0;
     [self.closeButton setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
-    [self.closeButton setImage:[UIImage imageNamed:@"close" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
-    [self.closeButton setTintColor:self.view.backgroundColor];
+    [self.closeButton setImage:[UIImage imageNamed:@"scroll_bottom" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     
     self.backButton.clipsToBounds = YES;
     self.backButton.layer.cornerRadius = 22.0;
     [self.backButton setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
     [self.backButton setImage:[UIImage imageNamed:@"indietro" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
-    [self.backButton setTintColor:self.view.backgroundColor];
     self.backButton.alpha = 0.0;
     
-    [self.loginWithLabel setTextColor:[[KTheme currentObjc] color:ColorStyleTint]];
-    
     self.loginWithLabel.text = [@"LOGIN" localizedString];
-    
-    self.username.textColor = [UIColor whiteColor];
-    self.password.textColor = [UIColor whiteColor];
-    self.confirmRegistration.textColor = [UIColor whiteColor];
-    self.registrationLabel.textColor = [UIColor whiteColor];
-    self.emailsmsTextField.textColor = [UIColor whiteColor];
-    self.numberRegistration.textColor = [UIColor whiteColor];
-    self.usernameRegistration.textColor = [UIColor whiteColor];
-    self.passwordRegistration.textColor = [UIColor whiteColor];
     
     if(!Login.canUserCancelLogin)
     {
@@ -139,22 +125,35 @@
         }
         [self.recoverButton setTitle:[@"Recover_password" localizedString] forState:UIControlStateNormal];
     }
+    
+    
+    
+    self.view.backgroundColor = [KTheme.login color:KLoginColorTypeBackground];
+    self.baseView.effect = [UIBlurEffect effectWithStyle:KTheme.login.centerViewStyle];
+    
+    [[KTheme login] applyThemeTo:self.username];
+    [[KTheme login] applyThemeTo:self.password];
+    [[KTheme login] applyThemeTo:self.usernameRegistration];
+    [[KTheme login] applyThemeTo:self.passwordRegistration];
+    [[KTheme login] applyThemeTo:self.confirmRegistration];
+    [[KTheme login] applyThemeTo:self.numberRegistration];
+    [[KTheme login] applyThemeTo:self.emailsmsTextField];
+    
+    [[KTheme login] applyThemeTo:self.closeButton style:KLoginButtonStyleClose];
+    [[KTheme login] applyThemeTo:self.backButton style:KLoginButtonStyleBack];
+     
+    
+    
+    [[KTheme login] applyThemeTo:self.lostPassword style:KLoginButtonStyleSmall];
+    [[KTheme login] applyThemeTo:self.registerButton style:KLoginButtonStyleSmall];
+    [[KTheme login] applyThemeTo:self.loginButton style:KLoginButtonStyleDefault];
+    [[KTheme login] applyThemeTo:self.registrationButton style:KLoginButtonStyleDefault];
+    [[KTheme login] applyThemeTo:self.recoverButton style:KLoginButtonStyleDefault];
 
-    [[KTheme currentObjc] applyThemeToButton:self.lostPassword style:ButtonStyleLoginSmall];
-    [[KTheme currentObjc] applyThemeToButton:self.registerButton style:ButtonStyleLoginSmall];
-    [[KTheme currentObjc] applyThemeToButton:self.loginButton style:ButtonStyleLogin];
-    [[KTheme currentObjc] applyThemeToButton:self.registrationButton style:ButtonStyleLogin];
-    [[KTheme currentObjc] applyThemeToButton:self.recoverButton style:ButtonStyleLogin];
 
-    [[KTheme currentObjc] applyThemeToTextField:self.username style:TextFieldStyleLogin];
-    [[KTheme currentObjc] applyThemeToTextField:self.password style:TextFieldStyleLogin];
-    [[KTheme currentObjc] applyThemeToTextField:self.usernameRegistration style:TextFieldStyleLogin];
-    [[KTheme currentObjc] applyThemeToTextField:self.passwordRegistration style:TextFieldStyleLogin];
-    [[KTheme currentObjc] applyThemeToTextField:self.confirmRegistration style:TextFieldStyleLogin];
-    [[KTheme currentObjc] applyThemeToTextField:self.numberRegistration style:TextFieldStyleLogin];
-
-    [[KTheme currentObjc] applyThemeToLabel:self.registrationLabel style:LabelStyleLoginTitle];
-    [[KTheme currentObjc] applyThemeToLabel:self.loginWithLabel style:LabelStyleLoginTitle];
+    [[KTheme login] applyThemeToTitle:self.registrationLabel];
+    [[KTheme login] applyThemeToTitle:self.loginWithLabel];
+    [[KTheme login] applyThemeToTitle:self.lostPasswordLabel];
 
     BOOL registerWithKrake = Login.canUserRegisterWithKrake;
 
@@ -165,26 +164,29 @@
 
     [self.lostPassword setHidden:!recoverPassword];
     [self.lostPassword setEnabled:recoverPassword];
-
-    NSArray<UIButton *> * items;
     
-    items = [[KLoginManager shared] socialButtons_ObjC];
-    if ([items count] == 0 ){
+    NSArray<Class<KLoginProviderProtocol>> * items;
+    items = [[KLoginManager shared] socials];
+    for (Class<KLoginProviderProtocol> item in items) {
+        UIStackView *rightStackView;
+        if (@available(iOS 13.0, *)) {
+            if (item == [AppleIDSignIn class])
+            {
+                rightStackView = self.loginMainStackView;
+            }
+            else
+            {
+                rightStackView = self.socialToolbar;
+            }
+        } else {
+            rightStackView = self.socialToolbar;
+        }
+        [rightStackView addArrangedSubview:[[item shared] getLoginView]];
+    }
+    if ([self.socialToolbar.arrangedSubviews count] == 0 ){
         self.socialToolbar.hidden = true;
     }
     
-    for (UIButton *item in items) {
-        [self.socialToolbar addArrangedSubview:item];
-    }
-    
-    if (![self isLightColor:self.view.backgroundColor]){
-        self.baseView.effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-        [self.closeButton setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.6]];
-        [self.backButton setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.6]];
-    }else{
-        [self.backButton setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.6]];
-        [self.closeButton setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.6]];
-    }
     self.baseView.layer.cornerRadius = 10.0;
     self.baseView.clipsToBounds = true;
     

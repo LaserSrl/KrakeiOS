@@ -9,11 +9,10 @@
 import Foundation
 import TwitterKit
 
-public class TwitterKit: NSObject{
+public class TwitterKit: NSObject, KLoginProviderProtocol{
     
+    public static var shared: KLoginProviderProtocol = TwitterKit()
     fileprivate var completionBlock: AuthProviderBlock? = nil
-    
-    public static let shared = TwitterKit()
     
     public func start()
     {
@@ -25,11 +24,9 @@ public class TwitterKit: NSObject{
         return TWTRTwitter.sharedInstance().application(app, open:url, options: options)
     }
     
-    public func generateButton(_ completionBlock: AuthProviderBlock? = nil) -> UIButton
-    {
-        self.completionBlock = completionBlock
+    public func getLoginView() -> UIView {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(krakeNamed:"twitter_circle"), for: .normal)
+        button.setImage(UIImage(krakeNamed:"twitter_login"), for: .normal)
         button.addTarget(self, action: #selector(TwitterKit.signIn), for: .touchUpInside)
         return button
     }

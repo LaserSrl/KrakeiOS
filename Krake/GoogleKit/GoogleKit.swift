@@ -8,12 +8,12 @@
 import Foundation
 import GoogleSignIn
 
-public class GoogleKit: NSObject, GIDSignInDelegate, GIDSignInUIDelegate{
+public class GoogleKit: NSObject, KLoginProviderProtocol, GIDSignInDelegate, GIDSignInUIDelegate{
     
     fileprivate static var google: GoogleKit!
     fileprivate var completionBlock: AuthProviderBlock? = nil
     
-    public static let shared: GoogleKit = {
+    public static var shared: KLoginProviderProtocol = {
         let google = GoogleKit()
         GIDSignIn.sharedInstance().clientID = KInfoPlist.Google.clientID
         GIDSignIn.sharedInstance().serverClientID = KInfoPlist.Google.serverClientID
@@ -30,8 +30,7 @@ public class GoogleKit: NSObject, GIDSignInDelegate, GIDSignInUIDelegate{
         return false
     }
     
-    public func generateButton(_ completionBlock: AuthProviderBlock? = nil) -> UIButton{
-        self.completionBlock = completionBlock
+    public func getLoginView() -> UIView {
         let button = UIButton(type: .system)
         button.setImage(UIImage(krakeNamed:"google_circle"), for: .normal)
         button.addTarget(self, action: #selector(GoogleKit.logIn), for: .touchUpInside)

@@ -17,7 +17,7 @@ public protocol KLoginManagerDelegate: KeyValueCodingProtocol{
     var canUserRecoverPassword: Bool {get}
     var canUserCancelLogin: Bool {get}
     var userHaveToRegisterWithSMS: Bool {get}
-    var socialButtons: [UIButton]? {get}
+    var socialsLoginProvider: [KLoginProviderProtocol.Type]? {get}
     
     func loginCompleted(withStatus logged: Bool, roles: [String]?, serviceRegistrated: [String]?, error: String?)
     func userLoggedOut()
@@ -48,10 +48,6 @@ public extension KLoginManagerDelegate{
     
     var userHaveToRegisterWithSMS: Bool{
         return false
-    }
-    
-    var socialButtons: [UIButton]?{
-        return nil
     }
     
     func loginCompleted(withStatus logged: Bool, roles: [String]?, serviceRegistrated: [String]?, error: String?){
@@ -103,8 +99,8 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
     }
     public weak var delegate: KLoginManagerDelegate?
     
-    @objc public var socialButtons_ObjC: [UIButton]?{
-        return delegate?.socialButtons
+    @objc public var socials: [KLoginProviderProtocol.Type]? {
+        return delegate?.socialsLoginProvider
     }
     
     fileprivate var mainCompletion: AuthRegistrationBlock?

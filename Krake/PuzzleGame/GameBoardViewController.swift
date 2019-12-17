@@ -93,7 +93,7 @@ open class GameBoardViewController: UIViewController, UIGestureRecognizerDelegat
         theme.applyTheme(toButton: helpButton, style: .default)
         theme.applyTheme(toButton: showNumbersButton, style: .default)
         theme.applyTheme(toView: view, style: .default)
-        theme.applyTheme(toView: boardView, style: .login)
+        theme.applyTheme(toView: boardView, style: .social)
         // Richiedo al delegate il valore del countdown, se necessario.
         if delegate?.isTimeCountdown() ?? false {
             timeCounter = delegate?.timeCountdown() ?? 0
@@ -277,7 +277,7 @@ open class GameBoardViewController: UIViewController, UIGestureRecognizerDelegat
             ])
         // Appico il tema alle view.
         let theme = KTheme.current
-        theme.applyTheme(toView: pauseView, style: .login)
+        theme.applyTheme(toView: pauseView, style: .social)
         theme.applyTheme(toButton: resumeButton, style: .default)
         // Salvo una reference locale alla view creata.
         self.pauseView = pauseView

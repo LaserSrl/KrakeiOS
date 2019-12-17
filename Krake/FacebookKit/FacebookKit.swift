@@ -34,17 +34,17 @@ import FBSDKCoreKit
      }
      ````
 */
-open class FacebookKit: NSObject{
+open class FacebookKit: NSObject, KLoginProviderProtocol{
     
-    fileprivate var completionBlock: AuthProviderBlock? = nil
-    fileprivate var options: [AnyHashable: Any]!
-    fileprivate var manager: LoginManager!
-    
-    public static let shared: FacebookKit = {
+    public static var shared: KLoginProviderProtocol = {
         let facebook = FacebookKit()
         facebook.manager = LoginManager()
         return facebook
     }()
+    
+    fileprivate var completionBlock: AuthProviderBlock? = nil
+    fileprivate var options: [AnyHashable: Any]!
+    fileprivate var manager: LoginManager!
     
     /**
      # Generate Facebook UIBarButtonItem for login button view
@@ -54,13 +54,11 @@ open class FacebookKit: NSObject{
      OMLoginManager.shared().startButtons([facebook])
      ````
     
-     - Parameter completionBlock: complettion block to execute when user loggedin or close the loginViewController
      - Returns: return UIBarButtonItem
      */
-    open func generateButton(_ completionBlock: AuthProviderBlock? = nil) -> UIButton{
-        self.completionBlock = completionBlock
+    public func getLoginView() -> UIView {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(krakeNamed:"facebook_icon"), for: .normal)
+        button.setImage(UIImage(krakeNamed:"facebook_login"), for: .normal)
         button.addTarget(self, action: #selector(FacebookKit.signIn), for: .touchUpInside)
         return button
     }

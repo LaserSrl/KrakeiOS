@@ -6,17 +6,20 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "facebook_icon@2x.png",
+      "filename" : "88.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "facebook_icon@3x.png",
+      "filename" : "132.png",
       "scale" : "3x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
   }
 }

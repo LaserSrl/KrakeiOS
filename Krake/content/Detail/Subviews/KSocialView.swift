@@ -98,7 +98,6 @@ open class KSocialView: UIStackView, KDetailViewProtocol {
             var index = 10
             for elem in socials {
                 let button = UIButton(type: .system)
-                KTheme.current.applyTheme(toButton: button, style: .social)
                 button.contentVerticalAlignment = .center
                 button.contentHorizontalAlignment = .center
                 button.frame = CGRect(x: 0,y: 0,width: 44,height: 44)

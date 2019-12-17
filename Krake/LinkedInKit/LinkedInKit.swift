@@ -23,20 +23,18 @@ extension KInfoPlist
     }
 }
 
-open class LinkedInKit: NSObject, OAuthDelegate{
+open class LinkedInKit: NSObject, KLoginProviderProtocol, OAuthDelegate{
     
     fileprivate var completionBlock: AuthProviderBlock? = nil
     fileprivate var config: OAuthConfiguration!
     
-    public static let shared: LinkedInKit = {
+    public static var shared: KLoginProviderProtocol = {
         let shared = LinkedInKit()
         shared.config = OAuthConfiguration(providerURL: KInfoPlist.LinkedIn.providerURL, redirectURL: OAuth.oAuthRedirectUri, clientId: KInfoPlist.LinkedIn.clientId, extras: ["response_type" : "code", "state" : String.randomStringWithLength(16), "scope" : "r_basicprofile%20r_emailaddress"])
         return shared
     }()
     
-    open func generateButton(_ completionBlock: AuthProviderBlock? = nil) -> UIButton
-    {
-        self.completionBlock = completionBlock
+    open func getLoginView() -> UIView {
         let button = UIButton(type: .system)
         button.setImage(UIImage(krakeNamed:"linkedin_circle"), for: .normal)
         button.addTarget(self, action: #selector(LinkedInKit.signIn), for: .touchUpInside)

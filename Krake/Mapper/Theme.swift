@@ -67,7 +67,6 @@ import SwiftMessages
 
 @objc public enum ViewStyle: Int{
     case `default`
-    case login
     case policy
     case selected
     case social
@@ -80,15 +79,11 @@ import SwiftMessages
 
 @objc public enum TextFieldStyle: Int{
     case contentManager
-    case login
 }
 
 @objc public enum ButtonStyle: Int{
     case `default`
     case policy
-    case login
-    case loginSmall
-    case social
     case fabButton
     case calendar
     case map
@@ -98,7 +93,6 @@ import SwiftMessages
     case `default`
     case title
     case subtitle
-    case loginTitle
     case cellTitle
     case cellSubtitle
     case annotationTitle
@@ -282,7 +276,7 @@ open class KMainTheme: NSObject, KThemeProtocol {
         switch style {
         case .selected:
             mainView.backgroundColor = color(.tint).withAlphaComponent(0.1)
-        case .login, .policy:
+        case .policy:
             mainView.backgroundColor = UIColor.white
         case .social:
             mainView.backgroundColor = color(.tint).withAlphaComponent(0.8)
@@ -299,26 +293,10 @@ open class KMainTheme: NSObject, KThemeProtocol {
     
     open func applyTheme(toButton button: UIButton, style: ButtonStyle){
         switch style {
-        case .login:
-            button.setTitleColor(color(.tint), for: .normal)
-            button.layer.borderColor = color(.normal).cgColor
-            button.layer.borderWidth = 1
-            button.layer.cornerRadius = 5.0
-        case .loginSmall:
-            button.setTitleColor(color(.tint), for: .normal)
-            button.layer.borderColor = color(.normal).cgColor
-            button.layer.borderWidth = 1
-            button.layer.cornerRadius = 5.0
-            button.contentEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
         case .policy:
             button.setTitleColor(UIColor.white, for: .normal)
             button.setTitleColor(UIColor.lightGray, for: .disabled)
             button.backgroundColor = color(.tint)
-        case .social:
-            button.tintColor = color(.textTint)
-            button.imageView?.tintColor = color(.textTint)
-            button.setTitleColor(color(.textTint), for: .normal)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 8.0)
         case .fabButton:
             button.clipsToBounds = false
             button.backgroundColor = KTheme.current.color(.alternate)

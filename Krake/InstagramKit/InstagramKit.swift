@@ -21,21 +21,19 @@ extension KInfoPlist
     }
 }
 
-open class InstagramKit: NSObject, OAuthDelegate{
+open class InstagramKit: NSObject, KLoginProviderProtocol, OAuthDelegate{
     
     fileprivate static var instagram: InstagramKit!
     fileprivate var completionBlock: AuthProviderBlock? = nil
     fileprivate var config: OAuthConfiguration!
     
-    public static let shared: InstagramKit = {
+    public static var shared: KLoginProviderProtocol = {
         let instagram = InstagramKit()
         instagram.config = OAuthConfiguration(providerURL: "https://api.instagram.com/oauth/authorize/", redirectURL: OAuth.oAuthRedirectUri, clientId: KInfoPlist.Instagram.clientId, extras: ["response_type" : "code"])
         return instagram
     }()
     
-    open func generateButton(_ completionBlock: AuthProviderBlock? = nil) -> UIButton
-    {
-        self.completionBlock = completionBlock
+    open func getLoginView() -> UIView {
         let button = UIButton(type: .system)
         button.setImage(UIImage(krakeNamed:"instagram_circle"), for: .normal)
         button.addTarget(self, action: #selector(InstagramKit.signIn), for: .touchUpInside)

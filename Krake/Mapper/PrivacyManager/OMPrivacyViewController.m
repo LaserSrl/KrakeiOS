@@ -67,7 +67,7 @@
     [[KTheme currentObjc] applyThemeToButton:self.undoButton style:ButtonStylePolicy];
     
     
-    [[KTheme currentObjc] applyThemeToView:self.view style:ViewStyleLogin];
+    [[KTheme currentObjc] applyThemeToView:self.view style:ViewStylePolicy];
     
     [self.pager setHidden:YES];
     self.collectionView.layer.cornerRadius = 15.0;
