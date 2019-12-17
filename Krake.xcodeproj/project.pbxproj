@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D02045A239AB4D5009C9C88 /* KContentItemAutocompleteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D020459239AB4D5009C9C88 /* KContentItemAutocompleteTableViewController.swift */; };
 		5D06849D2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D06849C2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift */; };
 		5D06849F2296E32400101D4C /* KOTPStopTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D06849E2296E32400101D4C /* KOTPStopTimesViewController.swift */; };
 		5D1F63FE2296A81800B671FF /* RoutesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F63FD2296A81800B671FF /* RoutesTableViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D020459239AB4D5009C9C88 /* KContentItemAutocompleteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KContentItemAutocompleteTableViewController.swift; sourceTree = "<group>"; };
 		5D06849C2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStopsInRouteViewController.swift; sourceTree = "<group>"; };
 		5D06849E2296E32400101D4C /* KOTPStopTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStopTimesViewController.swift; sourceTree = "<group>"; };
 		5D1F63FD2296A81800B671FF /* RoutesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesTableViewController.swift; sourceTree = "<group>"; };
@@ -717,6 +719,7 @@
 				CDBB76BD219C7EDB00122E7E /* Policies */,
 				CDBB76C1219C7EDB00122E7E /* MapInfo */,
 				CDBB76C4219C7EDB00122E7E /* Field items */,
+				5D020459239AB4D5009C9C88 /* KContentItemAutocompleteTableViewController.swift */,
 			);
 			path = ContentManager;
 			sourceTree = "<group>";
@@ -1401,6 +1404,7 @@
 				5D7C0C6E2350BA14006760A9 /* OGLCoreDataMapper+Swift.swift in Sources */,
 				CDDA994A22905720008B205B /* KBusTracker.swift in Sources */,
 				5D5FE48B229840660080E4E3 /* KOtpStopTimesDateHeader.swift in Sources */,
+				5D02045A239AB4D5009C9C88 /* KContentItemAutocompleteTableViewController.swift in Sources */,
 				5D3169DF235713D1000E1297 /* RequestHeaderAdapter.swift in Sources */,
 				5D6D8BE122C34F7C00D72464 /* KTabAndCollectionViewItems.swift in Sources */,
 				5D5E17C62297ED17000851CC /* Number+OtpDate.swift in Sources */,
