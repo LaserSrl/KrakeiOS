@@ -25,6 +25,7 @@
     UIInterfaceOrientationMask orientationMask;
 }
 
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIStackView *loginMainStackView;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *baseView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *policiesTableHeight;
@@ -126,10 +127,10 @@
         [self.recoverButton setTitle:[@"Recover_password" localizedString] forState:UIControlStateNormal];
     }
     
-    
-    
     self.view.backgroundColor = [KTheme.login color:KLoginColorTypeBackground];
     self.baseView.effect = [UIBlurEffect effectWithStyle:KTheme.login.centerViewStyle];
+    
+    [[KTheme login] applyThemeToImageView:self.backgroundImageView];
     
     [[KTheme login] applyThemeTo:self.username];
     [[KTheme login] applyThemeTo:self.password];
@@ -141,15 +142,12 @@
     
     [[KTheme login] applyThemeTo:self.closeButton style:KLoginButtonStyleClose];
     [[KTheme login] applyThemeTo:self.backButton style:KLoginButtonStyleBack];
-     
-    
     
     [[KTheme login] applyThemeTo:self.lostPassword style:KLoginButtonStyleSmall];
     [[KTheme login] applyThemeTo:self.registerButton style:KLoginButtonStyleSmall];
     [[KTheme login] applyThemeTo:self.loginButton style:KLoginButtonStyleDefault];
     [[KTheme login] applyThemeTo:self.registrationButton style:KLoginButtonStyleDefault];
     [[KTheme login] applyThemeTo:self.recoverButton style:KLoginButtonStyleDefault];
-
 
     [[KTheme login] applyThemeToTitle:self.registrationLabel];
     [[KTheme login] applyThemeToTitle:self.loginWithLabel];

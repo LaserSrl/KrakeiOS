@@ -19,6 +19,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U8I-am-pXw">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                            </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Sqd-3W-AeN">
                                 <rect key="frame" x="37.5" y="76" width="300" height="515"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="8MY-SQ-aXy">
@@ -369,8 +372,12 @@
                         <color key="backgroundColor" red="0.85098039219999999" green="0.0" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="U8I-am-pXw" secondAttribute="bottom" constant="20" symbolic="YES" id="2E3-ez-WeY"/>
                             <constraint firstItem="PNx-Vq-Vi7" firstAttribute="top" secondItem="Rld-Tw-NwP" secondAttribute="top" constant="26" id="3Bj-rs-CcR"/>
+                            <constraint firstItem="U8I-am-pXw" firstAttribute="top" secondItem="Rld-Tw-NwP" secondAttribute="top" constant="20" symbolic="YES" id="5Af-hT-UyB"/>
                             <constraint firstItem="Sqd-3W-AeN" firstAttribute="centerX" secondItem="Rld-Tw-NwP" secondAttribute="centerX" id="csA-wF-a4W"/>
+                            <constraint firstItem="U8I-am-pXw" firstAttribute="leading" secondItem="Rld-Tw-NwP" secondAttribute="leading" constant="20" symbolic="YES" id="de6-vb-TOq"/>
+                            <constraint firstAttribute="trailing" secondItem="U8I-am-pXw" secondAttribute="trailing" constant="20" symbolic="YES" id="eZU-wm-oZS"/>
                             <constraint firstAttribute="trailing" secondItem="PNx-Vq-Vi7" secondAttribute="trailing" constant="8" id="gXW-Ta-wOu"/>
                             <constraint firstItem="6Wz-uF-CVR" firstAttribute="leading" secondItem="Rld-Tw-NwP" secondAttribute="leading" constant="8" id="iYN-Gj-jMR"/>
                             <constraint firstItem="Sqd-3W-AeN" firstAttribute="centerY" secondItem="Rld-Tw-NwP" secondAttribute="centerY" id="jSI-t6-PPV"/>
@@ -383,6 +390,7 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="6Wz-uF-CVR" id="JGO-YG-i42"/>
+                        <outlet property="backgroundImageView" destination="U8I-am-pXw" id="hpR-Va-4Fh"/>
                         <outlet property="baseView" destination="Sqd-3W-AeN" id="LSQ-as-bBP"/>
                         <outlet property="centerx" destination="jSI-t6-PPV" id="cx6-hR-ptr"/>
                         <outlet property="closeButton" destination="PNx-Vq-Vi7" id="FDq-Vp-Gv5"/>

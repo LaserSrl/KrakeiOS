@@ -34,6 +34,7 @@ import LaserFloatingTextField
     func color(_ type:KLoginColorType) -> UIColor
     func applyTheme(to textField: EGFloatingTextField)
     func applyTheme(toTitle label: UILabel)
+    func applyTheme(toImageView imageView: UIImageView)
     func applyTheme(to button: UIButton, style: KLoginButtonStyle)
 }
 
@@ -70,11 +71,6 @@ extension KLoginTheme {
         textField.textColor = color(.tint)
     }
     
-    open func applyTheme(toTitle label: UILabel) {
-        label.textColor = color(.tint)
-        label.font = UIFont.preferredFont(forTextStyle: .title1)
-    }
-    
     open func applyTheme(to button: UIButton, style: KLoginButtonStyle) {
         switch style {
         case .back:
@@ -94,6 +90,16 @@ extension KLoginTheme {
             button.contentEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
         }
     }
+    
+    open func applyTheme(toTitle label: UILabel) {
+        label.textColor = color(.tint)
+        label.font = UIFont.preferredFont(forTextStyle: .title1)
+    }
+    
+    open func applyTheme(toImageView imageView: UIImageView) {
+        
+    }
+    
 }
 
 @objc extension KTheme
@@ -101,9 +107,3 @@ extension KLoginTheme {
     public static var login: KLoginTheme = KLoginDefaultTheme()
 }
 
-//
-//social button
-//button.tintColor = color(.textTint)
-//button.imageView?.tintColor = color(.textTint)
-//button.setTitleColor(color(.textTint), for: .normal)
-//button.titleLabel?.font = UIFont.systemFont(ofSize: 8.0)
