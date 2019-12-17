@@ -46,21 +46,22 @@ open class KPushManager: NSObject{
             
             let httpClient = KNetworkManager(baseURL: wsURL, auth: true)
             httpClient.requestSerializer = .json
-            httpClient.responseSerializer = .json
-            let requestParameters : [String: String] = [KParametersKeys.token : serializedToken,
+            httpClient.responseSerializer = .data
+            let requestParameters : [String: Any] = [KParametersKeys.token : serializedToken,
                                                      KParametersKeys.device : "Apple",
                                                      KParametersKeys.UUID : uuid,
                                                      KParametersKeys.language : KConstants.currentLanguage,
-                                                     KParametersKeys.produzione : !KConstants.isDebugMode ? "true" : "false"]
-            KLog("SetDevice completed")
+                                                     KParametersKeys.produzione : !KConstants.isDebugMode]
+            
             _ = httpClient.request(KAPIConstants.push,
                                    method: .put,
                                    parameters: requestParameters,
                                    successCallback: { (task: KDataTask, object: Any?) in
-                                                       UserDefaults.standard.setStringAndSync(serializedToken, forConstantKey: .pushDeviceToken)
-                                                       UserDefaults.standard.setStringAndSync(uuid, forConstantKey: .pushDeviceUUID)
-                                                       UserDefaults.standard.setStringAndSync(KConstants.currentLanguage, forConstantKey: .pushLanguage)
-                                                       UserDefaults.standard.setStringAndSync(wsPath, forConstantKey: .pushURL)
+                                    UserDefaults.standard.setStringAndSync(serializedToken, forConstantKey: .pushDeviceToken)
+                                    UserDefaults.standard.setStringAndSync(uuid, forConstantKey: .pushDeviceUUID)
+                                    UserDefaults.standard.setStringAndSync(KConstants.currentLanguage, forConstantKey: .pushLanguage)
+                                    UserDefaults.standard.setStringAndSync(wsPath, forConstantKey: .pushURL)
+                                    KLog("SetDevice completed")
                                    },
                                    failureCallback: { (task:  KDataTask?, error: Error) in
                                        KLog(type: .error, error.localizedDescription)

@@ -16,6 +16,7 @@ import Alamofire
     case linkedin
     case instagram
     case orchard
+    case apple
 }
 
 @objc public class KrakeAuthenticationProvider: NSObject {
@@ -24,6 +25,7 @@ import Alamofire
     public static let google = "google"
     public static let linkedin = "linkedin"
     public static let instagram = "instagram"
+    public static let apple = "apple"
     @objc public static let orchard = "orchard"
 }
 
@@ -32,6 +34,7 @@ public let KNEKrakeResponse = "KrakeResponse"
 
 public enum KResponseSerializer: Int {
     case json
+    case data
 }
 
 public enum KRequestSerializer: Int {
@@ -594,14 +597,27 @@ public class KDataTask: NSObject {
             failureWrapper = failureCallback
             successWrapper = successCallback
         }
-
-        dataTask.dataRequest.responseJSON { response in
-            switch response.result {
-            case let .success(json):
-                successWrapper?(dataTask,json)
-            case let .failure(error):
-                failureWrapper?(dataTask,error)
-                print(error)
+        
+        switch responseSerializer {
+        case .json:
+            dataTask.dataRequest.responseJSON { response in
+                switch response.result {
+                case let .success(json):
+                    successWrapper?(dataTask,json)
+                case let .failure(error):
+                    failureWrapper?(dataTask,error)
+                    print(error)
+                }
+            }
+        case .data:
+            dataTask.dataRequest.response { response in
+                switch response.result {
+                case let .success(data):
+                    successWrapper?(dataTask,data)
+                case let .failure(error):
+                    failureWrapper?(dataTask,error)
+                    print(error)
+                }
             }
         }
         return dataTask
