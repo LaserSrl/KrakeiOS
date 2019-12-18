@@ -19,9 +19,9 @@
 		5D873A7E2358500F002EBE3E /* URLConfigurationCookies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D873A7D2358500F002EBE3E /* URLConfigurationCookies.swift */; };
 		CD312224225C7DFA00DC06C8 /* KNoElementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD312223225C7DFA00DC06C8 /* KNoElementCell.swift */; };
 		CD4C001B2292E286009727A7 /* KVehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C001A2292E286009727A7 /* KVehicleAnnotation.swift */; };
+		CDBABBA023AA1316009D4CB1 /* AppleSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBABB9F23AA1316009D4CB1 /* AppleSignIn.swift */; };
 		CDBB7790219C7EDC00122E7E /* InstagramKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB762A219C7EDA00122E7E /* InstagramKit.xcassets */; };
 		CDBB77C9219C7EDC00122E7E /* OCOTP.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB766B219C7EDA00122E7E /* OCOTP.xcassets */; };
-		CDBB77D4219C7EDC00122E7E /* OCFacebook.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB7677219C7EDA00122E7E /* OCFacebook.xcassets */; };
 		CDBB77ED219C7EDC00122E7E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB7694219C7EDA00122E7E /* Images.xcassets */; };
 		CDBB77F6219C7EDC00122E7E /* PuzzleGame.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB76A0219C7EDA00122E7E /* PuzzleGame.xcassets */; };
 		CDBB77FC219C7EDC00122E7E /* OCLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CDBB76A7219C7EDA00122E7E /* OCLocalizable.strings */; };
@@ -52,6 +52,7 @@
 		BB0E5770986D47B311D3C917 /* Pods-KrakeProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KrakeProj.release.xcconfig"; path = "Pods/Target Support Files/Pods-KrakeProj/Pods-KrakeProj.release.xcconfig"; sourceTree = "<group>"; };
 		CD312223225C7DFA00DC06C8 /* KNoElementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNoElementCell.swift; sourceTree = "<group>"; };
 		CD4C001A2292E286009727A7 /* KVehicleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVehicleAnnotation.swift; sourceTree = "<group>"; };
+		CDBABB9F23AA1316009D4CB1 /* AppleSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSignIn.swift; sourceTree = "<group>"; };
 		CDBB760F219C7E8800122E7E /* Krake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Krake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBB7626219C7EDA00122E7E /* OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
 		CDBB7627219C7EDA00122E7E /* OAuth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OAuth.storyboard; sourceTree = "<group>"; };
@@ -124,7 +125,6 @@
 		CDBB7673219C7EDA00122E7E /* KDurationFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDurationFormatter.swift; sourceTree = "<group>"; };
 		CDBB7674219C7EDA00122E7E /* KTripPlannerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTripPlannerProtocol.swift; sourceTree = "<group>"; };
 		CDBB7675219C7EDA00122E7E /* KOTPTripPlanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOTPTripPlanner.swift; sourceTree = "<group>"; };
-		CDBB7677219C7EDA00122E7E /* OCFacebook.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = OCFacebook.xcassets; sourceTree = "<group>"; };
 		CDBB7678219C7EDA00122E7E /* FacebookKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookKit.swift; sourceTree = "<group>"; };
 		CDBB767A219C7EDA00122E7E /* VimeoRequestSerializer+OldUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VimeoRequestSerializer+OldUpload.swift"; sourceTree = "<group>"; };
 		CDBB767B219C7EDA00122E7E /* KrakeVimeoRequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KrakeVimeoRequestSerializer.swift; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 		CDBB773D219C7EDB00122E7E /* OMPrivacyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMPrivacyCollectionViewCell.h; sourceTree = "<group>"; };
 		CDBB773E219C7EDB00122E7E /* OrchardMapper.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = OrchardMapper.xcassets; sourceTree = "<group>"; };
 		CDBB773F219C7EDB00122E7E /* KResolutionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KResolutionAction.swift; sourceTree = "<group>"; };
-		CDBB7740219C7EDB00122E7E /* KParamsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KParamsKey.swift; sourceTree = "<group>"; };
+		CDBB7740219C7EDB00122E7E /* KParametersKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KParametersKeys.swift; sourceTree = "<group>"; };
 		CDBB7741219C7EDB00122E7E /* KErrorCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KErrorCode.swift; sourceTree = "<group>"; };
 		CDBB7743219C7EDB00122E7E /* NSString+OrchardMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+OrchardMapping.h"; sourceTree = "<group>"; };
 		CDBB7744219C7EDB00122E7E /* Date+OM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+OM.swift"; sourceTree = "<group>"; };
@@ -309,7 +309,7 @@
 		CDBB7750219C7EDB00122E7E /* KLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KLogin.storyboard; sourceTree = "<group>"; };
 		CDBB7751219C7EDB00122E7E /* KInfoPlist+Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+Login.swift"; sourceTree = "<group>"; };
 		CDBB7752219C7EDB00122E7E /* KLoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KLoginManager.swift; sourceTree = "<group>"; };
-		CDBB7753219C7EDB00122E7E /* LoginButtonProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButtonProvider.swift; sourceTree = "<group>"; };
+		CDBB7753219C7EDB00122E7E /* LoginProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginProviderProtocol.swift; sourceTree = "<group>"; };
 		CDBB7754219C7EDB00122E7E /* OCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLoginViewController.h; sourceTree = "<group>"; };
 		CDBB7755219C7EDB00122E7E /* OMSystemInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMSystemInfo.m; sourceTree = "<group>"; };
 		CDBB7756219C7EDB00122E7E /* KCommonDisplayAlias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCommonDisplayAlias.swift; sourceTree = "<group>"; };
@@ -400,6 +400,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CDBABB9E23AA12FB009D4CB1 /* AppleSignIn */ = {
+			isa = PBXGroup;
+			children = (
+				CDBABB9F23AA1316009D4CB1 /* AppleSignIn.swift */,
+			);
+			path = AppleSignIn;
+			sourceTree = "<group>";
+		};
 		CDBB7606219C7E8800122E7E = {
 			isa = PBXGroup;
 			children = (
@@ -422,6 +430,7 @@
 		CDBB7611219C7E8800122E7E /* Krake */ = {
 			isa = PBXGroup;
 			children = (
+				CDBABB9E23AA12FB009D4CB1 /* AppleSignIn */,
 				CDBB7721219C7EDB00122E7E /* Analytics */,
 				CDBB765A219C7EDA00122E7E /* AppUpdater */,
 				CDBB7695219C7EDA00122E7E /* Beacons */,
@@ -604,7 +613,6 @@
 		CDBB7676219C7EDA00122E7E /* FacebookKit */ = {
 			isa = PBXGroup;
 			children = (
-				CDBB7677219C7EDA00122E7E /* OCFacebook.xcassets */,
 				CDBB7678219C7EDA00122E7E /* FacebookKit.swift */,
 			);
 			path = FacebookKit;
@@ -972,7 +980,7 @@
 				CDBB7738219C7EDB00122E7E /* PrivacyManager */,
 				CDBB773E219C7EDB00122E7E /* OrchardMapper.xcassets */,
 				CDBB773F219C7EDB00122E7E /* KResolutionAction.swift */,
-				CDBB7740219C7EDB00122E7E /* KParamsKey.swift */,
+				CDBB7740219C7EDB00122E7E /* KParametersKeys.swift */,
 				CDBB7741219C7EDB00122E7E /* KErrorCode.swift */,
 				CDBB7742219C7EDB00122E7E /* Extensions */,
 				CDBB774E219C7EDB00122E7E /* LoginManager */,
@@ -1040,7 +1048,7 @@
 				CDBB7750219C7EDB00122E7E /* KLogin.storyboard */,
 				CDBB7751219C7EDB00122E7E /* KInfoPlist+Login.swift */,
 				CDBB7752219C7EDB00122E7E /* KLoginManager.swift */,
-				CDBB7753219C7EDB00122E7E /* LoginButtonProvider.swift */,
+				CDBB7753219C7EDB00122E7E /* LoginProviderProtocol.swift */,
 				CDBB7754219C7EDB00122E7E /* OCLoginViewController.h */,
 			);
 			path = LoginManager;
@@ -1184,7 +1192,6 @@
 				CDBB77FF219C7EDC00122E7E /* LinkedInKit.xcassets in Resources */,
 				CDBB77C9219C7EDC00122E7E /* OCOTP.xcassets in Resources */,
 				CDBB77ED219C7EDC00122E7E /* Images.xcassets in Resources */,
-				CDBB77D4219C7EDC00122E7E /* OCFacebook.xcassets in Resources */,
 				CDBB78B7219C7EFE00122E7E /* Krake.podspec in Resources */,
 				CDBB77F6219C7EDC00122E7E /* PuzzleGame.xcassets in Resources */,
 			);
@@ -1405,6 +1412,7 @@
 				CDDA994A22905720008B205B /* KBusTracker.swift in Sources */,
 				5D5FE48B229840660080E4E3 /* KOtpStopTimesDateHeader.swift in Sources */,
 				5D02045A239AB4D5009C9C88 /* KContentItemAutocompleteTableViewController.swift in Sources */,
+				CDBABBA023AA1316009D4CB1 /* AppleSignIn.swift in Sources */,
 				5D3169DF235713D1000E1297 /* RequestHeaderAdapter.swift in Sources */,
 				5D6D8BE122C34F7C00D72464 /* KTabAndCollectionViewItems.swift in Sources */,
 				5D5E17C62297ED17000851CC /* Number+OtpDate.swift in Sources */,

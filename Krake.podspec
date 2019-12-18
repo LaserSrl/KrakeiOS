@@ -25,7 +25,12 @@ Pod::Spec.new do |s|
     s.pod_target_xcconfig = { 'OTHER_SWIFT_FLAGS[config=Debug]' => '-DDEBUG' }
     
     s.default_subspecs = ['Core']
-
+    
+    s.subspec 'AppleSignIn' do |os|
+        os.source_files  = "AppleSignIn", "Krake/AppleSignIn/*.swift"
+        os.dependency "Krake/Core"
+    end
+    
     s.subspec 'AppUpdater' do |os|
         os.source_files  = "Krake/AppUpdater/*.{h,m,swift}"
         os.dependency "Krake/Commons"
