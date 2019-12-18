@@ -22,6 +22,9 @@ public protocol KItemsCollectionViewDelegate: NSObjectProtocol
                                    willChangeEmptyViewVisibility visible: Bool)
 
     func itemsCollectionController(_ itemsCollectionController: KItemsCollectionViewController,
+                                   willSet elements: NSOrderedSet?) -> NSOrderedSet?
+
+    func itemsCollectionController(_ itemsCollectionController: KItemsCollectionViewController,
                                    didLoadItems items: NSOrderedSet,
                                    loadingCompleted completed: Bool)
 
@@ -94,6 +97,11 @@ public extension KItemsCollectionViewDelegate
                                    loadingCompleted completed: Bool)
     {
 
+    }
+
+    func itemsCollectionController(_ itemsCollectionController: KItemsCollectionViewController,
+                                   willSet elements: NSOrderedSet?) -> NSOrderedSet? {
+        return elements
     }
     
     func numberOfSection(in itemsController: KItemsCollectionViewController) -> Int
