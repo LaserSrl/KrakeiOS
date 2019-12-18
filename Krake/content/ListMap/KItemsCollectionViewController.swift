@@ -79,7 +79,7 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
     /**
     * elementi dei dati caricati senza passare tramite Orchard
     */
-    public var loadedElements: NSOrderedSet? {
+    public private(set) var loadedElements: NSOrderedSet? {
         didSet {
             // Applying the sort function, if needed.
             if elementsSortOrder != nil {
@@ -512,7 +512,12 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
 
     open func setLoadedItems(_ items: NSOrderedSet, completed: Bool)
     {
-        loadedElements = items
+        if collectionItemsDelegate != nil {
+            loadedElements = collectionItemsDelegate?.itemsCollectionController(self, willSet: items)
+        }
+        else {
+            loadedElements = items
+        }
     }
 
     func reloadElementsOnCollectionView()
