@@ -40,6 +40,10 @@ open class InstagramKit: NSObject, KLoginProviderProtocol, OAuthDelegate{
         return button
     }
     
+    public func loginStackPosition() -> KLoginStackPosition {
+        return .horizontal
+    }
+    
     @objc func signIn(_ sender: UIBarButtonItem?){
         KLoginManager.shared.showProgressHUD()
         if let vc = OAuth.oAuthViewController(config, delegate: self, title: "Instagram"),

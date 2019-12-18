@@ -37,6 +37,10 @@ public class GoogleKit: NSObject, KLoginProviderProtocol, GIDSignInDelegate, GID
         return button
     }
     
+    public func loginStackPosition() -> KLoginStackPosition {
+        return .horizontal
+    }
+    
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let user = user, let code = user.serverAuthCode{
             makeCompletion(true, params: ["token" : code], error: error as NSError?)

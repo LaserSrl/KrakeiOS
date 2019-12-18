@@ -31,6 +31,10 @@ public class TwitterKit: NSObject, KLoginProviderProtocol{
         return button
     }
     
+    public func loginStackPosition() -> KLoginStackPosition {
+        return .horizontal
+    }
+    
     @objc public func signIn()
     {
         KLoginManager.shared.showProgressHUD()

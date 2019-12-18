@@ -41,6 +41,10 @@ open class LinkedInKit: NSObject, KLoginProviderProtocol, OAuthDelegate{
         return button
     }
     
+    public func loginStackPosition() -> KLoginStackPosition {
+        return .horizontal
+    }
+    
     @objc func signIn(){
         KLoginManager.shared.showProgressHUD()
         if let vc = OAuth.oAuthViewController(config, delegate: self, title: "LinkedIn"),

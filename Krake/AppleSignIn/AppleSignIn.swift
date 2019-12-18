@@ -65,6 +65,10 @@ extension AppleIDSignIn: KLoginProviderProtocol {
         return authorizationButton
     }
     
+    public func loginStackPosition() -> KLoginStackPosition {
+        return .vertical
+    }
+    
 }
 
 @available(iOS 13.0, *)

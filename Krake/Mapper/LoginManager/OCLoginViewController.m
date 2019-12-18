@@ -167,15 +167,8 @@
     items = [[KLoginManager shared] socials];
     for (Class<KLoginProviderProtocol> item in items) {
         UIStackView *rightStackView;
-        if (@available(iOS 13.0, *)) {
-            if (item == [AppleIDSignIn class])
-            {
-                rightStackView = self.loginMainStackView;
-            }
-            else
-            {
-                rightStackView = self.socialToolbar;
-            }
+        if ([[item shared] loginStackPosition] == KLoginStackPositionVertical) {
+            rightStackView = self.loginMainStackView;
         } else {
             rightStackView = self.socialToolbar;
         }

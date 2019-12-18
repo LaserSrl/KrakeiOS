@@ -63,6 +63,10 @@ open class FacebookKit: NSObject, KLoginProviderProtocol{
         return button
     }
     
+    public func loginStackPosition() -> KLoginStackPosition {
+        return .horizontal
+    }
+    
     static public func application(application: UIApplication!, didFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey : Any]?){
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: didFinishLaunchingWithOptions)
     }
