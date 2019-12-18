@@ -52,7 +52,7 @@ class AuthDelegate: NSObject, ASAuthorizationControllerDelegate, ASAuthorization
             
             
             
-            if let data = appleIDCredential.authorizationCode,
+            if let data = appleIDCredential.identityToken,
                 let userIdentityToken = String(data: data, encoding: .utf8)
             {
                 makeCompletion(true, params: ["token" : userIdentityToken], error: nil)

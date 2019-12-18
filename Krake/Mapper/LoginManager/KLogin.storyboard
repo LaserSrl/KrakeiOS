@@ -19,8 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U8I-am-pXw">
-                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U8I-am-pXw">
+                                <rect key="frame" x="20" y="20" width="335" height="627.00000000000011"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Sqd-3W-AeN">
                                 <rect key="frame" x="37.5" y="76" width="300" height="515"/>
@@ -28,7 +28,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="515"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tUx-VL-WeU">
+                                        <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tUx-VL-WeU">
                                             <rect key="frame" x="0.0" y="0.0" width="260" height="475"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="2T4-8u-nnJ">
@@ -138,10 +138,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KcF-pj-DDi">
-                                                    <rect key="frame" x="0.0" y="0.0" width="260" height="394"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="260" height="378"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0l2-R3-lLL">
-                                                            <rect key="frame" x="8" y="16" width="244" height="362"/>
+                                                            <rect key="frame" x="8" y="16" width="244" height="346"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zsD-VT-gbf">
                                                                     <rect key="frame" x="67.5" y="0.0" width="109.5" height="0.0"/>
@@ -247,7 +247,7 @@
                                                                     </connections>
                                                                 </tableView>
                                                                 <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EJ-f5-x4m">
-                                                                    <rect key="frame" x="0.0" y="302" width="244" height="60"/>
+                                                                    <rect key="frame" x="0.0" y="302" width="244" height="44"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="44" id="dP7-p3-qfz"/>
                                                                     </constraints>
@@ -277,10 +277,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jCW-22-SZf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="260" height="160"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="260" height="144"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hFY-or-tO4">
-                                                            <rect key="frame" x="8" y="16" width="244" height="128"/>
+                                                            <rect key="frame" x="8" y="16" width="244" height="112"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password dimenticata?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="05Z-e4-v1z">
                                                                     <rect key="frame" x="17" y="0.0" width="210" height="0.0"/>
@@ -304,7 +304,7 @@
                                                                     </connections>
                                                                 </textField>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6y-bz-tsS">
-                                                                    <rect key="frame" x="0.0" y="68" width="244" height="60"/>
+                                                                    <rect key="frame" x="0.0" y="68" width="244" height="44"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="44" id="6wJ-Yz-rey"/>
                                                                     </constraints>
@@ -372,12 +372,12 @@
                         <color key="backgroundColor" red="0.85098039219999999" green="0.0" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="U8I-am-pXw" secondAttribute="bottom" constant="20" symbolic="YES" id="2E3-ez-WeY"/>
+                            <constraint firstAttribute="bottom" secondItem="U8I-am-pXw" secondAttribute="bottom" id="2E3-ez-WeY"/>
                             <constraint firstItem="PNx-Vq-Vi7" firstAttribute="top" secondItem="Rld-Tw-NwP" secondAttribute="top" constant="26" id="3Bj-rs-CcR"/>
-                            <constraint firstItem="U8I-am-pXw" firstAttribute="top" secondItem="Rld-Tw-NwP" secondAttribute="top" constant="20" symbolic="YES" id="5Af-hT-UyB"/>
+                            <constraint firstItem="U8I-am-pXw" firstAttribute="top" secondItem="Rld-Tw-NwP" secondAttribute="top" id="5Af-hT-UyB"/>
                             <constraint firstItem="Sqd-3W-AeN" firstAttribute="centerX" secondItem="Rld-Tw-NwP" secondAttribute="centerX" id="csA-wF-a4W"/>
-                            <constraint firstItem="U8I-am-pXw" firstAttribute="leading" secondItem="Rld-Tw-NwP" secondAttribute="leading" constant="20" symbolic="YES" id="de6-vb-TOq"/>
-                            <constraint firstAttribute="trailing" secondItem="U8I-am-pXw" secondAttribute="trailing" constant="20" symbolic="YES" id="eZU-wm-oZS"/>
+                            <constraint firstItem="U8I-am-pXw" firstAttribute="leading" secondItem="Rld-Tw-NwP" secondAttribute="leading" id="de6-vb-TOq"/>
+                            <constraint firstAttribute="trailing" secondItem="U8I-am-pXw" secondAttribute="trailing" id="eZU-wm-oZS"/>
                             <constraint firstAttribute="trailing" secondItem="PNx-Vq-Vi7" secondAttribute="trailing" constant="8" id="gXW-Ta-wOu"/>
                             <constraint firstItem="6Wz-uF-CVR" firstAttribute="leading" secondItem="Rld-Tw-NwP" secondAttribute="leading" constant="8" id="iYN-Gj-jMR"/>
                             <constraint firstItem="Sqd-3W-AeN" firstAttribute="centerY" secondItem="Rld-Tw-NwP" secondAttribute="centerY" id="jSI-t6-PPV"/>

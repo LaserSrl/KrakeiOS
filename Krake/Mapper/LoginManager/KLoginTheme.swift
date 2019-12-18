@@ -97,13 +97,11 @@ extension KLoginTheme {
     }
     
     open func applyTheme(toImageView imageView: UIImageView) {
-        
+        imageView.image = UIImage(named: "background_login")
     }
-    
 }
 
-@objc extension KTheme
-{
+@objc extension KTheme {
     public static var login: KLoginTheme = KLoginDefaultTheme()
 }
 
