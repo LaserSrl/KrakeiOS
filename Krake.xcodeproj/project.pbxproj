@@ -20,6 +20,7 @@
 		CD312224225C7DFA00DC06C8 /* KNoElementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD312223225C7DFA00DC06C8 /* KNoElementCell.swift */; };
 		CD4C001B2292E286009727A7 /* KVehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C001A2292E286009727A7 /* KVehicleAnnotation.swift */; };
 		CDBABBA023AA1316009D4CB1 /* AppleSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBABB9F23AA1316009D4CB1 /* AppleSignIn.swift */; };
+		CDBABBA223AA3329009D4CB1 /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBABBA123AA3329009D4CB1 /* KeychainItem.swift */; };
 		CDBB7790219C7EDC00122E7E /* InstagramKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB762A219C7EDA00122E7E /* InstagramKit.xcassets */; };
 		CDBB77C9219C7EDC00122E7E /* OCOTP.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB766B219C7EDA00122E7E /* OCOTP.xcassets */; };
 		CDBB77ED219C7EDC00122E7E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB7694219C7EDA00122E7E /* Images.xcassets */; };
@@ -53,6 +54,7 @@
 		CD312223225C7DFA00DC06C8 /* KNoElementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNoElementCell.swift; sourceTree = "<group>"; };
 		CD4C001A2292E286009727A7 /* KVehicleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVehicleAnnotation.swift; sourceTree = "<group>"; };
 		CDBABB9F23AA1316009D4CB1 /* AppleSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSignIn.swift; sourceTree = "<group>"; };
+		CDBABBA123AA3329009D4CB1 /* KeychainItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
 		CDBB760F219C7E8800122E7E /* Krake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Krake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBB7626219C7EDA00122E7E /* OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
 		CDBB7627219C7EDA00122E7E /* OAuth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OAuth.storyboard; sourceTree = "<group>"; };
@@ -643,6 +645,7 @@
 		CDBB768A219C7EDA00122E7E /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				CDBABBA123AA3329009D4CB1 /* KeychainItem.swift */,
 				CDBB768B219C7EDA00122E7E /* KConstants.swift */,
 				CDBB768C219C7EDA00122E7E /* String+KrakeCommons.swift */,
 				CDBB768D219C7EDA00122E7E /* KInfoPlist.swift */,
@@ -1411,6 +1414,7 @@
 				5D7C0C6E2350BA14006760A9 /* OGLCoreDataMapper+Swift.swift in Sources */,
 				CDDA994A22905720008B205B /* KBusTracker.swift in Sources */,
 				5D5FE48B229840660080E4E3 /* KOtpStopTimesDateHeader.swift in Sources */,
+				CDBABBA223AA3329009D4CB1 /* KeychainItem.swift in Sources */,
 				5D02045A239AB4D5009C9C88 /* KContentItemAutocompleteTableViewController.swift in Sources */,
 				CDBABBA023AA1316009D4CB1 /* AppleSignIn.swift in Sources */,
 				5D3169DF235713D1000E1297 /* RequestHeaderAdapter.swift in Sources */,
