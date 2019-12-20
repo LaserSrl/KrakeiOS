@@ -19,6 +19,10 @@ public protocol KItemsCollectionViewDelegate: NSObjectProtocol
     func viewDidDisappear(_ viewController: KItemsCollectionViewController)
 
     func itemsCollectionController(_ itemsCollectionController: KItemsCollectionViewController,
+                                   viewWillTransitionTo size: CGSize,
+                                   with coordinator: UIViewControllerTransitionCoordinator)
+
+    func itemsCollectionController(_ itemsCollectionController: KItemsCollectionViewController,
                                    willChangeEmptyViewVisibility visible: Bool)
 
     func itemsCollectionController(_ itemsCollectionController: KItemsCollectionViewController,
@@ -87,17 +91,15 @@ public extension KItemsCollectionViewDelegate
     func viewDidDisappear(_ viewController: KItemsCollectionViewController) { }
 
     func itemsCollectionController(_ itemsCollectionController: KItemsCollectionViewController,
-                                   willChangeEmptyViewVisibility visible: Bool)
-    {
+                                   viewWillTransitionTo size: CGSize,
+                                   with coordinator: UIViewControllerTransitionCoordinator) { }
 
-    }
+    func itemsCollectionController(_ itemsCollectionController: KItemsCollectionViewController,
+                                   willChangeEmptyViewVisibility visible: Bool) { }
     
     func itemsCollectionController(_ itemsCollectionController: KItemsCollectionViewController,
                                    didLoadItems items: NSOrderedSet,
-                                   loadingCompleted completed: Bool)
-    {
-
-    }
+                                   loadingCompleted completed: Bool) { }
 
     func itemsCollectionController(_ itemsCollectionController: KItemsCollectionViewController,
                                    willSet elements: NSOrderedSet?) -> NSOrderedSet? {

@@ -68,6 +68,7 @@
 "confirm_password" = "Confirme le mot de passe";
 "phone_number" = "Portable";
 "lost_pwd" = "Mot de passe oublié?";
+"VerificationMailMessage" = "Votre adresse de courriel a été vérifiée, vous pouvez vous connecter ";
 
 //RULES
 "ACCEPT"="Accepter";
