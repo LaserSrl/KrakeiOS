@@ -250,6 +250,9 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
     {
         super.viewWillTransition(to: size, with: coordinator)
+        collectionItemsDelegate?.itemsCollectionController(self,
+                                                           viewWillTransitionTo: size,
+                                                           with: coordinator)
         collectionView?.reloadData()
         collectionView?.collectionViewLayout.invalidateLayout()
     }

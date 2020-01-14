@@ -72,7 +72,7 @@
 "confirm_password" = "Confirm Password";
 "phone_number" = "Mobile phone number";
 "lost_pwd" = "Forgotten password?";
-"VerificationMailMessage" = "Your email address has been verified";
+"VerificationMailMessage" = "Your email address has been verified, you can login";
 
 //RULES
 "ACCEPT"="Agree";
