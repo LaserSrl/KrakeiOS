@@ -13,8 +13,8 @@ Pod::Spec.new do |s|
 
     s.authors = { 'Patrick Negretto' => 'patrick.negretto@laser-group.com', 'Joël Gerbore' => 'joel.gerbore@laser-group.com' }
 
-    s.platform = :ios, "10.0"
-    s.ios.deployment_target = "10.0"
+    s.platform = :ios, "11.0"
+    s.ios.deployment_target = "11.0"
     s.swift_versions = ['4.0', '4.2', '5.0']
 
     s.requires_arc = true
@@ -95,7 +95,6 @@ Pod::Spec.new do |s|
     
     s.subspec 'FacebookKit' do |os|
         os.source_files  = "FacebookKit", "Krake/FacebookKit/*.{h,m,swift}"
-        os.resource  = 'Krake/FacebookKit/*.{xcassets}'
         os.dependency "Krake/Core"
         os.dependency "FBSDKLoginKit", '~> 5.8.0'
     end
@@ -190,9 +189,9 @@ Pod::Spec.new do |s|
         os.dependency "TwitterKit", '3.4.2'
     end
     
-    s.subspec 'Vimeo' do |os|
-        os.source_files = "Krake/Vimeo/*.{swift}"
-        os.dependency "Krake/Core"
-    end
+    #s.subspec 'Vimeo' do |os|
+        #os.source_files = "Krake/Vimeo/*.{swift}"
+        #os.dependency "Krake/Core"
+    #end
 
 end
