@@ -94,14 +94,18 @@ import SwiftMessages
                                    position: KMessageManager.Position = .top,
                                    duration: KMessageManager.Duration = .automatic,
                                    windowLevel: KWindowLevel = KWindowLevelStatusBar,
-                                   fromViewController: UIViewController? = UIApplication.shared.delegate?.window??.rootViewController?.presentedViewController ?? UIApplication.shared.delegate?.window??.rootViewController,
+                                   fromViewController: UIViewController? = nil,
                                    viewId: String? = nil,
                                    buttonTitle: String? = nil,
                                    buttonCompletion: (()->Void)? = nil){
         
         var config = SwiftMessages.Config()
         config.presentationStyle = convertPositionBlock(position)
-        config.presentationContext = SwiftMessages.PresentationContext.window(windowLevel: windowLevel)
+        if let fromViewController = fromViewController {
+            config.presentationContext = SwiftMessages.PresentationContext.viewController(fromViewController)
+        }else{
+            config.presentationContext = SwiftMessages.PresentationContext.window(windowLevel: windowLevel)
+        }
         config.duration = convertDurationBlock(duration)
         
         SwiftMessages.show(config: config) {
