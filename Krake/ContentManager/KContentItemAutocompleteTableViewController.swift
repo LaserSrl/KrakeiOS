@@ -112,7 +112,12 @@ open class KAutocompleteTableViewController: UITableViewController, UISearchBarD
                 })
             }
             else {
+                if(!searchText.isEmpty) {
                 items = allItems?.filter({$0.titlePartTitle?.contains(searchText) ?? false})
+                }
+                else {
+                    items = allItems
+                }
             }
         }
         else {
