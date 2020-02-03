@@ -96,7 +96,8 @@ Pod::Spec.new do |s|
     s.subspec 'FacebookKit' do |os|
         os.source_files  = "FacebookKit", "Krake/FacebookKit/*.{h,m,swift}"
         os.dependency "Krake/Core"
-        os.dependency "FBSDKLoginKit", '~> 5.8.0'
+        os.dependency "FBSDKCoreKit", '~> 5.15.0'
+        os.dependency "FBSDKLoginKit", '~> 5.15.0'
     end
     
     s.subspec 'GameQuiz' do |os|
