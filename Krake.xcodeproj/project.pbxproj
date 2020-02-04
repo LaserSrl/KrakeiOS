@@ -118,11 +118,11 @@
 		CDBB766A219C7EDA00122E7E /* KOTPStopsSearchInitializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOTPStopsSearchInitializer.swift; sourceTree = "<group>"; };
 		CDBB766B219C7EDA00122E7E /* OCOTP.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = OCOTP.xcassets; sourceTree = "<group>"; };
 		CDBB766C219C7EDA00122E7E /* KTripPlanTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTripPlanTheme.swift; sourceTree = "<group>"; };
-		CDBB766D219C7EDA00122E7E /* KOpenTripPlannerLinePathLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOpenTripPlannerLinePathLoader.swift; sourceTree = "<group>"; };
+		CDBB766D219C7EDA00122E7E /* KOpenTripPlannerLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOpenTripPlannerLoader.swift; sourceTree = "<group>"; };
 		CDBB766E219C7EDA00122E7E /* KInfoPlist+OTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+OTP.swift"; sourceTree = "<group>"; };
 		CDBB766F219C7EDA00122E7E /* KTripPlanResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTripPlanResult.swift; sourceTree = "<group>"; };
 		CDBB7670219C7EDA00122E7E /* KOTPStopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOTPStopsViewController.swift; sourceTree = "<group>"; };
-		CDBB7671219C7EDA00122E7E /* KLinePathLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KLinePathLoader.swift; sourceTree = "<group>"; };
+		CDBB7671219C7EDA00122E7E /* KOTPLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOTPLoader.swift; sourceTree = "<group>"; };
 		CDBB7672219C7EDA00122E7E /* KTripPlanRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTripPlanRequest.swift; sourceTree = "<group>"; };
 		CDBB7673219C7EDA00122E7E /* KDurationFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDurationFormatter.swift; sourceTree = "<group>"; };
 		CDBB7674219C7EDA00122E7E /* KTripPlannerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTripPlannerProtocol.swift; sourceTree = "<group>"; };
@@ -580,8 +580,8 @@
 				CDDA994922905720008B205B /* KBusTracker.swift */,
 				CDBB7673219C7EDA00122E7E /* KDurationFormatter.swift */,
 				CDBB766E219C7EDA00122E7E /* KInfoPlist+OTP.swift */,
-				CDBB7671219C7EDA00122E7E /* KLinePathLoader.swift */,
-				CDBB766D219C7EDA00122E7E /* KOpenTripPlannerLinePathLoader.swift */,
+				CDBB7671219C7EDA00122E7E /* KOTPLoader.swift */,
+				CDBB766D219C7EDA00122E7E /* KOpenTripPlannerLoader.swift */,
 				CDBB7663219C7EDA00122E7E /* KOTPBasePublicTransportListMapViewController.swift */,
 				CDC4ADB022F338D30087D74A /* KOTPLocationManager.swift */,
 				CDBB7662219C7EDA00122E7E /* KOTPPreferences.swift */,
