@@ -162,13 +162,13 @@ open class KUserReactions: UIView, KDetailViewProtocol {
      */
     final public func loadData(_ object: ContentItemWithUserReactions){
         self.krakeContentIdentifier = object.identifier
-        let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: true)
+        let manager = KNetworkManager.defaultManager(true, checkHeaderResponse: true)
         manager.responseSerializer = .json
         manager.requestSerializer = .json
 
         _ = manager.request(KAPIConstants.userReactions,
                             method: .get,
-                            query: [URLQueryItem(name: "pageId", value: String(format: "%d",krakeContentIdentifier!)), URLQueryItem(name: KParametersKeys.language, value: KConstants.currentLanguage)],
+                            query: [URLQueryItem(name: "pageId", value: String(format: "%d",krakeContentIdentifier!.intValue)), URLQueryItem(name: KParametersKeys.language, value: KConstants.currentLanguage)],
                             successCallback: { (task: KDataTask, object: Any?) in
             if let response = task.response,
                 let headers = response.allHeaderFields as? [String : String]{
@@ -215,13 +215,13 @@ open class KUserReactions: UIView, KDetailViewProtocol {
         manager.responseSerializer = .json
         manager.requestSerializer = .json
 
-        let params =  [URLQueryItem(name: KParametersKeys.language, value: KConstants.currentLanguage),
-                       URLQueryItem(name: "pageId", value: String(format: "%d",krakeContentIdentifier)),
-                       URLQueryItem(name: "TypeId", value: String(format: "%d",reactionIdentifier))]
+        let params =  [KParametersKeys.language : KConstants.currentLanguage,
+                       "pageId" : String(format: "%d",krakeContentIdentifier!.intValue),
+                       "TypeId" : String(format: "%d",reactionIdentifier.intValue)]
 
         _ = manager.request(KAPIConstants.userReactions,
                             method: .post,
-                            query: params,
+                            parameters: params,
                             successCallback: { (task: KDataTask, object: Any?) in
                                 if let response = task.response,
                                     let headers = response.allHeaderFields as? [String : String]{
