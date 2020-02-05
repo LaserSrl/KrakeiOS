@@ -84,6 +84,7 @@ import SwiftMessages
 @objc public enum ButtonStyle: Int{
     case `default`
     case policy
+    case social
     case fabButton
     case calendar
     case map

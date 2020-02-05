@@ -110,6 +110,7 @@ open class KSocialView: UIStackView, KDetailViewProtocol {
                 }
                 button.tag = index
                 button.titleLabel?.lineBreakMode = .byTruncatingTail
+                KTheme.current.applyTheme(toButton: button, style: .social)
                 button.alignImageAndTitleVertically()
                 addArrangedSubview(button)
 
