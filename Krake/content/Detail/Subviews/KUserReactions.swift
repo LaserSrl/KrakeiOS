@@ -168,7 +168,7 @@ open class KUserReactions: UIView, KDetailViewProtocol {
 
         _ = manager.request(KAPIConstants.userReactions,
                             method: .get,
-                            parameters: ["pageId" : String(format: "%d",krakeContentIdentifier!), KParametersKeys.language : KConstants.currentLanguage],
+                            query: [URLQueryItem(name: "pageId", value: String(format: "%d",krakeContentIdentifier!)), URLQueryItem(name: KParametersKeys.language, value: KConstants.currentLanguage)],
                             successCallback: { (task: KDataTask, object: Any?) in
             if let response = task.response,
                 let headers = response.allHeaderFields as? [String : String]{
@@ -215,13 +215,13 @@ open class KUserReactions: UIView, KDetailViewProtocol {
         manager.responseSerializer = .json
         manager.requestSerializer = .json
 
-        let params =  [KParametersKeys.language : KConstants.currentLanguage,
-                       "pageId" : String(format: "%d",krakeContentIdentifier),
-                       "TypeId" : String(format: "%d",reactionIdentifier)]
+        let params =  [URLQueryItem(name: KParametersKeys.language, value: KConstants.currentLanguage),
+                       URLQueryItem(name: "pageId", value: String(format: "%d",krakeContentIdentifier)),
+                       URLQueryItem(name: "TypeId", value: String(format: "%d",reactionIdentifier))]
 
         _ = manager.request(KAPIConstants.userReactions,
                             method: .post,
-                            parameters: params,
+                            query: params,
                             successCallback: { (task: KDataTask, object: Any?) in
                                 if let response = task.response,
                                     let headers = response.allHeaderFields as? [String : String]{
