@@ -8,6 +8,7 @@
 
 import Foundation
 import UserNotifications
+import MBProgressHUD
 
 extension KAPIConstants
 {
@@ -134,10 +135,20 @@ open class KPushManager: NSObject{
             let pathCache = OGLCoreDataMapper.sharedInstance().displayPathCache(from: cacheID!)
             showDetailWithAlias(alias, pathCache: pathCache, userInfoNotification: userInfoNotification)
         }else if alias != nil{
+            let hud = MBProgressHUD()
+            hud.label.text = "on_loading".localizedString()
+            hud.removeFromSuperViewOnHide = true
+            if let view = UIApplication.shared.delegate?.window??.rootViewController?.view {
+                view.addSubview(hud)
+                hud.show(animated: true)
+            }
             OGLCoreDataMapper.sharedInstance().loadData(withDisplayAlias: alias!, extras: nil, completionBlock: { (parsedObject, error, completed) in
                 if parsedObject != nil && completed{
                     let pathCache = OGLCoreDataMapper.sharedInstance().displayPathCache(from: parsedObject!)
                     self.showDetailWithAlias(pathCache.displayPath, pathCache: pathCache, userInfoNotification: userInfoNotification)
+                }
+                if completed {
+                    hud.hide(animated: true)
                 }
             })
         }
