@@ -23,8 +23,13 @@ public struct KTabManagerOptions
     public var tabs: [TabBarItem]? = nil
     public var tabTheme: KSegmentioTheme! = KTheme.segmentio
     public var showAllInFirstTab: Bool = true
+    public var allTabTermId: String? = nil
     
-    public init(tabsEndPoint: String? = nil, tabs: [TabBarItem]? = nil, tabTheme: KSegmentioTheme? = nil, showAllInFirstTab: Bool = true)
+    public init(tabsEndPoint: String? = nil,
+                tabs: [TabBarItem]? = nil,
+                tabTheme: KSegmentioTheme? = nil,
+                showAllInFirstTab: Bool = true,
+                allTabTermId: String? = nil)
     {
         self.tabsEndPoint = tabsEndPoint
         self.tabs = tabs
@@ -33,6 +38,7 @@ public struct KTabManagerOptions
             self.tabTheme = tabTheme
         }
         self.showAllInFirstTab = showAllInFirstTab
+        self.allTabTermId = allTabTermId
     }
 }
 

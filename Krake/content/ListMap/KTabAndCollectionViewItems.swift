@@ -53,6 +53,10 @@ public class KTabAndCollectionViewItems: UIViewController, KTabManagerDelegate {
         {
             itemsViewController.extras[KParametersKeys.terms] = termPart.identifier!.stringValue
         }
+        else if let allTermId = manager.tabManagerOptions.allTabTermId
+        {
+            itemsViewController.extras[KParametersKeys.terms] = allTermId
+        }
         else
         {
             itemsViewController.extras.removeValue(forKey: KParametersKeys.terms)

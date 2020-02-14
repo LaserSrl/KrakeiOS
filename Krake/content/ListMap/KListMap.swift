@@ -1129,14 +1129,19 @@ extension KListMapViewController: KTabManagerDelegate
     
     open func tabManager(_ manager: KTabManager , didSelectTermPart termPart: TermPartProtocol? )
     {
-        if termPart == nil
+        if let termPart = termPart
         {
-            listMapOptions.data.extras.removeValue(forKey: KParametersKeys.terms)
+            listMapOptions.data.extras[KParametersKeys.terms] = termPart.identifier!.stringValue
+        }
+        else if let allTermId = manager.tabManagerOptions.allTabTermId
+        {
+            listMapOptions.data.extras[KParametersKeys.terms] = allTermId
         }
         else
         {
-            listMapOptions.data.extras[KParametersKeys.terms] = termPart!.identifier!.stringValue
+            listMapOptions.data.extras.removeValue(forKey: KParametersKeys.terms)
         }
+
         listMapDelegate.didSelectTab(manager, fromViewController: self, object: termPart)
         loadFromWS()
         scrollToTop()
