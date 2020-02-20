@@ -278,8 +278,8 @@ open class KDetailViewController: UIViewController, UIScrollViewDelegate, KDetai
         if let detailSubviews = detailSubviews {
             for subview in detailSubviews {
                 if let detailView = subview as? KDetailViewProtocol {
-                    detailView.detailObject = detailObject
                     detailView.detailPresenter = self
+                    detailView.detailObject = detailObject
                 }
             }
         }
