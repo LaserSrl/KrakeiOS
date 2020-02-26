@@ -11,3 +11,9 @@
 @interface OCLoginViewController : UIViewController
 
 @end
+
+
+@interface RegisterPolicyView : UIView
+
+
+@end

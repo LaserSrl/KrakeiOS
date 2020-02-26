@@ -15,7 +15,21 @@
 @import LaserFloatingTextField;
 
 
-@interface OCLoginViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIAdaptivePresentationControllerDelegate>
+
+@interface RegisterPolicyView ()
+{
+    NSDictionary *policy;
+    NSMutableDictionary *responseType;
+}
+
+@property (weak, nonatomic) UIViewController *fromViewController;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *switchFlag;
+
+@end
+
+@interface OCLoginViewController () <UITextFieldDelegate, UIAdaptivePresentationControllerDelegate>
 {
     id openObserver;
     id closeObserver;
@@ -48,13 +62,14 @@
 //registerView
 @property (weak, nonatomic) IBOutlet UIView *registerView;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *registrationLabel;
 @property (weak, nonatomic) IBOutlet EGFloatingTextField *usernameRegistration;
 @property (weak, nonatomic) IBOutlet EGFloatingTextField *passwordRegistration;
 @property (weak, nonatomic) IBOutlet EGFloatingTextField *confirmRegistration;
 @property (weak, nonatomic) IBOutlet EGFloatingTextField *numberRegistration;
+@property (weak, nonatomic) IBOutlet UIStackView *registerStackView;
 @property (weak, nonatomic) IBOutlet UIButton *registrationButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightRegisterView;
 
 
 //LOST PASSWORD
@@ -63,6 +78,78 @@
 @property (weak, nonatomic) IBOutlet UILabel *lostPasswordLabel;
 @property (weak, nonatomic) IBOutlet EGFloatingTextField *emailsmsTextField;
 
+@end
+
+@implementation RegisterPolicyView
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        UILabel *title = [[UILabel alloc] init];
+        [title setTranslatesAutoresizingMaskIntoConstraints:false];
+        title.numberOfLines = 0;
+        [self addSubview:title];
+        
+        UILabel *subtitle = [[UILabel alloc] init];
+        [subtitle setTranslatesAutoresizingMaskIntoConstraints:false];
+        [subtitle setFont:[UIFont systemFontOfSize:10.0]];
+        [self addSubview:subtitle];
+        
+        UISwitch *switcher = [[UISwitch alloc] init];
+        [switcher setTranslatesAutoresizingMaskIntoConstraints:false];
+        [switcher setOn: false];
+        [switcher addTarget:self action:@selector(changeValueSwitcher:) forControlEvents:UIControlEventValueChanged];
+        [[KTheme currentObjc] applyThemeToSwitch:switcher style:SwitchStyleLogin];
+        [self addSubview:switcher];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[title]-(8)-[switcher(51)]-(0)-|" options:0 metrics:nil views:@{@"title":title, @"switcher" : switcher}]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[subtitle]" options:0 metrics:nil views:@{@"subtitle":subtitle}]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(8)-[title]-[subtitle]-(8)-|" options:0 metrics:nil views:@{@"title":title,@"subtitle":subtitle}]];
+        [self addConstraint: [NSLayoutConstraint constraintWithItem:switcher attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
+        
+        
+        self.titleLabel = title;
+        self.subtitleLabel = subtitle;
+        self.switchFlag = switcher;
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(presentPolicy)];
+        [self addGestureRecognizer:tap];
+    }
+    return self;
+}
+
+-(void)presentPolicy
+{
+    [self.fromViewController presentPolicyViewControllerWithPolicyEndPoint:nil policyTitle:self->policy[@"Title"] policyText:self->policy[@"Body"] largeMargin:false];
+}
+
+-(void)configure:(NSDictionary *)policy responseType:(NSMutableDictionary*)responseType fromViewController:(UIViewController*)vc
+{
+    self->policy = policy;
+    self->responseType = responseType;
+    self.fromViewController = vc;
+    _titleLabel.text = self->policy[@"Title"];
+    _titleLabel.textColor = [UIColor whiteColor];
+    [_switchFlag setOn:false];
+    
+    if ([self->policy[@"UserHaveToAccept"] integerValue] == 1)
+        _subtitleLabel.text = [@"required" localizedString];
+    else
+        _subtitleLabel.text = nil;
+    
+    _subtitleLabel.textColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor clearColor];
+}
+
+-(void)changeValueSwitcher:(UISwitch*)switcher{
+    for (NSMutableDictionary *policy in responseType[@"PolicyAnswers"]) {
+        if ([self->policy[@"PolicyId"] longValue] == [policy[@"PolicyId"] longValue]) {
+            policy[@"PolicyAnswer"] = [NSNumber numberWithBool:switcher.on];
+        }
+    }
+}
 @end
 
 @implementation OCLoginViewController
@@ -181,8 +268,6 @@
     self.baseView.layer.cornerRadius = 10.0;
     self.baseView.clipsToBounds = true;
     
-    self.tableView.scrollEnabled = true;
-    
     if (@available(iOS 13.0, *)) {
         self.presentationController.delegate = self;
 //        [self setModalInPresentation:true];
@@ -275,14 +360,23 @@
                  ];
             }
             self->responseType[@"PolicyAnswers"] = policyAnswers;
-            self.policiesTableHeight.constant = self.tableView.rowHeight * self->policies.count;
-            [self.tableView reloadData];
+            [self loadPoliciesOnStackView];
         }else{
             if (error){
                 [[KLoginManager shared] showMessage:error.localizedDescription withType:ModeError];
             }
         }
     }];
+}
+
+-(void)loadPoliciesOnStackView
+{
+    for (NSDictionary *policy in self->policies)
+    {
+        RegisterPolicyView *newView = [[RegisterPolicyView alloc] init];
+        [newView configure:policy responseType:responseType fromViewController:self];
+        [self.registerStackView insertArrangedSubview:newView atIndex:(self.registerStackView.arrangedSubviews.count-2)];
+    }
 }
 
 -(IBAction)registerNewUser:(id)sender{
@@ -377,6 +471,12 @@
     self.loginView.hidden = true;
     self.lostpwdView.hidden = true;
     self.registerView.hidden = false;
+    CGFloat dim = self.registerStackView.frame.size.height;
+    if (dim > self.view.frame.size.height/3*2)
+    {
+        dim = self.view.frame.size.height/3*2;
+    }
+    self.heightRegisterView.constant = dim;
     [UIView animateWithDuration:0.5 animations:^{
         self.backButton.alpha = 1.0;
         [self.view layoutIfNeeded];
@@ -483,57 +583,6 @@
         [self.view endEditing:true];
     }
     return true;
-}
-
-#pragma mark - UITableView Delegate
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return policies.count;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    NSDictionary *dic = [policies objectAtIndex:indexPath.row];
-    cell.textLabel.text = dic[@"Title"];
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    UISwitch *switcher = [[UISwitch alloc] init];
-    switcher.tag = indexPath.row;
-    [switcher setOn: NO];
-    [switcher addTarget:self action:@selector(changeValueSwitcher:) forControlEvents:UIControlEventValueChanged];
-    [[KTheme currentObjc] applyThemeToSwitch:switcher style:SwitchStyleLogin];
-    cell.accessoryView = switcher;
-    if ([dic[@"UserHaveToAccept"] integerValue] == 1)
-        cell.detailTextLabel.text = [@"required" localizedString];
-    else
-        cell.detailTextLabel.text = nil;
-    
-    cell.detailTextLabel.textColor = [UIColor whiteColor];
-    cell.backgroundColor = [UIColor clearColor];
-    return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSDictionary *dic = [policies objectAtIndex:indexPath.row];
-    
-    [self presentPolicyViewControllerWithPolicyEndPoint:nil policyTitle:dic[@"Title"] policyText:dic[@"Body"] largeMargin:true];
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
--(void)changeValueSwitcher:(UISwitch*)switcher{
-    NSUInteger index = switcher.tag;
-    NSDictionary *policyEdited = [policies objectAtIndex:index];
-    for (NSMutableDictionary *policy in responseType[@"PolicyAnswers"]) {
-        if ([policyEdited[@"PolicyId"] longValue] == [policy[@"PolicyId"] longValue]) {
-            policy[@"PolicyAnswer"] = [NSNumber numberWithBool:switcher.on];
-        }
-    }
 }
 
 - (void)presentationControllerDidDismiss:(UIPresentationController *)presentationController {
