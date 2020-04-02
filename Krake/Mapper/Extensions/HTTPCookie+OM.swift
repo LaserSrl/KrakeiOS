@@ -12,7 +12,7 @@ extension HTTPCookie{
     
     public func isValidCookie() -> Bool{
         let orcws = KInfoPlist.KrakePlist.host
-        if !orcws.absoluteString.contains(domain) || (expiresDate != nil && expiresDate!.timeIntervalSinceNow.isLess(than: 0.0)) {
+        if orcws.host != domain || (expiresDate != nil && expiresDate!.timeIntervalSinceNow.isLess(than: 0.0)) {
             return false
         }
         return true

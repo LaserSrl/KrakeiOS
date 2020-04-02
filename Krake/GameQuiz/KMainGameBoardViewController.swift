@@ -35,7 +35,7 @@ public class KMainGameBoardViewController: UIViewController, UICollectionViewDat
         
         KGameQuiz.theme.applyTheme(toView: view, style: .default)
         
-        var params = KRequestParameters.parameters(currentPage: 0, pageSize: 0, fieldsFilter: "game,gamepart,gallery,activitypart,autoroutepart,titlepart")
+        var params = KRequestParameters.parameters(currentPage: 0, pageSize: 0, fieldsFilter: "game,gamepart,gallery,activitypart,autoroutepart,titlepart,bodypart")
         params[REQUEST_NO_CACHE] = KRequestParameters.parametersNoCache()[REQUEST_NO_CACHE]
         OGLCoreDataMapper.sharedInstance().loadData(withDisplayAlias: endPoint, extras: params) { (object, error, completed) in
             if let object = object, completed{

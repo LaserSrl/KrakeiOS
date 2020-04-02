@@ -135,7 +135,7 @@ extension URLSessionConfiguration {
     fileprivate func checkAndAddStoredCookie(_ cookie: HTTPCookie?) {
         if let cookie = cookie {
             if httpCookieStorage?.cookies?.filter({ (loopCookie) -> Bool in
-                loopCookie.name == cookie.name
+                loopCookie.name == cookie.name && loopCookie.domain == cookie.domain
             }).first == nil {
                 httpCookieStorage?.setCookie(cookie)
                 NSLog("Setup: Cookie %@ aggiunto", cookie.name)
