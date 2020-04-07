@@ -53,5 +53,11 @@ extension KInfoPlist
                 let canUserCancelLogin = KLoginManager.shared.delegate?.canUserCancelLogin ?? true
                 return canUserCancelLogin
         }()
+        
+        @objc public static let domainsAccepted: [String]? =
+            {
+                let domainsAccepted = KLoginManager.shared.delegate?.domainsAccepted ?? nil
+                return domainsAccepted
+        }()
     }
 }

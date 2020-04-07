@@ -24,36 +24,54 @@ public class KUserDisplayView: UIView {
     @IBOutlet weak public var nameFirstLettersButton: UIButton!
 
     public var labelStyle :LabelStyle = .name
-
-    private var showUserInfoBlock: ((UserProtocol?)-> Void)?
-    private var loginObserver: Any? = nil
-    private var logoutObserver: Any? = nil
-    private var user: UserProtocol?{
+    public var prefixLabel: String? = nil
+    public var contentDisplayAlias: String! = KCommonDisplayAlias.userInfo {
         didSet{
-            updateUI()
+            if KLoginManager.shared.isKrakeLogged {
+                reloadUserInfos()
+            }
+            else {
+                user = nil
+            }
         }
     }
-    
     public var topInset: CGFloat!{
         didSet{
             topImageConstraint.constant = 30.0 + topInset
             topLogoutConstraint.constant = topInset + 20.0
         }
     }
+    private var task: OMLoadDataTask?
+    private var showUserInfoBlock: ((UserProtocol?)-> Void)?
+    private var loginObserver: Any?
+    private var logoutObserver: Any?
+    private var user: UserProtocol?{
+        didSet{
+            updateUI()
+        }
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    deinit {
+        task?.cancel()
+        removeObservers()
+        KLog(type: .debug, "RELEASED")
+    }
     
     @IBAction func logout(_ sender: Any) {
         KLoginManager.shared.userLogout()
     }
     
-    public static func loadUserView(showUserInfo block: ((UserProtocol?)-> Void)? = nil) -> KUserDisplayView {
+    public static func loadUserView(contentDisplayAlias: String = KCommonDisplayAlias.userInfo, showUserInfo block: ((UserProtocol?)-> Void)? = nil) -> KUserDisplayView {
         let bundle =  Bundle(for: KUserDisplayView.self)
         let vc = bundle.loadNibNamed("KUserDisplayView", owner: nil, options: nil)?.first as! KUserDisplayView
+        vc.translatesAutoresizingMaskIntoConstraints = false
+        vc.contentDisplayAlias = contentDisplayAlias
         vc.showUserInfoBlock = block
         return vc
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
     
     public override func awakeFromNib() {
@@ -63,15 +81,8 @@ public class KUserDisplayView: UIView {
         nameFirstLettersButton.setTitle("", for: .normal)
         
         KTheme.current.applyTheme(toUserDisplay: self)
-        
-        if KLoginManager.shared.isKrakeLogged {
-            reloadUserInfos()
-        }
-        else {
-            user = nil
-        }
+
         registerObservers()
-        
         
         if #available(iOS 11.0, *) {
             topInset = UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0.0
@@ -114,7 +125,8 @@ public class KUserDisplayView: UIView {
     
     public func reloadUserInfos()
     {
-        OGLCoreDataMapper.sharedInstance().loadData(withDisplayAlias: KCommonDisplayAlias.userInfo,
+        task?.cancel()
+        task = OGLCoreDataMapper.sharedInstance().loadData(withDisplayAlias: contentDisplayAlias,
                                                     extras: KRequestParameters.parametersNoCache(), loginRequired: true,
                                                     completionBlock: { (objectId, error, completed) in
                                                         if completed {
@@ -146,7 +158,7 @@ public class KUserDisplayView: UIView {
     {
         nameFirstLettersButton.setTitle("", for: .normal)
         if let user = user {
-            let remoteImg = user.galleryMediaParts?.firstObject
+            let remoteImg = user.imageGallery?.firstObject
             userImageView.setImage(media: remoteImg, placeholderImage: nil)
             
             logoutButton.hiddenAnimated = KInfoPlist.Login.canUserLogout ? false : true
@@ -156,11 +168,11 @@ public class KUserDisplayView: UIView {
 
             if labelStyle == .name || surname == nil
             {
-                userNameLabel.text = name
+                userNameLabel.text = String(format: "%@%@", prefixLabel ?? "", name)
             }
             else
             {
-                userNameLabel.text = String(format:"%@ %@",name,surname!)
+                userNameLabel.text = String(format:"%@%@ %@", prefixLabel ?? "",name,surname!)
             }
 
             if remoteImg == nil

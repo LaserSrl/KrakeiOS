@@ -14,6 +14,9 @@
 #import <Krake/Krake-Swift.h>
 @import LaserFloatingTextField;
 
+#define LOGIN_DOMAIN_TAG 100
+#define REGISTER_DOMAIN_TAG 101
+#define LOSTPASS_DOMAIN_TAG 102
 
 
 @interface RegisterPolicyView ()
@@ -29,7 +32,7 @@
 
 @end
 
-@interface OCLoginViewController () <UITextFieldDelegate, UIAdaptivePresentationControllerDelegate>
+@interface OCLoginViewController () <UITextFieldDelegate, UIAdaptivePresentationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 {
     id openObserver;
     id closeObserver;
@@ -54,6 +57,7 @@
 
 @property (weak, nonatomic) IBOutlet EGFloatingTextField *username;
 @property (weak, nonatomic) IBOutlet EGFloatingTextField *password;
+@property (nonatomic, strong) IBOutletCollection(EGFloatingTextField) NSArray *domains;
 
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIButton *lostPassword;
@@ -180,6 +184,10 @@
     if (!Login.canUserLoginWithKrake)
     {
         [self.username setHidden:true];
+        for (EGFloatingTextField *domain in self.domains)
+        {
+            [domain setHidden:true];
+        }
         [self.password setHidden:true];
         [self.lostPassword setHidden:true];
         [self.registerButton setHidden:true];
@@ -189,6 +197,41 @@
         [self loadRegisterData];
         
         self.username.IBPlaceholder = NSLocalizedStringWithDefaultValue(@"e_mail", nil, [NSBundle mainBundle], [@"e_mail" localizedString], "");
+        if (Login.domainsAccepted.count > 0){
+            for (EGFloatingTextField *domain in self.domains)
+            {
+                UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+                pickerView.showsSelectionIndicator = YES;
+                pickerView.dataSource = self;
+                pickerView.delegate = self;
+                pickerView.tag = domain.tag;
+                [domain setInputView:pickerView];
+                UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+                UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissKeyBoard:)];
+                [toolBar setItems:[NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], doneButton, nil]];
+                domain.inputAccessoryView = toolBar;
+                [domain setClearButtonMode:UITextFieldViewModeNever];
+                [domain setHidden:false];
+                NSString *domainString = [[NSUserDefaults standardUserDefaults] stringForConstantKey:OMStringConstantKeyDomain];
+                if (domainString.length > 0){
+                    domain.text = domainString;
+                    long index = [Login.domainsAccepted indexOfObject:[domainString stringByReplacingOccurrencesOfString:@"@" withString:@""]];
+                    [pickerView selectRow:index inComponent:0 animated:false];
+                }else{
+                    [domain setText:[NSString stringWithFormat:@"@%@", [Login.domainsAccepted objectAtIndex:0]]];
+                }
+                [[KTheme login] applyThemeTo:domain];
+                [domain setTintColor:[UIColor clearColor]];
+            }
+            [self.username setIBPlaceholder:@"Username"];
+            [self.usernameRegistration setIBPlaceholder:@"Username"];
+            [self.emailsmsTextField setIBPlaceholder:@"Username"];
+        }else{
+            for (EGFloatingTextField *domain in self.domains)
+            {
+                [domain setHidden:true];
+            }
+        }
         self.password.IBPlaceholder = [@"password" localizedString];
         self.usernameRegistration.IBPlaceholder = NSLocalizedStringWithDefaultValue(@"e_mail", nil, [NSBundle mainBundle], [@"e_mail" localizedString], "");
         self.passwordRegistration.IBPlaceholder = [@"password" localizedString];
@@ -397,8 +440,24 @@
         NSString *nationalNumber = nil;
         NSString *countryCode = [NSString stringWithFormat:@"%@",[phoneUtil extractCountryCode:number nationalNumber:&nationalNumber]];
         nationalNumber = [nationalNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
-        responseType[@"Email"] = self.usernameRegistration.text;
-        responseType[@"Username"] = self.usernameRegistration.text;
+        NSString *domainText = nil;
+        if(Login.domainsAccepted.count > 0)
+        {
+            for (EGFloatingTextField *domain in self.domains)
+            {
+                if (domain.tag == REGISTER_DOMAIN_TAG)
+                {
+                    NSString *email = [NSString stringWithFormat: @"%@%@", self.usernameRegistration.text, domain.text];
+                    responseType[@"Email"] = email;
+                    responseType[@"Username"] = email;
+                    domainText = domain.text;
+                    break;
+                }
+            }
+        }else{
+            responseType[@"Email"] = self.usernameRegistration.text;
+            responseType[@"Username"] = self.usernameRegistration.text;
+        }
         responseType[@"Password"] = self.passwordRegistration.text;
         responseType[@"ConfirmPassword"] = self.confirmRegistration.text;
         responseType[@"Culture"] = [KConstants currentLanguage];
@@ -406,6 +465,10 @@
             if (success) {
                 [[NSUserDefaults standardUserDefaults] setStringAndSync:self.usernameRegistration.text forConstantKey:OMStringConstantKeyUserEmail];
                 [[NSUserDefaults standardUserDefaults] setStringAndSync:self.usernameRegistration.text forConstantKey:OMStringConstantKeyUserName];
+                if (domainText!= nil)
+                {
+                [[NSUserDefaults standardUserDefaults] setStringAndSync:domainText forConstantKey:OMStringConstantKeyDomain];
+                }
                 if (nationalNumber.length>3 && countryCode>0) {
                     [[KNetworkManager defaultManager:true checkHeaderResponse:false] updateUserProfile:@{@"UserPwdRecoveryPart.InternationalPrefix" : countryCode, @"UserPwdRecoveryPart.PhoneNumber" : nationalNumber} completion:^(BOOL success, id responseObject, NSError *error) {
                         [[NSUserDefaults standardUserDefaults] setStringAndSync:number forConstantKey:OMStringConstantKeyUserPhoneNumber];
@@ -443,6 +506,10 @@
 
 -(IBAction)dismissKeyBoard:(id)sender{
     (void)[self.username resignFirstResponder];
+    for (EGFloatingTextField *domain in self.domains)
+    {
+        (void)[domain resignFirstResponder];
+    }
     (void)[self.password resignFirstResponder];
     (void)[self.usernameRegistration resignFirstResponder];
     (void)[self.passwordRegistration resignFirstResponder];
@@ -458,11 +525,25 @@
 
 -(IBAction)loginToOrchard:(id)sender{
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    params[@"Username"] = self.username.text;
+    if(Login.domainsAccepted.count > 0)
+    {
+        for (EGFloatingTextField *domain in self.domains)
+        {
+            if (domain.tag == LOGIN_DOMAIN_TAG)
+            {
+                params[@"Username"] = [NSString stringWithFormat: @"%@%@", self.username.text, domain.text];
+                [[NSUserDefaults standardUserDefaults] setStringAndSync:self.username.text forConstantKey:OMStringConstantKeyUserEmail];
+                [[NSUserDefaults standardUserDefaults] setStringAndSync:domain.text forConstantKey:OMStringConstantKeyDomain];
+                break;
+            }
+        }
+    }
+    else
+    {
+        params[@"Username"] = self.username.text;
+        [[NSUserDefaults standardUserDefaults] setStringAndSync:self.username.text forConstantKey:OMStringConstantKeyUserEmail];
+    }
     params[@"Password"] = self.password.text;
-
-    //TODO: verificare e pensare una soluzione per gli accessi social
-    [[NSUserDefaults standardUserDefaults] setStringAndSync:self.username.text forConstantKey:OMStringConstantKeyUserEmail];
 
     [[KLoginManager shared] objc_loginWith:[KrakeAuthenticationProvider orchard] params:params saveTokenParams: false];
 }
@@ -510,16 +591,29 @@
 
 -(IBAction)userRequestLostPassword:(id)sender{
     
+    NSString *emailString = self.emailsmsTextField.text;
+    if(Login.domainsAccepted.count > 0)
+    {
+        for (EGFloatingTextField *domain in self.domains)
+        {
+            if (domain.tag == LOSTPASS_DOMAIN_TAG)
+            {
+                emailString = [emailString stringByAppendingString:domain.text];
+                break;
+            }
+        }
+    }
+    
     NSString *emailRegEx = @"^(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?(?:(?:(?:[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+(?:\\.[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+)*)|(?:\"(?:(?:(?:(?: )*(?:(?:[!#-Z^-~]|\\[|\\])|(?:\\\\(?:\\t|[ -~]))))+(?: )*)|(?: )+)\"))(?:@)(?:(?:(?:[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)(?:\\.[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)*)|(?:\\[(?:(?:(?:(?:(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))\\.){3}(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))))|(?:(?:(?: )*[!-Z^-~])*(?: )*)|(?:[Vv][0-9A-Fa-f]+\\.[-A-Za-z0-9._~!$&'()*+,;=:]+))\\])))(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?$";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegEx];
-    BOOL result = [predicate evaluateWithObject:self.emailsmsTextField.text];
+    BOOL result = [predicate evaluateWithObject:emailString];
     if (result){
-        [[KLoginManager shared] callRequestPasswordLostWithQueryString:@"RequestLostPasswordAccountOrEmailSsl" params:@{@"username" : self.emailsmsTextField.text}];
+        [[KLoginManager shared] callRequestPasswordLostWithQueryString:@"RequestLostPasswordAccountOrEmailSsl" params:@{@"username" : emailString}];
         [self closeRegisterView:nil];
     }else{
         NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
         NSError *anError = nil;
-        NSString *number = self.emailsmsTextField.text;
+        NSString *number = emailString;
         if ([number hasPrefix:@"00"]) {
             number = [@"+" stringByAppendingString:[number substringFromIndex:2]];
         }
@@ -588,4 +682,31 @@
 - (void)presentationControllerDidDismiss:(UIPresentationController *)presentationController {
     [[KLoginManager shared] userClosePresentedLoginViewController];
 }
+
+
+//MARK: - UIPckerView DELEGATE - DATASOURCE
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return Login.domainsAccepted.count;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [NSString stringWithFormat:@"@%@", [Login.domainsAccepted objectAtIndex:row]];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    for (EGFloatingTextField *domain in self.domains)
+    {
+        if (domain.tag == pickerView.tag)
+        {
+            [domain setText:[NSString stringWithFormat:@"@%@", [Login.domainsAccepted objectAtIndex:row]]];
+            break;
+        }
+    }
+}
+
 @end

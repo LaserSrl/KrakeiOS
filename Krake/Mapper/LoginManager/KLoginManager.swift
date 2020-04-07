@@ -18,6 +18,7 @@ public protocol KLoginManagerDelegate: KeyValueCodingProtocol{
     var canUserCancelLogin: Bool {get}
     var userHaveToRegisterWithSMS: Bool {get}
     var socialsLoginProvider: [KLoginProviderProtocol.Type]? {get}
+    var domainsAccepted: [String]? {get}
     
     func loginCompleted(withStatus logged: Bool, roles: [String]?, serviceRegistrated: [String]?, error: String?)
     func userLoggedOut()

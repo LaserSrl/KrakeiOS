@@ -125,7 +125,7 @@ open class KMapPlainButton: UIButton, KExtendedMapViewDelegate, KDetailViewProto
         {
             setImage(UIImage(krakeNamed: "OCmap"), for: .normal)
         }
-        if title(for: .normal)?.isEmpty ?? true && show
+        if title(for: .normal)?.isEmpty ?? true
         {
             setTitle("Mappa".localizedString(), for: .normal)
         }

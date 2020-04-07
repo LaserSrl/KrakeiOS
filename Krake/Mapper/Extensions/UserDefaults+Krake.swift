@@ -12,6 +12,7 @@ import Foundation
     case userPhoneNumber
     case userName
     case userEmail
+    case domain
     case pushDeviceToken
     case pushDeviceUUID
     case pushLanguage
@@ -28,6 +29,8 @@ extension UserDefaults
             return "User-PhoneNumber"
         case .userName:
             return "User-Name"
+        case .domain:
+            return "User-Domain"
         case .userEmail:
             return "User-Email"
         case .pushDeviceToken:

@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol UserProtocol {
-    var galleryMediaParts: NSOrderedSet? {get}
+    var imageGallery: NSOrderedSet? {get}
     var name: String? {get}
     var surname: String? {get}
 }
