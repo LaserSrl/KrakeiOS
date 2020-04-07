@@ -197,6 +197,13 @@
         [self loadRegisterData];
         
         self.username.IBPlaceholder = NSLocalizedStringWithDefaultValue(@"e_mail", nil, [NSBundle mainBundle], [@"e_mail" localizedString], "");
+        self.usernameRegistration.IBPlaceholder = NSLocalizedStringWithDefaultValue(@"e_mail", nil, [NSBundle mainBundle], [@"e_mail" localizedString], "");
+        if (Login.canUserRecoverPasswordWithSMS){
+            self.emailsmsTextField.IBPlaceholder = [@"placeholder_sms_or_mail_restore_password" localizedString];
+        }else{
+            self.emailsmsTextField.IBPlaceholder = [@"placeholder_mail_restore_password" localizedString];
+        }
+        
         if (Login.domainsAccepted.count > 0){
             for (EGFloatingTextField *domain in self.domains)
             {
@@ -214,12 +221,14 @@
                 [domain setClearButtonMode:UITextFieldViewModeNever];
                 [domain setHidden:false];
                 NSString *domainString = [[NSUserDefaults standardUserDefaults] stringForConstantKey:OMStringConstantKeyDomain];
+                [domain setText:[NSString stringWithFormat:@"@%@", [Login.domainsAccepted objectAtIndex:0]]];
                 if (domainString.length > 0){
-                    domain.text = domainString;
                     long index = [Login.domainsAccepted indexOfObject:[domainString stringByReplacingOccurrencesOfString:@"@" withString:@""]];
-                    [pickerView selectRow:index inComponent:0 animated:false];
-                }else{
-                    [domain setText:[NSString stringWithFormat:@"@%@", [Login.domainsAccepted objectAtIndex:0]]];
+                    if (index != NSNotFound)
+                    {
+                        domain.text = domainString;
+                        [pickerView selectRow:index inComponent:0 animated:false];
+                    }
                 }
                 [[KTheme login] applyThemeTo:domain];
                 [domain setTintColor:[UIColor clearColor]];
@@ -234,7 +243,6 @@
             }
         }
         self.password.IBPlaceholder = [@"password" localizedString];
-        self.usernameRegistration.IBPlaceholder = NSLocalizedStringWithDefaultValue(@"e_mail", nil, [NSBundle mainBundle], [@"e_mail" localizedString], "");
         self.passwordRegistration.IBPlaceholder = [@"password" localizedString];
         self.confirmRegistration.IBPlaceholder = [@"confirm_password" localizedString];
         self.numberRegistration.IBPlaceholder = [@"phone_number" localizedString];
@@ -247,11 +255,7 @@
         [self.registrationButton setTitle:[@"Register" localizedString] forState:UIControlStateNormal];
 
         self.lostPasswordLabel.text = [@"lost_pwd" localizedString];
-        if (Login.canUserRecoverPasswordWithSMS){
-            self.emailsmsTextField.IBPlaceholder = [@"placeholder_sms_or_mail_restore_password" localizedString];
-        }else{
-            self.emailsmsTextField.IBPlaceholder = [@"placeholder_mail_restore_password" localizedString];
-        }
+        
         if (!Login.userHaveToRegisterWithSMS){
             [self.numberRegistration setHidden:true];
         }
