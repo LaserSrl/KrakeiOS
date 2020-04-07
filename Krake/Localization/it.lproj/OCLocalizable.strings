@@ -63,6 +63,7 @@
 "check_your_number" = "Confermi di voler inviare la procedura di recupero password al seguente numero?\n\n";
 
 "e_mail" = "E-Mail";
+"domain" = "Dominio";
 "password" = "Password";
 "confirm_password" = "Conferma la password";
 "phone_number" = "Numero di cellulare";

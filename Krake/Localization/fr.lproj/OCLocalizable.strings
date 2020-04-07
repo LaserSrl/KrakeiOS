@@ -64,6 +64,7 @@
 "check_your_number" = "Vous confirmez que vous voulez envoyer la procédure de récupération de mot de passe au numéro suivant?\n\n";
 
 "e_mail" = "Adresse E-Mail";
+"domain" = "Domain";
 "password" = "Mot de passe";
 "confirm_password" = "Confirme le mot de passe";
 "phone_number" = "Portable";

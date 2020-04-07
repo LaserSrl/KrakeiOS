@@ -200,6 +200,7 @@
         if (Login.domainsAccepted.count > 0){
             for (EGFloatingTextField *domain in self.domains)
             {
+                domain.IBPlaceholder = NSLocalizedStringWithDefaultValue(@"domain", nil, [NSBundle mainBundle], [@"domain" localizedString], "");
                 UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
                 pickerView.showsSelectionIndicator = YES;
                 pickerView.dataSource = self;

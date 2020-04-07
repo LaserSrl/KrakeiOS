@@ -55,6 +55,7 @@
                                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                                             <userDefinedRuntimeAttributes>
                                                                                 <userDefinedRuntimeAttribute type="string" keyPath="IBPlaceholder" value="E-Mail"/>
+                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="canBeEmpty" value="NO"/>
                                                                             </userDefinedRuntimeAttributes>
                                                                             <connections>
                                                                                 <outlet property="delegate" destination="VFT-nU-Ijz" id="GMv-Tv-f0m"/>
@@ -68,7 +69,7 @@
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                                                             <userDefinedRuntimeAttributes>
-                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="canBeEmpty" value="NO"/>
+                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="canBeEmpty" value="YES"/>
                                                                             </userDefinedRuntimeAttributes>
                                                                             <connections>
                                                                                 <outlet property="delegate" destination="VFT-nU-Ijz" id="gif-T3-jov"/>
@@ -85,6 +86,7 @@
                                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="string" keyPath="IBPlaceholder" value="Password"/>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="canBeEmpty" value="NO"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <outlet property="delegate" destination="VFT-nU-Ijz" id="uhr-wh-t7y"/>
@@ -183,6 +185,7 @@
                                                                                     <userDefinedRuntimeAttributes>
                                                                                         <userDefinedRuntimeAttribute type="string" keyPath="IBPlaceholder" value="E-Mail"/>
                                                                                         <userDefinedRuntimeAttribute type="string" keyPath="validationTypeAdapter" value="Email"/>
+                                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="canBeEmpty" value="NO"/>
                                                                                     </userDefinedRuntimeAttributes>
                                                                                     <connections>
                                                                                         <outlet property="delegate" destination="VFT-nU-Ijz" id="YML-bi-YDH"/>
@@ -196,7 +199,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                                                                     <userDefinedRuntimeAttributes>
-                                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="canBeEmpty" value="NO"/>
+                                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="canBeEmpty" value="YES"/>
                                                                                     </userDefinedRuntimeAttributes>
                                                                                     <connections>
                                                                                         <outlet property="delegate" destination="VFT-nU-Ijz" id="ROQ-ij-Zl1"/>
@@ -213,6 +216,7 @@
                                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES"/>
                                                                             <userDefinedRuntimeAttributes>
                                                                                 <userDefinedRuntimeAttribute type="string" keyPath="IBPlaceholder" value="Password"/>
+                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="canBeEmpty" value="NO"/>
                                                                             </userDefinedRuntimeAttributes>
                                                                             <connections>
                                                                                 <outlet property="delegate" destination="VFT-nU-Ijz" id="Ytm-WL-Xxp"/>
@@ -227,6 +231,7 @@
                                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES"/>
                                                                             <userDefinedRuntimeAttributes>
                                                                                 <userDefinedRuntimeAttribute type="string" keyPath="IBPlaceholder" value="Confirm Password"/>
+                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="canBeEmpty" value="NO"/>
                                                                             </userDefinedRuntimeAttributes>
                                                                             <connections>
                                                                                 <outlet property="delegate" destination="VFT-nU-Ijz" id="e0K-Ew-RGv"/>
@@ -306,6 +311,7 @@
                                                                             <userDefinedRuntimeAttributes>
                                                                                 <userDefinedRuntimeAttribute type="string" keyPath="IBPlaceholder" value="E-Mail"/>
                                                                                 <userDefinedRuntimeAttribute type="string" keyPath="validationTypeAdapter" value="Email"/>
+                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="canBeEmpty" value="NO"/>
                                                                             </userDefinedRuntimeAttributes>
                                                                             <connections>
                                                                                 <outlet property="delegate" destination="VFT-nU-Ijz" id="Iit-WY-Jfp"/>
@@ -319,7 +325,7 @@
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                                                             <userDefinedRuntimeAttributes>
-                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="canBeEmpty" value="NO"/>
+                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="canBeEmpty" value="YES"/>
                                                                             </userDefinedRuntimeAttributes>
                                                                             <connections>
                                                                                 <outlet property="delegate" destination="VFT-nU-Ijz" id="s9B-tL-OJe"/>

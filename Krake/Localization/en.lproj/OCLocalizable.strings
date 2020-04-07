@@ -68,6 +68,7 @@
 "check_your_number" = "Confirm you want to sent the procedure to recover your password to the following number?\n\n";
 
 "e_mail" = "E-Mail";
+"domain" = "Domain";
 "password" = "Password";
 "confirm_password" = "Confirm Password";
 "phone_number" = "Mobile phone number";
