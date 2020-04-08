@@ -15,6 +15,14 @@ public enum QuestionType: String {
     case Unknown
 }
 
+public enum AnswerType: String {
+    case Datetime
+    case Date
+    case Url
+    case Email
+    case None
+}
+
 public protocol QuestionRecordProtocol: KeyValueCodingProtocol
 {
     var identifier: NSNumber! { get }
@@ -36,6 +44,12 @@ extension QuestionRecordProtocol {
     public var questionTypeEnum: QuestionType {
         get{
             return QuestionType(rawValue: questionType ?? "") ?? .Unknown
+        }
+    }
+    
+    public var answerTypeEnum: AnswerType {
+        get{
+            return AnswerType(rawValue: answerType ?? "") ?? .None
         }
     }
     

@@ -46,17 +46,30 @@ public extension KQuestionnaireDelegate
     func viewDidDisappear(_ viewController: QuestionnaireViewController) { }
 }
 
+public struct KQuestionnaireInfos {
+    var endPoint: String
+    var sendApiPath: String
+    var theme: KQuestionnaireTheme
+    var dateFormatter: DateFormatter? = nil
+    var dateTimeFormatter: DateFormatter? = nil
+    
+    init(_ endPoint: String, sendApiPath: String = KAPIConstants.questionnairesResponse, theme: KQuestionnaireTheme = KQuestionnaireDefaultTheme()) {
+        self.endPoint = endPoint
+        self.sendApiPath = sendApiPath
+        self.theme = theme
+    }
+}
+
 open class KQuestionnaires: NSObject{
     
-    public static func questionnaireViewController(_ endPoint: String, sendApiPath: String = KAPIConstants.questionnairesResponse, theme: KQuestionnaireTheme = KQuestionnaireDefaultTheme(), delegate: KQuestionnaireDelegate? = nil) -> UIViewController{
+    
+    public static func questionnaireViewController(_ questionaireInfos: KQuestionnaireInfos, delegate: KQuestionnaireDelegate? = nil) -> UIViewController{
         let OCBundle = Bundle(for: QuestionnaireViewController.self)
         let bundle = Bundle(url: OCBundle.url(forResource: "Questionnaires", withExtension: "bundle")!)
         let story = UIStoryboard(name: "KrakeQuestionnaires", bundle: bundle)
         let vc = story.instantiateInitialViewController() as! QuestionnaireViewController
-        vc.endPoint = endPoint
-        vc.theme = theme
+        vc.questionnaireInfos = questionaireInfos
         vc.questionnaireDelegate = delegate
-        vc.apiPath = sendApiPath
         return vc
     }
 }
@@ -71,6 +84,14 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
     
     public var questionnaireDelegate: KQuestionnaireDelegate? = nil
 
+    public var questionnaireInfos: KQuestionnaireInfos!
+    {
+        didSet{
+            endPoint = questionnaireInfos.endPoint
+            apiPath = questionnaireInfos.sendApiPath
+            theme = questionnaireInfos.theme
+        }
+    }
     public var endPoint: String!
     public var loginRequired: Bool = true
     var apiPath: String!
@@ -215,7 +236,7 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
             for question in domande{
                 switch question.questionTypeEnum {
                 case .OpenAnswer:
-                    let openAns = KOpenAnswerStackView.loadFromNib()
+                    let openAns = KOpenAnswerStackView.loadFromNib(dateFormatter: questionnaireInfos.dateFormatter, dateTimeFormatter: questionnaireInfos.dateTimeFormatter)
                     openAns.theme = theme
                     openAns.setContent(withThisQuestion: question, withResponse: response, withThisMAxSize: questionsStackView.bounds.width)
                     questionsStackView.addArrangedSubview(openAns)

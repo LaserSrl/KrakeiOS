@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,22 +14,22 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IO5-Ne-YHX">
-                    <rect key="frame" x="8" y="8" width="375" height="651"/>
+                    <rect key="frame" x="8" y="8" width="359" height="651"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="999" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjL-dB-cF5">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="359" height="20.5"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="erR-NT-DTD">
-                            <rect key="frame" x="0.0" y="24.5" width="375" height="0.0"/>
+                            <rect key="frame" x="0.0" y="24.5" width="359" height="0.0"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="999" constant="150" id="ncy-a1-Ivz"/>
                             </constraints>
                         </imageView>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y08-dt-f2U">
-                            <rect key="frame" x="0.0" y="28.5" width="375" height="622.5"/>
+                            <rect key="frame" x="0.0" y="28.5" width="359" height="60"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="999" constant="60" id="sLJ-3l-aCV" userLabel="height = 60"/>
@@ -42,6 +40,11 @@
                                 <outlet property="delegate" destination="iN0-l3-epB" id="kuy-7f-dbo"/>
                             </connections>
                         </textView>
+                        <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="duo-si-oCJ" customClass="EGFloatingTextField" customModule="LaserFloatingTextField">
+                            <rect key="frame" x="0.0" y="96.5" width="359" height="554.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                     </subviews>
                 </stackView>
             </subviews>
@@ -53,10 +56,12 @@
                 <constraint firstAttribute="bottom" secondItem="IO5-Ne-YHX" secondAttribute="bottom" constant="8" id="yU0-1y-rGN"/>
             </constraints>
             <connections>
+                <outlet property="answerTextField" destination="duo-si-oCJ" id="Ykn-d3-ozt"/>
                 <outlet property="answerTextView" destination="Y08-dt-f2U" id="zC2-IW-mAz"/>
                 <outlet property="questImageView" destination="erR-NT-DTD" id="80r-ih-931"/>
                 <outlet property="titleQuestion" destination="PjL-dB-cF5" id="5Ep-qp-uUr"/>
             </connections>
+            <point key="canvasLocation" x="140" y="151"/>
         </view>
     </objects>
 </document>
