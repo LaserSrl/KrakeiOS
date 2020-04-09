@@ -9,7 +9,13 @@
 import Foundation
 import LaserFloatingTextField
 
- public class KOpenAnswerStackView : UIView, UITextViewDelegate, UITextFieldDelegate {
+public protocol KQuestionViewProtocol: NSObject
+{
+    func refreshUI()
+}
+
+
+ public class KOpenAnswerStackView : UIView, KQuestionViewProtocol, UITextViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var titleQuestion: UILabel!{
         didSet{
@@ -33,6 +39,7 @@ import LaserFloatingTextField
     var theme: KQuestionnaireTheme!
     var dateFormatter: DateFormatter!
     var dateTimeFormatter: DateFormatter!
+    weak var delegate: KQuestionnaireProtocol?
     
     var questionRecord: QuestionRecordProtocol!{
         didSet{
@@ -83,17 +90,13 @@ import LaserFloatingTextField
                 }else{
                     questImageView.isHidden = true
                 }
+                
+                if !((questionRecord.condition?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "").isEmpty)
+                {
+                    isHidden = questionRecord.conditionType == "Show"
+                }
                 theme.applyTheme(toAnswerTextView: answerTextView, withQuestion: questionRecord)
                 theme.applyTheme(toQuestionLabel: titleQuestion, forQuestion: questionRecord)
-            }
-        }
-    }
-    var response: NSMutableDictionary!{
-        didSet{
-            if response != nil {
-                if let dic = response[questionRecord.identifier.stringValue] as? [String: String] {
-                    answerTextView.text = dic["AnswerText"]
-                }
             }
         }
     }
@@ -126,10 +129,9 @@ import LaserFloatingTextField
         return vc
     }
         
-    public func setContent(withThisQuestion question: QuestionRecordProtocol, withResponse response: NSMutableDictionary, withThisMAxSize maxWidth: CGFloat)
+    public func setContent(withThisQuestion question: QuestionRecordProtocol, withThisMAxSize maxWidth: CGFloat)
     {
         questionRecord = question
-        self.response = response
         titleQuestion.text = question.question
         
         setTitleWidth(constant: maxWidth-36)
@@ -137,9 +139,10 @@ import LaserFloatingTextField
     }
     
     public func textViewDidChange(_ textView: UITextView) {
-        response[questionRecord.identifier.stringValue] = QuestionAnswer(QuestionRecord_Id: questionRecord.identifier?.intValue ?? 0,
-                                                                         AnswerText: answerTextView.text,
-                                                                         Id: nil)
+        delegate?.responseChanged(questionRecordIdentifier: questionRecord.identifier,
+                                  answer: QuestionAnswer(QuestionRecord_Id: questionRecord.identifier?.intValue ?? 0,
+                                                         AnswerText: answerTextView.text,
+                                                         Id: nil))
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -148,9 +151,10 @@ import LaserFloatingTextField
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        response[questionRecord.identifier.stringValue] = QuestionAnswer(QuestionRecord_Id: questionRecord.identifier?.intValue ?? 0,
-                                                                         AnswerText: answerTextField.text,
-                                                                         Id: nil)
+        delegate?.responseChanged(questionRecordIdentifier: questionRecord.identifier,
+                                  answer: QuestionAnswer(QuestionRecord_Id: questionRecord.identifier?.intValue ?? 0,
+                                                         AnswerText: answerTextField.text,
+                                                         Id: nil))
     }
     
     @objc private func changeDate(_ sender: UIDatePicker?) {
@@ -202,4 +206,15 @@ import LaserFloatingTextField
         }
     }
     
+    public func refreshUI() {
+        if !((questionRecord.condition?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "").isEmpty)
+        {
+            if let _ = delegate?.answerInResponse(with: questionRecord.condition!)
+            {
+                isHidden = questionRecord.conditionType != "Show"
+            }else{
+                isHidden = questionRecord.conditionType == "Show"
+            }
+        }
+    }
 }

@@ -62,7 +62,6 @@ public struct KQuestionnaireInfos {
 
 open class KQuestionnaires: NSObject{
     
-    
     public static func questionnaireViewController(_ questionaireInfos: KQuestionnaireInfos, delegate: KQuestionnaireDelegate? = nil) -> UIViewController{
         let OCBundle = Bundle(for: QuestionnaireViewController.self)
         let bundle = Bundle(url: OCBundle.url(forResource: "Questionnaires", withExtension: "bundle")!)
@@ -72,9 +71,21 @@ open class KQuestionnaires: NSObject{
         vc.questionnaireDelegate = delegate
         return vc
     }
+    
+    @available(*, renamed: "questionnaireViewController(_:delegate:)")
+    public static func questionnaireViewController(_ endPoint: String, sendApiPath: String = KAPIConstants.questionnairesResponse, theme: KQuestionnaireTheme = KQuestionnaireDefaultTheme(), delegate: KQuestionnaireDelegate? = nil) -> UIViewController{
+        return KQuestionnaires.questionnaireViewController(KQuestionnaireInfos(endPoint, sendApiPath: sendApiPath, theme: theme), delegate: delegate)
+        
+    }
 }
 
-public class QuestionnaireViewController: UIViewController, NSFetchedResultsControllerDelegate {
+public protocol KQuestionnaireProtocol: NSObject {
+    func responseChanged(questionRecordIdentifier: NSNumber, answer: Any?)
+    
+    func answerInResponse(with condition: String) -> QuestionAnswer?
+}
+
+public class QuestionnaireViewController: UIViewController, NSFetchedResultsControllerDelegate, KQuestionnaireProtocol {
     
     @IBOutlet weak var questionsStackView: UIStackView!
     @IBOutlet weak var mainScrollView: UIScrollView!
@@ -238,13 +249,15 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
                 case .OpenAnswer:
                     let openAns = KOpenAnswerStackView.loadFromNib(dateFormatter: questionnaireInfos.dateFormatter, dateTimeFormatter: questionnaireInfos.dateTimeFormatter)
                     openAns.theme = theme
-                    openAns.setContent(withThisQuestion: question, withResponse: response, withThisMAxSize: questionsStackView.bounds.width)
+                    openAns.delegate = self
+                    openAns.setContent(withThisQuestion: question, withThisMAxSize: questionsStackView.bounds.width)
                     questionsStackView.addArrangedSubview(openAns)
                     theme.applyTheme(toView: openAns, withQuestion: question)
                     break
                 case .SingleChoice, .MultiChoice:
                     let singleOrMultiChoice = KSingleOrMultiChoiceStackView.loadFromNib()
                     singleOrMultiChoice.theme = theme
+                    singleOrMultiChoice.delegate = self
                     singleOrMultiChoice.setContent(withThisQuestion: question, withResponse: response, withThisMAxSize: questionsStackView.bounds.width)
                     questionsStackView.addArrangedSubview(singleOrMultiChoice)
                     theme.applyTheme(toView: singleOrMultiChoice, withQuestion: question)
@@ -258,6 +271,47 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
         view.layoutIfNeeded()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2.0) { 
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    public func answerInResponse(with condition: String) -> QuestionAnswer? {
+
+        for key in response.allKeys {
+            let resp = response[key as! String]!
+            if let resps = resp as? [QuestionAnswer]{
+                for resp in resps{
+                    if condition.contains(String(format: "%d", resp.Id ?? -1))
+                    {
+                        return resp
+                    }
+                }
+            }else if let resp = resp as? QuestionAnswer{
+                if condition.contains(String(format: "%d", resp.Id ?? -1))
+                {
+                    return resp
+                }
+            }
+        }
+        return nil
+    }
+    
+    public func responseChanged(questionRecordIdentifier: NSNumber, answer: Any?)
+    {
+        if answer == nil
+        {
+            response.removeObject(forKey: questionRecordIdentifier.stringValue)
+        }
+        else
+        {
+            response[questionRecordIdentifier.stringValue] = answer
+        }
+        
+        for view in questionsStackView.arrangedSubviews
+        {
+            if let view = view as? KQuestionViewProtocol
+            {
+                view.refreshUI()
+            }
         }
     }
   

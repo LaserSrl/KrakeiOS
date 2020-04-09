@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class KSingleOrMultiChoiceStackView : UIView{
+public class KSingleOrMultiChoiceStackView : UIView, KQuestionViewProtocol {
 
     @IBOutlet weak var titleQuestion: UILabel!{
         didSet{
@@ -22,6 +22,7 @@ public class KSingleOrMultiChoiceStackView : UIView{
     
     @IBOutlet weak var questImageWidth: NSLayoutConstraint!
     
+    weak var delegate: KQuestionnaireProtocol?
     var theme: KQuestionnaireTheme!
     
     var questionRecord: QuestionRecordProtocol!{
@@ -85,7 +86,11 @@ public class KSingleOrMultiChoiceStackView : UIView{
                         
                         answersStackView.addArrangedSubview(button)
                     }
-                }                
+                }
+                if !((questionRecord.condition?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "").isEmpty)
+                {
+                    isHidden = questionRecord.conditionType == "Show"
+                }
             }
         }
     }
@@ -109,32 +114,51 @@ public class KSingleOrMultiChoiceStackView : UIView{
     
     @objc func chooseButton(_ button: UIButton){
         var transform: CGAffineTransform!
-        var ans: AnswerRecordProtocol!
+        var ans: AnswerRecordProtocol?
         var index = 0
-        //choosing a response, any previously given response will be canceled
-        for case let but as UIButton in answersStackView.subviews
+        if button.isSelected
         {
-            if but != button{
-                transform = CGAffineTransform(scaleX: 1.0,y: 1.0)
-                but.isSelected = false
-            }else{
-                ans = (questionRecord.answers![index] as! AnswerRecordProtocol)
-                let zoom = theme.zoomLevel(for: ans, in: questionRecord)
-                transform = CGAffineTransform(scaleX: zoom,y: zoom)
-                but.isSelected = true
-
-            }
-
+            transform = CGAffineTransform(scaleX: 1.0,y: 1.0)
+            button.isSelected = false
+            UIView.beginAnimations("ScaleButton", context: nil)
+            UIView.setAnimationDuration(0.5)
+            button.transform = transform
+            UIView.commitAnimations()
+        }
+        else
+        {
+            //choosing a response, any previously given response will be canceled
+            for case let but as UIButton in answersStackView.subviews
+            {
+                if but != button{
+                    transform = CGAffineTransform(scaleX: 1.0,y: 1.0)
+                    but.isSelected = false
+                }else{
+                    ans = (questionRecord.answers![index] as! AnswerRecordProtocol)
+                    let zoom = theme.zoomLevel(for: ans!, in: questionRecord)
+                    transform = CGAffineTransform(scaleX: zoom,y: zoom)
+                    but.isSelected = true
+                    
+                }
+                
                 UIView.beginAnimations("ScaleButton", context: nil)
                 UIView.setAnimationDuration(0.5)
                 but.transform = transform
                 UIView.commitAnimations()
-
-            index = index + 1
+                
+                index = index + 1
+            }
         }
-        response[questionRecord.identifier.stringValue] = QuestionAnswer(QuestionRecord_Id: questionRecord.identifier.intValue,
-                                                                         AnswerText: nil,
-                                                                         Id: ans.identifier.intValue)
+        if let ans = ans {
+            delegate?.responseChanged(questionRecordIdentifier: questionRecord.identifier,
+                                  answer: QuestionAnswer(QuestionRecord_Id: questionRecord.identifier.intValue,
+                                                         AnswerText: nil,
+                                                         Id: ans.identifier.intValue))
+        }else{
+            delegate?.responseChanged(questionRecordIdentifier: questionRecord.identifier,
+                                      answer: nil)
+            
+        }
     }
     
     @objc func chooseButtonMultiChoice(_ button: UIButton){
@@ -177,8 +201,14 @@ public class KSingleOrMultiChoiceStackView : UIView{
         UIView.setAnimationDuration(0.5)
         button.transform = transform
         UIView.commitAnimations()
-        
-        response[questionRecord.identifier.stringValue] = arrayOfAnswersInQuestion
+        if arrayOfAnswersInQuestion.count > 0
+        {
+            delegate?.responseChanged(questionRecordIdentifier: questionRecord.identifier, answer: arrayOfAnswersInQuestion)
+        }
+        else
+        {
+            delegate?.responseChanged(questionRecordIdentifier: questionRecord.identifier, answer: nil)
+        }
     }
     
     @objc func touchImage(_ gesture: UITapGestureRecognizer){
@@ -214,7 +244,18 @@ public class KSingleOrMultiChoiceStackView : UIView{
         }
     }
     
-
+    public func refreshUI()
+    {
+        if !((questionRecord.condition?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "").isEmpty)
+        {
+            if let _ = delegate?.answerInResponse(with: questionRecord.condition!)
+            {
+                isHidden = questionRecord.conditionType != "Show"
+            }else{
+                isHidden = questionRecord.conditionType == "Show"
+            }
+        }
+    }
 }
 
 class ResizableButton: UIButton {

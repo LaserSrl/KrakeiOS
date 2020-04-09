@@ -34,6 +34,7 @@ public protocol QuestionRecordProtocol: KeyValueCodingProtocol
     var answerType: String? { get }
     var questionType: String? { get }
     var conditionType: String? { get }
+    var condition: String? { get }
     var answers: NSOrderedSet? { get }
     var section: String? { get }
     var images: [Int]? {get}
@@ -54,6 +55,7 @@ extension QuestionRecordProtocol {
     }
     
     public var section: String? { get {return nil} set {} }
+    public var condition: String? { get {return nil} set {} }
     
     public var images: [Int]?{
         get{
