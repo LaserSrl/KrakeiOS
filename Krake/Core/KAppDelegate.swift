@@ -27,7 +27,10 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
         }
         
         // Registrazione al servizio di notifica push.
-        KPushManager.pushRegistrationRequest()
+        if (KInfoPlist.KrakePlist.pushRegistrationOnDidFinishLaunchingWithOptions)
+        {
+            KPushManager.pushRegistrationRequest()
+        }
         
         if let notificationUserInfo = launchOptions?[KApplicationLaunchOptionsKey.remoteNotification] as? [AnyHashable: Any], checkLaunchOptions
         {

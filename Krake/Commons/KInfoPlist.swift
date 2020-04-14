@@ -69,6 +69,11 @@ import Foundation
         public static let encriptionKey: String? = {
             return Bundle.krakeSettings()["EncriptionKey"] as? String
         }()
+        
+        public static let pushRegistrationOnDidFinishLaunchingWithOptions: Bool = {
+            return Bundle.krakeSettings()["PushRegistrationOnDidFinishLaunchingWithOptions"] as? Bool ?? true
+        }()
+    
     }
     
     open class StoreReview: NSObject
