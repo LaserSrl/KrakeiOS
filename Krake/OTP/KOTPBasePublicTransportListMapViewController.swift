@@ -283,15 +283,15 @@ open class KOTPBasePublicTransportListMapViewController<EntityType>: UIViewContr
         let tableViewContainerVerticalMiddle = tableViewContainerFrame.midY
         let tableViewContainerTopConstant: CGFloat
         if tableViewContainer.frame.origin.y > tableViewContainerVerticalMiddle {
-            NSLog("Top %f", tableViewContainerTop!.constant)
-            NSLog("bounds %f", tableViewContainer.bounds.height)
-            NSLog("Min %f", minimumTableViewContainerHeight)
+            KLog(String(format:"Top %f", tableViewContainerTop!.constant))
+            KLog(String(format:"bounds %f", tableViewContainer.bounds.height))
+            KLog(String(format:"Min %f", minimumTableViewContainerHeight))
 
             tableViewContainerTopConstant =
                 tableViewContainerTop!.constant +
                 tableViewContainer.bounds.height - minimumTableViewContainerHeight
 
-            NSLog("Tot %f", tableViewContainerTopConstant)
+            KLog(String(format:"Tot %f", tableViewContainerTopConstant))
         } else {
             tableViewContainerTopConstant = minimumTableViewTopDistanceFromParent
         }

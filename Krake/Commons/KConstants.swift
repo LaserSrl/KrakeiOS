@@ -41,7 +41,7 @@ public enum LogLevel: String
     case error
 }
 
-public func KLog<T>(type: LogLevel = .debug, _ object: @autoclosure () -> T, _ file: String = #file, _ function: String = #function, _ line: Int = #line) {
+func KLog<T>(type: LogLevel = .debug, _ object: @autoclosure () -> T, _ file: String = #file, _ function: String = #function, _ line: Int = #line) {
     #if DEBUG || VERBOSE
     let value = object()
     let fileURL = NSURL(string: file)?.lastPathComponent ?? "Unknown file"

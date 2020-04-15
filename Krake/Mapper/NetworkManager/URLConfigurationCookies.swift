@@ -138,10 +138,10 @@ extension URLSessionConfiguration {
                 loopCookie.name == cookie.name && loopCookie.domain == cookie.domain
             }).first == nil {
                 httpCookieStorage?.setCookie(cookie)
-                NSLog("Setup: Cookie %@ aggiunto", cookie.name)
+                KLog(String(format:"Setup: Cookie %@ aggiunto", cookie.name))
             }
             else {
-                NSLog("Setup: Cookie %@ trovato", cookie.name)
+                KLog(String(format:"Setup: Cookie %@ trovato", cookie.name))
             }
         }
     }

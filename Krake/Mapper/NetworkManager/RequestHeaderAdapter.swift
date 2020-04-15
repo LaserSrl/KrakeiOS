@@ -31,7 +31,7 @@ class RequestHeaderAdapter: RequestInterceptor {
 
         let cookiesHeaders = HTTPCookie.requestHeaderFields(with: cookiesToSend.cookies)
 
-        NSLog("%@", cookiesHeaders.description)
+        KLog(cookiesHeaders.description)
         for (key, value) in cookiesHeaders {
             request.setValue(value, forHTTPHeaderField: key)
         }

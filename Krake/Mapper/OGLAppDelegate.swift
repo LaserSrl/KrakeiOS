@@ -136,7 +136,6 @@ open class OGLAppDelegate: UIResponder, UIApplicationDelegate, KNetworkAccessDel
     lazy open var applicationDocumentsDirectory: Foundation.URL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.laser.hh" in the application's documents Application Support directory.
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        //        NSLog("%@",urls[urls.count-1])
         return urls[urls.count-1]
     }()
     

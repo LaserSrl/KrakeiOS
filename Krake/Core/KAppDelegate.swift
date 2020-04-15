@@ -31,6 +31,10 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
         {
             KPushManager.pushRegistrationRequest()
         }
+        else
+        {
+            KLog(type: .warning, "PUSH: token NOT REGISTERED -> call KPushManager.pushRegistrationRequest() or set, on info.plist, YES the 'PushRegistrationOnDidFinishLaunchingWithOptions' value")
+        }
         
         if let notificationUserInfo = launchOptions?[KApplicationLaunchOptionsKey.remoteNotification] as? [AnyHashable: Any], checkLaunchOptions
         {
@@ -41,12 +45,11 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
 
     //MARK: - Push sharedApplicationDelegate
     @objc open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        KLog("PUSH: registered")
         KPushManager.setPushDeviceToken(deviceToken as Data)
     }
     
     @objc open func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        KLog("PUSH: fail to register")
+        KLog("PUSH: fail to register with error -> " + error.localizedDescription)
     }
 
     @objc open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {

@@ -36,7 +36,7 @@ open class KPushManager: NSObject{
     
     public static func setPushDeviceToken(_ deviceToken: Data){
         let serializedToken: String = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        
+        KLog("PUSH: registered with token -> " + serializedToken)
         let uuid = KConstants.uuid
         let wsURL = KInfoPlist.KrakePlist.path
 		let wsPath = wsURL.absoluteString
