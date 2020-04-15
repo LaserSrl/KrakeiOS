@@ -70,6 +70,10 @@ import Foundation
             return Bundle.krakeSettings()["EncriptionKey"] as? String
         }()
         
+        public static let apiChannel: String? = {
+            return Bundle.krakeSettings()["ApiChannel"] as? String
+        }()
+        
         public static let pushRegistrationOnDidFinishLaunchingWithOptions: Bool = {
             return Bundle.krakeSettings()["PushRegistrationOnDidFinishLaunchingWithOptions"] as? Bool ?? true
         }()

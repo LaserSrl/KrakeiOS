@@ -43,6 +43,9 @@ class RequestHeaderAdapter: RequestInterceptor {
         if let apiKeyInfo = generateApiKey() {
             request.setValue(apiKeyInfo.apiKey, forHTTPHeaderField: "ApiKey")
             request.setValue(apiKeyInfo.akiv, forHTTPHeaderField: "AKIV")
+            if let apiChannel = apiKeyInfo.apiChannel {
+                request.setValue(apiChannel, forHTTPHeaderField: "ApiChannel")
+            }
         }
         completion(.success(request))
     }
@@ -71,7 +74,7 @@ class RequestHeaderAdapter: RequestInterceptor {
                 do {
                     let encrypted: [UInt8] = try AES(key: xsrfMod, blockMode: CBC(iv: iv), padding: .pkcs7).encrypt(input)
                     if let encryptedString = encrypted.toBase64(), let ivString = iv.toBase64(){
-                        return (ApiKeyInfo(apiKey: encryptedString, akiv: ivString))
+                        return (ApiKeyInfo(apiKey: encryptedString, akiv: ivString, apiChannel: KInfoPlist.KrakePlist.apiChannel))
                     }
                 }
                 catch {
@@ -103,4 +106,5 @@ extension HTTPCookie {
 struct ApiKeyInfo {
     let apiKey: String
     let akiv: String
+    let apiChannel: String?
 }
