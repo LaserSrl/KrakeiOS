@@ -184,7 +184,6 @@
                                                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                                                     <userDefinedRuntimeAttributes>
                                                                                         <userDefinedRuntimeAttribute type="string" keyPath="IBPlaceholder" value="E-Mail"/>
-                                                                                        <userDefinedRuntimeAttribute type="string" keyPath="validationTypeAdapter" value="Email"/>
                                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="canBeEmpty" value="NO"/>
                                                                                     </userDefinedRuntimeAttributes>
                                                                                     <connections>
@@ -299,10 +298,10 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pqs-Kw-EKX">
-                                                                    <rect key="frame" x="22" y="1" width="200" height="110"/>
+                                                                    <rect key="frame" x="0.0" y="10" width="244" height="48"/>
                                                                     <subviews>
                                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3KP-Nf-F4D" customClass="EGFloatingTextField" customModule="LaserFloatingTextField">
-                                                                            <rect key="frame" x="-22" y="31" width="244" height="48"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="118" height="48"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="48" id="PD7-8J-dUm"/>
                                                                             </constraints>
@@ -310,7 +309,6 @@
                                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                                                             <userDefinedRuntimeAttributes>
                                                                                 <userDefinedRuntimeAttribute type="string" keyPath="IBPlaceholder" value="E-Mail"/>
-                                                                                <userDefinedRuntimeAttribute type="string" keyPath="validationTypeAdapter" value="Email"/>
                                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="canBeEmpty" value="NO"/>
                                                                             </userDefinedRuntimeAttributes>
                                                                             <connections>
@@ -318,7 +316,7 @@
                                                                             </connections>
                                                                         </textField>
                                                                         <textField opaque="NO" clipsSubviews="YES" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="oUq-WP-HDV" customClass="EGFloatingTextField" customModule="LaserFloatingTextField">
-                                                                            <rect key="frame" x="37" y="31" width="126" height="48"/>
+                                                                            <rect key="frame" x="126" y="0.0" width="118" height="48"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="48" id="qOC-Mz-WUf"/>
                                                                             </constraints>
