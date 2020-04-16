@@ -43,7 +43,7 @@ class RequestHeaderAdapter: RequestInterceptor {
         if let apiKeyInfo = generateApiKey() {
             request.setValue(apiKeyInfo.apiKey, forHTTPHeaderField: "ApiKey")
             request.setValue(apiKeyInfo.akiv, forHTTPHeaderField: "AKIV")
-            if let apiChannel = apiKeyInfo.apiChannel {
+            if let apiChannel = apiKeyInfo.apiChannel, !apiChannel.isEmpty {
                 request.setValue(apiChannel, forHTTPHeaderField: "ApiChannel")
             }
         }

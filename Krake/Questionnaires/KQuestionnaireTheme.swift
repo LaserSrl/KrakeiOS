@@ -28,6 +28,9 @@ public protocol KQuestionnaireTheme: NSObjectProtocol{
     //per stilizzare solo la label della domanda
     func applyTheme(toQuestionLabel title: UILabel, forQuestion: QuestionRecordProtocol)
     
+    //per stilizzare solo la label della section
+    func applyTheme(toSectionLabel title: UILabel, forQuestion: QuestionRecordProtocol)
+    
     //utilizzato per decidere nella KSingleChoiceStackView l'orientamento dello stackview delle risposte
     func isVerticalOrientation(_ question: QuestionRecordProtocol) -> Bool
     
@@ -78,6 +81,11 @@ extension KQuestionnaireTheme{
     
     public func applyTheme(toQuestionLabel title: UILabel, forQuestion: QuestionRecordProtocol){
         title.textColor = UIColor.black
+    }
+    
+    public func applyTheme(toSectionLabel title: UILabel, forQuestion: QuestionRecordProtocol){
+        title.textColor = UIColor.black
+        title.font = UIFont.preferredFont(forTextStyle: .headline)
     }
     
     public func isVerticalOrientation(_ question: QuestionRecordProtocol) -> Bool {

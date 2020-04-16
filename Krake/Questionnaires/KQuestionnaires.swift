@@ -82,7 +82,7 @@ open class KQuestionnaires: NSObject{
 public protocol KQuestionnaireProtocol: NSObject {
     func responseChanged(questionRecordIdentifier: NSNumber, answer: Any?)
     
-    func answerInResponse(with condition: String) -> QuestionAnswer?
+    func answerInResponse(with condition: String) -> Bool
 }
 
 public class QuestionnaireViewController: UIViewController, NSFetchedResultsControllerDelegate, KQuestionnaireProtocol {
@@ -108,6 +108,7 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
     var apiPath: String!
     var theme: KQuestionnaireTheme!
     var response = NSMutableDictionary()
+    fileprivate var currentSection: String? = nil
     fileprivate var resultFetched: NSFetchedResultsController<NSFetchRequestResult>?
     fileprivate var loadTask: OMLoadDataTask? = nil
     fileprivate var questionnaire: QuestionnaireProtocol?{
@@ -245,6 +246,14 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
     {
         if let domande = questionnairePart?.questions?.array as? [QuestionRecordProtocol]{
             for question in domande{
+                if let section = question.section, !section.isEmpty, currentSection != section
+                {
+                    currentSection = section
+                    let sectionLabel = UILabel()
+                    sectionLabel.text = currentSection
+                    theme.applyTheme(toSectionLabel: sectionLabel, forQuestion: question)
+                    questionsStackView.addArrangedSubview(sectionLabel)
+                }
                 switch question.questionTypeEnum {
                 case .OpenAnswer:
                     let openAns = KOpenAnswerStackView.loadFromNib(dateFormatter: questionnaireInfos.dateFormatter, dateTimeFormatter: questionnaireInfos.dateTimeFormatter)
@@ -274,25 +283,34 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
         }
     }
     
-    public func answerInResponse(with condition: String) -> QuestionAnswer? {
+    public func answerInResponse(with conditionString: String) -> Bool {
 
         for key in response.allKeys {
             let resp = response[key as! String]!
             if let resps = resp as? [QuestionAnswer]{
-                for resp in resps{
-                    if condition.contains(String(format: " %d ", resp.Id ?? -1))
-                    {
-                        return resp
+                var responses = [QuestionAnswer]()
+                let conditions = conditionString.components(separatedBy: ["and", "or"])
+                for condition in conditions
+                {
+                    for resp in resps{
+                        if Int(condition.trimmingCharacters(in: .whitespaces)) == resp.Id ?? -1 {
+                            responses.append(resp)
+                            break
+                        }
                     }
                 }
+                return responses.count == conditions.count
             }else if let resp = resp as? QuestionAnswer{
-                if condition.contains(String(format: " %d ", resp.Id ?? -1))
+                let conditions = conditionString.components(separatedBy: ["and", "or"])
+                for condition in conditions
                 {
-                    return resp
+                    if Int(condition.trimmingCharacters(in: .whitespaces)) == resp.Id ?? -1 {
+                        return true
+                    }
                 }
             }
         }
-        return nil
+        return false
     }
     
     public func responseChanged(questionRecordIdentifier: NSNumber, answer: Any?)

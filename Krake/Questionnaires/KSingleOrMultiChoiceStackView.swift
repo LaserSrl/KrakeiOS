@@ -248,7 +248,7 @@ public class KSingleOrMultiChoiceStackView : UIView, KQuestionViewProtocol {
     {
         if !((questionRecord.condition?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "").isEmpty)
         {
-            if let _ = delegate?.answerInResponse(with: questionRecord.condition!)
+            if delegate?.answerInResponse(with: questionRecord.condition!) ?? false
             {
                 isHidden = questionRecord.conditionType != "Show"
             }else{
