@@ -91,7 +91,7 @@ public protocol KQuestionViewProtocol: NSObject
                     questImageView.isHidden = true
                 }
                 
-                if !((questionRecord.condition?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "").isEmpty)
+                if ((questionRecord.condition ?? " ").count > 1)
                 {
                     isHidden = questionRecord.conditionType == "Show"
                 }
@@ -207,7 +207,7 @@ public protocol KQuestionViewProtocol: NSObject
     }
     
     public func refreshUI() {
-        if !((questionRecord.condition?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "").isEmpty)
+        if ((questionRecord.condition ?? " ").count > 1)
         {
             if let _ = delegate?.answerInResponse(with: questionRecord.condition!)
             {

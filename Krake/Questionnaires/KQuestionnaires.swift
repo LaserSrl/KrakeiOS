@@ -280,13 +280,13 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
             let resp = response[key as! String]!
             if let resps = resp as? [QuestionAnswer]{
                 for resp in resps{
-                    if condition.contains(String(format: "%d", resp.Id ?? -1))
+                    if condition.contains(String(format: " %d ", resp.Id ?? -1))
                     {
                         return resp
                     }
                 }
             }else if let resp = resp as? QuestionAnswer{
-                if condition.contains(String(format: "%d", resp.Id ?? -1))
+                if condition.contains(String(format: " %d ", resp.Id ?? -1))
                 {
                     return resp
                 }
