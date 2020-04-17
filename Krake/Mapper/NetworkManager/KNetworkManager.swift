@@ -209,7 +209,7 @@ public class KDataTask: NSObject {
                                  interceptor: RequestHeaderAdapter(auth: auth))
         
         self.baseURL = baseURL
-
+        self.authenticated = auth
         super.init()
     }
     
@@ -217,7 +217,6 @@ public class KDataTask: NSObject {
         let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: auth)
         manager.requestSerializer = .json
         manager.responseSerializer = .json
-        manager.authenticated = auth
         manager.checkHeaderResponse = checkHeaderResponse
         return manager
     }
@@ -226,7 +225,6 @@ public class KDataTask: NSObject {
         let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: auth)
         manager.requestSerializer = .http
         manager.responseSerializer = .json
-        manager.authenticated = auth
         manager.checkHeaderResponse = checkHeaderResponse
         return manager
     }

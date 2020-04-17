@@ -409,7 +409,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
     }
     
     deinit {
-        hud.removeFromSuperview()
+        hud?.removeFromSuperview()
         for task in uploadMediaTasks{
             task.cancel()
         }
@@ -545,7 +545,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
             }
         }
         hud.showAsUploadProgress()
-        let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: true)
+        let manager = KNetworkManager.defaultManager(true)
         manager.responseSerializer = .json
         manager.requestSerializer = .json
         KLog(type: .info, params.description )
