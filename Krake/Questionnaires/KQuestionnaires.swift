@@ -285,32 +285,30 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
     
     public func answerInResponse(with conditionString: String) -> Bool {
 
-        for key in response.allKeys {
-            let resp = response[key as! String]!
-            if let resps = resp as? [QuestionAnswer]{
-                var responses = [QuestionAnswer]()
-                let conditions = conditionString.components(separatedBy: ["and", "or"])
-                for condition in conditions
-                {
+        var responses = [QuestionAnswer]()
+        let conditions = conditionString.trimmingCharacters(in: .whitespaces).components(separatedBy: ["and", "or"])
+        if conditions.first?.isEmpty ?? true {
+            return false
+        }
+        for condition in conditions
+        {
+            for key in response.allKeys {
+                let resp = response[key as! String]!
+                if let resps = resp as? [QuestionAnswer]{
                     for resp in resps{
-                        if Int(condition.trimmingCharacters(in: .whitespaces)) == resp.Id ?? -1 {
+                        if Int(condition) == resp.Id ?? -1 {
                             responses.append(resp)
                             break
                         }
                     }
-                }
-                return responses.count == conditions.count
-            }else if let resp = resp as? QuestionAnswer{
-                let conditions = conditionString.components(separatedBy: ["and", "or"])
-                for condition in conditions
-                {
-                    if Int(condition.trimmingCharacters(in: .whitespaces)) == resp.Id ?? -1 {
-                        return true
+                }else if let resp = resp as? QuestionAnswer{
+                    if Int(condition) == resp.Id ?? -1 {
+                        responses.append(resp)
                     }
                 }
             }
         }
-        return false
+        return conditions.count == responses.count
     }
     
     public func responseChanged(questionRecordIdentifier: NSNumber, answer: Any?)
