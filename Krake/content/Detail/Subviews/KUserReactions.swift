@@ -201,7 +201,7 @@ open class KUserReactions: UIView, KDetailViewProtocol {
                     self.sendReactionToKrake(reactionIdentifier)
                 }else{
                     if let error = error {
-                        KMessageManager.showMessage(error, type: .error)
+                        KMessageManager.showMessage(error.localizedDescription, type: .error)
                     }
                 }
             })

@@ -66,6 +66,8 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
                     if (success) {
                         KMessageManager.showMessage("VerificationMailMessage".localizedString(),
                                                     type: .success)
+                        NotificationCenter.default.post(name: KLoginManager.UserEmailVerified, object: KLoginManager.shared)
+                        KLoginManager.shared.delegate?.userEmailVerified()
                     }
                 }
                 return true

@@ -22,6 +22,8 @@ public protocol KLoginManagerDelegate: KeyValueCodingProtocol{
     
     func loginCompleted(withStatus logged: Bool, roles: [String]?, serviceRegistrated: [String]?, error: String?)
     func userLoggedOut()
+    func userRegisteredWaitingEmailVerification()
+    func userEmailVerified()
     func shouldDisplayLoginControllerAfterFailure(with response: KrakeResponse?, parameter: Any?) -> Bool
 }
 
@@ -58,6 +60,16 @@ public extension KLoginManagerDelegate{
     func userLoggedOut(){
         
     }
+    
+    func userRegisteredWaitingEmailVerification()
+    {
+        
+    }
+    
+    func userEmailVerified()
+    {
+        
+    }
 
     var canUserRecoverPassword: Bool{
         return true
@@ -77,7 +89,7 @@ public struct KUser{
 }
 
 public typealias RequestLostPassword = (_ loginSuccess : Bool, _ message : String?) -> Void
-public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegistrated: [String]?, _ roles: [String]?, _ error : String?) -> Void
+public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegistrated: [String]?, _ roles: [String]?, _ error : Error?) -> Void
 
 @objc public class KLoginManager: NSObject{
     
@@ -89,6 +101,8 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
     
     public static let UserLoggedIn = Notification.Name("UserLoggedIn")
     public static let UserLoggedOut = Notification.Name("UserLoggedOut")
+    public static let UserEmailVerified = Notification.Name("UserEmailVerified")
+    public static let UserRegisteredWaitingEmailVerification = Notification.Name("UserRegisteredWaitingEmailVerification")
     
     fileprivate var loginViewController: OCLoginViewController?
     
@@ -221,7 +235,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
         KNetworkManager.defaultManager(true, checkHeaderResponse: true)
             .krakeLogin(providerName: providerName, params: params) { [weak self] (loginSuccess, response, error) in
             self?.makeCompletion(loginSuccess, response: response, error: error)
-            completion?(loginSuccess, self?.currentUser?.registeredServices, self?.currentUser?.roles, error?.localizedDescription)
+            completion?(loginSuccess, self?.currentUser?.registeredServices, self?.currentUser?.roles, error)
                 if !loginSuccess {
                     UserDefaults.standard.removeObject(forKey: KLoginManager.KUserTokenKey)
                 }
@@ -241,7 +255,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
                 self.loginViewController = nil
             })
             delegate?.loginCompleted(withStatus: isKrakeLogged, roles: currentUser?.roles, serviceRegistrated: currentUser?.registeredServices, error: error?.localizedDescription)
-            mainCompletion?(isKrakeLogged, currentUser?.registeredServices, currentUser?.roles, error?.localizedDescription)
+            mainCompletion?(isKrakeLogged, currentUser?.registeredServices, currentUser?.roles, error)
             AnalyticsCore.shared?.setUserInfoProperties()
             mainCompletion = nil
         }else{
@@ -253,9 +267,17 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
                     showMessage(error.localizedDescription, withType: .error)
                 }
                 delegate?.loginCompleted(withStatus: success, roles: currentUser?.roles, serviceRegistrated: currentUser?.registeredServices, error: error?.localizedDescription)
-                mainCompletion?(success, currentUser?.registeredServices, currentUser?.roles, error?.localizedDescription)
+                mainCompletion?(success, currentUser?.registeredServices, currentUser?.roles, error)
             }
         }
+    }
+    
+    @objc public func userRegisteredWaitingEmailVerification(response: Error?) {
+        
+        makeCompletion(true, response: nil, error: response)
+        
+        NotificationCenter.default.post(name: KLoginManager.UserRegisteredWaitingEmailVerification, object: self)
+        delegate?.userRegisteredWaitingEmailVerification()
     }
     
     @objc public func callRequestPasswordLost(queryString: String, params: [String: Any]){

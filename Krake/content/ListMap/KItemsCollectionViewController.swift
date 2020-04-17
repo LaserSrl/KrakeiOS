@@ -468,7 +468,7 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
                             mySelf.lastDisplayCache = nil
                             mySelf.loadedElements = nil
                             if let error = error {
-                                KMessageManager.showMessage(error, type: .error)
+                                KMessageManager.showMessage(error.localizedDescription, type: .error)
                             }
                         }
                     }

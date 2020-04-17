@@ -529,7 +529,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                             mySelf.elements = nil
                             if let error = error
                             {
-                                KMessageManager.showMessage(error, type: .error)
+                                KMessageManager.showMessage(error.localizedDescription, type: .error)
                             }
                         }
                     }

@@ -327,7 +327,9 @@ public class KDataTask: NSObject {
                            completion(false, nil, nil)
                        }
             }else{
-                KLoginManager.shared.userLogout()
+                if KLoginManager.shared.isKrakeLogged {
+                    KLoginManager.shared.userLogout()   
+                }
                 completion(false, nil, NSError(domain: "Login", code: (response?.errorCode ?? 0), userInfo: [NSLocalizedDescriptionKey : (response?.message ?? "Generic error".localizedString())]))
             }
         }
