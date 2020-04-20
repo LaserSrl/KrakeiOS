@@ -371,7 +371,7 @@ class KExtendedMapViewDelegateSupport: NSObject, MKMapViewDelegate, ClusterManag
             return nil
         }
 
-        if self.mapView.extendedDelegate?.responds(to: #selector(MKMapViewDelegate.mapView(_:viewFor:))) ?? false {
+        if self.mapView.extendedDelegate != nil {
             return self.mapView.extendedDelegate!.mapView!(mapView, viewFor: annotation)
         }
         else {
