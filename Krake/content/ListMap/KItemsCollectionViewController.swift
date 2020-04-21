@@ -232,6 +232,8 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
         {
             AnalyticsCore.shared?.log(itemList: analyticsScreenName, parameters: analyticsExtras)
         }
+
+        emptyStateView.frame = self.collectionView.bounds
         collectionItemsDelegate?.viewDidAppear(self)
     }
 
