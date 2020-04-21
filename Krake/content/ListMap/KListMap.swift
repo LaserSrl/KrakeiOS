@@ -1280,9 +1280,11 @@ extension KListMapViewController: UICollectionViewDelegate, UICollectionViewData
         if filteredElements == nil || filteredElements?.count == 0
         {
             let width = collectionView.bounds.size.width
+            let height = collectionView.bounds.size.height
             let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
             let margin = sectionInset.left + sectionInset.right
-            return CGSize(width: width - margin, height: 150)
+            let verticalMargin = sectionInset.top + sectionInset.bottom
+            return CGSize(width: width - margin, height: height - verticalMargin)
         }
         else if indexPath.row < filteredElements?.count ?? 0
         {
