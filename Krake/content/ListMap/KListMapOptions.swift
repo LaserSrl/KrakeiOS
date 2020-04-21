@@ -175,6 +175,7 @@ public struct KListMapOptions
     public var mapOptions: KMapOptions? = nil
     
     public var toggleButtonPosition: ToggleButtonPosition = .bottomCenter
+    public var noElementsText: String = "no_elements".localizedString()
     
     @available(*, deprecated, renamed: "init(data:)")
     public init(endPoint: String? = nil,

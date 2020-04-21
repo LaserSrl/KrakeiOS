@@ -1192,7 +1192,7 @@ extension KListMapViewController: UICollectionViewDelegate, UICollectionViewData
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: noElementCelIdentifier, for: indexPath)
             if let cell = cell as? KNoElementCell
             {
-                cell.textLabel?.text = "no_elements".localizedString()
+                cell.textLabel?.text = listMapOptions.noElementsText
             }
             return cell
         }
