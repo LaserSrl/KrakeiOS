@@ -283,32 +283,55 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
         }
     }
     
-    public func answerInResponse(with conditionString: String) -> Bool {
-
-        var responses = [QuestionAnswer]()
-        let conditions = conditionString.trimmingCharacters(in: .whitespaces).components(separatedBy: ["and", "or"])
-        if conditions.first?.isEmpty ?? true {
+    public func answerInResponse(with conditionString: String) -> Bool
+    {
+        var condString: String = conditionString
+        let conditions: [String] = matches(text: condString)
+        if conditions.count == 0 {
             return false
         }
         for condition in conditions
         {
             for key in response.allKeys {
                 let resp = response[key as! String]!
+                var isAnswered = false
                 if let resps = resp as? [QuestionAnswer]{
                     for resp in resps{
                         if Int(condition) == resp.Id ?? -1 {
-                            responses.append(resp)
+                            condString = condString.replacingOccurrences(of: condition, with: "true")
+                            isAnswered = true
                             break
                         }
                     }
                 }else if let resp = resp as? QuestionAnswer{
                     if Int(condition) == resp.Id ?? -1 {
-                        responses.append(resp)
+                        condString = condString.replacingOccurrences(of: condition, with: "true")
+                        isAnswered = true
                     }
                 }
+                if isAnswered {
+                    break
+                }
             }
+            condString = condString.replacingOccurrences(of: condition, with: "false")
         }
-        return conditions.count == responses.count
+        condString = condString.replacingOccurrences(of: "and", with: "&")
+        condString = condString.replacingOccurrences(of: "or", with: "|")
+        let exp: NSExpression = NSExpression(format: condString)
+        let result: Bool = exp.expressionValue(with: nil, context: nil) as? Bool ?? false
+        return result
+    }
+    
+    func matches(text: String) -> [String] {
+        do {
+            let regex = try NSRegularExpression(pattern: "\\d[0-9]\\d")
+            let nsString = text as NSString
+            let results = regex.matches(in: text, range: NSRange(location: 0, length: nsString.length))
+            return results.map { nsString.substring(with: $0.range)}
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
     }
     
     public func responseChanged(questionRecordIdentifier: NSNumber, answer: Any?)
