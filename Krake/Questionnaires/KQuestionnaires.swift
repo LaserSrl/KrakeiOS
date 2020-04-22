@@ -24,6 +24,7 @@ public protocol KQuestionnaireDelegate: NSObjectProtocol
     func questionnaire(questionnaire: QuestionnaireProtocol, willSendWith params: inout [QuestionAnswer])
 
     func questionnaireViewController(_ vc: QuestionnaireViewController, didSendQuestionnaire quesitonnaire: QuestionnaireProtocol)
+    func questionnaireViewController(shouldDismissViewController vc: QuestionnaireViewController, didSendQuestionnaire quesitonnaire: QuestionnaireProtocol) -> Bool
 }
 
 public extension KQuestionnaireDelegate
@@ -35,6 +36,10 @@ public extension KQuestionnaireDelegate
     func questionnaireViewController(_ vc: QuestionnaireViewController, didSendQuestionnaire quesitonnaire: QuestionnaireProtocol)
     {
 
+    }
+    
+    func questionnaireViewController(shouldDismissViewController vc: QuestionnaireViewController, didSendQuestionnaire quesitonnaire: QuestionnaireProtocol) -> Bool {
+        return true
     }
 
     func viewDidLoad(_ viewController: QuestionnaireViewController) { }
@@ -395,11 +400,13 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
                                                 AnalyticsCore.shared?.log(event: "survey_answered",parameters:["item_id":mySelf.questionnaire!.autoroutePartDisplayAlias!,
                                                     "content_type":classType.description()])
                                             }
-                                            if (mySelf.presentingViewController != nil) {
-                                                mySelf.presentingViewController?.dismissViewController()
-                                            }
-                                            else if (mySelf.navigationController?.viewControllers.last == self) {
-                                                _ = mySelf.navigationController?.popViewController(animated: true)
+                                            if mySelf.questionnaireDelegate?.questionnaireViewController(shouldDismissViewController: mySelf, didSendQuestionnaire: mySelf.questionnaire!) ?? true{
+                                                if (mySelf.presentingViewController != nil) {
+                                                    mySelf.presentingViewController?.dismissViewController()
+                                                }
+                                                else if (mySelf.navigationController?.viewControllers.last == mySelf) {
+                                                    _ = mySelf.navigationController?.popViewController(animated: true)
+                                                }
                                             }
                                         }else{
                                             KMessageManager.showMessage(response.message, type: .error) //Programmata
