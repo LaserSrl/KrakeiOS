@@ -159,7 +159,7 @@ public class KUserDisplayView: UIView {
         nameFirstLettersButton.setTitle("", for: .normal)
         if let user = user {
             let remoteImg = user.imageGallery?.firstObject
-            userImageView.setImage(media: remoteImg, placeholderImage: nil)
+            userImageView.setImage(media: remoteImg, placeholderImage: UIImage(omNamed: "user_placeholder"))
             
             logoutButton.hiddenAnimated = KInfoPlist.Login.canUserLogout ? false : true
             
@@ -175,7 +175,7 @@ public class KUserDisplayView: UIView {
                 userNameLabel.text = String(format:"%@%@ %@", prefixLabel ?? "",name,surname!)
             }
 
-            if remoteImg == nil
+            if remoteImg == nil, !name.isEmpty
             {
                 var buttonTitle = String(name[..<name.index(after: name.startIndex)])
 

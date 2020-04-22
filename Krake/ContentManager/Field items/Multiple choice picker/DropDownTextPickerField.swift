@@ -161,8 +161,7 @@ class DropDownTextPickerField: NSObject, FieldItemWithSelection, DropDownTextFie
         {
             values = arrayElements!
         }
-        
-        valuesChanged = false
+
         setValues(elements: values)
     }
 
@@ -177,6 +176,7 @@ class DropDownTextPickerField: NSObject, FieldItemWithSelection, DropDownTextFie
         }
         else  if isDefaultFirstValueSelected
         {
+            valuesChanged = true
             let selectedItem = dropDownTextField.itemList?.first
             let selected = selectedItem?.referenceValue()
             
