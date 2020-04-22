@@ -28,7 +28,7 @@ public class KUserDisplayView: UIView {
     public var contentDisplayAlias: String! = KCommonDisplayAlias.userInfo {
         didSet{
             if KLoginManager.shared.isKrakeLogged {
-                reloadUserInfos()
+                reloadContentInfos()
             }
             else {
                 user = nil
@@ -97,7 +97,7 @@ public class KUserDisplayView: UIView {
                                                                    object: KLoginManager.shared,
                                                                    queue: nil,
                                                                    using: { (note) in
-                                                                    self.reloadUserInfos()
+                                                                    self.reloadContentInfos()
                                                                     KTheme.current.applyTheme(toUserDisplay: self)
             })
             
@@ -123,7 +123,7 @@ public class KUserDisplayView: UIView {
         }
     }
     
-    public func reloadUserInfos()
+    public func reloadContentInfos()
     {
         task?.cancel()
         task = OGLCoreDataMapper.sharedInstance().loadData(withDisplayAlias: contentDisplayAlias,
@@ -145,7 +145,7 @@ public class KUserDisplayView: UIView {
     
     @IBAction func loginOrEdit(_ sender: UIButton) {
         if KLoginManager.shared.isKrakeLogged {
-            showUserInfoBlock?(user) ?? reloadUserInfos()
+            showUserInfoBlock?(user) ?? reloadContentInfos()
         }
         else {
             KLoginManager.shared.presentLogin(completion: { (logged, roles, services, error) in
