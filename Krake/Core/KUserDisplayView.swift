@@ -177,6 +177,7 @@ public class KUserDisplayView: UIView {
 
             if remoteImg == nil, !name.isEmpty
             {
+                userImageView.image = nil
                 var buttonTitle = String(name[..<name.index(after: name.startIndex)])
 
                 if let surname = surname
