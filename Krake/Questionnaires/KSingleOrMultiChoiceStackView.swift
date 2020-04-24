@@ -24,10 +24,13 @@ public class KSingleOrMultiChoiceStackView : UIView, KQuestionViewProtocol {
     
     weak var delegate: KQuestionnaireProtocol?
     var theme: KQuestionnaireTheme!
-    
+    var sortedAnswers: [AnswerRecordProtocol]!
     var questionRecord: QuestionRecordProtocol!{
         didSet{
             if questionRecord != nil {
+                
+                let descriptor = NSSortDescriptor(key: "position", ascending: true)
+                sortedAnswers = questionRecord.answers!.sortedArray(using: [descriptor]) as? [AnswerRecordProtocol]
                 
                 let verticalOrientation = theme.isVerticalOrientation(questionRecord)
                 if let images = questionRecord.images {
@@ -51,15 +54,16 @@ public class KSingleOrMultiChoiceStackView : UIView, KQuestionViewProtocol {
                 if verticalOrientation {
                     answersStackView.axis = KLayoutConstraintAxis.vertical
                 }
-                else if questionRecord.answers!.count > 0 {
+                else if sortedAnswers.count > 0 {
                     let heightInTheme = theme.answerHeightStackView(for: questionRecord)
                     let heightContraint = NSLayoutConstraint(item: answersStackView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: heightInTheme)
                     heightContraint.priority = UILayoutPriority(rawValue: 999)
                     answersStackView.addConstraint(heightContraint)
                 }
+
                 
-                for resp in questionRecord.answers!{
-                    if let risp = resp as? AnswerRecordProtocol, let published = risp.published , published.boolValue{
+                for risp in sortedAnswers{
+                    if let published = risp.published , published.boolValue{
                         let button = ResizableButton()
                         button.tag = risp.identifier.intValue
                         button.setTitle(risp.answer, for: .normal)
@@ -134,7 +138,7 @@ public class KSingleOrMultiChoiceStackView : UIView, KQuestionViewProtocol {
                     transform = CGAffineTransform(scaleX: 1.0,y: 1.0)
                     but.isSelected = false
                 }else{
-                    ans = (questionRecord.answers![index] as! AnswerRecordProtocol)
+                    ans = sortedAnswers[index]
                     let zoom = theme.zoomLevel(for: ans!, in: questionRecord)
                     transform = CGAffineTransform(scaleX: zoom,y: zoom)
                     but.isSelected = true
@@ -178,9 +182,9 @@ public class KSingleOrMultiChoiceStackView : UIView, KQuestionViewProtocol {
         
         //if the answer was not already selected, it will be selected
         if answerAlreadySelected == nil {
-            let ans: AnswerRecordProtocol = questionRecord.answers!.filter({ (answer) -> Bool in
-                return (answer as! AnswerRecordProtocol).identifier.intValue == button.tag
-            }).first as! AnswerRecordProtocol
+            let ans = sortedAnswers.filter({ (answer) -> Bool in
+                return answer.identifier.intValue == button.tag
+            }).first!
             let zoom = theme.zoomLevel(for: ans, in: questionRecord)
             transform = CGAffineTransform(scaleX: zoom,y: zoom)
             button.isSelected = true
