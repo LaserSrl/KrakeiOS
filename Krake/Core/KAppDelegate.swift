@@ -10,6 +10,7 @@ import Foundation
 import Fabric
 import Crashlytics
 import AlamofireNetworkActivityIndicator
+import MBProgressHUD
 
 open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
 
@@ -62,8 +63,14 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
 
             if let url = userActivity.webpageURL,
                 let nonce = KLoginManager.shared.extractNonce(url: url) {
-                KLoginManager.shared.verifyNonce(nonce) { (success, error) in
+                if let view = window?.rootViewController?.view {
+                    MBProgressHUD.showAdded(to: view, animated: true)
+                }
+                KLoginManager.shared.verifyNonce(nonce) { [weak self] (success, error) in
                     if (success) {
+                        if let view = self?.window?.rootViewController?.view {
+                            MBProgressHUD.hide(for: view, animated: true)
+                        }
                         KMessageManager.showMessage("VerificationMailMessage".localizedString(),
                                                     type: .success)
                         NotificationCenter.default.post(name: KLoginManager.UserEmailVerified, object: KLoginManager.shared)
