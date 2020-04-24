@@ -17,6 +17,7 @@ public protocol ContentModificationContainerViewControllerDelegate: NSObjectProt
     func contentModificationViewController(_ controller: ContentModificationContainerViewController, didCloseAfterSendingOfElementCompleted sentCorrectly: Bool, params : NSMutableDictionary)
     func contentModificationViewController(_ controller: ContentModificationContainerViewController, shouldCloseAfterSendingOfElementCompleted sentCorrectly: Bool) -> Bool
     func contentModificationViewController(_ controller: ContentModificationContainerViewController, taskForMedia media: UploadableMedia, atPath keyPath: String) -> KDataTask?
+    func contentModificationViewController(shoulInsertCloseButton controller: ContentModificationContainerViewController) -> Bool
 }
 
 public extension ContentModificationContainerViewControllerDelegate{
@@ -36,6 +37,10 @@ public extension ContentModificationContainerViewControllerDelegate{
     
     func contentModificationViewController(_ controller: ContentModificationContainerViewController, taskForMedia media: UploadableMedia, atPath keyPath: String) -> KDataTask? {
         return controller.uploadMediaContentToKrake(media, forKeyPath: keyPath)
+    }
+    
+    func contentModificationViewController(shoulInsertCloseButton controller: ContentModificationContainerViewController) -> Bool {
+        return true
     }
 }
 
@@ -325,7 +330,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         sendButton.isEnabled = false
         navigationItem.rightBarButtonItem = sendButton
         
-        if navigationController?.presentingViewController != nil{
+        if navigationController?.presentingViewController != nil, modificationDelegate?.contentModificationViewController(shoulInsertCloseButton: self) ?? true{
             let closeButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(ContentModificationContainerViewController.prepareToCloseViewController))
             navigationItem.leftBarButtonItem = closeButton
         }
