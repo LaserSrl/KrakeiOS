@@ -49,7 +49,11 @@ extension KQuestionnaireTheme{
     
     //richiamato dopo aver generato ogni singola domanda
     public func applyTheme(toView view: UIView, withQuestion: QuestionRecordProtocol){
-        view.backgroundColor = UIColor ( red: 0.89, green: 0.89, blue: 0.89, alpha: 1.0 )
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = UIColor.systemGray6
+        } else {
+            view.backgroundColor = UIColor.lightGray
+        }
     }
     
     //richiamato dopo aver generato un pulsante nella KSingleChoiceStackView
@@ -80,7 +84,11 @@ extension KQuestionnaireTheme{
     }
     
     public func applyTheme(toQuestionLabel title: UILabel, forQuestion: QuestionRecordProtocol){
-        title.textColor = UIColor.black
+        if #available(iOS 13.0, *) {
+            title.textColor = UIColor.label
+        } else {
+            title.textColor = UIColor.black
+        }
     }
     
     public func applyTheme(toSectionLabel title: UILabel, forQuestion: QuestionRecordProtocol){

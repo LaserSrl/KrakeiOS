@@ -91,6 +91,7 @@ public class KSingleOrMultiChoiceStackView : UIView, KQuestionViewProtocol {
                         answersStackView.addArrangedSubview(button)
                     }
                 }
+                theme.applyTheme(toQuestionLabel: titleQuestion, forQuestion: questionRecord)
                 if !((questionRecord.condition?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "").isEmpty)
                 {
                     isHidden = questionRecord.conditionType == "Show"

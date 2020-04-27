@@ -71,6 +71,10 @@ public protocol KQuestionViewProtocol: NSObject
                     answerTextField.validationType = .Email
                     answerTextField.isHidden = false
                     answerTextView.isHidden = true
+                case .Number:
+                    answerTextField.validationType = .Integer
+                    answerTextField.isHidden = false
+                    answerTextView.isHidden = true
                 case .None:
                     answerTextField.isHidden = true
                     answerTextView.isHidden = false
@@ -90,13 +94,12 @@ public protocol KQuestionViewProtocol: NSObject
                 }else{
                     questImageView.isHidden = true
                 }
-                
-                if !((questionRecord.condition?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "").isEmpty)
-                {
-                    isHidden = questionRecord.conditionType == "Show"
-                }
                 theme.applyTheme(toAnswerTextView: answerTextView, withQuestion: questionRecord)
                 theme.applyTheme(toQuestionLabel: titleQuestion, forQuestion: questionRecord)
+                if !((questionRecord.condition?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "").isEmpty)
+                {
+//                    isHidden = questionRecord.conditionType == "Show"
+                }
             }
         }
     }

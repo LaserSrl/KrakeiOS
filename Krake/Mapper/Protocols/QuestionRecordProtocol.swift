@@ -20,6 +20,7 @@ public enum AnswerType: String {
     case Date
     case Url
     case Email
+    case Number
     case None
 }
 

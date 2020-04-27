@@ -29,6 +29,7 @@ import SwiftMessages
     case popoverBackground
     case popoverText
     case userSelectablePin
+    case background
     
     public func toString() -> String
     {
@@ -59,8 +60,10 @@ import SwiftMessages
             return "popoverBackground"
         case .popoverText:
             return "popoverText"
-        case .userSelectablePin:
-            return "userSelectablePin"
+            case .userSelectablePin:
+                return "userSelectablePin"
+                case .background:
+                    return "background"
         }
     }
 }
