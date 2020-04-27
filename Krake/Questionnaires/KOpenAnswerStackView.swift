@@ -104,7 +104,7 @@ public protocol KQuestionViewProtocol: NSObject
         }
     }
     
-    private func defaultToolbar() -> UIToolbar{
+    private func defaultToolbar() -> UIToolbar {
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44.0))
         let items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
                                      target: nil,
@@ -174,7 +174,7 @@ public protocol KQuestionViewProtocol: NSObject
         }
     }
     
-    @objc func touchImage(_ gesture: UITapGestureRecognizer){
+    @objc func touchImage(_ gesture: UITapGestureRecognizer) {
         if let nav = (UIApplication.shared.delegate as! OGLAppDelegate).window!.rootViewController,
             let  array = questionRecord.images {
 
