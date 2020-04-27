@@ -98,7 +98,7 @@ public protocol KQuestionViewProtocol: NSObject
                 theme.applyTheme(toQuestionLabel: titleQuestion, forQuestion: questionRecord)
                 if !((questionRecord.condition?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "").isEmpty)
                 {
-//                    isHidden = questionRecord.conditionType == "Show"
+                    isHidden = questionRecord.conditionType == "Show"
                 }
             }
         }
