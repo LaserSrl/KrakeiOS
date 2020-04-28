@@ -159,7 +159,7 @@ open class DropDownTextField: EGFloatingTextField, UITableViewDelegate, UITableV
                 }
             }
             else {
-                if let index = mSelectedItems.index(of: selectedItem){
+                if let index = mSelectedItems.firstIndex(of: selectedItem){
                     if !(mSelectedItems.count == 1 && required){
                         mSelectedItems.remove(at: index)
                     }

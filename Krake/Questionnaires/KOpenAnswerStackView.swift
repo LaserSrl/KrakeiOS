@@ -104,7 +104,7 @@ public protocol KQuestionViewProtocol: NSObject
         }
     }
     
-    private func defaultToolbar() -> UIToolbar {
+    private func defaultToolbar() -> UIToolbar {
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44.0))
         let items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
                                      target: nil,
@@ -200,7 +200,7 @@ public protocol KQuestionViewProtocol: NSObject
     func setTitleWidth(constant: CGFloat = 40){
         
         if titleQuestionWidth == nil{
-            let constraint = NSLayoutConstraint(item: titleQuestion, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: constant)
+            let constraint = NSLayoutConstraint(item: titleQuestion!, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: constant)
             constraint.priority = UILayoutPriority.priority(999)
             titleQuestion.addConstraint(constraint)
             titleQuestionWidth = constraint

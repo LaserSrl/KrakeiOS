@@ -152,8 +152,12 @@ class PostCardViewController: UIViewController, UITextFieldDelegate{
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NotificationCenter.default.removeObserver(openObserver)
-        NotificationCenter.default.removeObserver(closeObserver)
+        if let openObserver = openObserver {
+            NotificationCenter.default.removeObserver(openObserver)
+        }
+        if let closeObserver = closeObserver {
+            NotificationCenter.default.removeObserver(closeObserver)
+        }
     }
 
     @objc func dismissKeyboard(){

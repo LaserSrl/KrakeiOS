@@ -162,7 +162,7 @@ open class CategoryPreferencesViewController: ContentModificationViewController,
             let categoryId = Int(selectedCategory.numberValue!)
         #endif
 
-        if let index = selectedCategories.index(where: {$0 == categoryId}) {
+        if let index = selectedCategories.firstIndex(where: {$0 == categoryId}) {
             selectedCategories.remove(at: index)
         }
         else {

@@ -134,8 +134,8 @@ class ImageCollectionViewCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(imageView)
         
-        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-(0)-[imageView]-(0)-|", options: .directionLeftToRight, metrics: nil, views: ["imageView": imageView]))
-        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(0)-[imageView]-(0)-|", options: .directionLeftToRight, metrics: nil, views: ["imageView": imageView]))
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-(0)-[imageView]-(0)-|", options: .directionLeftToRight, metrics: nil, views: ["imageView": imageView!]))
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(0)-[imageView]-(0)-|", options: .directionLeftToRight, metrics: nil, views: ["imageView": imageView!]))
         
         button = UIButton(type: .system)
         button.setImage(UIImage(krakeNamed: "delete"), for: .normal)
@@ -146,8 +146,8 @@ class ImageCollectionViewCell: UICollectionViewCell {
         button.isHidden = true
         contentView.addSubview(button)
         
-        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "[button(40)]-(4)-|", options: .directionLeftToRight, metrics: nil, views: ["button": button]))
-        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(4)-[button(40)]", options: .directionLeftToRight, metrics: nil, views: ["button": button]))
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "[button(40)]-(4)-|", options: .directionLeftToRight, metrics: nil, views: ["button": button!]))
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(4)-[button(40)]", options: .directionLeftToRight, metrics: nil, views: ["button": button!]))
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -44,7 +44,7 @@ open class KMAutoQueryDivideCacheManager: NSObject, KMCacheManagerDelegate {
             keys.sort()
 
             for key in keys {
-                if ignoredParams.index(of: key) == nil {
+                if ignoredParams.firstIndex(of: key) == nil {
                     name = name.appendingFormat("%@:%@", key , parameters[key]!.description)
                 }
             }

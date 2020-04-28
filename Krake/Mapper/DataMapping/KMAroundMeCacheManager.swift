@@ -33,7 +33,7 @@ open class KMAroundMeCacheManager: NSObject , KMCacheManagerDelegate {
             alias = displayAlias
         }
         
-        if let alias = alias, aroundMeDisplayRoutes.index(of: alias) != nil {
+        if let alias = alias, aroundMeDisplayRoutes.firstIndex(of: alias) != nil {
             
             if let cacheParams = cache.extrasParameters{
                 

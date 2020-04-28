@@ -76,9 +76,9 @@ class FieldItemWithPolicy: NSObject, FieldItem{
         policySwitch.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(switcher)
         
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-(8)-[policyText]-(8)-[policySwitch(44)]-(8)-|", options: .directionLeftToRight, metrics: nil, views: ["policyText" : policyText, "policySwitch" :  policySwitch]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(8)-[policyText]-(8)-|", options: .directionLeftToRight, metrics: nil, views: ["policyText" : policyText]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(8)-[policySwitch]-(8)-|", options: .directionLeftToRight, metrics: nil, views: ["policySwitch" : policySwitch]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-(8)-[policyText]-(8)-[policySwitch(44)]-(8)-|", options: .directionLeftToRight, metrics: nil, views: ["policyText" : policyText!, "policySwitch" :  policySwitch!]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(8)-[policyText]-(8)-|", options: .directionLeftToRight, metrics: nil, views: ["policyText" : policyText!]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(8)-[policySwitch]-(8)-|", options: .directionLeftToRight, metrics: nil, views: ["policySwitch" : policySwitch!]))
         
         self.view = view
     }

@@ -61,23 +61,23 @@ open class TakeInfoDateView: UIView {
             NSLayoutConstraint.constraints(withVisualFormat: "|-0-[desc]-8-[date]-8-[b(buttonWidth)]-0-|",
                 options: .directionLeftToRight,
                 metrics: [ "buttonWidth" : 44.0 ],
-                views: [ "desc" : descriptionLabel, "date" : dateLabel, "b" : openCalendarButton ]))
+                views: [ "desc" : descriptionLabel!, "date" : dateLabel!, "b" : openCalendarButton! ]))
         // Adding vertical constraints.
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[desc]-0-|",
             options: .directionLeftToRight,
             metrics: nil,
-            views: [ "desc" : descriptionLabel ]))
+            views: [ "desc" : descriptionLabel! ]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[date]-0-|",
             options: .directionLeftToRight,
             metrics: nil,
-            views: [ "date" : dateLabel ]))
+            views: [ "date" : dateLabel! ]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[button]-0-|",
             options: .directionLeftToRight,
             metrics: nil,
-            views: [ "button" : openCalendarButton ]))
+            views: [ "button" : openCalendarButton! ]))
         // Adding aspect ratio constraint to button.
         openCalendarButton.addConstraint(
-            NSLayoutConstraint(item: openCalendarButton, attribute: .height,
+            NSLayoutConstraint(item: openCalendarButton!, attribute: .height,
                 relatedBy: .equal,
                 toItem: openCalendarButton, attribute: .width,
                 multiplier: 1, constant: 0))

@@ -56,7 +56,7 @@ public class KSingleOrMultiChoiceStackView : UIView, KQuestionViewProtocol {
                 }
                 else if sortedAnswers.count > 0 {
                     let heightInTheme = theme.answerHeightStackView(for: questionRecord)
-                    let heightContraint = NSLayoutConstraint(item: answersStackView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: heightInTheme)
+                    let heightContraint = NSLayoutConstraint(item: answersStackView!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: heightInTheme)
                     heightContraint.priority = UILayoutPriority(rawValue: 999)
                     answersStackView.addConstraint(heightContraint)
                 }
@@ -240,7 +240,7 @@ public class KSingleOrMultiChoiceStackView : UIView, KQuestionViewProtocol {
     public func setTitleWidth(constant: CGFloat = 40){
         
         if titleQuestionWidth == nil{
-            let constraint = NSLayoutConstraint(item: titleQuestion, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: constant)
+            let constraint = NSLayoutConstraint(item: titleQuestion!, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: constant)
             constraint.priority = UILayoutPriority.priority(999)
             titleQuestion.addConstraint(constraint)
             titleQuestionWidth = constraint

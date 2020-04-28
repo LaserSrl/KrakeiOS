@@ -187,11 +187,8 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
         if enableRefreshControl
         {
             var refreshControlColor = UIColor.black
-            if #available(iOS 11.0, *)
-            {
-                navigationItem.largeTitleDisplayMode = .always
-                refreshControlColor = (navigationController?.navigationBar.prefersLargeTitles ?? false) ? KTheme.current.color(.textTint) : .black
-            }
+            navigationItem.largeTitleDisplayMode = .always
+            refreshControlColor = (navigationController?.navigationBar.prefersLargeTitles ?? false) ? KTheme.current.color(.textTint) : .black
             refreshControl.tintColor = refreshControlColor
             refreshControl.addTarget(self, action: #selector( refreshContent ), for: .valueChanged)
 

@@ -227,6 +227,8 @@ open class KExtendedMapView: MKMapView {
                 imageName = "OCstreet"
             case .mutedStandard:
                 imageName = "OCsatellite"
+            default:
+                imageName = "OCsatellite"
             }
         #else
             switch self.mapType {
