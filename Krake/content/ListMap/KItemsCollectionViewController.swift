@@ -179,11 +179,6 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
             layout.itemSize = KCollectionViewFlowLayoutAutomaticSize
         }
 
-        if let emptyStateLabel = emptyStateLabel
-        {
-            KTheme.current.applyTheme(toLabel: emptyStateLabel, style: .default)
-        }
-
         if enableRefreshControl
         {
             var refreshControlColor = UIColor.black
