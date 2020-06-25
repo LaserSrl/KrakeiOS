@@ -27,22 +27,57 @@ import LaserFloatingTextField
     case tint
 }
 
+@objc public enum KLoginLabelStyle: Int {
+    case title
+    case policyTitle
+    case policySubtitle
+}
+
 @objc public protocol KLoginTheme: NSObjectProtocol {
     
     func centerViewStyle() -> UIBlurEffect.Style
     func socialStyle() -> KLoginSocialStyle
     func color(_ type:KLoginColorType) -> UIColor
     func applyTheme(to textField: EGFloatingTextField)
-    func applyTheme(toTitle label: UILabel)
+    func applyTheme(toLabel: UILabel, style: KLoginLabelStyle)
     func applyTheme(toImageView imageView: UIImageView)
     func applyTheme(to button: UIButton, style: KLoginButtonStyle)
+    
 }
 
 extension KLoginTheme {
     
+    
 }
 
 @objc open class KLoginDefaultTheme: NSObject, KLoginTheme {
+    
+    /**
+     Method deprecated, implement the new one applyTheme(toLabel: UILabel, style: KLoginLabelStyle)
+     */
+    @available(*, deprecated, message: "🐙 Implement a new method", renamed: "applyTheme(toLabel:style:)")
+    open func applyTheme(toTitle label: UILabel) {
+        applyTheme(toLabel: label, style: .title)
+    }
+    
+    /// Apply login theme to Label
+    /// - Parameters:
+    ///   - toLabel: the label to apply the themee (used on section title like "Login", "Register" and on policy title and subtitle)
+    ///   - style: the style to be apply (.title, .policyTitle, .policySubtitle)
+    open func applyTheme(toLabel: UILabel, style: KLoginLabelStyle) {
+        switch style {
+        case .title:
+            toLabel.textColor = color(.tint)
+            toLabel.font = UIFont.preferredFont(forTextStyle: .title1)
+        case .policyTitle:
+            toLabel.textColor = color(.tint)
+            toLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        case .policySubtitle:
+            toLabel.textColor = color(.tint)
+            toLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        }
+    }
+    
     
     open func centerViewStyle() -> UIBlurEffect.Style {
         return .dark
@@ -89,11 +124,6 @@ extension KLoginTheme {
             button.layer.cornerRadius = 5.0
             button.contentEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
         }
-    }
-    
-    open func applyTheme(toTitle label: UILabel) {
-        label.textColor = color(.tint)
-        label.font = UIFont.preferredFont(forTextStyle: .title1)
     }
     
     open func applyTheme(toImageView imageView: UIImageView) {

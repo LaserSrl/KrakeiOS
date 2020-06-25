@@ -135,7 +135,7 @@
     self->responseType = responseType;
     self.fromViewController = vc;
     _titleLabel.text = self->policy[@"Title"];
-    _titleLabel.textColor = [UIColor whiteColor];
+    [[KTheme login] applyThemeToLabel:_titleLabel style:KLoginLabelStylePolicyTitle];
     [_switchFlag setOn:false];
     
     if ([self->policy[@"UserHaveToAccept"] integerValue] == 1)
@@ -143,7 +143,8 @@
     else
         _subtitleLabel.text = nil;
     
-    _subtitleLabel.textColor = [UIColor whiteColor];
+    [[KTheme login] applyThemeToLabel:_subtitleLabel style:KLoginLabelStylePolicySubtitle];
+    
     self.backgroundColor = [UIColor clearColor];
 }
 
@@ -284,9 +285,9 @@
     [[KTheme login] applyThemeTo:self.registrationButton style:KLoginButtonStyleDefault];
     [[KTheme login] applyThemeTo:self.recoverButton style:KLoginButtonStyleDefault];
 
-    [[KTheme login] applyThemeToTitle:self.registrationLabel];
-    [[KTheme login] applyThemeToTitle:self.loginWithLabel];
-    [[KTheme login] applyThemeToTitle:self.lostPasswordLabel];
+    [[KTheme login] applyThemeToLabel:self.registrationLabel style:KLoginLabelStyleTitle];
+    [[KTheme login] applyThemeToLabel:self.loginWithLabel style:KLoginLabelStyleTitle];
+    [[KTheme login] applyThemeToLabel:self.lostPasswordLabel style:KLoginLabelStyleTitle];
 
     BOOL registerWithKrake = Login.canUserRegisterWithKrake;
 
