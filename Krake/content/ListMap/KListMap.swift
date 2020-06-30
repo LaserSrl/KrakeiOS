@@ -922,7 +922,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
             collectionViewTop?.constant = 0
         }
         if listMapOptions.mapOptions == nil,
-            let lastIndex = collectionView.indexPathsForVisibleItems.last,
+            let lastIndex = collectionView.indexPathsForVisibleItems.sorted().last,
             lastIndex.row == collectionView(collectionView, numberOfItemsInSection: lastIndex.section) - 1
         {
             let totaleElem = elements?.count ?? 0

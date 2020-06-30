@@ -311,7 +311,7 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
 
     override open func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
-        if let collection = collectionView, let lastIndex = collection.indexPathsForVisibleItems.last
+        if let collection = collectionView, let lastIndex = collection.indexPathsForVisibleItems.sorted().last
         {
             if lastIndex.section == numberOfSections(in: collection) - 1
             {
