@@ -101,6 +101,7 @@ import SwiftMessages
         
         var config = SwiftMessages.Config()
         config.presentationStyle = convertPositionBlock(position)
+        config.preferredStatusBarStyle = fromViewController?.preferredStatusBarStyle ?? UIApplication.shared.delegate?.window??.rootViewController?.preferredStatusBarStyle
         if let fromViewController = fromViewController {
             config.presentationContext = SwiftMessages.PresentationContext.viewController(fromViewController)
         }else{
