@@ -38,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		50F2E0AC24B48BF2006840F2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OCLocalizable.strings; sourceTree = "<group>"; };
 		5D020459239AB4D5009C9C88 /* KContentItemAutocompleteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KContentItemAutocompleteTableViewController.swift; sourceTree = "<group>"; };
 		5D06849C2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStopsInRouteViewController.swift; sourceTree = "<group>"; };
 		5D06849E2296E32400101D4C /* KOTPStopTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStopTimesViewController.swift; sourceTree = "<group>"; };
@@ -1170,6 +1171,7 @@
 				Base,
 				it,
 				fr,
+				ru,
 			);
 			mainGroup = CDBB7606219C7E8800122E7E;
 			productRefGroup = CDBB7610219C7E8800122E7E /* Products */;
@@ -1434,6 +1436,7 @@
 				CDBB76A8219C7EDA00122E7E /* en */,
 				CDBB76A9219C7EDA00122E7E /* it */,
 				CDBB76AB219C7EDA00122E7E /* fr */,
+				50F2E0AC24B48BF2006840F2 /* ru */,
 			);
 			name = OCLocalizable.strings;
 			sourceTree = "<group>";
