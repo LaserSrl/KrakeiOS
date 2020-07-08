@@ -51,28 +51,28 @@
 "on_loading" = "Loading...";
 
 //ORCHARD LOGIN
-"LOGIN"="Login with";
-"Login" = "Login";
-"Registration" = "Registration";
-"register" = "Registered";
-"Cancel" = "Cancel";
-"Recover_password" = "Recover password";
-"Done" = "Done";
+"LOGIN"="Войдите с помощью";
+"Login" = "Войдите с помощью";
+"Registration" = "Зарегистрируйтесь";
+"Register" = "Зарегистрируйтесь";
+"Cancel" = "Отмена";
+"Recover_password" = "Восстановление пароля";
+"Done" = "сделано";
 
 "reset_pwd_message" = "Forgotten password? Fiil in the form to receive a link for password reset";
 "placeholder_sms_or_mail_restore_password" = "Phone number or E-Mail";
-"placeholder_mail_restore_password" = "E-Mail";
-"reset_password_sended" = "We have just sent you your new password";
+"placeholder_mail_restore_password" = "Адрес электронной почты";
+"reset_password_sended" = "Мы только что отправили вам новый пароль";
 "sms_not_valid" = "The number is not valid";
 "empty_field" = "Section not filled in";
 "check_your_number" = "Confirm you want to sent the procedure to recover your password to the following number?\n\n";
 
-"e_mail" = "E-Mail";
+"e_mail" = "Адрес электронной почты";
 "domain" = "Domain";
-"password" = "Password";
-"confirm_password" = "Confirm Password";
+"password" = "Пароль";
+"confirm_password" = "Подтвердите пароль";
 "phone_number" = "Mobile phone number";
-"lost_pwd" = "Forgotten password?";
+"lost_pwd" = "Забытый пароль";
 "VerificationMailMessage" = "Your email address has been verified, you can login";
 
 //RULES
@@ -109,7 +109,7 @@
 "Sito web" = "Web site";
 
 //PRIVACY
-"required" = " *required";
+"Obbligatorio" = "  *обязательно";
 "policy-term" = "I accept these above conditions.";
 "regulation-term" = "I accept these above conditions.";
 "next" = "Next";
@@ -152,7 +152,7 @@
 "RELATED_FIELDS" = "General Infos";
 
 
-"no_elements" = "There are no elements in this section";
+"no_elements" = "Элементы отсутствуют";
 
 "invalid_entry_point" = "Invalid Entry Point";
 
