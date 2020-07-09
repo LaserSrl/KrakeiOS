@@ -76,11 +76,11 @@
 "VerificationMailMessage" = "Your email address has been verified, you can login";
 
 //RULES
-"ACCEPT"="Agree";
-"DENY"="Disagree";
-"UNDO" = "Undo";
-"SAVE" = "Save";
-"CLOSE"="Close";
+"ACCEPT"="согласна";
+"DENY"="не соглашаться";
+"UNDO" = "отменить";
+"SAVE" = "спасти";
+"CLOSE"="близко";
 
 "Lunedì" = "Lunedì";
 "Martedì" = "Martedì";
@@ -109,12 +109,12 @@
 "Sito web" = "Web site";
 
 //PRIVACY
-"Obbligatorio" = "  *обязательно";
-"policy-term" = "I accept these above conditions.";
-"regulation-term" = "I accept these above conditions.";
-"next" = "Next";
+"required" = "  *обязательно";
+"policy-term" = "Принимаю вышеперечисленные условия.";
+"regulation-term" = "Принимаю вышеперечисленные условия.";
+"next" = "следующий";
 "gestione_policy" = "Policies";
-"undo_privacy" = "You must accept the terms and conditions in order to proceed.";
+"undo_privacy" = "Чтобы продолжить, необходимо принять условия уведомления";
 
 
 //SEGNALAZIONI
