@@ -234,13 +234,16 @@ public class KDataTask: NSObject {
     public func postSignalTrigger(signalName: String,
                                         contentId: String,
                                         params: KParamaters? = nil,
+                                        query: [URLQueryItem] = [],
                                         success: ((KDataTask, Any?) -> Void)?,
                                         failure: ((KDataTask?, Error) -> Void)?) -> KDataTask?{
         var tmpParams = params ?? KParamaters()
-        tmpParams["lang"] = KConstants.currentLanguage
+        tmpParams[KParametersKeys.lang] = KConstants.currentLanguage
         tmpParams["Name"] = signalName
         tmpParams["ContentId"] = contentId
-        return request(KAPIConstants.signal, method: .post, parameters: tmpParams, successCallback: success, failureCallback: failure)
+        var tmpQuery = query
+        tmpQuery.append(URLQueryItem(name: KParametersKeys.lang, value: KConstants.currentLanguage))
+        return request(KAPIConstants.signal, method: .post, parameters: tmpParams, query: tmpQuery, successCallback: success, failureCallback: failure)
     }
     
     //MARK: - Metodi di autenticazione
