@@ -220,7 +220,7 @@ class PostCardViewController: UIViewController, UITextFieldDelegate{
             errori[NSLocalizedDescriptionKey] = localError
             completion?(nil, NSError(domain: "Cards", code: 101, userInfo: errori))
         }else{
-            _ = KNetworkManager.signalTriggerManager().postSignalTrigger(signalName: "SendPostCard", contentId: postCard.identifier.stringValue, params: parameters, success: { (task, object) in
+            _ = KSignalTriggerManager.manager().post(signalName: "SendPostCard", contentId: postCard.identifier.stringValue, params: parameters, success: { (task, object) in
                 completion?(object as? [AnyHashable : Any], nil)
             }, failure: { (task, error) in
                 completion?(nil, error)

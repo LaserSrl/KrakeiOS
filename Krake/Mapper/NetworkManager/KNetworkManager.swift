@@ -197,7 +197,7 @@ public class KDataTask: NSObject {
 @objc public class KNetworkManager: NSObject {
 
     private var authenticated: Bool = false
-    private var checkHeaderResponse: Bool = false
+    var checkHeaderResponse: Bool = false
     public var requestSerializer: KRequestSerializer  = .json
     public var responseSerializer: KResponseSerializer  = .json
     public let baseURL: URL
@@ -219,31 +219,6 @@ public class KDataTask: NSObject {
         manager.responseSerializer = .json
         manager.checkHeaderResponse = checkHeaderResponse
         return manager
-    }
-    
-    @objc public static func signalTriggerManager(_ auth: Bool = false, checkHeaderResponse: Bool = false) -> KNetworkManager{
-        let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: auth)
-        manager.requestSerializer = .http
-        manager.responseSerializer = .json
-        manager.checkHeaderResponse = checkHeaderResponse
-        return manager
-    }
-
-    //MARK: Post Signal Trigger
-    
-    public func postSignalTrigger(signalName: String,
-                                        contentId: String,
-                                        params: KParamaters? = nil,
-                                        query: [URLQueryItem] = [],
-                                        success: ((KDataTask, Any?) -> Void)?,
-                                        failure: ((KDataTask?, Error) -> Void)?) -> KDataTask?{
-        var tmpParams = params ?? KParamaters()
-        tmpParams[KParametersKeys.lang] = KConstants.currentLanguage
-        tmpParams["Name"] = signalName
-        tmpParams["ContentId"] = contentId
-        var tmpQuery = query
-        tmpQuery.append(URLQueryItem(name: KParametersKeys.lang, value: KConstants.currentLanguage))
-        return request(KAPIConstants.signal, method: .post, parameters: tmpParams, query: tmpQuery, successCallback: success, failureCallback: failure)
     }
     
     //MARK: - Metodi di autenticazione
