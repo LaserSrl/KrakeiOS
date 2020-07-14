@@ -533,6 +533,9 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
                 if numberOfObjectsChanged == 0 {
                     if let items = collectionView?.indexPathsForVisibleItems, items.count > 0 {
                         collectionView?.reloadItems(at: items)
+                        if collectionView(collectionView, numberOfItemsInSection: 0) > 0 {
+                            collectionView?.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: false)
+                        }
                     }
                     else
                     {
@@ -559,10 +562,13 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
                             }
                             self.collectionView?.deleteItems(at: indexPaths)
                         }
-                    }, completion: { (finished) in
-                        if let items = self.collectionView?.indexPathsForVisibleItems, finished
-                        {
-                            self.collectionView?.reloadItems(at: items)
+                    }, completion: { [weak self](finished) in
+                        guard let mySelf = self else { return }
+                        if let items = mySelf.collectionView?.indexPathsForVisibleItems, finished {
+                            mySelf.collectionView?.reloadItems(at: items)
+                        }
+                        if mySelf.collectionView(mySelf.collectionView, numberOfItemsInSection: 0) > 0 {
+                            mySelf.collectionView?.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: false)
                         }
                     })
                 }
