@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
     s.homepage     = "http://mykrake.com"
 
     s.description  = <<-DESC
-    Libreria krake
+    Krake® libraries
     DESC
     s.license      = "MIT"
     s.source       = { :git => "https://github.com/LaserSrl/KrakeiOS.git", :tag => s.version }
