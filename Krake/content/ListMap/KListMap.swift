@@ -776,66 +776,64 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     
     func reloadElementsOnCollectionView()
     {
-        let numberOfSection = collectionView?.numberOfSections ?? 0
-        if numberOfSection > 0 && (searchFilterManager?.text ?? "").isEmpty
+        if isViewLoaded
         {
-            let numberOfCurrentElements = filteredElements?.count ?? 0
-            let numberOfObjectsInCollectionView = collectionView?.numberOfItems(inSection: 0) ?? 0
-            let isNoElementsCellVisible =
-                numberOfObjectsInCollectionView == 1 && collectionView?.cellForItem(at: IndexPath(row: 0, section: 0))?.reuseIdentifier == noElementCelIdentifier
-            let numberOfObjectsChanged = isNoElementsCellVisible && numberOfCurrentElements == 0 ? 0 : numberOfCurrentElements - numberOfObjectsInCollectionView
-            
-            if numberOfObjectsChanged == 0
+            let currentNumberOfSections = collectionView?.numberOfSections ?? 0
+            let datasourceNumberOfSection = numberOfSections(in: collectionView!)
+
+            if currentNumberOfSections > 0 && datasourceNumberOfSection == 1
             {
-                if let items = collectionView?.indexPathsForVisibleItems, items.count > 0
-                {
-                    collectionView?.reloadItems(at: items)
+                let numberOfCurrentElements = collectionView(collectionView!, numberOfItemsInSection: 0)
+                let numberOfObjectsInCollectionView = collectionView?.numberOfItems(inSection: 0) ?? 0
+                let numberOfObjectsChanged = numberOfCurrentElements - numberOfObjectsInCollectionView
+
+                if numberOfObjectsChanged == 0 {
+                    if let items = collectionView?.indexPathsForVisibleItems, items.count > 0 {
+                        collectionView?.reloadItems(at: items)
+                        if collectionView(collectionView, numberOfItemsInSection: 0) > 0 {
+                            collectionView?.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: false)
+                        }
+                    }
+                    else
+                    {
+                        collectionView?.reloadData()
+                    }
                 }
                 else
                 {
-                    collectionView?.reloadData()
+                    collectionView?.performBatchUpdates({
+                        var indexPaths = [IndexPath]()
+                        if numberOfObjectsChanged > 0
+                        {
+                            for i in numberOfObjectsInCollectionView...(numberOfCurrentElements - 1)
+                            {
+                                indexPaths.append(IndexPath(row: i, section: 0))
+                            }
+                            self.collectionView?.insertItems(at: indexPaths)
+                        }
+                        else
+                        {
+                            for i in numberOfCurrentElements...(numberOfObjectsInCollectionView - 1)
+                            {
+                                indexPaths.append(IndexPath(row: i, section: 0))
+                            }
+                            self.collectionView?.deleteItems(at: indexPaths)
+                        }
+                    }, completion: { [weak self](finished) in
+                        guard let mySelf = self else { return }
+                        if let items = mySelf.collectionView?.indexPathsForVisibleItems, finished {
+                            mySelf.collectionView?.reloadItems(at: items)
+                        }
+                        if mySelf.collectionView(mySelf.collectionView, numberOfItemsInSection: 0) > 0 {
+                            mySelf.collectionView?.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: false)
+                        }
+                    })
                 }
             }
             else
             {
-                collectionView?.performBatchUpdates({
-                    var indexPaths = [IndexPath]()
-                    if numberOfObjectsChanged > 0
-                    {
-                        for i in numberOfObjectsInCollectionView...(numberOfCurrentElements - 1)
-                        {
-                            indexPaths.append(IndexPath(row: i, section: 0))
-                        }
-                        if isNoElementsCellVisible && numberOfCurrentElements > 0
-                        {
-                            self.collectionView?.deleteItems(at: [IndexPath(row: 0, section: 0)])
-                            self.collectionView?.insertItems(at: [IndexPath(row: 0, section: 0)])
-                        }
-                        self.collectionView?.insertItems(at: indexPaths)
-                    }
-                    else
-                    {
-                        for i in numberOfCurrentElements...(numberOfObjectsInCollectionView - 1)
-                        {
-                            indexPaths.append(IndexPath(row: i, section: 0))
-                        }
-                        self.collectionView?.deleteItems(at: indexPaths)
-                        if !isNoElementsCellVisible && numberOfCurrentElements == 0 && filteredElements == nil
-                        {
-                            self.collectionView?.insertItems(at: [IndexPath(row: 0, section: 0)])
-                        }
-                    }
-                }, completion: { (finished) in
-                    if let items = self.collectionView?.indexPathsForVisibleItems, finished
-                    {
-                        self.collectionView?.reloadItems(at: items)
-                    }
-                })
+                self.collectionView?.reloadData()
             }
-        }
-        else
-        {
-            self.collectionView?.reloadData()
         }
     }
     
