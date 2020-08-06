@@ -34,6 +34,7 @@
 		CDBB78B7219C7EFE00122E7E /* Krake.podspec in Resources */ = {isa = PBXBuildFile; fileRef = CDBB78B5219C7EFE00122E7E /* Krake.podspec */; };
 		CDC4ADB122F338D30087D74A /* KOTPLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4ADB022F338D30087D74A /* KOTPLocationManager.swift */; };
 		CDC59C7124DC0E3100533B9B /* OCLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CDC59C6F24DC0E3100533B9B /* OCLocalizable.strings */; };
+		CDC59C7824DC255C00533B9B /* KConstants+KrakeLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC59C7724DC255C00533B9B /* KConstants+KrakeLocalization.swift */; };
 		CDDA994A22905720008B205B /* KBusTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDA994922905720008B205B /* KBusTracker.swift */; };
 /* End PBXBuildFile section */
 
@@ -369,6 +370,7 @@
 		CDC59C7224DC0E3700533B9B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/OCLocalizable.strings; sourceTree = "<group>"; };
 		CDC59C7324DC0E3900533B9B /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/OCLocalizable.strings; sourceTree = "<group>"; };
 		CDC59C7424DC0E3C00533B9B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OCLocalizable.strings; sourceTree = "<group>"; };
+		CDC59C7724DC255C00533B9B /* KConstants+KrakeLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KConstants+KrakeLocalization.swift"; sourceTree = "<group>"; };
 		CDDA994922905720008B205B /* KBusTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBusTracker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -684,6 +686,7 @@
 			children = (
 				CDC59C6F24DC0E3100533B9B /* OCLocalizable.strings */,
 				CDBB76AA219C7EDA00122E7E /* String+KrakeLocalization.swift */,
+				CDC59C7724DC255C00533B9B /* KConstants+KrakeLocalization.swift */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -1185,6 +1188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD312224225C7DFA00DC06C8 /* KNoElementCell.swift in Sources */,
+				CDC59C7824DC255C00533B9B /* KConstants+KrakeLocalization.swift in Sources */,
 				5D06849F2296E32400101D4C /* KOTPStopTimesViewController.swift in Sources */,
 				CD4C001B2292E286009727A7 /* KVehicleAnnotation.swift in Sources */,
 				5D06849D2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift in Sources */,

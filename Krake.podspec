@@ -61,16 +61,16 @@ Pod::Spec.new do |s|
     end
     
     s.subspec 'Core' do |os|
-        os.source_files  = ['Krake/Core/*.{h,m,swift}', 'Krake/Krake.h', 'Krake/Mapper/**/*.{h,m,swift}', 'Krake/Content/**/*.{h,m,swift}', 'Krake/Extentions/*.{h,m,swift}', 'Krake/Mappe/*.{h,m,swift}', 'Krake/Analytics/*.{h,m,swift}']
+        os.source_files  = ['Krake/Core/*.{h,m,swift}', 'Krake/Krake.h', 'Krake/Mapper/**/*.{h,m,swift}', 'Krake/Content/**/*.{h,m,swift}', 'Krake/Extentions/*.{h,m,swift}', 'Krake/Mappe/*.{h,m,swift}', 'Krake/Analytics/*.{h,m,swift}', "Localization", "Krake/Localization/*.{swift}"]
         os.ios.resource_bundle = { 'OrchardGen' => ['Krake/Mapper/OGLMapperConfiguration.plist'], 'LoginManager' => ['Krake/Mapper/LoginManager/*.storyboard'], 'PrivacyManager' => ['Krake/Mapper/PrivacyManager/*.storyboard'], 'Content' => ['Krake/Content/**/*.{xib,storyboard}'],  'Location' => ['Krake/Mappe/*.storyboard'] }
         os.resources = 'Krake/*.{xcassets}','Krake/Core/*.xib', 'Krake/Mapper/**/*.{xcassets}'
-        
+        os.resource_bundles = { 'Localization' => 'Krake/Localization/*.{lproj}' }
+
         os.dependency "Krake/Commons"
-        os.dependency "Krake/Localization"
         
         #other
         os.dependency 'Alamofire', '~> 5.0.0-rc.2'
-		os.dependency 'AlamofireNetworkActivityIndicator', '~> 3.0.0-beta.3'
+        os.dependency 'AlamofireNetworkActivityIndicator', '~> 3.0.0-beta.3'
         os.dependency "Crashlytics", '~> 3.13.1'
         os.dependency "CryptoSwift", '1.0.0'
         os.dependency "Fabric", '~> 1.10.1'
@@ -126,11 +126,6 @@ Pod::Spec.new do |s|
         os.resource  = 'Krake/LinkedInKit/*.{xcassets}'
         os.dependency "Krake/Core"
         os.dependency "Krake/OAuth"
-    end
-    
-    s.subspec 'Localization' do |os|
-        os.source_files  = "Localization", "Krake/Localization/*.{swift}"
-        os.resource_bundles = { 'Localization' => 'Krake/Localization/*.{lproj}' }
     end
     
     s.subspec 'OAuth' do |os|

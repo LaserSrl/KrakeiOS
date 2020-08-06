@@ -21,28 +21,28 @@ import UIKit
         #endif
     }()
     
-    @objc public static let currentLanguage: String = {
-        let lang = "LANGUAGE".localizedString()
-        if lang == "LANGUAGE"{
-            assertionFailure("DEVI CONFIGUARE LA KEY 'LANGUAGE' NEL LOCALIZABLE.STRINGS")
-        }
-        return lang
-    }()
+}
+
+public struct KrakeLog {
+    public static var level: LogLevel = LogLevel.warning
+
+    public enum LogLevel: Int
+    {
+        case verbose = 0
+        case debug = 1
+        case info = 2
+        case warning = 3
+        case error = 4
+    }
+
     
 }
 
-
-public enum LogLevel: String
-{
-    case verbose
-    case debug
-    case info
-    case warning
-    case error
-}
-
-func KLog<T>(type: LogLevel = .debug, _ object: @autoclosure () -> T, _ file: String = #file, _ function: String = #function, _ line: Int = #line) {
+func KLog<T>(type: KrakeLog.LogLevel = .debug, _ object: @autoclosure () -> T, _ file: String = #file, _ function: String = #function, _ line: Int = #line) {
     #if DEBUG || VERBOSE
+    if type.rawValue < KrakeLog.level.rawValue {
+        return
+    }
     let value = object()
     let fileURL = NSURL(string: file)?.lastPathComponent ?? "Unknown file"
     let queue = Thread.isMainThread ? "UI" : "BG"

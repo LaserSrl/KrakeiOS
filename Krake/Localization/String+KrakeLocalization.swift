@@ -27,7 +27,7 @@ public extension String{
     ///
     /// - Returns: translated string
     func localizedString() -> String {
-        return Bundle.main.localizedString(forKey: self, value: bundleLocalizedString(), table: nil)
+        return appLocalizedString(bundleLocalizedString())
     }
     
 }
