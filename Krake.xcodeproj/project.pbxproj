@@ -33,7 +33,7 @@
 		CDBB7870219C7EDC00122E7E /* OrchardMapper.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB773E219C7EDB00122E7E /* OrchardMapper.xcassets */; };
 		CDBB78B7219C7EFE00122E7E /* Krake.podspec in Resources */ = {isa = PBXBuildFile; fileRef = CDBB78B5219C7EFE00122E7E /* Krake.podspec */; };
 		CDC4ADB122F338D30087D74A /* KOTPLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4ADB022F338D30087D74A /* KOTPLocationManager.swift */; };
-		CDCA14D024DC04BD00C1D9B3 /* KLocalization.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CDCA14CF24DC04BD00C1D9B3 /* KLocalization.bundle */; };
+		CDC59C7124DC0E3100533B9B /* OCLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CDC59C6F24DC0E3100533B9B /* OCLocalizable.strings */; };
 		CDDA994A22905720008B205B /* KBusTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDA994922905720008B205B /* KBusTracker.swift */; };
 /* End PBXBuildFile section */
 
@@ -365,7 +365,10 @@
 		CDBB778C219C7EDC00122E7E /* ContentItemWithShareLinkPart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItemWithShareLinkPart.swift; sourceTree = "<group>"; };
 		CDBB78B5219C7EFE00122E7E /* Krake.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Krake.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CDC4ADB022F338D30087D74A /* KOTPLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPLocationManager.swift; sourceTree = "<group>"; };
-		CDCA14CF24DC04BD00C1D9B3 /* KLocalization.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = KLocalization.bundle; sourceTree = "<group>"; };
+		CDC59C7024DC0E3100533B9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OCLocalizable.strings; sourceTree = "<group>"; };
+		CDC59C7224DC0E3700533B9B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/OCLocalizable.strings; sourceTree = "<group>"; };
+		CDC59C7324DC0E3900533B9B /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/OCLocalizable.strings; sourceTree = "<group>"; };
+		CDC59C7424DC0E3C00533B9B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OCLocalizable.strings; sourceTree = "<group>"; };
 		CDDA994922905720008B205B /* KBusTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBusTracker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -679,8 +682,8 @@
 		CDBB76A6219C7EDA00122E7E /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				CDC59C6F24DC0E3100533B9B /* OCLocalizable.strings */,
 				CDBB76AA219C7EDA00122E7E /* String+KrakeLocalization.swift */,
-				CDCA14CF24DC04BD00C1D9B3 /* KLocalization.bundle */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -1141,6 +1144,9 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				it,
+				fr,
+				ru,
 			);
 			mainGroup = CDBB7606219C7E8800122E7E;
 			productRefGroup = CDBB7610219C7E8800122E7E /* Products */;
@@ -1158,13 +1164,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDBB7870219C7EDC00122E7E /* OrchardMapper.xcassets in Resources */,
+				CDC59C7124DC0E3100533B9B /* OCLocalizable.strings in Resources */,
 				CDBB7818219C7EDC00122E7E /* GameQuiz.xcassets in Resources */,
 				CDBB783B219C7EDC00122E7E /* Report.xcassets in Resources */,
 				CDBB7790219C7EDC00122E7E /* InstagramKit.xcassets in Resources */,
 				CDBB7862219C7EDC00122E7E /* OGLMapperConfiguration.plist in Resources */,
 				CDBB77FF219C7EDC00122E7E /* LinkedInKit.xcassets in Resources */,
 				CDBB77C9219C7EDC00122E7E /* OCOTP.xcassets in Resources */,
-				CDCA14D024DC04BD00C1D9B3 /* KLocalization.bundle in Resources */,
 				CDBB77ED219C7EDC00122E7E /* Images.xcassets in Resources */,
 				CDBB78B7219C7EFE00122E7E /* Krake.podspec in Resources */,
 				CDBB77F6219C7EDC00122E7E /* PuzzleGame.xcassets in Resources */,
@@ -1199,6 +1205,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CDC59C6F24DC0E3100533B9B /* OCLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDC59C7024DC0E3100533B9B /* en */,
+				CDC59C7224DC0E3700533B9B /* fr */,
+				CDC59C7324DC0E3900533B9B /* it */,
+				CDC59C7424DC0E3C00533B9B /* ru */,
+			);
+			name = OCLocalizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CDBB761F219C7E8900122E7E /* Debug */ = {

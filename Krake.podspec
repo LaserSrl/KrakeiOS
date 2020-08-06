@@ -130,7 +130,7 @@ Pod::Spec.new do |s|
     
     s.subspec 'Localization' do |os|
         os.source_files  = "Localization", "Krake/Localization/*.{swift}"
-        os.resource_bundles = { 'KLocalization' => 'Krake/Localization/KLocalization.bundle/*.{lproj}' }
+        os.resource_bundles = { 'Resources' => 'Krake/Localization/*.{lproj}' }
     end
     
     s.subspec 'OAuth' do |os|
