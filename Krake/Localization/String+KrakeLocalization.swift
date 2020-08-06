@@ -19,7 +19,7 @@ public extension String{
     ///
     /// - Returns: translated string
     func bundleLocalizedString() -> String{
-        let bundle = Bundle(url: Bundle.main.url(forResource: "KLocalization", withExtension: "bundle")!)!
+        let bundle = Bundle(url: Bundle.main.url(forResource: "Localization", withExtension: "bundle")!)!
         return bundle.localizedString(forKey: self, value: nil, table: "OCLocalizable")
     }
     
