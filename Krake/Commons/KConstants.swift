@@ -22,7 +22,7 @@ import UIKit
     }()
     
     @objc public static let currentLanguage: String = {
-        let lang = "LANGUAGE".appLocalizedString()
+        let lang = "LANGUAGE".localizedString()
         if lang == "LANGUAGE"{
             assertionFailure("DEVI CONFIGUARE LA KEY 'LANGUAGE' NEL LOCALIZABLE.STRINGS")
         }

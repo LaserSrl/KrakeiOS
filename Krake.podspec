@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name         = "Krake"
-    s.version      = "11.2.1"
+    s.version      = "11.2.2"
     s.summary      = "Laser mobile framework."
     s.homepage     = "http://mykrake.com"
 
@@ -130,7 +130,7 @@ Pod::Spec.new do |s|
     
     s.subspec 'Localization' do |os|
         os.source_files  = "Localization", "Krake/Localization/*.{swift}"
-        os.resource = 'Krake/Localization/**/*.{lproj}'
+        os.resource = 'Krake/Localization/**/*.{bundle}'
     end
     
     s.subspec 'OAuth' do |os|

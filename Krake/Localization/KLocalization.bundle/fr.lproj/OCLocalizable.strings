@@ -6,6 +6,8 @@
  Copyright (c) 2014 Laser Group srl. All rights reserved.
  */
 
+ "LANGUAGE" = "fr-FR";
+
 "VUOI_APRIRE_PUSH" = "%@\n\nEn savoir plus?";
 "ERRORE_GPS" = "ERROR: Il ne était pas possible de présenter le rapport.\n Manquant la position";
 "ERRORE_INVIO_SEGN" = "ERRORE: Nous ne pouvions pas envoyer le rapport.\n";

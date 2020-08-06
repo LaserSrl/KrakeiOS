@@ -2,6 +2,8 @@
  Krake
  */
 
+"LANGUAGE" = "it-IT";
+
 "VUOI_APRIRE_PUSH" = "%@\n\nVuoi saperne di più?";
 "ERRORE_INVIO_SEGN" = "ERRORE: Non è stato possibile inviare la segnalazione.\n";
 "SEGN_SENDED" = "La tua segnalazione è stata inviata correttamente.\n";
