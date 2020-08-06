@@ -61,10 +61,9 @@ Pod::Spec.new do |s|
     end
     
     s.subspec 'Core' do |os|
-        os.source_files  = ['Krake/Core/*.{h,m,swift}', 'Krake/Krake.h', 'Krake/Mapper/**/*.{h,m,swift}', 'Krake/Content/**/*.{h,m,swift}', 'Krake/Extentions/*.{h,m,swift}', 'Krake/Mappe/*.{h,m,swift}', 'Krake/Analytics/*.{h,m,swift}', "Localization", "Krake/Localization/*.{swift}"]
-        os.ios.resource_bundle = { 'OrchardGen' => ['Krake/Mapper/OGLMapperConfiguration.plist'], 'LoginManager' => ['Krake/Mapper/LoginManager/*.storyboard'], 'PrivacyManager' => ['Krake/Mapper/PrivacyManager/*.storyboard'], 'Content' => ['Krake/Content/**/*.{xib,storyboard}'],  'Location' => ['Krake/Mappe/*.storyboard'] }
+        os.source_files  = ['Krake/Core/*.{h,m,swift}', 'Krake/Krake.h', 'Krake/Mapper/**/*.{h,m,swift}', 'Krake/Content/**/*.{h,m,swift}', 'Krake/Extentions/*.{h,m,swift}', 'Krake/Mappe/*.{h,m,swift}', 'Krake/Analytics/*.{h,m,swift}', 'Krake/Localization/*.{swift}']
+        os.ios.resource_bundle = { 'OrchardGen' => ['Krake/Mapper/OGLMapperConfiguration.plist'], 'LoginManager' => ['Krake/Mapper/LoginManager/*.storyboard'], 'PrivacyManager' => ['Krake/Mapper/PrivacyManager/*.storyboard'], 'Content' => ['Krake/Content/**/*.{xib,storyboard}'],  'Location' => ['Krake/Mappe/*.storyboard'], 'Localization' => ['Krake/Localization/*.{lproj}'] }
         os.resources = 'Krake/*.{xcassets}','Krake/Core/*.xib', 'Krake/Mapper/**/*.{xcassets}'
-        os.resource_bundles = { 'Localization' => 'Krake/Localization/*.{lproj}' }
 
         os.dependency "Krake/Commons"
         
