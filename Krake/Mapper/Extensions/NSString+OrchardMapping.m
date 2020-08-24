@@ -98,7 +98,7 @@ static NSNumberFormatter *f;
 }
 
 -(NSString *)localizedString{
-    NSBundle *bundle = [NSBundle bundleForClass:[OGLConfigurations class]];
+    NSBundle *bundle = [NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"Localization" withExtension:@"bundle"]];
     return [bundle localizedStringForKey:self value:nil table:@"OCLocalizable"];
 }
 
