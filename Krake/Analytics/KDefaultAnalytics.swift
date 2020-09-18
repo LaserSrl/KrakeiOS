@@ -12,9 +12,7 @@ import FirebaseCore
 open class KDefaultAnalytics: NSObject, KAnalytics {
     
     public override init(){
-        if KInfoPlist.Analytics.enabled {
-            FirebaseApp.configure()
-        }
+        Analytics.setAnalyticsCollectionEnabled(KInfoPlist.Analytics.enabled)
         super.init()
         setUserInfoProperties()
     }

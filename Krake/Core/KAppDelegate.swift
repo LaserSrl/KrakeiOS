@@ -11,6 +11,9 @@ import Fabric
 import Crashlytics
 import AlamofireNetworkActivityIndicator
 import MBProgressHUD
+import FirebaseCore
+import FirebaseInstanceID
+import FirebaseMessaging
 
 open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
 
@@ -19,8 +22,11 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
 
     open override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [KApplicationLaunchOptionsKey : Any]?) -> Bool {
         let value = super.application(application, didFinishLaunchingWithOptions: launchOptions)
-
         NetworkActivityIndicatorManager.shared.isEnabled = true
+        FirebaseApp.configure()
+        
+        UNUserNotificationCenter.current().delegate = self
+        
         // Istanzio la classe di default degli analytics se non già fatto in app.
         if (AnalyticsCore.shared == nil)
         {
@@ -42,19 +48,6 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
             self.application(application, didReceiveRemoteNotification: notificationUserInfo)
         }
         return value
-    }
-
-    //MARK: - Push sharedApplicationDelegate
-    @objc open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        KPushManager.setPushDeviceToken(deviceToken as Data)
-    }
-    
-    @objc open func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        KLog("PUSH: fail to register with error -> " + error.localizedDescription)
-    }
-
-    @objc open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        KPushManager.showOrOpenPush(userInfo, applicationState: application.applicationState)
     }
 
     func application(_ application: UIApplication,
@@ -119,4 +112,30 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
         throw KStreamingProviderErrors.malformedProviderString
     }
     
+}
+
+extension KAppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
+    
+    open func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        KPushManager.setPushDeviceToken(fcmToken)
+    }
+    
+    //MARK: - Push sharedApplicationDelegate
+    @objc open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
+        Messaging.messaging().delegate = self
+        InstanceID.instanceID().instanceID { (result, error) in
+            if let result = result {
+                KPushManager.setPushDeviceToken(result.token)
+            }
+        }
+    }
+    
+    @objc open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        KPushManager.showOrOpenPush(userInfo, applicationState: application.applicationState)
+    }
+    
+    @objc open func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        KLog("PUSH: fail to register with error -> " + error.localizedDescription)
+    }
 }

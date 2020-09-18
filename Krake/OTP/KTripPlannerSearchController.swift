@@ -210,7 +210,7 @@ open class KTripPlannerSearchController : UIViewController,
                 })
             }
         }
-        travelModeSegmented.selectedSegmentioIndex = travelModes.index(of: tripPlanRequest.selectedTravelMode) ?? 0
+        travelModeSegmented.selectedSegmentioIndex = travelModes.firstIndex(of: tripPlanRequest.selectedTravelMode) ?? 0
 
         pickDateButton.setTitle(dateFormatter.string(from: tripPlanRequest.dateSelectedForPlan), for: .normal)
 

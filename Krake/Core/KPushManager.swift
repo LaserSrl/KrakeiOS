@@ -34,8 +34,12 @@ open class KPushManager: NSObject{
         }
     }
     
-    public static func setPushDeviceToken(_ deviceToken: Data){
-        let serializedToken: String = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+    public static func setPushDeviceToken(_ dataToken: Data) {
+        let serializedToken: String = dataToken.map { String(format: "%02.2hhx", $0) }.joined()
+        setPushDeviceToken(serializedToken)
+    }
+    
+    public static func setPushDeviceToken(_ serializedToken: String){
         KLog("PUSH: registered with token -> " + serializedToken)
         let uuid = KConstants.uuid
         let wsURL = KInfoPlist.KrakePlist.path
@@ -102,13 +106,13 @@ open class KPushManager: NSObject{
         }
     }
     
-    public static func showOrOpenContentFromLocalNotificaiton(_ notification: UILocalNotification, applicationState: KApplicationState){
+    public static func showOrOpenContentFromLocalNotificaiton(_ notification: UNNotificationRequest, applicationState: KApplicationState){
         var moId: NSManagedObjectID? = nil
-        let userInfo = notification.userInfo
-        if let cacheIdri = userInfo?[LocalNotificationCacheID] as? String {
+        let userInfo = notification.content.userInfo
+        if let cacheIdri = userInfo[LocalNotificationCacheID] as? String {
             moId = OGLAppDelegate.sharedApplicationDelegate().persistentStoreCoordinator.managedObjectID(forURIRepresentation: URL(string: cacheIdri)!)
         }
-        showOrOpenDetailWithMessage(notification.alertBody, displayAlias: userInfo?[KParametersKeys.displayAlias] as? String, cacheObjectID: moId, applicationState: applicationState, userInfoNotification: userInfo)
+        showOrOpenDetailWithMessage(notification.content.body, displayAlias: userInfo[KParametersKeys.displayAlias] as? String, cacheObjectID: moId, applicationState: applicationState, userInfoNotification: userInfo)
     }
     
     fileprivate static func showOrOpenDetailWithMessage(_ message: String? = "", displayAlias: String?, cacheObjectID: NSManagedObjectID? = nil, applicationState: KApplicationState, userInfoNotification: [AnyHashable: Any]?){

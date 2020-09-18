@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name         = "Krake"
-    s.version      = "11.2.3"
+    s.version      = "11.3.0"
     s.summary      = "Laser mobile framework."
     s.homepage     = "http://mykrake.com"
 
@@ -27,6 +27,7 @@ Pod::Spec.new do |s|
     s.default_subspecs = ['Core']
     
     s.subspec 'AppleSignIn' do |os|
+        os.frameworks = "AuthenticationServices", "Foundation"
         os.source_files  = "AppleSignIn", "Krake/AppleSignIn/*.swift"
         os.dependency "Krake/Core"
     end
@@ -73,7 +74,8 @@ Pod::Spec.new do |s|
         os.dependency "Crashlytics", '~> 3.13.1'
         os.dependency "CryptoSwift", '1.0.0'
         os.dependency "Fabric", '~> 1.10.1'
-        os.dependency "Firebase", '~> 6.10.0'
+        os.dependency "Firebase", '~> 6.32.0'
+        os.dependency "Firebase/Messaging"
         os.dependency "KNSemiModalViewController_hons82", '0.4.6'
         os.dependency "libPhoneNumber-iOS", '~>0.9.15'
         os.dependency "MBProgressHUD", '1.1.0'

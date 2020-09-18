@@ -121,7 +121,7 @@ open class NearestBeaconManager: NSObject, CLLocationManagerDelegate {
         var insertedMinors = [NSNumber]()
         for beacon in beacons {
 
-            if beacon.accuracy >= 0 && insertedMinors.index(of: beacon.minor) == nil {
+            if beacon.accuracy >= 0 && insertedMinors.firstIndex(of: beacon.minor) == nil {
                 insertedMinors.append(beacon.minor)
                 if var distances = beaconRSSIMedia[beacon.minor] {
 
