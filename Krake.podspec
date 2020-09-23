@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
     s.homepage     = "http://mykrake.com"
 
     s.description  = <<-DESC
-    Krake® libraries
+    This is a Laser Krake® libraries writted  by our devs to integrate Krake® CMS features
     DESC
     s.license      = "MIT"
     s.source       = { :git => "https://github.com/LaserSrl/KrakeiOS.git", :tag => s.version }
@@ -45,7 +45,7 @@ Pod::Spec.new do |s|
     s.subspec 'Braintree' do |os|
         os.source_files  = "Krake/Braintree/*.{swift}"
         os.dependency "Krake/Core"
-        os.dependency "Braintree", '4.30.0'
+        os.dependency "Braintree", '4.35.0'
     end
     
     s.subspec 'Commons' do |os|
@@ -69,21 +69,20 @@ Pod::Spec.new do |s|
         os.dependency "Krake/Commons"
         
         #other
-        os.dependency 'Alamofire', '~> 5.0.0-rc.2'
-        os.dependency 'AlamofireNetworkActivityIndicator', '~> 3.0.0-beta.3'
-        os.dependency "Crashlytics", '~> 3.13.1'
-        os.dependency "CryptoSwift", '1.0.0'
-        os.dependency "Fabric", '~> 1.10.1'
+        os.dependency 'Alamofire', '~> 5.2.2'
+        os.dependency 'AlamofireNetworkActivityIndicator', '~> 3.1.0'
+        os.dependency "CryptoSwift", '1.3.2'
         os.dependency "Firebase", '~> 6.32.0'
+        os.dependency "FirebaseCrashlytics"
         os.dependency "Firebase/Messaging"
         os.dependency "KNSemiModalViewController_hons82", '0.4.6'
-        os.dependency "libPhoneNumber-iOS", '~>0.9.15'
-        os.dependency "MBProgressHUD", '1.1.0'
+        os.dependency "libPhoneNumber-iOS", '~> 0.9.15'
+        os.dependency "MBProgressHUD", '1.2.0'
         os.dependency "NTPKit", '1.0.1'
-        os.dependency "SDWebImage", '~> 5.2.3'
+        os.dependency "SDWebImage", '~> 5.9.1'
         os.dependency "SwiftyJSON", '5.0.0'
-        os.dependency "SwiftMessages", '~>7.0.0'
-        os.dependency "Cluster", '3.0.0'
+        os.dependency "SwiftMessages", '~> 8.0.2'
+        os.dependency "Cluster", '~> 3.0.3'
         os.dependency "Kml.swift", '0.3.2'
         os.dependency "Segmentio", '~> 4.1'
 
@@ -97,8 +96,8 @@ Pod::Spec.new do |s|
     s.subspec 'FacebookKit' do |os|
         os.source_files  = "FacebookKit", "Krake/FacebookKit/*.{h,m,swift}"
         os.dependency "Krake/Core"
-        os.dependency "FBSDKCoreKit", '~> 5.15.0'
-        os.dependency "FBSDKLoginKit", '~> 5.15.0'
+        os.dependency "FBSDKCoreKit", '~> 7.1.1'
+        os.dependency "FBSDKLoginKit", '~> 7.1.1'
     end
     
     s.subspec 'GameQuiz' do |os|
@@ -133,7 +132,7 @@ Pod::Spec.new do |s|
         os.source_files  = "OAuth", "Krake/OAuth/*.{swift}"
         os.ios.resource_bundles = {'OAuth' => ['Krake/OAuth/*.storyboard']}
         os.dependency "Krake/Commons"
-        os.dependency "MBProgressHUD", '1.1.0'
+        os.dependency "MBProgressHUD", '1.2.0'
     end
     
     s.subspec 'OTP' do |os|
@@ -143,7 +142,7 @@ Pod::Spec.new do |s|
         os.resource  = 'Krake/OTP/*.{xcassets}'
         os.dependency "Krake/Core"
         os.dependency "Polyline", '4.2.1'
-        os.dependency "DateTimePicker", '~>2.2.0'
+        os.dependency "DateTimePicker", '~> 2.4.1'
         os.dependency "EVReflection", '5.10.1'
     end
     

@@ -449,7 +449,7 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
         if endPoint != nil
         {
             //Non rimuovere in quanto se viene cancellato il task inserisce due progress
-            MBProgressHUD.hideAllHUDs(for: view, animated: true)
+            MBProgressHUD.hide(for: view, animated: true)
             MBProgressHUD.showAdded(to: view, animated: true)
             if loginRequired
             {

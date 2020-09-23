@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import Fabric
-import Crashlytics
+import FirebaseCrashlytics
 import AlamofireNetworkActivityIndicator
 import MBProgressHUD
 import FirebaseCore
