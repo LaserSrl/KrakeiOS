@@ -254,9 +254,7 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
     {
         if GKLocalPlayer.local.isAuthenticated
         {
-            let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: true)
-            manager.responseSerializer = .json
-            manager.requestSerializer = .http
+            let manager = KNetworkManager.default(true, false, .http)
 
             let params: KParamaters = ["Point" : Int64(totalPoint), "Identifier": phoneNumber, "UsernameGameCenter": GKLocalPlayer.local.playerID,
             "Device": "Apple", "ContentIdentifier": selectedGame.identifier ?? 0]

@@ -162,10 +162,7 @@ open class KUserReactions: UIView, KDetailViewProtocol {
      */
     final public func loadData(_ object: ContentItemWithUserReactions){
         self.krakeContentIdentifier = object.identifier
-        let manager = KNetworkManager.defaultManager(true, checkHeaderResponse: true)
-        manager.responseSerializer = .json
-        manager.requestSerializer = .json
-
+        let manager = KNetworkManager.default(true, true)
         _ = manager.request(KAPIConstants.userReactions,
                             method: .get,
                             query: [URLQueryItem(name: "pageId", value: String(format: "%d",krakeContentIdentifier!.intValue)), URLQueryItem(name: KParametersKeys.language, value: KConstants.currentLanguage)],
@@ -211,9 +208,7 @@ open class KUserReactions: UIView, KDetailViewProtocol {
     }
     
     fileprivate func sendReactionToKrake(_ reactionIdentifier: NSNumber){
-        let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: true)
-        manager.responseSerializer = .json
-        manager.requestSerializer = .json
+        let manager = KNetworkManager.default(true)
 
         let params =  [KParametersKeys.language : KConstants.currentLanguage,
                        "pageId" : String(format: "%d",krakeContentIdentifier!.intValue),

@@ -27,7 +27,7 @@ public class KOpenTripPlannerLoader: KOTPLoader {
     
     private func manager() -> KNetworkManager
     {
-        return KNetworkManager(baseURL: KInfoPlist.OTP.path, auth: false)
+        return KNetworkManager.otp()
     }
     
     public func retrievePathPoints(for line: KBusLine, with completion: @escaping (KBusLine, MKPolyline?) -> Void)

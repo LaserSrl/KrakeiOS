@@ -48,7 +48,7 @@ public class KUserTracking: NSObject{
             let params = ["ID" : idsSending]
             idsToSend = [String]()
 
-            task = KNetworkManager.defaultManager(true).request(KAPIConstants.tracking + "/PostIds",
+            task = KNetworkManager.default(true).request(KAPIConstants.tracking + "/PostIds",
                                                                 method: .post,
                                                                 parameters: params,
                                                                 query: [],

@@ -10,9 +10,7 @@ import UIKit
 
 extension OGLCoreDataMapper {
     @objc public func startDataLoading(task loadDataTask:OMLoadDataTask) {
-        let networkManager = KNetworkManager.defaultManager(loadDataTask.loginRequired)
-        networkManager.requestSerializer = .http
-        networkManager.responseSerializer = .json
+        let networkManager = KNetworkManager.default(loadDataTask.loginRequired, false, .http, .json)
 
         let request = KRequest()
         request.path = loadDataTask.command

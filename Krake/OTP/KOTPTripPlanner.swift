@@ -14,7 +14,6 @@ import SwiftyJSON
 public class KOTPTripPlanner: KTripPlannerProtocol
 {
     static private let uselessStreetNames = ["road","path","sidewalk","platform","underpass","service road","bike path","ramp","steps","footbridge","parking aisle"]
-    private let otpURL = KInfoPlist.OTP.path
 
     private var planDataTask : KDataTask? = nil
 
@@ -31,9 +30,7 @@ public class KOTPTripPlanner: KTripPlannerProtocol
         dateFormatter.dateFormat = "hh:mma"
         let timeString = dateFormatter.string(from: request.dateSelectedForPlan)
 
-        let manager = KNetworkManager(baseURL: otpURL, auth: false)
-        manager.requestSerializer = .http
-        
+        let manager = KNetworkManager.otp()        
 
         var params : [String: String] = ["fromPlace": request.from!.otpRequestFormat(),
                                          "toPlace": request.to!.otpRequestFormat(),

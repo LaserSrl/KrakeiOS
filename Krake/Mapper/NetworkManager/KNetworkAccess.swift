@@ -65,7 +65,7 @@ public enum OMPrivacyStatus : NSInteger {
         extras["PoliciesForUser"] = ["Policies" : arrPolicies]
 
 
-        let manager = KNetworkManager.defaultManager(true)
+        let manager = KNetworkManager.default(true)
 
         _ = manager.request(KAPIConstants.policies,
                         method: .post,

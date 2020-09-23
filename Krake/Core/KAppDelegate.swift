@@ -11,19 +11,18 @@ import FirebaseCrashlytics
 import AlamofireNetworkActivityIndicator
 import MBProgressHUD
 import FirebaseCore
-import FirebaseInstanceID
 import FirebaseMessaging
 
 open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
-
+    
     private lazy var streamingProviders: [KStreamingProvider] = []
     public var checkLaunchOptions = true
-
+    
     open override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [KApplicationLaunchOptionsKey : Any]?) -> Bool {
         let value = super.application(application, didFinishLaunchingWithOptions: launchOptions)
         NetworkActivityIndicatorManager.shared.isEnabled = true
         FirebaseApp.configure()
-        
+        Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
         
         // Istanzio la classe di default degli analytics se non già fatto in app.
@@ -35,7 +34,7 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
         // Registrazione al servizio di notifica push.
         if (KInfoPlist.KrakePlist.pushRegistrationOnDidFinishLaunchingWithOptions)
         {
-            KPushManager.pushRegistrationRequest()
+            KPushManager.requestAndRegisterForRemoteNotifications()
         }
         else
         {
@@ -48,34 +47,34 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
         }
         return value
     }
-
+    
     func application(_ application: UIApplication,
-              continue userActivity: NSUserActivity,
-              restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-
-            if let url = userActivity.webpageURL,
-                let nonce = KLoginManager.shared.extractNonce(url: url) {
-                if let view = window?.rootViewController?.view {
-                    MBProgressHUD.showAdded(to: view, animated: true)
-                }
-                KLoginManager.shared.verifyNonce(nonce) { [weak self] (success, error) in
-                    if (success) {
-                        if let view = self?.window?.rootViewController?.view {
-                            MBProgressHUD.hide(for: view, animated: true)
-                        }
-                        KMessageManager.showMessage("VerificationMailMessage".localizedString(),
-                                                    type: .success)
-                        NotificationCenter.default.post(name: KLoginManager.UserEmailVerified, object: KLoginManager.shared)
-                        KLoginManager.shared.delegate?.userEmailVerified()
-                    }
-                }
-                return true
+                     continue userActivity: NSUserActivity,
+                     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        
+        if let url = userActivity.webpageURL,
+           let nonce = KLoginManager.shared.extractNonce(url: url) {
+            if let view = window?.rootViewController?.view {
+                MBProgressHUD.showAdded(to: view, animated: true)
             }
+            KLoginManager.shared.verifyNonce(nonce) { [weak self] (success, error) in
+                if (success) {
+                    if let view = self?.window?.rootViewController?.view {
+                        MBProgressHUD.hide(for: view, animated: true)
+                    }
+                    KMessageManager.showMessage("VerificationMailMessage".localizedString(),
+                                                type: .success)
+                    NotificationCenter.default.post(name: KLoginManager.UserEmailVerified, object: KLoginManager.shared)
+                    KLoginManager.shared.delegate?.userEmailVerified()
+                }
+            }
+            return true
+        }
         return false
     }
-
+    
     // MARK: - Streaming provider
-
+    
     open func register(streamingProvider provider: KStreamingProvider) {
         // Checking that the same streaming provider hasn't already been registered.
         var isAlreadyRegistered = false
@@ -93,13 +92,13 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
             streamingProviders.append(provider)
         }
     }
-
+    
     open func getStreamingProvider(fromSource string: String) throws -> KStreamingProvider {
         if let pipeIndex = string.range(of: "|") {
             #if swift(>=4)
-                let sourceProvider = String(string[..<pipeIndex.lowerBound]).uppercased()
+            let sourceProvider = String(string[..<pipeIndex.lowerBound]).uppercased()
             #else
-                let sourceProvider = string.substring(to: pipeIndex.lowerBound).uppercased()
+            let sourceProvider = string.substring(to: pipeIndex.lowerBound).uppercased()
             #endif
             if let provider = streamingProviders.filter({ $0.name == sourceProvider })
                 .first {
@@ -116,18 +115,12 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
 extension KAppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
     
     open func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        KPushManager.setPushDeviceToken(fcmToken)
+        KPushManager.setDeviceToken(fcmToken)
     }
     
     //MARK: - Push sharedApplicationDelegate
     @objc open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().apnsToken = deviceToken
-        Messaging.messaging().delegate = self
-        InstanceID.instanceID().instanceID { (result, error) in
-            if let result = result {
-                KPushManager.setPushDeviceToken(result.token)
-            }
-        }
     }
     
     @objc open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {

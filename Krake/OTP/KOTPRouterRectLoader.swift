@@ -12,9 +12,7 @@ import MapKit
 public class KOTPRouterRectLoader: NSObject {
 
     public static func loadRouterBoundaries(_ callback: @escaping (MKCoordinateRegion?) -> Void ) {
-        let manager = KNetworkManager(baseURL: KInfoPlist.OTP.path, auth: false)
-
-
+        let manager = KNetworkManager.otp()
         _ = manager.request("",
                             method:.get,
                             parameters: nil, successCallback: { (task, responseObject) in

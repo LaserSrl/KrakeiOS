@@ -196,28 +196,45 @@ public class KDataTask: NSObject {
 
 @objc public class KNetworkManager: NSObject {
 
-    private var authenticated: Bool = false
-    var checkHeaderResponse: Bool = false
-    public var requestSerializer: KRequestSerializer  = .json
-    public var responseSerializer: KResponseSerializer  = .json
-    public let baseURL: URL
+    private let authenticated: Bool
+    private let checkHeaderResponse: Bool
     private let sessionManager: Session
+    private let requestSerializer: KRequestSerializer
+    private let responseSerializer: KResponseSerializer
+    public let baseURL: URL
 
-    public init(baseURL: URL, auth: Bool) {
+    public init(baseURL: URL,
+                auth: Bool,
+                checkHeaderResponse: Bool = false,
+                requestSerializer: KRequestSerializer = .json,
+                responseSerializer: KResponseSerializer = .json) {
         
-        sessionManager = Session(configuration: URLConfigurationCookies.shared.configuration,
+        self.sessionManager = Session(configuration: URLConfigurationCookies.shared.configuration,
                                  interceptor: RequestHeaderAdapter(auth: auth))
         
         self.baseURL = baseURL
         self.authenticated = auth
+        self.checkHeaderResponse = checkHeaderResponse
+        self.requestSerializer = requestSerializer
+        self.responseSerializer = responseSerializer
         super.init()
     }
     
-    @objc public static func defaultManager(_ auth: Bool = false, checkHeaderResponse: Bool = false) -> KNetworkManager{
-        let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: auth)
-        manager.requestSerializer = .json
-        manager.responseSerializer = .json
-        manager.checkHeaderResponse = checkHeaderResponse
+    @objc public static func defaultManager(_ auth: Bool = false,
+                                             checkHeaderResponse: Bool = false) -> KNetworkManager {
+        return KNetworkManager.default(auth, checkHeaderResponse, .json, .json)
+    }
+    
+    public static func `default`(_ auth: Bool = false,
+                                            _ checkHeaderResponse: Bool = false,
+                                            _ requestSerializer: KRequestSerializer = .json,
+                                            _ responseSerializer: KResponseSerializer = .json) -> KNetworkManager
+    {
+        let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path,
+                                      auth: auth,
+                                      checkHeaderResponse: checkHeaderResponse,
+                                      requestSerializer: requestSerializer,
+                                      responseSerializer: responseSerializer)
         return manager
     }
     
@@ -601,9 +618,6 @@ public class KDataTask: NSObject {
         return dataTask
     }
 
-
-
-
     private func invalidateSessionCancelingTasks(_ cancelTask: Bool) {
         //TODO: alamo fire verificare se ha senso chiamato così tanto spesso
         if (cancelTask) {
@@ -623,7 +637,7 @@ public class KDataTask: NSObject {
             switch response.resolutionAction{
             case KResolutionAction.userHaveToLogin:
                 if !authenticated && KLoginManager.shared.isKrakeLogged {
-                    let manager = KNetworkManager.defaultManager(true)
+                    let manager = KNetworkManager.default(true)
                     checkSuccess?(manager)
                 }else{
                     //USER HAVE TO LOGGED IN
@@ -632,7 +646,7 @@ public class KDataTask: NSObject {
                     {
                         KLoginManager.shared.presentLogin(completion: { (loginSuccess, serviceRegistrated, roles, error) in
                             if loginSuccess{
-                                let manager = KNetworkManager.defaultManager(true)
+                                let manager = KNetworkManager.default(true)
                                 checkSuccess?(manager)
                             }else{
                                 let error = NSError(domain: KInfoPlist.appName, code: response.errorCode, userInfo: [NSLocalizedDescriptionKey : response.message as Any])

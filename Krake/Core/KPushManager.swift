@@ -18,14 +18,14 @@ extension KAPIConstants
 /// # KPushManager
 open class KPushManager: NSObject{
     
-    public static func pushRegistrationRequest() {
+    public static func requestAndRegisterForRemoteNotifications() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) {(granted, error) in
             guard granted else { return }
-            KPushManager.registerRemoteNotification()
+            KPushManager.registerRemoteNotifications()
         }
     }
     
-    fileprivate static func registerRemoteNotification() {
+    fileprivate static func registerRemoteNotifications() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             guard settings.authorizationStatus == .authorized else { return }
             DispatchQueue.main.async {
@@ -34,12 +34,12 @@ open class KPushManager: NSObject{
         }
     }
     
-    public static func setPushDeviceToken(_ dataToken: Data) {
+    public static func setDeviceToken(_ dataToken: Data) {
         let serializedToken: String = dataToken.map { String(format: "%02.2hhx", $0) }.joined()
-        setPushDeviceToken(serializedToken)
+        setDeviceToken(serializedToken)
     }
     
-    public static func setPushDeviceToken(_ serializedToken: String){
+    public static func setDeviceToken(_ serializedToken: String){
         KLog("PUSH: registered with token -> " + serializedToken)
         let uuid = KConstants.uuid
         let wsURL = KInfoPlist.KrakePlist.path
@@ -49,9 +49,7 @@ open class KPushManager: NSObject{
             uuid != UserDefaults.standard.string(forConstantKey: .pushDeviceUUID) ||
             wsPath != UserDefaults.standard.string(forConstantKey: .pushURL) {
             
-            let httpClient = KNetworkManager(baseURL: wsURL, auth: true)
-            httpClient.requestSerializer = .json
-            httpClient.responseSerializer = .data
+            let httpClient = KNetworkManager.default(true, false, .json, .data)
             let requestParameters : [String: Any] = [KParametersKeys.token : serializedToken,
                                                      KParametersKeys.device : "Apple",
                                                      KParametersKeys.UUID : uuid,

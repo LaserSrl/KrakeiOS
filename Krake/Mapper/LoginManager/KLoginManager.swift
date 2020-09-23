@@ -232,7 +232,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
             UserDefaults.standard.set(mutableParams, forKey: KLoginManager.KUserTokenKey)
         }
 
-        KNetworkManager.defaultManager(true, checkHeaderResponse: true)
+        KNetworkManager.default(true, true)
             .krakeLogin(providerName: providerName, params: params) { [weak self] (loginSuccess, response, error) in
             self?.makeCompletion(loginSuccess, response: response, error: error)
             completion?(loginSuccess, self?.currentUser?.registeredServices, self?.currentUser?.roles, error)
@@ -282,7 +282,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
     
     @objc public func callRequestPasswordLost(queryString: String, params: [String: Any]){
         showProgressHUD()
-        KNetworkManager.defaultManager(true).requestKrakeLostPassword(queryString, params: params) { [weak self](success, response, error) in
+        KNetworkManager.default(true).requestKrakeLostPassword(queryString, params: params) { [weak self](success, response, error) in
             if success {
                 self?.showMessage("reset_password_sended".localizedString(), withType: .success)
             }
@@ -306,7 +306,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
 
     public func verifyNonce(_ nonce: String,
                             callback:@escaping ((Bool, Error?) -> Void)) {
-        _ = KNetworkManager.defaultManager(true).request(KAPIConstants.userVerifyNonce,
+        _ = KNetworkManager.default(true).request(KAPIConstants.userVerifyNonce,
                                                      method: .post,
                                                      parameters: ["nonce": nonce]   ,
                                                      successCallback: { (data, result) in

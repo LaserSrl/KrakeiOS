@@ -342,11 +342,8 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         self.reloadDataButton.hiddenAnimated = true
 
         if contentTypeSelectionFields == nil {
-            let manager = KNetworkManager(
-                baseURL: KInfoPlist.KrakePlist.path,
-                auth: false)
-            manager.responseSerializer = .json
-            manager.requestSerializer = .http
+            let manager = KNetworkManager.default(false, false, .http, .json)
+            
             _ = manager.request(KAPIConstants.contentExtension,
                                 method: .get,
                                 parameters: [ContentManagerKeys.LANGUAGE : KConstants.currentLanguage, ContentManagerKeys.CONTENT_TYPE : self.contentTypeDefinition.contentType],
@@ -550,9 +547,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
             }
         }
         hud.showAsUploadProgress()
-        let manager = KNetworkManager.defaultManager(true)
-        manager.responseSerializer = .json
-        manager.requestSerializer = .json
+        let manager = KNetworkManager.default(true)
         KLog(type: .info, params.description )
 
         var anyDict = [String: Any]()
@@ -624,10 +619,8 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
     }
     
     public final func uploadMediaContentToKrake(_ media: UploadableMedia, forKeyPath path: String) -> KDataTask? {
-        let manager = KNetworkManager(baseURL: KInfoPlist.KrakePlist.path, auth: true)
-        manager.responseSerializer = .json
-        manager.requestSerializer = .http
-
+        let manager = KNetworkManager.default(true, false, .http, .json)
+        
         let ct = params[ContentManagerKeys.CONTENT_TYPE] as! String
         let taskIndex = uploadMediaTaskProgress.count
         let uploadTask = manager.upload(KAPIConstants.uploadFile,

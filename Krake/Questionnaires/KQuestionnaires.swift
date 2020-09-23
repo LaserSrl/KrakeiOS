@@ -378,7 +378,7 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
                 }
             }
             questionnaireDelegate?.questionnaire(questionnaire: questionnaire!, willSendWith: &risposte)
-            let manager = KNetworkManager.defaultManager(true)
+            let manager = KNetworkManager.default(true)
             MBProgressHUD.showAdded(to: view, animated: true)
 
             let request = KCodableRequest(risposte)
