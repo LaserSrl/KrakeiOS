@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
     s.default_subspecs = ['Core']
     
     s.subspec 'AppleSignIn' do |os|
-        os.frameworks = "AuthenticationServices", "Foundation"
+        os.frameworks = "AuthenticationServices"
         os.source_files  = "AppleSignIn", "Krake/AppleSignIn/*.swift"
         os.dependency "Krake/Core"
     end
