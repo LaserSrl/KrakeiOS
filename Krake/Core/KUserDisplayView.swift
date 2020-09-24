@@ -66,8 +66,8 @@ public class KUserDisplayView: UIView {
     }
     
     public static func loadUserView(contentDisplayAlias: String = KCommonDisplayAlias.userInfo, showUserInfo block: ((UserProtocol?)-> Void)? = nil) -> KUserDisplayView {
-        let bundle =  Bundle(for: KUserDisplayView.self)
-        let vc = bundle.loadNibNamed("KUserDisplayView", owner: nil, options: nil)?.first as! KUserDisplayView
+        let bundlePath =  Bundle(for: KUserDisplayView.self).path(forResource: "Core", ofType: "bundle")!
+        let vc = Bundle(path: bundlePath)!.loadNibNamed("KUserDisplayView", owner: nil, options: nil)!.first as! KUserDisplayView
         vc.translatesAutoresizingMaskIntoConstraints = false
         vc.contentDisplayAlias = contentDisplayAlias
         vc.showUserInfoBlock = block

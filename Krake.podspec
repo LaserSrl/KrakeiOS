@@ -9,13 +9,12 @@ Pod::Spec.new do |s|
     This is a Laser Krake® libraries writted  by our devs to integrate Krake® CMS features
     DESC
     s.license      = "MIT"
-    s.source       = { :git => "https://github.com/LaserSrl/KrakeiOS.git" }
+    s.source       = { :git => "file:///Users/Patrick/Programmazione/KrakeiOS/" }
 
     s.authors = { 'Patrick Negretto' => 'patrick.negretto@laser-group.com', 'Joël Gerbore' => 'joel.gerbore@laser-group.com' }
 
     s.platform = :ios, "11.0"
     s.ios.deployment_target = "11.0"
-    s.swift_versions = ['4.0', '4.2', '5.0']
 
     s.requires_arc = true
     s.static_framework = true
@@ -63,8 +62,7 @@ Pod::Spec.new do |s|
     
     s.subspec 'Core' do |os|
         os.source_files  = ['Krake/Core/*.{h,m,swift}', 'Krake/Krake.h', 'Krake/Mapper/**/*.{h,m,swift}', 'Krake/Content/**/*.{h,m,swift}', 'Krake/Extentions/*.{h,m,swift}', 'Krake/Mappe/*.{h,m,swift}', 'Krake/Analytics/*.{h,m,swift}', 'Krake/Localization/*.{swift}']
-        os.ios.resource_bundle = { 'OrchardGen' => ['Krake/Mapper/OGLMapperConfiguration.plist'], 'LoginManager' => ['Krake/Mapper/LoginManager/*.storyboard'], 'PrivacyManager' => ['Krake/Mapper/PrivacyManager/*.storyboard'], 'Content' => ['Krake/Content/**/*.{xib,storyboard}'],  'Location' => ['Krake/Mappe/*.storyboard'], 'Localization' => ['Krake/Localization/*.{lproj}'] }
-        os.resources = 'Krake/*.{xcassets}','Krake/Core/*.xib', 'Krake/Mapper/**/*.{xcassets}'
+        os.ios.resource_bundles = { 'OrchardGen' => ['Krake/Mapper/OGLMapperConfiguration.plist'], 'LoginManager' => ['Krake/Mapper/LoginManager/*.storyboard'], 'PrivacyManager' => ['Krake/Mapper/PrivacyManager/*.storyboard'], 'Content' => ['Krake/Content/**/*.{xib,storyboard}'], 'Core' => ['Krake/Core/**/*.{xib}'],  'Location' => ['Krake/Mappe/*.storyboard'], 'Localization' => ['Krake/Localization/*.{lproj}'], 'KrakeImages' => ['Krake/*.{xcassets}', 'Krake/Mapper/**/*.{xcassets}'] }
 
         os.dependency "Krake/Commons"
         
@@ -102,8 +100,7 @@ Pod::Spec.new do |s|
     
     s.subspec 'GameQuiz' do |os|
         os.source_files  = "GameQuiz", "Krake/GameQuiz/**/*.{h,m,swift}"
-        os.ios.resource_bundles = {'GameQuiz' => ['Krake/GameQuiz/*.storyboard']}
-        os.resource = 'Krake/GameQuiz/*.{xcassets}'
+        os.ios.resource_bundles = {'GameQuiz' => ['Krake/GameQuiz/*.{storyboard,xcassets}']}
         os.dependency "Krake/Core"
     end
     
@@ -116,14 +113,13 @@ Pod::Spec.new do |s|
     
     s.subspec 'InstagramKit' do |os|
         os.source_files  = "InstagramKit", "Krake/InstagramKit/*.{swift}"
-        os.resource  = 'Krake/InstagramKit/*.{xcassets}'
+        os.ios.resource_bundles = { 'InstagramKit' => ['Krake/InstagramKit/*.xcassets']}
         os.dependency "Krake/Core"
         os.dependency "Krake/OAuth"
     end
     
     s.subspec 'LinkedInKit' do |os|
         os.source_files  = "LinkedInKit", "Krake/LinkedInKit/*.{swift}"
-        os.resource  = 'Krake/LinkedInKit/*.{xcassets}'
         os.dependency "Krake/Core"
         os.dependency "Krake/OAuth"
     end
@@ -138,8 +134,7 @@ Pod::Spec.new do |s|
     s.subspec 'OTP' do |os|
         os.source_files  = "OTP", "Krake/OTP/**/*.{h,m,swift}"
         os.frameworks  = "MapKit"
-        os.ios.resource_bundle = { 'OTP' => ['Krake/OTP/*.storyboard']}
-        os.resource  = 'Krake/OTP/*.{xcassets}'
+        os.ios.resource_bundles = { 'OTP' => ['Krake/OTP/*.{storyboard,xcassets}']}
         os.dependency "Krake/Core"
         os.dependency "Polyline", '4.2.1'
         os.dependency "DateTimePicker", '~> 2.4.1'
@@ -148,20 +143,19 @@ Pod::Spec.new do |s|
     
     s.subspec 'Policies' do |os|
         os.source_files  = "Krake/Policies/*.{h,m,swift}"
-        os.ios.resource_bundle = { 'Policies' => ['Krake/Policies/*.storyboard']}
+        os.ios.resource_bundles = { 'Policies' => ['Krake/Policies/*.storyboard']}
         os.dependency "Krake/Core"
     end
 
     s.subspec 'PostCard' do |os|
         os.source_files  = "Krake/PostCard/*.{h,m,swift}"
-        os.ios.resource_bundle = { 'PostCard' => ['Krake/PostCard/*.storyboard']}
+        os.ios.resource_bundles = { 'PostCard' => ['Krake/PostCard/*.storyboard']}
         os.dependency "Krake/Core"
     end
     
     s.subspec 'PuzzleGame' do |os|
         os.source_files  = "PuzzleGame", "Krake/PuzzleGame/**/*.{swift}"
-        os.ios.resource_bundles = {'PuzzleGame' => ['Krake/PuzzleGame/*.storyboard']}
-        os.resource = 'Krake/PuzzleGame/*.{xcassets}'
+        os.ios.resource_bundles = {'PuzzleGame' => ['Krake/PuzzleGame/*.{storyboard,xcassets}']}
         os.dependency "Krake/Core"
     end
     
@@ -174,7 +168,6 @@ Pod::Spec.new do |s|
     s.subspec 'Reportages' do |os|
         os.source_files  = "Reportages", "Krake/Reportages/*.swift"
         os.ios.resource_bundles = {'Reportages' => ['Krake/Reportages/*.{storyboard,xib}']}
-        os.resource = 'Krake/Reportages/*.xcassets'
         os.dependency "Krake/ContentManager"
         os.dependency "Krake/Core"
     end

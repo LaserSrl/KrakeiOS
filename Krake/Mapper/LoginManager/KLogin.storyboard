@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -95,7 +95,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VzI-iI-JWy">
                                                                     <rect key="frame" x="0.0" y="151.5" width="244" height="32.5"/>
                                                                     <subviews>
-                                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4b4-NN-Dnd">
+                                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4b4-NN-Dnd">
                                                                             <rect key="frame" x="0.0" y="6.5" width="166" height="20"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="20" id="Fnf-KH-ClM"/>
@@ -108,7 +108,7 @@
                                                                                 <action selector="requestLostPassword:" destination="VFT-nU-Ijz" eventType="touchUpInside" id="20G-AG-PvR"/>
                                                                             </connections>
                                                                         </button>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7A-KG-CAB">
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7A-KG-CAB">
                                                                             <rect key="frame" x="176" y="6.5" width="68" height="20"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="20" id="r4s-u8-UWT"/>
@@ -123,7 +123,7 @@
                                                                         </button>
                                                                     </subviews>
                                                                 </stackView>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="577-eu-otg">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="577-eu-otg">
                                                                     <rect key="frame" x="0.0" y="194" width="244" height="44"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="44" id="1IG-Lm-3XP"/>
@@ -251,7 +251,7 @@
                                                                                 <outlet property="delegate" destination="VFT-nU-Ijz" id="MRW-1a-chX"/>
                                                                             </connections>
                                                                         </textField>
-                                                                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EJ-f5-x4m">
+                                                                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EJ-f5-x4m">
                                                                             <rect key="frame" x="0.0" y="267.5" width="260" height="44"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="44" id="dP7-p3-qfz"/>
@@ -292,7 +292,7 @@
                                                             <rect key="frame" x="8" y="16" width="244" height="112"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password dimenticata?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="05Z-e4-v1z">
-                                                                    <rect key="frame" x="17" y="0.0" width="210" height="0.0"/>
+                                                                    <rect key="frame" x="17" y="0.0" width="210.5" height="0.0"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -331,7 +331,7 @@
                                                                         </textField>
                                                                     </subviews>
                                                                 </stackView>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6y-bz-tsS">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6y-bz-tsS">
                                                                     <rect key="frame" x="0.0" y="68" width="244" height="44"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="44" id="6wJ-Yz-rey"/>
@@ -372,7 +372,7 @@
                                 </constraints>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNx-Vq-Vi7">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNx-Vq-Vi7">
                                 <rect key="frame" x="362" y="26" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="WmE-Og-9iK"/>
@@ -386,7 +386,7 @@
                                     <action selector="closeMe:" destination="VFT-nU-Ijz" eventType="touchUpInside" id="73z-Yh-GEh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Wz-uF-CVR">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Wz-uF-CVR">
                                 <rect key="frame" x="8" y="26" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="25S-jk-Ihb"/>
@@ -459,4 +459,36 @@
             <point key="canvasLocation" x="368" y="413"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="3KP-Nf-F4D">
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
+        </designable>
+        <designable name="HRY-cf-dUm">
+            <size key="intrinsicContentSize" width="4" height="17"/>
+        </designable>
+        <designable name="L1n-X7-WZl">
+            <size key="intrinsicContentSize" width="4" height="17"/>
+        </designable>
+        <designable name="QGI-i1-1sq">
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
+        </designable>
+        <designable name="Svt-tB-KmP">
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
+        </designable>
+        <designable name="XWi-p1-I4C">
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
+        </designable>
+        <designable name="hMz-Cb-fF6">
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
+        </designable>
+        <designable name="mhM-3g-JhP">
+            <size key="intrinsicContentSize" width="4" height="17"/>
+        </designable>
+        <designable name="oUq-WP-HDV">
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
+        </designable>
+        <designable name="xCf-QD-kQn">
+            <size key="intrinsicContentSize" width="4" height="18.5"/>
+        </designable>
+    </designables>
 </document>

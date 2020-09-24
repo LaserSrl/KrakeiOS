@@ -167,12 +167,13 @@
     self.closeButton.clipsToBounds = YES;
     self.closeButton.layer.cornerRadius = 22.0;
     [self.closeButton setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
-    [self.closeButton setImage:[UIImage imageNamed:@"scroll_bottom" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+    NSString * bundlePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"KrakeImages" ofType:@"bundle"];
+    [self.closeButton setImage:[UIImage imageNamed:@"scroll_bottom" inBundle:[NSBundle bundleWithPath:bundlePath] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     
     self.backButton.clipsToBounds = YES;
     self.backButton.layer.cornerRadius = 22.0;
     [self.backButton setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
-    [self.backButton setImage:[UIImage imageNamed:@"indietro" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+    [self.backButton setImage:[UIImage imageNamed:@"indietro" inBundle:[NSBundle bundleWithPath:bundlePath] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     self.backButton.alpha = 0.0;
     
     self.loginWithLabel.text = [@"LOGIN" localizedString];

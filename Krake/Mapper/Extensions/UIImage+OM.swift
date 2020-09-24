@@ -11,7 +11,8 @@ import UIKit
 
 extension UIImage{
     
-    public convenience init?(omNamed named: String){
-        self.init(named: named, in: Bundle(for: OGLAppDelegate.self), compatibleWith: nil)
+    public convenience init?(omNamed: String){
+        guard let bundlePath = Bundle(for: OGLAppDelegate.self).path(forResource: "KrakeImages", ofType: "bundle") else { return nil }
+        self.init(named: omNamed, in: Bundle(path: bundlePath), compatibleWith: nil)
     }
 }

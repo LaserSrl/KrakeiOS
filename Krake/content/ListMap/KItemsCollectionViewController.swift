@@ -533,7 +533,7 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
                 if numberOfObjectsChanged == 0 {
                     if let items = collectionView?.indexPathsForVisibleItems, items.count > 0 {
                         collectionView?.reloadItems(at: items)
-                        if collectionView(collectionView, numberOfItemsInSection: 0) > 0 {
+                        if let collectionV = collectionView, collectionView(collectionV, numberOfItemsInSection: 0) > 0 {
                             collectionView?.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: false)
                         }
                     }
@@ -567,7 +567,7 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
                         if let items = mySelf.collectionView?.indexPathsForVisibleItems, finished {
                             mySelf.collectionView?.reloadItems(at: items)
                         }
-                        if mySelf.collectionView(mySelf.collectionView, numberOfItemsInSection: 0) > 0 {
+                        if let collectView = mySelf.collectionView, mySelf.collectionView(collectView, numberOfItemsInSection: 0) > 0 {
                             mySelf.collectionView?.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: false)
                         }
                     })

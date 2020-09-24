@@ -12,6 +12,7 @@ import Foundation
 public extension UIImage{
     
     convenience init?(otpNamed named: String){
-        self.init(named: named, in: Bundle(for: KTripPlannerSearchController.self), compatibleWith: nil)
+        guard let bundlePath = Bundle(for: KTripPlannerSearchController.self).path(forResource: "OTP", ofType: "bundle") else { return nil }
+        self.init(named: named, in: Bundle(path: bundlePath), compatibleWith: nil)
     }
 }
