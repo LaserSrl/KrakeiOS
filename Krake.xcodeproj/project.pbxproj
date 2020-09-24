@@ -17,7 +17,7 @@
 		5D6D8BE122C34F7C00D72464 /* KTabAndCollectionViewItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6D8BE022C34F7C00D72464 /* KTabAndCollectionViewItems.swift */; };
 		5D7C0C6E2350BA14006760A9 /* OGLCoreDataMapper+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7C0C6D2350BA14006760A9 /* OGLCoreDataMapper+Swift.swift */; };
 		5D873A7E2358500F002EBE3E /* URLConfigurationCookies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D873A7D2358500F002EBE3E /* URLConfigurationCookies.swift */; };
-		CD05096D24B84A11005C793D /* KSignalTriggerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD05096C24B84A11005C793D /* KSignalTriggerManager.swift */; };
+		CD05096D24B84A11005C793D /* KNetworkManager+SignalTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD05096C24B84A11005C793D /* KNetworkManager+SignalTrigger.swift */; };
 		CD312224225C7DFA00DC06C8 /* KNoElementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD312223225C7DFA00DC06C8 /* KNoElementCell.swift */; };
 		CD4C001B2292E286009727A7 /* KVehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C001A2292E286009727A7 /* KVehicleAnnotation.swift */; };
 		CDBABBA023AA1316009D4CB1 /* AppleSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBABB9F23AA1316009D4CB1 /* AppleSignIn.swift */; };
@@ -50,7 +50,7 @@
 		5D6D8BE022C34F7C00D72464 /* KTabAndCollectionViewItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTabAndCollectionViewItems.swift; sourceTree = "<group>"; };
 		5D7C0C6D2350BA14006760A9 /* OGLCoreDataMapper+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OGLCoreDataMapper+Swift.swift"; sourceTree = "<group>"; };
 		5D873A7D2358500F002EBE3E /* URLConfigurationCookies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConfigurationCookies.swift; sourceTree = "<group>"; };
-		CD05096C24B84A11005C793D /* KSignalTriggerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KSignalTriggerManager.swift; sourceTree = "<group>"; };
+		CD05096C24B84A11005C793D /* KNetworkManager+SignalTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KNetworkManager+SignalTrigger.swift"; sourceTree = "<group>"; };
 		CD312223225C7DFA00DC06C8 /* KNoElementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNoElementCell.swift; sourceTree = "<group>"; };
 		CD4C001A2292E286009727A7 /* KVehicleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVehicleAnnotation.swift; sourceTree = "<group>"; };
 		CDBABB9F23AA1316009D4CB1 /* AppleSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSignIn.swift; sourceTree = "<group>"; };
@@ -993,7 +993,7 @@
 				CDBB7733219C7EDB00122E7E /* KNetworkManager.swift */,
 				5D3169DE235713D1000E1297 /* RequestHeaderAdapter.swift */,
 				5D873A7D2358500F002EBE3E /* URLConfigurationCookies.swift */,
-				CD05096C24B84A11005C793D /* KSignalTriggerManager.swift */,
+				CD05096C24B84A11005C793D /* KNetworkManager+SignalTrigger.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -1202,7 +1202,7 @@
 				5D3169DF235713D1000E1297 /* RequestHeaderAdapter.swift in Sources */,
 				5D6D8BE122C34F7C00D72464 /* KTabAndCollectionViewItems.swift in Sources */,
 				5D5E17C62297ED17000851CC /* Number+OtpDate.swift in Sources */,
-				CD05096D24B84A11005C793D /* KSignalTriggerManager.swift in Sources */,
+				CD05096D24B84A11005C793D /* KNetworkManager+SignalTrigger.swift in Sources */,
 				5D873A7E2358500F002EBE3E /* URLConfigurationCookies.swift in Sources */,
 				5D1F63FE2296A81800B671FF /* RoutesTableViewController.swift in Sources */,
 			);

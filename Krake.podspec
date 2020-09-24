@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
     This is a Laser Krake® libraries writted  by our devs to integrate Krake® CMS features
     DESC
     s.license      = "MIT"
-    s.source       = { :git => "https://github.com/LaserSrl/KrakeiOS.git", :tag => s.version }
+    s.source       = { :git => "https://github.com/LaserSrl/KrakeiOS.git" }
 
     s.authors = { 'Patrick Negretto' => 'patrick.negretto@laser-group.com', 'Joël Gerbore' => 'joel.gerbore@laser-group.com' }
 
@@ -27,6 +27,7 @@ Pod::Spec.new do |s|
     s.default_subspecs = ['Core']
     
     s.subspec 'AppleSignIn' do |os|
+        os.frameworks = "AuthenticationServices", "Foundation"
         os.source_files  = "AppleSignIn", "Krake/AppleSignIn/*.swift"
         os.dependency "Krake/Core"
     end
