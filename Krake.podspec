@@ -3,18 +3,19 @@ Pod::Spec.new do |s|
     s.name         = "Krake"
     s.version      = "11.3.0"
     s.summary      = "Laser mobile framework."
-    s.homepage     = "http://mykrake.com"
+    s.homepage     = "https://www.laser-group.com"
 
     s.description  = <<-DESC
-    This is a Laser Krake® libraries writted  by our devs to integrate Krake® CMS features
+    This is a Laser Krake® libraries writted by our devs to integrate Krake® CMS features
     DESC
     s.license      = "MIT"
-    s.source       = { :git => "file:///Users/Patrick/Programmazione/KrakeiOS/" }
+    s.source       = { :git => "https://github.com/LaserSrl/KrakeiOS.git", :tag => s.version }
 
     s.authors = { 'Patrick Negretto' => 'patrick.negretto@laser-group.com', 'Joël Gerbore' => 'joel.gerbore@laser-group.com' }
 
     s.platform = :ios, "11.0"
     s.ios.deployment_target = "11.0"
+    s.swift_versions = ['5.0']
 
     s.requires_arc = true
     s.static_framework = true

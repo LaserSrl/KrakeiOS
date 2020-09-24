@@ -26,9 +26,7 @@
 		CDBB77C9219C7EDC00122E7E /* OCOTP.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB766B219C7EDA00122E7E /* OCOTP.xcassets */; };
 		CDBB77ED219C7EDC00122E7E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB7694219C7EDA00122E7E /* Images.xcassets */; };
 		CDBB77F6219C7EDC00122E7E /* PuzzleGame.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB76A0219C7EDA00122E7E /* PuzzleGame.xcassets */; };
-		CDBB77FF219C7EDC00122E7E /* LinkedInKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB76AE219C7EDA00122E7E /* LinkedInKit.xcassets */; };
 		CDBB7818219C7EDC00122E7E /* GameQuiz.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB76D3219C7EDB00122E7E /* GameQuiz.xcassets */; };
-		CDBB783B219C7EDC00122E7E /* Report.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB76FC219C7EDB00122E7E /* Report.xcassets */; };
 		CDBB7862219C7EDC00122E7E /* OGLMapperConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDBB772A219C7EDB00122E7E /* OGLMapperConfiguration.plist */; };
 		CDBB7870219C7EDC00122E7E /* OrchardMapper.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB773E219C7EDB00122E7E /* OrchardMapper.xcassets */; };
 		CDBB78B7219C7EFE00122E7E /* Krake.podspec in Resources */ = {isa = PBXBuildFile; fileRef = CDBB78B5219C7EFE00122E7E /* Krake.podspec */; };
@@ -169,7 +167,6 @@
 		CDBB76A5219C7EDA00122E7E /* GameBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoardViewController.swift; sourceTree = "<group>"; };
 		CDBB76AA219C7EDA00122E7E /* String+KrakeLocalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+KrakeLocalization.swift"; sourceTree = "<group>"; };
 		CDBB76AD219C7EDA00122E7E /* LinkedInKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedInKit.swift; sourceTree = "<group>"; };
-		CDBB76AE219C7EDA00122E7E /* LinkedInKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = LinkedInKit.xcassets; sourceTree = "<group>"; };
 		CDBB76B1219C7EDB00122E7E /* CategoryPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPreferencesViewController.swift; sourceTree = "<group>"; };
 		CDBB76B2219C7EDB00122E7E /* CategoryPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryPreferencesViewController.xib; sourceTree = "<group>"; };
 		CDBB76B3219C7EDB00122E7E /* CategoryPreferencesCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryPreferencesCellView.xib; sourceTree = "<group>"; };
@@ -232,7 +229,6 @@
 		CDBB76F8219C7EDB00122E7E /* Policies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Policies.swift; sourceTree = "<group>"; };
 		CDBB76FA219C7EDB00122E7E /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		CDBB76FB219C7EDB00122E7E /* KReportage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KReportage.swift; sourceTree = "<group>"; };
-		CDBB76FC219C7EDB00122E7E /* Report.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Report.xcassets; sourceTree = "<group>"; };
 		CDBB76FD219C7EDB00122E7E /* KListReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KListReport.swift; sourceTree = "<group>"; };
 		CDBB76FE219C7EDB00122E7E /* CellReport.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellReport.xib; sourceTree = "<group>"; };
 		CDBB7700219C7EDB00122E7E /* KrakeQuestionnaires.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KrakeQuestionnaires.storyboard; sourceTree = "<group>"; };
@@ -695,7 +691,6 @@
 			isa = PBXGroup;
 			children = (
 				CDBB76AD219C7EDA00122E7E /* LinkedInKit.swift */,
-				CDBB76AE219C7EDA00122E7E /* LinkedInKit.xcassets */,
 			);
 			path = LinkedInKit;
 			sourceTree = "<group>";
@@ -874,7 +869,6 @@
 			children = (
 				CDBB76FA219C7EDB00122E7E /* Report.swift */,
 				CDBB76FB219C7EDB00122E7E /* KReportage.swift */,
-				CDBB76FC219C7EDB00122E7E /* Report.xcassets */,
 				CDBB76FD219C7EDB00122E7E /* KListReport.swift */,
 				CDBB76FE219C7EDB00122E7E /* CellReport.xib */,
 			);
@@ -1169,10 +1163,8 @@
 				CDBB7870219C7EDC00122E7E /* OrchardMapper.xcassets in Resources */,
 				CDC59C7124DC0E3100533B9B /* OCLocalizable.strings in Resources */,
 				CDBB7818219C7EDC00122E7E /* GameQuiz.xcassets in Resources */,
-				CDBB783B219C7EDC00122E7E /* Report.xcassets in Resources */,
 				CDBB7790219C7EDC00122E7E /* InstagramKit.xcassets in Resources */,
 				CDBB7862219C7EDC00122E7E /* OGLMapperConfiguration.plist in Resources */,
-				CDBB77FF219C7EDC00122E7E /* LinkedInKit.xcassets in Resources */,
 				CDBB77C9219C7EDC00122E7E /* OCOTP.xcassets in Resources */,
 				CDBB77ED219C7EDC00122E7E /* Images.xcassets in Resources */,
 				CDBB78B7219C7EFE00122E7E /* Krake.podspec in Resources */,
