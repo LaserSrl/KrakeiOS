@@ -384,8 +384,8 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
             let request = KCodableRequest(risposte)
             request.method = .post
             request.path = apiPath
+            
             request.requestSerializer = .json
-
             _ = manager.request(codable: request,
                                 successCallback: { [weak self] (task, responseObject) -> Void in
                                 if let mySelf = self {
@@ -430,8 +430,14 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
 }
 
 
-public struct QuestionAnswer: Codable, Equatable {
+public struct QuestionAnswer: Encodable, Equatable {
     let QuestionRecord_Id: Int
     let AnswerText: String?
     let Id: Int?
+    
+    public init(QuestionRecord_Id: Int, AnswerText: String?, Id: Int?) {
+        self.QuestionRecord_Id = QuestionRecord_Id
+        self.AnswerText = AnswerText
+        self.Id = Id
+    }
 }

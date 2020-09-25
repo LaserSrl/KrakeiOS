@@ -88,19 +88,19 @@ private extension KMethod {
 
 open class KRequest {
 
-    var path: String = ""
+    public var path: String = ""
 
-    var queryParameters = [URLQueryItem]()
+    public var queryParameters = [URLQueryItem]()
 
-    var method: KMethod = .get
-    var parameters: KParamaters? = nil
-    var requestSerializer: KRequestSerializer? = nil
-    var headers =  [String: String]()
+    public var method: KMethod = .get
+    public var parameters: KParamaters? = nil
+    public var requestSerializer: KRequestSerializer? = nil
+    public var headers =  [String: String]()
 
-    var responseSerializer: KResponseSerializer? = nil
+    public var responseSerializer: KResponseSerializer? = nil
 
-    var uploadProgress: ((Progress) -> Void)? = nil
-    var downloadProgress: ((Progress) -> Void)? = nil
+    public var uploadProgress: ((Progress) -> Void)? = nil
+    public var downloadProgress: ((Progress) -> Void)? = nil
 
     func genericParamters() -> Any? {
         return parameters

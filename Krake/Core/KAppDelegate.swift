@@ -21,7 +21,9 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
     open override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [KApplicationLaunchOptionsKey : Any]?) -> Bool {
         let value = super.application(application, didFinishLaunchingWithOptions: launchOptions)
         NetworkActivityIndicatorManager.shared.isEnabled = true
-        FirebaseApp.configure()
+        if Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") != nil {
+            FirebaseApp.configure()
+        }
         Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
         
