@@ -29,6 +29,10 @@ public protocol KLoginManagerDelegate: KeyValueCodingProtocol{
 
 public extension KLoginManagerDelegate{
     
+    var domainsAccepted: [String]? {
+        return nil
+    }
+    
     var canUserRegisterWithKrake: Bool{
         return true
     }

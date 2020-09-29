@@ -302,30 +302,32 @@ open class KMainTheme: NSObject, KThemeProtocol {
     
     open func applyTheme(toButton button: UIButton, style: ButtonStyle){
         switch style {
-        case .policy:
-            button.setTitleColor(UIColor.white, for: .normal)
-            button.setTitleColor(UIColor.lightGray, for: .disabled)
-            button.backgroundColor = color(.tint)
-        case .fabButton:
-            button.clipsToBounds = false
-            button.backgroundColor = KTheme.current.color(.alternate)
-            button.tintColor = KTheme.current.color(.textAlternate)
-            button.layer.cornerRadius = button.frame.width/2
-            button.layer.shadowColor = UIColor.black.cgColor
-            button.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-            button.layer.shadowOpacity = 0.8
-            button.layer.shadowRadius = 1.5
-        case .calendar: //MARK: tint button with color tint of the navigationBar
-            button.tintColor = color(.textTint)
-            button.setTitleColor(color(.textTint), for: .normal)
-        case .map:
-            button.setTitleColor(color(.tint), for: .normal)
-            button.tintColor = color(.tint)
-            button.alignImageAndTitleVertically()
-        default:
-            button.setTitleColor(color(.tint), for: .normal)
-            button.tintColor = color(.tint)
-            
+            case .policy:
+                button.setTitleColor(UIColor.white, for: .normal)
+                button.setTitleColor(UIColor.lightGray, for: .disabled)
+                button.backgroundColor = color(.tint)
+            case .fabButton:
+                button.clipsToBounds = false
+                button.backgroundColor = KTheme.current.color(.alternate)
+                button.tintColor = KTheme.current.color(.textAlternate)
+                button.layer.cornerRadius = button.frame.width/2
+                button.layer.shadowColor = UIColor.black.cgColor
+                button.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+                button.layer.shadowOpacity = 0.8
+                button.layer.shadowRadius = 1.5
+            case .calendar: //MARK: tint button with color tint of the navigationBar
+                button.tintColor = color(.textTint)
+                button.setTitleColor(color(.textTint), for: .normal)
+            case .map:
+                button.setTitleColor(color(.tint), for: .normal)
+                button.tintColor = color(.tint)
+                button.alignImageAndTitleVertically()
+            case .social:
+                break
+            default:
+                button.setTitleColor(color(.tint), for: .normal)
+                button.tintColor = color(.tint)
+                
         }
     }
     
