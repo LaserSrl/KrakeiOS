@@ -71,13 +71,13 @@ public protocol KTabManagerDelegate: NSObjectProtocol{
 public extension KTabManagerDelegate{
     func tabManager(_ manager: KTabManager , generatedSegmentedControl: Segmentio ) {
         generatedSegmentedControl.reloadSegmentio()
-       // generatedSegmentedControl.isHidden = manager.numberOfTabs() <= 1
+        // generatedSegmentedControl.isHidden = manager.numberOfTabs() <= 1
     }
     
     func tabManager(_ manager: KTabManager , defaultSelectedIndex tabs: [Any]) -> UInt? {
         return nil
     }
-
+    
     func tabManager(_ manager: KTabManager, setup segmentio: Segmentio, with tabs: [SegmentioItem], and theme: KSegmentioTheme) {
         segmentio.setup(
             content: tabs,
@@ -85,10 +85,10 @@ public extension KTabManagerDelegate{
             options: theme.segmentioOptions
         )
     }
-
+    
     func tabManager(_ manager: KTabManager, didSelectTermPart termPart: TermPartProtocol?) {
     }
-
+    
     func tabManager(_ manager: KTabManager, didSelectTab tab: TabBarItem) {
     }
     func tabManager(_ manager: KTabManager, didLoadTerms terms: [TermPartProtocol]) { }
@@ -103,11 +103,11 @@ open class KTabManager: NSObject{
     weak var segmentedControl : Segmentio?
     var currentIndex: Int = 0
     var task: OMLoadDataTask?
-
+    
     public var currentTabIndex : Int
     {
         get { return segmentedControl?.selectedSegmentioIndex ?? -1 }
-
+        
         set { segmentedControl?.selectedSegmentioIndex = newValue }
     }
     
@@ -126,12 +126,12 @@ open class KTabManager: NSObject{
     }
     
     open func setupInViewDidLoad(logged: Bool = false){
-
+        
         segmentedControl?.isHidden = false
         if tabManagerOptions.tabsEndPoint != nil {
-
+            
             let extras = KRequestParameters.parametersToLoadCategorySubTerms()
-
+            
             task = OGLCoreDataMapper.sharedInstance().loadData(withDisplayAlias: tabManagerOptions.tabsEndPoint!, extras: extras, loginRequired: logged) { [weak self](parsedObject , error, completed) -> Void in
                 guard let mySelf = self else {return}
                 if parsedObject != nil
@@ -156,11 +156,11 @@ open class KTabManager: NSObject{
                     }
                 }
                 if completed == true {
-
+                    
                     mySelf.delegate?.tabManager(mySelf, didLoadTerms: mySelf.loadedCategories ?? [])
-
+                    
                     if mySelf.loadedCategories?.count ?? 0 > 1 {
-
+                        
                         var arrayTitles = [SegmentioItem]()
                         if mySelf.tabManagerOptions.showAllInFirstTab {
                             arrayTitles.append(SegmentioItem(title: "Tutti".localizedString(), image: UIImage(named:"termicon_all")?.withRenderingMode(.alwaysTemplate) ?? UIImage(krakeNamed:"termicon_all")?.withRenderingMode(.alwaysTemplate)))
@@ -185,6 +185,7 @@ open class KTabManager: NSObject{
                         }
                         mySelf.uploadDataInSegmentedControl(arrayTitles)
                     }else{
+                        mySelf.uploadDataInSegmentedControl([])
                         mySelf.segmentedControl?.isHidden = true
                         mySelf.delegate?.tabManager(mySelf, didSelectTermPart: nil)
                     }

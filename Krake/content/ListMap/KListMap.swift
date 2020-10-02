@@ -102,31 +102,31 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     
     fileprivate var searchController: UISearchController?
     fileprivate let refreshControl = UIRefreshControl()
-
+    
     fileprivate var clusterManager: ClusterManager? = nil
     
     @available(*, deprecated, renamed: "init(listMapOptions:)")
     public static func prepareViewController(_ endPoint: String? = nil,
-                                           loginRequired: Bool = false,
-                                           taxCategoryEndPoint: String? = nil,
-                                           elements: NSOrderedSet? = nil,
-                                           extras: [String : Any]? = nil,
-                                           listMapDelegate: KListMapDelegate? = KDefaultListMapDelegate(),
-                                           isMapVisible: Bool = false,
-                                           useCluster: Bool = true,
-                                           isSearchVisible: Bool = true,
-                                           filterableKeys: [String]! = ["titlePartTitle"],
-                                           onlineSearch: Bool = false,
-                                           isCalendarVisible: Bool = false,
-                                           stringDateFormat: String? = "dd/MM/yyyy",
-                                           selectionType: KDatePickerSelectionType = .single,
-                                           tabs: [TabBarItem]? = nil,
-                                           tabTheme: KSegmentioTheme? = nil,
-                                           tabViewHeight: CGFloat = 44.0,
-                                           supplementaryHeaderView: UIView? = nil,
-                                           detailDelegate: KDetailPresenterDelegate? = nil,
-                                           elementsSortOrder: ((Any, Any) -> ComparisonResult)? = nil,
-                                           analyticsExtras: [String: Any]? = nil) -> KListMapViewController
+                                             loginRequired: Bool = false,
+                                             taxCategoryEndPoint: String? = nil,
+                                             elements: NSOrderedSet? = nil,
+                                             extras: [String : Any]? = nil,
+                                             listMapDelegate: KListMapDelegate? = KDefaultListMapDelegate(),
+                                             isMapVisible: Bool = false,
+                                             useCluster: Bool = true,
+                                             isSearchVisible: Bool = true,
+                                             filterableKeys: [String]! = ["titlePartTitle"],
+                                             onlineSearch: Bool = false,
+                                             isCalendarVisible: Bool = false,
+                                             stringDateFormat: String? = "dd/MM/yyyy",
+                                             selectionType: KDatePickerSelectionType = .single,
+                                             tabs: [TabBarItem]? = nil,
+                                             tabTheme: KSegmentioTheme? = nil,
+                                             tabViewHeight: CGFloat = 44.0,
+                                             supplementaryHeaderView: UIView? = nil,
+                                             detailDelegate: KDetailPresenterDelegate? = nil,
+                                             elementsSortOrder: ((Any, Any) -> ComparisonResult)? = nil,
+                                             analyticsExtras: [String: Any]? = nil) -> KListMapViewController
     {
         
         var data = KListMapData(endPoint: endPoint, loginRequired: loginRequired, elements: elements, extras: extras ?? [:])
@@ -222,27 +222,27 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     {
         super.viewDidLoad()
         UIView.setAnimationsEnabled(false)
-
+        
         mapView?.extendedDelegate = self
-
+        
         if let mapOptions = listMapOptions.mapOptions, mapOptions.useCluster {
             clusterManager = ClusterManager()
         }
         
         //Sposto il pulsante di switch lista/mappa nella posizione corretta in base al settaggio in listmapoptions
         switch listMapOptions.toggleButtonPosition {
-        case .bottomLeading:
-            toggleButtonCenterConstraint.priority = UILayoutPriority.defaultLow
-            toggleButtonTrailingConstraint.priority = UILayoutPriority.defaultLow
-            toggleButtonLeadingConstraint.priority = UILayoutPriority.defaultHigh
-        case .bottomCenter:
-            toggleButtonLeadingConstraint.priority = UILayoutPriority.defaultLow
-            toggleButtonTrailingConstraint.priority = UILayoutPriority.defaultLow
-            toggleButtonCenterConstraint.priority = UILayoutPriority.defaultHigh
-        case .bottomTrailing:
-            toggleButtonLeadingConstraint.priority = UILayoutPriority.defaultLow
-            toggleButtonCenterConstraint.priority = UILayoutPriority.defaultLow
-            toggleButtonTrailingConstraint.priority = UILayoutPriority.defaultHigh
+            case .bottomLeading:
+                toggleButtonCenterConstraint.priority = UILayoutPriority.defaultLow
+                toggleButtonTrailingConstraint.priority = UILayoutPriority.defaultLow
+                toggleButtonLeadingConstraint.priority = UILayoutPriority.defaultHigh
+            case .bottomCenter:
+                toggleButtonLeadingConstraint.priority = UILayoutPriority.defaultLow
+                toggleButtonTrailingConstraint.priority = UILayoutPriority.defaultLow
+                toggleButtonCenterConstraint.priority = UILayoutPriority.defaultHigh
+            case .bottomTrailing:
+                toggleButtonLeadingConstraint.priority = UILayoutPriority.defaultLow
+                toggleButtonCenterConstraint.priority = UILayoutPriority.defaultLow
+                toggleButtonTrailingConstraint.priority = UILayoutPriority.defaultHigh
         }
         view.layoutIfNeeded()
         
@@ -275,7 +275,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         collectionView.alwaysBounceVertical = true
         registerNoElemCell()
         listMapDelegate.registerCell(collectionView)
-
+        
         //iOS 11 the refresh control could be on navigation bar, on the other cases it will be on top of the collectionView
         var refreshControlColor = UIColor.black
         if #available(iOS 11.0, *)
@@ -297,7 +297,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         }
         else
         {
-           collectionView.addSubview(refreshControl)
+            collectionView.addSubview(refreshControl)
         }
         
         self.automaticallyAdjustsScrollViewInsets = false
@@ -387,7 +387,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
             filteredElements = elements
             refreshAllData()
         }
-
+        
         listMapDelegate.viewDidLoad(self)
         
     }
@@ -481,9 +481,9 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                             mySelf.toggleListMap(nil)
                         }
                         if let flow = mySelf.collectionView.collectionViewLayout as? UICollectionViewFlowLayout,
-                            let button = mySelf.toggleButton,
-                            let inset = mySelf.defaultCollectionInset ,
-                            mySelf.listMapOptions.mapOptions != nil
+                           let button = mySelf.toggleButton,
+                           let inset = mySelf.defaultCollectionInset ,
+                           mySelf.listMapOptions.mapOptions != nil
                         {
                             flow.sectionInset = UIEdgeInsets(top: inset.top, left: inset.left, bottom: inset.bottom + button.bounds.height+24.0, right: inset.right)
                         }
@@ -583,7 +583,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                 {
                     mySelf.elements = NSMutableOrderedSet()
                 }
-
+                
                 if completed
                 {
                     MBProgressHUD.hide(for: mySelf.view, animated: true)
@@ -598,7 +598,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     private func isOnLargeView() -> Bool
     {
         return (collectionView.traitCollection.verticalSizeClass == .regular ||
-            collectionView.traitCollection.verticalSizeClass == .compact) &&
+                    collectionView.traitCollection.verticalSizeClass == .compact) &&
             traitCollection.horizontalSizeClass == .regular
     }
     
@@ -634,6 +634,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
             if isHidden
             {
                 heightTopView.constant = 0
+                topView?.isHidden = true
             }
             else
             {
@@ -703,7 +704,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
                     }
                 }
                 addAnnotations(array)
-
+                
             }
             reloadElementsOnCollectionView()
             collectionView?.collectionViewLayout.invalidateLayout()
@@ -729,10 +730,10 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
             toggleButton?.hiddenAnimated = false
         }
     }
-
+    
     public func addAnnotations(_ annotations: [MKAnnotation]) {
         if let cluster = clusterManager {
-
+            
             cluster.add(annotations)
             cluster.reload(mapView: mapView!) {
                 finished in
@@ -753,7 +754,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
             }
         }
     }
-
+    
     public func removeAllAnnotations() {
         if let cluster = clusterManager {
             cluster.removeAll()
@@ -763,7 +764,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
             mapView?.removeAnnotations(annotations)
         }
     }
-
+    
     public func removeAnnotations(_ annotations: [MKAnnotation]) {
         if let cluster = clusterManager {
             cluster.remove(annotations)
@@ -780,13 +781,13 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         {
             let currentNumberOfSections = collectionView?.numberOfSections ?? 0
             let datasourceNumberOfSection = numberOfSections(in: collectionView!)
-
+            
             if currentNumberOfSections > 0 && datasourceNumberOfSection == 1
             {
                 let numberOfCurrentElements = collectionView(collectionView!, numberOfItemsInSection: 0)
                 let numberOfObjectsInCollectionView = collectionView?.numberOfItems(inSection: 0) ?? 0
                 let numberOfObjectsChanged = numberOfCurrentElements - numberOfObjectsInCollectionView
-
+                
                 if numberOfObjectsChanged == 0 {
                     if let items = collectionView?.indexPathsForVisibleItems, items.count > 0 {
                         collectionView?.reloadItems(at: items)
@@ -904,7 +905,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         view.endEditing(true)
         dateFilterManager!.showDatePicker(tabBarController ?? navigationController ?? self)
     }
-
+    
     @IBOutlet weak var topConstraint: NSLayoutConstraint?
     @IBOutlet weak var collectionViewTop: NSLayoutConstraint?
     public func scrollViewDidScroll(_ scrollView: UIScrollView)
@@ -920,8 +921,8 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
             collectionViewTop?.constant = 0
         }
         if listMapOptions.mapOptions == nil,
-            let lastIndex = collectionView.indexPathsForVisibleItems.sorted().last,
-            lastIndex.row == collectionView(collectionView, numberOfItemsInSection: lastIndex.section) - 1
+           let lastIndex = collectionView.indexPathsForVisibleItems.sorted().last,
+           lastIndex.row == collectionView(collectionView, numberOfItemsInSection: lastIndex.section) - 1
         {
             let totaleElem = elements?.count ?? 0
             let pageSize = listMapOptions.data.pageSize
@@ -946,7 +947,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
             scrollDelegate.scrollViewDidScroll?(scrollView)
         }
     }
-
+    
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
     {
         if let scrollDelegate = listMapDelegate as? UIScrollViewDelegate
@@ -954,9 +955,9 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
             scrollDelegate.scrollViewDidEndDecelerating?(scrollView)
         }
     }
-
+    
     //MARK: - IBAction
-
+    
     @IBAction func touchSearchButton(_ sender: UIButton)
     {
         searchBar?.becomeFirstResponder()
@@ -1008,7 +1009,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
             return nil
         }
         else {
-             return listMapDelegate.viewForAnnotation(annotation, mapView: mapView as! KExtendedMapView )
+            return listMapDelegate.viewForAnnotation(annotation, mapView: mapView as! KExtendedMapView )
         }
     }
     
@@ -1032,14 +1033,14 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         polylineRender.strokeColor = UIColor.blue
         return polylineRender
     }
-
+    
     public func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         clusterManager?.reload(mapView: mapView)
     }
-
+    
     open func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation else { return }
-
+        
         if let cluster = annotation as? ClusterAnnotation {
             var zoomRect = MKMapRect.null
             for annotation in cluster.annotations {
@@ -1139,7 +1140,7 @@ extension KListMapViewController: KTabManagerDelegate
         {
             listMapOptions.data.extras.removeValue(forKey: KParametersKeys.terms)
         }
-
+        
         listMapDelegate.didSelectTab(manager, fromViewController: self, object: termPart)
         loadFromWS()
         scrollToTop()
@@ -1147,8 +1148,8 @@ extension KListMapViewController: KTabManagerDelegate
     
     open func tabManager(_ manager: KTabManager, generatedSegmentedControl: Segmentio)
     {
-        topBarRefreshObject()
         generatedSegmentedControl.isHidden = manager.numberOfTabs() <= 1
+        topBarRefreshObject()
     }
     
     public func tabManager(_ manager: KTabManager, setup segmentio: Segmentio, with tabs: [SegmentioItem], and theme: KSegmentioTheme)
