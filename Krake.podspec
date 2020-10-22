@@ -13,8 +13,8 @@ Pod::Spec.new do |s|
 
     s.authors = { 'Patrick Negretto' => 'patrick.negretto@laser-group.com', 'Joël Gerbore' => 'joel.gerbore@laser-group.com' }
 
-    s.platform = :ios, "11.0"
-    s.ios.deployment_target = "11.0"
+    s.platform = :ios, "12.0"
+    s.ios.deployment_target = "12.0"
     s.swift_versions = ['5.0']
 
     s.requires_arc = true
