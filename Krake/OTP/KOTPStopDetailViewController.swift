@@ -396,13 +396,8 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         if let regexSearchResult = regexSearchResult {
             let legacyStepDescription = stepDescription as NSString
             // Recupero l'id dello step dal risultato della ricerca.
-            #if swift(>=4.0)
                 let id = legacyStepDescription.substring(with: regexSearchResult.range(at: 1))
             var destination = legacyStepDescription.substring(with: regexSearchResult.range(at: 2))
-            #else
-                let id = legacyStepDescription.substring(with: regexSearchResult.rangeAt(1))
-            var destination = legacyStepDescription.substring(with: regexSearchResult.rangeAt(2))
-            #endif
             if let firstParentesisIndex = destination
                 .range(of: "(", options: [.backwards])
             {
@@ -453,11 +448,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                 
                 if line.lineNumber == sSelf.selectedLine?.lineNumber {
                     sSelf.lineOverlay = polyline
-                    #if swift(>=4.2)
                     sSelf.mapView.addOverlay(polyline)
-                    #else
-                    sSelf.mapView.add(polyline)
-                    #endif
                     sSelf.mapView.centerMap()
                 }
             }

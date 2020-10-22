@@ -106,7 +106,7 @@ public class KOTPTripPlanner: KTripPlannerProtocol
             return 0
         })
         let bounds = steps.map {
-            return (KMapPointForCoordinate($0.from.location.coordinate), KMapPointForCoordinate($0.from.location.coordinate))
+            return (MKMapPoint($0.from.location.coordinate), MKMapPoint($0.from.location.coordinate))
             }.reduce([MKMapPoint]()) { (total, coordinates) -> [MKMapPoint] in
                 var totals = total
                 totals.append(coordinates.0)
@@ -114,12 +114,8 @@ public class KOTPTripPlanner: KTripPlannerProtocol
                 return totals
             }.map {
                 return MKMapRect(origin: $0, size: MKMapSize(width: 0, height: 0))
-            }.reduce(KMapRectNull) {
-                #if swift(>=4.2)
+            }.reduce(MKMapRect.null) {
                 return $0.union($1)
-                #else
-                return MKMapRectUnion($0, $1)
-                #endif
         }
         let route = KRoute(startTime: parseDate(itineraryInfos["startTime"].doubleValue),
                            endTime: parseDate(itineraryInfos["endTime"].doubleValue),
@@ -232,11 +228,7 @@ public class KOTPTripPlanner: KTripPlannerProtocol
             directionDescription = "direction_description_uturn".localizedString()
         }
 
-        #if swift(>=4.0)
-            let fontKey = KAttributedStringKey.font
-        #else
-            let fontKey = NSFontAttributeName
-        #endif
+        let fontKey = NSAttributedString.Key.font
         
         if !KOTPTripPlanner.uselessStreetNames.contains(streetName.lowercased()) {
             

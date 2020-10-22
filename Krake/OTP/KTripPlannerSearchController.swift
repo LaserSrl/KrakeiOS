@@ -105,11 +105,7 @@ open class KTripPlannerSearchController : UIViewController,
     private(set) var plannedTrip: KTripPlanResult?
     private var originalLeftButtonItem: UIBarButtonItem?
     
-    #if swift(>=4.2)
     private let loadingProgressView: UIActivityIndicatorView = UIActivityIndicatorView(style: .white)
-    #else
-    private let loadingProgressView: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .white)
-    #endif
     
     private let dateFormatter: DateFormatter = { let formatter = DateFormatter(); formatter.dateStyle = .short; formatter.timeStyle = .short; return formatter }()
 
@@ -158,7 +154,7 @@ open class KTripPlannerSearchController : UIViewController,
             }
         }
 
-        resultsView.rowHeight = KTableViewAutomaticDimension
+        resultsView.rowHeight = UITableView.automaticDimension
         resultsView.estimatedRowHeight = 80.0
         
         searchContainer.clipsToBounds = false
@@ -518,18 +514,14 @@ open class KTripPlannerSearchController : UIViewController,
 
     func zoomMap(onStep step: KSingleStep)
     {
-        zoomMap(onRect: MKMapRect(origin: KMapPointForCoordinate(step.from.coordinate), size: MKMapSize(width: 0, height: 0)))
+        zoomMap(onRect: MKMapRect(origin: MKMapPoint(step.from.coordinate), size: MKMapSize(width: 0, height: 0)))
     }
 
     private func zoomMap(onRect flyTo: MKMapRect)
     {
         let padding = min(resultMapView.bounds.width, resultMapView.bounds.height)/4
         if flyTo.size.width == 0.1 {
-            #if swift(>=4.2)
             let point = MKMapRect(x: flyTo.origin.x - 1000, y: flyTo.origin.y - 1000, width: 2000, height: 2000)
-            #else
-            let point = MKMapRectMake(flyTo.origin.x - 1000, flyTo.origin.y - 1000, 2000, 2000)
-            #endif
             resultMapView.setVisibleMapRect(point, edgePadding: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), animated: true)
             
         }else{

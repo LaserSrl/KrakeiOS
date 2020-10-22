@@ -84,9 +84,7 @@ public class KUserDisplayView: UIView {
 
         registerObservers()
         
-        if #available(iOS 11.0, *) {
-            topInset = UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0.0
-        }
+        topInset = UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0.0
     }
     
     public func registerObservers()
@@ -137,7 +135,7 @@ public class KUserDisplayView: UIView {
                                                             else {
                                                                 
                                                                 
-                                                                KMessageManager.showMessage("LoadingOfUserInfoFailed".localizedString(), title: KInfoPlist.appName, type: KMessageManager.Mode.error, layout: KMessageManager.Layout.statusLine, position: KMessageManager.Position.top, duration: KMessageManager.Duration.automatic, windowLevel: KWindowLevelStatusBar, fromViewController: nil)
+                                                                KMessageManager.showMessage("LoadingOfUserInfoFailed".localizedString(), title: KInfoPlist.appName, type: .error, layout: .statusLine, position: .top, duration: .automatic, windowLevel: .statusBar, fromViewController: nil)
                                                             }
                                                         }
         })

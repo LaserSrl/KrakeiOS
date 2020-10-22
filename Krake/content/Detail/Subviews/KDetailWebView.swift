@@ -80,7 +80,7 @@ open class KDetailWebView: KWebView, KDetailViewProtocol, KDetailViewSizeChanges
         if let body = body {
             let stringStyle = KInfoPlist.detailBodyStyle
             
-            let fontSize = String(format: "%.f", UIFont.preferredFont(forTextStyle: KFontTextStyle.body).pointSize)
+            let fontSize = String(format: "%.f", UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body).pointSize)
             
             let stringHTML =
                 "<html><head></head><body>" +

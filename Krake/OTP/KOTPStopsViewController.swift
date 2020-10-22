@@ -97,11 +97,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
                 context.addPath(path.cgPath)
                 context.fillPath()
                 let edgeInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
-                #if swift(>=4.2)
                 let toDraw = drawingRect.inset(by: edgeInset)
-                #else
-                let toDraw = UIEdgeInsetsInsetRect(drawingRect, edgeInset)
-                #endif
                 originalImage.draw(in: toDraw)
                 image = UIGraphicsGetImageFromCurrentImageContext()
                 UIGraphicsEndImageContext()
@@ -226,18 +222,10 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
             let mapRegion = MKCoordinateRegion(center: fromLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta))
             mapView.setRegion(mapRegion, animated: true)
             if circleOverlay != nil{
-                #if swift(>=4.2)
                 mapView.removeOverlay(circleOverlay!)
-                #else
-                mapView.remove(circleOverlay!)
-                #endif
             }
             circleOverlay = MKCircle(center: fromLocation.coordinate, radius: raggio)
-            #if swift(>=4.2)
             mapView.addOverlay(circleOverlay!)
-            #else
-            mapView.add(circleOverlay!)
-            #endif
         }
     }
 
@@ -484,8 +472,8 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
     @objc(mapView:annotationView:didChangeDragState:fromOldState:)
     open func mapView(_ mapView: MKMapView,
                       annotationView view: MKAnnotationView,
-                      didChange newState: KAnnotationViewDragState,
-                      fromOldState oldState: KAnnotationViewDragState) {
+                      didChange newState: MKAnnotationView.DragState,
+                      fromOldState oldState: MKAnnotationView.DragState) {
         switch newState {
         case .starting:
             isUserCustomLocation = true
@@ -495,13 +483,13 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
                 fromLocation = MKPlacemark(coordinate: ann.coordinate,
                                            addressDictionary: nil)
             }
-            view.dragState = KAnnotationViewDragState.none
+            view.dragState = MKAnnotationView.DragState.none
         default:break
         }
     }
 
     @objc func longTapMapPosition( _ gesture : UITapGestureRecognizer){
-        if gesture.state != KGestureRecognizerState.ended{
+        if gesture.state != UIGestureRecognizer.State.ended{
             return
         }
         let touchPoint = gesture.location(in: mapView)

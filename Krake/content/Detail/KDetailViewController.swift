@@ -105,9 +105,8 @@ open class KDetailViewController: UIViewController, UIScrollViewDelegate, KDetai
 
     open override func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 11.0, *) {
-            navigationItem.largeTitleDisplayMode = .never
-        }
+        
+        navigationItem.largeTitleDisplayMode = .never
         // Temporally disabling the animations.
         UIView.setAnimationsEnabled(false)
         // Applying the base theme.

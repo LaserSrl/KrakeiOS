@@ -13,23 +13,14 @@ import Cluster
 public extension MKMapView{
     
     fileprivate func addAnnotationInRect(_ annotation: MKAnnotation, _ flyTo: MKMapRect) -> MKMapRect {
-        let annotationPoint = KMapPointForCoordinate(annotation.coordinate)
-        #if swift(>=4.2)
+        let annotationPoint = MKMapPoint(annotation.coordinate)
         let pointRect = MKMapRect(x: annotationPoint.x, y: annotationPoint.y, width: 0.1, height: 0.1)
         let isNull = flyTo.isNull
-        #else
-        let pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1)
-        let isNull = MKMapRectIsNull(flyTo)
-        #endif
         if isNull {
             return pointRect
         }
         else {
-            #if swift(>=4.2)
             return flyTo.union(pointRect)
-            #else
-            return MKMapRectUnion(flyTo, pointRect)
-            #endif
         }
     }
 
@@ -38,8 +29,8 @@ public extension MKMapView{
      */
     
     
-    func centerMap(defaultArea: MKMapRect = KMapRectNull){
-        var flyTo = KMapRectNull
+    func centerMap(defaultArea: MKMapRect = MKMapRect.null){
+        var flyTo = MKMapRect.null
         for annotation in annotations{
             if !(annotation is MKUserLocation) {
 
@@ -55,38 +46,22 @@ public extension MKMapView{
         }
         for overlay in overlays{
             if !(overlay is MKTileOverlay){
-                #if swift(>=4.2)
                 let isNull = flyTo.isNull
-                #else
-                let isNull = MKMapRectIsNull(flyTo)
-                #endif
                 if isNull{
                     flyTo = overlay.boundingMapRect
                 }else{
-                    #if swift(>=4.2)
                     flyTo = flyTo.union(overlay.boundingMapRect)
-                    #else
-                    flyTo = MKMapRectUnion(flyTo, overlay.boundingMapRect)
-                    #endif
                 }
             }
         }
-        #if swift(>=4.2)
         let isNull = flyTo.isNull
-        #else
-        let isNull = MKMapRectIsNull(flyTo)
-        #endif
         if isNull
         {
             flyTo = defaultArea
         }
         let padding = min(bounds.width, bounds.height)/12
         if flyTo.size.width == 0.1 {
-            #if swift(>=4.2)
             let point = MKMapRect(x: flyTo.origin.x - 1000, y: flyTo.origin.y - 1000, width: 2000, height: 2000)
-            #else
-            let point = MKMapRectMake(flyTo.origin.x - 1000, flyTo.origin.y - 1000, 2000, 2000)
-            #endif
             setVisibleMapRect(point, edgePadding: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), animated: true)
         }else{
             setVisibleMapRect(flyTo, edgePadding: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), animated: true)

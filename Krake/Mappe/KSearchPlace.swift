@@ -26,7 +26,7 @@ open class KSearchPlaceViewController: UIViewController, UITableViewDelegate, UI
     fileprivate let locManager = KLocationManager()
     fileprivate var searchPlace: MKLocalSearch?
 
-    fileprivate var searchRequest:KLocalSearchRequest! {
+    fileprivate var searchRequest:MKLocalSearch.Request! {
         didSet{
             if KSearchPlaceViewController.prefferedRegion != nil{
                 searchRequest?.region = KSearchPlaceViewController.prefferedRegion!
@@ -78,18 +78,14 @@ open class KSearchPlaceViewController: UIViewController, UITableViewDelegate, UI
 
     open override func viewDidLoad() {
         super.viewDidLoad()
-        #if swift(>=4.2)
         searchRequest = MKLocalSearch.Request()
-        #else
-        searchRequest = MKLocalSearchRequest()
-        #endif
         view.tintColor = KTheme.current.color(.tint)
         view.backgroundColor = KTheme.current.color(.tint)
 
         searchBar.barTintColor = KTheme.current.color(.tint)
         for sView in searchBar.subviews.first!.subviews{
             if let button = sView as? UIButton{
-                button.setTitleColor(UIColor.white, for: KControlState.normal)
+                button.setTitleColor(UIColor.white, for: UIControl.State.normal)
                 button.setTitleColor(UIColor.white.withAlphaComponent(0.9), for: .highlighted)
             }
         }

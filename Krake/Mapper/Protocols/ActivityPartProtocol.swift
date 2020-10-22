@@ -15,14 +15,6 @@ public protocol ActivityPartProtocol: KeyValueCodingProtocol
     var repeatEnd: NSNumber? {get}
     var repeatType: String? {get}
     var repeatDetails: String? {get}
-    #if swift(>=4.0)
     var dateTimeStart: Date? { get }
-    #else
-    var dateTimeStart: NSDate? { get }
-    #endif
-    #if swift(>=4.0)
     var dateTimeEnd: Date? { get }
-    #else
-    var dateTimeEnd: NSDate? { get }
-    #endif
 }

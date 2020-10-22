@@ -24,12 +24,7 @@ class KTripRouteMapDelegate: NSObject, MKMapViewDelegate {
 
         overlays.forEach { (overlay) in
             if !(overlay is MKTileOverlay) {
-                
-                #if swift(>=4.2)
                 resultMapView.removeOverlay(overlay)
-                #else
-                resultMapView.remove(overlay)
-                #endif
             }
         }
 
@@ -42,11 +37,7 @@ class KTripRouteMapDelegate: NSObject, MKMapViewDelegate {
         resultMapView.addAnnotation(to)
 
         for step in route.steps {
-            #if swift(>=4.2)
             resultMapView.addOverlay(step.polyline)
-            #else
-            resultMapView.add(step.polyline)
-            #endif
         }
 
         resultMapView.centerMap()

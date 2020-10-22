@@ -118,12 +118,9 @@ open class PolicyViewController: UIViewController, WKNavigationDelegate, UIScrol
 
     private func prepareWebView() -> WKWebView {
         let configuration = WKWebViewConfiguration()
-        if #available(iOS 10.0, *) {
-            configuration.dataDetectorTypes =
+        configuration.dataDetectorTypes =
                 KInfoPlist.Location.openExternalNav ? [.all] : [.calendarEvent, .link, .phoneNumber]
-        } else {
-            // Fallback on earlier versions
-        }
+       
         // Aggiungo script per fare in modo che il calcolo delle dimensioni
         // della web view sia corretto.
         let source = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); meta.setAttribute('initial-scale', '1.0'); meta.setAttribute('maximum-scale', '1.0'); meta.setAttribute('minimum-scale', '1.0'); meta.setAttribute('user-scalable', 'no'); meta.setAttribute('shrink-to-fit', 'no'); document.getElementsByTagName('head')[0].appendChild(meta);"

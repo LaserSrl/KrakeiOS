@@ -22,7 +22,7 @@ class PopoverPickerField: NSObject, FieldItemWithSelection, CZPickerViewDataSour
     fileprivate lazy var openPickerButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(self.placeholder, for: KControlState.normal)
+        button.setTitle(self.placeholder, for: UIControl.State.normal)
         button.addTarget(self, action: #selector(PopoverPickerField.openPicker), for: .touchUpInside)
         KTheme.current.applyTheme(toButton: button, style: .default)
         return button

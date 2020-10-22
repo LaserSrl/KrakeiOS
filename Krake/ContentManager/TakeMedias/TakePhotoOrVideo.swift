@@ -354,13 +354,9 @@ class TakePhotoOrVideo : ContentModificationViewController, UICollectionViewData
             if let watermark = self.watermarkImage {
                 photoUpdated = photo.addWatermark(watermark, fill: self.watermark!.fill, position: self.watermark!.position)
             }
-            #if swift(>=4.2)
             let dataBin = photoUpdated.resizeImage(2000).jpegData(compressionQuality: 0.5)
-            #else
-            let dataBin = UIImageJPEGRepresentation(photoUpdated.resizeImage(2000), 0.5)
-            #endif
             if let dataBin = dataBin{
-                self.medias.append(UploadableMedia(content: dataBin, url: info[KImagePickerControllerReferenceURL] as? URL, type: .image))
+                self.medias.append(UploadableMedia(content: dataBin, url: info[UIImagePickerController.InfoKey.imageURL] as? URL, type: .image))
             }
         }
         

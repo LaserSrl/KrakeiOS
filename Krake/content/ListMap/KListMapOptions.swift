@@ -17,7 +17,7 @@ public struct KMapOptions
     
     public var useCluster: Bool
     
-    public var defaultCenterOfMap: MKMapRect = KMapRectNull
+    public var defaultCenterOfMap: MKMapRect = MKMapRect.null
     
     public init(useCluster: Bool = true) {
         self.useCluster = useCluster

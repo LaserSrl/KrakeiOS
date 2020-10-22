@@ -725,7 +725,7 @@ open class GameBoardViewController: UIViewController, UIGestureRecognizerDelegat
         NotificationCenter.default
             .addObserver(self,
                          selector: #selector(GameBoardViewController.pauseGame),
-                         name: KApplicationWillResignActive,
+                         name: UIApplication.willResignActiveNotification,
                          object: UIApplication.shared)
     }
 
@@ -733,7 +733,7 @@ open class GameBoardViewController: UIViewController, UIGestureRecognizerDelegat
     {
         NotificationCenter.default
             .removeObserver(self,
-                            name: KApplicationWillResignActive,
+                            name: UIApplication.willResignActiveNotification,
                             object: UIApplication.shared)
     }
 

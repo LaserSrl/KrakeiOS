@@ -10,15 +10,9 @@ import UIKit
 
 public extension UILayoutPriority{
     
-    #if swift(>=4.0)
     static func priority(_ value: Float) -> UILayoutPriority{
     return UILayoutPriority(rawValue: value)
     }
-    #else
-    static func priority(_ value: Float) -> Float{
-        return value
-    }
-    #endif
 }
 
 open class KDetailHeaderView: UIView, KDetailViewProtocol {

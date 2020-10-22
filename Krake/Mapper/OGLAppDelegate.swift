@@ -60,7 +60,7 @@ open class OGLAppDelegate: UIResponder, UIApplicationDelegate, KNetworkAccessDel
         if (!self.isOnBackgroundScreenVisibile) {
             let colorView: UIView
             
-            if (!KAccessibilityIsReduceTransparencyEnabled && self.blurSupported){
+            if (!UIAccessibility.isReduceTransparencyEnabled && self.blurSupported){
                 colorView =  UIVisualEffectView(effect: UIBlurEffect(style: .light))
                 colorView.alpha = 0;
             }else{
@@ -79,11 +79,7 @@ open class OGLAppDelegate: UIResponder, UIApplicationDelegate, KNetworkAccessDel
                     options: .directionLeftToRight, metrics: nil, views: ["colorView":colorView]))
                 sWindow.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(0)-[colorView]-(0)-|",
                     options: .directionLeftToRight, metrics: nil, views: ["colorView":colorView]))
-                #if swift(>=4.2)
                 sWindow.bringSubviewToFront(sWindow)
-                #else
-                sWindow.bringSubview(toFront: sWindow)
-                #endif
                 UIView.animate(withDuration: 0.5, animations: { () -> Void in
                     colorView.alpha = 1
                 })
@@ -104,7 +100,7 @@ open class OGLAppDelegate: UIResponder, UIApplicationDelegate, KNetworkAccessDel
         }
     }
     
-    open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [KApplicationLaunchOptionsKey: Any]?) -> Bool {
+    open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         OMSettings.registerDefaultsSettings()
         

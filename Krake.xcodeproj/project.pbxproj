@@ -6,36 +6,6 @@
 	objectVersion = 50;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		5D02045A239AB4D5009C9C88 /* KContentItemAutocompleteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D020459239AB4D5009C9C88 /* KContentItemAutocompleteTableViewController.swift */; };
-		5D06849D2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D06849C2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift */; };
-		5D06849F2296E32400101D4C /* KOTPStopTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D06849E2296E32400101D4C /* KOTPStopTimesViewController.swift */; };
-		5D1F63FE2296A81800B671FF /* RoutesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F63FD2296A81800B671FF /* RoutesTableViewController.swift */; };
-		5D3169DF235713D1000E1297 /* RequestHeaderAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3169DE235713D1000E1297 /* RequestHeaderAdapter.swift */; };
-		5D5E17C62297ED17000851CC /* Number+OtpDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5E17C52297ED17000851CC /* Number+OtpDate.swift */; };
-		5D5FE48B229840660080E4E3 /* KOtpStopTimesDateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5FE48A229840660080E4E3 /* KOtpStopTimesDateHeader.swift */; };
-		5D6D8BE122C34F7C00D72464 /* KTabAndCollectionViewItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6D8BE022C34F7C00D72464 /* KTabAndCollectionViewItems.swift */; };
-		5D7C0C6E2350BA14006760A9 /* OGLCoreDataMapper+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7C0C6D2350BA14006760A9 /* OGLCoreDataMapper+Swift.swift */; };
-		5D873A7E2358500F002EBE3E /* URLConfigurationCookies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D873A7D2358500F002EBE3E /* URLConfigurationCookies.swift */; };
-		CD05096D24B84A11005C793D /* KNetworkManager+SignalTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD05096C24B84A11005C793D /* KNetworkManager+SignalTrigger.swift */; };
-		CD312224225C7DFA00DC06C8 /* KNoElementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD312223225C7DFA00DC06C8 /* KNoElementCell.swift */; };
-		CD4C001B2292E286009727A7 /* KVehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C001A2292E286009727A7 /* KVehicleAnnotation.swift */; };
-		CDBABBA023AA1316009D4CB1 /* AppleSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBABB9F23AA1316009D4CB1 /* AppleSignIn.swift */; };
-		CDBABBA223AA3329009D4CB1 /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBABBA123AA3329009D4CB1 /* KeychainItem.swift */; };
-		CDBB7790219C7EDC00122E7E /* InstagramKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB762A219C7EDA00122E7E /* InstagramKit.xcassets */; };
-		CDBB77C9219C7EDC00122E7E /* OCOTP.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB766B219C7EDA00122E7E /* OCOTP.xcassets */; };
-		CDBB77ED219C7EDC00122E7E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB7694219C7EDA00122E7E /* Images.xcassets */; };
-		CDBB77F6219C7EDC00122E7E /* PuzzleGame.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB76A0219C7EDA00122E7E /* PuzzleGame.xcassets */; };
-		CDBB7818219C7EDC00122E7E /* GameQuiz.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB76D3219C7EDB00122E7E /* GameQuiz.xcassets */; };
-		CDBB7862219C7EDC00122E7E /* OGLMapperConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDBB772A219C7EDB00122E7E /* OGLMapperConfiguration.plist */; };
-		CDBB7870219C7EDC00122E7E /* OrchardMapper.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBB773E219C7EDB00122E7E /* OrchardMapper.xcassets */; };
-		CDBB78B7219C7EFE00122E7E /* Krake.podspec in Resources */ = {isa = PBXBuildFile; fileRef = CDBB78B5219C7EFE00122E7E /* Krake.podspec */; };
-		CDC4ADB122F338D30087D74A /* KOTPLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4ADB022F338D30087D74A /* KOTPLocationManager.swift */; };
-		CDC59C7124DC0E3100533B9B /* OCLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CDC59C6F24DC0E3100533B9B /* OCLocalizable.strings */; };
-		CDC59C7824DC255C00533B9B /* KConstants+KrakeLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC59C7724DC255C00533B9B /* KConstants+KrakeLocalization.swift */; };
-		CDDA994A22905720008B205B /* KBusTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDA994922905720008B205B /* KBusTracker.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		5D020459239AB4D5009C9C88 /* KContentItemAutocompleteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KContentItemAutocompleteTableViewController.swift; sourceTree = "<group>"; };
 		5D06849C2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStopsInRouteViewController.swift; sourceTree = "<group>"; };
@@ -53,7 +23,6 @@
 		CD4C001A2292E286009727A7 /* KVehicleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVehicleAnnotation.swift; sourceTree = "<group>"; };
 		CDBABB9F23AA1316009D4CB1 /* AppleSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSignIn.swift; sourceTree = "<group>"; };
 		CDBABBA123AA3329009D4CB1 /* KeychainItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
-		CDBB760F219C7E8800122E7E /* Krake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Krake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBB7626219C7EDA00122E7E /* OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
 		CDBB7627219C7EDA00122E7E /* OAuth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OAuth.storyboard; sourceTree = "<group>"; };
 		CDBB7629219C7EDA00122E7E /* InstagramKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramKit.swift; sourceTree = "<group>"; };
@@ -370,16 +339,6 @@
 		CDDA994922905720008B205B /* KBusTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBusTracker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFrameworksBuildPhase section */
-		CDBB760C219C7E8800122E7E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
 /* Begin PBXGroup section */
 		CDBABB9E23AA12FB009D4CB1 /* AppleSignIn */ = {
 			isa = PBXGroup;
@@ -394,16 +353,7 @@
 			children = (
 				CDBB78B5219C7EFE00122E7E /* Krake.podspec */,
 				CDBB7611219C7E8800122E7E /* Krake */,
-				CDBB7610219C7E8800122E7E /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		CDBB7610219C7E8800122E7E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB760F219C7E8800122E7E /* Krake.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		CDBB7611219C7E8800122E7E /* Krake */ = {
@@ -1101,26 +1051,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXNativeTarget section */
-		CDBB760E219C7E8800122E7E /* Krake */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CDBB7621219C7E8900122E7E /* Build configuration list for PBXNativeTarget "Krake" */;
-			buildPhases = (
-				CDBB760B219C7E8800122E7E /* Sources */,
-				CDBB760C219C7E8800122E7E /* Frameworks */,
-				CDBB760D219C7E8800122E7E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Krake;
-			productName = Krake.iOS;
-			productReference = CDBB760F219C7E8800122E7E /* Krake.app */;
-			productType = "com.apple.product-type.application";
-		};
-/* End PBXNativeTarget section */
-
 /* Begin PBXProject section */
 		CDBB7607219C7E8800122E7E /* Project object */ = {
 			isa = PBXProject;
@@ -1128,12 +1058,6 @@
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Laser Srl";
-				TargetAttributes = {
-					CDBB760E219C7E8800122E7E = {
-						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1020;
-					};
-				};
 			};
 			buildConfigurationList = CDBB760A219C7E8800122E7E /* Build configuration list for PBXProject "Krake" */;
 			compatibilityVersion = "Xcode 9.3";
@@ -1146,61 +1070,13 @@
 				ru,
 			);
 			mainGroup = CDBB7606219C7E8800122E7E;
-			productRefGroup = CDBB7610219C7E8800122E7E /* Products */;
+			productRefGroup = CDBB7606219C7E8800122E7E;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CDBB760E219C7E8800122E7E /* Krake */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		CDBB760D219C7E8800122E7E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CDBB7870219C7EDC00122E7E /* OrchardMapper.xcassets in Resources */,
-				CDC59C7124DC0E3100533B9B /* OCLocalizable.strings in Resources */,
-				CDBB7818219C7EDC00122E7E /* GameQuiz.xcassets in Resources */,
-				CDBB7790219C7EDC00122E7E /* InstagramKit.xcassets in Resources */,
-				CDBB7862219C7EDC00122E7E /* OGLMapperConfiguration.plist in Resources */,
-				CDBB77C9219C7EDC00122E7E /* OCOTP.xcassets in Resources */,
-				CDBB77ED219C7EDC00122E7E /* Images.xcassets in Resources */,
-				CDBB78B7219C7EFE00122E7E /* Krake.podspec in Resources */,
-				CDBB77F6219C7EDC00122E7E /* PuzzleGame.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		CDBB760B219C7E8800122E7E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CD312224225C7DFA00DC06C8 /* KNoElementCell.swift in Sources */,
-				CDC59C7824DC255C00533B9B /* KConstants+KrakeLocalization.swift in Sources */,
-				5D06849F2296E32400101D4C /* KOTPStopTimesViewController.swift in Sources */,
-				CD4C001B2292E286009727A7 /* KVehicleAnnotation.swift in Sources */,
-				5D06849D2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift in Sources */,
-				CDC4ADB122F338D30087D74A /* KOTPLocationManager.swift in Sources */,
-				5D7C0C6E2350BA14006760A9 /* OGLCoreDataMapper+Swift.swift in Sources */,
-				CDDA994A22905720008B205B /* KBusTracker.swift in Sources */,
-				5D5FE48B229840660080E4E3 /* KOtpStopTimesDateHeader.swift in Sources */,
-				CDBABBA223AA3329009D4CB1 /* KeychainItem.swift in Sources */,
-				5D02045A239AB4D5009C9C88 /* KContentItemAutocompleteTableViewController.swift in Sources */,
-				CDBABBA023AA1316009D4CB1 /* AppleSignIn.swift in Sources */,
-				5D3169DF235713D1000E1297 /* RequestHeaderAdapter.swift in Sources */,
-				5D6D8BE122C34F7C00D72464 /* KTabAndCollectionViewItems.swift in Sources */,
-				5D5E17C62297ED17000851CC /* Number+OtpDate.swift in Sources */,
-				CD05096D24B84A11005C793D /* KNetworkManager+SignalTrigger.swift in Sources */,
-				5D873A7E2358500F002EBE3E /* URLConfigurationCookies.swift in Sources */,
-				5D1F63FE2296A81800B671FF /* RoutesTableViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
 		CDC59C6F24DC0E3100533B9B /* OCLocalizable.strings */ = {
@@ -1339,45 +1215,6 @@
 			};
 			name = Release;
 		};
-		CDBB7622219C7E8900122E7E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3CC76ML498;
-				INFOPLIST_FILE = Sample/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mykrake.Krake-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		CDBB7623219C7E8900122E7E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3CC76ML498;
-				INFOPLIST_FILE = Sample/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mykrake.Krake-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1386,15 +1223,6 @@
 			buildConfigurations = (
 				CDBB761F219C7E8900122E7E /* Debug */,
 				CDBB7620219C7E8900122E7E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CDBB7621219C7E8900122E7E /* Build configuration list for PBXNativeTarget "Krake" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CDBB7622219C7E8900122E7E /* Debug */,
-				CDBB7623219C7E8900122E7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

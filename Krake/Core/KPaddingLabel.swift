@@ -19,11 +19,7 @@ open class KPaddingLabel: UILabel {
     override open func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
         
-        #if swift(>=4.2)
         super.drawText(in: rect.inset(by: insets))
-        #else
-        super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
-        #endif
     }
     
     override open var intrinsicContentSize: CGSize {

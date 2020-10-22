@@ -292,10 +292,10 @@ open class TakeInfo: ContentModificationViewController, FieldItemWithSelectionDe
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        openObserver = NotificationCenter.default.addObserver(forName: KKeyboardDidShowNotification, object: nil, queue: nil) { [weak self](notification: Notification) -> Void in
+        openObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidShowNotification, object: nil, queue: nil) { [weak self](notification: Notification) -> Void in
             if let mySelf = self{
                 
-                let rect = (notification.userInfo![KKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+                let rect = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
 
                 if UIDevice.current.userInterfaceIdiom == .phone {
                     mySelf.mainScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: rect.height, right: 0)
@@ -322,7 +322,7 @@ open class TakeInfo: ContentModificationViewController, FieldItemWithSelectionDe
             }
         }
         
-        closeObserver = NotificationCenter.default.addObserver(forName: KKeyboardDidHideNotification, object: nil, queue: nil) { [weak self](notification: Notification) -> Void in
+        closeObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidHideNotification, object: nil, queue: nil) { [weak self](notification: Notification) -> Void in
             if let mySelf = self{
                 mySelf.mainScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
                 mySelf.mainScrollView.scrollIndicatorInsets = mySelf.mainScrollView.contentInset

@@ -93,7 +93,7 @@ import SwiftMessages
                                    layout: KMessageManager.Layout = .tabView,
                                    position: KMessageManager.Position = .top,
                                    duration: KMessageManager.Duration = .automatic,
-                                   windowLevel: KWindowLevel = KWindowLevelStatusBar,
+                                   windowLevel: UIWindow.Level = .statusBar,
                                    fromViewController: UIViewController? = nil,
                                    viewId: String? = nil,
                                    buttonTitle: String? = nil,

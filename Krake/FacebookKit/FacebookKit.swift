@@ -71,7 +71,7 @@ open class FacebookKit: NSObject, KLoginProviderProtocol{
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: didFinishLaunchingWithOptions)
     }
     
-    static public func handleURL(_ app: UIApplication, url: URL, options: [KApplicationOpenURLOptionsKey: Any]) -> Bool{
+    static public func handleURL(_ app: UIApplication, url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool{
         return ApplicationDelegate.shared.application(app, open: url, options: options)
     }
     

@@ -91,15 +91,11 @@ public protocol KComplexStep {
 public extension KComplexStep {
     func mapRect() -> MKMapRect {
         
-        let fromRect = MKMapRect(origin: KMapPointForCoordinate(from.coordinate), size: MKMapSize(width: 0, height: 0))
+        let fromRect = MKMapRect(origin: MKMapPoint(from.coordinate), size: MKMapSize(width: 0, height: 0))
 
-        let toRect = MKMapRect(origin: KMapPointForCoordinate(to.coordinate), size: MKMapSize(width: 0, height: 0))
+        let toRect = MKMapRect(origin: MKMapPoint(to.coordinate), size: MKMapSize(width: 0, height: 0))
         
-        #if swift(>=4.2)
         return fromRect.union(toRect)
-        #else
-        return MKMapRectUnion(fromRect, toRect)
-        #endif
         
     }
 }

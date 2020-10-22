@@ -41,7 +41,7 @@ open class NearestBeaconManager: NSObject, CLLocationManagerDelegate {
     fileprivate let minTimeToBecomeSuperBeacon = KInfoPlist.Beacon.beaconMinimunTimeToBecomeSuperBeacon.doubleValue
     fileprivate var firstEventSent = false
     fileprivate var inRegion = false
-    fileprivate var backgroundTask = KBackgroundTaskInvalid
+    fileprivate var backgroundTask: UIBackgroundTaskIdentifier = .invalid
     fileprivate var didEnterBackgroundObserver : AnyObject?;
     fileprivate var willEnterForegroundObserver : AnyObject?;
 
@@ -81,7 +81,7 @@ open class NearestBeaconManager: NSObject, CLLocationManagerDelegate {
         self.beaconManager.startRangingBeacons(in: mainRegion)
 
         didEnterBackgroundObserver = NotificationCenter.default
-            .addObserver(forName: KApplicationDidEnterBackground,
+            .addObserver(forName: UIApplication.didEnterBackgroundNotification,
                          object: UIApplication.shared,
                          queue: nil,
                          using: { [weak self](notification) in
@@ -89,7 +89,7 @@ open class NearestBeaconManager: NSObject, CLLocationManagerDelegate {
                             if let sSelf = self {
                                 if sSelf.inRegion {
                                     sSelf.backgroundTask = sSelf.createBackgroundTask()
-                                    if sSelf.backgroundTask == KBackgroundTaskInvalid {
+                                    if sSelf.backgroundTask == .invalid {
                                         sSelf.stopNearestBeaconUpdatesInMainRegion()
                                     }
 
@@ -98,12 +98,12 @@ open class NearestBeaconManager: NSObject, CLLocationManagerDelegate {
             });
 
         willEnterForegroundObserver = NotificationCenter.default
-            .addObserver(forName: KApplicationWillEnterForeground,
+            .addObserver(forName: UIApplication.willEnterForegroundNotification,
                          object: UIApplication.shared,
                          queue: nil,
                          using: { [weak self](notification) in
                             
-                            self?.backgroundTask = KBackgroundTaskInvalid
+                            self?.backgroundTask = .invalid
             });
     }
 
@@ -194,7 +194,7 @@ open class NearestBeaconManager: NSObject, CLLocationManagerDelegate {
             self.beaconManager.stopMonitoring(for: self.mainRegion)
 
             let backGround = self.backgroundTask;
-            self.backgroundTask = KBackgroundTaskInvalid
+            self.backgroundTask = .invalid
             self.beaconManager.startMonitoring(for: self.mainRegion)
             self.beaconManager.requestState(for: self.mainRegion)
 
@@ -246,7 +246,7 @@ open class NearestBeaconManager: NSObject, CLLocationManagerDelegate {
                 else {
                     self.backgroundTask = createBackgroundTask()
                     
-                    if self.backgroundTask != KBackgroundTaskInvalid {
+                    if self.backgroundTask != .invalid {
 
                         KLog(type: .info, "Nella region in background");
                         startNearestBeaconUpdatesInMainRegion()

@@ -15,11 +15,7 @@ public protocol GamePartProtocol: KeyValueCodingProtocol
     var answerTime: NSNumber? { get }
     var answerPoint: NSNumber? { get }
     var questionsSortedRandomlyNumber: NSNumber? { get }
-    #if swift(>=4.0)
     var gameDate: Date? { get }
-    #else
-    var gameDate: NSDate? { get }
-    #endif
     var workflowfired: NSNumber? { get }
     var abstractText: String? { get }
     var randomResponse: NSNumber? { get }

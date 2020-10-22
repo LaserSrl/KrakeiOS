@@ -372,20 +372,14 @@ open class KMainTheme: NSObject, KThemeProtocol {
         default:
             navigationBar.tintColor = color(.textTint)
             navigationBar.barTintColor = color(.tint)
-            #if swift(>=4.0)
-            navigationBar.titleTextAttributes = [KAttributedStringKey.foregroundColor : color(.textTint)]
-            if #available(iOS 11.0, *) {
-                navigationBar.largeTitleTextAttributes = navigationBar.titleTextAttributes
-            }
-            #else
-            navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : color(.textTint)]
-            #endif
+            navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : color(.textTint)]
+            navigationBar.largeTitleTextAttributes = navigationBar.titleTextAttributes
             
             if #available(iOS 13.0, *){
                 let navBarAppearance = UINavigationBarAppearance()
                 navBarAppearance.configureWithOpaqueBackground()
-                navBarAppearance.titleTextAttributes = [KAttributedStringKey.foregroundColor: color(.textTint)]
-                navBarAppearance.largeTitleTextAttributes = [KAttributedStringKey.foregroundColor: color(.textTint)]
+                navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: color(.textTint)]
+                navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: color(.textTint)]
                 navBarAppearance.backgroundColor = color(.tint)
                 navigationBar.standardAppearance = navBarAppearance
                 navigationBar.scrollEdgeAppearance = navBarAppearance
@@ -452,27 +446,19 @@ open class KMainTheme: NSObject, KThemeProtocol {
     
     open func applyTheme(toSearchBar searchBar: UISearchBar, style: SearchBarStyle)
     {
-        if #available(iOS 11.0, *)
+        searchBar.barTintColor = color(.textAlternate)
+        searchBar.tintColor = color(.textAlternate)
+        if let textfield = searchBar.value(forKey: "searchField") as? UITextField
         {
-            searchBar.barTintColor = color(.textAlternate)
-            searchBar.tintColor = color(.textAlternate)
-            if let textfield = searchBar.value(forKey: "searchField") as? UITextField
+            textfield.textColor = color(.textAlternate)
+            if let backgroundview = textfield.subviews.first
             {
-                textfield.textColor = color(.textAlternate)
-                if let backgroundview = textfield.subviews.first
-                {
-                    // Background color
-                    backgroundview.backgroundColor = .white
-                    // Rounded corner
-                    backgroundview.layer.cornerRadius = 10;
-                    backgroundview.clipsToBounds = true;
-                }
+                // Background color
+                backgroundview.backgroundColor = .white
+                // Rounded corner
+                backgroundview.layer.cornerRadius = 10;
+                backgroundview.clipsToBounds = true;
             }
-        }
-        else
-        {
-            searchBar.tintColor = color(.alternate)
-            searchBar.barTintColor = color(.alternate)
         }
         for view in searchBar.subviews.first!.subviews
         {

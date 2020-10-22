@@ -19,7 +19,7 @@ public class TwitterKit: NSObject, KLoginProviderProtocol{
         TWTRTwitter.sharedInstance().start()
     }
     
-    public static func handleURL(_ app: UIApplication, url: URL, options: [KApplicationOpenURLOptionsKey: Any]) -> Bool
+    public static func handleURL(_ app: UIApplication, url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool
     {
         return TWTRTwitter.sharedInstance().application(app, open:url, options: options)
     }

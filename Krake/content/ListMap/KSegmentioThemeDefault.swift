@@ -42,7 +42,7 @@ open class KSegmentioThemeDefault: NSObject, KSegmentioTheme
             indicatorOptions: segmentioIndicatorOptions(),
             horizontalSeparatorOptions: segmentioHorizontalSeparatorOptions(),
             verticalSeparatorOptions: segmentioVerticalSeparatorOptions(),
-            imageContentMode: KViewContentMode.scaleAspectFit,
+            imageContentMode: UIView.ContentMode.scaleAspectFit,
             labelTextAlignment: .center,
             labelTextNumberOfLines: 0,
             segmentStates: segmentioStates(),

@@ -44,7 +44,7 @@ open class KOTPBasePublicTransportListMapViewController<EntityType>: UIViewContr
         // Applico le impostazioni alla table view di modo che le celle definiscano
         // da sole la loro altezza.
         tableView.estimatedRowHeight = 50
-        tableView.rowHeight = KTableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         // Customizzo l'indicatore della table view.
         tableViewTopIndicator.backgroundColor = .lightGray
         tableViewTopIndicator.layer.cornerRadius = 2.0
@@ -94,9 +94,7 @@ open class KOTPBasePublicTransportListMapViewController<EntityType>: UIViewContr
             tableViewContainer.removeConstraint(tableViewContainerHiddenConstraint)
         }
         var calculatedMinumum : CGFloat = 24.0 + tableView.estimatedRowHeight
-        if #available(iOS 11.0, *) {
-            calculatedMinumum = calculatedMinumum + self.view.safeAreaInsets.bottom
-        }
+        calculatedMinumum = calculatedMinumum + self.view.safeAreaInsets.bottom
 
         minimumTableViewContainerHeight = max(minimumTableViewContainerHeight, calculatedMinumum)
 
@@ -158,7 +156,7 @@ open class KOTPBasePublicTransportListMapViewController<EntityType>: UIViewContr
             // Calcolo la height della cella appena creata e l'altezza minima
             // che dovrebbe avere il container della table view sulla base di
             // tale cella.
-            let autoLayoutSize = cell.systemLayoutSizeFitting(KLayoutFittingCompressedSize)
+            let autoLayoutSize = cell.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
             let desiredMinimumTableViewContainerHeight = autoLayoutSize.height + 24.0
             // Verifico se l'altezza minima debba essere aggiornata.
             if minimumTableViewContainerHeight < desiredMinimumTableViewContainerHeight {

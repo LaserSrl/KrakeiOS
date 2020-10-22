@@ -131,11 +131,7 @@ open class KExtendedMapView: MKMapView {
             {
                 let tile = MKTileOverlay(urlTemplate: KInfoPlist.Location.osmPath)
                 tile.canReplaceMapContent = false
-                #if swift(>=4.2)
                 addOverlay(tile, level: .aboveLabels)
-                #else
-                add(tile, level: .aboveLabels)
-                #endif
                 addOSMCopyright()
             }
         }
@@ -213,8 +209,7 @@ open class KExtendedMapView: MKMapView {
 
     fileprivate func updateMapTypeButtonImage() {
         let imageName : String
-        #if swift(>=4.0)
-            switch self.mapType {
+        switch self.mapType {
             case .standard:
                 imageName = "OCsatellite"
             case .satellite:
@@ -229,31 +224,13 @@ open class KExtendedMapView: MKMapView {
                 imageName = "OCsatellite"
             default:
                 imageName = "OCsatellite"
-            }
-        #else
-            switch self.mapType {
-            case .standard:
-                imageName = "OCsatellite"
-            case .satellite:
-                imageName = "OCstreet"
-            case .hybrid:
-                imageName = "OCstreet"
-            case .satelliteFlyover:
-                imageName = "OCsatellite"
-            case .hybridFlyover:
-                imageName = "OCstreet"
-            }
-        #endif
+        }
         changeMapTypeButton.image = UIImage(krakeNamed: imageName)?.withRenderingMode(.alwaysTemplate)
     }
 
 
     open func findDirection(_ from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) {
-        #if swift(>=4.2)
         let request = MKDirections.Request()
-        #else
-        let request = MKDirectionsRequest()
-        #endif
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: from, addressDictionary: nil))
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: to, addressDictionary: nil))
         request.transportType = .automobile
@@ -262,11 +239,7 @@ open class KExtendedMapView: MKMapView {
             if let route = response?.routes.first, let sSelf = self {
                 sSelf.directionPolyline = route.polyline
                 sSelf.directionPolyline?.title = KExtendedMapView.DirectionPolylineTitle
-                #if swift(>=4.2)
                 sSelf.addOverlay(route.polyline)
-                #else
-                sSelf.add(route.polyline)
-                #endif
                 sSelf.centerMap()
                 sSelf.updateToolbarButtons()
             }
@@ -311,11 +284,7 @@ class KExtendedMapViewDelegateSupport: NSObject, MKMapViewDelegate, ClusterManag
 
             for overlay in mapView.overlays {
                 if !overlay.isKind(of: MKTileOverlay.self) && overlay.title ?? "" != KExtendedMapView.DirectionPolylineTitle {
-                    #if swift(>=4.2)
                     mapView.removeOverlay(overlay)
-                    #else
-                    mapView.remove(overlay)
-                    #endif
                 }
             }
 

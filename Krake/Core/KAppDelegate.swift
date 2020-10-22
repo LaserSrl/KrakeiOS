@@ -18,7 +18,7 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
     private lazy var streamingProviders: [KStreamingProvider] = []
     public var checkLaunchOptions = true
     
-    open override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [KApplicationLaunchOptionsKey : Any]?) -> Bool {
+    open override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         let value = super.application(application, didFinishLaunchingWithOptions: launchOptions)
         NetworkActivityIndicatorManager.shared.isEnabled = true
         if Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") != nil {
@@ -43,7 +43,7 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
             KLog(type: .warning, "PUSH: token NOT REGISTERED -> call KPushManager.pushRegistrationRequest() or set, on info.plist, YES the 'PushRegistrationOnDidFinishLaunchingWithOptions' value")
         }
         
-        if let notificationUserInfo = launchOptions?[KApplicationLaunchOptionsKey.remoteNotification] as? [AnyHashable: Any], checkLaunchOptions
+        if let notificationUserInfo = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any], checkLaunchOptions
         {
             self.application(application, didReceiveRemoteNotification: notificationUserInfo)
         }
@@ -97,11 +97,7 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
     
     open func getStreamingProvider(fromSource string: String) throws -> KStreamingProvider {
         if let pipeIndex = string.range(of: "|") {
-            #if swift(>=4)
             let sourceProvider = String(string[..<pipeIndex.lowerBound]).uppercased()
-            #else
-            let sourceProvider = string.substring(to: pipeIndex.lowerBound).uppercased()
-            #endif
             if let provider = streamingProviders.filter({ $0.name == sourceProvider })
                 .first {
                 return provider

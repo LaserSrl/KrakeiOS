@@ -122,17 +122,10 @@ open class CategoryPreferencesViewController: ContentModificationViewController,
         if let categoryId = category.numberValue {
             cell.tintColor = unselectedColor
             if let selectedCategories = params[fields.first!.key] as? [Int] {
-                #if swift(>=4)
-                    if selectedCategories.contains(Int(truncating: categoryId))
-                    {
+                if selectedCategories.contains(Int(truncating: categoryId))
+                {
                     cell.tintColor = selectedColor
-                    }
-                #else
-                    if selectedCategories.contains(Int(categoryId))
-                    {
-                        cell.tintColor = selectedColor
-                    }
-                #endif
+                }
             }
         }
         if canShowImage == true {
@@ -156,11 +149,7 @@ open class CategoryPreferencesViewController: ContentModificationViewController,
         
         var selectedCategories = params[fields.first!.key] as? [Int] ?? [Int]()
         let selectedCategory = categories![(indexPath as NSIndexPath).row]
-        #if swift(>=4)
-            let categoryId = Int(truncating: selectedCategory.numberValue!)
-        #else
-            let categoryId = Int(selectedCategory.numberValue!)
-        #endif
+        let categoryId = Int(truncating: selectedCategory.numberValue!)
 
         if let index = selectedCategories.firstIndex(where: {$0 == categoryId}) {
             selectedCategories.remove(at: index)

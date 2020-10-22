@@ -45,12 +45,7 @@ public class KMainGameBoardViewController: UIViewController, UICollectionViewDat
                 KMessageManager.showMessage(error.localizedDescription, type: .error, layout: .tabView)
             }
         }
-        
-        #if swift(>=4.2)
         localPlayer = GKLocalPlayer.local
-        #else
-        localPlayer = GKLocalPlayer.localPlayer()
-        #endif
         localPlayer?.authenticateHandler = {[weak self](viewController, error) in
             if let vc = viewController, let weakSelf = self{
                 vc.modalPresentationStyle = .formSheet

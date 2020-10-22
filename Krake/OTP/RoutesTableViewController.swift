@@ -32,21 +32,18 @@ public class KOTPRoutesTableViewController: UITableViewController, UISearchResul
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-
-        if #available(iOS 11.0, *)
+        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        self.definesPresentationContext = true
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        if let searchBar = searchController?.searchBar
         {
-            searchController = UISearchController(searchResultsController: nil)
-            searchController.searchResultsUpdater = self
-            self.definesPresentationContext = true
-            searchController.obscuresBackgroundDuringPresentation = false
-            searchController.hidesNavigationBarDuringPresentation = false
-            if let searchBar = searchController?.searchBar
-            {
-                KTheme.current.applyTheme(toSearchBar: searchBar, style: .listMap)
-            }
-            navigationItem.searchController = searchController
+            KTheme.current.applyTheme(toSearchBar: searchBar, style: .listMap)
         }
-
+        navigationItem.searchController = searchController
+       
         KOpenTripPlannerLoader
             .shared
             .retrieveRoutesInfos(with:{ [weak self](routes) in

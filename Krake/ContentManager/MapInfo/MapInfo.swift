@@ -71,17 +71,10 @@ class MapInfo : ContentModificationViewController, MKMapViewDelegate, UISearchBa
         }
     }
     
-    #if swift(>=4.2)
     override func willMove(toParent parent: UIViewController?) {
         super.willMove(toParent: parent)
         stopUpdateingLocation(parent)
     }
-    #else
-    override func willMove(toParentViewController parent: UIViewController?) {
-        super.willMove(toParentViewController: parent)
-        stopUpdateingLocation(parent)
-    }
-    #endif
     
     override func setInitialData(_ item: AnyObject) {
         
@@ -106,7 +99,7 @@ class MapInfo : ContentModificationViewController, MKMapViewDelegate, UISearchBa
     }
     
     @objc func longTapMapPosition( _ gesture : UITapGestureRecognizer){
-        if gesture.state != KGestureRecognizerState.ended{
+        if gesture.state != UIGestureRecognizer.State.ended{
             return
         }
         let touchPoint = gesture.location(in: mapView)
@@ -150,12 +143,12 @@ class MapInfo : ContentModificationViewController, MKMapViewDelegate, UISearchBa
         navigationController?.present(searchvc, animated: true, completion: nil)
     }
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: KAnnotationViewDragState, fromOldState oldState: KAnnotationViewDragState) {
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
         
-        if (newState == KAnnotationViewDragState.starting) {
-            view.dragState = KAnnotationViewDragState.dragging
-        } else if (newState == KAnnotationViewDragState.ending || newState == KAnnotationViewDragState.canceling){
-            view.dragState = KAnnotationViewDragState.none
+        if (newState == MKAnnotationView.DragState.starting) {
+            view.dragState = MKAnnotationView.DragState.dragging
+        } else if (newState == MKAnnotationView.DragState.ending || newState == MKAnnotationView.DragState.canceling){
+            view.dragState = MKAnnotationView.DragState.none
         }
     }
     

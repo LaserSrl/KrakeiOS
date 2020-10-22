@@ -22,7 +22,7 @@ public typealias KICompletionBlock = (UIImage?, Error?, KImageCacheType, URL?) -
 public extension UIImageView
 {
 
-    convenience init(image: UIImage?, contentMode: KViewContentMode!){
+    convenience init(image: UIImage?, contentMode: UIView.ContentMode!){
         self.init(image: image)
         self.contentMode = contentMode
     }

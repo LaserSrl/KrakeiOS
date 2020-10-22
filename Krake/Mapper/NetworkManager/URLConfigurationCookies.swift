@@ -42,18 +42,18 @@ class URLConfigurationCookies {
         var cookie: HTTPCookie? = nil
         if let data = UserDefaults.standard.object(forKey: type.rawValue) as? Data {
             let object = NSKeyedUnarchiver.unarchiveObject(with: data)
-                   if let objects = object as? NSArray{
-                       cookie = objects.firstObject as? HTTPCookie
-                   }
-                   else {
-                       cookie = object as? HTTPCookie
-                   }
-
-                   if !(cookie?.isValidCookie() ?? true){
-                    removeCookie(type)
-                   }
-               }
-
+            if let objects = object as? NSArray{
+                cookie = objects.firstObject as? HTTPCookie
+            }
+            else {
+                cookie = object as? HTTPCookie
+            }
+            
+            if !(cookie?.isValidCookie() ?? true){
+                removeCookie(type)
+            }
+        }
+        
         configuration.checkAndAddStoredCookie(cookie)
     }
 

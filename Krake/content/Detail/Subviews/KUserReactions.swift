@@ -272,13 +272,13 @@ open class KUserReactions: UIView, KDetailViewProtocol {
                 button?.setTitleColor(KTheme.current.reactionColor(.enableSelected), for: .selected)
                 button?.setTitleColor(KTheme.current.reactionColor(.disableNormal), for: .disabled)
                 button?.addTarget(self, action: #selector(KUserReactions.reactionTouchUpInside(_:)), for: .touchUpInside)
-                button?.titleLabel?.font = UIFont.preferredFont(forTextStyle: KFontTextStyle.caption2)
+                button?.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.caption2)
                 button?.clipsToBounds = true
                 stackView.addArrangedSubview(button!)
             }
             button?.isSelected = reaction.clicked
             button?.isEnabled = reactionAuthorized
-            button?.setTitle(String(format:stringFormat, reaction.quantity.intValue, reaction.typeName.localizedString()), for: KControlState.normal)
+            button?.setTitle(String(format:stringFormat, reaction.quantity.intValue, reaction.typeName.localizedString()), for: UIControl.State.normal)
             button?.setTitle(String(format:stringFormat, reaction.quantity.intValue, reaction.typeName.localizedString()), for: .selected)
             button?.titleLabel?.numberOfLines = 2
             button?.titleLabel?.textAlignment = .center

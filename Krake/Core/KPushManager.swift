@@ -73,7 +73,7 @@ open class KPushManager: NSObject{
         }
     }
     
-    public static func showOrOpenPush(_ notification: [AnyHashable: Any], applicationState: KApplicationState){
+    public static func showOrOpenPush(_ notification: [AnyHashable: Any], applicationState: UIApplication.State){
         if let aps = notification["aps"] as? [AnyHashable: Any],
             let pushTitle = aps["alert"] as? String
         {
@@ -104,7 +104,7 @@ open class KPushManager: NSObject{
         }
     }
     
-    public static func showOrOpenContentFromLocalNotificaiton(_ notification: UNNotificationRequest, applicationState: KApplicationState){
+    public static func showOrOpenContentFromLocalNotificaiton(_ notification: UNNotificationRequest, applicationState: UIApplication.State){
         var moId: NSManagedObjectID? = nil
         let userInfo = notification.content.userInfo
         if let cacheIdri = userInfo[LocalNotificationCacheID] as? String {
@@ -113,7 +113,7 @@ open class KPushManager: NSObject{
         showOrOpenDetailWithMessage(notification.content.body, displayAlias: userInfo[KParametersKeys.displayAlias] as? String, cacheObjectID: moId, applicationState: applicationState, userInfoNotification: userInfo)
     }
     
-    fileprivate static func showOrOpenDetailWithMessage(_ message: String? = "", displayAlias: String?, cacheObjectID: NSManagedObjectID? = nil, applicationState: KApplicationState, userInfoNotification: [AnyHashable: Any]?){
+    fileprivate static func showOrOpenDetailWithMessage(_ message: String? = "", displayAlias: String?, cacheObjectID: NSManagedObjectID? = nil, applicationState: UIApplication.State, userInfoNotification: [AnyHashable: Any]?){
         if applicationState == .active{
             let alertViewController = UIAlertController(title: KInfoPlist.appName, message: message, preferredStyle: .alert)
             if (displayAlias != nil && !(displayAlias ?? "").isEmpty) || cacheObjectID != nil {

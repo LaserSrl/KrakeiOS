@@ -176,7 +176,7 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout, enableCellAutosizing
         {
             layout.estimatedItemSize = CGSize(width: collectionView!.bounds.width, height: 100)
-            layout.itemSize = KCollectionViewFlowLayoutAutomaticSize
+            layout.itemSize = UICollectionViewFlowLayout.automaticSize
         }
 
         if enableRefreshControl

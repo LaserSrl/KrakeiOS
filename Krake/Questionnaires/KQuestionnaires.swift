@@ -190,9 +190,9 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
         super.viewDidAppear(animated)
         questionnaireDelegate?.viewDidAppear(self)
         
-        openObserver = NotificationCenter.default.addObserver(forName: KKeyboardDidShowNotification, object: nil, queue: nil) { [weak self] (notification: Notification) -> Void in
+        openObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidShowNotification, object: nil, queue: nil) { [weak self] (notification: Notification) -> Void in
             if let mySelf = self {
-                let rect = ((notification as NSNotification).userInfo![KKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+                let rect = ((notification as NSNotification).userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
                 mySelf.mainScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: rect.height, right: 0)
                 mySelf.mainScrollView.scrollIndicatorInsets = mySelf.mainScrollView.contentInset
                 let mio: UIView? = UIResponder.currentFirstResponder() as? UIView
@@ -202,7 +202,7 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
                 mySelf.mainScrollView.setContentOffset(point, animated: true)
             }
         }
-        closeObserver = NotificationCenter.default.addObserver(forName: KKeyboardDidHideNotification, object: nil, queue: nil) { [weak self] (notification: Notification) -> Void in
+        closeObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidHideNotification, object: nil, queue: nil) { [weak self] (notification: Notification) -> Void in
             if let mySelf = self {
                 mySelf.mainScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
                 mySelf.mainScrollView.scrollIndicatorInsets = mySelf.mainScrollView.contentInset

@@ -42,11 +42,11 @@ Pod::Spec.new do |s|
         os.dependency "Krake/Core"
     end
     
-    s.subspec 'Braintree' do |os|
-        os.source_files  = "Krake/Braintree/*.{swift}"
-        os.dependency "Krake/Core"
-        os.dependency "Braintree", '4.35.0'
-    end
+#    s.subspec 'Braintree' do |os|
+#        os.source_files  = "Krake/Braintree/*.{swift}"
+#        os.dependency "Krake/Core"
+#        os.dependency "Braintree", '4.35.0'
+#    end
     
     s.subspec 'Commons' do |os|
         os.source_files  = "Krake/Commons/*.{swift}"
@@ -105,25 +105,25 @@ Pod::Spec.new do |s|
         os.dependency "Krake/Core"
     end
     
-    s.subspec 'GoogleKit' do |os|
-        os.source_files  = "GoogleKit", "Krake/GoogleKit/*.{swift}"
-        os.dependency "Krake/Core"
-#TODO: - da aggiornare alla 5.x ma richiede un intervento sui delegate!
-        os.dependency "GoogleSignIn", '4.4.0'
-    end
+#    s.subspec 'GoogleKit' do |os|
+#        os.source_files  = "GoogleKit", "Krake/GoogleKit/*.{swift}"
+#        os.dependency "Krake/Core"
+##TODO: - da aggiornare alla 5.x ma richiede un intervento sui delegate!
+#        os.dependency "GoogleSignIn", '4.4.0'
+#    end
     
-    s.subspec 'InstagramKit' do |os|
-        os.source_files  = "InstagramKit", "Krake/InstagramKit/*.{swift}"
-        os.ios.resource_bundles = { 'InstagramKit' => ['Krake/InstagramKit/*.xcassets']}
-        os.dependency "Krake/Core"
-        os.dependency "Krake/OAuth"
-    end
+#    s.subspec 'InstagramKit' do |os|
+#        os.source_files  = "InstagramKit", "Krake/InstagramKit/*.{swift}"
+#        os.ios.resource_bundles = { 'InstagramKit' => ['Krake/InstagramKit/*.xcassets']}
+#        os.dependency "Krake/Core"
+#        os.dependency "Krake/OAuth"
+#    end
     
-    s.subspec 'LinkedInKit' do |os|
-        os.source_files  = "LinkedInKit", "Krake/LinkedInKit/*.{swift}"
-        os.dependency "Krake/Core"
-        os.dependency "Krake/OAuth"
-    end
+#    s.subspec 'LinkedInKit' do |os|
+#        os.source_files  = "LinkedInKit", "Krake/LinkedInKit/*.{swift}"
+#        os.dependency "Krake/Core"
+#        os.dependency "Krake/OAuth"
+#    end
     
     s.subspec 'OAuth' do |os|
         os.source_files  = "OAuth", "Krake/OAuth/*.{swift}"
@@ -179,9 +179,9 @@ Pod::Spec.new do |s|
         os.dependency "TwitterKit", '3.4.2'
     end
     
-    #s.subspec 'Vimeo' do |os|
-        #os.source_files = "Krake/Vimeo/*.{swift}"
-        #os.dependency "Krake/Core"
-    #end
+#    s.subspec 'Vimeo' do |os|
+#        os.source_files = "Krake/Vimeo/*.{swift}"
+#        os.dependency "Krake/Core"
+#    end
 
 end

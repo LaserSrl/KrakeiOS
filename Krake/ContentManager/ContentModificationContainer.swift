@@ -258,11 +258,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         hud.delegate = self
         viewWithHUD.addSubview(hud)
 
-        #if swift(>=4.2)
         pageViewController = (children.first as! UIPageViewController)
-        #else
-        pageViewController = (childViewControllers.first as! UIPageViewController)
-        #endif
         pageViewController.delegate = self
 
         edgesForExtendedLayout = UIRectEdge()
@@ -305,7 +301,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         }
         segmented.selectedSegmentioIndex = 0
         
-        pageControl.addTarget(self, action: #selector(ContentModificationContainerViewController.touchOnPageControl(_:)), for: KControlEvent.touchUpInside)
+        pageControl.addTarget(self, action: #selector(ContentModificationContainerViewController.touchOnPageControl(_:)), for: UIControl.Event.touchUpInside)
         pageControl.numberOfPages = contentTypeDefinition.viewControllers.count
         pageControl.currentPage = 0
         pageControl.backgroundColor = KTheme.current.color(.alternate)
@@ -320,9 +316,9 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         }
         
         let rightToLeft = UISwipeGestureRecognizer(target: self, action: #selector(ContentModificationContainerViewController.moveNext))
-        rightToLeft.direction = KSwipeGestureRecognizerDirection.left
+        rightToLeft.direction = UISwipeGestureRecognizer.Direction.left
         let leftToRight = UISwipeGestureRecognizer(target: self, action: #selector(ContentModificationContainerViewController.movePrev))
-        leftToRight.direction = KSwipeGestureRecognizerDirection.right
+        leftToRight.direction = UISwipeGestureRecognizer.Direction.right
         view.addGestureRecognizer(rightToLeft)
         view.addGestureRecognizer(leftToRight)
         
@@ -519,9 +515,9 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         let vc = contentTypeDefinition.viewControllers[index]
         segmented.selectedSegmentioIndex = index
         if index >= indexController{
-            pageViewController.setViewControllers([vc], direction: KPageViewControllerNavigationDirection.forward, animated: true, completion : nil)
+            pageViewController.setViewControllers([vc], direction: UIPageViewController.NavigationDirection.forward, animated: true, completion : nil)
         }else{
-            pageViewController.setViewControllers([vc], direction: KPageViewControllerNavigationDirection.reverse, animated: true, completion : nil)
+            pageViewController.setViewControllers([vc], direction: UIPageViewController.NavigationDirection.reverse, animated: true, completion : nil)
         }
         indexController = index
     }

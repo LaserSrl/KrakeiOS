@@ -76,7 +76,7 @@ class PostCardViewController: UIViewController, UITextFieldDelegate{
         title = postCard.titlePartTitle
         immagine.setImage(media: postCard.galleryMediaParts?.firstObject, options: KMediaImageLoadOptions(size: CGSize.zero, mode: .Max))
 
-        let send = UIBarButtonItem(image: UIImage(krakeNamed: "send"), style: KBarButtonItemStyle.plain, target: self, action: #selector(PostCardViewController.sendPostCard(_:)))
+        let send = UIBarButtonItem(image: UIImage(krakeNamed: "send"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(PostCardViewController.sendPostCard(_:)))
         navigationItem.rightBarButtonItem = send
     }
 
@@ -130,8 +130,8 @@ class PostCardViewController: UIViewController, UITextFieldDelegate{
                 _ = self.emailMittente.resignFirstResponder()
             }
         }
-        openObserver = NotificationCenter.default.addObserver(forName: KKeyboardDidShowNotification, object: nil, queue: nil) { (notification: Notification) -> Void in
-            let rect = (notification.userInfo![KKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        openObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidShowNotification, object: nil, queue: nil) { (notification: Notification) -> Void in
+            let rect = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
             self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: rect.height, right: 0)
             self.scrollView.scrollIndicatorInsets = self.scrollView.contentInset
             
@@ -144,7 +144,7 @@ class PostCardViewController: UIViewController, UITextFieldDelegate{
                 }
             }
         }
-        closeObserver = NotificationCenter.default.addObserver(forName: KKeyboardDidHideNotification, object: nil, queue: nil) { (notification: Notification) -> Void in
+        closeObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidHideNotification, object: nil, queue: nil) { (notification: Notification) -> Void in
             self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             self.scrollView.scrollIndicatorInsets = self.scrollView.contentInset
         }

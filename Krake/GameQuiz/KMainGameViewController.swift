@@ -151,11 +151,7 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
     }
     
     @objc func gameCenterAuthenticationChanged(){
-        #if swift(>=4.2)
         let localPlayer = GKLocalPlayer.local
-        #else
-        let localPlayer = GKLocalPlayer.localPlayer()
-        #endif
         if localPlayer.isAuthenticated{
             sendPointsToGameCenter()
         }else{
@@ -317,13 +313,8 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
         subview.translatesAutoresizingMaskIntoConstraints = false
         containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-(0)-[subview]-(0)-|", options: .directionLeftToRight, metrics: nil, views: ["subview": subview]))
         containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(0)-[subview]-(0)-|", options: .directionLeftToRight, metrics: nil, views: ["subview": subview]))
-        #if swift(>=4.2)
         vcContainer?.removeFromParent()
         addChild(vc)
-        #else
-        vcContainer?.removeFromParentViewController()
-        addChildViewController(vc)
-        #endif
         vcContainer = vc
     }
     
@@ -344,11 +335,7 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
     @IBAction func closeGame(_ sender: Any){
         mainTimer?.invalidate()
         mainTimer = nil
-        #if swift(>=4.2)
         vcContainer?.removeFromParent()
-        #else
-        vcContainer?.removeFromParentViewController()
-        #endif
         vcContainer = nil
         dismissViewController()
     }

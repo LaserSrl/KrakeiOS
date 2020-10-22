@@ -30,7 +30,7 @@ public class KTWTRTweetView: UIView {
         imageTweet = UIImageView()
         imageTweet.translatesAutoresizingMaskIntoConstraints = false
         
-        imageTweet.contentMode = KViewContentMode.scaleAspectFill
+        imageTweet.contentMode = UIView.ContentMode.scaleAspectFill
         
         imageTweet.clipsToBounds = false
         self.addSubview(imageTweet)
@@ -38,7 +38,7 @@ public class KTWTRTweetView: UIView {
         tweetImage = UIImageView()
         tweetImage.translatesAutoresizingMaskIntoConstraints = false
         
-        tweetImage.contentMode = KViewContentMode.scaleAspectFill
+        tweetImage.contentMode = UIView.ContentMode.scaleAspectFill
         
         tweetImage.clipsToBounds = false
         tweetImage.image = UIImage(krakeNamed: "twitter_logo")
@@ -64,19 +64,19 @@ public class KTWTRTweetView: UIView {
         subAuthorTweet.minimumScaleFactor = 0.8
         subAuthorTweet.textColor = UIColor ( red: 0.5315, green: 0.5315, blue: 0.5315, alpha: 1.0 )
         self.addSubview(subAuthorTweet)
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-(8)-[imageTweet]", options: KLayoutFormatOptions.directionLeftToRight, metrics: nil, views: ["imageTweet": imageTweet!]))
-        self.addConstraint(NSLayoutConstraint(item: imageTweet!, attribute: KLayoutAttribute.width, relatedBy: KLayoutRelation.equal, toItem: imageTweet, attribute: KLayoutAttribute.height, multiplier: 1, constant: 0))
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(8)-[imageTweet(70@750)]-(>=8)-|", options: KLayoutFormatOptions.directionLeftToRight, metrics: nil, views: ["imageTweet": imageTweet!]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-(8)-[imageTweet]", options: NSLayoutConstraint.FormatOptions.directionLeftToRight, metrics: nil, views: ["imageTweet": imageTweet!]))
+        self.addConstraint(NSLayoutConstraint(item: imageTweet!, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: imageTweet, attribute: NSLayoutConstraint.Attribute.height, multiplier: 1, constant: 0))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(8)-[imageTweet(70@750)]-(>=8)-|", options: NSLayoutConstraint.FormatOptions.directionLeftToRight, metrics: nil, views: ["imageTweet": imageTweet!]))
         
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "[tweetImage(20)]-(2)-|", options: KLayoutFormatOptions.directionLeftToRight, metrics: nil, views: ["tweetImage": tweetImage!]))
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(2)-[tweetImage(20)]", options: KLayoutFormatOptions.directionLeftToRight, metrics: nil, views: ["tweetImage": tweetImage!]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "[tweetImage(20)]-(2)-|", options: NSLayoutConstraint.FormatOptions.directionLeftToRight, metrics: nil, views: ["tweetImage": tweetImage!]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(2)-[tweetImage(20)]", options: NSLayoutConstraint.FormatOptions.directionLeftToRight, metrics: nil, views: ["tweetImage": tweetImage!]))
         
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "[imageTweet]-[textTweet]-(8)-|", options: KLayoutFormatOptions.directionLeftToRight, metrics: nil, views: ["imageTweet": imageTweet!, "textTweet" : textTweet!]))
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(6)-[authorTweet(14)]-(2)-[textTweet]-(6)-|", options: KLayoutFormatOptions.directionLeftToRight, metrics: nil, views: ["textTweet": textTweet!, "authorTweet" : authorTweet!]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "[imageTweet]-[textTweet]-(8)-|", options: NSLayoutConstraint.FormatOptions.directionLeftToRight, metrics: nil, views: ["imageTweet": imageTweet!, "textTweet" : textTweet!]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(6)-[authorTweet(14)]-(2)-[textTweet]-(6)-|", options: NSLayoutConstraint.FormatOptions.directionLeftToRight, metrics: nil, views: ["textTweet": textTweet!, "authorTweet" : authorTweet!]))
         
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "[imageTweet]-[authorTweet]-(4)-[subAuthorTweet]-(4)-[tweetImage]", options: KLayoutFormatOptions.directionLeftToRight, metrics: nil, views: ["imageTweet": imageTweet!, "authorTweet" : authorTweet!, "subAuthorTweet" : subAuthorTweet!, "tweetImage" : tweetImage!]))
-        self.addConstraint(NSLayoutConstraint(item: subAuthorTweet!, attribute: KLayoutAttribute.centerY, relatedBy: KLayoutRelation.equal, toItem: authorTweet, attribute: KLayoutAttribute.centerY, multiplier: 1, constant: 0))
-        self.addConstraint(NSLayoutConstraint(item: subAuthorTweet!, attribute: KLayoutAttribute.height, relatedBy: KLayoutRelation.equal, toItem: authorTweet, attribute: KLayoutAttribute.height, multiplier: 1, constant: 0))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "[imageTweet]-[authorTweet]-(4)-[subAuthorTweet]-(4)-[tweetImage]", options: NSLayoutConstraint.FormatOptions.directionLeftToRight, metrics: nil, views: ["imageTweet": imageTweet!, "authorTweet" : authorTweet!, "subAuthorTweet" : subAuthorTweet!, "tweetImage" : tweetImage!]))
+        self.addConstraint(NSLayoutConstraint(item: subAuthorTweet!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: authorTweet, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0))
+        self.addConstraint(NSLayoutConstraint(item: subAuthorTweet!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: authorTweet, attribute: NSLayoutConstraint.Attribute.height, multiplier: 1, constant: 0))
         
         self.backgroundColor = UIColor.white
         

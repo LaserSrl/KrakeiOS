@@ -52,7 +52,7 @@ public class KSingleOrMultiChoiceStackView : UIView, KQuestionViewProtocol {
                 }
                 
                 if verticalOrientation {
-                    answersStackView.axis = KLayoutConstraintAxis.vertical
+                    answersStackView.axis = NSLayoutConstraint.Axis.vertical
                 }
                 else if sortedAnswers.count > 0 {
                     let heightInTheme = theme.answerHeightStackView(for: questionRecord)

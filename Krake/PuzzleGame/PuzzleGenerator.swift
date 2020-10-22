@@ -75,11 +75,7 @@ class PuzzleGenerator: NSObject {
                 let originalSize = originalImage.extent.size
                 if originalSize.width != viewSize.width {
                     let scale = viewSize.width / originalSize.width
-                    #if swift(>=4.0)
-                        originalImage = originalImage.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
-                    #else
-                        originalImage = originalImage.applying(CGAffineTransform(scaleX: scale, y: scale))
-                    #endif
+                    originalImage = originalImage.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
                 }
 
                 for x in (0..<puzzleSideLength) {
@@ -121,11 +117,7 @@ class PuzzleGenerator: NSObject {
                 x: tileSize * CGFloat(coordinates.x),
                 y: tileSize * CGFloat(puzzle.numberOfTilesInARowOrColumn - 1 - coordinates.y)),
             size: CGSize(width: tileSize, height: tileSize))
-        #if swift(>=4.0)
-            return image.cropped(to: tileRect)
-        #else
-            return image.cropping(to: tileRect)
-        #endif
+        return image.cropped(to: tileRect)
     }
 
     /// Salva il JPEG costruito a partire dall'immagine del tile.
@@ -141,11 +133,7 @@ class PuzzleGenerator: NSObject {
         let renderedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         if let renderedImage = renderedImage{
-            #if swift(>=4.2)
             let jpgData = renderedImage.jpegData(compressionQuality: 1.0)
-            #else
-            let jpgData = UIImageJPEGRepresentation(renderedImage, 1.0)
-            #endif
             if let jpgData = jpgData{
                 
                 do {

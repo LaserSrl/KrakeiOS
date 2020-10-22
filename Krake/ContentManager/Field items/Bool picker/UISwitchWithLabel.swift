@@ -26,7 +26,7 @@ class UISwitchWithLabel: UIView {
         switchView.translatesAutoresizingMaskIntoConstraints = false
         switchView.isOn = defaultVal
         KTheme.current.applyTheme(toSwitch: switchView, style: .contentMofication)
-        let event = KControlEvent.valueChanged
+        let event = UIControl.Event.valueChanged
         switchView.addTarget(self, action: #selector(UISwitchWithLabel.switchChanged(_:)), for: event)
         
         addSubview(switchView)

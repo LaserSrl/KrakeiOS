@@ -35,11 +35,7 @@ public extension String
     func htmlToString() -> String? {
         let attributedText: NSAttributedString?
         do {
-            #if swift(>=4.0)
-                attributedText = try NSAttributedString(data: data(using: String.Encoding.unicode)!, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
-            #else
-                attributedText = try NSAttributedString(data: data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
-            #endif
+            attributedText = try NSAttributedString(data: data(using: String.Encoding.unicode)!, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
         } catch {
             attributedText = nil
         }
@@ -54,11 +50,7 @@ public extension String
     func htmlToAttributedString() -> NSAttributedString? {
         let attributedText: NSAttributedString?
                 do {
-                    #if swift(>=4.0)
-                        attributedText = try NSAttributedString(data: data(using: String.Encoding.unicode)!, options: [NSAttributedString.DocumentReadingOptionKey.documentType : NSAttributedString.DocumentType.html], documentAttributes: nil)
-                    #else
-                        attributedText = try NSAttributedString(data: data(using: String.Encoding.unicode)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
-                    #endif
+                    attributedText = try NSAttributedString(data: data(using: String.Encoding.unicode)!, options: [NSAttributedString.DocumentReadingOptionKey.documentType : NSAttributedString.DocumentType.html], documentAttributes: nil)
         } catch {
             attributedText = nil
         }

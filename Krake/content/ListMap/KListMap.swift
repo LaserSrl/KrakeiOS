@@ -200,7 +200,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         customButton.titleLabel?.adjustsFontSizeToFitWidth = true
         customButton.setImage(UIImage(krakeNamed: "calendar"), for: .normal)
         
-        customButton.addTarget(self, action: #selector(KListMapViewController.changeDate), for: KControlEvent.touchUpInside)
+        customButton.addTarget(self, action: #selector(KListMapViewController.changeDate), for: UIControl.Event.touchUpInside)
         
         customButton.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
         customButton.titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
@@ -253,7 +253,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         KTheme.current.applyTheme(toView: view, style: .default)
         
         toggleButton?.setImage(UIImage(krakeNamed: "OCmap"), for: .normal)
-        toggleButton?.setTitle(nil, for: KControlState.normal)
+        toggleButton?.setTitle(nil, for: UIControl.State.normal)
         if toggleButton != nil
         {
             KTheme.current.applyTheme(toButton: toggleButton!, style: .fabButton)
@@ -278,57 +278,26 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         
         //iOS 11 the refresh control could be on navigation bar, on the other cases it will be on top of the collectionView
         var refreshControlColor = UIColor.black
-        if #available(iOS 11.0, *)
-        {
-            navigationItem.largeTitleDisplayMode = .always
-            refreshControlColor = listMapOptions.searchFilterOptions != nil || (navigationController?.navigationBar.prefersLargeTitles ?? false) ? KTheme.current.color(.textTint) : .black
-        }
-        else
-        {
-            extendedLayoutIncludesOpaqueBars = true
-            edgesForExtendedLayout = .left
-        }
+        navigationItem.largeTitleDisplayMode = .always
+        refreshControlColor = listMapOptions.searchFilterOptions != nil || (navigationController?.navigationBar.prefersLargeTitles ?? false) ? KTheme.current.color(.textTint) : .black
         refreshControl.tintColor = refreshControlColor
         refreshControl.addTarget(self, action: #selector( refreshContent ), for: .valueChanged)
         
-        if #available(iOS 10.0, *)
-        {
-            collectionView.refreshControl = refreshControl
-        }
-        else
-        {
-            collectionView.addSubview(refreshControl)
-        }
+        collectionView.refreshControl = refreshControl
         
         self.automaticallyAdjustsScrollViewInsets = false
         
         if let searchOptions = listMapOptions.searchFilterOptions, searchOptions.isValid()
         {
-            
-            if #available(iOS 11.0, *)
+            searchController = UISearchController(searchResultsController: nil)
+            searchController?.obscuresBackgroundDuringPresentation = false
+            searchController?.hidesNavigationBarDuringPresentation = false
+            searchFilterManager = KSearchFilterManager(searchBar: searchController?.searchBar, delegate: self, searchOptions: searchOptions)
+            if let searchBar = searchController?.searchBar
             {
-                searchController = UISearchController(searchResultsController: nil)
-                searchController?.obscuresBackgroundDuringPresentation = false
-                searchController?.hidesNavigationBarDuringPresentation = false
-                searchFilterManager = KSearchFilterManager(searchBar: searchController?.searchBar, delegate: self, searchOptions: searchOptions)
-                if let searchBar = searchController?.searchBar
-                {
-                    KTheme.current.applyTheme(toSearchBar: searchBar, style: .listMap)
-                }
-                navigationItem.searchController = searchController
+                KTheme.current.applyTheme(toSearchBar: searchBar, style: .listMap)
             }
-            else
-            {
-                searchButton?.backgroundColor = KTheme.current.color(.alternate)
-                searchButton?.setImage(UIImage(krakeNamed: "search"), for: .normal)
-                searchButton?.tintColor = KTheme.current.color(.textTint)
-                searchButton?.setTitle(nil, for: KControlState.normal)
-                searchFilterManager = KSearchFilterManager(searchBar: searchBar, delegate: self, searchOptions: searchOptions)
-                if let searchBar = searchBar
-                {
-                    KTheme.current.applyTheme(toSearchBar: searchBar, style: .listMap)
-                }
-            }
+            navigationItem.searchController = searchController
         }
         
         if isOnLargeView() && listMapOptions.mapOptions != nil
@@ -609,25 +578,8 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         segmentedControl.alpha = (categoriesTabManager?.numberOfTabs() ?? 0) <= 1 ? 0 : 1.0
         //segmentedControl.hiddenAnimated = false//
         
-        if #available(iOS 11.0, *)
-        {
-            searchButton?.hiddenAnimated = true
-            searchBar?.hiddenAnimated = true
-        }
-        else
-        {
-            if listMapOptions.searchFilterOptions?.isValid() ?? false
-            {
-                // Fallback on earlier versions
-                searchButton?.hiddenAnimated = segmentedControl.isHidden
-                searchBar?.hiddenAnimated = !segmentedControl.isHidden
-            }
-            else
-            {
-                searchButton?.hiddenAnimated = true
-                searchBar?.hiddenAnimated = true
-            }
-        }
+        searchButton?.hiddenAnimated = true
+        searchBar?.hiddenAnimated = true
         let isHidden = searchButton?.isHidden ?? true && searchBar?.isHidden ?? true && segmentedControl.isHidden
         if let heightTopView = heightTopView
         {
@@ -973,14 +925,14 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         if !collectionView.isHidden
         {
             self.toggleButton?.setImage(UIImage(krakeNamed: "OClist"), for: .normal)
-            UIView.transition(from: collectionView, to: mapView!, duration: 0.5, options: [KViewAnimationOptions.showHideTransitionViews, KViewAnimationOptions.curveEaseInOut, KViewAnimationOptions.transitionCrossDissolve], completion: nil)
+            UIView.transition(from: collectionView, to: mapView!, duration: 0.5, options: [UIView.AnimationOptions.showHideTransitionViews, UIView.AnimationOptions.curveEaseInOut, UIView.AnimationOptions.transitionCrossDissolve], completion: nil)
             mapView?.expandedMap = true
         }
         else
         {
             self.toggleButton?.setImage(UIImage(krakeNamed: "OCmap"), for: .normal)
             
-            UIView.transition(from: mapView!, to: collectionView, duration: 0.5, options: [KViewAnimationOptions.showHideTransitionViews, KViewAnimationOptions.curveEaseInOut, KViewAnimationOptions.transitionCrossDissolve], completion: nil)
+            UIView.transition(from: mapView!, to: collectionView, duration: 0.5, options: [UIView.AnimationOptions.showHideTransitionViews, UIView.AnimationOptions.curveEaseInOut, UIView.AnimationOptions.transitionCrossDissolve], completion: nil)
         }
     }
     
@@ -1214,7 +1166,7 @@ extension KListMapViewController: UICollectionViewDelegate, UICollectionViewData
                     {
                         let button = UIButton(type: .system)
                         button.addTarget(self, action: #selector(KListMapViewController.openNavigatorAtIndex(_:mapView:)), for: .touchUpInside)
-                        button.setImage(UIImage(krakeNamed: "OCnavigaverso")!.withRenderingMode(KImageRenderingMode.alwaysTemplate), for: .normal)
+                        button.setImage(UIImage(krakeNamed: "OCnavigaverso")!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
                         arrayItems.append(button)
                     }
                     if elem is ContentItemWithShareLinkPart
@@ -1222,14 +1174,14 @@ extension KListMapViewController: UICollectionViewDelegate, UICollectionViewData
                         let button = UIButton(type: .system)
                         button.addTarget(self, action: #selector(KListMapViewController.openShareAtIndex(_:)), for: .touchUpInside)
                         
-                        button.setImage(UIImage(krakeNamed: "share_icon")!.withRenderingMode(KImageRenderingMode.alwaysTemplate), for: .normal)
+                        button.setImage(UIImage(krakeNamed: "share_icon")!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
                         arrayItems.append(button)
                     }
                     if let det = elem as? ContentItemWithActivityPart , let activity = det.activityPartReference(), let _ = activity.dateTimeStart{
                         let button = UIButton(type: .system)
                         button.addTarget(self, action: #selector(KListMapViewController.openAddToCalendarAtIndex(_:)), for: .touchUpInside)
                         
-                        button.setImage(UIImage(krakeNamed: "add_alarm")!.withRenderingMode(KImageRenderingMode.alwaysTemplate), for: .normal)
+                        button.setImage(UIImage(krakeNamed: "add_alarm")!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
                         arrayItems.append(button)
                     }
                     let bottomView = UIView(frame: CGRect(x: 0, y: 0, width: (CGFloat(arrayItems.count) * 52.0) + 8.0, height: CADRACCell.bounds.height))

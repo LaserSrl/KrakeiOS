@@ -78,7 +78,9 @@ open class PoliciesViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func loadCookiesParams(){
-        if let data = UserDefaults.standard.object(forKey: "PoliciesAnswers") as? Data, let policiesAnswers = NSKeyedUnarchiver.unarchiveObject(with: data), let datac = Data(base64Encoded: (policiesAnswers as AnyObject).value, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters){
+        if let data = UserDefaults.standard.object(forKey: "PoliciesAnswers") as? Data,
+           let policiesAnswers = NSKeyedUnarchiver.unarchiveObject(with: data),
+           let datac = Data(base64Encoded: (policiesAnswers as AnyObject).value, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters){
             do {
                 response = try JSONSerialization.jsonObject(with: datac, options: .allowFragments) as? [[String : AnyObject]]
             }catch{
@@ -180,7 +182,7 @@ open class PoliciesViewController: UIViewController, UITableViewDataSource, UITa
         
         KTheme.current.applyTheme(toSwitch: switchButton, style: .policy)
         switchButton.isOn = (accepted || acceptedModified)
-        switchButton.addTarget(self, action: #selector(PoliciesViewController.changeSwitch(_:)), for: KControlEvent.valueChanged)
+        switchButton.addTarget(self, action: #selector(PoliciesViewController.changeSwitch(_:)), for: UIControl.Event.valueChanged)
         cell.accessoryView = switchButton
         
         return cell

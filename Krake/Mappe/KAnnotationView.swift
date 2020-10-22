@@ -57,7 +57,7 @@ open class KAnnotationView: MKAnnotationView
             pinImage.tintColor = tintColor
             if (annotation as? AnnotationProtocol) != nil {
                 
-                if let img = UIImage(named: imageNamed)?.withRenderingMode(KImageRenderingMode.alwaysTemplate) {
+                if let img = UIImage(named: imageNamed)?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate) {
                     pinImage.image = img
                 }
                 
@@ -168,12 +168,7 @@ open class KAnnotationView: MKAnnotationView
             bottomLayer.strokeColor = lighterColorForColor(color!).cgColor
             bottomLayer.fillColor = color!.cgColor
             bottomLayer.frame = bounds
-            
-            #if swift(>=4.2)
             bottomLayer.contentsGravity = CALayerContentsGravity.resizeAspectFill
-            #else
-            bottomLayer.contentsGravity = kCAGravityResizeAspectFill
-            #endif
             pinBase.layer.addSublayer(bottomLayer)
         }
         if (whiteCircle == nil)
@@ -186,12 +181,7 @@ open class KAnnotationView: MKAnnotationView
             whiteCircle.strokeColor = UIColor.white.cgColor
             whiteCircle.fillColor = UIColor.white.cgColor
             whiteCircle.frame = bounds
-            
-            #if swift(>=4.2)
             whiteCircle.contentsGravity = CALayerContentsGravity.resizeAspectFill
-            #else
-            whiteCircle.contentsGravity = kCAGravityResizeAspectFill
-            #endif
             pinBase.layer.addSublayer(whiteCircle)
         }
     }

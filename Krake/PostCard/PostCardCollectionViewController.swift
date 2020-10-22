@@ -25,24 +25,16 @@ class PostCardCollectionViewController: UIViewController, UICollectionViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 11.0, *) {
-            if navigationController?.navigationBar.prefersLargeTitles == true {
-                refreshControl.tintColor = KTheme.current.color(.textTint)
-            }
-            else
-            {
-                refreshControl.tintColor = .black
-            }
-        } else {
+        if navigationController?.navigationBar.prefersLargeTitles == true {
+            refreshControl.tintColor = KTheme.current.color(.textTint)
+        }
+        else
+        {
             refreshControl.tintColor = .black
         }
      
         refreshControl.addTarget(self, action: #selector( refreshContent ), for: .valueChanged)
-        if #available(iOS 10.0, *) {
-            collection.refreshControl = refreshControl
-        } else {
-            collection.addSubview(refreshControl)
-        }
+        collection.refreshControl = refreshControl
         
         loadData()
         KTheme.current.applyTheme(toView: view, style: .default)
@@ -109,7 +101,7 @@ class PostCardCollectionViewController: UIViewController, UICollectionViewDelega
                 let nav = UINavigationController(rootViewController: vc)
                 KTheme.current.applyTheme(toNavigationBar: nav.navigationBar, style: .default)
                 nav.modalPresentationStyle = UIModalPresentationStyle.formSheet
-                let closeButton = UIBarButtonItem(barButtonSystemItem: KBarButtonSystemStyle.stop, target: self, action: #selector(PostCardCollectionViewController.dismissViewController))
+                let closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.stop, target: self, action: #selector(PostCardCollectionViewController.dismissViewController))
                 vc.navigationItem.leftBarButtonItem = closeButton
                 navigationController?.present(nav, animated: true, completion: nil)
             }else{
