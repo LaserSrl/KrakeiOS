@@ -82,15 +82,9 @@ open class KSearchPlaceViewController: UIViewController, UITableViewDelegate, UI
         view.tintColor = KTheme.current.color(.tint)
         view.backgroundColor = KTheme.current.color(.tint)
 
-        searchBar.barTintColor = KTheme.current.color(.tint)
-        for sView in searchBar.subviews.first!.subviews{
-            if let button = sView as? UIButton{
-                button.setTitleColor(UIColor.white, for: UIControl.State.normal)
-                button.setTitleColor(UIColor.white.withAlphaComponent(0.9), for: .highlighted)
-            }
-        }
+        KTheme.current.applyTheme(toSearchBar: searchBar, style: .default)
 
-        locManager.requestStartUpdatedLocation { [weak self] (manager, location) in
+        locManager.requestStartUpdatedLocation(wantAccurateLocationFor: .custom(value: "CIAO")) { [weak self] (manager, location) in
             if let mySelf = self{
                 if let location = location {
                     let geocoder = CLGeocoder()

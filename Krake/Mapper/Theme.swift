@@ -15,6 +15,8 @@ import SwiftMessages
 //MARK: - KThemeProtocolObjc
 
 @objc public enum ColorStyle: Int {
+    
+    case `default`
     case tint //Colore di tinta dell'App
     case textTint //Colore del testo sopra il tint dell'App
     case alternate //colore di contrasto rispetto al tint (Accent su android)
@@ -31,40 +33,47 @@ import SwiftMessages
     case userSelectablePin
     case background
     
-    public func toString() -> String
-    {
-        switch self {
-        case .tint:
-            return "tint"
-        case .textTint:
-            return "textTint"
-        case .alternate:
-            return "alternate"
-        case .textAlternate:
-            return "textAlternate"
-        case .title:
-            return "title"
-        case .subtitle:
-            return "subtitle"
-        case .headline:
-            return "headline"
-        case .subHeadline:
-            return "subHeadline"
-        case .normal:
-            return "normal"
-        case .selected:
-            return "selected"
-        case .popoverBorder:
-            return "popoverBorder"
-        case .popoverBackground:
-            return "popoverBackground"
-        case .popoverText:
-            return "popoverText"
-            case .userSelectablePin:
-                return "userSelectablePin"
+    public var rawValue: String {
+        get{
+            switch self {
+                case .tint:
+                    return "tint"
+                case .textTint:
+                    return "textTint"
+                case .alternate:
+                    return "alternate"
+                case .textAlternate:
+                    return "textAlternate"
+                case .title:
+                    return "title"
+                case .subtitle:
+                    return "subtitle"
+                case .headline:
+                    return "headline"
+                case .subHeadline:
+                    return "subHeadline"
+                case .normal:
+                    return "normal"
+                case .selected:
+                    return "selected"
+                case .popoverBorder:
+                    return "popoverBorder"
+                case .popoverBackground:
+                    return "popoverBackground"
+                case .popoverText:
+                    return "popoverText"
+                case .userSelectablePin:
+                    return "userSelectablePin"
                 case .background:
                     return "background"
+                case .default:
+                    return "default"
+            }
         }
+    }
+    
+    public init?(rawValue: String) {
+        return nil
     }
 }
 
@@ -183,7 +192,8 @@ public enum PolylineStyle {
 }
 
 public enum SearchBarStyle {
-    case listMap
+    case `default`
+    case onNavigation
 }
 
 public enum StatuBarStyle {
@@ -226,6 +236,14 @@ public protocol KThemeProtocol: KThemeProtocolObjc
 
 @objc(KMainTheme)
 open class KMainTheme: NSObject, KThemeProtocol {
+    
+    public override init() {
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor.white
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.black
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor(named: .textTint)!], for: .normal)
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.gray], for: .disabled)
+    }
 
     open func placeholder(_ style: PlaceholderStyle) -> UIImage? {
         switch style {
@@ -243,7 +261,7 @@ open class KMainTheme: NSObject, KThemeProtocol {
     }
     
     open func color(_ style: ColorStyle) -> UIColor{
-        return UIColor.black
+        return UIColor(named: style) ?? .black
     }
     
     open func reactionColor(_ style: ReactionColorStyle) -> UIColor {
@@ -383,6 +401,7 @@ open class KMainTheme: NSObject, KThemeProtocol {
                 navBarAppearance.backgroundColor = color(.tint)
                 navigationBar.standardAppearance = navBarAppearance
                 navigationBar.scrollEdgeAppearance = navBarAppearance
+                navigationBar.compactAppearance = navBarAppearance
             }
         }
     }
@@ -446,27 +465,6 @@ open class KMainTheme: NSObject, KThemeProtocol {
     
     open func applyTheme(toSearchBar searchBar: UISearchBar, style: SearchBarStyle)
     {
-        searchBar.barTintColor = color(.textAlternate)
-        searchBar.tintColor = color(.textAlternate)
-        if let textfield = searchBar.value(forKey: "searchField") as? UITextField
-        {
-            textfield.textColor = color(.textAlternate)
-            if let backgroundview = textfield.subviews.first
-            {
-                // Background color
-                backgroundview.backgroundColor = .white
-                // Rounded corner
-                backgroundview.layer.cornerRadius = 10;
-                backgroundview.clipsToBounds = true;
-            }
-        }
-        for view in searchBar.subviews.first!.subviews
-        {
-            if view is UIButton
-            {
-                (view as! UIButton).setTitleColor(color(.textTint), for: .normal)
-                (view as! UIButton).setTitleColor(UIColor.darkGray, for: .disabled)
-            }
-        }
+        searchBar.barTintColor = color(.tint)
     }
 }

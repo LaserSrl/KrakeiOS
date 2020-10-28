@@ -79,13 +79,13 @@ open class KExtendedMapView: MKMapView {
             
             let status = CLLocationManager.authorizationStatus()
             if  status == .notDetermined && containingViewController()?.isViewLoaded ?? false{
-                locationManager.requestAuthorization(completion: {[weak self] (manager, status) in
+                locationManager.request {[weak self] (manager, status, _) in
                     
                     self?.showsUserLocation = (status == .authorizedWhenInUse || status == .authorizedAlways)
                     
                     self?.updateToolbarButtons()
                     
-                })
+                }
             }
             
             self.showsUserLocation = status == .authorizedWhenInUse || status == .authorizedAlways
@@ -98,6 +98,9 @@ open class KExtendedMapView: MKMapView {
         loadMapView()
         //TODO: verificare
         checkUserLocation()
+    }
+    deinit {
+        KLog(type: .debug, "Released")
     }
 
     public required init?(coder aDecoder: NSCoder) {

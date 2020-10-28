@@ -55,7 +55,7 @@ open class NearestBeaconManager: NSObject, CLLocationManagerDelegate {
 
     open func startBeaconRegionMonitoring() {
 
-        self.beaconManager.requestAuthorization(always: true, completion: { [weak self](manager, status) in
+        self.beaconManager.request(authorizationStatus: .authorizedAlways, completion: { [weak self](manager, status, _) in
             if status == .authorizedAlways || status == .authorizedWhenInUse {
                 if let sSelf = self {
                     for region in sSelf.allRegions

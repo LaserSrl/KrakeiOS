@@ -295,7 +295,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
             searchFilterManager = KSearchFilterManager(searchBar: searchController?.searchBar, delegate: self, searchOptions: searchOptions)
             if let searchBar = searchController?.searchBar
             {
-                KTheme.current.applyTheme(toSearchBar: searchBar, style: .listMap)
+                KTheme.current.applyTheme(toSearchBar: searchBar, style: .onNavigation)
             }
             navigationItem.searchController = searchController
         }

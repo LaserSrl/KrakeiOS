@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -49,7 +47,7 @@
                         <outlet property="delegate" destination="-1" id="LXo-IM-Xfx"/>
                     </connections>
                 </collectionView>
-                <mapView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tFO-1V-hAt" customClass="KExtendedMapView" customModule="Krake">
+                <mapView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tFO-1V-hAt" customClass="KExtendedMapView" customModule="Krake">
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="canExpandMap" value="NO"/>
@@ -58,7 +56,7 @@
                     <variation key="heightClass=compact-widthClass=regular" hidden="NO"/>
                     <variation key="heightClass=regular-widthClass=regular" hidden="NO"/>
                 </mapView>
-                <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zae-Hi-Fko">
+                <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zae-Hi-Fko">
                     <rect key="frame" x="184" y="796" width="46" height="46"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -89,7 +87,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="546" height="44"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
-                                        <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90k-Ah-mR7">
+                                        <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90k-Ah-mR7">
                                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="90k-Ah-mR7" secondAttribute="height" multiplier="1:1" priority="999" id="OEe-X2-1mm"/>
@@ -109,6 +107,7 @@
                                     </subviews>
                                 </stackView>
                             </subviews>
+                            <viewLayoutGuide key="safeArea" id="Soi-HL-5Z2"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="HBq-Qd-4EO" secondAttribute="bottom" id="X9W-wV-HQX"/>
                                 <constraint firstItem="HBq-Qd-4EO" firstAttribute="leading" secondItem="Soi-HL-5Z2" secondAttribute="leading" id="dx1-fq-Vvs"/>
@@ -116,11 +115,11 @@
                                 <constraint firstItem="HBq-Qd-4EO" firstAttribute="top" secondItem="c6A-WR-kFh" secondAttribute="top" id="q9j-Hf-phj"/>
                                 <constraint firstItem="Soi-HL-5Z2" firstAttribute="trailing" secondItem="HBq-Qd-4EO" secondAttribute="trailing" id="vUF-J5-bee"/>
                             </constraints>
-                            <viewLayoutGuide key="safeArea" id="Soi-HL-5Z2"/>
                         </view>
                     </subviews>
                 </stackView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="KHp-4Q-2iB"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="z2C-2n-UmX" firstAttribute="top" secondItem="KHp-4Q-2iB" secondAttribute="top" id="Dig-Rm-ZW2"/>
@@ -141,11 +140,10 @@
                 <constraint firstItem="KHp-4Q-2iB" firstAttribute="trailing" secondItem="Zae-Hi-Fko" secondAttribute="trailing" priority="250" constant="20" id="t3V-RD-jvb"/>
                 <constraint firstItem="tFO-1V-hAt" firstAttribute="leading" secondItem="KHp-4Q-2iB" secondAttribute="leading" id="yv1-gW-KSy"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="KHp-4Q-2iB"/>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="Dtp-CP-dwb"/>
                     <exclude reference="c3A-3R-2as"/>
+                    <exclude reference="Dtp-CP-dwb"/>
                 </mask>
             </variation>
             <variation key="heightClass=compact-widthClass=regular">
@@ -153,8 +151,8 @@
                     <exclude reference="Zae-Hi-Fko"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="Dtp-CP-dwb"/>
                     <include reference="c3A-3R-2as"/>
+                    <include reference="Dtp-CP-dwb"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=regular">
@@ -162,10 +160,11 @@
                     <exclude reference="Zae-Hi-Fko"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="Dtp-CP-dwb"/>
                     <include reference="c3A-3R-2as"/>
+                    <include reference="Dtp-CP-dwb"/>
                 </mask>
             </variation>
+            <point key="canvasLocation" x="142" y="111"/>
         </view>
     </objects>
 </document>

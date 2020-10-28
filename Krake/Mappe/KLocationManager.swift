@@ -9,8 +9,24 @@
 import Foundation
 import CoreLocation
 
-public typealias LocationAuthBlock = (KLocationManager, CLAuthorizationStatus) -> Void
+public typealias LocationAuthBlock = (KLocationManager, CLAuthorizationStatus, CLAccuracyAuthorization?) -> Void
 public typealias LocationUpdateBlock = (KLocationManager, CLLocation?) -> Void
+
+public enum WantAccurateLocationFor{
+    case discoverAddress
+    case custom(value: String)
+    
+    public var rawValue: String {
+        get{
+            switch self {
+                case let .custom(value):
+                    return value
+                default:
+                    return String(describing: self)
+            }
+        }
+    }
+}
 
 open class KLocationManager : CLLocationManager, CLLocationManagerDelegate
 {
@@ -25,13 +41,13 @@ open class KLocationManager : CLLocationManager, CLLocationManagerDelegate
         self.delegate = self
     }
     
-    public func requestAuthorization(always: Bool = false, completion: @escaping LocationAuthBlock)
+    public func request(authorizationStatus: CLAuthorizationStatus = .authorizedWhenInUse, completion: @escaping LocationAuthBlock)
     {
         let status = CLLocationManager.authorizationStatus()
         
-        if status == .notDetermined || ( status == .authorizedWhenInUse && always ) {
+        if status == .notDetermined || ( status == .authorizedWhenInUse && authorizationStatus == .authorizedAlways ) {
             authBlock = completion
-            if !always
+            if !(authorizationStatus == .authorizedAlways)
             {
                 self.requestWhenInUseAuthorization()
             }
@@ -44,37 +60,64 @@ open class KLocationManager : CLLocationManager, CLLocationManagerDelegate
                 }
                 else
                 {
-                    completion(self, status)
+                    if #available(iOS 14.0, *) {
+                        completion(self, status, accuracyAuthorization)
+                    } else {
+                        completion(self, status, nil)
+                    }
                 }
             }
         }
         else {
-            completion(self, status)
+            if #available(iOS 14.0, *) {
+                completion(self, status, accuracyAuthorization)
+            } else {
+                completion(self, status, nil)
+            }
         }
+    }
+    
+    @available(iOS 14.0, *)
+    public func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        authBlock?(self, manager.authorizationStatus, manager.accuracyAuthorization)
     }
     
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        authBlock?(self, status)
+        authBlock?(self, status, nil)
     }
     
-    public func requestStartUpdatedLocation(completion: @escaping LocationUpdateBlock) {
+    
+    /// This method request at user the update location
+    /// - Parameters:
+    ///   - wantAccurateLocationFor: default is nil and on iOS 14 not requested the CLAccuracyAuthorization.fullAccuracy. If setted
+    ///   - completion: will called with the first available location, location can be nil if did fail with error
+    public func requestStartUpdatedLocation(wantAccurateLocationFor: WantAccurateLocationFor? = nil,
+                                            completion: @escaping LocationUpdateBlock) {
         locationUpdateBlock = completion
-        self.startUpdatingLocation()
+        if #available(iOS 14.0, *) {
+            if accuracyAuthorization == CLAccuracyAuthorization.reducedAccuracy,
+               let accurateLocation = wantAccurateLocationFor {
+                requestTemporaryFullAccuracyAuthorization(withPurposeKey: accurateLocation.rawValue, completion: { [weak self] error in
+                    self?.startUpdatingLocation()
+                    if let error = error {
+                        KLog(type: .warning, "\(error.localizedDescription) probably is not present the value and key '\(accurateLocation.rawValue)' on InfoPlist in dictionary's key  'NSLocationTemporaryUsageDescriptionDictionary'")
+                    }
+                })
+            } else {
+                self.startUpdatingLocation()
+            }
+        } else {
+            self.startUpdatingLocation()
+        }
     }
     
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if locationUpdateBlock != nil {
-            locationUpdateBlock!(self, locations.first)
-        }
+        locationUpdateBlock?(self, locations.first)
     }
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        if locationUpdateBlock != nil {
-            locationUpdateBlock!(self, nil)
-        }
+        locationUpdateBlock?(self, nil)
     }
     public func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
-        if locationUpdateBlock != nil {
-            locationUpdateBlock!(self, nil)
-        }
+        locationUpdateBlock?(self, nil)
     }
 }

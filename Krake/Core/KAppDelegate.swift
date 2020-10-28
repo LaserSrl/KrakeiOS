@@ -22,6 +22,7 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
         let value = super.application(application, didFinishLaunchingWithOptions: launchOptions)
         NetworkActivityIndicatorManager.shared.isEnabled = true
         if Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") != nil {
+            FirebaseConfiguration.shared.setLoggerLevel(.error)
             FirebaseApp.configure()
         }
         Messaging.messaging().delegate = self
@@ -112,8 +113,10 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
 
 extension KAppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
     
-    open func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        KPushManager.setDeviceToken(fcmToken)
+    open func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        if let fcmToken = fcmToken {
+            KPushManager.setDeviceToken(fcmToken)
+        }
     }
     
     //MARK: - Push sharedApplicationDelegate

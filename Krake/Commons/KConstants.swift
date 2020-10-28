@@ -59,6 +59,6 @@ func KLog<T>(type: KrakeLog.LogLevel = .debug, _ object: @autoclosure () -> T, _
     case .verbose:
         errorType = "🔬"
     }
-    print("🐙 [\(errorType) \(type.rawValue)] [\(queue)] \(fileURL) \(function)[\(line)]: " + String(reflecting: value))
+    print("🐙 [\(errorType) \(type.rawValue)] [\(queue)] \(fileURL) \(function)[\(line)]: \(value)")
     #endif
 }

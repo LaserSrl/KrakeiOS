@@ -40,7 +40,7 @@ public class KOTPRoutesTableViewController: UITableViewController, UISearchResul
         searchController.hidesNavigationBarDuringPresentation = false
         if let searchBar = searchController?.searchBar
         {
-            KTheme.current.applyTheme(toSearchBar: searchBar, style: .listMap)
+            KTheme.current.applyTheme(toSearchBar: searchBar, style: .onNavigation)
         }
         navigationItem.searchController = searchController
        

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name         = "Krake"
-    s.version      = "11.3.2"
+    s.version      = "11.4.0"
     s.summary      = "Laser mobile framework."
     s.homepage     = "https://www.laser-group.com"
 
@@ -68,10 +68,10 @@ Pod::Spec.new do |s|
         os.dependency "Krake/Commons"
         
         #other
-        os.dependency 'Alamofire', '~> 5.2.2'
+        os.dependency 'Alamofire', '~> 5.3.0'
         os.dependency 'AlamofireNetworkActivityIndicator', '~> 3.1.0'
         os.dependency "CryptoSwift", '1.3.2'
-        os.dependency "Firebase", '~> 6.32.0'
+        os.dependency "Firebase", '~> 7.0.0'
         os.dependency "FirebaseCrashlytics"
         os.dependency "Firebase/Messaging"
         os.dependency "KNSemiModalViewController_hons82", '0.4.6'
@@ -95,8 +95,8 @@ Pod::Spec.new do |s|
     s.subspec 'FacebookKit' do |os|
         os.source_files  = "FacebookKit", "Krake/FacebookKit/*.{h,m,swift}"
         os.dependency "Krake/Core"
-        os.dependency "FBSDKCoreKit", '~> 7.1.1'
-        os.dependency "FBSDKLoginKit", '~> 7.1.1'
+        os.dependency "FBSDKCoreKit", '~> 8.0.0'
+        os.dependency "FBSDKLoginKit", '~> 8.0.0'
     end
     
     s.subspec 'GameQuiz' do |os|
@@ -138,7 +138,7 @@ Pod::Spec.new do |s|
         os.ios.resource_bundles = { 'OTP' => ['Krake/OTP/*.{storyboard,xcassets}']}
         os.dependency "Krake/Core"
         os.dependency "Polyline", '4.2.1'
-        os.dependency "DateTimePicker", '~> 2.4.1'
+        os.dependency "DateTimePicker", '~> 2.5.0'
         os.dependency "EVReflection", '5.10.1'
     end
     

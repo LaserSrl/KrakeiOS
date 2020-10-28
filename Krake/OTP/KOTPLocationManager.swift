@@ -42,7 +42,7 @@ class KOTPLocationManager: KLocationManager
             return
         }
         let region = CLCircularRegion(center: stopItem.coordinate, radius: KInfoPlist.OTP.stopRegionRadiusMeter, identifier: originalId)
-        requestAuthorization(always: true) { (manager, status) in
+        request(authorizationStatus: .authorizedAlways) { (manager, status, _) in
             if status == CLAuthorizationStatus.authorizedAlways{
                 self.startMonitoring(for: region)
                 self.requestState(for: region)

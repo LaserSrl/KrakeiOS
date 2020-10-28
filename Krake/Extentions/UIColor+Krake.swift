@@ -28,6 +28,10 @@ extension UIColor{
 
     open class var tint: UIColor { get{ return KTheme.current.color(.tint)} }
     open class var alternate: UIColor { get{ return KTheme.current.color(.alternate)} }
+    
+    public convenience init?(named colorStyle: ColorStyle) {
+        self.init(named: colorStyle.rawValue)
+    }
 
     public convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)

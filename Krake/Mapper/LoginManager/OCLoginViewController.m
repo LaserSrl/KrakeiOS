@@ -503,17 +503,7 @@
 }
 
 -(IBAction)dismissKeyBoard:(id)sender{
-    (void)[self.username resignFirstResponder];
-    for (EGFloatingTextField *domain in self.domains)
-    {
-        (void)[domain resignFirstResponder];
-    }
-    (void)[self.password resignFirstResponder];
-    (void)[self.usernameRegistration resignFirstResponder];
-    (void)[self.passwordRegistration resignFirstResponder];
-    (void)[self.confirmRegistration resignFirstResponder];
-    (void)[self.numberRegistration resignFirstResponder];
-    (void)[self.emailsmsTextField resignFirstResponder];
+    [self.view endEditing:true];
 }
 
 -(IBAction)closeMe:(id)sender{

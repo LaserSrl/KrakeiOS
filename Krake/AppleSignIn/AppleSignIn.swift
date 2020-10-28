@@ -47,8 +47,6 @@ import AuthenticationServices
         KLoginManager.shared.hideProgressHUD()
         if let params = params , success{
             KLoginManager.shared.login(with: KrakeAuthenticationProvider.apple, params: params, saveTokenParams: false)
-        }else if let error = error{
-            KMessageManager.showMessage(error.localizedDescription, type: .error)
         }
     }
 }

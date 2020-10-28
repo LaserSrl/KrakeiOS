@@ -58,7 +58,7 @@ class MapInfo : ContentModificationViewController, MKMapViewDelegate, UISearchBa
         mapView.addGestureRecognizer(longTap)
     }
     
-    fileprivate func stopUpdateingLocation(_ parent: UIViewController?) {
+    fileprivate func stopUpdatingLocation(_ parent: UIViewController?) {
         if parent != nil {
             locManager.requestStartUpdatedLocation { [weak self] (manager, location) in
                 if location != nil {
@@ -73,7 +73,7 @@ class MapInfo : ContentModificationViewController, MKMapViewDelegate, UISearchBa
     
     override func willMove(toParent parent: UIViewController?) {
         super.willMove(toParent: parent)
-        stopUpdateingLocation(parent)
+        stopUpdatingLocation(parent)
     }
     
     override func setInitialData(_ item: AnyObject) {

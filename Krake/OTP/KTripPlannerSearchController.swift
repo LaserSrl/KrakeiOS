@@ -146,7 +146,7 @@ open class KTripPlannerSearchController : UIViewController,
         pickDateButton.tintColor = KTheme.current.color(.tint)
         pickDateButton.setImage(UIImage(otpNamed:"ic_plan_date"), for: .normal)
 
-        locationManager.requestAuthorization { (manager, status) in
+        locationManager.request { (manager, status, _) in
             if status == .authorizedWhenInUse || status == .authorizedAlways {
                 if !self.tripPlanRequest.isValid() && self.tripPlanRequest.needUserLocation() {
                     self.planTripIfValid()

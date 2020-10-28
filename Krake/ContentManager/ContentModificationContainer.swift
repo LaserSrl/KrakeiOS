@@ -554,6 +554,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         _ = manager.request(KAPIConstants.contentExtension,
                             method: .post,
                             parameters: anyDict,
+                            query: [URLQueryItem(name: KParametersKeys.lang, value: KConstants.currentLanguage)],
                             successCallback: { [weak self] (task, responseObject) in
                                 if let mySelf = self{
                                     if let response = responseObject as? [String : AnyObject],
