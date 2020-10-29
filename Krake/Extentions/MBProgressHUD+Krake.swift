@@ -23,14 +23,14 @@ public extension MBProgressHUD{
     {
         self.mode = .customView
         if success {
-            self.customView = UIImageView(image: UIImage(krakeNamed: "success"))
+            self.customView = UIImageView(image: KAssets.Images.success.image)
             self.customView!.tintColor = UIColor.white
             self.label.text = "Completed".localizedString()
             self.label.textColor = self.customView!.tintColor
             self.bezelView.color = UIColor ( red: 0.0, green: 0.6, blue: 0.0, alpha: 1.0 )
             self.bezelView.style = .solidColor
         }else{
-            self.customView = UIImageView(image: UIImage(krakeNamed: "error"))
+            self.customView = UIImageView(image: KAssets.Images.error.image)
             self.customView!.tintColor = UIColor.white
             self.label.text = "Error".localizedString()
             self.label.textColor = self.customView!.tintColor

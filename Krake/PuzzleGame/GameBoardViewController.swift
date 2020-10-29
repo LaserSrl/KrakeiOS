@@ -77,13 +77,13 @@ open class GameBoardViewController: UIViewController, UIGestureRecognizerDelegat
 
         scoreLabel.text = ""
         pauseButton
-            .setImage(UIImage(puzzleGameNamed: "PGpause"),
+            .setImage(KPuzzleGameAssets.pGpause.image,
                       for: .normal)
         helpButton
-            .setImage(UIImage(puzzleGameNamed: "PGhelp"),
+            .setImage(KPuzzleGameAssets.pGhelp.image,
                       for: .normal)
         showNumbersButton
-            .setImage(UIImage(puzzleGameNamed: "PGnumtiles"),
+            .setImage(KPuzzleGameAssets.pGnumtiles.image,
                       for: .normal)
         // Applico il tema alle view che ne hanno bisogno.
         let theme = KTheme.current

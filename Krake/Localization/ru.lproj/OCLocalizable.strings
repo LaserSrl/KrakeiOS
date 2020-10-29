@@ -53,8 +53,8 @@
 "on_loading" = "Loading...";
 
 //ORCHARD LOGIN
-"LOGIN"="Войдите с помощью";
-"Login" = "Войдите с помощью";
+"LOGIN_WITH"="Войдите с помощью";
+"login" = "Войдите с помощью";
 "Registration" = "Зарегистрируйтесь";
 "Register" = "Зарегистрируйтесь";
 "Cancel" = "Отмена";
@@ -236,7 +236,7 @@
 "OTP_STOP_NOTIFICATION" = "You are about to arrive at the '%@' stop";
 "OTP_ENABLE_STOP_NOTIFICATION_?" = "Would you like to be notified when you are about to reach the stop?";
 "OTP_DISABLE_STOP_NOTIFICATION_?" = "Do you want to disable the notification?";
-"OTP_DISABLE_ALL_STOPS_NOTIFICATION_?" = "Do you want to disable all notifications?";
+"OTP_DISABLE_ALL_STOPS_NOTIFICATION_QUESTION" = "Do you want to disable all notifications?";
 
 /*
  GameQuiz
@@ -250,7 +250,6 @@
 "game_center_request" = "GameCenter is required to partecipate";
 "insert_phone_number" = "Insert your mobile phone number";
 "leave" = "Undo";
-"login" = "Login";
 "ops" = "Ops!";
 "punti" = "points";
 "r_u_ready" = "Are you ready?";

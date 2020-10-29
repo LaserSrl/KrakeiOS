@@ -212,7 +212,7 @@ open class TakeInfo: ContentModificationViewController, FieldItemWithSelectionDe
     
     open func newFieldItemWithTextView(_ keyPath: String!,
                                          coreDataKeyPath: String? = nil,
-                                         placeholder: String? = "Descrizione".localizedString(),
+                                         placeholder: String? = KLocalization.descrizione,
                                          numberOfLines: Int = 5,
                                          required: Bool = false,
                                          visibleOnly: Bool = false) -> FieldItem {

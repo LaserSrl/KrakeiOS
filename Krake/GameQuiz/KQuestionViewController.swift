@@ -109,8 +109,8 @@ open class KQuestionViewController : UIViewController, UITableViewDataSource, UI
             {
                 sSelf.baloonCoverView?.layer.cornerRadius = sSelf.baloonCoverView!.frame.size.width / 2.0
                 sSelf.baloonCoverView?.backgroundColor = KGameQuiz.theme.color(correct ? .correct : .wrong)
-                let imageName = correct ? "correct" : "wrong"
-                sSelf.baloonCoverImageView!.image = UIImage(gameQuizNamed: imageName)
+                let image = correct ? KGameQuizAssets.correct.image : KGameQuizAssets.wrong.image
+                sSelf.baloonCoverImageView!.image = image
                 sSelf.firstLabelCoverView?.text = (correct ? "bravo" : "ops").localizedString()
                 sSelf.secondLabelCoverView?.text = (correct ? "risposta_corretta" : "risposta_errata").localizedString()
                 sSelf.coverView?.alpha = 1

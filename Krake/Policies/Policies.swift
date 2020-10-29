@@ -177,7 +177,7 @@ open class PoliciesViewController: UIViewController, UITableViewDataSource, UITa
         }
         cell.detailTextLabel?.text = obbligatorio
         
-        cell.imageView?.image = UIImage(krakeNamed: policy.policyTextInfoPartPolicyType!)
+        cell.imageView?.image = policy.policyTextInfoPartPolicyTypeImage()
         cell.imageView?.contentMode = .scaleAspectFit
         
         KTheme.current.applyTheme(toSwitch: switchButton, style: .policy)

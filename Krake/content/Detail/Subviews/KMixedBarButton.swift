@@ -34,13 +34,13 @@ public class KMixedBarButton: NSObject{
         
         if let shareLinkPart = content?.shareLinkPartReference(){
             if !((shareLinkPart.sharedText ?? "").isEmpty && (shareLinkPart.sharedImage ?? "").isEmpty && (shareLinkPart.sharedLink ?? "").isEmpty){
-                let share = KButtonItem(title: "Condividi".localizedString(), image: UIImage(krakeNamed:"share_icon"), target: self, selector: #selector(KMixedBarButton.share))
+                let share = KButtonItem(title: "Condividi".localizedString(), image: KAssets.Images.shareIcon.image, target: self, selector: #selector(KMixedBarButton.share))
                 arrayButton?.append(share)
             }
         }
         
         if let activity = activityPart?.activityPartReference(), let _ = activity.dateTimeStart{
-            arrayButton?.append(KButtonItem(title: "Aggiungi al calendario".localizedString(), image: UIImage(krakeNamed:"add_alarm"), target: self, selector: #selector(KMixedBarButton.addToCalendar)))
+            arrayButton?.append(KButtonItem(title: "Aggiungi al calendario".localizedString(), image: KAssets.Images.addAlarm.image, target: self, selector: #selector(KMixedBarButton.addToCalendar)))
         }
         
         if let elems = detailDelegate?.createAttachmentButtons(viewController, element: object) {
@@ -59,7 +59,7 @@ public class KMixedBarButton: NSObject{
                 }
                 menuItems.append(item)
             }
-            return UIBarButtonItem(image: UIImage(krakeNamed: "more"), style: .done, target: self, action: #selector(KMixedBarButton.openMenu))
+            return UIBarButtonItem(image: KAssets.Images.more.image, style: .done, target: self, action: #selector(KMixedBarButton.openMenu))
         }else if arrayButton!.count == 1{
             let elem = arrayButton![0]
             let image: UIImage? = elem.image

@@ -159,7 +159,7 @@ class KStopTimeCell: UITableViewCell {
     @IBOutlet weak var realTimeImage: UIImageView!
 
     override func awakeFromNib() {
-        realTimeImage.image = UIImage(otpNamed: "durata")?.withRenderingMode(.alwaysTemplate)
+        realTimeImage.image = KOTPAssets.durata.image.withRenderingMode(.alwaysTemplate)
         realTimeImage.isHidden = true
         realTimeImage.tintColor = KTripTheme.shared.colorFor(text: .timeReal)
     }

@@ -12,11 +12,7 @@ import Foundation
 extension KConstants {
     
     @objc public static let currentLanguage: String = {
-        let lang = "LANGUAGE".localizedString()
-        if lang == "LANGUAGE"{
-            assertionFailure("DEVI CONFIGUARE LA KEY 'LANGUAGE' NEL LOCALIZABLE.STRINGS")
-        }
-        return lang
+        return KLocalization.language
     }()
     
 }

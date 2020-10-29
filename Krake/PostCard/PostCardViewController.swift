@@ -40,13 +40,13 @@ class PostCardViewController: UIViewController, UITextFieldDelegate{
             address = KAddressBook()
         }
         var button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        button.setImage(UIImage(krakeNamed: "person")!, for: .normal)
+        button.setImage(KAssets.Images.person.image, for: .normal)
         button.addTarget(self, action: #selector(PostCardViewController.openContacts(_:)), for: .touchUpInside)
         KTheme.current.applyTheme(toButton: button, style: .default)
         nomeMittente.rightView = button
         nomeMittente.rightViewMode = .always
         button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        button.setImage(UIImage(krakeNamed: "person"), for: .normal)
+        button.setImage(KAssets.Images.person.image, for: .normal)
         button.addTarget(self, action: #selector(PostCardViewController.openContacts(_:)), for: .touchUpInside)
         KTheme.current.applyTheme(toButton: button, style: .default)
         nomeDestinatario.rightView = button
@@ -76,7 +76,7 @@ class PostCardViewController: UIViewController, UITextFieldDelegate{
         title = postCard.titlePartTitle
         immagine.setImage(media: postCard.galleryMediaParts?.firstObject, options: KMediaImageLoadOptions(size: CGSize.zero, mode: .Max))
 
-        let send = UIBarButtonItem(image: UIImage(krakeNamed: "send"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(PostCardViewController.sendPostCard(_:)))
+        let send = UIBarButtonItem(image: KAssets.Images.send.image, style: UIBarButtonItem.Style.plain, target: self, action: #selector(PostCardViewController.sendPostCard(_:)))
         navigationItem.rightBarButtonItem = send
     }
 

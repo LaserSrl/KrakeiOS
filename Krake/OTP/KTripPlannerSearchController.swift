@@ -144,7 +144,7 @@ open class KTripPlannerSearchController : UIViewController,
         dateModeSelection.setTitle("tripModeArrivo".localizedString(), forSegmentAt: 1)
         dateModeSelection.tintColor = KTheme.current.color(.tint)
         pickDateButton.tintColor = KTheme.current.color(.tint)
-        pickDateButton.setImage(UIImage(otpNamed:"ic_plan_date"), for: .normal)
+        pickDateButton.setImage(KOTPAssets.icPlanDate.image, for: .normal)
 
         locationManager.request { (manager, status, _) in
             if status == .authorizedWhenInUse || status == .authorizedAlways {
@@ -498,7 +498,7 @@ open class KTripPlannerSearchController : UIViewController,
 
         if (mode == .showSingleTransitWithBackNavigation && self.navigationItem.leftBarButtonItem == originalLeftButtonItem)
         {
-            self.navigationItem.setLeftBarButton(UIBarButtonItem(image: UIImage(otpNamed:"ic_arrow_back"), style: .plain, target: self, action: #selector(showPlannedTripTransists)), animated: true)
+            self.navigationItem.setLeftBarButton(UIBarButtonItem(image: KOTPAssets.icArrowBack.image, style: .plain, target: self, action: #selector(showPlannedTripTransists)), animated: true)
         }
         else if self.navigationItem.leftBarButtonItem != originalLeftButtonItem {
             self.navigationItem.setLeftBarButton(originalLeftButtonItem, animated:  true)

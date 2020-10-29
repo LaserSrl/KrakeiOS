@@ -67,7 +67,7 @@ public class KMainGameBoardViewController: UIViewController, UICollectionViewDat
         var buttons = [UIBarButtonItem]()
         
         let leaderboards = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 32.0, height: 32.0))
-        leaderboards.setImage(UIImage(krakeNamed:"game_center"), for: .normal)
+        leaderboards.setImage(KGameQuizAssets.gameCenter.image, for: .normal)
         leaderboards.layer.cornerRadius = 5
         leaderboards.imageEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         leaderboards.addTarget(self, action: #selector(showLeaderBoards(sender:)), for: .touchUpInside)
@@ -75,7 +75,7 @@ public class KMainGameBoardViewController: UIViewController, UICollectionViewDat
         buttons.append(leaderboardsBarButton)
         
         if policyEndPoint != nil {
-            let image = UIImage(krakeNamed: "license")
+            let image = KAssets.OrchardMapper.license.image
             let policyBarButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(openPolicy))
             buttons.append(policyBarButton)
         }

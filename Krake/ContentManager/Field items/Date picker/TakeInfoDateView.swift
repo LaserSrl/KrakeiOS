@@ -51,7 +51,7 @@ open class TakeInfoDateView: UIView {
         // Creating the button that should be used to open the calendar.
         openCalendarButton = UIButton(type: .system)
         openCalendarButton.translatesAutoresizingMaskIntoConstraints = false
-        openCalendarButton.setImage(UIImage(krakeNamed: "calendar"), for: .normal)
+        openCalendarButton.setImage(KAssets.Images.calendar.image, for: .normal)
         openCalendarButton.setContentHuggingPriority(UILayoutPriority.priority(251), for: .horizontal)
         openCalendarButton.setContentCompressionResistancePriority(UILayoutPriority.priority(1000), for: .horizontal)
         addSubview(openCalendarButton)

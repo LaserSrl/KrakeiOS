@@ -26,7 +26,7 @@ public class TwitterKit: NSObject, KLoginProviderProtocol{
     
     public func getLoginView() -> UIView {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(krakeNamed:"twitter_login"), for: .normal)
+        button.setImage(KAssets.Images.twitterLogin.image, for: .normal)
         button.addTarget(self, action: #selector(TwitterKit.signIn), for: .touchUpInside)
         return button
     }

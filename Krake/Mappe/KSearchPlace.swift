@@ -171,13 +171,13 @@ open class KSearchPlaceViewController: UIViewController, UITableViewDelegate, UI
         if myLocation != nil && (indexPath as NSIndexPath).section == 0 {
             title.text = "LAMIAPOS".localizedString()
             subtitle.text = myLocation?.placemark.title
-            imageView?.image = UIImage(krakeNamed: "pin_pos")!.withRenderingMode(.alwaysTemplate)
+            imageView?.image = KAssets.Images.pinPos.image.withRenderingMode(.alwaysTemplate)
         }else{
             if let item = items?[(indexPath as NSIndexPath).row]{
                 title.text = item.name
                 subtitle.text = item.placemark.title
                 let imageNamed = searchBar.placeholder == "To".localizedString() ? "pin_traguardo" : "pin_partenza"
-                imageView?.image = UIImage(krakeNamed: imageNamed)!.withRenderingMode(.alwaysTemplate)
+                imageView?.image = KImageAsset(name: imageNamed).image.withRenderingMode(.alwaysTemplate)
             }
         }
 

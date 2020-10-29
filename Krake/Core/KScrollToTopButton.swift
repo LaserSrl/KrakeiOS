@@ -55,7 +55,7 @@ open class KScrollToTopButton: NSObject {
                                                                     height: 36)))
         scrollToTopButton.translatesAutoresizingMaskIntoConstraints = false
         // Adding colors and normal image.
-        scrollToTopButton.setImage(UIImage(krakeNamed: "scroll_top"),
+        scrollToTopButton.setImage(KAssets.Images.scrollTop.image,
                                    for: .normal)
         // Setting the target of touchUpInside event.
         scrollToTopButton.addTarget(self,

@@ -123,7 +123,7 @@ open class KMapPlainButton: UIButton, KExtendedMapViewDelegate, KDetailViewProto
         addTarget(self, action: #selector(KMapPlainButton.openMapFullScreen), for: .touchUpInside)
         if image(for: .normal) == nil
         {
-            setImage(UIImage(krakeNamed: "OCmap"), for: .normal)
+            setImage(KAssets.Images.oCmap.image, for: .normal)
         }
         if title(for: .normal)?.isEmpty ?? true
         {
@@ -136,7 +136,7 @@ open class KMapPlainButton: UIButton, KExtendedMapViewDelegate, KDetailViewProto
     open override func prepareForInterfaceBuilder()
     {
         super.prepareForInterfaceBuilder()
-        setImage(UIImage(krakeNamed: "OCmap"), for: .normal)
+        setImage(KAssets.Images.oCmap.image, for: .normal)
         setTitle("Mappa".localizedString(), for: .normal)
     }
     

@@ -157,7 +157,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
     public static func mediaViewController(_ mediaKeyPath: String! = ContentManagerKeys.GALLERY,
                                            coreDataKeyPath: String? = nil,
                                            availableMedia: [ReportMedia]! = [ReportMedia.photo, ReportMedia.video, ReportMedia.audio],
-                                           titolo: String! = "CHOOSE_TAKE_PHOTO".localizedString(),
+                                           titolo: String! = KLocalization.chooseTakePhoto,
                                            maxNumberOfMedias: UInt = 0,
                                            watermark: Watermark? = nil,
                                            required: Bool = false,
@@ -176,7 +176,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
      
      - returns: ritorna un UIViewController derivato da AddReportViewController
      */
-    public static func infoViewController(_ titolo: String = "RELATED_FIELDS".localizedString()) -> TakeInfo{
+    public static func infoViewController(_ titolo: String = KLocalization.relatedFields) -> TakeInfo{
         let vc = getViewController("TakeInfo") as! TakeInfo
         vc.title = titolo
         return vc
@@ -215,7 +215,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
      */
     public static func mapViewController(_ mapKeyPath: String! = ContentManagerKeys.MAPPART,
                                          coreDataKeyPath: String? = nil,
-                                         titolo: String! = "LAMIAPOS".localizedString(),
+                                         titolo: String! = KLocalization.lamiapos,
                                          required: Bool = false) -> ContentModificationViewController{
         let vc = getViewController("MapInfo") as! MapInfo
         vc.title = titolo
@@ -226,7 +226,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
     
     public static func policiesRegistrationViewController(_ mapKeyPath: String! = ContentManagerKeys.USERPOLICYPART,
                                        coreDataKeyPath: String? = nil,
-                                       titolo: String! = "Policy".localizedString(),
+                                       titolo: String! = KLocalization.policy,
                                        type: PolicyType = .all) -> ContentModificationViewController{
         let vc = getViewController("PoliciesRegistration") as! PoliciesRegistrationViewController
         vc.title = titolo
@@ -322,7 +322,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         view.addGestureRecognizer(rightToLeft)
         view.addGestureRecognizer(leftToRight)
         
-        let sendButton = UIBarButtonItem(title: "SAVE".localizedString(), style: .done, target: self, action: #selector(ContentModificationContainerViewController.sendAllContentToWS))
+        let sendButton = UIBarButtonItem(title: KLocalization.save, style: .done, target: self, action: #selector(ContentModificationContainerViewController.sendAllContentToWS))
         sendButton.isEnabled = false
         navigationItem.rightBarButtonItem = sendButton
         
@@ -355,8 +355,8 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
 
         if aliasContentModification != nil && originalObjectValues == nil {
             hud.mode = .indeterminate
-            hud.label.text = "wait".localizedString()
-            hud.detailsLabel.text = "on_loading".localizedString()
+            hud.label.text = KLocalization.wait
+            hud.detailsLabel.text = KLocalization.onLoading
             hud.show(animated: true)
             let params = KRequestParameters.parametersNoCache()
             OGLCoreDataMapper.sharedInstance().loadData(withDisplayAlias: aliasContentModification!, extras: params, loginRequired: true) { [weak self] (objectId, error, completed) -> Void in
@@ -431,8 +431,8 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
             let alert:UIAlertController
             if aliasContentModification == nil {
                 alert = UIAlertController(title: KInfoPlist.appName, message: "Vuoi chiudere e salvare il contenuto?".localizedString(), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Cancel".localizedString(), style: .cancel, handler: nil))
-                alert.addAction(UIAlertAction(title: "Si".localizedString(), style: .default, handler: { (action: UIAlertAction) in
+                alert.addAction(UIAlertAction(title: KLocalization.cancel, style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: KLocalization.si, style: .default, handler: { (action: UIAlertAction) in
                     self.backupParams(self.params)
                     self.closeViewController(false, userClose: true)
                 }))
@@ -442,7 +442,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
                 }))
             } else {
                 alert = UIAlertController(title: KInfoPlist.appName, message: "Vuoi chiudere? Perderai le tue modifiche non salvate".localizedString(), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Cancel".localizedString(), style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: KLocalization.cancel, style: .cancel, handler: nil))
                 alert.addAction(UIAlertAction(title: "Esci comunque".localizedString(), style: .default, handler: { (action: UIAlertAction) in
                     self.closeViewController(false, userClose: true)
                 }))
@@ -585,8 +585,8 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
                                         }
                                     } else {
                                         mySelf.hud.mode = .customView
-                                        mySelf.hud.customView = UIImageView(image: UIImage(krakeNamed: "error"))
-                                        mySelf.hud.label.text = "Error".localizedString()
+                                        mySelf.hud.customView = UIImageView(image: KAssets.Images.error.image)
+                                        mySelf.hud.label.text = KLocalization.error
 
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                             mySelf.hud.hide(animated: true)
@@ -603,7 +603,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
                 }
 
                 mySelf.hud.mode = .customView
-                mySelf.hud.label.text = "Error".localizedString()
+                mySelf.hud.label.text = KLocalization.error
                 KMessageManager.showMessage(error.localizedDescription, type: .error, fromViewController: mySelf )
                 mySelf.hud.hide(animated: true)
                 mySelf.navigationItem.rightBarButtonItem?.isEnabled = true
@@ -697,7 +697,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         }
         
         hud.progress = (Float(totSent) / Float(totExpectedToSend))
-        hud.detailsLabel.text = "on_loading".localizedString() + "\n\n" + String(format:"%.2f MB / %.2f MB", Double(totSent)/1024.0/1024.0, Double(totExpectedToSend)/1024.0/1024.0)
+        hud.detailsLabel.text = KLocalization.onLoading + "\n\n" + String(format:"%.2f MB / %.2f MB", Double(totSent)/1024.0/1024.0, Double(totExpectedToSend)/1024.0/1024.0)
         
         if allTasksFinished {
             var allUploadFinished = true
@@ -762,8 +762,8 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
             KMessageManager.showMessage(error, type: .error, fromViewController : self )
         } else {
             hud.mode = .determinate
-            hud.label.text = "wait".localizedString()
-            hud.detailsLabel.text = "on_loading".localizedString()
+            hud.label.text = KLocalization.wait
+            hud.detailsLabel.text = KLocalization.onLoading
             hud.show(animated: true)
             
             // Removing all tasks from the list before trying to upload new medias,

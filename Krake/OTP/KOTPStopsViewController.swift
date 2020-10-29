@@ -87,26 +87,24 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
         }
     }
     private lazy var placeholderImage: UIImage? = {
-        if let originalImage = UIImage(otpNamed: "bus_stop")?.imageTinted(UIColor.white) {
-            let drawingRect = CGRect(origin: .zero, size: CGSize(width: 28, height: 28))
-            UIGraphicsBeginImageContextWithOptions(drawingRect.size, false, 0)
-            let image: UIImage?
-            if let context = UIGraphicsGetCurrentContext() {
-                context.setFillColor(KTheme.current.color(.tint).cgColor)
-                let path = UIBezierPath(roundedRect: drawingRect, cornerRadius: 6)
-                context.addPath(path.cgPath)
-                context.fillPath()
-                let edgeInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
-                let toDraw = drawingRect.inset(by: edgeInset)
-                originalImage.draw(in: toDraw)
-                image = UIGraphicsGetImageFromCurrentImageContext()
-                UIGraphicsEndImageContext()
-            } else {
-                image = originalImage
-            }
-            return image
+        let originalImage = KOTPAssets.busStop.image.imageTinted(UIColor.white)
+        let drawingRect = CGRect(origin: .zero, size: CGSize(width: 28, height: 28))
+        UIGraphicsBeginImageContextWithOptions(drawingRect.size, false, 0)
+        let image: UIImage?
+        if let context = UIGraphicsGetCurrentContext() {
+            context.setFillColor(KTheme.current.color(.tint).cgColor)
+            let path = UIBezierPath(roundedRect: drawingRect, cornerRadius: 6)
+            context.addPath(path.cgPath)
+            context.fillPath()
+            let edgeInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+            let toDraw = drawingRect.inset(by: edgeInset)
+            originalImage.draw(in: toDraw)
+            image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+        } else {
+            image = originalImage
         }
-        return nil
+        return image
     }()
     private lazy var searchInitializer: KOTPStopsSearchInitializer = KOTPBaseStopsSearchInitializer()
 
@@ -132,14 +130,14 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
         labelSlider.text = String(format: "%d m", initialSearchRadius)
         let item = UIButton(type: .system)
         item.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
-        item.setImage(UIImage(krakeNamed: "pin_pos"), for: .normal)
+        item.setImage(KAssets.Images.pinPos.image, for: .normal)
         item.tintColor = KTheme.current.color(.tint)
         item.addTarget(self,
                        action: #selector(KOTPStopsViewController.refreshUserPosition),
                        for: .touchUpInside)
         sourceAddressTextField.leftView = item
         sourceAddressTextField.leftViewMode = .always
-        let button = UIBarButtonItem(image: UIImage(otpNamed: "arrow_up"),
+        let button = UIBarButtonItem(image: KOTPAssets.arrowUp.image,
                                      style: .done,
                                      target: self,
                                      action: #selector(KOTPStopsViewController.changeSearchViewVisibility))
@@ -154,7 +152,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
             searchView.addGestureRecognizer(tapGesture)
             
             let imv = UIImageView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
-            imv.image = UIImage(otpNamed: "bus_stop")?.withRenderingMode(.alwaysTemplate)
+            imv.image = KOTPAssets.busStop.image.withRenderingMode(.alwaysTemplate)
             imv.contentMode = .center
             stopSearch.leftViewMode = .always
             stopSearch.leftView = imv
@@ -190,7 +188,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
         super.viewWillAppear(animated)
         if KOTPLocationManager.shared.monitoredRegions.count>0
         {
-            let barButton = UIBarButtonItem(image: UIImage(krakeNamed: "remove_alarm"), style: .plain, target: self, action: #selector(stopMonitoring))
+            let barButton = UIBarButtonItem(image: KAssets.Images.removeAlarm.image, style: .plain, target: self, action: #selector(stopMonitoring))
             navigationItem.leftBarButtonItem = barButton
         }else{
             navigationItem.leftBarButtonItem = nil
@@ -198,7 +196,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
     }
     
     @objc func stopMonitoring(){
-        let alert = UIAlertController(title: KInfoPlist.appName, message: "OTP_DISABLE_ALL_STOPS_NOTIFICATION_?".localizedString(), preferredStyle: .alert)
+        let alert = UIAlertController(title: KInfoPlist.appName, message: "OTP_DISABLE_ALL_STOPS_NOTIFICATION_QUESTION".localizedString(), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Si".localizedString(), style: .default, handler: { (action) in
             KOTPLocationManager.shared.stopMonitoringRegions()
             self.navigationItem.leftBarButtonItem = nil
@@ -362,7 +360,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
         guard !self.searchViewHiddenBottom.isActive else { return }
         // Sostituisco l'icona del pulsante che viene utilizzato per modificare
         // la visibilità della search view.
-        navigationItem.rightBarButtonItem?.image = UIImage(krakeNamed: "search")
+        navigationItem.rightBarButtonItem?.image = KAssets.Images.search.image
         // Modifico la visibilità della search view animatamente.
         UIView.animate(withDuration: 0.2,
                        animations: {
@@ -383,7 +381,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
         guard self.searchViewHiddenBottom.isActive else { return }
         // Sostituisco l'icona del pulsante che viene utilizzato per modificare
         // la visibilità della search view.
-        navigationItem.rightBarButtonItem?.image = UIImage(otpNamed: "arrow_up")
+        navigationItem.rightBarButtonItem?.image = KOTPAssets.arrowUp.image
         // Modifico la visibilità della search view animatamente.
         let searchViewHeight = searchView.bounds.height
         UIView.animate(withDuration: 0.2,
@@ -615,7 +613,7 @@ class UserSelectedPoint: NSObject, MKAnnotation, AnnotationProtocol {
     }
     
     func imageInset() -> UIImage? {
-        return UIImage(otpNamed: nameAnnotation())
+        return KAssets.Images.pinPos.image
     }
     
     override func value(forUndefinedKey key: String) -> Any? {

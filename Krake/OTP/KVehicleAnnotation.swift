@@ -42,7 +42,7 @@ public class KVehicleAnnotation: MKPointAnnotation, AnnotationProtocol {
         if let mode = line.routeInfo?.mode{
             return KTripTheme.shared.imageFor(vehicleType: mode)
         }
-        return UIImage(otpNamed: "pin_bus")
+        return KOTPAssets.pinBus.image
     }
     
     override public func value(forUndefinedKey key: String) -> Any? {

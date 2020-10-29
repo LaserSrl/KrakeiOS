@@ -117,23 +117,21 @@ open class KTripDefaultTheme: NSObject,  KTripPlanTheme {
 
     open func imageFor(travelMode mode: KTravelMode) -> UIImage {
 
-        let imageName: String
+        let image: UIImage
         
         switch mode {
         case .bicycle:
-            imageName = "ic_directions_bike"
+            image = KOTPAssets.icDirectionsBike.image
 
         case .car:
-            imageName = "ic_directions_car"
+            image = KOTPAssets.icDirectionsCar.image
 
         case .walk:
-            imageName = "ic_directions_walk"
+            image = KOTPAssets.icDirectionsWalk.image
 
         case .transit:
-            imageName = "ic_directions_transit"
+            image = KOTPAssets.icDirectionsTransit.image
         }
-
-        let image = UIImage(otpNamed: imageName)!
 
         let size = image.size
 
@@ -142,34 +140,34 @@ open class KTripDefaultTheme: NSObject,  KTripPlanTheme {
 
     open func imageFor(maneuver: KManeuver) -> UIImage {
 
-        let imageName: String
+        let image: UIImage
         switch maneuver {
         case .depart, .keepGoing:
-            imageName = "continua_dritto"
+            image = KOTPAssets.continuaDritto.image
 
         case .right, .hardRight:
-            imageName = "destra_90"
+            image = KOTPAssets.destra90.image
 
         case .slightlyRight:
-            imageName = "destra_45"
+            image = KOTPAssets.destra45.image
 
         case .circleClockwise, .circleCounterClockwise:
-            imageName = "rotonda"
+            image = KOTPAssets.rotonda.image
 
         case .left, .hardLeft:
-            imageName = "sinistra_90"
+            image = KOTPAssets.sinistra90.image
 
         case .slightlyLeft:
-            imageName = "sinistra_45"
+            image = KOTPAssets.sinistra45.image
 
         case .uturnRight:
-            imageName = "inversione_u_dx"
+            image = KOTPAssets.inversioneUDx.image
 
         case .uturnLeft:
-            imageName = "inversione_u_sx"
+            image = KOTPAssets.inversioneUSx.image
         }
 
-        return UIImage(otpNamed: imageName)!.withRenderingMode(.alwaysTemplate)
+        return image.withRenderingMode(.alwaysTemplate)
     }
 
     open func colorFor(text: KTripText) ->  UIColor
@@ -206,19 +204,19 @@ open class KTripDefaultTheme: NSObject,  KTripPlanTheme {
 
     open func imageFor(vehicleType vehicle: KVehicleType) -> UIImage
     {
-        let imageName: String
+        let image: UIImage
         switch vehicle {
         case .subway:
-            imageName = "pin_metro"
+            image = KOTPAssets.pinMetro.image
         case .tram:
-            imageName = "pin_tram"
+            image = KOTPAssets.pinTram.image
         case .bus:
-            imageName = "pin_bus"
+            image = KOTPAssets.pinBus.image
         default:
-            imageName = "ic_directions_transit"
+            image = KOTPAssets.icDirectionsTransit.image
         }
 
-        return UIImage(otpNamed: imageName)!.withRenderingMode(.alwaysTemplate)
+        return image.withRenderingMode(.alwaysTemplate)
     }
 
     open func pinName(_ pin: KTripPinName) -> String {

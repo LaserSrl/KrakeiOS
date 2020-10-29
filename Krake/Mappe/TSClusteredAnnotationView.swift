@@ -34,11 +34,11 @@ open class KClusterAnnotationView: ClusterAnnotationView {
         }else{
             var rounded: Float = 0.0
             if count < 10{
-                image = UIImage(krakeNamed: "small-cluster")
+                image = KAssets.Images.smallCluster.image
             }else if count < 100 {
-                image = UIImage(krakeNamed: "medium-cluster")
+                image = KAssets.Images.mediumCluster.image
             }else{
-                image = UIImage(krakeNamed: "bigCluster")
+                image = KAssets.Images.bigCluster.image
             }
             frame = CGRect(origin: CGPoint.zero, size: CGSize( width: image!.size.width, height: image!.size.height))
             centerOffset = CGPoint.zero

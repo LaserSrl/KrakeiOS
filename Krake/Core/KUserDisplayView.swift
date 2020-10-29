@@ -157,7 +157,7 @@ public class KUserDisplayView: UIView {
         nameFirstLettersButton.setTitle("", for: .normal)
         if let user = user {
             let remoteImg = user.imageGallery?.firstObject
-            userImageView.setImage(media: remoteImg, placeholderImage: UIImage(omNamed: "user_placeholder"))
+            userImageView.setImage(media: remoteImg, placeholderImage: KAssets.OrchardMapper.userPlaceholder.image)
             
             logoutButton.hiddenAnimated = KInfoPlist.Login.canUserLogout ? false : true
             
@@ -188,7 +188,7 @@ public class KUserDisplayView: UIView {
         else {
             userImageView.image = KTheme.current.placeholder(.people)
             logoutButton.hiddenAnimated = true
-            userNameLabel.text = "Login".localizedString()
+            userNameLabel.text = "login".localizedString()
         }
     }
 }

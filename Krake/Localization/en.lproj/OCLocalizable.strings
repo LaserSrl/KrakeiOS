@@ -53,8 +53,7 @@
 "on_loading" = "Loading...";
 
 //ORCHARD LOGIN
-"LOGIN"="Login with";
-"Login" = "Login";
+"LOGIN_WITH"="Login with";
 "Registration" = "Registration";
 "register" = "Registered";
 "Cancel" = "Cancel";
@@ -236,7 +235,7 @@
 "OTP_STOP_NOTIFICATION" = "You are about to arrive at the '%@' stop";
 "OTP_ENABLE_STOP_NOTIFICATION_?" = "Would you like to be notified when you are about to reach the stop?";
 "OTP_DISABLE_STOP_NOTIFICATION_?" = "Do you want to disable the notification?";
-"OTP_DISABLE_ALL_STOPS_NOTIFICATION_?" = "Do you want to disable all notifications?";
+"OTP_DISABLE_ALL_STOPS_NOTIFICATION_QUESTION" = "Do you want to disable all notifications?";
 
 /*
  GameQuiz

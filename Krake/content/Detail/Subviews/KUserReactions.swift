@@ -263,11 +263,13 @@ open class KUserReactions: UIView, KDetailViewProtocol {
                 button = UIButton(type: .custom)
                 button?.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
                 button?.tag = reaction.typeIdentifier.intValue
-                if let actImage = UIImage(krakeNamed: reaction.typeName), let actSelImage = UIImage(krakeNamed: reaction.typeName + "_sel"){
-                    button?.setImage(((!reactionAuthorized && reaction.clicked) ? actSelImage : actImage ).imageTinted(KTheme.current.reactionColor(!reactionAuthorized ? (reaction.clicked ? .disableSelected : .disableNormal) : .enableNormal)), for: .normal)
-                    button?.setImage(actImage.imageTinted(KTheme.current.reactionColor(.disableNormal)), for: .disabled)
-                    button?.setImage(actSelImage.imageTinted(KTheme.current.reactionColor(.enableSelected)), for: .selected)
-                }
+                
+                let actImage = KImageAsset(name: reaction.typeName).image
+                let actSelImage = KImageAsset(name: reaction.typeName + "_sel").image
+                
+                button?.setImage(((!reactionAuthorized && reaction.clicked) ? actSelImage : actImage ).imageTinted(KTheme.current.reactionColor(!reactionAuthorized ? (reaction.clicked ? .disableSelected : .disableNormal) : .enableNormal)), for: .normal)
+                button?.setImage(actImage.imageTinted(KTheme.current.reactionColor(.disableNormal)), for: .disabled)
+                button?.setImage(actSelImage.imageTinted(KTheme.current.reactionColor(.enableSelected)), for: .selected)
                 button?.setTitleColor(KTheme.current.reactionColor(!reactionAuthorized ? (reaction.clicked ? .disableSelected : .disableNormal) : .enableNormal), for: .normal)
                 button?.setTitleColor(KTheme.current.reactionColor(.enableSelected), for: .selected)
                 button?.setTitleColor(KTheme.current.reactionColor(.disableNormal), for: .disabled)

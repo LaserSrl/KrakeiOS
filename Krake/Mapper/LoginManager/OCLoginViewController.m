@@ -176,7 +176,7 @@
     [self.backButton setImage:[UIImage imageNamed:@"indietro" inBundle:[NSBundle bundleWithPath:bundlePath] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     self.backButton.alpha = 0.0;
     
-    self.loginWithLabel.text = [@"LOGIN" localizedString];
+    self.loginWithLabel.text = [@"LOGIN_WITH" localizedString];
     
     if(!Login.canUserCancelLogin)
     {
@@ -253,7 +253,7 @@
         
         [self.lostPassword setTitle:[@"lost_pwd" localizedString] forState:UIControlStateNormal];
         [self.registerButton setTitle:[@"Registration" localizedString] forState:UIControlStateNormal];
-        [self.loginButton setTitle:[@"Login" localizedString] forState:UIControlStateNormal];
+        [self.loginButton setTitle:[@"login" localizedString] forState:UIControlStateNormal];
         [self.registrationButton setTitle:[@"Register" localizedString] forState:UIControlStateNormal];
 
         self.lostPasswordLabel.text = [@"lost_pwd" localizedString];

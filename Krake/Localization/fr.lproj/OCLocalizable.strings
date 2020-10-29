@@ -50,8 +50,8 @@
 "on_loading" = "Chargement en cour...";
 
 //ORCHARD LOGIN
-"LOGIN"="Connectez-vous avec";
-"Login" = "Connexion";
+"LOGIN_WITH"="Connectez-vous avec";
+"login" = "Connexion";
 "Registration" = "Enregistrement";
 "register" = "Inscrit";
 "Cancel" = "Annule";
@@ -185,7 +185,6 @@
 "game_center_request" = "GameCenter is required to partecipate";
 "insert_phone_number" = "Insert your mobile phone number";
 "leave" = "Undo";
-"login" = "Login";
 "ops" = "Ops!";
 "punti" = "points";
 "r_u_ready" = "Are you ready?";

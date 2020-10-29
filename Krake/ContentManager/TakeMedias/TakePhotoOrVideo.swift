@@ -138,7 +138,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(0)-[imageView]-(0)-|", options: .directionLeftToRight, metrics: nil, views: ["imageView": imageView!]))
         
         button = UIButton(type: .system)
-        button.setImage(UIImage(krakeNamed: "delete"), for: .normal)
+        button.setImage(KAssets.Images.delete.image, for: .normal)
         KTheme.current.applyTheme(toButton: button, style: .fabButton)
         button.layer.cornerRadius = 20
         button.addTarget(self, action: #selector(ImageCollectionViewCell.deleteButton), for: .touchUpInside)
@@ -203,19 +203,19 @@ class TakePhotoOrVideo : ContentModificationViewController, UICollectionViewData
             var array = [UIBarButtonItem]()
             array.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
             if media.contains(ReportMedia.photo) == true{
-                takePhotoButton = UIBarButtonItem(image: UIImage(krakeNamed: "ic_camera"), style: .plain, target: self, action: #selector(TakePhotoOrVideo.takePhoto(_:event:)))
+                takePhotoButton = UIBarButtonItem(image: KAssets.Images.icCamera.image, style: .plain, target: self, action: #selector(TakePhotoOrVideo.takePhoto(_:event:)))
                 takePhotoButton.isEnabled = !(fields.first?.visibleOnly ?? false)
                 array.append(takePhotoButton)
                 array.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
             }
             if media.contains(ReportMedia.video) == true{
-                takeVideoButton = UIBarButtonItem(image: UIImage(krakeNamed: "ic_videocam"), style: .plain, target: self, action: #selector(TakePhotoOrVideo.takeVideo(_:event:)))
+                takeVideoButton = UIBarButtonItem(image: KAssets.Images.icVideocam.image, style: .plain, target: self, action: #selector(TakePhotoOrVideo.takeVideo(_:event:)))
                 takeVideoButton.isEnabled = !(fields.first?.visibleOnly ?? false)
                 array.append(takeVideoButton)
                 array.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
             }
             if media.contains(ReportMedia.audio) == true{
-                takeAudioButton = UIBarButtonItem(image: UIImage(krakeNamed: "ic_mic"), style: .plain, target: self, action: #selector(TakePhotoOrVideo.takeAudio(_:)))
+                takeAudioButton = UIBarButtonItem(image: KAssets.Images.icMic.image, style: .plain, target: self, action: #selector(TakePhotoOrVideo.takeAudio(_:)))
                 takeAudioButton.isEnabled = !(fields.first?.visibleOnly ?? false)
                 array.append(takeAudioButton)
                 array.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
@@ -323,7 +323,7 @@ class TakePhotoOrVideo : ContentModificationViewController, UICollectionViewData
             if medias.count < Int(maxNumberOfMedias) {
                 return true
             } else {
-                KMessageManager.showMessage("media_max_number_of_elem".localizedString(), type: .error, fromViewController: parentParentViewController)
+                KMessageManager.showMessage(KLocalization.mediaMaxNumberOfElem, type: .error, fromViewController: parentParentViewController)
                 return false
             }
         }

@@ -13,12 +13,6 @@ import Foundation
  for the list of report.
 */
 open class KReportage {
-    public static let GALLERY = "Gallery"
-    public static let TITLE = "TitlePart.Title"
-    public static let SUBTITLE = "Sottotitolo"
-    public static let CATEGORY = "Categoria"
-    public static let DESCRIPTION = "BodyPart.Text"
-    public static let LOCATION = "MapPart.Latitude"
 
     /**
      Create a new KListMapViewController that will present the reports retrieved
@@ -38,19 +32,19 @@ open class KReportage {
                                           showMap: Bool = false,
                                           contentStatus: [ContentStatus] =
         [ContentStatus(keyPath: "Created",
-                       title: "Created".localizedString(),
+                       title: KLocalization.created,
                        textColor: #colorLiteral(red: 0.9213396256, green: 0.4393665225, blue: 0.007960174915, alpha: 1),
                        backgroundColor: #colorLiteral(red: 0.9213396256, green: 0.4393665225, blue: 0.007960174915, alpha: 1)),
          ContentStatus(keyPath: "Loaded",
-                       title: "Loaded".localizedString(),
+                       title: KLocalization.loaded,
                        textColor: #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1),
                        backgroundColor: #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)),
          ContentStatus(keyPath: "Accepted",
-                       title: "Accepted".localizedString(),
+                       title: KLocalization.accepted,
                        textColor: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1),
                        backgroundColor: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)),
          ContentStatus(keyPath: "Rejected",
-                       title: "Rejected".localizedString(),
+                       title: KLocalization.rejected,
                        textColor: #colorLiteral(red: 0.8724222716, green: 0, blue: 0.008167404037, alpha: 1),
                        backgroundColor: #colorLiteral(red: 0.8724222716, green: 0, blue: 0.008167404037, alpha: 1))]) -> UIViewController {
         // Checking that the list of tab isn't empty.

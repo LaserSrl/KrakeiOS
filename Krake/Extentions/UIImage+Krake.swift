@@ -30,11 +30,6 @@ public enum AspectToFill: Int{
 
 public extension UIImage{
     
-    convenience init?(krakeNamed named: String){
-        guard let bundlePath = Bundle(for: Krake.self).path(forResource: "KrakeImages", ofType: "bundle") else { return nil }
-        self.init(named: named, in: Bundle(path: bundlePath), compatibleWith: nil)
-    }
-    
     @objc static func imageOBJC(_ color: UIColor, size: CGSize) -> UIImage{
         return image(color, size: size)
     }

@@ -248,15 +248,15 @@ open class KMainTheme: NSObject, KThemeProtocol {
     open func placeholder(_ style: PlaceholderStyle) -> UIImage? {
         switch style {
         case .photo, .category:
-            return UIImage(omNamed: "photo_placeholder")
+            return KAssets.OrchardMapper.photoPlaceholder.image
         case .video:
-            return UIImage(omNamed: "video_placeholder")
+            return KAssets.OrchardMapper.videoPlaceholder.image
         case .audio:
-            return UIImage(omNamed: "audio_placeholder")
+            return KAssets.OrchardMapper.audioPlaceholder.image
         case .people:
-            return UIImage(omNamed: "user_placeholder")
+            return KAssets.OrchardMapper.userPlaceholder.image
         default:
-            return UIImage(omNamed: "default_placeholder")
+            return KAssets.OrchardMapper.defaultPlaceholder.image
         }
     }
     
@@ -451,7 +451,7 @@ open class KMainTheme: NSObject, KThemeProtocol {
         view.userNameLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         view.userNameLabel.textColor = KTheme.current.color(.textTint)
         
-        view.logoutButton.setImage(UIImage(krakeNamed: "logout"), for: .normal)
+        view.logoutButton.setImage(KAssets.Images.logout.image, for: .normal)
         view.logoutButton.tintColor = KTheme.current.color(.textTint)
     }
     

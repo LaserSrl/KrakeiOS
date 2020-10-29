@@ -27,7 +27,7 @@ class MapViewAnnotation : NSObject, MKAnnotation {
 }
 
 class MapInfo : ContentModificationViewController, MKMapViewDelegate, UISearchBarDelegate, KSearchPlaceDelegate {
-    var titlePosition: String! = "LAMIAPOS".localizedString()
+    var titlePosition: String! = KLocalization.lamiapos
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var titleLabel: UILabel!
@@ -50,7 +50,7 @@ class MapInfo : ContentModificationViewController, MKMapViewDelegate, UISearchBa
         mapView.delegate = self
         
         searchBar.barTintColor = KTheme.current.color(.tint)
-        searchBar.placeholder = "SEARCH".localizedString()
+        searchBar.placeholder = KLocalization.search
         titleLabel.backgroundColor = KTheme.current.color(.tint)
         titleLabel.textColor = KTheme.current.color(.textTint)
         

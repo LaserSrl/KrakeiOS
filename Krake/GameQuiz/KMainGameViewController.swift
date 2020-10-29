@@ -46,7 +46,7 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let image = UIImage(gameQuizNamed: "background")!
+        let image = KGameQuizAssets.background.image
         view.backgroundColor = UIColor(patternImage: image)
         
         headerView.backgroundColor = KGameQuiz.theme.color(.tint)
@@ -57,13 +57,13 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
         totalPointLabel.textColor = KGameQuiz.theme.color(.tintText)
         partialPointLabel.textColor = KGameQuiz.theme.color(.tintText)
         
-        timeImageView.image = UIImage(gameQuizNamed: "ic_alarm")!.withRenderingMode(.alwaysTemplate)
+        timeImageView.image = KGameQuizAssets.icAlarm.image.withRenderingMode(.alwaysTemplate)
         timeImageView.tintColor = KGameQuiz.theme.color(.tintText)
         
-        pointsImageView.image = UIImage(gameQuizNamed: "ic_star_border")!.withRenderingMode(.alwaysTemplate)
+        pointsImageView.image = KGameQuizAssets.icStarBorder.image.withRenderingMode(.alwaysTemplate)
         pointsImageView.tintColor = KGameQuiz.theme.color(.tintText)
         
-        exitButton.setImage(UIImage(gameQuizNamed: "ic_close")!.withRenderingMode(.alwaysTemplate), for: .normal)
+        exitButton.setImage(KGameQuizAssets.icClose.image.withRenderingMode(.alwaysTemplate), for: .normal)
         exitButton.tintColor = KGameQuiz.theme.color(.tintText)
         
         hideComponents(true)

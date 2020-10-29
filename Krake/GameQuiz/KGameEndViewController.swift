@@ -23,7 +23,7 @@ class KGameEndViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scorePointsImageView.image = UIImage(gameQuizNamed: "star")?.withRenderingMode(.alwaysTemplate)
+        scorePointsImageView.image = KGameQuizAssets.star.image.withRenderingMode(.alwaysTemplate)
         scorePointsImageView.tintColor = KGameQuiz.theme.color(.starTint)
         
         endLabel.textColor = KGameQuiz.theme.color(.text)

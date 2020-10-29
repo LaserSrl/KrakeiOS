@@ -21,6 +21,12 @@
 		CD05096C24B84A11005C793D /* KNetworkManager+SignalTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KNetworkManager+SignalTrigger.swift"; sourceTree = "<group>"; };
 		CD312223225C7DFA00DC06C8 /* KNoElementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNoElementCell.swift; sourceTree = "<group>"; };
 		CD4C001A2292E286009727A7 /* KVehicleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVehicleAnnotation.swift; sourceTree = "<group>"; };
+		CD55FAA8254AB0B000FC4BB1 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		CD55FABD254AB50A00FC4BB1 /* KAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAssets.swift; sourceTree = "<group>"; };
+		CD55FABE254AB50A00FC4BB1 /* KStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KStrings.swift; sourceTree = "<group>"; };
+		CD55FB4F254ABF3B00FC4BB1 /* KOTPAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPAssets.swift; sourceTree = "<group>"; };
+		CD55FB50254AC24900FC4BB1 /* KPuzzleGameAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPuzzleGameAssets.swift; sourceTree = "<group>"; };
+		CD55FB51254AC25500FC4BB1 /* KGameQuizAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGameQuizAssets.swift; sourceTree = "<group>"; };
 		CDBABB9F23AA1316009D4CB1 /* AppleSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSignIn.swift; sourceTree = "<group>"; };
 		CDBABBA123AA3329009D4CB1 /* KeychainItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
 		CDBB7626219C7EDA00122E7E /* OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
@@ -78,7 +84,6 @@
 		CDBB7663219C7EDA00122E7E /* KOTPBasePublicTransportListMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOTPBasePublicTransportListMapViewController.swift; sourceTree = "<group>"; };
 		CDBB7664219C7EDA00122E7E /* KTripPlannerResultCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTripPlannerResultCells.swift; sourceTree = "<group>"; };
 		CDBB7665219C7EDA00122E7E /* KTripPlannerResultsDisplayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTripPlannerResultsDisplayer.swift; sourceTree = "<group>"; };
-		CDBB7666219C7EDA00122E7E /* UIImage+OTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+OTP.swift"; sourceTree = "<group>"; };
 		CDBB7667219C7EDA00122E7E /* MKCoordinateRegion+OTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+OTP.swift"; sourceTree = "<group>"; };
 		CDBB7668219C7EDA00122E7E /* OCOTPStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OCOTPStoryboard.storyboard; sourceTree = "<group>"; };
 		CDBB7669219C7EDA00122E7E /* KTripPlannerSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTripPlannerSearchController.swift; sourceTree = "<group>"; };
@@ -351,6 +356,7 @@
 		CDBB7606219C7E8800122E7E = {
 			isa = PBXGroup;
 			children = (
+				CD55FAA8254AB0B000FC4BB1 /* swiftgen.yml */,
 				CDBB78B5219C7EFE00122E7E /* Krake.podspec */,
 				CDBB7611219C7E8800122E7E /* Krake */,
 			);
@@ -503,6 +509,7 @@
 		CDBB765D219C7EDA00122E7E /* OTP */ = {
 			isa = PBXGroup;
 			children = (
+				CD55FB4F254ABF3B00FC4BB1 /* KOTPAssets.swift */,
 				CDBB765E219C7EDA00122E7E /* KBusLine.swift */,
 				CDDA994922905720008B205B /* KBusTracker.swift */,
 				CDBB7673219C7EDA00122E7E /* KDurationFormatter.swift */,
@@ -534,7 +541,6 @@
 				CDBB766B219C7EDA00122E7E /* OCOTP.xcassets */,
 				CDBB7668219C7EDA00122E7E /* OCOTPStoryboard.storyboard */,
 				5D1F63FD2296A81800B671FF /* RoutesTableViewController.swift */,
-				CDBB7666219C7EDA00122E7E /* UIImage+OTP.swift */,
 			);
 			path = OTP;
 			sourceTree = "<group>";
@@ -616,6 +622,7 @@
 		CDBB769E219C7EDA00122E7E /* PuzzleGame */ = {
 			isa = PBXGroup;
 			children = (
+				CD55FB50254AC24900FC4BB1 /* KPuzzleGameAssets.swift */,
 				CDBB769F219C7EDA00122E7E /* PuzzleGenerator.swift */,
 				CDBB76A0219C7EDA00122E7E /* PuzzleGame.xcassets */,
 				CDBB76A1219C7EDA00122E7E /* Puzzle.swift */,
@@ -760,6 +767,7 @@
 		CDBB76D2219C7EDB00122E7E /* GameQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				CD55FB51254AC25500FC4BB1 /* KGameQuizAssets.swift */,
 				CDBB76D3219C7EDB00122E7E /* GameQuiz.xcassets */,
 				CDBB76D4219C7EDB00122E7E /* KGameQuizTheme.swift */,
 				CDBB76D5219C7EDB00122E7E /* SKBounceAnimation.m */,
@@ -780,6 +788,8 @@
 		CDBB76E0219C7EDB00122E7E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				CD55FABD254AB50A00FC4BB1 /* KAssets.swift */,
+				CD55FABE254AB50A00FC4BB1 /* KStrings.swift */,
 				CDBB76E1219C7EDB00122E7E /* KxMenu.m */,
 				CDBB76E2219C7EDB00122E7E /* KWebView.swift */,
 				CDBB76E3219C7EDB00122E7E /* KUserDisplayView.xib */,
@@ -1055,7 +1065,7 @@
 		CDBB7607219C7E8800122E7E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Laser Srl";
 			};
@@ -1070,6 +1080,8 @@
 				ru,
 			);
 			mainGroup = CDBB7606219C7E8800122E7E;
+			packageReferences = (
+			);
 			productRefGroup = CDBB7606219C7E8800122E7E;
 			projectDirPath = "";
 			projectRoot = "";

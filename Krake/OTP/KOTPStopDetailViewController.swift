@@ -26,7 +26,7 @@ public class KOTPStopDetailViewCell: UITableViewCell {
         // Imposto il tint color dell'immagine.
         busImageView.tintColor = KTheme.current.color(.tint)
         arrivalImageView?.tintColor = KTheme.current.color(.tint)
-        arrivalImageView?.image = UIImage(otpNamed: "durata")?.withRenderingMode(.alwaysTemplate)
+        arrivalImageView?.image = KOTPAssets.durata.image.withRenderingMode(.alwaysTemplate)
         arrivalImageView?.isHidden = true
     }
 
@@ -277,8 +277,8 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                     rightButton.tintColor = KTheme.current.color(.textTint)
                     rightButton.frame = CGRect(x: 0, y: 0, width: 32, height: 56)
                     rightButton.imageEdgeInsets = UIEdgeInsets(top: 13, left: 2, bottom: 14, right: 2)
-                    rightButton.setImage(UIImage(krakeNamed: "add_alarm")?.withRenderingMode(.alwaysTemplate), for: .normal)
-                    rightButton.setImage(UIImage(krakeNamed: "remove_alarm")?.withRenderingMode(.alwaysTemplate), for: .selected)
+                    rightButton.setImage(KAssets.Images.addAlarm.image.withRenderingMode(.alwaysTemplate), for: .normal)
+                    rightButton.setImage(KAssets.Images.removeAlarm.image.withRenderingMode(.alwaysTemplate), for: .selected)
                     rightButton.tag = 15
                     pinView.rightCalloutAccessoryView = rightButton
                 }

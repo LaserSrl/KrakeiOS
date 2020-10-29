@@ -20,4 +20,14 @@ import Foundation
     var policyTextInfoPartUserHaveToAccept: NSNumber? {get}
     var policyTextInfoPartPriority: NSNumber? {get}
     var policyTextInfoPartPolicyType: String? {get}
+    
+}
+
+extension PolicyProtocol {
+    func policyTextInfoPartPolicyTypeImage() -> UIImage? {
+        if let named = policyTextInfoPartPolicyType{
+            return KImageAsset(name: named).image
+        }
+        return nil
+    }
 }

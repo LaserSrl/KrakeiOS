@@ -36,7 +36,7 @@ open class KExtendedMapView: MKMapView {
     fileprivate weak var toolbar: UIToolbar?
     
     fileprivate lazy var expandMapButton : UIBarButtonItem = {
-        return UIBarButtonItem(image: UIImage(krakeNamed: "zoom_out_map"), style: .plain, target: self, action: #selector(KExtendedMapView.expandMap))
+        return UIBarButtonItem(image: KAssets.Images.zoomOutMap.image, style: .plain, target: self, action: #selector(KExtendedMapView.expandMap))
     }()
     
     fileprivate lazy var collapseMapButton : UIBarButtonItem = {
@@ -50,7 +50,7 @@ open class KExtendedMapView: MKMapView {
     }()
     
     fileprivate lazy var changeMapTypeButton : UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(krakeNamed:"OCsatellite"), style: .plain, target: self, action: #selector(KExtendedMapView.changeMapType))
+        let button = UIBarButtonItem(image: KAssets.Images.oCsatellite.image, style: .plain, target: self, action: #selector(KExtendedMapView.changeMapType))
         button.tintColor = KTheme.current.color(.textTint)
         return button
     }()
@@ -211,24 +211,24 @@ open class KExtendedMapView: MKMapView {
     }
 
     fileprivate func updateMapTypeButtonImage() {
-        let imageName : String
+        let imageAsset : KImageAsset
         switch self.mapType {
             case .standard:
-                imageName = "OCsatellite"
+                imageAsset = KAssets.Images.oCsatellite
             case .satellite:
-                imageName = "OCstreet"
+                imageAsset = KAssets.Images.oCstreet
             case .hybrid:
-                imageName = "OCstreet"
+                imageAsset = KAssets.Images.oCstreet
             case .satelliteFlyover:
-                imageName = "OCsatellite"
+                imageAsset = KAssets.Images.oCsatellite
             case .hybridFlyover:
-                imageName = "OCstreet"
+                imageAsset = KAssets.Images.oCstreet
             case .mutedStandard:
-                imageName = "OCsatellite"
+                imageAsset = KAssets.Images.oCsatellite
             default:
-                imageName = "OCsatellite"
+                imageAsset = KAssets.Images.oCsatellite
         }
-        changeMapTypeButton.image = UIImage(krakeNamed: imageName)?.withRenderingMode(.alwaysTemplate)
+        changeMapTypeButton.image = imageAsset.image.withRenderingMode(.alwaysTemplate)
     }
 
 

@@ -132,7 +132,7 @@ public class KPlaceResult: NSObject, MKAnnotation, AnnotationProtocol {
     }
 
     public func imageInset() -> UIImage?{
-        return UIImage(krakeNamed: nameAnnotation())
+        return KImageAsset(name: nameAnnotation()).image
     }
 
     public var subtitle: String? {

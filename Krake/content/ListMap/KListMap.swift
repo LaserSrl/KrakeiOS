@@ -198,7 +198,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         customButton.titleLabel?.textAlignment = .right
         customButton.titleLabel?.minimumScaleFactor = 0.8
         customButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        customButton.setImage(UIImage(krakeNamed: "calendar"), for: .normal)
+        customButton.setImage(KAssets.Images.calendar.image, for: .normal)
         
         customButton.addTarget(self, action: #selector(KListMapViewController.changeDate), for: UIControl.Event.touchUpInside)
         
@@ -252,7 +252,7 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
         }
         KTheme.current.applyTheme(toView: view, style: .default)
         
-        toggleButton?.setImage(UIImage(krakeNamed: "OCmap"), for: .normal)
+        toggleButton?.setImage(KAssets.Images.oCmap.image, for: .normal)
         toggleButton?.setTitle(nil, for: UIControl.State.normal)
         if toggleButton != nil
         {
@@ -924,13 +924,13 @@ open class KListMapViewController : UIViewController, KExtendedMapViewDelegate
     {
         if !collectionView.isHidden
         {
-            self.toggleButton?.setImage(UIImage(krakeNamed: "OClist"), for: .normal)
+            self.toggleButton?.setImage(KAssets.Images.oClist.image, for: .normal)
             UIView.transition(from: collectionView, to: mapView!, duration: 0.5, options: [UIView.AnimationOptions.showHideTransitionViews, UIView.AnimationOptions.curveEaseInOut, UIView.AnimationOptions.transitionCrossDissolve], completion: nil)
             mapView?.expandedMap = true
         }
         else
         {
-            self.toggleButton?.setImage(UIImage(krakeNamed: "OCmap"), for: .normal)
+            self.toggleButton?.setImage(KAssets.Images.oCmap.image, for: .normal)
             
             UIView.transition(from: mapView!, to: collectionView, duration: 0.5, options: [UIView.AnimationOptions.showHideTransitionViews, UIView.AnimationOptions.curveEaseInOut, UIView.AnimationOptions.transitionCrossDissolve], completion: nil)
         }
@@ -1166,7 +1166,7 @@ extension KListMapViewController: UICollectionViewDelegate, UICollectionViewData
                     {
                         let button = UIButton(type: .system)
                         button.addTarget(self, action: #selector(KListMapViewController.openNavigatorAtIndex(_:mapView:)), for: .touchUpInside)
-                        button.setImage(UIImage(krakeNamed: "OCnavigaverso")!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
+                        button.setImage(KAssets.Images.oCnavigaverso.image.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
                         arrayItems.append(button)
                     }
                     if elem is ContentItemWithShareLinkPart
@@ -1174,14 +1174,14 @@ extension KListMapViewController: UICollectionViewDelegate, UICollectionViewData
                         let button = UIButton(type: .system)
                         button.addTarget(self, action: #selector(KListMapViewController.openShareAtIndex(_:)), for: .touchUpInside)
                         
-                        button.setImage(UIImage(krakeNamed: "share_icon")!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
+                        button.setImage(KAssets.Images.shareIcon.image.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
                         arrayItems.append(button)
                     }
                     if let det = elem as? ContentItemWithActivityPart , let activity = det.activityPartReference(), let _ = activity.dateTimeStart{
                         let button = UIButton(type: .system)
                         button.addTarget(self, action: #selector(KListMapViewController.openAddToCalendarAtIndex(_:)), for: .touchUpInside)
                         
-                        button.setImage(UIImage(krakeNamed: "add_alarm")!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
+                        button.setImage(KAssets.Images.addAlarm.image.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
                         arrayItems.append(button)
                     }
                     let bottomView = UIView(frame: CGRect(x: 0, y: 0, width: (CGFloat(arrayItems.count) * 52.0) + 8.0, height: CADRACCell.bounds.height))

@@ -48,8 +48,8 @@
 "on_loading" = "Caricamento in corso...";
 
 //ORCHARD LOGIN
-"LOGIN"="Accedi con";
-"Login" = "Accedi";
+"LOGIN_WITH"="Accedi con";
+"login" = "Accedi";
 "Register" = "Registrati";
 "Registration" = "Registrazione";
 "Cancel" = "Annulla";
@@ -127,7 +127,6 @@
 "Manca il testo del messaggio" = "Inserisci il tuo commento";
 "Mancano i seguenti campi:" = "Mancano i seguenti campi:";
 "ERRORE_GPS" = "Inserisci la tua posizione";
-"La mia posizione" = "La mia posizione";
 "Bad location accuracy" = "Scarsa qualità del segnale GPS";
 "media_max_number_of_elem" = "Hai raggiunto il numero massimo di elementi multimediali. Prima di procedere con l'aggiunta di un nuovo elemento devi cancellarne uno.";
 
@@ -147,8 +146,6 @@
 "Categoria" = "Categoria";
 "Gallery" = "galleria";
 "TitlePart.Title" = "titolo";
-"sottotitolo" = "sottotitolo";
-"categoria" = "categoria";
 "BodyPart.Text" = "messaggio";
 "MapPart.Latitude" = "posizione GPS";
 "RELATED_FIELDS" = "Info generali";
@@ -239,7 +236,7 @@
 "OTP_STOP_NOTIFICATION" = "Stai per arrivare alla fermata '%@'";
 "OTP_ENABLE_STOP_NOTIFICATION_?" = "Vuoi essere notificato quando sei nei paraggi della fermata?";
 "OTP_DISABLE_STOP_NOTIFICATION_?" = "Vuoi disabilitare la notifica?";
-"OTP_DISABLE_ALL_STOPS_NOTIFICATION_?" = "Vuoi disabilitare tutte le notifiche?";
+"OTP_DISABLE_ALL_STOPS_NOTIFICATION_QUESTION" = "Vuoi disabilitare tutte le notifiche?";
 
 
 /*
@@ -260,7 +257,6 @@
 
 "game_center_request" = "Game Center è richiesto per partecipare al quiz.";
 "game_center_login_now" = "Vuoi autenticarti adesso?";
-"login" = "Autenticati";
 "contest_participate" = "I tuoi punti sono stati salvati correttamente.";
 
 "bravo" = "Bravo!";

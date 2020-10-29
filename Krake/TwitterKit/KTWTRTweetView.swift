@@ -41,7 +41,7 @@ public class KTWTRTweetView: UIView {
         tweetImage.contentMode = UIView.ContentMode.scaleAspectFill
         
         tweetImage.clipsToBounds = false
-        tweetImage.image = UIImage(krakeNamed: "twitter_logo")
+        tweetImage.image = KAssets.Images.twitterLogo.image
         self.addSubview(tweetImage)
         
         textTweet = UILabel()

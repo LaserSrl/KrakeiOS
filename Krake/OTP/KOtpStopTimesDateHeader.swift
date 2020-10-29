@@ -24,7 +24,7 @@ class KOtpStopTimesDateHeader: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
 
-        let dateView = UIImageView(image:  UIImage(otpNamed: "ic_plan_date")!)
+        let dateView = UIImageView(image: KOTPAssets.icPlanDate.image)
         dateView.setContentHuggingPriority(.required, for: .horizontal)
         dateView.contentMode = .scaleAspectFit
 
@@ -32,12 +32,12 @@ class KOtpStopTimesDateHeader: UITableViewHeaderFooterView {
         self.dateLabel = dateLabel
 
         let prevButton = UIButton()
-        prevButton.setImage(UIImage(otpNamed: "date_previous")!, for: .normal)
+        prevButton.setImage(KOTPAssets.datePrevious.image, for: .normal)
         prevButton.addTarget(self, action: #selector(prevDate(_:)), for: .touchUpInside)
         prevButton.setContentHuggingPriority(.required, for: .horizontal)
 
         let nextButton = UIButton()
-        nextButton.setImage(UIImage(otpNamed: "date_forward")!, for: .normal)
+        nextButton.setImage(KOTPAssets.dateForward.image, for: .normal)
         nextButton.addTarget(self, action: #selector(nextDate(_:)), for: .touchUpInside)
         nextButton.setContentHuggingPriority(.required, for: .horizontal)
 

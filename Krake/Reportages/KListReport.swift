@@ -106,13 +106,13 @@ class KListReport: NSObject, KListMapDelegate, ContentModificationContainerViewC
     internal weak var listVC: KListMapViewController!
     weak var delegate: KListReportDelegate?
     lazy var buttonAddReport : UIBarButtonItem = {
-		return UIBarButtonItem(image: UIImage(omNamed: "ic_add"),
+        return UIBarButtonItem(image: KAssets.OrchardMapper.icAdd.image,
 		                       style: .plain,
 		                       target: self,
 		                       action: #selector(KListReport.addReport))
     }()
     lazy var buttonPolicy : UIBarButtonItem = {
-        return UIBarButtonItem(image: UIImage(omNamed: "license"),
+        return UIBarButtonItem(image: KAssets.OrchardMapper.license.image,
                                style: .plain,
                                target: self,
                                action: #selector(KListReport.showPolicy))

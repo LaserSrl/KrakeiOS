@@ -58,7 +58,7 @@ open class FacebookKit: NSObject, KLoginProviderProtocol{
      */
     public func getLoginView() -> UIView {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(krakeNamed:"facebook_login"), for: .normal)
+        button.setImage(KAssets.Images.facebookLogin.image, for: .normal)
         button.addTarget(self, action: #selector(FacebookKit.signIn), for: .touchUpInside)
         return button
     }

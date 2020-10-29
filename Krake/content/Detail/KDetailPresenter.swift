@@ -60,28 +60,28 @@ open class KDetailPresenterDefaultDelegate : NSObject, KDetailPresenterDelegate 
             if let shareElem = element as? ContentItemWithSocial {
                 if let facebookValue = shareElem.facebookValue {
                     let media = KButtonItem(title: "Facebook",
-                                           image: UIImage(krakeNamed:"facebook"),
+                                            image: KAssets.Images.facebook.image,
                                            mediaUrl: facebookValue,
                                            showTitle: showTitles)
                     array.append(media)
                 }
                 if let twitterValue = shareElem.twitterValue {
                     let media = KButtonItem(title: "Twitter",
-                                           image: UIImage(krakeNamed:"twitter"),
+                                           image: KAssets.Images.twitter.image,
                                            mediaUrl:  twitterValue,
                                            showTitle: showTitles)
                     array.append(media)
                 }
                 if let pinterestValue = shareElem.pinterestValue {
                     let media = KButtonItem(title: "Pinterest",
-                                           image: UIImage(krakeNamed:"pinterest"),
+                                           image: KAssets.Images.pinterest.image,
                                            mediaUrl: pinterestValue,
                                            showTitle: showTitles)
                     array.append(media)
                 }
                 if let instagramValue = shareElem.instagramValue {
                     let media = KButtonItem(title: "Instagram",
-                                           image: UIImage(krakeNamed:"instagram"),
+                                           image: KAssets.Images.instagram.image,
                                            mediaUrl: instagramValue,
                                            showTitle: showTitles)
                     array.append(media)
@@ -89,22 +89,22 @@ open class KDetailPresenterDefaultDelegate : NSObject, KDetailPresenterDelegate 
             }
             if let shareElem = element as? ContentItemWithContacts {
                 if let phoneNumber = shareElem.telefonoValue {
-                    let media = KButtonItem(title: "Telefono".localizedString(),
-                                           image: UIImage(krakeNamed:"phone"),
+                    let media = KButtonItem(title: KLocalization.telefono,
+                                            image: KAssets.Images.phone.image,
                                            mediaUrl: "telprompt:\(phoneNumber)",
                                            showTitle: showTitles)
                     array.append(media)
                 }
                 if let email = shareElem.eMailValue {
-                    let media = KButtonItem(title: "E-Mail".localizedString(),
-                                           image: UIImage(krakeNamed:"email"),
+                    let media = KButtonItem(title: KLocalization.eMail,
+                                            image: KAssets.Images.email.image,
                                            mediaUrl: "mailto:\(email)",
                                            showTitle: showTitles)
                     array.append(media)
                 }
                 if let webSite = shareElem.sitoWebValue {
-                    let media = KButtonItem(title: "Sito web".localizedString(),
-                                           image: UIImage(krakeNamed:"web"),
+                    let media = KButtonItem(title: KLocalization.sitoWeb,
+                                            image: KAssets.Images.web.image,
                                            mediaUrl: webSite,
                                            showTitle: showTitles)
                     array.append(media)
