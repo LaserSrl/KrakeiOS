@@ -27,6 +27,8 @@
 		CD55FB4F254ABF3B00FC4BB1 /* KOTPAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPAssets.swift; sourceTree = "<group>"; };
 		CD55FB50254AC24900FC4BB1 /* KPuzzleGameAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPuzzleGameAssets.swift; sourceTree = "<group>"; };
 		CD55FB51254AC25500FC4BB1 /* KGameQuizAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGameQuizAssets.swift; sourceTree = "<group>"; };
+		CD887CDD254B13A800FBC140 /* it */ = {isa = PBXFileReference; name = it; path = it.lproj/KOTPLocalizable.strings; sourceTree = "<group>"; };
+		CD887CDF254B145000FBC140 /* KOTPStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStrings.swift; sourceTree = "<group>"; };
 		CDBABB9F23AA1316009D4CB1 /* AppleSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSignIn.swift; sourceTree = "<group>"; };
 		CDBABBA123AA3329009D4CB1 /* KeychainItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
 		CDBB7626219C7EDA00122E7E /* OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
@@ -139,7 +141,6 @@
 		CDBB76A3219C7EDA00122E7E /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
 		CDBB76A4219C7EDA00122E7E /* GamePod.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GamePod.storyboard; sourceTree = "<group>"; };
 		CDBB76A5219C7EDA00122E7E /* GameBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoardViewController.swift; sourceTree = "<group>"; };
-		CDBB76AA219C7EDA00122E7E /* String+KrakeLocalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+KrakeLocalization.swift"; sourceTree = "<group>"; };
 		CDBB76AD219C7EDA00122E7E /* LinkedInKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedInKit.swift; sourceTree = "<group>"; };
 		CDBB76B1219C7EDB00122E7E /* CategoryPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPreferencesViewController.swift; sourceTree = "<group>"; };
 		CDBB76B2219C7EDB00122E7E /* CategoryPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryPreferencesViewController.xib; sourceTree = "<group>"; };
@@ -267,7 +268,6 @@
 		CDBB7743219C7EDB00122E7E /* NSString+OrchardMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+OrchardMapping.h"; sourceTree = "<group>"; };
 		CDBB7744219C7EDB00122E7E /* Date+OM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+OM.swift"; sourceTree = "<group>"; };
 		CDBB7745219C7EDB00122E7E /* UserDefaults+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Krake.swift"; sourceTree = "<group>"; };
-		CDBB7746219C7EDB00122E7E /* UIImage+OM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+OM.swift"; sourceTree = "<group>"; };
 		CDBB7747219C7EDB00122E7E /* URLSessionConfiguration+OM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSessionConfiguration+OM.swift"; sourceTree = "<group>"; };
 		CDBB7748219C7EDB00122E7E /* Dictionary+OM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+OM.swift"; sourceTree = "<group>"; };
 		CDBB7749219C7EDB00122E7E /* HTTPCookie+OM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPCookie+OM.swift"; sourceTree = "<group>"; };
@@ -509,6 +509,7 @@
 		CDBB765D219C7EDA00122E7E /* OTP */ = {
 			isa = PBXGroup;
 			children = (
+				CD887CDF254B145000FBC140 /* KOTPStrings.swift */,
 				CD55FB4F254ABF3B00FC4BB1 /* KOTPAssets.swift */,
 				CDBB765E219C7EDA00122E7E /* KBusLine.swift */,
 				CDDA994922905720008B205B /* KBusTracker.swift */,
@@ -541,6 +542,7 @@
 				CDBB766B219C7EDA00122E7E /* OCOTP.xcassets */,
 				CDBB7668219C7EDA00122E7E /* OCOTPStoryboard.storyboard */,
 				5D1F63FD2296A81800B671FF /* RoutesTableViewController.swift */,
+				CD887CDE254B13A800FBC140 /* KOTPLocalizable.strings */,
 			);
 			path = OTP;
 			sourceTree = "<group>";
@@ -638,7 +640,6 @@
 			isa = PBXGroup;
 			children = (
 				CDC59C6F24DC0E3100533B9B /* OCLocalizable.strings */,
-				CDBB76AA219C7EDA00122E7E /* String+KrakeLocalization.swift */,
 				CDC59C7724DC255C00533B9B /* KConstants+KrakeLocalization.swift */,
 			);
 			path = Localization;
@@ -970,7 +971,6 @@
 				CDBB7743219C7EDB00122E7E /* NSString+OrchardMapping.h */,
 				CDBB7744219C7EDB00122E7E /* Date+OM.swift */,
 				CDBB7745219C7EDB00122E7E /* UserDefaults+Krake.swift */,
-				CDBB7746219C7EDB00122E7E /* UIImage+OM.swift */,
 				CDBB7747219C7EDB00122E7E /* URLSessionConfiguration+OM.swift */,
 				CDBB7748219C7EDB00122E7E /* Dictionary+OM.swift */,
 				CDBB7749219C7EDB00122E7E /* HTTPCookie+OM.swift */,
@@ -1091,6 +1091,14 @@
 /* End PBXProject section */
 
 /* Begin PBXVariantGroup section */
+		CD887CDE254B13A800FBC140 /* KOTPLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD887CDD254B13A800FBC140 /* it */,
+			);
+			name = KOTPLocalizable.strings;
+			sourceTree = "<group>";
+		};
 		CDC59C6F24DC0E3100533B9B /* OCLocalizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

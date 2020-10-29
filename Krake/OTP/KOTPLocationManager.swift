@@ -29,11 +29,11 @@ class KOTPLocationManager: KLocationManager
         guard let originalId = stopItem.originalId else { return }
         if monitoredRegions.count >= 20
         {
-            let alert = UIAlertController(title: KInfoPlist.appName, message: "OTP_MAX_NUMBER_OF_REGION".localizedString(), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok".localizedString(), style: .default, handler: { (action) in
+            let alert = UIAlertController(title: KInfoPlist.appName, message: KOTPLocalization.Alert.maxNumberOfRegion, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: KOTPLocalization.ok, style: .default, handler: { (action) in
                 alert.dismiss(animated: true, completion: nil)
             }))
-            alert.addAction(UIAlertAction(title: "OTP_DISABLE_ALL_STOPS_NOTIFICATION".localizedString(), style: .destructive, handler: { (action) in
+            alert.addAction(UIAlertAction(title: KOTPLocalization.Alert.disableAllStopsNotification, style: .destructive, handler: { (action) in
                 self.stopMonitoringRegions()
                 self.startMonitoring(regionFrom: stopItem, completion: completion)
                 alert.dismiss(animated: true, completion: nil)
@@ -49,7 +49,7 @@ class KOTPLocationManager: KLocationManager
                 UserDefaults.standard.set(stopItem.name, forKey: originalId)
                 completion(true)
             }else if status != CLAuthorizationStatus.notDetermined{
-                KMessageManager.showMessage("OTP_LOCALIZATION_ERROR".localizedString(), type: KMessageManager.Mode.error, buttonTitle: "Impostazioni".localizedString(), buttonCompletion: {
+                KMessageManager.showMessage(KOTPLocalization.Alert.localizationError, type: KMessageManager.Mode.error, buttonTitle: KOTPLocalization.settings, buttonCompletion: {
                     UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
                 })
                 completion(false)
@@ -90,12 +90,12 @@ class KOTPLocationManager: KLocationManager
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion)
     {
         if let message = UserDefaults.standard.string(forKey: region.identifier){
-            let messaggeBody = String(format: "OTP_STOP_NOTIFICATION".localizedString(), message)
+            let messaggeBody = KOTPLocalization.Alert.stopNotification(message)
             if UIApplication.shared.applicationState == .active
             {
                 self.stopMonitoring(region: region)
                 let alert = UIAlertController(title: KInfoPlist.appName, message: messaggeBody, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok".localizedString(), style: .default, handler: { (action) in
+                alert.addAction(UIAlertAction(title: KOTPLocalization.ok, style: .default, handler: { (action) in
                     alert.dismiss(animated: true, completion: nil)
                 }))
                 let vc = (UIApplication.shared.delegate as? OGLAppDelegate)?.window?.rootViewController

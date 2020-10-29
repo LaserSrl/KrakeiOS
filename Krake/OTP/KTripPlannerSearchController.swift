@@ -114,8 +114,8 @@ open class KTripPlannerSearchController : UIViewController,
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        fromTextField.placeholder = "FROM".localizedString()
-        toTextField.placeholder = "TO".localizedString()
+        fromTextField.placeholder = KOTPLocalization.from
+        toTextField.placeholder = KOTPLocalization.to
 
         originalLeftButtonItem = self.navigationItem.leftBarButtonItem
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: loadingProgressView)
@@ -140,8 +140,8 @@ open class KTripPlannerSearchController : UIViewController,
 
         travelModeSegmented.isHidden = travelModes.count <= 1
         
-        dateModeSelection.setTitle("tripModePartenza".localizedString(), forSegmentAt: 0)
-        dateModeSelection.setTitle("tripModeArrivo".localizedString(), forSegmentAt: 1)
+        dateModeSelection.setTitle(KOTPLocalization.TripMode.partenza, forSegmentAt: 0)
+        dateModeSelection.setTitle(KOTPLocalization.TripMode.arrivo, forSegmentAt: 1)
         dateModeSelection.tintColor = KTheme.current.color(.tint)
         pickDateButton.tintColor = KTheme.current.color(.tint)
         pickDateButton.setImage(KOTPAssets.icPlanDate.image, for: .normal)

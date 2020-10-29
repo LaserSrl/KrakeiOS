@@ -82,7 +82,7 @@ open class KCalendar : NSObject, EKEventEditViewDelegate {
         if action == EKEventEditViewAction.saved {
             do{
                 try controller.eventStore.save(controller.event!, span: EKSpan.thisEvent, commit: true)
-                KMessageManager.showMessage("event_added".localizedString(), type: .success)
+                KMessageManager.showMessage(KLocalization.Calendar.eventAdded, type: .success)
             }catch {
                 KMessageManager.showMessage((error as NSError).localizedDescription, type: .error)
             }

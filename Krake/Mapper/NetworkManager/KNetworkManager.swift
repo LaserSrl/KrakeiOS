@@ -325,7 +325,7 @@ public class KDataTask: NSObject {
                 if KLoginManager.shared.isKrakeLogged {
                     KLoginManager.shared.userLogout()   
                 }
-                completion(false, nil, NSError(domain: "Login", code: (response?.errorCode ?? 0), userInfo: [NSLocalizedDescriptionKey : (response?.message ?? "Generic error".localizedString())]))
+                completion(false, nil, NSError(domain: "Login", code: (response?.errorCode ?? 0), userInfo: [NSLocalizedDescriptionKey : (response?.message ?? KLocalization.Error.genericError)]))
             }
         }
         invalidateSessionCancelingTasks(true)
@@ -384,7 +384,7 @@ public class KDataTask: NSObject {
                         else {
                             completion(false, nil, NSError(domain: "User update profile",
                                                            code: KErrorCode.genericError,
-                                                        userInfo: [NSLocalizedDescriptionKey : "Generic error".localizedString()]))
+                                                           userInfo: [NSLocalizedDescriptionKey : KLocalization.Error.genericError]))
                         }
         }) { (task, error) in
             completion(false, nil, error)
@@ -410,7 +410,7 @@ public class KDataTask: NSObject {
                                              let policies = responseObject["Policies"] {
                                              completion(true, policies, nil)
                                          }else{
-                                             completion(false, nil, NSError(domain: "Registration", code: KErrorCode.genericError, userInfo: [NSLocalizedDescriptionKey : "Generic error".localizedString()]))
+                                            completion(false, nil, NSError(domain: "Registration", code: KErrorCode.genericError, userInfo: [NSLocalizedDescriptionKey : KLocalization.Error.genericError]))
                                          }
                                          self.invalidateSessionCancelingTasks(true)
                          },
@@ -684,7 +684,7 @@ public class KDataTask: NSObject {
             checkFailure?(error)
         }
         else {
-            let error = NSError(domain: KInfoPlist.appName, code: KErrorCode.genericError, userInfo: [NSLocalizedDescriptionKey : "Generic error".localizedString()])
+            let error = NSError(domain: KInfoPlist.appName, code: KErrorCode.genericError, userInfo: [NSLocalizedDescriptionKey : KLocalization.Error.genericError])
             checkFailure?(error)
         }
     }

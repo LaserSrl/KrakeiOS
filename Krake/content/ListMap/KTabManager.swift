@@ -163,7 +163,7 @@ open class KTabManager: NSObject{
                         
                         var arrayTitles = [SegmentioItem]()
                         if mySelf.tabManagerOptions.showAllInFirstTab {
-                            arrayTitles.append(SegmentioItem(title: "Tutti".localizedString(), image: UIImage(named:"termicon_all")?.withRenderingMode(.alwaysTemplate) ?? KAssets.Images.termiconAll.image.withRenderingMode(.alwaysTemplate)))
+                            arrayTitles.append(SegmentioItem(title: KLocalization.Commons.all, image: UIImage(named:"termicon_all")?.withRenderingMode(.alwaysTemplate) ?? KAssets.Images.termiconAll.image.withRenderingMode(.alwaysTemplate)))
                         }
                         for elem in mySelf.loadedCategories! {
                             var image : UIImage? = nil

@@ -175,7 +175,7 @@ class PopoverPickerField: NSObject, FieldItemWithSelection, CZPickerViewDataSour
         let tintColor = KTheme.current.color(.tint)
         let textTintColor = KTheme.current.color(.textTint)
         
-        let picker = CZPickerView(headerTitle: placeholder, cancelButtonTitle: KLocalization.undo, confirmButtonTitle: "Ok".localizedString())!
+        let picker = CZPickerView(headerTitle: placeholder, cancelButtonTitle: KLocalization.undo, confirmButtonTitle: KLocalization.Commons.ok)!
         picker.tintColor = tintColor
         picker.delegate = self
         picker.dataSource = self

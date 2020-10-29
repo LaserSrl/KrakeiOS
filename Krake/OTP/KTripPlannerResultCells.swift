@@ -17,7 +17,7 @@ public class SingleModeHeaderCell : UITableViewCell
     
     public override func awakeFromNib() {
         super.awakeFromNib()
-        planTypeLabel.text = "Percorso più veloce".localizedString()
+        planTypeLabel.text = KOTPLocalization.fastTrip
     }
 }
 

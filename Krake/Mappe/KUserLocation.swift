@@ -13,7 +13,7 @@ public class KUserLocationPlacemark : MKPlacemark
 {
     public override var title: String? {
         get {
-            return "LAMIAPOS".localizedString()
+            return KLocalization.Location.myLocation
         }
     }
 }

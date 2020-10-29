@@ -12,7 +12,7 @@ import Foundation
 extension KConstants {
     
     @objc public static let currentLanguage: String = {
-        return KLocalization.language
+        return KLocalization.Core.language
     }()
     
 }

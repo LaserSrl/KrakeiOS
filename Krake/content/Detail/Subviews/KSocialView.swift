@@ -161,9 +161,9 @@ open class KSocialView: UIStackView, KDetailViewProtocol {
                         message: (social.title + ": " + string),
                         preferredStyle: .alert)
                     alert.addAction(UIAlertAction(
-                        title: "Ok".localizedString(),
-                        style: .default,
-                        handler: nil))
+                                        title: KLocalization.Commons.ok,
+                                        style: .default,
+                                        handler: nil))
                     containerViewController.present(alert,
                                                     animated: true,
                                                     completion: nil)

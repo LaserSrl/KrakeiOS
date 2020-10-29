@@ -55,7 +55,7 @@ class KSearchFilterManager: NSObject, UISearchBarDelegate, UIGestureRecognizerDe
     func applyStyleToSearchBar(){
         searchBar.sizeToFit()
         searchBar.showsScopeBar = true
-        searchBar.placeholder = "Insert text to search".localizedString()
+        searchBar.placeholder = KLocalization.Commons.insertTextToSearch
         searchBar.delegate = self
     }
     

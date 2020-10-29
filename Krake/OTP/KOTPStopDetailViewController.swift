@@ -36,9 +36,8 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
 
     
     public static var lineName: (_ line: KBusLine) -> String = { (line) -> String in
-        let lastStop = !line.lastStop ? "" : "(Last stop)".localizedString()
-        return String(format: "Linea %@ verso %@ %@".localizedString(),
-               line.lineNumber, line.destination,lastStop)
+        let lastStop = !line.lastStop ? "" : KOTPLocalization.lastStop
+        return KOTPLocalization.lineTo(line.lineNumber, line.destination, lastStop)
     }
     
     
@@ -169,16 +168,14 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         let arrivalTimeSeconds = line.realtimeArrival?.timeIntervalSinceNow ?? line.scheduledArrival.timeIntervalSinceNow
         let arrivalTimeDescription: String
         if arrivalTimeSeconds <= 60 {
-            arrivalTimeDescription = "in arrivo".localizedString()
+            arrivalTimeDescription = KOTPLocalization.onMyWay
         }
         else if arrivalTimeSeconds < 60 * 60 {
-            arrivalTimeDescription =
-                String(format: "%0.f minuti".localizedString(), arrivalTimeSeconds / 60)
+            arrivalTimeDescription = KOTPLocalization.minutes(arrivalTimeSeconds / 60)
         } else {
             let dateFormatter = DateFormatter()
             dateFormatter.timeStyle = .short
-            arrivalTimeDescription =
-                String(format: "ore %@".localizedString(), dateFormatter.string(from: line.scheduledArrival))
+            arrivalTimeDescription = KOTPLocalization.hour(dateFormatter.string(from: line.scheduledArrival))
         }
         // Customizzo la cella sulla base delle informazioni ricevute.
         cell.titleLabel.text = KOTPStopDetailViewController.lineName(line)
@@ -227,9 +224,9 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
         if control.tag == 15, let otpitem = view.annotation as? KOTPStopItem {
             let identifier = (view.annotation as? KOTPStopItem)?.originalId
             let region = KOTPLocationManager.shared.monitoring(from: identifier)
-            let message = region == nil ? "OTP_ENABLE_STOP_NOTIFICATION_?".localizedString() : "OTP_DISABLE_STOP_NOTIFICATION_?".localizedString()
+            let message = region == nil ? KOTPLocalization.Alert.enableStopNotificationQuestion : KOTPLocalization.Alert.disableAllStopsNotificationQuestion
             let alert = UIAlertController(title: KInfoPlist.appName, message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Si".localizedString(), style: .default, handler: { (action) in
+            alert.addAction(UIAlertAction(title: KOTPLocalization.yes, style: .default, handler: { (action) in
                 if region != nil
                 {
                     KOTPLocationManager.shared.stopMonitoring(region: region!)
@@ -240,7 +237,7 @@ open class KOTPStopDetailViewController: KOTPBasePublicTransportListMapViewContr
                     })
                 }
             }))
-            alert.addAction(UIAlertAction(title: "No".localizedString(), style: .cancel, handler: { (action) in
+            alert.addAction(UIAlertAction(title: KOTPLocalization.no, style: .cancel, handler: { (action) in
                 alert.dismiss(animated: true, completion: nil)
             }))
             present(alert, animated: true, completion: nil)

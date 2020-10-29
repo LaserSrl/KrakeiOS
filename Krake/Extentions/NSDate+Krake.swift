@@ -15,12 +15,11 @@ public extension Date {
         let parsedDates = self.getReadableDate(otherDate: date)
         
         if parsedDates.time2 == nil && parsedDates.time3 == nil {
-            text = String(format: "on".localizedString(), parsedDates.time1)
+            text = KLocalization.Date.on(parsedDates.time1)
         } else if parsedDates.time2 != nil && parsedDates.time3 == nil {
-            text = String(format: "fromToDate".localizedString(), parsedDates.time1, parsedDates.time2!)
+            text = KLocalization.Date.fromToDate(parsedDates.time1, parsedDates.time2!)
         } else {
-            text = "\(parsedDates.time1) - "
-                .appendingFormat("fromToHour".localizedString(), parsedDates.time2!, parsedDates.time3!)
+            text = "\(parsedDates.time1) - " + KLocalization.Date.fromToHour(parsedDates.time2!, parsedDates.time3!)
         }
         if !text.isEmpty {
             var result = text

@@ -111,11 +111,11 @@ open class GameViewController: UIViewController, UITableViewDataSource, UITableV
             message: "CLOSEGAME".appLocalizedString(),
             preferredStyle: .alert)
         alertController.addAction(
-            UIAlertAction(title: "No".localizedString(),
+            UIAlertAction(title: KLocalization.Commons.no,
                           style: .cancel,
                           handler: nil))
         alertController.addAction(
-            UIAlertAction(title: "Si".localizedString(),
+            UIAlertAction(title: KLocalization.Commons.yes,
                           style: .default,
                           handler: { (_) in self.dismiss() }))
         present(alertController, animated: true, completion: nil)

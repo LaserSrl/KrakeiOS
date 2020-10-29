@@ -22,7 +22,7 @@ class KOTPStopsInRouteViewController: KOTPBasePublicTransportListMapViewControll
             // Verifico se sono presenti nuove annotations. In caso positivo, le
             // mostro su mappa, altrimenti mostro un messaggio di errore all'utente.
             if items?.isEmpty ?? true {
-                KMessageManager.showMessage("CAN_NOT_FIND_STOPS".localizedString(), type: .message)
+                KMessageManager.showMessage(KOTPLocalization.Alert.canNotFindStops, type: .message)
             } else {
                 mapView.addAnnotations(items!)
 

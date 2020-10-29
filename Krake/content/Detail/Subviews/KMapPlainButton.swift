@@ -127,7 +127,7 @@ open class KMapPlainButton: UIButton, KExtendedMapViewDelegate, KDetailViewProto
         }
         if title(for: .normal)?.isEmpty ?? true
         {
-            setTitle("Mappa".localizedString(), for: .normal)
+            setTitle(KLocalization.mappa, for: .normal)
         }
         KTheme.current.applyTheme(toButton: self, style: .map)
         isHidden = true
@@ -137,7 +137,7 @@ open class KMapPlainButton: UIButton, KExtendedMapViewDelegate, KDetailViewProto
     {
         super.prepareForInterfaceBuilder()
         setImage(KAssets.Images.oCmap.image, for: .normal)
-        setTitle("Mappa".localizedString(), for: .normal)
+        setTitle(KLocalization.mappa, for: .normal)
     }
     
     //MARK: - KExtendedMapView Delegate

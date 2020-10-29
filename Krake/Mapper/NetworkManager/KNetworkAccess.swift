@@ -79,7 +79,7 @@ public enum OMPrivacyStatus : NSInteger {
                                 }
                                 success?(task, object as AnyObject?)
                             }else{
-                                failure?(task, NSError(domain: "Policies", code: KErrorCode.genericError, userInfo: [NSLocalizedDescriptionKey : "Generic error".localizedString()]))
+                                failure?(task, NSError(domain: "Policies", code: KErrorCode.genericError, userInfo: [NSLocalizedDescriptionKey : KLocalization.Error.genericError]))
                             }
         },
                         failureCallback: failure)

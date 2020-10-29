@@ -135,7 +135,7 @@ Pod::Spec.new do |s|
     s.subspec 'OTP' do |os|
         os.source_files  = "OTP", "Krake/OTP/**/*.{h,m,swift}"
         os.frameworks  = "MapKit"
-        os.ios.resource_bundles = { 'OTP' => ['Krake/OTP/*.{storyboard,xcassets}']}
+        os.ios.resource_bundles = { 'OTP' => ['Krake/OTP/*.{storyboard,xcassets,lproj}']}
         os.dependency "Krake/Core"
         os.dependency "Polyline", '4.2.1'
         os.dependency "DateTimePicker", '~> 2.5.0'

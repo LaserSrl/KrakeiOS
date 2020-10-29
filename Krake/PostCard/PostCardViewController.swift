@@ -52,13 +52,13 @@ class PostCardViewController: UIViewController, UITextFieldDelegate{
         nomeDestinatario.rightView = button
         nomeDestinatario.rightViewMode = .always
 
-        nomeMittente.IBPlaceholder = "YOUR_NAME".localizedString()
-        emailMittente.IBPlaceholder = "YOUR_MAIL".localizedString()
+        nomeMittente.IBPlaceholder = KLocalization.PostCard.yourName
+        emailMittente.IBPlaceholder = KLocalization.PostCard.yourMail
         emailMittente.validationType = EGFloatingTextFieldValidationType.Email
-        nomeDestinatario.IBPlaceholder = "TO_NAME".localizedString()
-        emailDestinatario.IBPlaceholder = "TO_MAIL".localizedString()
+        nomeDestinatario.IBPlaceholder = KLocalization.PostCard.toName
+        emailDestinatario.IBPlaceholder = KLocalization.PostCard.toMail
         emailDestinatario.validationType = EGFloatingTextFieldValidationType.Email
-        messaggio.IBPlaceholder = "MESSAGE".localizedString()
+        messaggio.IBPlaceholder = KLocalization.Commons.message
 
         nomeMittente.delegate = self
         emailMittente.delegate = self
@@ -194,26 +194,26 @@ class PostCardViewController: UIViewController, UITextFieldDelegate{
     func sendPostCardToKrake(_ parameters: [String : String], completion: ((_ parsedObject: [AnyHashable: Any]?, _ error: Error?) -> Void)?){
         var errori = [String : String]()
         if parameters[KParametersKeys.sendTo]?.isEmpty ?? true {
-            errori[KParametersKeys.sendTo] = "Manca la E-Mail del destinatario".localizedString()
+            errori[KParametersKeys.sendTo] = KLocalization.PostCard.missingRecipientMail
         }else if !checkIsValidEmail(parameters[KParametersKeys.sendTo]!) {
-            errori[KParametersKeys.sendTo] = "E-Mail del destinatario non valida".localizedString()
+            errori[KParametersKeys.sendTo] = KLocalization.PostCard.invalidRecipientMail
         }
         if parameters[KParametersKeys.sendFrom]?.isEmpty ?? true {
-            errori[KParametersKeys.sendFrom] = "Manca la E-Mail del mittente".localizedString()
+            errori[KParametersKeys.sendFrom] = KLocalization.PostCard.missingSenderMail
         }else if !checkIsValidEmail(parameters[KParametersKeys.sendFrom]!) {
-            errori[KParametersKeys.sendFrom] = "E-Mail del mittente non valida".localizedString()
+            errori[KParametersKeys.sendFrom] = KLocalization.PostCard.invalidSenderMail
         }
         if parameters[KParametersKeys.senderName]?.isEmpty ?? true {
-            errori[KParametersKeys.senderName] = "Manca il nome del mittente".localizedString()
+            errori[KParametersKeys.senderName] = KLocalization.PostCard.missingSenderName
         }
         if parameters[KParametersKeys.recipeName]?.isEmpty ?? true {
-            errori[KParametersKeys.recipeName] = "Manca il nome del destinatario".localizedString()
+            errori[KParametersKeys.recipeName] = KLocalization.PostCard.missingRecipientName
         }
         if parameters[KParametersKeys.messageText]?.isEmpty ?? true {
-            errori[KParametersKeys.messageText] = "Manca il testo del messaggio".localizedString()
+            errori[KParametersKeys.messageText] = KLocalization.PostCard.missingComment
         }
         if errori.keys.count > 0 {
-            var localError = "Mancano i seguenti campi:".localizedString()
+            var localError = KLocalization.PostCard.missingFollowingFields
             for key in errori.keys{
                 localError = localError.appending("\n - " + errori[key]!)
             }

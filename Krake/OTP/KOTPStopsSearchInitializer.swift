@@ -46,7 +46,7 @@ public class KOTPBaseStopsSearchInitializer: KOTPStopsSearchInitializer {
             // di cinque minuti da adesso.
             if let lastLocation = locationManager.location, -1.0 * lastLocation.timestamp.timeIntervalSinceNow <= userLocationValidity {
                 if shouldNotifyCaller(about: lastLocation) {
-                    completion(lastLocation, "LAMIAPOS".localizedString())
+                    completion(lastLocation, KOTPLocalization.myLocation)
                 } else {
                     completion(nil, nil)
                 }
@@ -63,7 +63,7 @@ public class KOTPBaseStopsSearchInitializer: KOTPStopsSearchInitializer {
                     manager.stopUpdatingLocation()
                     if strongSelf.shouldNotifyCaller(about: location) {
                         // Notifico il richiedente della nuova location.
-                        completion(location, "LAMIAPOS".localizedString())
+                        completion(location, KOTPLocalization.myLocation)
                     } else {
                         completion(nil, nil)
                     }

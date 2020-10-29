@@ -234,7 +234,7 @@ open class KUserReactions: UIView, KDetailViewProtocol {
                                 if error._code == KErrorCode.userNotHavePermission{
                                     self.userAuthorized = false
                                     self.updateUserReactions(self.userReactions!)
-                                    KMessageManager.showMessage("Azione non autorizzata".localizedString(), type: .error)
+                                    KMessageManager.showMessage(KLocalization.Error.actionNotAuthorized, type: .error)
                                 }else{
                                     KLog(type: .error, error.localizedDescription)
                                 }
@@ -280,8 +280,8 @@ open class KUserReactions: UIView, KDetailViewProtocol {
             }
             button?.isSelected = reaction.clicked
             button?.isEnabled = reactionAuthorized
-            button?.setTitle(String(format:stringFormat, reaction.quantity.intValue, reaction.typeName.localizedString()), for: UIControl.State.normal)
-            button?.setTitle(String(format:stringFormat, reaction.quantity.intValue, reaction.typeName.localizedString()), for: .selected)
+            button?.setTitle(String(format:stringFormat, reaction.quantity.intValue, KLocalization.localizable("Reactions.\(reaction.typeName)")), for: UIControl.State.normal)
+            button?.setTitle(String(format:stringFormat, reaction.quantity.intValue, KLocalization.localizable("Reactions.\(reaction.typeName)")), for: .selected)
             button?.titleLabel?.numberOfLines = 2
             button?.titleLabel?.textAlignment = .center
             button?.alignImageAndTitleVertically()

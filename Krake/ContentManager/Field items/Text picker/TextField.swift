@@ -132,7 +132,7 @@ public class SinglelineTextField: AbstractTextField, UITextFieldDelegate {
         
         let (isValidField, errorMessage) = floatingTextField.isValid()
         if !isValidField{
-            throw FieldItemError.notValidData(errorMessage!.localizedString())
+            throw FieldItemError.notValidData(KLocalization.localizable(errorMessage!))
         }       
     }
     

@@ -63,13 +63,13 @@ extension FieldItem {
         if required {
             let value = params[key]
             if value == nil || (value as AnyObject).length == 0 || (value as? [Any])?.count == 0 {
-                var field = key.localizedString()
+                var field = KLocalization.localizable(key)
                 if field == key{
                     field = NSLocalizedString(key, comment: key)
                 }
                 error.append(field)
                 error.append(" ")
-                error.append("obbligatorio".localizedString())
+                error.append(KLocalization.Commons.required)
                 isValidTmp = false
             }
         }

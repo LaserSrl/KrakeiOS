@@ -108,8 +108,7 @@ public extension UIViewController{
                                               closeButtonIsOnLeftSide: closeButtonIsOnLeftSide) { 
             present(nav, animated: true, completion: nil)
         } else {
-            let errorMessage = String(format: "Non è possibile aprire il seguente url %@".localizedString(),
-                                      url.description)
+            let errorMessage = KLocalization.Error.cantOpenThisUrl(url.description)
             KMessageManager.showMessage(errorMessage,
                                         type: .error)
         }

@@ -65,7 +65,7 @@ open class KAppDelegate: OGLAppDelegate, KStreamingProviderSupplier {
                     if let view = self?.window?.rootViewController?.view {
                         MBProgressHUD.hide(for: view, animated: true)
                     }
-                    KMessageManager.showMessage("VerificationMailMessage".localizedString(),
+                    KMessageManager.showMessage(KLocalization.Login.verificationMailMessage,
                                                 type: .success)
                     NotificationCenter.default.post(name: KLoginManager.UserEmailVerified, object: KLoginManager.shared)
                     KLoginManager.shared.delegate?.userEmailVerified()

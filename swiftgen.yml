@@ -1,0 +1,64 @@
+input_dir: Krake
+output_dir: Krake
+strings:
+  - inputs:
+      - Localization/it.lproj
+    outputs:
+      - templateName: krake-swift5
+        output: Core/KStrings.swift
+        params:
+          publicAccess: true
+          enumName: KLocalization
+          resourceName: Localization
+  - inputs:
+      - OTP/it.lproj
+    outputs:
+      - templateName: krake-swift5
+        output: OTP/KOTPStrings.swift
+        params:
+          publicAccess: true
+          enumName: KOTPLocalization
+          resourceName: OTP
+xcassets:
+    - inputs:
+        - Images.xcassets
+        - Mapper/OrchardMapper.xcassets
+      outputs:
+        - templateName: krake-swift5
+          output: Core/KAssets.swift
+          params:
+            publicAccess: true
+            enumName: KAssets
+            imageTypeName: KImageAsset
+            resourceName: KrakeImages
+    - inputs: OTP/OCOTP.xcassets
+      outputs:
+        - templateName: krake-swift5
+          output: OTP/KOTPAssets.swift
+          params:
+            publicAccess: true
+            enumName: KOTPAssets
+            imageTypeName: KOTPImageAsset
+            imageAliasName: KOTPAssetImageTypeAlias
+            resourceName: OTP
+    - inputs: PuzzleGame/PuzzleGame.xcassets
+      outputs:
+        - templateName: krake-swift5
+          output: PuzzleGame/KPuzzleGameAssets.swift
+          params:
+            publicAccess: true
+            enumName: KPuzzleGameAssets
+            imageTypeName: KPuzzleGameImageAsset
+            imageAliasName: KPuzzleGameAssetImageTypeAlias
+            resourceName: PuzzleGame
+    - inputs: GameQuiz/GameQuiz.xcassets
+      outputs:
+        - templateName: krake-swift5
+          output: GameQuiz/KGameQuizAssets.swift
+          params:
+            publicAccess: true
+            enumName: KGameQuizAssets
+            imageTypeName: KGameQuizImageAsset
+            imageAliasName: KGameQuizAssetImageTypeAlias
+            resourceName: GameQuiz
+

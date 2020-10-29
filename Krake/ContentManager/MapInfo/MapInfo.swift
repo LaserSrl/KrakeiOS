@@ -27,7 +27,7 @@ class MapViewAnnotation : NSObject, MKAnnotation {
 }
 
 class MapInfo : ContentModificationViewController, MKMapViewDelegate, UISearchBarDelegate, KSearchPlaceDelegate {
-    var titlePosition: String! = KLocalization.lamiapos
+    var titlePosition: String! = KLocalization.Location.myLocation
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var titleLabel: UILabel!

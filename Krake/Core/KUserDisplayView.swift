@@ -77,7 +77,7 @@ public class KUserDisplayView: UIView {
     public override func awakeFromNib() {
         
         userImageView.layer.cornerRadius = userImageView.frame.size.width / 2
-        userNameLabel.text = "on_loading".localizedString()
+        userNameLabel.text = KLocalization.Commons.onLoading
         nameFirstLettersButton.setTitle("", for: .normal)
         
         KTheme.current.applyTheme(toUserDisplay: self)
@@ -135,7 +135,7 @@ public class KUserDisplayView: UIView {
                                                             else {
                                                                 
                                                                 
-                                                                KMessageManager.showMessage("LoadingOfUserInfoFailed".localizedString(), title: KInfoPlist.appName, type: .error, layout: .statusLine, position: .top, duration: .automatic, windowLevel: .statusBar, fromViewController: nil)
+                                                                KMessageManager.showMessage(KLocalization.Error.loadingOfUserInfoFailed, title: KInfoPlist.appName, type: .error, layout: .statusLine, position: .top, duration: .automatic, windowLevel: .statusBar, fromViewController: nil)
                                                             }
                                                         }
         })
@@ -161,7 +161,7 @@ public class KUserDisplayView: UIView {
             
             logoutButton.hiddenAnimated = KInfoPlist.Login.canUserLogout ? false : true
             
-            let name : String = !(user.name?.isEmpty ?? true) ? user.name! : "Anonymous".localizedString()
+            let name : String = !(user.name?.isEmpty ?? true) ? user.name! : KLocalization.Commons.anonymous
             let surname : String? = !(user.surname?.isEmpty ?? true) ? user.surname! : nil
 
             if labelStyle == .name || surname == nil
@@ -188,7 +188,7 @@ public class KUserDisplayView: UIView {
         else {
             userImageView.image = KTheme.current.placeholder(.people)
             logoutButton.hiddenAnimated = true
-            userNameLabel.text = "login".localizedString()
+            userNameLabel.text = KLocalization.Login.login
         }
     }
 }

@@ -34,7 +34,7 @@ class FieldItemWithPolicy: NSObject, FieldItem{
                 let string = NSMutableAttributedString(string:policy?.titlePartTitle ?? "")
                 string.append(NSAttributedString(string: "\n"))
                 
-                string.append(NSAttributedString(string: KLocalization.required, attributes: [NSAttributedString.Key.font : UIFont.preferredFont(forTextStyle: UIFont.TextStyle.footnote), NSAttributedString.Key.foregroundColor : UIColor.red]))
+                string.append(NSAttributedString(string: KLocalization.Policies.required, attributes: [NSAttributedString.Key.font : UIFont.preferredFont(forTextStyle: UIFont.TextStyle.footnote), NSAttributedString.Key.foregroundColor : UIColor.red]))
                 
                 policyText?.attributedText = string
             }
@@ -102,7 +102,7 @@ class FieldItemWithPolicy: NSObject, FieldItem{
     
     func isDataValid(params: NSMutableDictionary) throws {
         if(policySwitch.isOn == false && required) {
-            throw FieldItemError.notValidData(KLocalization.undoPrivacy)
+            throw FieldItemError.notValidData(KLocalization.Policies.undoPrivacy)
         }
     }
 }

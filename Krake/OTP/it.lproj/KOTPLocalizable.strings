@@ -1,0 +1,91 @@
+/* 
+  KOTPLocalizable.strings
+  Krake
+
+  Created by Patrick on 29/10/2020.
+  Copyright © 2020 Laser Srl. All rights reserved.
+*/
+
+"yes" = "Si";
+"no" = "No";
+"ok" = "Ok";
+"settings" = "Impostazioni";
+"location" = "Posizione";
+"myLocation" = "La mia posizione";
+"stop" = "Fermata";
+"from" = "Da";
+"to" = "A";
+"fastTrip" = "Percorso più veloce";
+"stopSearch" = "Ricerca fermate";
+
+//Direction
+"DirectionDescription.circle" = "Alla rotonda prendi la %@ uscita";
+"DirectionDescription.right" = "Svolta a destra";
+"DirectionDescription.left" = "Svolta a sinistra";
+"DirectionDescription.continue" = "Continua";
+"DirectionDescription.depart" = "Parti";
+"DirectionDescription.slightlyLeft" = "Gira lievemente a sinistra";
+"DirectionDescription.slightlyRight" = "Gira lievemente a destra";
+"DirectionDescription.hardLeft" = "Gira a sinistra";
+"DirectionDescription.hardRight" = "Gira a destra";
+"DirectionDescription.uturn" = "Fai inversione a U";
+"DirectionDescription.after" = "Dopo %s";
+
+//Stops
+"Stop.name" = "Nome della fermata";
+
+//TravelMode
+"TravelMode.car" = "Guida fino a";
+"TravelMode.walk" = "Cammina per";
+"TravelMode.bicycle" = "Vai in bici fino a ";
+
+//Error
+"Error.generic" = "Errore generico";
+
+//TripMode
+"TripMode.partenza" = "Partenza";
+"TripMode.arrivo" = "Arrivo entro";
+
+//Alerts
+"Alert.MAX_NUMBER_OF_REGION" = "Attenzione: puoi attivare un massimo di 20 fermate; prima di procedere con l'attivazione di una nuova fermata, devi disabilitarne un'altra.";
+"Alert.DISABLE_ALL_STOPS_NOTIFICATION" = "Disattiva le notifiche per tutte le fermate.";
+"Alert.LOCALIZATION_ERROR" = "Abilita sempre la localizzazione per usufruire della funzionalità.";
+"Alert.STOP_NOTIFICATION" = "Stai per arrivare alla fermata '%@'";
+"Alert.ENABLE_STOP_NOTIFICATION_QUESTION" = "Vuoi essere notificato quando sei nei paraggi della fermata?";
+"Alert.DISABLE_STOP_NOTIFICATION_QUESTION" = "Vuoi disabilitare la notifica?";
+"Alert.DISABLE_ALL_STOPS_NOTIFICATION_QUESTION" = "Vuoi disabilitare tutte le notifiche?";
+"Alert.FIND_STOPS_NEARBY" = "Cerca fermate vicino a";
+"Alert.CAN_NOT_FIND_STOPS" = "Non vi sono fermate nei pressi della zona evidenziata";
+"Alert.CAN_NOT_TRIP" = "Non è stato possibile caricare l'itinerario";
+
+
+//Detail
+"lastStop" = "(Fine corsa)";
+"lineTo" = "Linea %@ - %@ %@";
+"minutes" = "%@ minuti";
+"onMyWay" = "in arrivo";
+"hour" = "ore %@";
+
+
+
+
+
+
+
+"Partenza" = "Partenza";
+"Arrivo" = "Arrivo";
+"Durata" = "Durata";
+"Percorso a piedi" = "Percorso a piedi";
+"Cambi" = "Cambi";
+"BUS" = "In bus";
+"TRAM" = "In tram";
+"SUBWAY" = "Metro";
+"BY" = " per ";
+
+
+"direction_by" = "in direzione";
+"Trip is not possible.  You might be trying to plan a trip outside the map data boundary." = "Non è stato possibile calcolare il tragitto richiesto in quanto è fuori dall'area prevista.";
+"please_waiting" = "ATTENDERE PREGO";
+"trip_route" = "Stiamo calcolando il percorso";
+"Drag to move" = "Trascina per spostare";
+

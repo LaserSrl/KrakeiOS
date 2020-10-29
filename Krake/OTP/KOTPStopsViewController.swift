@@ -121,8 +121,8 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
             view.traitCollection.verticalSizeClass == .compact
 
         isUserCustomLocation = false
-        title = "PUBLIC_TRANSPORT".localizedString()
-        sourceAddressTextField.placeholder = "FROM".localizedString()
+        title = KOTPLocalization.stopSearch
+        sourceAddressTextField.placeholder = KOTPLocalization.from
         KTheme.current.applyTheme(toLabel: labelSlider, style: .subtitle)
         let initialSearchRadius =
             KOTPPreferences.retrieveSearchRadius(fallbackValue: 150)
@@ -157,7 +157,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
             stopSearch.leftViewMode = .always
             stopSearch.leftView = imv
             stopSearch.tintColor = KTheme.current.color(.tint)
-            stopSearch.placeholder = "Nome della fermata".localizedString()
+            stopSearch.placeholder = KOTPLocalization.Stop.name
             stopSearch.clearButtonMode = .whileEditing
             stopSearch.delegate = self
         }else{
@@ -171,8 +171,8 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
         searchView.layer.shadowOpacity = 0.2
         searchView.layer.shadowOffset = CGSize(width: 0, height: 2)
         
-        segmented.setTitle("LOCATION".localizedString(), forSegmentAt: 0)
-        segmented.setTitle("STOP".localizedString(), forSegmentAt: 1)
+        segmented.setTitle(KOTPLocalization.location, forSegmentAt: 0)
+        segmented.setTitle(KOTPLocalization.stop, forSegmentAt: 1)
     }
     
     @objc func endEditing(){
@@ -196,12 +196,12 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
     }
     
     @objc func stopMonitoring(){
-        let alert = UIAlertController(title: KInfoPlist.appName, message: "OTP_DISABLE_ALL_STOPS_NOTIFICATION_QUESTION".localizedString(), preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Si".localizedString(), style: .default, handler: { (action) in
+        let alert = UIAlertController(title: KInfoPlist.appName, message: KOTPLocalization.Alert.disableAllStopsNotificationQuestion, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: KOTPLocalization.yes, style: .default, handler: { (action) in
             KOTPLocationManager.shared.stopMonitoringRegions()
             self.navigationItem.leftBarButtonItem = nil
         }))
-        alert.addAction(UIAlertAction(title: "No".localizedString(), style: .cancel, handler: { (action) in
+        alert.addAction(UIAlertAction(title: KOTPLocalization.no, style: .cancel, handler: { (action) in
             alert.dismiss(animated: true, completion: nil)
         }))
         present(alert, animated: true, completion: nil)
@@ -230,7 +230,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
     @objc func refreshUserPosition(){
         isUserCustomLocation = false
         fromLocation = MKPlacemark(coordinate: mapView.userLocation.coordinate, addressDictionary: nil)
-        sourceAddressTextField.text = "LAMIAPOS".localizedString()
+        sourceAddressTextField.text = KOTPLocalization.myLocation
     }
 
     open func setupSearch() {
@@ -339,7 +339,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
                                 strongSelf.items = nil
                             }
                             if strongSelf.items?.isEmpty ?? true {
-                                KMessageManager.showMessage("CAN_NOT_FIND_STOPS".localizedString(), type: .message)
+                                KMessageManager.showMessage(KOTPLocalization.Alert.canNotFindStops, type: .message)
                             }
                             MBProgressHUD.hide(for: strongSelf.view,
                                                animated: true)
@@ -567,7 +567,7 @@ open class KOTPStopsViewController: KOTPBasePublicTransportListMapViewController
             self.items = stops
             self.mapView.centerMap()
             if self.items?.isEmpty ?? true {
-                KMessageManager.showMessage("CAN_NOT_FIND_STOPS".localizedString(), type: .message)
+                KMessageManager.showMessage(KOTPLocalization.Alert.canNotFindStops, type: .message)
             }
             MBProgressHUD.hide(for: self.view, animated: true)
         }

@@ -38,7 +38,7 @@ public extension UINavigationController{
             browser.delegate = delegate
             pushViewController(browser, animated: true)
         }else{
-            KMessageManager.showMessage(String(format:"Non è possibile aprire il seguente url %@".localizedString(), url.description), type: .error)
+            KMessageManager.showMessage(KLocalization.Error.cantOpenThisUrl(url.description), type: .error)
         }
     }
 }

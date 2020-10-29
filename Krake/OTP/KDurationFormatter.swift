@@ -23,14 +23,14 @@ public class KDurationFormatter: Formatter {
 
         if  hours > 0{
             format.append(String(hours))
-            format.append("h".localizedString())
+            format.append(KLocalization.Date.hour)
         }
 
         if  minutes > 0{
             if !format.isEmpty {
                 format.append(" ")
             }
-            format.append(String(format: "%d %@", minutes, "min.".localizedString()))
+            format.append(String(format: "%d %@", minutes, KLocalization.Date.minute))
         }
 
         return format

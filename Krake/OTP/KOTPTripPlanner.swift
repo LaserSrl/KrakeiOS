@@ -57,12 +57,12 @@ public class KOTPTripPlanner: KTripPlannerProtocol
                     }
                     else {
                         callback(request,nil, NSError(domain: "OTP", code: 1, userInfo: [NSLocalizedDescriptionKey:
-                            resultJson["error"]["msg"].stringValue.localizedString()]))
+                                                                                            KOTPLocalization.localizable(resultJson["error"]["msg"].stringValue)]))
                     }
                 }
                 self.planDataTask = nil
         }) { (task, error) in
-            callback(request,nil, NSError(domain: "OTP", code: 1, userInfo: [NSLocalizedDescriptionKey: "Generic error".localizedString()]))
+            callback(request,nil, NSError(domain: "OTP", code: 1, userInfo: [NSLocalizedDescriptionKey: KOTPLocalization.Error.generic]))
             self.planDataTask = nil
         }
     }
@@ -176,7 +176,7 @@ public class KOTPTripPlanner: KTripPlannerProtocol
                        duration: infos["duration"].doubleValue,
                        distance: infos["distance"].doubleValue,
                        polyline:  Polyline(encodedPolyline: polyline).mkPolyline!,
-                       instruction: NSAttributedString(string: String(format: "%@ %@", travelMode.rawValue.localizedString(), to.name!)))
+                       instruction: NSAttributedString(string: "\(KOTPLocalization.localizable("TravelMode.\(travelMode.rawValue)")) \(to.name!)"))
 
             let steps = infos["steps"].arrayValue
 
@@ -205,37 +205,37 @@ public class KOTPTripPlanner: KTripPlannerProtocol
 
         switch direction {
         case .circleClockwise, .circleCounterClockwise:
-            directionDescription =  String(format:"direction_description_circle".localizedString(), exit ?? "")
+            directionDescription = KOTPLocalization.DirectionDescription.circle(exit ?? "")
         case .right:
-            directionDescription = "direction_description_right".localizedString()
+            directionDescription = KOTPLocalization.DirectionDescription.right
         case .hardRight:
-            directionDescription = "direction_description_hard_right".localizedString()
+            directionDescription = KOTPLocalization.DirectionDescription.hardRight
         case .left:
-            directionDescription = "direction_description_left".localizedString()
+            directionDescription = KOTPLocalization.DirectionDescription.left
         case .hardLeft:
-            directionDescription = "direction_description_hard_left".localizedString()
+            directionDescription = KOTPLocalization.DirectionDescription.hardLeft
         case .keepGoing:
-            directionDescription = "direction_description_continue".localizedString()
+            directionDescription = KOTPLocalization.DirectionDescription.continue
         case .depart:
-            directionDescription = "direction_description_depart".localizedString()
+            directionDescription = KOTPLocalization.DirectionDescription.depart
         case .slightlyLeft:
-            directionDescription = "direction_description_slightly_left".localizedString()
+            directionDescription = KOTPLocalization.DirectionDescription.slightlyLeft
         case .slightlyRight:
-            directionDescription = "direction_description_slightly_right".localizedString()
+            directionDescription = KOTPLocalization.DirectionDescription.slightlyRight
         case .uturnLeft:
-            directionDescription = "direction_description_uturn".localizedString()
+            directionDescription = KOTPLocalization.DirectionDescription.uturn
         case .uturnRight:
-            directionDescription = "direction_description_uturn".localizedString()
+            directionDescription = KOTPLocalization.DirectionDescription.uturn
         }
 
         let fontKey = NSAttributedString.Key.font
         
         if !KOTPTripPlanner.uselessStreetNames.contains(streetName.lowercased()) {
             
-            let attributedString =  NSMutableAttributedString(string: String(format:"%@ %@ %@",directionDescription,"to".localizedString(),streetName),
+            let attributedString =  NSMutableAttributedString(string: String(format:"%@ %@ %@",directionDescription,KOTPLocalization.to,streetName),
                                                               attributes: [fontKey: KTripTheme.shared.fontFor(text: .instructionImportant)])
 
-            let range = (attributedString.string as NSString).range(of: String(format: " %@ ", "to".localizedString()))
+            let range = (attributedString.string as NSString).range(of: " \(KOTPLocalization.to) ")
 
             attributedString.addAttributes([fontKey: KTripTheme.shared.fontFor(text: .instruction)], range: range)
 

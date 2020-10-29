@@ -83,9 +83,9 @@ open class KPushManager: NSObject{
                 if let browser = UIViewController.newBrowserViewController(browserViewController: url, title: pushTitle) {
                     if applicationState == .active{
                         let alertViewController = UIAlertController(title: KInfoPlist.appName, message: pushTitle, preferredStyle: .alert)
-                        alertViewController.message = String(format:"VUOI_APRIRE_PUSH".localizedString(), pushTitle)
-                        alertViewController.addAction(UIAlertAction(title: "No".localizedString(), style: .cancel, handler: nil))
-                        alertViewController.addAction(UIAlertAction(title: "Si".localizedString(), style: .default, handler: { (action: UIAlertAction) in
+                        alertViewController.message = KLocalization.PushNotification.vuoiAprirePush(pushTitle)
+                        alertViewController.addAction(UIAlertAction(title: KLocalization.Commons.no, style: .cancel, handler: nil))
+                        alertViewController.addAction(UIAlertAction(title: KLocalization.Commons.yes, style: .default, handler: { (action: UIAlertAction) in
                             presentPushViewController(browser)
                         }))
                         presentPushViewController(alertViewController)
@@ -97,7 +97,7 @@ open class KPushManager: NSObject{
                 if applicationState == .active{
                     let alertViewController = UIAlertController(title: KInfoPlist.appName, message: pushTitle, preferredStyle: .alert)
                     alertViewController.message = pushTitle
-                    alertViewController.addAction(UIAlertAction(title: "Ok".localizedString(), style: .default, handler: nil))
+                    alertViewController.addAction(UIAlertAction(title: KLocalization.Commons.ok, style: .default, handler: nil))
                     presentPushViewController(alertViewController)
                 }
             }
@@ -117,13 +117,13 @@ open class KPushManager: NSObject{
         if applicationState == .active{
             let alertViewController = UIAlertController(title: KInfoPlist.appName, message: message, preferredStyle: .alert)
             if (displayAlias != nil && !(displayAlias ?? "").isEmpty) || cacheObjectID != nil {
-                alertViewController.message = String(format:"VUOI_APRIRE_PUSH".localizedString(), message!)
-                alertViewController.addAction(UIAlertAction(title: "No".localizedString(), style: .cancel, handler: nil))
-                alertViewController.addAction(UIAlertAction(title: "Si".localizedString(), style: .default, handler: { (action: UIAlertAction) in
+                alertViewController.message = KLocalization.PushNotification.vuoiAprirePush(message!)
+                alertViewController.addAction(UIAlertAction(title: KLocalization.Commons.no, style: .cancel, handler: nil))
+                alertViewController.addAction(UIAlertAction(title: KLocalization.Commons.yes, style: .default, handler: { (action: UIAlertAction) in
                     self.loadOrDownloadWithAlias(displayAlias, cacheID: cacheObjectID, userInfoNotification: userInfoNotification)
                 }))
             }else{
-                alertViewController.addAction(UIAlertAction(title: "Ok".localizedString(), style: .default, handler: { (action: UIAlertAction) in
+                alertViewController.addAction(UIAlertAction(title: KLocalization.Commons.ok, style: .default, handler: { (action: UIAlertAction) in
                 }))
             }
             presentPushViewController(alertViewController)
@@ -138,7 +138,7 @@ open class KPushManager: NSObject{
             showDetailWithAlias(alias, pathCache: pathCache, userInfoNotification: userInfoNotification)
         }else if alias != nil{
             let hud = MBProgressHUD()
-            hud.label.text = "on_loading".localizedString()
+            hud.label.text = KLocalization.Commons.onLoading
             hud.removeFromSuperViewOnHide = true
             if let view = UIApplication.shared.delegate?.window??.rootViewController?.view {
                 view.addSubview(hud)

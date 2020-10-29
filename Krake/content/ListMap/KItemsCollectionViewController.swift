@@ -111,7 +111,7 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
     /**
     * testo da mostrare se non ci sono elementi
     */
-    public var noElementsText: String = "no_elements".localizedString() {
+    public var noElementsText: String = KLocalization.Commons.noElements {
         didSet {
             if isViewLoaded {
                 emptyStateLabel?.text = noElementsText

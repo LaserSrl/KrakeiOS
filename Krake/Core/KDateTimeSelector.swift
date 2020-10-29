@@ -45,9 +45,9 @@ public struct KDateTimeSelector
     public var bottomPanelBackgroundColor: UIColor? = nil
     
     public var topPanelTitle: String? = nil
-    public var buttonTitleDone: String = "Done".localizedString()
-    public var buttonTitleCancel: String = "Cancel".localizedString()
-    public var labelTextRangeTo: String = "To-date".localizedString()
+    public var buttonTitleDone: String = KLocalization.Commons.done
+    public var buttonTitleCancel: String = KLocalization.Commons.cancel
+    public var labelTextRangeTo: String = KLocalization.Date.toDate
     
     public init(tintColor: UIColor = KTheme.current.color(.tint)) {
         self.tintColor = tintColor

@@ -19,7 +19,7 @@ open class PoliciesViewController: UIViewController, UITableViewDataSource, UITa
     fileprivate var progressUpload: MBProgressHUD? = nil
     
     fileprivate lazy var sendButton = { () -> UIBarButtonItem in
-        return UIBarButtonItem(title: "SEND".localizedString(), style: .done, target: self, action: #selector(PoliciesViewController.sendPolicy))
+        return UIBarButtonItem(title: KLocalization.Commons.send, style: .done, target: self, action: #selector(PoliciesViewController.sendPolicy))
     }()
     
     @IBOutlet weak var tableView: UITableView!
@@ -71,7 +71,7 @@ open class PoliciesViewController: UIViewController, UITableViewDataSource, UITa
         }
         navigationItem.rightBarButtonItem = sendButton
         checkIfChangedValues()
-        title = "gestione_policy".localizedString()
+        title = KLocalization.Policies.managePolicy
         
         progressUpload = MBProgressHUD(view: view)
         view.addSubview(progressUpload!)
@@ -130,7 +130,7 @@ open class PoliciesViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return categories[section].localizedString()
+        return KLocalization.localizable("Policies." + categories[section].lowercased())
     }
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -169,7 +169,7 @@ open class PoliciesViewController: UIViewController, UITableViewDataSource, UITa
         var obbligatorio = ""
         if let bool = policy.policyTextInfoPartUserHaveToAccept{
             if bool.boolValue {
-                obbligatorio = "required".localizedString()
+                obbligatorio = KLocalization.Policies.required
                 switchButton.isEnabled = !accepted
             }else{
                 switchButton.isEnabled = true

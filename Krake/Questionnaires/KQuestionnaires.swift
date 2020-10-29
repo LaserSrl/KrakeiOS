@@ -143,7 +143,7 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        sendButton.setTitle("SEND".localizedString(), for: .normal)
+        sendButton.setTitle(KLocalization.Commons.send, for: .normal)
         if navigationController == nil {
             sendView.isHidden = false
             sendButton?.isEnabled = false
@@ -168,7 +168,7 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
                         mySelf.sendButton?.isEnabled = true
                     }else{
                         _ = mySelf.navigationController?.popViewController(animated: true)
-                        KMessageManager.showMessage("QUESTIONNAIRE_NOT_AVAILABLE".localizedString(), type: .success)
+                        KMessageManager.showMessage(KLocalization.Questionnaire.notAvailable, type: .success)
                         
                     }
                 }else if error != nil{
@@ -241,7 +241,7 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
     }
 
     public func createSendButtonItem()  -> UIBarButtonItem {
-        return UIBarButtonItem(title: "SEND".localizedString(),
+        return UIBarButtonItem(title: KLocalization.Commons.send,
                             style: .done,
                             target: self,
                             action: #selector(QuestionnaireViewController.sendQuestionnaire(_:)))
@@ -363,7 +363,7 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
     
     @IBAction func sendQuestionnaire(_ sender: AnyObject){
         if response.allKeys.count == 0 {
-            KMessageManager.showMessage("QUESTIONNAIRE_NOT_COMPILED".localizedString(), type: .error)
+            KMessageManager.showMessage(KLocalization.Questionnaire.notCompiled, type: .error)
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         }else{
             var risposte = [QuestionAnswer]()
@@ -393,7 +393,7 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
                                     if let responseObj = responseObject as? [String : AnyObject],
                                         let response = KrakeResponse(object: responseObj){
                                         if response.success {
-                                            KMessageManager.showMessage("QUESTIONNAIRE_COMPLETED".localizedString(), type: .success)
+                                            KMessageManager.showMessage(KLocalization.localizable("QUESTIONNAIRE.COMPLETED", true), type: .success)
                                             mySelf.questionnaireDelegate?.questionnaireViewController(mySelf, didSendQuestionnaire: mySelf.questionnaire!)
 
                                             if let classType = object_getClass(mySelf.questionnaire!) {
@@ -412,7 +412,7 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
                                             KMessageManager.showMessage(response.message, type: .error) //Programmata
                                         }
                                     }else{
-                                        KMessageManager.showMessage("QUESTIONNAIRE_ERROR".localizedString(), type: .error)
+                                        KMessageManager.showMessage("QUESTIONNAIRE_ERROR".localizedString(true), type: .error)
                                     }
 
                                 }

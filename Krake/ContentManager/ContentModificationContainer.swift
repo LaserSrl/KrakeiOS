@@ -215,7 +215,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
      */
     public static func mapViewController(_ mapKeyPath: String! = ContentManagerKeys.MAPPART,
                                          coreDataKeyPath: String? = nil,
-                                         titolo: String! = KLocalization.lamiapos,
+                                         titolo: String! = KLocalization.Location.myLocation,
                                          required: Bool = false) -> ContentModificationViewController{
         let vc = getViewController("MapInfo") as! MapInfo
         vc.title = titolo
@@ -226,7 +226,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
     
     public static func policiesRegistrationViewController(_ mapKeyPath: String! = ContentManagerKeys.USERPOLICYPART,
                                        coreDataKeyPath: String? = nil,
-                                       titolo: String! = KLocalization.policy,
+                                       titolo: String! = KLocalization.Policies.policies,
                                        type: PolicyType = .all) -> ContentModificationViewController{
         let vc = getViewController("PoliciesRegistration") as! PoliciesRegistrationViewController
         vc.title = titolo
@@ -355,8 +355,8 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
 
         if aliasContentModification != nil && originalObjectValues == nil {
             hud.mode = .indeterminate
-            hud.label.text = KLocalization.wait
-            hud.detailsLabel.text = KLocalization.onLoading
+            hud.label.text = KLocalization.Commons.wait
+            hud.detailsLabel.text = KLocalization.Commons.onLoading
             hud.show(animated: true)
             let params = KRequestParameters.parametersNoCache()
             OGLCoreDataMapper.sharedInstance().loadData(withDisplayAlias: aliasContentModification!, extras: params, loginRequired: true) { [weak self] (objectId, error, completed) -> Void in
@@ -430,20 +430,20 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         if isChanged {
             let alert:UIAlertController
             if aliasContentModification == nil {
-                alert = UIAlertController(title: KInfoPlist.appName, message: "Vuoi chiudere e salvare il contenuto?".localizedString(), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: KLocalization.cancel, style: .cancel, handler: nil))
-                alert.addAction(UIAlertAction(title: KLocalization.si, style: .default, handler: { (action: UIAlertAction) in
+                alert = UIAlertController(title: KInfoPlist.appName, message: KLocalization.ContentModification.quitAndSaveQuestion, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: KLocalization.Commons.cancel, style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: KLocalization.Commons.yes, style: .default, handler: { (action: UIAlertAction) in
                     self.backupParams(self.params)
                     self.closeViewController(false, userClose: true)
                 }))
-                alert.addAction(UIAlertAction(title: "Non salvare".localizedString(), style: .default, handler: { (action: UIAlertAction) in
+                alert.addAction(UIAlertAction(title: KLocalization.ContentModification.dontSave, style: .default, handler: { (action: UIAlertAction) in
                     self.backupParams(nil)
                     self.closeViewController(false, userClose: true)
                 }))
             } else {
-                alert = UIAlertController(title: KInfoPlist.appName, message: "Vuoi chiudere? Perderai le tue modifiche non salvate".localizedString(), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: KLocalization.cancel, style: .cancel, handler: nil))
-                alert.addAction(UIAlertAction(title: "Esci comunque".localizedString(), style: .default, handler: { (action: UIAlertAction) in
+                alert = UIAlertController(title: KInfoPlist.appName, message: KLocalization.ContentModification.quitWithoutSaveQuestion, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: KLocalization.Commons.cancel, style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: KLocalization.ContentModification.quitAnyway, style: .default, handler: { (action: UIAlertAction) in
                     self.closeViewController(false, userClose: true)
                 }))
             }
@@ -586,7 +586,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
                                     } else {
                                         mySelf.hud.mode = .customView
                                         mySelf.hud.customView = UIImageView(image: KAssets.Images.error.image)
-                                        mySelf.hud.label.text = KLocalization.error
+                                        mySelf.hud.label.text = KLocalization.Error.error
 
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                             mySelf.hud.hide(animated: true)
@@ -603,7 +603,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
                 }
 
                 mySelf.hud.mode = .customView
-                mySelf.hud.label.text = KLocalization.error
+                mySelf.hud.label.text = KLocalization.Error.error
                 KMessageManager.showMessage(error.localizedDescription, type: .error, fromViewController: mySelf )
                 mySelf.hud.hide(animated: true)
                 mySelf.navigationItem.rightBarButtonItem?.isEnabled = true
@@ -697,7 +697,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         }
         
         hud.progress = (Float(totSent) / Float(totExpectedToSend))
-        hud.detailsLabel.text = KLocalization.onLoading + "\n\n" + String(format:"%.2f MB / %.2f MB", Double(totSent)/1024.0/1024.0, Double(totExpectedToSend)/1024.0/1024.0)
+        hud.detailsLabel.text = KLocalization.Commons.onLoading + "\n\n" + String(format:"%.2f MB / %.2f MB", Double(totSent)/1024.0/1024.0, Double(totExpectedToSend)/1024.0/1024.0)
         
         if allTasksFinished {
             var allUploadFinished = true
@@ -762,8 +762,8 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
             KMessageManager.showMessage(error, type: .error, fromViewController : self )
         } else {
             hud.mode = .determinate
-            hud.label.text = KLocalization.wait
-            hud.detailsLabel.text = KLocalization.onLoading
+            hud.label.text = KLocalization.Commons.wait
+            hud.detailsLabel.text = KLocalization.Commons.onLoading
             hud.show(animated: true)
             
             // Removing all tasks from the list before trying to upload new medias,

@@ -89,7 +89,7 @@ open class KDetailPresenterDefaultDelegate : NSObject, KDetailPresenterDelegate 
             }
             if let shareElem = element as? ContentItemWithContacts {
                 if let phoneNumber = shareElem.telefonoValue {
-                    let media = KButtonItem(title: KLocalization.telefono,
+                    let media = KButtonItem(title: KLocalization.Commons.phone,
                                             image: KAssets.Images.phone.image,
                                            mediaUrl: "telprompt:\(phoneNumber)",
                                            showTitle: showTitles)
@@ -103,7 +103,7 @@ open class KDetailPresenterDefaultDelegate : NSObject, KDetailPresenterDelegate 
                     array.append(media)
                 }
                 if let webSite = shareElem.sitoWebValue {
-                    let media = KButtonItem(title: KLocalization.sitoWeb,
+                    let media = KButtonItem(title: KLocalization.Commons.webSite,
                                             image: KAssets.Images.web.image,
                                            mediaUrl: webSite,
                                            showTitle: showTitles)
