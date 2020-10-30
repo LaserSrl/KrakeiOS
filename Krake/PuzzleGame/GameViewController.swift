@@ -108,7 +108,7 @@ open class GameViewController: UIViewController, UITableViewDataSource, UITableV
     @IBAction func closeGame(_ sender: Any) {
         let alertController = UIAlertController(
             title: "PuzzleGame",
-            message: "CLOSEGAME".appLocalizedString(),
+            message: KPuzzleGameLocalization.closeGame,
             preferredStyle: .alert)
         alertController.addAction(
             UIAlertAction(title: KLocalization.Commons.no,
@@ -249,14 +249,14 @@ open class GameViewController: UIViewController, UITableViewDataSource, UITableV
         messageLabel.textColor = KTheme.current.color(.textTint)
         resultView.addSubview(messageLabel)
         if response.position == 0 {
-            messageLabel.text = "CONGRATS".appLocalizedString()
+            messageLabel.text = KPuzzleGameLocalization.congrats
             messageLabel.alpha = 0
             UIView.animate(withDuration: 2.0) {
                 messageLabel.alpha = 1.0
             }
             hasUserWin = true
         } else {
-            messageLabel.text = "FAILEDGAME".appLocalizedString()
+            messageLabel.text = KPuzzleGameLocalization.failedGame
         }
         let tapGestureRecognizer = UITapGestureRecognizer(
             target: self,

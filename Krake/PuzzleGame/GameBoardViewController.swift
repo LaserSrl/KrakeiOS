@@ -142,7 +142,7 @@ open class GameBoardViewController: UIViewController, UIGestureRecognizerDelegat
     @IBAction func showNumbers(_ sender: UIButton) {
         let alertController = UIAlertController(
             title: nil,
-            message: "Vuoi vedere il numero delle tessere?".appLocalizedString(),
+            message: KPuzzleGameLocalization.showTilesQuestion,
             preferredStyle: .alert)
         // Aggiunta dell'azione di conferma.
         alertController.addAction(
@@ -168,7 +168,7 @@ open class GameBoardViewController: UIViewController, UIGestureRecognizerDelegat
         // Creazione dell'alert per chiedere conferma all'utente prima di procedere.
         let alertController = UIAlertController(
             title: nil,
-            message: "Vuoi vedere l'immagine completa?".appLocalizedString(),
+            message: KPuzzleGameLocalization.showCompleteImageQuestion,
             preferredStyle: .alert)
         // Aggiunta dell'azione di conferma.
         alertController.addAction(
@@ -265,7 +265,7 @@ open class GameBoardViewController: UIViewController, UIGestureRecognizerDelegat
             resumeButton.heightAnchor.constraint(equalToConstant: 60)
             ])
         resumeButton.tintColor = .white
-        resumeButton.setTitle("Resume".appLocalizedString(), for: .normal)
+        resumeButton.setTitle(KPuzzleGameLocalization.resume, for: .normal)
         resumeButton.addTarget(self,
                                action: #selector(GameBoardViewController.resumeGame),
                                for: .touchUpInside)

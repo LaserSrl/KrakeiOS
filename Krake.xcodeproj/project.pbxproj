@@ -17,7 +17,7 @@
 		CD887E59254C00F700FBC140 /* GameBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameBoard.storyboard; sourceTree = "<group>"; };
 		CD887E5A254C00F700FBC140 /* KGameQuizAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGameQuizAssets.swift; sourceTree = "<group>"; };
 		CD887E5B254C00F700FBC140 /* SKBounceAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKBounceAnimation.h; sourceTree = "<group>"; };
-		CD887E5C254C00F700FBC140 /* KGameQuizStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGameQuizStrings.swift; sourceTree = "<group>"; };
+		CD887E5C254C00F700FBC140 /* KGameQuizLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGameQuizLocalization.swift; sourceTree = "<group>"; };
 		CD887E5D254C00F700FBC140 /* LBClock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBClock.h; sourceTree = "<group>"; };
 		CD887E5E254C00F700FBC140 /* KGameStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGameStartViewController.swift; sourceTree = "<group>"; };
 		CD887E5F254C00F700FBC140 /* KMainGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMainGameViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		CD887E7A254C00F700FBC140 /* KGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGallery.swift; sourceTree = "<group>"; };
 		CD887E7B254C00F700FBC140 /* KMediaImageLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMediaImageLoad.swift; sourceTree = "<group>"; };
 		CD887E7C254C00F700FBC140 /* KContactPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KContactPicker.swift; sourceTree = "<group>"; };
-		CD887E7D254C00F700FBC140 /* KStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KStrings.swift; sourceTree = "<group>"; };
+		CD887E7D254C00F700FBC140 /* KLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KLocalization.swift; sourceTree = "<group>"; };
 		CD887E7E254C00F700FBC140 /* KDateTimeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDateTimeSelector.swift; sourceTree = "<group>"; };
 		CD887E7F254C00F700FBC140 /* KUserDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUserDisplayView.swift; sourceTree = "<group>"; };
 		CD887E80254C00F700FBC140 /* KxMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KxMenu.h; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		CD887EB6254C00F700FBC140 /* KOTPLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPLocationManager.swift; sourceTree = "<group>"; };
 		CD887EB7254C00F700FBC140 /* KInfoPlist+OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+OTP.swift"; sourceTree = "<group>"; };
 		CD887EB8254C00F700FBC140 /* Number+OtpDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+OtpDate.swift"; sourceTree = "<group>"; };
-		CD887EB9254C00F700FBC140 /* KOTPStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStrings.swift; sourceTree = "<group>"; };
+		CD887EB9254C00F700FBC140 /* KOTPLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPLocalization.swift; sourceTree = "<group>"; };
 		CD887EBA254C00F700FBC140 /* KBusLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBusLine.swift; sourceTree = "<group>"; };
 		CD887EBB254C00F700FBC140 /* KNetworkManager+OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KNetworkManager+OTP.swift"; sourceTree = "<group>"; };
 		CD887EBC254C00F700FBC140 /* KTripPlanResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTripPlanResult.swift; sourceTree = "<group>"; };
@@ -344,6 +344,8 @@
 		CD887FCF254C00F800FBC140 /* CellReport.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellReport.xib; sourceTree = "<group>"; };
 		CD887FD1254C00F800FBC140 /* KAutoUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAutoUpdateManager.swift; sourceTree = "<group>"; };
 		CD887FD2254C00F800FBC140 /* KInfoPlist+AppUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+AppUpdate.swift"; sourceTree = "<group>"; };
+		CD8880AB254C198E00FBC140 /* it */ = {isa = PBXFileReference; name = it; path = it.lproj/KPuzzleGameLocalizable.strings; sourceTree = "<group>"; };
+		CD8880AD254C19A000FBC140 /* KPuzzleGameLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPuzzleGameLocalization.swift; sourceTree = "<group>"; };
 		CDBB78B5219C7EFE00122E7E /* Krake.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Krake.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
@@ -396,7 +398,7 @@
 				CD887E59254C00F700FBC140 /* GameBoard.storyboard */,
 				CD887E5A254C00F700FBC140 /* KGameQuizAssets.swift */,
 				CD887E5B254C00F700FBC140 /* SKBounceAnimation.h */,
-				CD887E5C254C00F700FBC140 /* KGameQuizStrings.swift */,
+				CD887E5C254C00F700FBC140 /* KGameQuizLocalization.swift */,
 				CD887E5D254C00F700FBC140 /* LBClock.h */,
 				CD887E5E254C00F700FBC140 /* KGameStartViewController.swift */,
 				CD887E5F254C00F700FBC140 /* KMainGameViewController.swift */,
@@ -534,7 +536,7 @@
 				CD887EB6254C00F700FBC140 /* KOTPLocationManager.swift */,
 				CD887EB7254C00F700FBC140 /* KInfoPlist+OTP.swift */,
 				CD887EB8254C00F700FBC140 /* Number+OtpDate.swift */,
-				CD887EB9254C00F700FBC140 /* KOTPStrings.swift */,
+				CD887EB9254C00F700FBC140 /* KOTPLocalization.swift */,
 				CD887EBA254C00F700FBC140 /* KBusLine.swift */,
 				CD887EBB254C00F700FBC140 /* KNetworkManager+OTP.swift */,
 				CD887EBC254C00F700FBC140 /* KTripPlanResult.swift */,
@@ -729,14 +731,16 @@
 		CD887F3F254C00F800FBC140 /* PuzzleGame */ = {
 			isa = PBXGroup;
 			children = (
-				CD887F40254C00F800FBC140 /* PuzzleGenerator.swift */,
-				CD887F41254C00F800FBC140 /* PuzzleGame.xcassets */,
-				CD887F42254C00F800FBC140 /* Puzzle.swift */,
-				CD887F43254C00F800FBC140 /* GameViewController.swift */,
-				CD887F44254C00F800FBC140 /* TileView.swift */,
-				CD887F45254C00F800FBC140 /* GamePod.storyboard */,
-				CD887F46254C00F800FBC140 /* KPuzzleGameAssets.swift */,
 				CD887F47254C00F800FBC140 /* GameBoardViewController.swift */,
+				CD887F45254C00F800FBC140 /* GamePod.storyboard */,
+				CD887F43254C00F800FBC140 /* GameViewController.swift */,
+				CD887F46254C00F800FBC140 /* KPuzzleGameAssets.swift */,
+				CD8880AC254C198E00FBC140 /* KPuzzleGameLocalizable.strings */,
+				CD8880AD254C19A000FBC140 /* KPuzzleGameLocalization.swift */,
+				CD887F42254C00F800FBC140 /* Puzzle.swift */,
+				CD887F41254C00F800FBC140 /* PuzzleGame.xcassets */,
+				CD887F40254C00F800FBC140 /* PuzzleGenerator.swift */,
+				CD887F44254C00F800FBC140 /* TileView.swift */,
 			);
 			path = PuzzleGame;
 			sourceTree = "<group>";
@@ -1018,7 +1022,7 @@
 		CD887FBE254C00F800FBC140 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				CD887E7D254C00F700FBC140 /* KStrings.swift */,
+				CD887E7D254C00F700FBC140 /* KLocalization.swift */,
 				CD887FBF254C00F800FBC140 /* OCLocalizable.strings */,
 			);
 			path = Localization;
@@ -1122,6 +1126,14 @@
 				CD887FC4254C00F800FBC140 /* fr */,
 			);
 			name = OCLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		CD8880AC254C198E00FBC140 /* KPuzzleGameLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD8880AB254C198E00FBC140 /* it */,
+			);
+			name = KPuzzleGameLocalizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

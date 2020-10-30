@@ -1,0 +1,14 @@
+/* 
+  KPuzzleGameLocalizable.strings
+  Krake
+
+  Created by Patrick on 30/10/2020.
+  Copyright © 2020 Laser Srl. All rights reserved.
+*/
+
+"ShowTilesQuestion" = "Vuoi vedere il numero delle tessere?";
+"ShowCompleteImageQuestion" = "Vuoi vedere l'immagine completa?";
+"Resume" = "Riprendi";
+"CloseGame" = "Chiudi il gioco";
+"Congrats" = "Complimenti";
+"FailedGame" = "Hai perso!";
