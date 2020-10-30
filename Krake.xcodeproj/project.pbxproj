@@ -346,6 +346,8 @@
 		CD887FD2254C00F800FBC140 /* KInfoPlist+AppUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+AppUpdate.swift"; sourceTree = "<group>"; };
 		CD8880AB254C198E00FBC140 /* it */ = {isa = PBXFileReference; name = it; path = it.lproj/KPuzzleGameLocalizable.strings; sourceTree = "<group>"; };
 		CD8880AD254C19A000FBC140 /* KPuzzleGameLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPuzzleGameLocalization.swift; sourceTree = "<group>"; };
+		CD888124254C24D800FBC140 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/KOTPLocalizable.strings; sourceTree = "<group>"; };
+		CD888125254C2AA600FBC140 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/KGameQuizLocalizable.strings; sourceTree = "<group>"; };
 		CDBB78B5219C7EFE00122E7E /* Krake.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Krake.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
@@ -1105,6 +1107,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				CD887E58254C00F700FBC140 /* it */,
+				CD888125254C2AA600FBC140 /* en */,
 			);
 			name = KGameQuizLocalizable.strings;
 			sourceTree = "<group>";
@@ -1113,6 +1116,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				CD887EAC254C00F700FBC140 /* it */,
+				CD888124254C24D800FBC140 /* en */,
 			);
 			name = KOTPLocalizable.strings;
 			sourceTree = "<group>";

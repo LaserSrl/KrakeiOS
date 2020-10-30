@@ -1,143 +1,177 @@
 /* 
  Localizable.strings
- OrchardCore
+ Krake
  
  Created by Patrick on 17/12/14.
- Copyright (c) 2014 Laser Group srl. All rights reserved.
+ Copyright (c) 2020 Laser Group srl. All rights reserved.
  */
 
-"LANGUAGE" = "en-US";
+//AppUpdate
+//"AppUpdate.updateAvailable" = "Aggiornamento disponibile";
+//"AppUpdate.updateAvailableMessage" = "Aggiornamento disponibile. Per continuare ad utilizzare l'App devi aggiornarla.";
+//"AppUpdate.update" = "Aggiorna";
 
-"VUOI_APRIRE_PUSH" = "%@\n\nLearn more?";
+//Calendar
+"Calendar.eventAdded" = "Event added to the calendar";
+
+//Commons
+"Commons.required" = "required";
+"Commons.onLoading" = "Loading...";
+"Commons.next" = "Next";
+"Commons.cancel" = "Cancel";
+"Commons.done" = "Done";
+"Commons.accept" = "Accept";
+"Commons.deny" = "Deny";
+"Commons.save" = "Save";
+"Commons.close" = "Close";
+"Commons.eMail" = "E-Mail";
+"Commons.all" = "All";
+"Commons.no" = "No";
+"Commons.yes" = "Yes";
+"Commons.ok" = "Ok";
+"Commons.send" = "Send";
+"Commons.completed" = "Completed";
+"Commons.message" = "Message";
+"Commons.wait" = "Please wait";
+"Commons.anonymous" = "Anonymous";
+"Commons.no_elements" = "There are no elements in this section";
+"Commons.share" = "Share";
+"Commons.addToCalendar" = "Add to calendar";
+"Commons.phone" = "Telephone";
+"Commons.webSite" = "Web site";
+"Commons.from" = "From";
+"Commons.to" = "To";
+"Commons.insertTextToSearch" = "Insert text to search";
+"Commons.search" = "Search";
+
+//ContentModification
+//"ContentModification.dontSave" = "Non salvare";
+//"ContentModification.quitAnyway" = "Esci comunque";
+//"ContentModification.quitWithoutSaveQuestion" = "Vuoi chiudere? Perderai le tue modifiche non salvate";
+//"ContentModification.quitAndSaveQuestion" = "Vuoi chiudere e salvare il contenuto?";
+//"ContentModification.media_max_number_of_elem" = "Hai raggiunto il numero massimo di elementi multimediali. Prima di procedere con l'aggiunta di un nuovo elemento devi cancellarne uno.";
+
+//Core
+"Core.language" = "en-US";
+
+//Date
+"Date.date" = "Date";
+"Date.on" = "on %@";
+"Date.fromToDate" = "from %@ to %@";
+"Date.fromToHour" = "from %@ to %@";
+"Date.hour" = "h";
+"Date.minute" = "min.";
+"Date.toDate" = "to";
+
+//Error
+"Error.error" = "Error";
+//"Error.genericError" = "Errore generico";
+//"Error.actionNotAuthorized" = "Azione non autorizzata";
+//"Error.cantOpenThisUrl" = "Non è possibile aprire il seguente url %@";
+//"Error.loadingOfUserInfoFailed" = "Errore di caricamento";
+"Error.invalidEntryPoint" = "Invalid Entry Point";
+
+//Location
+"Location.location" = "Position";
+"Location.myLocation" = "My position";
+
+//UserAccess
+"UserAccess.loginWith" = "Login with";
+"UserAccess.login" = "Login";
+"UserAccess.doRegistration" = "Registered";
+"UserAccess.registration" = "Registration";
+"UserAccess.recoverPassword" = "Recover password";
+"UserAccess.verificationMailMessage" = "Your email address has been verified, you can login";
+"UserAccess.reset_pwd_message" = "Forgotten password? Fiil in the form to receive a link for password reset";
+"UserAccess.reset_password_sended" = "We have just sent you your new password.";
+"UserAccess.placeholder_sms_or_mail_restore_password" = "Phone number or E-Mail";
+"UserAccess.placeholder_mail_restore_password" = "E-Mail";
+"UserAccess.domain" = "Domain";
+"UserAccess.password" = "Password";
+"UserAccess.confirm_password" = "Confirm Password";
+"UserAccess.phone_number" = "Mobile phone number";
+"UserAccess.lost_pwd" = "Forgotten password?";
+"UserAccess.sms_not_valid" = "The number is not valid";
+"UserAccess.check_your_number" = "Confirm you want to sent the procedure to recover your password to the following number?\n\n";
+"UserAccess.empty_field" = "Section not filled in";
+
+//Policies
+"Policies.required" = " * required";
+"Policies.acceptTerm" = "I accept these above conditions.";
+"Policies.confirmRead" = "I confirm that I have read.";
+"Policies.managePolicy" = "Policies";
+"Policies.undoPrivacy" = "You must accept the terms and conditions in order to proceed.";
+"Policies.CommercialUse" = "Commercial use";
+"Policies.ThirdParty" = "Third party";
+"Policies.Policy" = "Policies";
+"Policies.Regulation" = "Regulations";
+
+//PostCard
+"PostCard.yourMail" = "Your e-mail";
+"PostCard.yourName" = "Your name";
+"PostCard.toMail" = "To e-mail";
+"PostCard.toName" = "To name";
+"PostCard.missingRecipientName" = "Insert the recipient's name";
+"PostCard.missingRecipientMail" = "Insert the recipient's mail addres";
+"PostCard.missingSenderMail" = "Insert your mail address";
+"PostCard.missingSenderName" = "Insert your name";
+"PostCard.missingComment" = "Insert your note";
+"PostCard.invalidRecipientMail" = "Recipient's mail not valid";
+"PostCard.invalidSenderMail" = "Sender's mail not valid";
+"PostCard.missingFollowingFields" = "Fill the following fields:";
+
+//Push
+"PushNotification.VUOI_APRIRE_PUSH" = "%@\n\nLearn more?";
+
+//Questionnaire
+"Questionnaire.NOT_COMPILED" = "You haven't answered any of the questions.";
+"Questionnaire.COMPLETED" = "Thank you for filling in the questionnaire.";
+"Questionnaire.NOT_AVAILABLE" = "Congratulations you have answered all the questions. Get back to us soon to contribute again.";
+"Questionnaire.QUESTION_REQUIRED" = "You must answer question '%@' before you can send the questionnaire.";
+"Questionnaire.ERROR" = "It has not been possible to send your questionnaire.";
+
+//Reactions
+"Reactions.angry" = "Angry";
+"Reactions.boring" = "Boring";
+"Reactions.curious" = "Curious";
+"Reactions.excited" = "Excited";
+"Reactions.exhausted" = "Exhausted";
+"Reactions.happy" = "Happy";
+"Reactions.i Like" = "I Like";
+"Reactions.i Was There" = "I Was There";
+"Reactions.interested" = "Interested";
+"Reactions.joke" = "Joke";
+"Reactions.kiss" = "Kiss";
+"Reactions.love" = "Love";
+"Reactions.pain" = "Pain";
+"Reactions.sad" = "Sad";
+"Reactions.shocked" = "Shocked";
+"Reactions.silent" = "Silent";
+
+//Report
+"Report.created" = "Created";
+"Report.loaded" = "Loaded";
+"Report.accepted" = "Accepted";
+"Report.rejected" = "Rejected";
+
+//Beacon
+//"Beacon.notificationBody" = "Offerte nel reparto %@";
+
+
+
+
+
+
+//Da qui in avanti sono da controllare sembrano non essere mai usati
+
 "ERRORE_INVIO_SEGN" = "ERROR: We could not send the report.\n";
 "SEGN_SENDED" = "You recommendation has been successfully submitted.\n";
-"CHOOSE_TAKE_PHOTO" = "Choose or take a photo";
-
 "PUSH_ACTIVATION" = "In order to enter this service you have to activate Push first.";
-"ENABLE_TWITTER" = "In order to enter this service you have to activate Twitter first.";
-"ENABLE_FACEBOOK" = "To be able to proceed verify that:\n- you have configured the Facebook account on the setting of the device or you have installed the Facebook app\n- you have activated the app on Facebook\n\nBe careful : if you have recently changed your password on Facebook, remember to update it on the setting of the device or in the Facebook app.";
-"ENABLE_NOW" = "Do you want to proceed?";
-
-"YOUR_MAIL" = "Your e-mail";
-"YOUR_NAME" = "Your name";
-"LOCATION" = "Position";
-"TO_MAIL" = "To e-mail";
-"TO_NAME" = "To name";
-"SEND" = "Send";
-"MESSAGE" = "Message";
-
-"Completed" = "Completed";
-"Error" = "Error";
-
-"FBLOGIN"="Facebook login";
-"HELPFB"="Ricorda che devi abilitare l'app dalle impostazioni di sistema";
-
-"LAMIAPOS"="My position";
-"FROM"="From";
-"TO"="To";
-"To-date" = "to";
-"SEARCH"="Search";
-"ARRIVEBY"="Arrival time?";
-"Insert text to search" = "Insert text to search";
-"Tutti" = "All";
-"No" = "No";
-"Si" = "Yes";
 "Mappa" = "Map";
-"tripModePartenza" = "Departure";
-"tripModeArrivo" = "Arrival by";
-
-"Anonymous" = "Anonymous";
-"Impostazioni" = "Settings";
-
-"wait" = "Please wait";
-"on_loading" = "Loading...";
-
-//ORCHARD LOGIN
-"LOGIN_WITH"="Login with";
-"Registration" = "Registration";
-"register" = "Registered";
-"Cancel" = "Cancel";
-"Recover_password" = "Recover password";
-"Done" = "Done";
-
-"reset_pwd_message" = "Forgotten password? Fiil in the form to receive a link for password reset";
-"placeholder_sms_or_mail_restore_password" = "Phone number or E-Mail";
-"placeholder_mail_restore_password" = "E-Mail";
-"reset_password_sended" = "We have just sent you your new password";
-"sms_not_valid" = "The number is not valid";
-"empty_field" = "Section not filled in";
-"check_your_number" = "Confirm you want to sent the procedure to recover your password to the following number?\n\n";
-
-"e_mail" = "E-Mail";
-"domain" = "Domain";
-"password" = "Password";
-"confirm_password" = "Confirm Password";
-"phone_number" = "Mobile phone number";
-"lost_pwd" = "Forgotten password?";
-"VerificationMailMessage" = "Your email address has been verified, you can login";
-
-//RULES
-"ACCEPT"="Agree";
-"DENY"="Disagree";
-"UNDO" = "Undo";
-"SAVE" = "Save";
-"CLOSE"="Close";
-
-"Lunedì" = "Lunedì";
-"Martedì" = "Martedì";
-"Mercoledì" = "Mercoledì";
-"Giovedì" = "Giovedì";
-"Venerdì" = "Venerdì";
-"Sabato" = "Sabato";
-"Domenica" = "Domenica";
-"Gennaio" = "Gennaio";
-"Febbraio" = "Febbraio";
-"Marzo" = "Marzo";
-"Aprile" = "Aprile";
-"Maggio" = "Maggio";
-"Giugno" = "Giugno";
-"Luglio" = "Luglio";
-"Agosto" = "Agosto";
-"Settembre" = "Settembre";
-"Ottobre" = "Ottobre";
-"Novembre" = "Novembre";
-"Dicembre" = "Dicembre";
-
-// - MARK: Orchard detail
-"Condividi" = "Share";
-"Aggiungi al calendario" = "Add to calendar";
-"Telefono" = "Telephone";
-"Sito web" = "Web site";
-
-//PRIVACY
-"required" = " *required";
-"policy-term" = "I accept these above conditions.";
-"regulation-term" = "I accept these above conditions.";
-"next" = "Next";
-"gestione_policy" = "Policies";
-"undo_privacy" = "You must accept the terms and conditions in order to proceed.";
-
 
 //SEGNALAZIONI
-"Devi scattare o scegliere una foto" = "You must insert a picture";
-"Manca la E-Mail del mittente" = "Insert your mail address";
-"Manca il nome del mittente" = "Insert your name";
-"Manca la E-Mail del destinatario" = "Insert the recipient's mail addres";
-"Manca il nome del destinatario" = "Insert the recipient's name";
-"Manca il testo del messaggio" = "Insert your note";
-"Mancano i seguenti campi:" = "Fill the following fields:";
 "ERRORE_GPS" = "Insert your position";
-"La mia posizione" = "My position";
 "Bad location accuracy" = "Bad location accuracy";
-
-//CALENDARIO
-"event_added" = "Event added to the calendar";
-
-//Status
-"Created" = "Created";
-"Loaded" = "Loaded";
-"Accepted" = "Accepted";
-"Rejected" = "Rejected";
 
 //Reportage
 "Titolo" = "Title";
@@ -146,141 +180,7 @@
 "Categoria" = "Category";
 "Gallery" = "gallery";
 "TitlePart.Title" = "title";
-"Sottotitolo" = "subtitle";
-"categoria" = "category";
 "BodyPart.Text" = "message";
 "MapPart.Latitude" = "GPS location";
 "RELATED_FIELDS" = "General Infos";
-
-
-"no_elements" = "There are no elements in this section";
-
-"invalid_entry_point" = "Invalid Entry Point";
-
-//Date extension
-"on" = "on %@";
-"fromToDate" = "from %@ to %@";
-"fromToHour" = "from %@ to %@";
-
-
-/*
- TwitterKit
- */
-
-"error-data-tweets" = "There are no tweets";
-"error-zero-tweets" = "There are no tweets";
-"error-guest-session-tweets" = "There are no tweets";
-"error-request-tweets" = "There are no tweets";
-"error-download-config-tweets" = "There are no tweets";
-
-/*
- Questionnaries
- */
-
-"QUESTIONNAIRE_NOT_COMPILED" = "You haven't answered any of the questions.";
-"QUESTIONNAIRE_COMPLETED" = "Thank you for filling in the questionnaire.";
-"QUESTIONNAIRE_NOT_AVAILABLE" = "Congratulations you have answered all the questions. Get back to us soon to contribute again.";
-"QUESTIONNAIRE_QUESTION_REQUIRED" = "You must answer question '%@' before you can send the questionnaire.";
-"QUESTIONNAIRE_ERROR" = "It has not been possible to send your questionnaire.";
-
-/*
- OTP
- */
-
-"Partenza" = "Departure";
-"Arrivo" = "Arrival";
-"Durata" = "Duration";
-"Percorso a piedi" = "Journey on foot";
-"Cambi" = "Changes";
-"WALK" = "Walk for";
-"BUS" = "Bus for";
-"TRAM" = "Tram for";
-"SUBWAY" = "Metro";
-"CAR" = "Drive to";
-"BICYCLE" = "Bike to";
-"BY" = " for ";
-"FIND_STOPS_NEARBY" = "Find stops near a";
-"CAN_NOT_FIND_STOPS" = "There are no bus-stops around the highlighted area.";
-"CAN_NOT_TRIP" = "It has not been possible to plan the journey";
-"Nome della fermata" = "Stop name";
-"STOP" = "Stop";
-
-"direction_description_circle" = "At the roundabout take the %@ turn-off";
-"direction_description_right" = "Turn right";
-"direction_description_left" = "Turn left";
-"direction_description_continue" = "Straight on";
-"direction_description_depart" = "Set off";
-"direction_description_slightly_left" = "Turn slightly to the left";
-"direction_description_slightly_right" = "Turn slightly to the right";
-"direction_description_hard_left" = "Turn left";
-"direction_description_hard_right" = "Turn right";
-"direction_description_uturn" = "Make a U-turn";
-"direction_description_after" = "After %@";
-"direction_by" = "in the direction of";
-
-"Trip is not possible.  You might be trying to plan a trip outside the map data boundary." = "It hasn't been possible to work out the requested journeyas you are outside the prearranged area.";
-
-"please_waiting" = "PLEASE WAIT";
-"trip_route" = "We are planning your travel";
-
-"%0.f minuti" = "%0.f minutes";
-"in arrivo" = "arriving";
-"ore %@" = "hour %@";
-"Linea %@ verso %@ %@" = "Line %@ to %@ %@";
-"Percorso più veloce" = "Fastest route";
-
-"OTP_MAX_NUMBER_OF_REGION" = "Warning: you can activate a maximum of 20 stops; disable at least one stop before activating a new one.";
-"OTP_DISABLE_ALL_STOPS_NOTIFICATION" = "Disable notifications for all stops.";
-"OTP_LOCALIZATION_ERROR" = "Enable always localization to use this functionality.";
-"OTP_STOP_NOTIFICATION" = "You are about to arrive at the '%@' stop";
-"OTP_ENABLE_STOP_NOTIFICATION_?" = "Would you like to be notified when you are about to reach the stop?";
-"OTP_DISABLE_STOP_NOTIFICATION_?" = "Do you want to disable the notification?";
-"OTP_DISABLE_ALL_STOPS_NOTIFICATION_QUESTION" = "Do you want to disable all notifications?";
-
-/*
- GameQuiz
- */
-
-"bravo" = "Congrats!";
-"check_your_number" = "Confirm the follow mobile phone number?";
-"contest_participate" = "Points stored correctly";
-"continua" = "Next";
-"game_center_login_now" = "Would you like login now?";
-"game_center_request" = "GameCenter is required to partecipate";
-"insert_phone_number" = "Insert your mobile phone number";
-"leave" = "Undo";
-"login" = "Login";
-"ops" = "Ops!";
-"punti" = "points";
-"r_u_ready" = "Are you ready?";
-"risposta_corretta" = "Correct answer";
-"risposta_errata" = "Wrong answer";
-"sms_not_valid" = "Mobile phone number not valid";
-"totale" = "Total";
-
-
-"partecipate" = "Partecipate";
-"ready" = "Are you ready to start the game?";
-"start" = "Start";
-"your_score_is" = "Your score is";
-"available_soon" = "The game will be available from";
-
-
-//UserReactions
-
-"angry" = "Angry";
-"boring" = "Boring";
-"curious" = "Curious";
-"excited" = "Excited";
-"exhausted" = "Exhausted";
-"happy" = "Happy";
-"i Like" = "I Like";
-"i Was There" = "I Was There";
-"interested" = "Interested";
-"joke" = "Joke";
-"kiss" = "Kiss";
-"love" = "Love";
-"pain" = "Pain";
-"sad" = "Sad";
-"shocked" = "Shocked";
-"silent" = "Silent";
+"CHOOSE_TAKE_PHOTO" = "Choose or take a photo";

@@ -322,7 +322,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         view.addGestureRecognizer(rightToLeft)
         view.addGestureRecognizer(leftToRight)
         
-        let sendButton = UIBarButtonItem(title: KLocalization.save, style: .done, target: self, action: #selector(ContentModificationContainerViewController.sendAllContentToWS))
+        let sendButton = UIBarButtonItem(title: KLocalization.Commons.save, style: .done, target: self, action: #selector(ContentModificationContainerViewController.sendAllContentToWS))
         sendButton.isEnabled = false
         navigationItem.rightBarButtonItem = sendButton
         

@@ -50,7 +50,7 @@ class MapInfo : ContentModificationViewController, MKMapViewDelegate, UISearchBa
         mapView.delegate = self
         
         searchBar.barTintColor = KTheme.current.color(.tint)
-        searchBar.placeholder = KLocalization.search
+        searchBar.placeholder = KLocalization.Commons.search
         titleLabel.backgroundColor = KTheme.current.color(.tint)
         titleLabel.textColor = KTheme.current.color(.textTint)
         

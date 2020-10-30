@@ -323,7 +323,7 @@ class TakePhotoOrVideo : ContentModificationViewController, UICollectionViewData
             if medias.count < Int(maxNumberOfMedias) {
                 return true
             } else {
-                KMessageManager.showMessage(KLocalization.mediaMaxNumberOfElem, type: .error, fromViewController: parentParentViewController)
+                KMessageManager.showMessage(KLocalization.ContentModification.mediaMaxNumberOfElem, type: .error, fromViewController: parentParentViewController)
                 return false
             }
         }

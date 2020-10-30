@@ -1,144 +1,177 @@
 /*
  Localizable.strings
- OrchardCore
+ Krake
  
  Created by Patrick on 17/12/14.
- Copyright (c) 2014 Laser Group srl. All rights reserved.
+ Copyright (c) 2020 Laser Group srl. All rights reserved.
  */
 
- "LANGUAGE" = "fr-FR";
+//AppUpdate
+//"AppUpdate.updateAvailable" = "Aggiornamento disponibile";
+//"AppUpdate.updateAvailableMessage" = "Aggiornamento disponibile. Per continuare ad utilizzare l'App devi aggiornarla.";
+//"AppUpdate.update" = "Aggiorna";
 
-"VUOI_APRIRE_PUSH" = "%@\n\nEn savoir plus?";
-"ERRORE_GPS" = "ERROR: Il ne était pas possible de présenter le rapport.\n Manquant la position";
+//Calendar
+"Calendar.eventAdded" = "Événement ajouté au calendrier";
+
+//Commons
+"Commons.required" = "obligatoire";
+"Commons.onLoading" = "Chargement en cour...";
+"Commons.next" = "Avant";
+"Commons.cancel" = "Annule";
+"Commons.done" = "D'accord!";
+"Commons.accept" = "Accepter";
+"Commons.deny" = "Disagree";
+"Commons.save" = "Sauvegarder";
+"Commons.close" = "Sortir";
+"Commons.eMail" = "Adresse E-Mail";
+"Commons.all" = "Tous";
+"Commons.no" = "No";
+"Commons.yes" = "Oui";
+"Commons.ok" = "Ok";
+"Commons.send" = "Envoyer";
+"Commons.completed" = "Terminé";
+"Commons.message" = "Message";
+"Commons.wait" = "Attendre";
+"Commons.anonymous" = "Anonyme";
+//"Commons.no_elements" = "There are no elements in this section";
+"Commons.share" = "Partager";
+"Commons.addToCalendar" = "Ajouter au calendrier";
+"Commons.phone" = "Téléphone";
+"Commons.webSite" = "Site Internet";
+"Commons.from" = "A partir de";
+"Commons.to" = "Vers";
+//"Commons.insertTextToSearch" = "Insert text to search";
+"Commons.search" = "Chercher";
+
+//ContentModification
+//"ContentModification.dontSave" = "Non salvare";
+//"ContentModification.quitAnyway" = "Esci comunque";
+//"ContentModification.quitWithoutSaveQuestion" = "Vuoi chiudere? Perderai le tue modifiche non salvate";
+//"ContentModification.quitAndSaveQuestion" = "Vuoi chiudere e salvare il contenuto?";
+//"ContentModification.media_max_number_of_elem" = "Hai raggiunto il numero massimo di elementi multimediali. Prima di procedere con l'aggiunta di un nuovo elemento devi cancellarne uno.";
+
+//Core
+"Core.language" = "fr-FR";
+
+//Date
+//"Date.date" = "Date";
+//"Date.on" = "on %@";
+//"Date.fromToDate" = "from %@ to %@";
+//"Date.fromToHour" = "from %@ to %@";
+//"Date.hour" = "h";
+//"Date.minute" = "min.";
+"Date.toDate" = "à";
+
+//Error
+"Error.error" = "Error";
+//"Error.genericError" = "Errore generico";
+//"Error.actionNotAuthorized" = "Azione non autorizzata";
+//"Error.cantOpenThisUrl" = "Non è possibile aprire il seguente url %@";
+//"Error.loadingOfUserInfoFailed" = "Errore di caricamento";
+//"Error.invalidEntryPoint" = "Invalid Entry Point";
+
+//Location
+"Location.location" = "Position";
+"Location.myLocation" = "Ma localisation";
+
+//UserAccess
+"UserAccess.loginWith" = "Connectez-vous avec";
+"UserAccess.login" = "Connexion";
+"UserAccess.doRegistration" = "Inscrit";
+"UserAccess.registration" = "Enregistrement";
+"UserAccess.recoverPassword" = "Rècupèrer le mot de passe";
+"UserAccess.verificationMailMessage" = "Votre adresse de courriel a été vérifiée, vous pouvez vous connecter";
+"UserAccess.reset_pwd_message" = "Mot de passe oublié? Remplissez le fourmulaire pour recevoir un link pour choisir un nouveaux mot de passe.";
+"UserAccess.reset_password_sended" = "Votre nouveau mot de passe à été envoyé";
+"UserAccess.placeholder_sms_or_mail_restore_password" = "Téléphone ou adresse E-Mail";
+"UserAccess.placeholder_mail_restore_password" = "Adresse E-Mail";
+"UserAccess.domain" = "Domain";
+"UserAccess.password" = "Mot de passe";
+"UserAccess.confirm_password" = "Confirme le mot de passe";
+"UserAccess.phone_number" = "Portable";
+"UserAccess.lost_pwd" = "Mot de passe oublié?";
+"UserAccess.sms_not_valid" = "Numéro invalide";
+"UserAccess.check_your_number" = "Vous confirmez que vous voulez envoyer la procédure de récupération de mot de passe au numéro suivant?\n\n";
+"UserAccess.empty_field" = "Un champ obligatoire est manquant";
+
+//Policies
+"Policies.required" = " * obligatoire";
+"Policies.acceptTerm" = "Je accepte les termes.";
+"Policies.confirmRead" = "Je accepte les termes.";
+"Policies.managePolicy" = "Gestion des termes";
+"Policies.undoPrivacy" = "Pour continuer, vous devez accepter les termes.";
+//"Policies.CommercialUse" = "Commercial use";
+//"Policies.ThirdParty" = "Third party";
+//"Policies.Policy" = "Policies";
+//"Policies.Regulation" = "Regulations";
+
+//PostCard
+"PostCard.yourMail" = "Votre e-mail";
+"PostCard.yourName" = "Votre name";
+//"PostCard.toMail" = "To e-mail";
+//"PostCard.toName" = "To name";
+"PostCard.missingRecipientName" = "Entrez votre nom";
+"PostCard.missingRecipientMail" = "Entrez votre e-mail";
+//"PostCard.missingSenderMail" = "Insert your mail address";
+//"PostCard.missingSenderName" = "Insert your name";
+"PostCard.missingComment" = "Entrez votre commentaire";
+//"PostCard.invalidRecipientMail" = "Recipient's mail not valid";
+//"PostCard.invalidSenderMail" = "Sender's mail not valid";
+"PostCard.missingFollowingFields" = "Champs qui suivent manquants:";
+
+//Push
+"PushNotification.VUOI_APRIRE_PUSH" = "%@\n\nEn savoir plus?";
+
+//Questionnaire
+//"Questionnaire.NOT_COMPILED" = "You haven't answered any of the questions.";
+//"Questionnaire.COMPLETED" = "Thank you for filling in the questionnaire.";
+//"Questionnaire.NOT_AVAILABLE" = "Congratulations you have answered all the questions. Get back to us soon to contribute again.";
+//"Questionnaire.QUESTION_REQUIRED" = "You must answer question '%@' before you can send the questionnaire.";
+//"Questionnaire.ERROR" = "It has not been possible to send your questionnaire.";
+
+//Reactions
+//"Reactions.angry" = "Angry";
+//"Reactions.boring" = "Boring";
+//"Reactions.curious" = "Curious";
+//"Reactions.excited" = "Excited";
+//"Reactions.exhausted" = "Exhausted";
+//"Reactions.happy" = "Happy";
+//"Reactions.i Like" = "I Like";
+//"Reactions.i Was There" = "I Was There";
+//"Reactions.interested" = "Interested";
+//"Reactions.joke" = "Joke";
+//"Reactions.kiss" = "Kiss";
+//"Reactions.love" = "Love";
+//"Reactions.pain" = "Pain";
+//"Reactions.sad" = "Sad";
+//"Reactions.shocked" = "Shocked";
+//"Reactions.silent" = "Silent";
+
+//Report
+//"Report.created" = "Created";
+//"Report.loaded" = "Loaded";
+//"Report.accepted" = "Accepted";
+//"Report.rejected" = "Rejected";
+
+//Beacon
+//"Beacon.notificationBody" = "Offerte nel reparto %@";
+
+
+
+
+
+
+//Da qui in avanti sono da controllare sembrano non essere mai usati
+
 "ERRORE_INVIO_SEGN" = "ERRORE: Nous ne pouvions pas envoyer le rapport.\n";
 "SEGN_SENDED" = "Ta signalisation a été envoyée avec succès.\n";
-"CHOOSE_TAKE_PHOTO" = "Choisissez ou prendre une photo";
-
 "PUSH_ACTIVATION" = "In order to enter this service you have to activate Push first.";
-"ENABLE_TWITTER" = "In order to enter this service you have to activate Twitter first.";
-"ENABLE_FACEBOOK" = "To be able to proceed verify that:\n- you have configured the Facebook account on the setting of the device or you have installed the Facebook app\n- you have activated the app on Facebook\n\nBe careful : if you have recently changed your password on Facebook, remember to update it on the setting of the device or in the Facebook app.";
-"ENABLE_NOW" = "Do you want to proceed?";
-
-"YOUR_MAIL" = "Votre e-mail";
-"YOUR_NAME" = "Votre name";
-"LOCATION" = "Position";
-"TO_MAIL" = "To e-mail";
-"TO_NAME" = "To name";
-"SEND" = "Envoyer";
-"MESSAGE" = "Message";
-
-"Completed" = "Completed";
-"Error" = "Error";
-
-"FBLOGIN"="Facebook login";
-"HELPFB"="Ricorda che devi abilitare l'app dalle impostazioni di sistema.";
-
-"LAMIAPOS"="Ma position";
-"FROM"="A partir de";
-"TO"="Vers";
-"To-date" = "à";
-"SEARCH"="Rechercher";
-"ARRIVEBY"="Heure d'arrivée?";
-"tripModePartenza" = "Départ";
-"tripModeArrivo" = "Arrivée";
-
-"Tutti" = "Tous";
-"No" = "No";
-"Si" = "Oui";
-
-"wait" = "Attendre";
-"on_loading" = "Chargement en cour...";
-
-//ORCHARD LOGIN
-"LOGIN_WITH"="Connectez-vous avec";
-"login" = "Connexion";
-"Registration" = "Enregistrement";
-"register" = "Inscrit";
-"Cancel" = "Annule";
-"Recover_password" = "Recover password";
-
-"reset_pwd_message" = "Mot de passe oublié? Remplissez le fourmulaire pour recevoir un link pour choisir un nouveaux mot de passe.";
-"placeholder_sms_or_mail_restore_password" = "Téléphone ou adresse E-Mail";
-"placeholder_mail_restore_password" = "Adresse E-Mail";
-"reset_password_sended" = "Votre nouveau mot de passe à été envoyé";
-"sms_not_valid" = "Numéro invalide";
-"empty_field" = "Un champ obligatoire est manquant";
-"check_your_number" = "Vous confirmez que vous voulez envoyer la procédure de récupération de mot de passe au numéro suivant?\n\n";
-
-"e_mail" = "Adresse E-Mail";
-"domain" = "Domain";
-"password" = "Mot de passe";
-"confirm_password" = "Confirme le mot de passe";
-"phone_number" = "Portable";
-"lost_pwd" = "Mot de passe oublié?";
-"VerificationMailMessage" = "Votre adresse de courriel a été vérifiée, vous pouvez vous connecter ";
-
-//RULES
-"ACCEPT"="Accepter";
-"DENY"="Disagree";
-"CLOSE"="Sortir";
-
-//OTP
-"Partenza" = "Partenza";
-"Durata" = "Durata";
-"Percorso a piedi" = "Percorso a piedi";
-"Cambi" = "Cambi";
-"WALK" = "A piedi per ";
-"BUS" = "Bus per ";
-"TRAM" = "Tram per ";
-"SUBWAY" = "Metro per ";
-"CAR" = "In macchina per ";
-"BICYCLE" = "In bici per ";
-"FIND_STOPS_NEARBY" = "Cerca fermate vicino a";
-"CAN_NOT_FIND_STOPS" = "Non è stato possibile caricare gli orari della fermata";
-
-"Lunedì" = "Lunedì";
-"Martedì" = "Martedì";
-"Mercoledì" = "Mercoledì";
-"Giovedì" = "Giovedì";
-"Venerdì" = "Venerdì";
-"Sabato" = "Sabato";
-"Domenica" = "Domenica";
-
-"Gennaio" = "Gennaio";
-"Febbraio" = "Febbraio";
-"Marzo" = "Marzo";
-"Aprile" = "Aprile";
-"Maggio" = "Maggio";
-"Giugno" = "Giugno";
-"Luglio" = "Luglio";
-"Agosto" = "Agosto";
-"Settembre" = "Settembre";
-"Ottobre" = "Ottobre";
-"Novembre" = "Novembre";
-"Dicembre" = "Dicembre";
-
-//PRIVACY
-"required" = " *obligatoire";
-"policy-term" = "Je accepte les termes.";
-"regulation-term" = "Je accepte les termes.";
-"next" = "Avant";
-"gestione_policy" = "Gestion des termes";
-"undo_privacy" = "Pour continuer, vous devez accepter les termes.";
+"Mappa" = "Map";
 
 //SEGNALAZIONI
-"Devi scattare o scegliere una foto" = "Vous devez prendre ou choisir une photo";
-"Manca la E-Mail del mittente" = "Entrez votre e-mail";
-"Manca il nome del mittente" = "Entrez votre nom";
-"Manca il testo del messaggio" = "Entrez votre commentaire";
-"Mancano i seguenti campi:" = "Champs qui suivent manquants:";
-"ERRORE_GPS" = "Ajouter votre position";
-"La mia posizione" = "Ma localisation";
+"ERRORE_GPS" = "ERROR: Il ne était pas possible de présenter le rapport.\n Manquant la position";
 "Bad location accuracy" = "Mauvaise précision de localisation";
-
-//CALENDARIO
-"event_added" = "Événement ajouté au calendrier";
-
-//Status
-"Created" = "Created";
-"Loaded" = "Loaded";
-"Accepted" = "Accepted";
-"Rejected" = "Rejected";
 
 //Reportage
 "Titolo" = "Title";
@@ -147,60 +180,7 @@
 "Categoria" = "Categorie";
 "Gallery" = "medias";
 "TitlePart.Title" = "title";
-"Sottotitolo" = "sous title";
-"categoria" = "categorie";
 "BodyPart.Text" = "message";
 "MapPart.Latitude" = "position GPS";
 "RELATED_FIELDS" = "Info general";
-
-
-"no_elements" = "There are no elements in this section";
-
-"invalid_entry_point" = "Invalid Entry Point";
-
-//Date extension
-"on" = "on %@";
-"fromToDate" = "from %@ to %@";
-"fromToHour" = "from %@ to %@";
-
-/*
- TwitterKit
- */
-
-"error-data-tweets" = "There are no tweets";
-"error-zero-tweets" = "There are no tweets";
-"error-guest-session-tweets" = "There are no tweets";
-"error-request-tweets" = "There are no tweets";
-"error-download-config-tweets" = "There are no tweets";
-
-/*
- GameQuiz
- */
-
-"bravo" = "Congrats!";
-"check_your_number" = "Confirm the follow mobile phone number?";
-"contest_participate" = "Points stored correctly";
-"continua" = "Next";
-"game_center_login_now" = "Would you like login now?";
-"game_center_request" = "GameCenter is required to partecipate";
-"insert_phone_number" = "Insert your mobile phone number";
-"leave" = "Undo";
-"ops" = "Ops!";
-"punti" = "points";
-"r_u_ready" = "Are you ready?";
-"risposta_corretta" = "Correct answer";
-"risposta_errata" = "Wrong answer";
-"sms_not_valid" = "Mobile phone number not valid";
-"totale" = "Total";
-
-
-
-"partecipate" = "Partecipate";
-"ready" = "Are you ready to start the game?";
-"start" = "Start";
-"your_score_is" = "Your score is";
-
-
-"available_soon" = "The game will be available from";
-
-
+"CHOOSE_TAKE_PHOTO" = "Choisissez ou prendre une photo";

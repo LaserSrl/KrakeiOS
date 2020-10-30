@@ -10,8 +10,6 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum KOTPLocalization {
-  /// Arrivo
-  public static let arrivo = KOTPLocalization.tr("KOTPLocalizable", "Arrivo")
   /// In bus
   public static let bus = KOTPLocalization.tr("KOTPLocalizable", "BUS")
   ///  per 
@@ -52,8 +50,6 @@ public enum KOTPLocalization {
   public static let ok = KOTPLocalization.tr("KOTPLocalizable", "ok")
   /// in arrivo
   public static let onMyWay = KOTPLocalization.tr("KOTPLocalizable", "onMyWay")
-  /// Partenza
-  public static let partenza = KOTPLocalization.tr("KOTPLocalizable", "Partenza")
   /// Percorso a piedi
   public static let percorsoAPiedi = KOTPLocalization.tr("KOTPLocalizable", "Percorso a piedi")
   /// ATTENDERE PREGO

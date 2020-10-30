@@ -1,5 +1,9 @@
 /*
+ Localizable.strings
  Krake
+ 
+ Created by Patrick on 17/12/14.
+ Copyright (c) 2020 Laser Group srl. All rights reserved.
  */
 
 //AppUpdate
@@ -13,10 +17,13 @@
 //Commons
 "Commons.required" = "obbligatorio";
 "Commons.onLoading" = "Caricamento in corso...";
+"Commons.next" = "Avanti";
 "Commons.cancel" = "Annulla";
 "Commons.done" = "Conferma";
-"Commons.next" = "Avanti";
-"Commons.close"="Chiudi";
+"Commons.accept" = "Accetta";
+"Commons.deny" = "Nega";
+"Commons.save" = "Salva";
+"Commons.close" = "Chiudi";
 "Commons.eMail" = "E-Mail";
 "Commons.all" = "Tutti";
 "Commons.no" = "No";
@@ -35,12 +42,14 @@
 "Commons.from" = "Da";
 "Commons.to" = "A";
 "Commons.insertTextToSearch" = "Inserisci il testo da cercare";
+"Commons.search" = "Cerca";
 
 //ContentModification
 "ContentModification.dontSave" = "Non salvare";
 "ContentModification.quitAnyway" = "Esci comunque";
 "ContentModification.quitWithoutSaveQuestion" = "Vuoi chiudere? Perderai le tue modifiche non salvate";
 "ContentModification.quitAndSaveQuestion" = "Vuoi chiudere e salvare il contenuto?";
+"ContentModification.media_max_number_of_elem" = "Hai raggiunto il numero massimo di elementi multimediali. Prima di procedere con l'aggiunta di un nuovo elemento devi cancellarne uno.";
 
 //Core
 "Core.language" = "it-IT";
@@ -157,53 +166,12 @@
 
 "ERRORE_INVIO_SEGN" = "ERRORE: Non è stato possibile inviare la segnalazione.\n";
 "SEGN_SENDED" = "La tua segnalazione è stata inviata correttamente.\n";
-
 "PUSH_ACTIVATION" = "Per accedere a questa sezione devi prima aver attivato le Push!";
-"ENABLE_TWITTER" = "Per accedere a questa sezione devi prima aver autorizzato Twitter dalle impostazioni!";
-"ENABLE_FACEBOOK" = "Per poter procedere verifica di:\n- avere configurato nei setting del device l’account di Facebook oppure di avere l’app di Facebook installata\n- avere abilitato l’app su Facebook\n\nAttenzione: se di recente hai cambiato la password di Facebook ricordati di aggiornarla anche nei setting del device o nell’app Facebook.";
-"ENABLE_NOW" = "Vuoi procedere?";
-
-
-"FBLOGIN"="Facebook login";
-"HELPFB"="Ricorda che devi abilitare l'app dalle impostazioni di sistema.";
-
-"SEARCH"="Cerca";
-"ARRIVEBY"="Ora di arrivo?";
 "Mappa" = "Mappa";
 
-
-//RULES
-"ACCEPT"="Accetta";
-"DENY"="Nega";
-"UNDO" = "Annulla";
-"SAVE" = "Salva";
-
-"Lunedì" = "Lunedì";
-"Martedì" = "Martedì";
-"Mercoledì" = "Mercoledì";
-"Giovedì" = "Giovedì";
-"Venerdì" = "Venerdì";
-"Sabato" = "Sabato";
-"Domenica" = "Domenica";
-"Gennaio" = "Gennaio";
-"Febbraio" = "Febbraio";
-"Marzo" = "Marzo";
-"Aprile" = "Aprile";
-"Maggio" = "Maggio";
-"Giugno" = "Giugno";
-"Luglio" = "Luglio";
-"Agosto" = "Agosto";
-"Settembre" = "Settembre";
-"Ottobre" = "Ottobre";
-"Novembre" = "Novembre";
-"Dicembre" = "Dicembre";
-
 //SEGNALAZIONI
-"Devi scattare o scegliere una foto" = "Devi scattare o scegliere una foto";
-
 "ERRORE_GPS" = "Inserisci la tua posizione";
 "Bad location accuracy" = "Scarsa qualità del segnale GPS";
-"media_max_number_of_elem" = "Hai raggiunto il numero massimo di elementi multimediali. Prima di procedere con l'aggiunta di un nuovo elemento devi cancellarne uno.";
 
 //Reportage
 "Titolo" = "Titolo";
@@ -216,29 +184,3 @@
 "MapPart.Latitude" = "posizione GPS";
 "RELATED_FIELDS" = "Info generali";
 "CHOOSE_TAKE_PHOTO" = "Scegli o scatta una foto";
-
-
-
-/*
- HID
- */
-"SERVICE_NOT_AVAILABLE" = "Errore.\nContatta l'amministratore.";
-"WAIT_CONFIGURING" = "Attendi alcuni istanti.\nElaborazione in corso.";
-"USER_NOT_UNIQUE" = "Utente duplicato\nContatta l'amministratore";
-"USER_NOT_EXIST" = "Utente non registrato sui sistemi.\nContatta l'amministratore";
-"SEARCH_ERROR" = "Errore nella ricerca dell'utente\nContatta l'amministratore";
-"DUPLICATE_CONTAINER" = "Hai già un device registrato.\nContatta l'amministratore.";
-"REBOOT_APP_DEVICE" = "Errore, prova a riavviare l'app o il device. Se il problema persiste contatta l'amministratore";
-"DEVICE_ERROR" = "Errore nel device.\nContatta l'amministratore.";
-"NO_CREDENTIAL_ENABLED" = "Non hai diritto a credenziali di accesso.\nContatta l'amministratore.";
-"Place your smartphone near the turnstile to open it." = "Avvicina il tuo device al lettore per utilizzare la funzionalità";
-"Unable to open the turnstile. Retry later." = "Non è stato possibile aprire il tornello. Riprova più tardi.";
-"The service is temporarily busy. Retry later." = "Il servizio è momentaneamente occupato. Riprova più tardi.";
-"Network unreachable" = "Ci sono stati problemi di connessione";
-"Problems with Bluetooth" = "Ci sono stati problemi con il Bluetooth.";
-"Bluetooth is not supported by your device" = "Il Bluetooth non è supportato da questo dispositivo";
-"Enable Bluetooth to open the turnstiles" = "Abilita la localizzazione e il Bluetooth per poter utilizzare la funzionalità";
-"Turnstile opened!" = "Tornello aperto!";
-"TURNSLIDE_ERROR_ANTIPASSBACK" = "Non è stato possibile aprire il tornello (Anti Passback). Riprova più tardi.";
-
-

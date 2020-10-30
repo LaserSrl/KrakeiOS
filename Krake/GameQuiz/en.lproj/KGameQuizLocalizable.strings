@@ -1,0 +1,34 @@
+/* 
+  KGameQuizLocalizable.strings
+  Krake
+
+  Created by Patrick on 29/10/2020.
+  Copyright © 2020 Laser Srl. All rights reserved.
+*/
+"yes" = "Yes";
+"no" = "No";
+"ok" = "Ok";
+"undo" = "Undo";
+"login" = "Login";
+"insert_phone_number" = "Insert your mobile phone number";
+"sms_not_valid" = "Mobile phone number not valid";
+"check_your_number" = "Confirm the follow mobile phone number?\n\n";
+"punti" = "points";
+"totale" = "Total";
+"ready" = "Are you ready to start the game?";
+"r_u_ready" = "Are you ready?";
+"leave" = "Undo";
+"continue" = "Next";
+"game_center_request" = "GameCenter is required to partecipate";
+"game_center_login_now" = "Would you like login now?";
+"contest_participate" = "Points stored correctly";
+"bravo" = "Congrats!";
+"ops" = "Ops!";
+"risposta_corretta" = "Correct answer.";
+"risposta_errata" = "Wrong answer.";
+"start" = "Start";
+"your_score_is" = "Your score is";
+"partecipate" = "Partecipate";
+"available_soon" = "The game will be available from";
+"gameCenterNotLoggedIn" = "You can't participate because you are not logged in into GameCenter";
+"Error.genericError" = "Generic error";

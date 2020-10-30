@@ -1,0 +1,84 @@
+/* 
+  KOTPLocalizable.strings
+  Krake
+
+  Created by Patrick on 29/10/2020.
+  Copyright © 2020 Laser Srl. All rights reserved.
+*/
+
+"yes" = "Yes";
+"no" = "No";
+"ok" = "Ok";
+"settings" = "Settings";
+"location" = "Position";
+"myLocation" = "My position";
+"stop" = "stop";
+"from" = "From";
+"to" = "To";
+"fastTrip" = "Fastest route";
+"stopSearch" = "Find stops";
+
+//Direction
+"DirectionDescription.circle" = "At the roundabout take the %@ turn-off";
+"DirectionDescription.right" = "Turn right";
+"DirectionDescription.left" = "Turn left";
+"DirectionDescription.continue" = "Straight on";
+"DirectionDescription.depart" = "Set off";
+"DirectionDescription.slightlyLeft" = "Turn slightly to the left";
+"DirectionDescription.slightlyRight" = "Turn slightly to the right";
+"DirectionDescription.hardLeft" = "Turn left";
+"DirectionDescription.hardRight" = "Turn right";
+"DirectionDescription.uturn" = "Make a U-turn";
+"DirectionDescription.after" = "After %s";
+
+//Stops
+"Stop.name" = "Stop name";
+
+//TravelMode
+"TravelMode.car" = "Drive to";
+"TravelMode.walk" = "Walk for";
+"TravelMode.bicycle" = "Bike to";
+
+//Error
+"Error.generic" = "Generic error";
+
+//TripMode
+"TripMode.partenza" = "Departure";
+"TripMode.arrivo" = "Arrival by";
+
+//Alerts
+"Alert.MAX_NUMBER_OF_REGION" = "Warning: you can activate a maximum of 20 stops; disable at least one stop before activating a new one.";
+"Alert.DISABLE_ALL_STOPS_NOTIFICATION" = "Disable notifications for all stops.";
+"Alert.LOCALIZATION_ERROR" = "Enable always localization to use this functionality.";
+"Alert.STOP_NOTIFICATION" = "You are about to arrive at the '%@' stop";
+"Alert.ENABLE_STOP_NOTIFICATION_QUESTION" = "Would you like to be notified when you are about to reach the stop?";
+"Alert.DISABLE_STOP_NOTIFICATION_QUESTION" = "Do you want to disable the notification?";
+"Alert.DISABLE_ALL_STOPS_NOTIFICATION_QUESTION" = "Do you want to disable all notifications?";
+"Alert.FIND_STOPS_NEARBY" = "Find stops near a";
+"Alert.CAN_NOT_FIND_STOPS" = "There are no bus-stops around the highlighted area.";
+"Alert.CAN_NOT_TRIP" = "It has not been possible to plan the journey";
+
+
+//Detail
+//"lastStop" = "(Fine corsa)";
+"lineTo" = "Line %@ to %@ %@";
+"minutes" = "%0.f minutes";
+"onMyWay" = "arriving";
+"hour" = "hour %@";
+
+
+"Durata" = "Duration";
+"Percorso a piedi" = "Journey on foot";
+"Cambi" = "Changes";
+"BUS" = "Bus for";
+"TRAM" = "Tram for";
+"SUBWAY" = "Metro";
+"BY" = " for ";
+
+
+"direction_by" = "in the direction of";
+"Trip is not possible.  You might be trying to plan a trip outside the map data boundary." = "It hasn't been possible to work out the requested journeyas you are outside the prearranged area.";
+"please_waiting" = "PLEASE WAIT";
+"trip_route" = "We are planning your travel";
+"Drag to move" = "Drag to move";
+

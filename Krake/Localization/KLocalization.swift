@@ -10,128 +10,32 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 @objc public class KLocalization: NSObject {
-  /// Accetta
-  @objc public static let accept = KLocalization.tr("OCLocalizable", "ACCEPT")
-  /// Agosto
-  @objc public static let agosto = KLocalization.tr("OCLocalizable", "Agosto")
-  /// Aprile
-  @objc public static let aprile = KLocalization.tr("OCLocalizable", "Aprile")
-  /// Ora di arrivo?
-  @objc public static let arriveby = KLocalization.tr("OCLocalizable", "ARRIVEBY")
   /// Scarsa qualità del segnale GPS
   @objc public static let badLocationAccuracy = KLocalization.tr("OCLocalizable", "Bad location accuracy")
-  /// Il Bluetooth non è supportato da questo dispositivo
-  @objc public static let bluetoothIsNotSupportedByYourDevice = KLocalization.tr("OCLocalizable", "Bluetooth is not supported by your device")
   /// Categoria
   @objc public static let categoria = KLocalization.tr("OCLocalizable", "Categoria")
   /// Scegli o scatta una foto
   @objc public static let chooseTakePhoto = KLocalization.tr("OCLocalizable", "CHOOSE_TAKE_PHOTO")
-  /// Nega
-  @objc public static let deny = KLocalization.tr("OCLocalizable", "DENY")
   /// Descrizione
   @objc public static let descrizione = KLocalization.tr("OCLocalizable", "Descrizione")
-  /// Devi scattare o scegliere una foto
-  @objc public static let deviScattareOScegliereUnaFoto = KLocalization.tr("OCLocalizable", "Devi scattare o scegliere una foto")
-  /// Errore nel device.\nContatta l'amministratore.
-  @objc public static let deviceError = KLocalization.tr("OCLocalizable", "DEVICE_ERROR")
-  /// Dicembre
-  @objc public static let dicembre = KLocalization.tr("OCLocalizable", "Dicembre")
-  /// Domenica
-  @objc public static let domenica = KLocalization.tr("OCLocalizable", "Domenica")
-  /// Hai già un device registrato.\nContatta l'amministratore.
-  @objc public static let duplicateContainer = KLocalization.tr("OCLocalizable", "DUPLICATE_CONTAINER")
-  /// Abilita la localizzazione e il Bluetooth per poter utilizzare la funzionalità
-  @objc public static let enableBluetoothToOpenTheTurnstiles = KLocalization.tr("OCLocalizable", "Enable Bluetooth to open the turnstiles")
-  /// Per poter procedere verifica di:\n- avere configurato nei setting del device l’account di Facebook oppure di avere l’app di Facebook installata\n- avere abilitato l’app su Facebook\n\nAttenzione: se di recente hai cambiato la password di Facebook ricordati di aggiornarla anche nei setting del device o nell’app Facebook.
-  @objc public static let enableFacebook = KLocalization.tr("OCLocalizable", "ENABLE_FACEBOOK")
-  /// Vuoi procedere?
-  @objc public static let enableNow = KLocalization.tr("OCLocalizable", "ENABLE_NOW")
-  /// Per accedere a questa sezione devi prima aver autorizzato Twitter dalle impostazioni!
-  @objc public static let enableTwitter = KLocalization.tr("OCLocalizable", "ENABLE_TWITTER")
   /// Inserisci la tua posizione
   @objc public static let erroreGps = KLocalization.tr("OCLocalizable", "ERRORE_GPS")
   /// ERRORE: Non è stato possibile inviare la segnalazione.\n
   @objc public static let erroreInvioSegn = KLocalization.tr("OCLocalizable", "ERRORE_INVIO_SEGN")
-  /// Facebook login
-  @objc public static let fblogin = KLocalization.tr("OCLocalizable", "FBLOGIN")
-  /// Febbraio
-  @objc public static let febbraio = KLocalization.tr("OCLocalizable", "Febbraio")
   /// galleria
   @objc public static let gallery = KLocalization.tr("OCLocalizable", "Gallery")
-  /// Gennaio
-  @objc public static let gennaio = KLocalization.tr("OCLocalizable", "Gennaio")
-  /// Giovedì
-  @objc public static let giovedì = KLocalization.tr("OCLocalizable", "Giovedì")
-  /// Giugno
-  @objc public static let giugno = KLocalization.tr("OCLocalizable", "Giugno")
-  /// Ricorda che devi abilitare l'app dalle impostazioni di sistema.
-  @objc public static let helpfb = KLocalization.tr("OCLocalizable", "HELPFB")
-  /// Luglio
-  @objc public static let luglio = KLocalization.tr("OCLocalizable", "Luglio")
-  /// Lunedì
-  @objc public static let lunedì = KLocalization.tr("OCLocalizable", "Lunedì")
-  /// Maggio
-  @objc public static let maggio = KLocalization.tr("OCLocalizable", "Maggio")
   /// Mappa
   @objc public static let mappa = KLocalization.tr("OCLocalizable", "Mappa")
-  /// Martedì
-  @objc public static let martedì = KLocalization.tr("OCLocalizable", "Martedì")
-  /// Marzo
-  @objc public static let marzo = KLocalization.tr("OCLocalizable", "Marzo")
-  /// Hai raggiunto il numero massimo di elementi multimediali. Prima di procedere con l'aggiunta di un nuovo elemento devi cancellarne uno.
-  @objc public static let mediaMaxNumberOfElem = KLocalization.tr("OCLocalizable", "media_max_number_of_elem")
-  /// Mercoledì
-  @objc public static let mercoledì = KLocalization.tr("OCLocalizable", "Mercoledì")
-  /// Ci sono stati problemi di connessione
-  @objc public static let networkUnreachable = KLocalization.tr("OCLocalizable", "Network unreachable")
-  /// Non hai diritto a credenziali di accesso.\nContatta l'amministratore.
-  @objc public static let noCredentialEnabled = KLocalization.tr("OCLocalizable", "NO_CREDENTIAL_ENABLED")
-  /// Novembre
-  @objc public static let novembre = KLocalization.tr("OCLocalizable", "Novembre")
-  /// Ottobre
-  @objc public static let ottobre = KLocalization.tr("OCLocalizable", "Ottobre")
-  /// Avvicina il tuo device al lettore per utilizzare la funzionalità
-  @objc public static let placeYourSmartphoneNearTheTurnstileToOpenIt = KLocalization.tr("OCLocalizable", "Place your smartphone near the turnstile to open it.")
-  /// Ci sono stati problemi con il Bluetooth.
-  @objc public static let problemsWithBluetooth = KLocalization.tr("OCLocalizable", "Problems with Bluetooth")
   /// Per accedere a questa sezione devi prima aver attivato le Push!
   @objc public static let pushActivation = KLocalization.tr("OCLocalizable", "PUSH_ACTIVATION")
-  /// Errore, prova a riavviare l'app o il device. Se il problema persiste contatta l'amministratore
-  @objc public static let rebootAppDevice = KLocalization.tr("OCLocalizable", "REBOOT_APP_DEVICE")
   /// Info generali
   @objc public static let relatedFields = KLocalization.tr("OCLocalizable", "RELATED_FIELDS")
-  /// Sabato
-  @objc public static let sabato = KLocalization.tr("OCLocalizable", "Sabato")
-  /// Salva
-  @objc public static let save = KLocalization.tr("OCLocalizable", "SAVE")
-  /// Cerca
-  @objc public static let search = KLocalization.tr("OCLocalizable", "SEARCH")
-  /// Errore nella ricerca dell'utente\nContatta l'amministratore
-  @objc public static let searchError = KLocalization.tr("OCLocalizable", "SEARCH_ERROR")
   /// La tua segnalazione è stata inviata correttamente.\n
   @objc public static let segnSended = KLocalization.tr("OCLocalizable", "SEGN_SENDED")
-  /// Errore.\nContatta l'amministratore.
-  @objc public static let serviceNotAvailable = KLocalization.tr("OCLocalizable", "SERVICE_NOT_AVAILABLE")
-  /// Settembre
-  @objc public static let settembre = KLocalization.tr("OCLocalizable", "Settembre")
   /// Sottotitolo
   @objc public static let sottotitolo = KLocalization.tr("OCLocalizable", "Sottotitolo")
   /// Titolo
   @objc public static let titolo = KLocalization.tr("OCLocalizable", "Titolo")
-  /// Non è stato possibile aprire il tornello (Anti Passback). Riprova più tardi.
-  @objc public static let turnslideErrorAntipassback = KLocalization.tr("OCLocalizable", "TURNSLIDE_ERROR_ANTIPASSBACK")
-  /// Tornello aperto!
-  @objc public static let turnstileOpened = KLocalization.tr("OCLocalizable", "Turnstile opened!")
-  /// Annulla
-  @objc public static let undo = KLocalization.tr("OCLocalizable", "UNDO")
-  /// Utente non registrato sui sistemi.\nContatta l'amministratore
-  @objc public static let userNotExist = KLocalization.tr("OCLocalizable", "USER_NOT_EXIST")
-  /// Utente duplicato\nContatta l'amministratore
-  @objc public static let userNotUnique = KLocalization.tr("OCLocalizable", "USER_NOT_UNIQUE")
-  /// Venerdì
-  @objc public static let venerdì = KLocalization.tr("OCLocalizable", "Venerdì")
-  /// Attendi alcuni istanti.\nElaborazione in corso.
-  @objc public static let waitConfiguring = KLocalization.tr("OCLocalizable", "WAIT_CONFIGURING")
 
   @objc public class AppUpdate: NSObject {
     /// Aggiorna
@@ -160,6 +64,8 @@ import Foundation
   }
 
   @objc public class Commons: NSObject {
+    /// Accetta
+    @objc public static let accept = KLocalization.tr("OCLocalizable", "Commons.accept")
     /// Aggiungi al calendario
     @objc public static let addToCalendar = KLocalization.tr("OCLocalizable", "Commons.addToCalendar")
     /// Tutti
@@ -172,6 +78,8 @@ import Foundation
     @objc public static let close = KLocalization.tr("OCLocalizable", "Commons.close")
     /// Completato
     @objc public static let completed = KLocalization.tr("OCLocalizable", "Commons.completed")
+    /// Nega
+    @objc public static let deny = KLocalization.tr("OCLocalizable", "Commons.deny")
     /// Conferma
     @objc public static let done = KLocalization.tr("OCLocalizable", "Commons.done")
     /// E-Mail
@@ -196,6 +104,10 @@ import Foundation
     @objc public static let phone = KLocalization.tr("OCLocalizable", "Commons.phone")
     /// obbligatorio
     @objc public static let `required` = KLocalization.tr("OCLocalizable", "Commons.required")
+    /// Salva
+    @objc public static let save = KLocalization.tr("OCLocalizable", "Commons.save")
+    /// Cerca
+    @objc public static let search = KLocalization.tr("OCLocalizable", "Commons.search")
     /// Invia
     @objc public static let send = KLocalization.tr("OCLocalizable", "Commons.send")
     /// Condividi
@@ -213,6 +125,8 @@ import Foundation
   @objc public class ContentModification: NSObject {
     /// Non salvare
     @objc public static let dontSave = KLocalization.tr("OCLocalizable", "ContentModification.dontSave")
+    /// Hai raggiunto il numero massimo di elementi multimediali. Prima di procedere con l'aggiunta di un nuovo elemento devi cancellarne uno.
+    @objc public static let mediaMaxNumberOfElem = KLocalization.tr("OCLocalizable", "ContentModification.media_max_number_of_elem")
     /// Vuoi chiudere e salvare il contenuto?
     @objc public static let quitAndSaveQuestion = KLocalization.tr("OCLocalizable", "ContentModification.quitAndSaveQuestion")
     /// Esci comunque
@@ -394,19 +308,9 @@ import Foundation
     @objc public static let rejected = KLocalization.tr("OCLocalizable", "Report.rejected")
   }
 
-  @objc public class TheServiceIsTemporarilyBusy: NSObject {
-    /// Il servizio è momentaneamente occupato. Riprova più tardi.
-    @objc public static let retryLater = KLocalization.tr("OCLocalizable", "The service is temporarily busy. Retry later.")
-  }
-
   @objc public class TitlePart: NSObject {
     /// titolo
     @objc public static let title = KLocalization.tr("OCLocalizable", "TitlePart.Title")
-  }
-
-  @objc public class UnableToOpenTheTurnstile: NSObject {
-    /// Non è stato possibile aprire il tornello. Riprova più tardi.
-    @objc public static let retryLater = KLocalization.tr("OCLocalizable", "Unable to open the turnstile. Retry later.")
   }
 
   @objc public class UserAccess: NSObject {
