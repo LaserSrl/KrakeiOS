@@ -111,8 +111,8 @@ open class KQuestionViewController : UIViewController, UITableViewDataSource, UI
                 sSelf.baloonCoverView?.backgroundColor = KGameQuiz.theme.color(correct ? .correct : .wrong)
                 let image = correct ? KGameQuizAssets.correct.image : KGameQuizAssets.wrong.image
                 sSelf.baloonCoverImageView!.image = image
-                sSelf.firstLabelCoverView?.text = (correct ? "bravo" : "ops").localizedString()
-                sSelf.secondLabelCoverView?.text = (correct ? "risposta_corretta" : "risposta_errata").localizedString()
+                sSelf.firstLabelCoverView?.text = (correct ? KGameQuizLocalization.bravo : KGameQuizLocalization.ops)
+                sSelf.secondLabelCoverView?.text = (correct ? KGameQuizLocalization.rispostaCorretta : KGameQuizLocalization.rispostaErrata)
                 sSelf.coverView?.alpha = 1
             }
             AudioServicesPlaySystemSound(correct ? 1057 : kSystemSoundID_Vibrate)

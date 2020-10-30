@@ -150,7 +150,7 @@ open class OGLAppDelegate: UIResponder, UIApplicationDelegate, KNetworkAccessDel
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let sqliteDBName = String.localizedStringWithFormat("MappedDatabase-%@.sqlite", KConstants.currentLanguage);
+        let sqliteDBName = String.localizedStringWithFormat("MappedDatabase-%@.sqlite", KLocalization.Core.language);
         let url = self.applicationDocumentsDirectory.appendingPathComponent(sqliteDBName)
         if OMSettings.needToResetDataBase(){
             do {

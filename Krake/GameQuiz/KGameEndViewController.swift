@@ -30,8 +30,8 @@ class KGameEndViewController: UIViewController {
         scorePointsLabel.textColor = KGameQuiz.theme.color(.text)
         backgroundStar.backgroundColor = KGameQuiz.theme.color(.starBackground)
         
-        endLabel.text = "your_score_is".localizedString()
-        partecipaButton.setTitle("partecipate".localizedString(), for: .normal)
+        endLabel.text = KGameQuizLocalization.yourScoreIs
+        partecipaButton.setTitle(KGameQuizLocalization.partecipate, for: .normal)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(rotatePoints(_:)))
         scorePointsImageView.addGestureRecognizer(tap)

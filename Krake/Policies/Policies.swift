@@ -130,7 +130,7 @@ open class PoliciesViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return KLocalization.localizable("Policies." + categories[section].lowercased())
+        return KLocalization.ocLocalizable("Policies." + categories[section])
     }
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

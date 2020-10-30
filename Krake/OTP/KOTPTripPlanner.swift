@@ -57,7 +57,7 @@ public class KOTPTripPlanner: KTripPlannerProtocol
                     }
                     else {
                         callback(request,nil, NSError(domain: "OTP", code: 1, userInfo: [NSLocalizedDescriptionKey:
-                                                                                            KOTPLocalization.localizable(resultJson["error"]["msg"].stringValue)]))
+                                                                                            KOTPLocalization.kotpLocalizable(resultJson["error"]["msg"].stringValue)]))
                     }
                 }
                 self.planDataTask = nil
@@ -176,7 +176,7 @@ public class KOTPTripPlanner: KTripPlannerProtocol
                        duration: infos["duration"].doubleValue,
                        distance: infos["distance"].doubleValue,
                        polyline:  Polyline(encodedPolyline: polyline).mkPolyline!,
-                       instruction: NSAttributedString(string: "\(KOTPLocalization.localizable("TravelMode.\(travelMode.rawValue)")) \(to.name!)"))
+                       instruction: NSAttributedString(string: "\(KOTPLocalization.kotpLocalizable("TravelMode.\(travelMode.rawValue)")) \(to.name!)"))
 
             let steps = infos["steps"].arrayValue
 

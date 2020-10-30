@@ -256,11 +256,11 @@ public class KDataTask: NSObject {
         switch providerName {
         case KrakeAuthenticationProvider.orchard:
             request.path = KAPIConstants.userExtensions + "/SignInSsl"
-            request.queryParameters.append(URLQueryItem(name:"Lang",value: KConstants.currentLanguage))
+            request.queryParameters.append(URLQueryItem(name:"Lang",value: KLocalization.Core.language))
             request.method = .post
         default:
             request.path = KAPIConstants.externalTokenLogon
-            request.queryParameters.append(URLQueryItem(name: KParametersKeys.language, value: KConstants.currentLanguage))
+            request.queryParameters.append(URLQueryItem(name: KParametersKeys.language, value: KLocalization.Core.language))
             request.queryParameters.append(URLQueryItem(name: KParametersKeys.Login.provider, value: providerName))
             request.method = .post
         }
@@ -289,7 +289,7 @@ public class KDataTask: NSObject {
         let request = KRequest()
         request.path = KAPIConstants.userExtensions + "/RegisterSsl"
         request.queryParameters.append(URLQueryItem(name: "UUID", value: KConstants.uuid))
-        request.queryParameters.append(URLQueryItem(name: "Lang", value: KConstants.currentLanguage))
+        request.queryParameters.append(URLQueryItem(name: "Lang", value: KLocalization.Core.language))
         request.method = .post
         request.parameters = params
 
@@ -340,7 +340,7 @@ public class KDataTask: NSObject {
         request.method = .post
         request.parameters = params
         request.path = KAPIConstants.userExtensions + "/" + queryString
-        request.queryParameters.append(URLQueryItem(name: "Lang", value: KConstants.currentLanguage))
+        request.queryParameters.append(URLQueryItem(name: "Lang", value: KLocalization.Core.language))
 
         _ = self.request(request,
                          callbackWrapperLevel: .none,
@@ -401,7 +401,7 @@ public class KDataTask: NSObject {
         let request = KRequest()
         request.path = KAPIConstants.userExtensions + "/GetCleanRegistrationPoliciesSsl"
         request.method = .get
-        request.queryParameters = [URLQueryItem(name: "Lang", value: KConstants.currentLanguage)]
+        request.queryParameters = [URLQueryItem(name: "Lang", value: KLocalization.Core.language)]
 
         _ = self.request(request,
                          callbackWrapperLevel: .none,

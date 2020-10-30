@@ -20,9 +20,9 @@ class KGameStartViewController: UIViewController {
         super.viewDidLoad()
         
         startLabel.textColor = KGameQuiz.theme.color(.text)
-        startLabel.text = "ready".localizedString()
+        startLabel.text = KGameQuizLocalization.ready
         
-        startButton.setTitle("start".localizedString(), for: .normal)
+        startButton.setTitle(KGameQuizLocalization.start, for: .normal)
         startButton.layer.cornerRadius = 50.0
         startButton.layer.shadowColor = UIColor.black.cgColor
         startButton.layer.shadowRadius = 5.0

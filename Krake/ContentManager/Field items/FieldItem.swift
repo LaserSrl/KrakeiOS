@@ -63,7 +63,7 @@ extension FieldItem {
         if required {
             let value = params[key]
             if value == nil || (value as AnyObject).length == 0 || (value as? [Any])?.count == 0 {
-                var field = KLocalization.localizable(key)
+                var field = KLocalization.ocLocalizable(key)
                 if field == key{
                     field = NSLocalizedString(key, comment: key)
                 }

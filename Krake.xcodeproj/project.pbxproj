@@ -7,350 +7,1053 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		5D020459239AB4D5009C9C88 /* KContentItemAutocompleteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KContentItemAutocompleteTableViewController.swift; sourceTree = "<group>"; };
-		5D06849C2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStopsInRouteViewController.swift; sourceTree = "<group>"; };
-		5D06849E2296E32400101D4C /* KOTPStopTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStopTimesViewController.swift; sourceTree = "<group>"; };
-		5D1F63FD2296A81800B671FF /* RoutesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesTableViewController.swift; sourceTree = "<group>"; };
-		5D3169DE235713D1000E1297 /* RequestHeaderAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHeaderAdapter.swift; sourceTree = "<group>"; };
-		5D4805E62350C8430080346A /* OMMapperCompletionBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMMapperCompletionBlock.h; sourceTree = "<group>"; };
-		5D5E17C52297ED17000851CC /* Number+OtpDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+OtpDate.swift"; sourceTree = "<group>"; };
-		5D5FE48A229840660080E4E3 /* KOtpStopTimesDateHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOtpStopTimesDateHeader.swift; sourceTree = "<group>"; };
-		5D6D8BE022C34F7C00D72464 /* KTabAndCollectionViewItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTabAndCollectionViewItems.swift; sourceTree = "<group>"; };
-		5D7C0C6D2350BA14006760A9 /* OGLCoreDataMapper+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OGLCoreDataMapper+Swift.swift"; sourceTree = "<group>"; };
-		5D873A7D2358500F002EBE3E /* URLConfigurationCookies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConfigurationCookies.swift; sourceTree = "<group>"; };
-		CD05096C24B84A11005C793D /* KNetworkManager+SignalTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KNetworkManager+SignalTrigger.swift"; sourceTree = "<group>"; };
-		CD312223225C7DFA00DC06C8 /* KNoElementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNoElementCell.swift; sourceTree = "<group>"; };
-		CD4C001A2292E286009727A7 /* KVehicleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVehicleAnnotation.swift; sourceTree = "<group>"; };
 		CD55FAA8254AB0B000FC4BB1 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
-		CD55FABD254AB50A00FC4BB1 /* KAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAssets.swift; sourceTree = "<group>"; };
-		CD55FABE254AB50A00FC4BB1 /* KStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KStrings.swift; sourceTree = "<group>"; };
-		CD55FB4F254ABF3B00FC4BB1 /* KOTPAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPAssets.swift; sourceTree = "<group>"; };
-		CD55FB50254AC24900FC4BB1 /* KPuzzleGameAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPuzzleGameAssets.swift; sourceTree = "<group>"; };
-		CD55FB51254AC25500FC4BB1 /* KGameQuizAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGameQuizAssets.swift; sourceTree = "<group>"; };
-		CD887CDD254B13A800FBC140 /* it */ = {isa = PBXFileReference; name = it; path = it.lproj/KOTPLocalizable.strings; sourceTree = "<group>"; };
-		CD887CDF254B145000FBC140 /* KOTPStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStrings.swift; sourceTree = "<group>"; };
-		CDBABB9F23AA1316009D4CB1 /* AppleSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSignIn.swift; sourceTree = "<group>"; };
-		CDBABBA123AA3329009D4CB1 /* KeychainItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
-		CDBB7626219C7EDA00122E7E /* OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
-		CDBB7627219C7EDA00122E7E /* OAuth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OAuth.storyboard; sourceTree = "<group>"; };
-		CDBB7629219C7EDA00122E7E /* InstagramKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramKit.swift; sourceTree = "<group>"; };
-		CDBB762A219C7EDA00122E7E /* InstagramKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = InstagramKit.xcassets; sourceTree = "<group>"; };
-		CDBB762C219C7EDA00122E7E /* KDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDetail.xib; sourceTree = "<group>"; };
-		CDBB762D219C7EDA00122E7E /* KItemsCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KItemsCollectionViewController.xib; sourceTree = "<group>"; };
-		CDBB762E219C7EDA00122E7E /* KStandardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KStandardCollectionViewCell.xib; sourceTree = "<group>"; };
-		CDBB7631219C7EDA00122E7E /* KDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDetailViewController.swift; sourceTree = "<group>"; };
-		CDBB7632219C7EDA00122E7E /* KButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KButtonItem.swift; sourceTree = "<group>"; };
-		CDBB7633219C7EDA00122E7E /* KDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDetailPresenter.swift; sourceTree = "<group>"; };
-		CDBB7635219C7EDA00122E7E /* KDetailWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDetailWebView.swift; sourceTree = "<group>"; };
-		CDBB7636219C7EDA00122E7E /* KCategoryImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCategoryImageView.swift; sourceTree = "<group>"; };
-		CDBB7637219C7EDA00122E7E /* KSocialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSocialView.swift; sourceTree = "<group>"; };
-		CDBB7638219C7EDA00122E7E /* KTitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTitleLabel.swift; sourceTree = "<group>"; };
-		CDBB7639219C7EDA00122E7E /* KMapPlainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMapPlainButton.swift; sourceTree = "<group>"; };
-		CDBB763A219C7EDA00122E7E /* KDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDetailHeaderView.swift; sourceTree = "<group>"; };
-		CDBB763B219C7EDA00122E7E /* KMixedBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMixedBarButton.swift; sourceTree = "<group>"; };
-		CDBB763C219C7EDA00122E7E /* KMediaCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMediaCollectionView.swift; sourceTree = "<group>"; };
-		CDBB763D219C7EDA00122E7E /* KCategoryLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCategoryLabel.swift; sourceTree = "<group>"; };
-		CDBB763E219C7EDA00122E7E /* KUserReactions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KUserReactions.swift; sourceTree = "<group>"; };
-		CDBB763F219C7EDA00122E7E /* KDetailViewControllerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDetailViewControllerFactory.swift; sourceTree = "<group>"; };
-		CDBB7640219C7EDA00122E7E /* KDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KDetail.storyboard; sourceTree = "<group>"; };
-		CDBB7641219C7EDA00122E7E /* KNoElemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KNoElemCollectionViewCell.xib; sourceTree = "<group>"; };
-		CDBB7642219C7EDA00122E7E /* KEmptyCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KEmptyCollectionView.xib; sourceTree = "<group>"; };
-		CDBB7644219C7EDA00122E7E /* KDefaultCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDefaultCollectionViewCell.swift; sourceTree = "<group>"; };
-		CDBB7645219C7EDA00122E7E /* KTabManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTabManager.swift; sourceTree = "<group>"; };
-		CDBB7646219C7EDA00122E7E /* KItemsCollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KItemsCollectionViewDelegate.swift; sourceTree = "<group>"; };
-		CDBB7647219C7EDA00122E7E /* KItemsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KItemsCollectionViewController.swift; sourceTree = "<group>"; };
-		CDBB7648219C7EDA00122E7E /* KListMapDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KListMapDelegate.swift; sourceTree = "<group>"; };
-		CDBB7649219C7EDA00122E7E /* KSearchFilterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSearchFilterManager.swift; sourceTree = "<group>"; };
-		CDBB764A219C7EDA00122E7E /* KDateFilterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDateFilterManager.swift; sourceTree = "<group>"; };
-		CDBB764B219C7EDA00122E7E /* KSegmentioThemeDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSegmentioThemeDefault.swift; sourceTree = "<group>"; };
-		CDBB764C219C7EDA00122E7E /* KListMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KListMap.swift; sourceTree = "<group>"; };
-		CDBB764D219C7EDA00122E7E /* KListMapOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KListMapOptions.swift; sourceTree = "<group>"; };
-		CDBB764E219C7EDA00122E7E /* KListMap.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KListMap.xib; sourceTree = "<group>"; };
-		CDBB7650219C7EDA00122E7E /* KAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAnnotationView.swift; sourceTree = "<group>"; };
-		CDBB7651219C7EDA00122E7E /* KSearchPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSearchPlace.swift; sourceTree = "<group>"; };
-		CDBB7652219C7EDA00122E7E /* KExtendedMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KExtendedMapView.swift; sourceTree = "<group>"; };
-		CDBB7653219C7EDA00122E7E /* KUserLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KUserLocation.swift; sourceTree = "<group>"; };
-		CDBB7654219C7EDA00122E7E /* Bundle+Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Location.swift"; sourceTree = "<group>"; };
-		CDBB7655219C7EDA00122E7E /* KTermPinImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTermPinImageDownloader.swift; sourceTree = "<group>"; };
-		CDBB7656219C7EDA00122E7E /* TSClusteredAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSClusteredAnnotationView.swift; sourceTree = "<group>"; };
-		CDBB7657219C7EDA00122E7E /* KSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KSearch.storyboard; sourceTree = "<group>"; };
-		CDBB7658219C7EDA00122E7E /* KLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KLocationManager.swift; sourceTree = "<group>"; };
-		CDBB7659219C7EDA00122E7E /* KInfoPlist+Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+Location.swift"; sourceTree = "<group>"; };
-		CDBB765B219C7EDA00122E7E /* KAutoUpdateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAutoUpdateManager.swift; sourceTree = "<group>"; };
-		CDBB765C219C7EDA00122E7E /* KInfoPlist+AppUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+AppUpdate.swift"; sourceTree = "<group>"; };
-		CDBB765E219C7EDA00122E7E /* KBusLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KBusLine.swift; sourceTree = "<group>"; };
-		CDBB765F219C7EDA00122E7E /* KTripRouteMapDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTripRouteMapDelegate.swift; sourceTree = "<group>"; };
-		CDBB7660219C7EDA00122E7E /* KOTPRouterRectLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOTPRouterRectLoader.swift; sourceTree = "<group>"; };
-		CDBB7661219C7EDA00122E7E /* KOTPStopDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOTPStopDetailViewController.swift; sourceTree = "<group>"; };
-		CDBB7662219C7EDA00122E7E /* KOTPPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOTPPreferences.swift; sourceTree = "<group>"; };
-		CDBB7663219C7EDA00122E7E /* KOTPBasePublicTransportListMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOTPBasePublicTransportListMapViewController.swift; sourceTree = "<group>"; };
-		CDBB7664219C7EDA00122E7E /* KTripPlannerResultCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTripPlannerResultCells.swift; sourceTree = "<group>"; };
-		CDBB7665219C7EDA00122E7E /* KTripPlannerResultsDisplayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTripPlannerResultsDisplayer.swift; sourceTree = "<group>"; };
-		CDBB7667219C7EDA00122E7E /* MKCoordinateRegion+OTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+OTP.swift"; sourceTree = "<group>"; };
-		CDBB7668219C7EDA00122E7E /* OCOTPStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OCOTPStoryboard.storyboard; sourceTree = "<group>"; };
-		CDBB7669219C7EDA00122E7E /* KTripPlannerSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTripPlannerSearchController.swift; sourceTree = "<group>"; };
-		CDBB766A219C7EDA00122E7E /* KOTPStopsSearchInitializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOTPStopsSearchInitializer.swift; sourceTree = "<group>"; };
-		CDBB766B219C7EDA00122E7E /* OCOTP.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = OCOTP.xcassets; sourceTree = "<group>"; };
-		CDBB766C219C7EDA00122E7E /* KTripPlanTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTripPlanTheme.swift; sourceTree = "<group>"; };
-		CDBB766D219C7EDA00122E7E /* KOpenTripPlannerLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOpenTripPlannerLoader.swift; sourceTree = "<group>"; };
-		CDBB766E219C7EDA00122E7E /* KInfoPlist+OTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+OTP.swift"; sourceTree = "<group>"; };
-		CDBB766F219C7EDA00122E7E /* KTripPlanResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTripPlanResult.swift; sourceTree = "<group>"; };
-		CDBB7670219C7EDA00122E7E /* KOTPStopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOTPStopsViewController.swift; sourceTree = "<group>"; };
-		CDBB7671219C7EDA00122E7E /* KOTPLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOTPLoader.swift; sourceTree = "<group>"; };
-		CDBB7672219C7EDA00122E7E /* KTripPlanRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTripPlanRequest.swift; sourceTree = "<group>"; };
-		CDBB7673219C7EDA00122E7E /* KDurationFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDurationFormatter.swift; sourceTree = "<group>"; };
-		CDBB7674219C7EDA00122E7E /* KTripPlannerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTripPlannerProtocol.swift; sourceTree = "<group>"; };
-		CDBB7675219C7EDA00122E7E /* KOTPTripPlanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOTPTripPlanner.swift; sourceTree = "<group>"; };
-		CDBB7678219C7EDA00122E7E /* FacebookKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookKit.swift; sourceTree = "<group>"; };
-		CDBB767A219C7EDA00122E7E /* VimeoRequestSerializer+OldUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VimeoRequestSerializer+OldUpload.swift"; sourceTree = "<group>"; };
-		CDBB767B219C7EDA00122E7E /* KrakeVimeoRequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KrakeVimeoRequestSerializer.swift; sourceTree = "<group>"; };
-		CDBB767C219C7EDA00122E7E /* VimeoUploaderError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VimeoUploaderError.swift; sourceTree = "<group>"; };
-		CDBB767D219C7EDA00122E7E /* NSError+Vimeo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Vimeo.swift"; sourceTree = "<group>"; };
-		CDBB767E219C7EDA00122E7E /* VimeoResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VimeoResponseSerializer.swift; sourceTree = "<group>"; };
-		CDBB767F219C7EDA00122E7E /* VimeoUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VimeoUploader.swift; sourceTree = "<group>"; };
-		CDBB7680219C7EDA00122E7E /* VimeoResponseSerializer+OldUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VimeoResponseSerializer+OldUpload.swift"; sourceTree = "<group>"; };
-		CDBB7681219C7EDA00122E7E /* VimeoSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VimeoSessionManager.swift; sourceTree = "<group>"; };
-		CDBB7682219C7EDA00122E7E /* VimeoEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VimeoEnum.swift; sourceTree = "<group>"; };
-		CDBB7683219C7EDA00122E7E /* VimeoStreamingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VimeoStreamingProvider.swift; sourceTree = "<group>"; };
-		CDBB7684219C7EDA00122E7E /* VimeoRequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VimeoRequestSerializer.swift; sourceTree = "<group>"; };
-		CDBB7685219C7EDA00122E7E /* AVURLAsset+Vimeo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVURLAsset+Vimeo.swift"; sourceTree = "<group>"; };
-		CDBB7686219C7EDA00122E7E /* VimeoVideoUploadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VimeoVideoUploadTask.swift; sourceTree = "<group>"; };
-		CDBB7687219C7EDA00122E7E /* VimeoConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VimeoConstants.swift; sourceTree = "<group>"; };
-		CDBB7688219C7EDA00122E7E /* VimeoSessionManager+OldUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VimeoSessionManager+OldUpload.swift"; sourceTree = "<group>"; };
-		CDBB7689219C7EDA00122E7E /* Krake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Krake.h; sourceTree = "<group>"; };
-		CDBB768B219C7EDA00122E7E /* KConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KConstants.swift; sourceTree = "<group>"; };
-		CDBB768C219C7EDA00122E7E /* String+KrakeCommons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+KrakeCommons.swift"; sourceTree = "<group>"; };
-		CDBB768D219C7EDA00122E7E /* KInfoPlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KInfoPlist.swift; sourceTree = "<group>"; };
-		CDBB768E219C7EDA00122E7E /* Swift42.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swift42.swift; sourceTree = "<group>"; };
-		CDBB768F219C7EDA00122E7E /* Bundle+KrakeCommons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+KrakeCommons.swift"; sourceTree = "<group>"; };
-		CDBB7691219C7EDA00122E7E /* KInfoPlist+Google.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+Google.swift"; sourceTree = "<group>"; };
-		CDBB7692219C7EDA00122E7E /* GoogleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleKit.swift; sourceTree = "<group>"; };
-		CDBB7693219C7EDA00122E7E /* Bundle+Google.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Google.swift"; sourceTree = "<group>"; };
-		CDBB7694219C7EDA00122E7E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		CDBB7696219C7EDA00122E7E /* BeaconAdsLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconAdsLoader.swift; sourceTree = "<group>"; };
-		CDBB7697219C7EDA00122E7E /* NearestBeaconManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestBeaconManager.swift; sourceTree = "<group>"; };
-		CDBB7698219C7EDA00122E7E /* KInfoPlist+Beacons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+Beacons.swift"; sourceTree = "<group>"; };
-		CDBB769A219C7EDA00122E7E /* PostCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCardViewController.swift; sourceTree = "<group>"; };
-		CDBB769B219C7EDA00122E7E /* PostCardCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCardCollectionViewController.swift; sourceTree = "<group>"; };
-		CDBB769C219C7EDA00122E7E /* PostCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCard.swift; sourceTree = "<group>"; };
-		CDBB769D219C7EDA00122E7E /* PostCard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostCard.storyboard; sourceTree = "<group>"; };
-		CDBB769F219C7EDA00122E7E /* PuzzleGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleGenerator.swift; sourceTree = "<group>"; };
-		CDBB76A0219C7EDA00122E7E /* PuzzleGame.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PuzzleGame.xcassets; sourceTree = "<group>"; };
-		CDBB76A1219C7EDA00122E7E /* Puzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
-		CDBB76A2219C7EDA00122E7E /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		CDBB76A3219C7EDA00122E7E /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
-		CDBB76A4219C7EDA00122E7E /* GamePod.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GamePod.storyboard; sourceTree = "<group>"; };
-		CDBB76A5219C7EDA00122E7E /* GameBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoardViewController.swift; sourceTree = "<group>"; };
-		CDBB76AD219C7EDA00122E7E /* LinkedInKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedInKit.swift; sourceTree = "<group>"; };
-		CDBB76B1219C7EDB00122E7E /* CategoryPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPreferencesViewController.swift; sourceTree = "<group>"; };
-		CDBB76B2219C7EDB00122E7E /* CategoryPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryPreferencesViewController.xib; sourceTree = "<group>"; };
-		CDBB76B3219C7EDB00122E7E /* CategoryPreferencesCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryPreferencesCellView.xib; sourceTree = "<group>"; };
-		CDBB76B5219C7EDB00122E7E /* TakePhotoOrVideo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TakePhotoOrVideo.xib; sourceTree = "<group>"; };
-		CDBB76B6219C7EDB00122E7E /* TakePhotoOrVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoOrVideo.swift; sourceTree = "<group>"; };
-		CDBB76B7219C7EDB00122E7E /* ContentModificationContainer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ContentModificationContainer.storyboard; sourceTree = "<group>"; };
-		CDBB76B8219C7EDB00122E7E /* ContentModificationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentModificationContainer.swift; sourceTree = "<group>"; };
-		CDBB76B9219C7EDB00122E7E /* ContentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
-		CDBB76BB219C7EDB00122E7E /* TakeInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TakeInfo.xib; sourceTree = "<group>"; };
-		CDBB76BC219C7EDB00122E7E /* TakeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeInfo.swift; sourceTree = "<group>"; };
-		CDBB76BE219C7EDB00122E7E /* PoliciesRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoliciesRegistrationViewController.swift; sourceTree = "<group>"; };
-		CDBB76BF219C7EDB00122E7E /* PoliciesRegistration.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoliciesRegistration.xib; sourceTree = "<group>"; };
-		CDBB76C0219C7EDB00122E7E /* PolicyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolicyView.swift; sourceTree = "<group>"; };
-		CDBB76C2219C7EDB00122E7E /* MapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapInfo.swift; sourceTree = "<group>"; };
-		CDBB76C3219C7EDB00122E7E /* MapInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapInfo.xib; sourceTree = "<group>"; };
-		CDBB76C6219C7EDB00122E7E /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		CDBB76C8219C7EDB00122E7E /* DropDownTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownTextField.swift; sourceTree = "<group>"; };
-		CDBB76C9219C7EDB00122E7E /* DropDownTextPickerField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownTextPickerField.swift; sourceTree = "<group>"; };
-		CDBB76CA219C7EDB00122E7E /* PopoverPickerField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverPickerField.swift; sourceTree = "<group>"; };
-		CDBB76CC219C7EDB00122E7E /* TakeInfoDateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeInfoDateView.swift; sourceTree = "<group>"; };
-		CDBB76CD219C7EDB00122E7E /* DateTimePickerField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePickerField.swift; sourceTree = "<group>"; };
-		CDBB76CF219C7EDB00122E7E /* UISwitchWithLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISwitchWithLabel.swift; sourceTree = "<group>"; };
-		CDBB76D0219C7EDB00122E7E /* SwitchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchField.swift; sourceTree = "<group>"; };
-		CDBB76D1219C7EDB00122E7E /* FieldItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldItem.swift; sourceTree = "<group>"; };
-		CDBB76D3219C7EDB00122E7E /* GameQuiz.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = GameQuiz.xcassets; sourceTree = "<group>"; };
-		CDBB76D4219C7EDB00122E7E /* KGameQuizTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KGameQuizTheme.swift; sourceTree = "<group>"; };
-		CDBB76D5219C7EDB00122E7E /* SKBounceAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBounceAnimation.m; sourceTree = "<group>"; };
-		CDBB76D6219C7EDB00122E7E /* KGameEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KGameEndViewController.swift; sourceTree = "<group>"; };
-		CDBB76D7219C7EDB00122E7E /* LBClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBClock.m; sourceTree = "<group>"; };
-		CDBB76D8219C7EDB00122E7E /* GameBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GameBoard.storyboard; sourceTree = "<group>"; };
-		CDBB76D9219C7EDB00122E7E /* SKBounceAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBounceAnimation.h; sourceTree = "<group>"; };
-		CDBB76DA219C7EDB00122E7E /* LBClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBClock.h; sourceTree = "<group>"; };
-		CDBB76DB219C7EDB00122E7E /* KGameStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KGameStartViewController.swift; sourceTree = "<group>"; };
-		CDBB76DC219C7EDB00122E7E /* KMainGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMainGameViewController.swift; sourceTree = "<group>"; };
-		CDBB76DD219C7EDB00122E7E /* KGameQuiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KGameQuiz.swift; sourceTree = "<group>"; };
-		CDBB76DE219C7EDB00122E7E /* KQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KQuestionViewController.swift; sourceTree = "<group>"; };
-		CDBB76DF219C7EDB00122E7E /* KMainGameBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMainGameBoardViewController.swift; sourceTree = "<group>"; };
-		CDBB76E1219C7EDB00122E7E /* KxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMenu.m; sourceTree = "<group>"; };
-		CDBB76E2219C7EDB00122E7E /* KWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KWebView.swift; sourceTree = "<group>"; };
-		CDBB76E3219C7EDB00122E7E /* KUserDisplayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KUserDisplayView.xib; sourceTree = "<group>"; };
-		CDBB76E4219C7EDB00122E7E /* KAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAppDelegate.swift; sourceTree = "<group>"; };
-		CDBB76E5219C7EDB00122E7E /* KDatePickerControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDatePickerControllerViewController.swift; sourceTree = "<group>"; };
-		CDBB76E6219C7EDB00122E7E /* KGallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KGallery.swift; sourceTree = "<group>"; };
-		CDBB76E7219C7EDB00122E7E /* KMediaImageLoad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMediaImageLoad.swift; sourceTree = "<group>"; };
-		CDBB76E8219C7EDB00122E7E /* KContactPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KContactPicker.swift; sourceTree = "<group>"; };
-		CDBB76E9219C7EDB00122E7E /* KDateTimeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDateTimeSelector.swift; sourceTree = "<group>"; };
-		CDBB76EA219C7EDB00122E7E /* KUserDisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KUserDisplayView.swift; sourceTree = "<group>"; };
-		CDBB76EB219C7EDB00122E7E /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxMenu.h; sourceTree = "<group>"; };
-		CDBB76EC219C7EDB00122E7E /* KScrollToTopButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KScrollToTopButton.swift; sourceTree = "<group>"; };
-		CDBB76ED219C7EDB00122E7E /* KStoreKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KStoreKitManager.swift; sourceTree = "<group>"; };
-		CDBB76EE219C7EDB00122E7E /* KUtilityFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KUtilityFunctions.swift; sourceTree = "<group>"; };
-		CDBB76EF219C7EDB00122E7E /* KShareManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KShareManager.swift; sourceTree = "<group>"; };
-		CDBB76F0219C7EDB00122E7E /* Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Krake.swift; sourceTree = "<group>"; };
-		CDBB76F1219C7EDB00122E7E /* KAddressBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAddressBook.swift; sourceTree = "<group>"; };
-		CDBB76F2219C7EDB00122E7E /* KPushManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KPushManager.swift; sourceTree = "<group>"; };
-		CDBB76F3219C7EDB00122E7E /* KPaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KPaddingLabel.swift; sourceTree = "<group>"; };
-		CDBB76F4219C7EDB00122E7E /* KCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCalendar.swift; sourceTree = "<group>"; };
-		CDBB76F5219C7EDB00122E7E /* KStreamingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KStreamingProvider.swift; sourceTree = "<group>"; };
-		CDBB76F7219C7EDB00122E7E /* Policies.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Policies.storyboard; sourceTree = "<group>"; };
-		CDBB76F8219C7EDB00122E7E /* Policies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Policies.swift; sourceTree = "<group>"; };
-		CDBB76FA219C7EDB00122E7E /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
-		CDBB76FB219C7EDB00122E7E /* KReportage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KReportage.swift; sourceTree = "<group>"; };
-		CDBB76FD219C7EDB00122E7E /* KListReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KListReport.swift; sourceTree = "<group>"; };
-		CDBB76FE219C7EDB00122E7E /* CellReport.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellReport.xib; sourceTree = "<group>"; };
-		CDBB7700219C7EDB00122E7E /* KrakeQuestionnaires.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KrakeQuestionnaires.storyboard; sourceTree = "<group>"; };
-		CDBB7701219C7EDB00122E7E /* KQuestionnaireTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KQuestionnaireTheme.swift; sourceTree = "<group>"; };
-		CDBB7702219C7EDB00122E7E /* KOpenAnswerStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOpenAnswerStackView.swift; sourceTree = "<group>"; };
-		CDBB7703219C7EDB00122E7E /* KOpenAnswerStackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KOpenAnswerStackView.xib; sourceTree = "<group>"; };
-		CDBB7704219C7EDB00122E7E /* KSingleOrMultiChoiceStackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KSingleOrMultiChoiceStackView.xib; sourceTree = "<group>"; };
-		CDBB7705219C7EDB00122E7E /* KQuestionnaires.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KQuestionnaires.swift; sourceTree = "<group>"; };
-		CDBB7706219C7EDB00122E7E /* KSingleOrMultiChoiceStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSingleOrMultiChoiceStackView.swift; sourceTree = "<group>"; };
-		CDBB7708219C7EDB00122E7E /* KBTPaymentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KBTPaymentManager.swift; sourceTree = "<group>"; };
-		CDBB770A219C7EDB00122E7E /* TWTRTweet+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TWTRTweet+Krake.swift"; sourceTree = "<group>"; };
-		CDBB770B219C7EDB00122E7E /* TWTRTwitter+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TWTRTwitter+Krake.swift"; sourceTree = "<group>"; };
-		CDBB770C219C7EDB00122E7E /* TwitterKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterKit.swift; sourceTree = "<group>"; };
-		CDBB770D219C7EDB00122E7E /* TWTRAPIClient+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TWTRAPIClient+Krake.swift"; sourceTree = "<group>"; };
-		CDBB770E219C7EDB00122E7E /* KTWTRTweetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTWTRTweetView.swift; sourceTree = "<group>"; };
-		CDBB7710219C7EDB00122E7E /* CLLocationCoordinate2D+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Equatable.swift"; sourceTree = "<group>"; };
-		CDBB7711219C7EDB00122E7E /* UIView+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Krake.swift"; sourceTree = "<group>"; };
-		CDBB7712219C7EDB00122E7E /* UIButton+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Krake.swift"; sourceTree = "<group>"; };
-		CDBB7713219C7EDB00122E7E /* WWCalendarTimeSelector+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WWCalendarTimeSelector+Krake.swift"; sourceTree = "<group>"; };
-		CDBB7714219C7EDB00122E7E /* MBProgressHUD+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Krake.swift"; sourceTree = "<group>"; };
-		CDBB7715219C7EDB00122E7E /* MKAnnotationView+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKAnnotationView+Krake.swift"; sourceTree = "<group>"; };
-		CDBB7716219C7EDB00122E7E /* UIColor+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Krake.swift"; sourceTree = "<group>"; };
-		CDBB7717219C7EDB00122E7E /* NSDate+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Krake.swift"; sourceTree = "<group>"; };
-		CDBB7718219C7EDB00122E7E /* UIResponder+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+Krake.swift"; sourceTree = "<group>"; };
-		CDBB7719219C7EDB00122E7E /* UIImageView+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Krake.swift"; sourceTree = "<group>"; };
-		CDBB771A219C7EDB00122E7E /* NSURL+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Krake.swift"; sourceTree = "<group>"; };
-		CDBB771B219C7EDB00122E7E /* UIImage+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Krake.swift"; sourceTree = "<group>"; };
-		CDBB771C219C7EDB00122E7E /* UIViewController+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Krake.swift"; sourceTree = "<group>"; };
-		CDBB771D219C7EDB00122E7E /* UINavigationController+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Krake.swift"; sourceTree = "<group>"; };
-		CDBB771E219C7EDB00122E7E /* MKMapItem+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKMapItem+Krake.swift"; sourceTree = "<group>"; };
-		CDBB771F219C7EDB00122E7E /* MKMapView+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKMapView+Krake.swift"; sourceTree = "<group>"; };
-		CDBB7720219C7EDB00122E7E /* String+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Krake.swift"; sourceTree = "<group>"; };
-		CDBB7722219C7EDB00122E7E /* AnalyticsCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsCore.swift; sourceTree = "<group>"; };
-		CDBB7723219C7EDB00122E7E /* KInfoPlist+Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+Analytics.swift"; sourceTree = "<group>"; };
-		CDBB7724219C7EDB00122E7E /* KUserTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KUserTracking.swift; sourceTree = "<group>"; };
-		CDBB7725219C7EDB00122E7E /* Bundle+Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Analytics.swift"; sourceTree = "<group>"; };
-		CDBB7726219C7EDB00122E7E /* KDefaultAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDefaultAnalytics.swift; sourceTree = "<group>"; };
-		CDBB7728219C7EDB00122E7E /* OMSystemInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMSystemInfo.h; sourceTree = "<group>"; };
-		CDBB7729219C7EDB00122E7E /* OGLAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OGLAppDelegate.swift; sourceTree = "<group>"; };
-		CDBB772A219C7EDB00122E7E /* OGLMapperConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OGLMapperConfiguration.plist; sourceTree = "<group>"; };
-		CDBB772C219C7EDB00122E7E /* OMLoadDataTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMLoadDataTask.m; sourceTree = "<group>"; };
-		CDBB772D219C7EDB00122E7E /* PolicyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
-		CDBB772E219C7EDB00122E7E /* NSMutableDictionary+OGLParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+OGLParameters.m"; sourceTree = "<group>"; };
-		CDBB772F219C7EDB00122E7E /* NSMutableDictionary+OGLParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+OGLParameters.h"; sourceTree = "<group>"; };
-		CDBB7730219C7EDB00122E7E /* OMLoadDataTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMLoadDataTask.h; sourceTree = "<group>"; };
-		CDBB7731219C7EDB00122E7E /* KNetworkAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KNetworkAccess.swift; sourceTree = "<group>"; };
-		CDBB7732219C7EDB00122E7E /* KrakeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KrakeResponse.swift; sourceTree = "<group>"; };
-		CDBB7733219C7EDB00122E7E /* KNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KNetworkManager.swift; sourceTree = "<group>"; };
-		CDBB7734219C7EDB00122E7E /* KAPIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAPIConstants.swift; sourceTree = "<group>"; };
-		CDBB7735219C7EDB00122E7E /* OMSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMSettings.swift; sourceTree = "<group>"; };
-		CDBB7736219C7EDB00122E7E /* KMessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMessageManager.swift; sourceTree = "<group>"; };
-		CDBB7737219C7EDB00122E7E /* OGLConfigurations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLConfigurations.m; sourceTree = "<group>"; };
-		CDBB7739219C7EDB00122E7E /* OMPrivacyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMPrivacyViewController.h; sourceTree = "<group>"; };
-		CDBB773A219C7EDB00122E7E /* OMPrivacy.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OMPrivacy.storyboard; sourceTree = "<group>"; };
-		CDBB773B219C7EDB00122E7E /* OMPrivacyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMPrivacyCollectionViewCell.m; sourceTree = "<group>"; };
-		CDBB773C219C7EDB00122E7E /* OMPrivacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMPrivacyViewController.m; sourceTree = "<group>"; };
-		CDBB773D219C7EDB00122E7E /* OMPrivacyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMPrivacyCollectionViewCell.h; sourceTree = "<group>"; };
-		CDBB773E219C7EDB00122E7E /* OrchardMapper.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = OrchardMapper.xcassets; sourceTree = "<group>"; };
-		CDBB773F219C7EDB00122E7E /* KResolutionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KResolutionAction.swift; sourceTree = "<group>"; };
-		CDBB7740219C7EDB00122E7E /* KParametersKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KParametersKeys.swift; sourceTree = "<group>"; };
-		CDBB7741219C7EDB00122E7E /* KErrorCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KErrorCode.swift; sourceTree = "<group>"; };
-		CDBB7743219C7EDB00122E7E /* NSString+OrchardMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+OrchardMapping.h"; sourceTree = "<group>"; };
-		CDBB7744219C7EDB00122E7E /* Date+OM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+OM.swift"; sourceTree = "<group>"; };
-		CDBB7745219C7EDB00122E7E /* UserDefaults+Krake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Krake.swift"; sourceTree = "<group>"; };
-		CDBB7747219C7EDB00122E7E /* URLSessionConfiguration+OM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSessionConfiguration+OM.swift"; sourceTree = "<group>"; };
-		CDBB7748219C7EDB00122E7E /* Dictionary+OM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+OM.swift"; sourceTree = "<group>"; };
-		CDBB7749219C7EDB00122E7E /* HTTPCookie+OM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPCookie+OM.swift"; sourceTree = "<group>"; };
-		CDBB774A219C7EDB00122E7E /* NSString+OrchardMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+OrchardMapping.m"; sourceTree = "<group>"; };
-		CDBB774B219C7EDB00122E7E /* UIViewController+OM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+OM.swift"; sourceTree = "<group>"; };
-		CDBB774C219C7EDB00122E7E /* UINavigationController+OM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+OM.swift"; sourceTree = "<group>"; };
-		CDBB774F219C7EDB00122E7E /* OCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLoginViewController.m; sourceTree = "<group>"; };
-		CDBB7750219C7EDB00122E7E /* KLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KLogin.storyboard; sourceTree = "<group>"; };
-		CDBB7751219C7EDB00122E7E /* KInfoPlist+Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+Login.swift"; sourceTree = "<group>"; };
-		CDBB7752219C7EDB00122E7E /* KLoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KLoginManager.swift; sourceTree = "<group>"; };
-		CDBB7753219C7EDB00122E7E /* LoginProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginProviderProtocol.swift; sourceTree = "<group>"; };
-		CDBB7754219C7EDB00122E7E /* OCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLoginViewController.h; sourceTree = "<group>"; };
-		CDBB7755219C7EDB00122E7E /* OMSystemInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMSystemInfo.m; sourceTree = "<group>"; };
-		CDBB7756219C7EDB00122E7E /* KCommonDisplayAlias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCommonDisplayAlias.swift; sourceTree = "<group>"; };
-		CDBB7758219C7EDB00122E7E /* KMAroundMeCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMAroundMeCacheManager.swift; sourceTree = "<group>"; };
-		CDBB7759219C7EDB00122E7E /* KMAutoQueryDivideCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMAutoQueryDivideCacheManager.swift; sourceTree = "<group>"; };
-		CDBB775A219C7EDB00122E7E /* KRequestParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KRequestParameters.swift; sourceTree = "<group>"; };
-		CDBB775B219C7EDB00122E7E /* ManagedMappedContentItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedMappedContentItem.swift; sourceTree = "<group>"; };
-		CDBB775C219C7EDB00122E7E /* NSManagedObjectModel+KCOrderedAccessorFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectModel+KCOrderedAccessorFix.m"; sourceTree = "<group>"; };
-		CDBB775D219C7EDB00122E7E /* OGLCoreDataMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLCoreDataMapper.h; sourceTree = "<group>"; };
-		CDBB775E219C7EDB00122E7E /* OGLCoreDataMapper_OMPrivateMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLCoreDataMapper_OMPrivateMethods.h; sourceTree = "<group>"; };
-		CDBB775F219C7EDB00122E7E /* NSManagedObjectModel+KCOrderedAccessorFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectModel+KCOrderedAccessorFix.h"; sourceTree = "<group>"; };
-		CDBB7760219C7EDB00122E7E /* DisplayPathCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayPathCache.swift; sourceTree = "<group>"; };
-		CDBB7761219C7EDB00122E7E /* OGLCoreDataMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLCoreDataMapper.m; sourceTree = "<group>"; };
-		CDBB7762219C7EDB00122E7E /* PseudoPathCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PseudoPathCache.swift; sourceTree = "<group>"; };
-		CDBB7763219C7EDB00122E7E /* OGLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLConstants.h; sourceTree = "<group>"; };
-		CDBB7764219C7EDB00122E7E /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		CDBB7765219C7EDB00122E7E /* OGLConfigurations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLConfigurations.h; sourceTree = "<group>"; };
-		CDBB7767219C7EDB00122E7E /* ContentItemWithSocial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItemWithSocial.swift; sourceTree = "<group>"; };
-		CDBB7768219C7EDB00122E7E /* UserProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProtocol.swift; sourceTree = "<group>"; };
-		CDBB7769219C7EDB00122E7E /* AnswerRecordProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerRecordProtocol.swift; sourceTree = "<group>"; };
-		CDBB776A219C7EDB00122E7E /* ContentItemWithUserPolicyAnswersRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItemWithUserPolicyAnswersRecord.swift; sourceTree = "<group>"; };
-		CDBB776B219C7EDB00122E7E /* YoutubeVideoProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeVideoProtocol.swift; sourceTree = "<group>"; };
-		CDBB776C219C7EDB00122E7E /* GameProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameProtocol.swift; sourceTree = "<group>"; };
-		CDBB776D219C7EDB00122E7E /* TaxonomyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxonomyProtocol.swift; sourceTree = "<group>"; };
-		CDBB776E219C7EDB00122E7E /* ContentItemWithDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItemWithDescription.swift; sourceTree = "<group>"; };
-		CDBB776F219C7EDB00122E7E /* AnnotationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationProtocol.swift; sourceTree = "<group>"; };
-		CDBB7770219C7EDB00122E7E /* ContentItemWithCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItemWithCategories.swift; sourceTree = "<group>"; };
-		CDBB7771219C7EDB00122E7E /* PolicyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolicyProtocol.swift; sourceTree = "<group>"; };
-		CDBB7772219C7EDC00122E7E /* ContentItemWithUserReactions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItemWithUserReactions.swift; sourceTree = "<group>"; };
-		CDBB7773219C7EDC00122E7E /* GamePartProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePartProtocol.swift; sourceTree = "<group>"; };
-		CDBB7774219C7EDC00122E7E /* QuestionRecordProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionRecordProtocol.swift; sourceTree = "<group>"; };
-		CDBB7775219C7EDC00122E7E /* TermPartProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermPartProtocol.swift; sourceTree = "<group>"; };
-		CDBB7776219C7EDC00122E7E /* ContentItemWithActivityPart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItemWithActivityPart.swift; sourceTree = "<group>"; };
-		CDBB7777219C7EDC00122E7E /* KOTPStopItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOTPStopItem.swift; sourceTree = "<group>"; };
-		CDBB7778219C7EDC00122E7E /* QuestionnaireProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireProtocol.swift; sourceTree = "<group>"; };
-		CDBB7779219C7EDC00122E7E /* ContentItemWithYoutubeVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItemWithYoutubeVideo.swift; sourceTree = "<group>"; };
-		CDBB777A219C7EDC00122E7E /* KMCacheManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMCacheManagerDelegate.swift; sourceTree = "<group>"; };
-		CDBB777B219C7EDC00122E7E /* StopTimeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopTimeProtocol.swift; sourceTree = "<group>"; };
-		CDBB777C219C7EDC00122E7E /* FieldExternalProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldExternalProtocol.swift; sourceTree = "<group>"; };
-		CDBB777D219C7EDC00122E7E /* UserPolicyAnswersRecordProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPolicyAnswersRecordProtocol.swift; sourceTree = "<group>"; };
-		CDBB777E219C7EDC00122E7E /* ActivityPartProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPartProtocol.swift; sourceTree = "<group>"; };
-		CDBB777F219C7EDC00122E7E /* ContentItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItem.swift; sourceTree = "<group>"; };
-		CDBB7780219C7EDC00122E7E /* KeyValueCodingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueCodingProtocol.swift; sourceTree = "<group>"; };
-		CDBB7781219C7EDC00122E7E /* MapPartProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPartProtocol.swift; sourceTree = "<group>"; };
-		CDBB7782219C7EDC00122E7E /* TweetsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsConfiguration.swift; sourceTree = "<group>"; };
-		CDBB7783219C7EDC00122E7E /* MediaPartProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPartProtocol.swift; sourceTree = "<group>"; };
-		CDBB7784219C7EDC00122E7E /* KrakeBeaconProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KrakeBeaconProtocol.swift; sourceTree = "<group>"; };
-		CDBB7785219C7EDC00122E7E /* QuestionnairePartProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnairePartProtocol.swift; sourceTree = "<group>"; };
-		CDBB7786219C7EDC00122E7E /* ContentItemWithContacts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItemWithContacts.swift; sourceTree = "<group>"; };
-		CDBB7787219C7EDC00122E7E /* PatternProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternProtocol.swift; sourceTree = "<group>"; };
-		CDBB7788219C7EDC00122E7E /* ContentItemWithGallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItemWithGallery.swift; sourceTree = "<group>"; };
-		CDBB7789219C7EDC00122E7E /* ShareProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareProtocol.swift; sourceTree = "<group>"; };
-		CDBB778A219C7EDC00122E7E /* ContentItemWithMapPart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItemWithMapPart.swift; sourceTree = "<group>"; };
-		CDBB778B219C7EDC00122E7E /* EnumerationFieldProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumerationFieldProtocol.swift; sourceTree = "<group>"; };
-		CDBB778C219C7EDC00122E7E /* ContentItemWithShareLinkPart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItemWithShareLinkPart.swift; sourceTree = "<group>"; };
+		CD887E52254C00F700FBC140 /* GameQuiz.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = GameQuiz.xcassets; sourceTree = "<group>"; };
+		CD887E53254C00F700FBC140 /* KGameQuizTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGameQuizTheme.swift; sourceTree = "<group>"; };
+		CD887E54254C00F700FBC140 /* SKBounceAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKBounceAnimation.m; sourceTree = "<group>"; };
+		CD887E55254C00F700FBC140 /* KGameEndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGameEndViewController.swift; sourceTree = "<group>"; };
+		CD887E56254C00F700FBC140 /* LBClock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBClock.m; sourceTree = "<group>"; };
+		CD887E58254C00F700FBC140 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/KGameQuizLocalizable.strings; sourceTree = "<group>"; };
+		CD887E59254C00F700FBC140 /* GameBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameBoard.storyboard; sourceTree = "<group>"; };
+		CD887E5A254C00F700FBC140 /* KGameQuizAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGameQuizAssets.swift; sourceTree = "<group>"; };
+		CD887E5B254C00F700FBC140 /* SKBounceAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKBounceAnimation.h; sourceTree = "<group>"; };
+		CD887E5C254C00F700FBC140 /* KGameQuizStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGameQuizStrings.swift; sourceTree = "<group>"; };
+		CD887E5D254C00F700FBC140 /* LBClock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBClock.h; sourceTree = "<group>"; };
+		CD887E5E254C00F700FBC140 /* KGameStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGameStartViewController.swift; sourceTree = "<group>"; };
+		CD887E5F254C00F700FBC140 /* KMainGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMainGameViewController.swift; sourceTree = "<group>"; };
+		CD887E60254C00F700FBC140 /* KGameQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGameQuiz.swift; sourceTree = "<group>"; };
+		CD887E61254C00F700FBC140 /* KQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KQuestionViewController.swift; sourceTree = "<group>"; };
+		CD887E62254C00F700FBC140 /* KMainGameBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMainGameBoardViewController.swift; sourceTree = "<group>"; };
+		CD887E64254C00F700FBC140 /* KBTPaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBTPaymentManager.swift; sourceTree = "<group>"; };
+		CD887E66254C00F700FBC140 /* KAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAnnotationView.swift; sourceTree = "<group>"; };
+		CD887E67254C00F700FBC140 /* KSearchPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KSearchPlace.swift; sourceTree = "<group>"; };
+		CD887E68254C00F700FBC140 /* KExtendedMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KExtendedMapView.swift; sourceTree = "<group>"; };
+		CD887E69254C00F700FBC140 /* KUserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUserLocation.swift; sourceTree = "<group>"; };
+		CD887E6A254C00F700FBC140 /* Bundle+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Location.swift"; sourceTree = "<group>"; };
+		CD887E6B254C00F700FBC140 /* KTermPinImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTermPinImageDownloader.swift; sourceTree = "<group>"; };
+		CD887E6C254C00F700FBC140 /* TSClusteredAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSClusteredAnnotationView.swift; sourceTree = "<group>"; };
+		CD887E6D254C00F700FBC140 /* KSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KSearch.storyboard; sourceTree = "<group>"; };
+		CD887E6E254C00F700FBC140 /* KLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KLocationManager.swift; sourceTree = "<group>"; };
+		CD887E6F254C00F700FBC140 /* KInfoPlist+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+Location.swift"; sourceTree = "<group>"; };
+		CD887E71254C00F700FBC140 /* OAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
+		CD887E72254C00F700FBC140 /* OAuth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OAuth.storyboard; sourceTree = "<group>"; };
+		CD887E74254C00F700FBC140 /* KxMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KxMenu.m; sourceTree = "<group>"; };
+		CD887E75254C00F700FBC140 /* KWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KWebView.swift; sourceTree = "<group>"; };
+		CD887E76254C00F700FBC140 /* KUserDisplayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KUserDisplayView.xib; sourceTree = "<group>"; };
+		CD887E77254C00F700FBC140 /* KAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAssets.swift; sourceTree = "<group>"; };
+		CD887E78254C00F700FBC140 /* KAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAppDelegate.swift; sourceTree = "<group>"; };
+		CD887E79254C00F700FBC140 /* KDatePickerControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDatePickerControllerViewController.swift; sourceTree = "<group>"; };
+		CD887E7A254C00F700FBC140 /* KGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGallery.swift; sourceTree = "<group>"; };
+		CD887E7B254C00F700FBC140 /* KMediaImageLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMediaImageLoad.swift; sourceTree = "<group>"; };
+		CD887E7C254C00F700FBC140 /* KContactPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KContactPicker.swift; sourceTree = "<group>"; };
+		CD887E7D254C00F700FBC140 /* KStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KStrings.swift; sourceTree = "<group>"; };
+		CD887E7E254C00F700FBC140 /* KDateTimeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDateTimeSelector.swift; sourceTree = "<group>"; };
+		CD887E7F254C00F700FBC140 /* KUserDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUserDisplayView.swift; sourceTree = "<group>"; };
+		CD887E80254C00F700FBC140 /* KxMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KxMenu.h; sourceTree = "<group>"; };
+		CD887E81254C00F700FBC140 /* KScrollToTopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KScrollToTopButton.swift; sourceTree = "<group>"; };
+		CD887E82254C00F700FBC140 /* KStoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KStoreKitManager.swift; sourceTree = "<group>"; };
+		CD887E83254C00F700FBC140 /* KUtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUtilityFunctions.swift; sourceTree = "<group>"; };
+		CD887E84254C00F700FBC140 /* KShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KShareManager.swift; sourceTree = "<group>"; };
+		CD887E85254C00F700FBC140 /* Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Krake.swift; sourceTree = "<group>"; };
+		CD887E86254C00F700FBC140 /* KAddressBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAddressBook.swift; sourceTree = "<group>"; };
+		CD887E87254C00F700FBC140 /* KPushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPushManager.swift; sourceTree = "<group>"; };
+		CD887E88254C00F700FBC140 /* KPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPaddingLabel.swift; sourceTree = "<group>"; };
+		CD887E89254C00F700FBC140 /* KCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KCalendar.swift; sourceTree = "<group>"; };
+		CD887E8A254C00F700FBC140 /* KStreamingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KStreamingProvider.swift; sourceTree = "<group>"; };
+		CD887E8C254C00F700FBC140 /* KrakeQuestionnaires.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KrakeQuestionnaires.storyboard; sourceTree = "<group>"; };
+		CD887E8D254C00F700FBC140 /* KQuestionnaireTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KQuestionnaireTheme.swift; sourceTree = "<group>"; };
+		CD887E8E254C00F700FBC140 /* KOpenAnswerStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOpenAnswerStackView.swift; sourceTree = "<group>"; };
+		CD887E8F254C00F700FBC140 /* KOpenAnswerStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KOpenAnswerStackView.xib; sourceTree = "<group>"; };
+		CD887E90254C00F700FBC140 /* KSingleOrMultiChoiceStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KSingleOrMultiChoiceStackView.xib; sourceTree = "<group>"; };
+		CD887E91254C00F700FBC140 /* KQuestionnaires.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KQuestionnaires.swift; sourceTree = "<group>"; };
+		CD887E92254C00F700FBC140 /* KSingleOrMultiChoiceStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KSingleOrMultiChoiceStackView.swift; sourceTree = "<group>"; };
+		CD887E93254C00F700FBC140 /* Krake.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Krake.h; sourceTree = "<group>"; };
+		CD887E95254C00F700FBC140 /* PostCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardViewController.swift; sourceTree = "<group>"; };
+		CD887E96254C00F700FBC140 /* PostCardCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardCollectionViewController.swift; sourceTree = "<group>"; };
+		CD887E97254C00F700FBC140 /* PostCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCard.swift; sourceTree = "<group>"; };
+		CD887E98254C00F700FBC140 /* PostCard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostCard.storyboard; sourceTree = "<group>"; };
+		CD887E9A254C00F700FBC140 /* KConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KConstants.swift; sourceTree = "<group>"; };
+		CD887E9B254C00F700FBC140 /* String+KrakeCommons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+KrakeCommons.swift"; sourceTree = "<group>"; };
+		CD887E9C254C00F700FBC140 /* KInfoPlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KInfoPlist.swift; sourceTree = "<group>"; };
+		CD887E9D254C00F700FBC140 /* KeychainItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
+		CD887E9E254C00F700FBC140 /* Bundle+KrakeCommons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+KrakeCommons.swift"; sourceTree = "<group>"; };
+		CD887EA0254C00F700FBC140 /* RoutesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesTableViewController.swift; sourceTree = "<group>"; };
+		CD887EA1254C00F700FBC140 /* KTripRouteMapDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTripRouteMapDelegate.swift; sourceTree = "<group>"; };
+		CD887EA2254C00F700FBC140 /* KOTPStopsInRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStopsInRouteViewController.swift; sourceTree = "<group>"; };
+		CD887EA3254C00F700FBC140 /* KOTPRouterRectLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPRouterRectLoader.swift; sourceTree = "<group>"; };
+		CD887EA4254C00F700FBC140 /* KOTPStopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStopDetailViewController.swift; sourceTree = "<group>"; };
+		CD887EA5254C00F700FBC140 /* KOTPPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPPreferences.swift; sourceTree = "<group>"; };
+		CD887EA6254C00F700FBC140 /* KOTPAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPAssets.swift; sourceTree = "<group>"; };
+		CD887EA7254C00F700FBC140 /* KOTPBasePublicTransportListMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPBasePublicTransportListMapViewController.swift; sourceTree = "<group>"; };
+		CD887EA8254C00F700FBC140 /* KTripPlannerResultCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTripPlannerResultCells.swift; sourceTree = "<group>"; };
+		CD887EA9254C00F700FBC140 /* KBusTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBusTracker.swift; sourceTree = "<group>"; };
+		CD887EAA254C00F700FBC140 /* KTripPlannerResultsDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTripPlannerResultsDisplayer.swift; sourceTree = "<group>"; };
+		CD887EAC254C00F700FBC140 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/KOTPLocalizable.strings; sourceTree = "<group>"; };
+		CD887EAD254C00F700FBC140 /* KOTPLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPLoader.swift; sourceTree = "<group>"; };
+		CD887EAE254C00F700FBC140 /* MKCoordinateRegion+OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+OTP.swift"; sourceTree = "<group>"; };
+		CD887EAF254C00F700FBC140 /* OCOTPStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OCOTPStoryboard.storyboard; sourceTree = "<group>"; };
+		CD887EB0254C00F700FBC140 /* KTripPlannerSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTripPlannerSearchController.swift; sourceTree = "<group>"; };
+		CD887EB1254C00F700FBC140 /* KOTPStopsSearchInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStopsSearchInitializer.swift; sourceTree = "<group>"; };
+		CD887EB2254C00F700FBC140 /* KOpenTripPlannerLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOpenTripPlannerLoader.swift; sourceTree = "<group>"; };
+		CD887EB3254C00F700FBC140 /* OCOTP.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = OCOTP.xcassets; sourceTree = "<group>"; };
+		CD887EB4254C00F700FBC140 /* KVehicleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVehicleAnnotation.swift; sourceTree = "<group>"; };
+		CD887EB5254C00F700FBC140 /* KTripPlanTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTripPlanTheme.swift; sourceTree = "<group>"; };
+		CD887EB6254C00F700FBC140 /* KOTPLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPLocationManager.swift; sourceTree = "<group>"; };
+		CD887EB7254C00F700FBC140 /* KInfoPlist+OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+OTP.swift"; sourceTree = "<group>"; };
+		CD887EB8254C00F700FBC140 /* Number+OtpDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+OtpDate.swift"; sourceTree = "<group>"; };
+		CD887EB9254C00F700FBC140 /* KOTPStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStrings.swift; sourceTree = "<group>"; };
+		CD887EBA254C00F700FBC140 /* KBusLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBusLine.swift; sourceTree = "<group>"; };
+		CD887EBB254C00F700FBC140 /* KNetworkManager+OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KNetworkManager+OTP.swift"; sourceTree = "<group>"; };
+		CD887EBC254C00F700FBC140 /* KTripPlanResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTripPlanResult.swift; sourceTree = "<group>"; };
+		CD887EBD254C00F700FBC140 /* KOTPStopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStopsViewController.swift; sourceTree = "<group>"; };
+		CD887EBE254C00F700FBC140 /* KOtpStopTimesDateHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOtpStopTimesDateHeader.swift; sourceTree = "<group>"; };
+		CD887EBF254C00F700FBC140 /* KTripPlanRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTripPlanRequest.swift; sourceTree = "<group>"; };
+		CD887EC0254C00F700FBC140 /* KDurationFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDurationFormatter.swift; sourceTree = "<group>"; };
+		CD887EC1254C00F700FBC140 /* KTripPlannerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTripPlannerProtocol.swift; sourceTree = "<group>"; };
+		CD887EC2254C00F700FBC140 /* KOTPTripPlanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPTripPlanner.swift; sourceTree = "<group>"; };
+		CD887EC3254C00F700FBC140 /* KOTPStopTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStopTimesViewController.swift; sourceTree = "<group>"; };
+		CD887EC5254C00F700FBC140 /* VimeoRequestSerializer+OldUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VimeoRequestSerializer+OldUpload.swift"; sourceTree = "<group>"; };
+		CD887EC6254C00F700FBC140 /* KrakeVimeoRequestSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KrakeVimeoRequestSerializer.swift; sourceTree = "<group>"; };
+		CD887EC7254C00F700FBC140 /* VimeoUploaderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimeoUploaderError.swift; sourceTree = "<group>"; };
+		CD887EC8254C00F700FBC140 /* NSError+Vimeo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Vimeo.swift"; sourceTree = "<group>"; };
+		CD887EC9254C00F700FBC140 /* VimeoResponseSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimeoResponseSerializer.swift; sourceTree = "<group>"; };
+		CD887ECA254C00F700FBC140 /* VimeoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimeoUploader.swift; sourceTree = "<group>"; };
+		CD887ECB254C00F700FBC140 /* VimeoResponseSerializer+OldUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VimeoResponseSerializer+OldUpload.swift"; sourceTree = "<group>"; };
+		CD887ECC254C00F700FBC140 /* VimeoSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimeoSessionManager.swift; sourceTree = "<group>"; };
+		CD887ECD254C00F700FBC140 /* VimeoEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimeoEnum.swift; sourceTree = "<group>"; };
+		CD887ECE254C00F700FBC140 /* VimeoStreamingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimeoStreamingProvider.swift; sourceTree = "<group>"; };
+		CD887ECF254C00F700FBC140 /* VimeoRequestSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimeoRequestSerializer.swift; sourceTree = "<group>"; };
+		CD887ED0254C00F700FBC140 /* AVURLAsset+Vimeo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVURLAsset+Vimeo.swift"; sourceTree = "<group>"; };
+		CD887ED1254C00F700FBC140 /* VimeoVideoUploadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimeoVideoUploadTask.swift; sourceTree = "<group>"; };
+		CD887ED2254C00F700FBC140 /* VimeoConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimeoConstants.swift; sourceTree = "<group>"; };
+		CD887ED3254C00F700FBC140 /* VimeoSessionManager+OldUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VimeoSessionManager+OldUpload.swift"; sourceTree = "<group>"; };
+		CD887ED5254C00F700FBC140 /* OMSystemInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMSystemInfo.h; sourceTree = "<group>"; };
+		CD887ED6254C00F700FBC140 /* OGLAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OGLAppDelegate.swift; sourceTree = "<group>"; };
+		CD887ED7254C00F700FBC140 /* OGLMapperConfiguration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = OGLMapperConfiguration.plist; sourceTree = "<group>"; };
+		CD887ED9254C00F700FBC140 /* OMLoadDataTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OMLoadDataTask.m; sourceTree = "<group>"; };
+		CD887EDA254C00F700FBC140 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
+		CD887EDB254C00F700FBC140 /* NSMutableDictionary+OGLParameters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+OGLParameters.m"; sourceTree = "<group>"; };
+		CD887EDC254C00F700FBC140 /* URLConfigurationCookies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConfigurationCookies.swift; sourceTree = "<group>"; };
+		CD887EDD254C00F700FBC140 /* KNetworkManager+SignalTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KNetworkManager+SignalTrigger.swift"; sourceTree = "<group>"; };
+		CD887EDE254C00F700FBC140 /* NSMutableDictionary+OGLParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+OGLParameters.h"; sourceTree = "<group>"; };
+		CD887EDF254C00F700FBC140 /* RequestHeaderAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHeaderAdapter.swift; sourceTree = "<group>"; };
+		CD887EE0254C00F700FBC140 /* OMLoadDataTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMLoadDataTask.h; sourceTree = "<group>"; };
+		CD887EE1254C00F700FBC140 /* KNetworkAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNetworkAccess.swift; sourceTree = "<group>"; };
+		CD887EE2254C00F700FBC140 /* KrakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KrakeResponse.swift; sourceTree = "<group>"; };
+		CD887EE3254C00F700FBC140 /* KNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNetworkManager.swift; sourceTree = "<group>"; };
+		CD887EE4254C00F700FBC140 /* KAPIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAPIConstants.swift; sourceTree = "<group>"; };
+		CD887EE5254C00F700FBC140 /* OMSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMSettings.swift; sourceTree = "<group>"; };
+		CD887EE6254C00F700FBC140 /* KMessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMessageManager.swift; sourceTree = "<group>"; };
+		CD887EE7254C00F700FBC140 /* OGLConfigurations.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OGLConfigurations.m; sourceTree = "<group>"; };
+		CD887EE9254C00F700FBC140 /* OMPrivacyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMPrivacyViewController.h; sourceTree = "<group>"; };
+		CD887EEA254C00F700FBC140 /* OMPrivacy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OMPrivacy.storyboard; sourceTree = "<group>"; };
+		CD887EEB254C00F700FBC140 /* OMPrivacyCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OMPrivacyCollectionViewCell.m; sourceTree = "<group>"; };
+		CD887EEC254C00F700FBC140 /* OMPrivacyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OMPrivacyViewController.m; sourceTree = "<group>"; };
+		CD887EED254C00F700FBC140 /* OMPrivacyCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMPrivacyCollectionViewCell.h; sourceTree = "<group>"; };
+		CD887EEE254C00F700FBC140 /* OrchardMapper.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = OrchardMapper.xcassets; sourceTree = "<group>"; };
+		CD887EEF254C00F700FBC140 /* CLLocationValueTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationValueTransformer.swift; sourceTree = "<group>"; };
+		CD887EF0254C00F700FBC140 /* KResolutionAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KResolutionAction.swift; sourceTree = "<group>"; };
+		CD887EF1254C00F700FBC140 /* KErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KErrorCode.swift; sourceTree = "<group>"; };
+		CD887EF3254C00F700FBC140 /* NSString+OrchardMapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+OrchardMapping.h"; sourceTree = "<group>"; };
+		CD887EF4254C00F700FBC140 /* Date+OM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+OM.swift"; sourceTree = "<group>"; };
+		CD887EF5254C00F700FBC140 /* UserDefaults+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Krake.swift"; sourceTree = "<group>"; };
+		CD887EF6254C00F700FBC140 /* URLSessionConfiguration+OM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionConfiguration+OM.swift"; sourceTree = "<group>"; };
+		CD887EF7254C00F700FBC140 /* Dictionary+OM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+OM.swift"; sourceTree = "<group>"; };
+		CD887EF8254C00F700FBC140 /* HTTPCookie+OM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPCookie+OM.swift"; sourceTree = "<group>"; };
+		CD887EF9254C00F700FBC140 /* NSString+OrchardMapping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+OrchardMapping.m"; sourceTree = "<group>"; };
+		CD887EFA254C00F700FBC140 /* UIViewController+OM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+OM.swift"; sourceTree = "<group>"; };
+		CD887EFB254C00F700FBC140 /* UINavigationController+OM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+OM.swift"; sourceTree = "<group>"; };
+		CD887EFD254C00F700FBC140 /* KLoginTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KLoginTheme.swift; sourceTree = "<group>"; };
+		CD887EFE254C00F700FBC140 /* OCLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCLoginViewController.m; sourceTree = "<group>"; };
+		CD887EFF254C00F700FBC140 /* KLogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KLogin.storyboard; sourceTree = "<group>"; };
+		CD887F00254C00F700FBC140 /* KInfoPlist+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+Login.swift"; sourceTree = "<group>"; };
+		CD887F01254C00F700FBC140 /* LoginProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProviderProtocol.swift; sourceTree = "<group>"; };
+		CD887F02254C00F700FBC140 /* KLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KLoginManager.swift; sourceTree = "<group>"; };
+		CD887F03254C00F700FBC140 /* OCLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCLoginViewController.h; sourceTree = "<group>"; };
+		CD887F04254C00F700FBC140 /* OMSystemInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OMSystemInfo.m; sourceTree = "<group>"; };
+		CD887F05254C00F700FBC140 /* KCommonDisplayAlias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KCommonDisplayAlias.swift; sourceTree = "<group>"; };
+		CD887F07254C00F700FBC140 /* KMAroundMeCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAroundMeCacheManager.swift; sourceTree = "<group>"; };
+		CD887F08254C00F700FBC140 /* KMAutoQueryDivideCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAutoQueryDivideCacheManager.swift; sourceTree = "<group>"; };
+		CD887F09254C00F700FBC140 /* KRequestParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KRequestParameters.swift; sourceTree = "<group>"; };
+		CD887F0A254C00F700FBC140 /* OGLCoreDataMapper+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OGLCoreDataMapper+Swift.swift"; sourceTree = "<group>"; };
+		CD887F0B254C00F700FBC140 /* ManagedMappedContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedMappedContentItem.swift; sourceTree = "<group>"; };
+		CD887F0C254C00F700FBC140 /* NSManagedObjectModel+KCOrderedAccessorFix.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectModel+KCOrderedAccessorFix.m"; sourceTree = "<group>"; };
+		CD887F0D254C00F700FBC140 /* OGLCoreDataMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGLCoreDataMapper.h; sourceTree = "<group>"; };
+		CD887F0E254C00F700FBC140 /* OGLCoreDataMapper_OMPrivateMethods.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGLCoreDataMapper_OMPrivateMethods.h; sourceTree = "<group>"; };
+		CD887F0F254C00F700FBC140 /* NSManagedObjectModel+KCOrderedAccessorFix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectModel+KCOrderedAccessorFix.h"; sourceTree = "<group>"; };
+		CD887F10254C00F700FBC140 /* OMMapperCompletionBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMMapperCompletionBlock.h; sourceTree = "<group>"; };
+		CD887F11254C00F800FBC140 /* DisplayPathCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayPathCache.swift; sourceTree = "<group>"; };
+		CD887F12254C00F800FBC140 /* OGLCoreDataMapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OGLCoreDataMapper.m; sourceTree = "<group>"; };
+		CD887F13254C00F800FBC140 /* PseudoPathCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PseudoPathCache.swift; sourceTree = "<group>"; };
+		CD887F14254C00F800FBC140 /* OGLConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGLConstants.h; sourceTree = "<group>"; };
+		CD887F15254C00F800FBC140 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		CD887F16254C00F800FBC140 /* KParametersKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KParametersKeys.swift; sourceTree = "<group>"; };
+		CD887F17254C00F800FBC140 /* OGLConfigurations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGLConfigurations.h; sourceTree = "<group>"; };
+		CD887F19254C00F800FBC140 /* ContentItemWithSocial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItemWithSocial.swift; sourceTree = "<group>"; };
+		CD887F1A254C00F800FBC140 /* UserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProtocol.swift; sourceTree = "<group>"; };
+		CD887F1B254C00F800FBC140 /* AnswerRecordProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerRecordProtocol.swift; sourceTree = "<group>"; };
+		CD887F1C254C00F800FBC140 /* ContentItemWithUserPolicyAnswersRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItemWithUserPolicyAnswersRecord.swift; sourceTree = "<group>"; };
+		CD887F1D254C00F800FBC140 /* YoutubeVideoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeVideoProtocol.swift; sourceTree = "<group>"; };
+		CD887F1E254C00F800FBC140 /* GameProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProtocol.swift; sourceTree = "<group>"; };
+		CD887F1F254C00F800FBC140 /* TaxonomyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxonomyProtocol.swift; sourceTree = "<group>"; };
+		CD887F20254C00F800FBC140 /* ContentItemWithDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItemWithDescription.swift; sourceTree = "<group>"; };
+		CD887F21254C00F800FBC140 /* AnnotationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationProtocol.swift; sourceTree = "<group>"; };
+		CD887F22254C00F800FBC140 /* ContentItemWithCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItemWithCategories.swift; sourceTree = "<group>"; };
+		CD887F23254C00F800FBC140 /* PolicyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyProtocol.swift; sourceTree = "<group>"; };
+		CD887F24254C00F800FBC140 /* ContentItemWithUserReactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItemWithUserReactions.swift; sourceTree = "<group>"; };
+		CD887F25254C00F800FBC140 /* GamePartProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePartProtocol.swift; sourceTree = "<group>"; };
+		CD887F26254C00F800FBC140 /* QuestionRecordProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRecordProtocol.swift; sourceTree = "<group>"; };
+		CD887F27254C00F800FBC140 /* TermPartProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermPartProtocol.swift; sourceTree = "<group>"; };
+		CD887F28254C00F800FBC140 /* ContentItemWithActivityPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItemWithActivityPart.swift; sourceTree = "<group>"; };
+		CD887F29254C00F800FBC140 /* KOTPStopItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPStopItem.swift; sourceTree = "<group>"; };
+		CD887F2A254C00F800FBC140 /* QuestionnaireProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireProtocol.swift; sourceTree = "<group>"; };
+		CD887F2B254C00F800FBC140 /* ContentItemWithYoutubeVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItemWithYoutubeVideo.swift; sourceTree = "<group>"; };
+		CD887F2C254C00F800FBC140 /* KMCacheManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMCacheManagerDelegate.swift; sourceTree = "<group>"; };
+		CD887F2D254C00F800FBC140 /* StopTimeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTimeProtocol.swift; sourceTree = "<group>"; };
+		CD887F2E254C00F800FBC140 /* FieldExternalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldExternalProtocol.swift; sourceTree = "<group>"; };
+		CD887F2F254C00F800FBC140 /* UserPolicyAnswersRecordProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPolicyAnswersRecordProtocol.swift; sourceTree = "<group>"; };
+		CD887F30254C00F800FBC140 /* ActivityPartProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPartProtocol.swift; sourceTree = "<group>"; };
+		CD887F31254C00F800FBC140 /* ContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItem.swift; sourceTree = "<group>"; };
+		CD887F32254C00F800FBC140 /* KeyValueCodingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueCodingProtocol.swift; sourceTree = "<group>"; };
+		CD887F33254C00F800FBC140 /* MapPartProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPartProtocol.swift; sourceTree = "<group>"; };
+		CD887F34254C00F800FBC140 /* TweetsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsConfiguration.swift; sourceTree = "<group>"; };
+		CD887F35254C00F800FBC140 /* MediaPartProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPartProtocol.swift; sourceTree = "<group>"; };
+		CD887F36254C00F800FBC140 /* KrakeBeaconProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KrakeBeaconProtocol.swift; sourceTree = "<group>"; };
+		CD887F37254C00F800FBC140 /* QuestionnairePartProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnairePartProtocol.swift; sourceTree = "<group>"; };
+		CD887F38254C00F800FBC140 /* ContentItemWithContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItemWithContacts.swift; sourceTree = "<group>"; };
+		CD887F39254C00F800FBC140 /* PatternProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternProtocol.swift; sourceTree = "<group>"; };
+		CD887F3A254C00F800FBC140 /* ContentItemWithGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItemWithGallery.swift; sourceTree = "<group>"; };
+		CD887F3B254C00F800FBC140 /* ShareProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareProtocol.swift; sourceTree = "<group>"; };
+		CD887F3C254C00F800FBC140 /* ContentItemWithMapPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItemWithMapPart.swift; sourceTree = "<group>"; };
+		CD887F3D254C00F800FBC140 /* EnumerationFieldProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumerationFieldProtocol.swift; sourceTree = "<group>"; };
+		CD887F3E254C00F800FBC140 /* ContentItemWithShareLinkPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItemWithShareLinkPart.swift; sourceTree = "<group>"; };
+		CD887F40254C00F800FBC140 /* PuzzleGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleGenerator.swift; sourceTree = "<group>"; };
+		CD887F41254C00F800FBC140 /* PuzzleGame.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PuzzleGame.xcassets; sourceTree = "<group>"; };
+		CD887F42254C00F800FBC140 /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
+		CD887F43254C00F800FBC140 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		CD887F44254C00F800FBC140 /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
+		CD887F45254C00F800FBC140 /* GamePod.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GamePod.storyboard; sourceTree = "<group>"; };
+		CD887F46254C00F800FBC140 /* KPuzzleGameAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPuzzleGameAssets.swift; sourceTree = "<group>"; };
+		CD887F47254C00F800FBC140 /* GameBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardViewController.swift; sourceTree = "<group>"; };
+		CD887F49254C00F800FBC140 /* KInfoPlist+Google.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+Google.swift"; sourceTree = "<group>"; };
+		CD887F4A254C00F800FBC140 /* GoogleKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleKit.swift; sourceTree = "<group>"; };
+		CD887F4B254C00F800FBC140 /* Bundle+Google.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Google.swift"; sourceTree = "<group>"; };
+		CD887F4D254C00F800FBC140 /* KDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KDetail.xib; sourceTree = "<group>"; };
+		CD887F4E254C00F800FBC140 /* KItemsCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KItemsCollectionViewController.xib; sourceTree = "<group>"; };
+		CD887F4F254C00F800FBC140 /* KStandardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KStandardCollectionViewCell.xib; sourceTree = "<group>"; };
+		CD887F51254C00F800FBC140 /* KDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDetailViewController.swift; sourceTree = "<group>"; };
+		CD887F52254C00F800FBC140 /* KButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KButtonItem.swift; sourceTree = "<group>"; };
+		CD887F53254C00F800FBC140 /* KDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDetailPresenter.swift; sourceTree = "<group>"; };
+		CD887F55254C00F800FBC140 /* KDetailWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDetailWebView.swift; sourceTree = "<group>"; };
+		CD887F56254C00F800FBC140 /* KCategoryImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KCategoryImageView.swift; sourceTree = "<group>"; };
+		CD887F57254C00F800FBC140 /* KSocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KSocialView.swift; sourceTree = "<group>"; };
+		CD887F58254C00F800FBC140 /* KTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTitleLabel.swift; sourceTree = "<group>"; };
+		CD887F59254C00F800FBC140 /* KMapPlainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMapPlainButton.swift; sourceTree = "<group>"; };
+		CD887F5A254C00F800FBC140 /* KDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDetailHeaderView.swift; sourceTree = "<group>"; };
+		CD887F5B254C00F800FBC140 /* KMixedBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMixedBarButton.swift; sourceTree = "<group>"; };
+		CD887F5C254C00F800FBC140 /* KMediaCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMediaCollectionView.swift; sourceTree = "<group>"; };
+		CD887F5D254C00F800FBC140 /* KCategoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KCategoryLabel.swift; sourceTree = "<group>"; };
+		CD887F5E254C00F800FBC140 /* KUserReactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUserReactions.swift; sourceTree = "<group>"; };
+		CD887F5F254C00F800FBC140 /* KDetailViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDetailViewControllerFactory.swift; sourceTree = "<group>"; };
+		CD887F60254C00F800FBC140 /* KDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KDetail.storyboard; sourceTree = "<group>"; };
+		CD887F61254C00F800FBC140 /* KNoElemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KNoElemCollectionViewCell.xib; sourceTree = "<group>"; };
+		CD887F62254C00F800FBC140 /* KEmptyCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KEmptyCollectionView.xib; sourceTree = "<group>"; };
+		CD887F64254C00F800FBC140 /* KDefaultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDefaultCollectionViewCell.swift; sourceTree = "<group>"; };
+		CD887F65254C00F800FBC140 /* KTabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTabManager.swift; sourceTree = "<group>"; };
+		CD887F66254C00F800FBC140 /* KNoElementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNoElementCell.swift; sourceTree = "<group>"; };
+		CD887F67254C00F800FBC140 /* KItemsCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KItemsCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		CD887F68254C00F800FBC140 /* KItemsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KItemsCollectionViewController.swift; sourceTree = "<group>"; };
+		CD887F69254C00F800FBC140 /* KListMapDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KListMapDelegate.swift; sourceTree = "<group>"; };
+		CD887F6A254C00F800FBC140 /* KSearchFilterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KSearchFilterManager.swift; sourceTree = "<group>"; };
+		CD887F6B254C00F800FBC140 /* KDateFilterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDateFilterManager.swift; sourceTree = "<group>"; };
+		CD887F6C254C00F800FBC140 /* KSegmentioThemeDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KSegmentioThemeDefault.swift; sourceTree = "<group>"; };
+		CD887F6D254C00F800FBC140 /* KListMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KListMap.swift; sourceTree = "<group>"; };
+		CD887F6E254C00F800FBC140 /* KListMapOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KListMapOptions.swift; sourceTree = "<group>"; };
+		CD887F6F254C00F800FBC140 /* KTabAndCollectionViewItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTabAndCollectionViewItems.swift; sourceTree = "<group>"; };
+		CD887F70254C00F800FBC140 /* KListMap.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KListMap.xib; sourceTree = "<group>"; };
+		CD887F72254C00F800FBC140 /* Policies.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Policies.storyboard; sourceTree = "<group>"; };
+		CD887F73254C00F800FBC140 /* Policies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Policies.swift; sourceTree = "<group>"; };
+		CD887F75254C00F800FBC140 /* FacebookKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookKit.swift; sourceTree = "<group>"; };
+		CD887F77254C00F800FBC140 /* TWTRTweet+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TWTRTweet+Krake.swift"; sourceTree = "<group>"; };
+		CD887F78254C00F800FBC140 /* TWTRTwitter+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TWTRTwitter+Krake.swift"; sourceTree = "<group>"; };
+		CD887F79254C00F800FBC140 /* TwitterKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterKit.swift; sourceTree = "<group>"; };
+		CD887F7A254C00F800FBC140 /* TWTRAPIClient+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TWTRAPIClient+Krake.swift"; sourceTree = "<group>"; };
+		CD887F7B254C00F800FBC140 /* KTWTRTweetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTWTRTweetView.swift; sourceTree = "<group>"; };
+		CD887F7E254C00F800FBC140 /* CategoryPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPreferencesViewController.swift; sourceTree = "<group>"; };
+		CD887F7F254C00F800FBC140 /* CategoryPreferencesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryPreferencesViewController.xib; sourceTree = "<group>"; };
+		CD887F80254C00F800FBC140 /* CategoryPreferencesCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryPreferencesCellView.xib; sourceTree = "<group>"; };
+		CD887F82254C00F800FBC140 /* TakePhotoOrVideo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TakePhotoOrVideo.xib; sourceTree = "<group>"; };
+		CD887F83254C00F800FBC140 /* TakePhotoOrVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoOrVideo.swift; sourceTree = "<group>"; };
+		CD887F84254C00F800FBC140 /* ContentModificationContainer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContentModificationContainer.storyboard; sourceTree = "<group>"; };
+		CD887F85254C00F800FBC140 /* ContentModificationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModificationContainer.swift; sourceTree = "<group>"; };
+		CD887F86254C00F800FBC140 /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
+		CD887F88254C00F800FBC140 /* TakeInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TakeInfo.xib; sourceTree = "<group>"; };
+		CD887F89254C00F800FBC140 /* TakeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeInfo.swift; sourceTree = "<group>"; };
+		CD887F8B254C00F800FBC140 /* PoliciesRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliciesRegistrationViewController.swift; sourceTree = "<group>"; };
+		CD887F8C254C00F800FBC140 /* PoliciesRegistration.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PoliciesRegistration.xib; sourceTree = "<group>"; };
+		CD887F8D254C00F800FBC140 /* PolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyView.swift; sourceTree = "<group>"; };
+		CD887F8F254C00F800FBC140 /* MapInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInfo.swift; sourceTree = "<group>"; };
+		CD887F90254C00F800FBC140 /* MapInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapInfo.xib; sourceTree = "<group>"; };
+		CD887F93254C00F800FBC140 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		CD887F95254C00F800FBC140 /* DropDownTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTextField.swift; sourceTree = "<group>"; };
+		CD887F96254C00F800FBC140 /* DropDownTextPickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTextPickerField.swift; sourceTree = "<group>"; };
+		CD887F97254C00F800FBC140 /* PopoverPickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverPickerField.swift; sourceTree = "<group>"; };
+		CD887F99254C00F800FBC140 /* TakeInfoDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeInfoDateView.swift; sourceTree = "<group>"; };
+		CD887F9A254C00F800FBC140 /* DateTimePickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePickerField.swift; sourceTree = "<group>"; };
+		CD887F9C254C00F800FBC140 /* UISwitchWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISwitchWithLabel.swift; sourceTree = "<group>"; };
+		CD887F9D254C00F800FBC140 /* SwitchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchField.swift; sourceTree = "<group>"; };
+		CD887F9E254C00F800FBC140 /* FieldItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldItem.swift; sourceTree = "<group>"; };
+		CD887F9F254C00F800FBC140 /* KContentItemAutocompleteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KContentItemAutocompleteTableViewController.swift; sourceTree = "<group>"; };
+		CD887FA1254C00F800FBC140 /* CLLocationCoordinate2D+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Equatable.swift"; sourceTree = "<group>"; };
+		CD887FA2254C00F800FBC140 /* UIView+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Krake.swift"; sourceTree = "<group>"; };
+		CD887FA3254C00F800FBC140 /* UIButton+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Krake.swift"; sourceTree = "<group>"; };
+		CD887FA4254C00F800FBC140 /* WWCalendarTimeSelector+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WWCalendarTimeSelector+Krake.swift"; sourceTree = "<group>"; };
+		CD887FA5254C00F800FBC140 /* MBProgressHUD+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Krake.swift"; sourceTree = "<group>"; };
+		CD887FA6254C00F800FBC140 /* MKAnnotationView+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKAnnotationView+Krake.swift"; sourceTree = "<group>"; };
+		CD887FA7254C00F800FBC140 /* UIColor+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Krake.swift"; sourceTree = "<group>"; };
+		CD887FA8254C00F800FBC140 /* NSDate+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+Krake.swift"; sourceTree = "<group>"; };
+		CD887FA9254C00F800FBC140 /* UIResponder+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Krake.swift"; sourceTree = "<group>"; };
+		CD887FAA254C00F800FBC140 /* UIImageView+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Krake.swift"; sourceTree = "<group>"; };
+		CD887FAB254C00F800FBC140 /* NSURL+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSURL+Krake.swift"; sourceTree = "<group>"; };
+		CD887FAC254C00F800FBC140 /* UIImage+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Krake.swift"; sourceTree = "<group>"; };
+		CD887FAD254C00F800FBC140 /* UIViewController+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Krake.swift"; sourceTree = "<group>"; };
+		CD887FAE254C00F800FBC140 /* UINavigationController+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Krake.swift"; sourceTree = "<group>"; };
+		CD887FAF254C00F800FBC140 /* MKMapItem+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapItem+Krake.swift"; sourceTree = "<group>"; };
+		CD887FB0254C00F800FBC140 /* MKMapView+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Krake.swift"; sourceTree = "<group>"; };
+		CD887FB1254C00F800FBC140 /* String+Krake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Krake.swift"; sourceTree = "<group>"; };
+		CD887FB2254C00F800FBC140 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CD887FB4254C00F800FBC140 /* LinkedInKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedInKit.swift; sourceTree = "<group>"; };
+		CD887FB6254C00F800FBC140 /* InstagramKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramKit.swift; sourceTree = "<group>"; };
+		CD887FB7254C00F800FBC140 /* InstagramKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = InstagramKit.xcassets; sourceTree = "<group>"; };
+		CD887FB9254C00F800FBC140 /* AppleSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignIn.swift; sourceTree = "<group>"; };
+		CD887FBB254C00F800FBC140 /* BeaconAdsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconAdsLoader.swift; sourceTree = "<group>"; };
+		CD887FBC254C00F800FBC140 /* NearestBeaconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestBeaconManager.swift; sourceTree = "<group>"; };
+		CD887FBD254C00F800FBC140 /* KInfoPlist+Beacons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+Beacons.swift"; sourceTree = "<group>"; };
+		CD887FC0254C00F800FBC140 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OCLocalizable.strings; sourceTree = "<group>"; };
+		CD887FC1254C00F800FBC140 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/OCLocalizable.strings; sourceTree = "<group>"; };
+		CD887FC2254C00F800FBC140 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OCLocalizable.strings; sourceTree = "<group>"; };
+		CD887FC4254C00F800FBC140 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/OCLocalizable.strings; sourceTree = "<group>"; };
+		CD887FC6254C00F800FBC140 /* AnalyticsCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsCore.swift; sourceTree = "<group>"; };
+		CD887FC7254C00F800FBC140 /* KInfoPlist+Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+Analytics.swift"; sourceTree = "<group>"; };
+		CD887FC8254C00F800FBC140 /* KUserTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUserTracking.swift; sourceTree = "<group>"; };
+		CD887FC9254C00F800FBC140 /* Bundle+Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Analytics.swift"; sourceTree = "<group>"; };
+		CD887FCA254C00F800FBC140 /* KDefaultAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDefaultAnalytics.swift; sourceTree = "<group>"; };
+		CD887FCC254C00F800FBC140 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		CD887FCD254C00F800FBC140 /* KReportage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KReportage.swift; sourceTree = "<group>"; };
+		CD887FCE254C00F800FBC140 /* KListReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KListReport.swift; sourceTree = "<group>"; };
+		CD887FCF254C00F800FBC140 /* CellReport.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellReport.xib; sourceTree = "<group>"; };
+		CD887FD1254C00F800FBC140 /* KAutoUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAutoUpdateManager.swift; sourceTree = "<group>"; };
+		CD887FD2254C00F800FBC140 /* KInfoPlist+AppUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+AppUpdate.swift"; sourceTree = "<group>"; };
 		CDBB78B5219C7EFE00122E7E /* Krake.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Krake.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		CDC4ADB022F338D30087D74A /* KOTPLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOTPLocationManager.swift; sourceTree = "<group>"; };
-		CDC59C7024DC0E3100533B9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OCLocalizable.strings; sourceTree = "<group>"; };
-		CDC59C7224DC0E3700533B9B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/OCLocalizable.strings; sourceTree = "<group>"; };
-		CDC59C7324DC0E3900533B9B /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/OCLocalizable.strings; sourceTree = "<group>"; };
-		CDC59C7424DC0E3C00533B9B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OCLocalizable.strings; sourceTree = "<group>"; };
-		CDC59C7724DC255C00533B9B /* KConstants+KrakeLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KConstants+KrakeLocalization.swift"; sourceTree = "<group>"; };
-		CDDA994922905720008B205B /* KBusTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBusTracker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		CDBABB9E23AA12FB009D4CB1 /* AppleSignIn */ = {
+		CD887E50254C00F700FBC140 /* Krake */ = {
 			isa = PBXGroup;
 			children = (
-				CDBABB9F23AA1316009D4CB1 /* AppleSignIn.swift */,
+				CD887FC5254C00F800FBC140 /* Analytics */,
+				CD887FB8254C00F800FBC140 /* AppleSignIn */,
+				CD887FD0254C00F800FBC140 /* AppUpdater */,
+				CD887FBA254C00F800FBC140 /* Beacons */,
+				CD887E63254C00F700FBC140 /* Braintree */,
+				CD887E99254C00F700FBC140 /* Commons */,
+				CD887F4C254C00F800FBC140 /* content */,
+				CD887F7C254C00F800FBC140 /* ContentManager */,
+				CD887E73254C00F700FBC140 /* Core */,
+				CD887FA0254C00F800FBC140 /* Extentions */,
+				CD887F74254C00F800FBC140 /* FacebookKit */,
+				CD887E51254C00F700FBC140 /* GameQuiz */,
+				CD887F48254C00F800FBC140 /* GoogleKit */,
+				CD887FB2254C00F800FBC140 /* Images.xcassets */,
+				CD887FB5254C00F800FBC140 /* InstagramKit */,
+				CD887E93254C00F700FBC140 /* Krake.h */,
+				CD887FB3254C00F800FBC140 /* LinkedInKit */,
+				CD887FBE254C00F800FBC140 /* Localization */,
+				CD887E65254C00F700FBC140 /* Mappe */,
+				CD887ED4254C00F700FBC140 /* Mapper */,
+				CD887E70254C00F700FBC140 /* oAuth */,
+				CD887E9F254C00F700FBC140 /* OTP */,
+				CD887F71254C00F800FBC140 /* Policies */,
+				CD887E94254C00F700FBC140 /* PostCard */,
+				CD887F3F254C00F800FBC140 /* PuzzleGame */,
+				CD887E8B254C00F700FBC140 /* Questionnaires */,
+				CD887FCB254C00F800FBC140 /* Reportages */,
+				CD887F76254C00F800FBC140 /* TwitterKit */,
+				CD887EC4254C00F700FBC140 /* Vimeo */,
+			);
+			path = Krake;
+			sourceTree = "<group>";
+		};
+		CD887E51254C00F700FBC140 /* GameQuiz */ = {
+			isa = PBXGroup;
+			children = (
+				CD887E52254C00F700FBC140 /* GameQuiz.xcassets */,
+				CD887E53254C00F700FBC140 /* KGameQuizTheme.swift */,
+				CD887E54254C00F700FBC140 /* SKBounceAnimation.m */,
+				CD887E55254C00F700FBC140 /* KGameEndViewController.swift */,
+				CD887E56254C00F700FBC140 /* LBClock.m */,
+				CD887E57254C00F700FBC140 /* KGameQuizLocalizable.strings */,
+				CD887E59254C00F700FBC140 /* GameBoard.storyboard */,
+				CD887E5A254C00F700FBC140 /* KGameQuizAssets.swift */,
+				CD887E5B254C00F700FBC140 /* SKBounceAnimation.h */,
+				CD887E5C254C00F700FBC140 /* KGameQuizStrings.swift */,
+				CD887E5D254C00F700FBC140 /* LBClock.h */,
+				CD887E5E254C00F700FBC140 /* KGameStartViewController.swift */,
+				CD887E5F254C00F700FBC140 /* KMainGameViewController.swift */,
+				CD887E60254C00F700FBC140 /* KGameQuiz.swift */,
+				CD887E61254C00F700FBC140 /* KQuestionViewController.swift */,
+				CD887E62254C00F700FBC140 /* KMainGameBoardViewController.swift */,
+			);
+			path = GameQuiz;
+			sourceTree = "<group>";
+		};
+		CD887E63254C00F700FBC140 /* Braintree */ = {
+			isa = PBXGroup;
+			children = (
+				CD887E64254C00F700FBC140 /* KBTPaymentManager.swift */,
+			);
+			path = Braintree;
+			sourceTree = "<group>";
+		};
+		CD887E65254C00F700FBC140 /* Mappe */ = {
+			isa = PBXGroup;
+			children = (
+				CD887E66254C00F700FBC140 /* KAnnotationView.swift */,
+				CD887E67254C00F700FBC140 /* KSearchPlace.swift */,
+				CD887E68254C00F700FBC140 /* KExtendedMapView.swift */,
+				CD887E69254C00F700FBC140 /* KUserLocation.swift */,
+				CD887E6A254C00F700FBC140 /* Bundle+Location.swift */,
+				CD887E6B254C00F700FBC140 /* KTermPinImageDownloader.swift */,
+				CD887E6C254C00F700FBC140 /* TSClusteredAnnotationView.swift */,
+				CD887E6D254C00F700FBC140 /* KSearch.storyboard */,
+				CD887E6E254C00F700FBC140 /* KLocationManager.swift */,
+				CD887E6F254C00F700FBC140 /* KInfoPlist+Location.swift */,
+			);
+			path = Mappe;
+			sourceTree = "<group>";
+		};
+		CD887E70254C00F700FBC140 /* oAuth */ = {
+			isa = PBXGroup;
+			children = (
+				CD887E71254C00F700FBC140 /* OAuth.swift */,
+				CD887E72254C00F700FBC140 /* OAuth.storyboard */,
+			);
+			path = oAuth;
+			sourceTree = "<group>";
+		};
+		CD887E73254C00F700FBC140 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CD887E74254C00F700FBC140 /* KxMenu.m */,
+				CD887E75254C00F700FBC140 /* KWebView.swift */,
+				CD887E76254C00F700FBC140 /* KUserDisplayView.xib */,
+				CD887E77254C00F700FBC140 /* KAssets.swift */,
+				CD887E78254C00F700FBC140 /* KAppDelegate.swift */,
+				CD887E79254C00F700FBC140 /* KDatePickerControllerViewController.swift */,
+				CD887E7A254C00F700FBC140 /* KGallery.swift */,
+				CD887E7B254C00F700FBC140 /* KMediaImageLoad.swift */,
+				CD887E7C254C00F700FBC140 /* KContactPicker.swift */,
+				CD887E7E254C00F700FBC140 /* KDateTimeSelector.swift */,
+				CD887E7F254C00F700FBC140 /* KUserDisplayView.swift */,
+				CD887E80254C00F700FBC140 /* KxMenu.h */,
+				CD887E81254C00F700FBC140 /* KScrollToTopButton.swift */,
+				CD887E82254C00F700FBC140 /* KStoreKitManager.swift */,
+				CD887E83254C00F700FBC140 /* KUtilityFunctions.swift */,
+				CD887E84254C00F700FBC140 /* KShareManager.swift */,
+				CD887E85254C00F700FBC140 /* Krake.swift */,
+				CD887E86254C00F700FBC140 /* KAddressBook.swift */,
+				CD887E87254C00F700FBC140 /* KPushManager.swift */,
+				CD887E88254C00F700FBC140 /* KPaddingLabel.swift */,
+				CD887E89254C00F700FBC140 /* KCalendar.swift */,
+				CD887E8A254C00F700FBC140 /* KStreamingProvider.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		CD887E8B254C00F700FBC140 /* Questionnaires */ = {
+			isa = PBXGroup;
+			children = (
+				CD887E8C254C00F700FBC140 /* KrakeQuestionnaires.storyboard */,
+				CD887E8D254C00F700FBC140 /* KQuestionnaireTheme.swift */,
+				CD887E8E254C00F700FBC140 /* KOpenAnswerStackView.swift */,
+				CD887E8F254C00F700FBC140 /* KOpenAnswerStackView.xib */,
+				CD887E90254C00F700FBC140 /* KSingleOrMultiChoiceStackView.xib */,
+				CD887E91254C00F700FBC140 /* KQuestionnaires.swift */,
+				CD887E92254C00F700FBC140 /* KSingleOrMultiChoiceStackView.swift */,
+			);
+			path = Questionnaires;
+			sourceTree = "<group>";
+		};
+		CD887E94254C00F700FBC140 /* PostCard */ = {
+			isa = PBXGroup;
+			children = (
+				CD887E95254C00F700FBC140 /* PostCardViewController.swift */,
+				CD887E96254C00F700FBC140 /* PostCardCollectionViewController.swift */,
+				CD887E97254C00F700FBC140 /* PostCard.swift */,
+				CD887E98254C00F700FBC140 /* PostCard.storyboard */,
+			);
+			path = PostCard;
+			sourceTree = "<group>";
+		};
+		CD887E99254C00F700FBC140 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				CD887E9A254C00F700FBC140 /* KConstants.swift */,
+				CD887E9B254C00F700FBC140 /* String+KrakeCommons.swift */,
+				CD887E9C254C00F700FBC140 /* KInfoPlist.swift */,
+				CD887E9D254C00F700FBC140 /* KeychainItem.swift */,
+				CD887E9E254C00F700FBC140 /* Bundle+KrakeCommons.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		CD887E9F254C00F700FBC140 /* OTP */ = {
+			isa = PBXGroup;
+			children = (
+				CD887EA0254C00F700FBC140 /* RoutesTableViewController.swift */,
+				CD887EA1254C00F700FBC140 /* KTripRouteMapDelegate.swift */,
+				CD887EA2254C00F700FBC140 /* KOTPStopsInRouteViewController.swift */,
+				CD887EA3254C00F700FBC140 /* KOTPRouterRectLoader.swift */,
+				CD887EA4254C00F700FBC140 /* KOTPStopDetailViewController.swift */,
+				CD887EA5254C00F700FBC140 /* KOTPPreferences.swift */,
+				CD887EA6254C00F700FBC140 /* KOTPAssets.swift */,
+				CD887EA7254C00F700FBC140 /* KOTPBasePublicTransportListMapViewController.swift */,
+				CD887EA8254C00F700FBC140 /* KTripPlannerResultCells.swift */,
+				CD887EA9254C00F700FBC140 /* KBusTracker.swift */,
+				CD887EAA254C00F700FBC140 /* KTripPlannerResultsDisplayer.swift */,
+				CD887EAB254C00F700FBC140 /* KOTPLocalizable.strings */,
+				CD887EAD254C00F700FBC140 /* KOTPLoader.swift */,
+				CD887EAE254C00F700FBC140 /* MKCoordinateRegion+OTP.swift */,
+				CD887EAF254C00F700FBC140 /* OCOTPStoryboard.storyboard */,
+				CD887EB0254C00F700FBC140 /* KTripPlannerSearchController.swift */,
+				CD887EB1254C00F700FBC140 /* KOTPStopsSearchInitializer.swift */,
+				CD887EB2254C00F700FBC140 /* KOpenTripPlannerLoader.swift */,
+				CD887EB3254C00F700FBC140 /* OCOTP.xcassets */,
+				CD887EB4254C00F700FBC140 /* KVehicleAnnotation.swift */,
+				CD887EB5254C00F700FBC140 /* KTripPlanTheme.swift */,
+				CD887EB6254C00F700FBC140 /* KOTPLocationManager.swift */,
+				CD887EB7254C00F700FBC140 /* KInfoPlist+OTP.swift */,
+				CD887EB8254C00F700FBC140 /* Number+OtpDate.swift */,
+				CD887EB9254C00F700FBC140 /* KOTPStrings.swift */,
+				CD887EBA254C00F700FBC140 /* KBusLine.swift */,
+				CD887EBB254C00F700FBC140 /* KNetworkManager+OTP.swift */,
+				CD887EBC254C00F700FBC140 /* KTripPlanResult.swift */,
+				CD887EBD254C00F700FBC140 /* KOTPStopsViewController.swift */,
+				CD887EBE254C00F700FBC140 /* KOtpStopTimesDateHeader.swift */,
+				CD887EBF254C00F700FBC140 /* KTripPlanRequest.swift */,
+				CD887EC0254C00F700FBC140 /* KDurationFormatter.swift */,
+				CD887EC1254C00F700FBC140 /* KTripPlannerProtocol.swift */,
+				CD887EC2254C00F700FBC140 /* KOTPTripPlanner.swift */,
+				CD887EC3254C00F700FBC140 /* KOTPStopTimesViewController.swift */,
+			);
+			path = OTP;
+			sourceTree = "<group>";
+		};
+		CD887EC4254C00F700FBC140 /* Vimeo */ = {
+			isa = PBXGroup;
+			children = (
+				CD887EC5254C00F700FBC140 /* VimeoRequestSerializer+OldUpload.swift */,
+				CD887EC6254C00F700FBC140 /* KrakeVimeoRequestSerializer.swift */,
+				CD887EC7254C00F700FBC140 /* VimeoUploaderError.swift */,
+				CD887EC8254C00F700FBC140 /* NSError+Vimeo.swift */,
+				CD887EC9254C00F700FBC140 /* VimeoResponseSerializer.swift */,
+				CD887ECA254C00F700FBC140 /* VimeoUploader.swift */,
+				CD887ECB254C00F700FBC140 /* VimeoResponseSerializer+OldUpload.swift */,
+				CD887ECC254C00F700FBC140 /* VimeoSessionManager.swift */,
+				CD887ECD254C00F700FBC140 /* VimeoEnum.swift */,
+				CD887ECE254C00F700FBC140 /* VimeoStreamingProvider.swift */,
+				CD887ECF254C00F700FBC140 /* VimeoRequestSerializer.swift */,
+				CD887ED0254C00F700FBC140 /* AVURLAsset+Vimeo.swift */,
+				CD887ED1254C00F700FBC140 /* VimeoVideoUploadTask.swift */,
+				CD887ED2254C00F700FBC140 /* VimeoConstants.swift */,
+				CD887ED3254C00F700FBC140 /* VimeoSessionManager+OldUpload.swift */,
+			);
+			path = Vimeo;
+			sourceTree = "<group>";
+		};
+		CD887ED4254C00F700FBC140 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				CD887ED5254C00F700FBC140 /* OMSystemInfo.h */,
+				CD887ED6254C00F700FBC140 /* OGLAppDelegate.swift */,
+				CD887ED7254C00F700FBC140 /* OGLMapperConfiguration.plist */,
+				CD887ED8254C00F700FBC140 /* NetworkManager */,
+				CD887EE4254C00F700FBC140 /* KAPIConstants.swift */,
+				CD887EE5254C00F700FBC140 /* OMSettings.swift */,
+				CD887EE6254C00F700FBC140 /* KMessageManager.swift */,
+				CD887EE7254C00F700FBC140 /* OGLConfigurations.m */,
+				CD887EE8254C00F700FBC140 /* PrivacyManager */,
+				CD887EEE254C00F700FBC140 /* OrchardMapper.xcassets */,
+				CD887EEF254C00F700FBC140 /* CLLocationValueTransformer.swift */,
+				CD887EF0254C00F700FBC140 /* KResolutionAction.swift */,
+				CD887EF1254C00F700FBC140 /* KErrorCode.swift */,
+				CD887EF2254C00F700FBC140 /* Extensions */,
+				CD887EFC254C00F700FBC140 /* LoginManager */,
+				CD887F04254C00F700FBC140 /* OMSystemInfo.m */,
+				CD887F05254C00F700FBC140 /* KCommonDisplayAlias.swift */,
+				CD887F06254C00F700FBC140 /* DataMapping */,
+				CD887F14254C00F800FBC140 /* OGLConstants.h */,
+				CD887F15254C00F800FBC140 /* Theme.swift */,
+				CD887F16254C00F800FBC140 /* KParametersKeys.swift */,
+				CD887F17254C00F800FBC140 /* OGLConfigurations.h */,
+				CD887F18254C00F800FBC140 /* Protocols */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		CD887ED8254C00F700FBC140 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				CD887ED9254C00F700FBC140 /* OMLoadDataTask.m */,
+				CD887EDA254C00F700FBC140 /* PolicyViewController.swift */,
+				CD887EDB254C00F700FBC140 /* NSMutableDictionary+OGLParameters.m */,
+				CD887EDC254C00F700FBC140 /* URLConfigurationCookies.swift */,
+				CD887EDD254C00F700FBC140 /* KNetworkManager+SignalTrigger.swift */,
+				CD887EDE254C00F700FBC140 /* NSMutableDictionary+OGLParameters.h */,
+				CD887EDF254C00F700FBC140 /* RequestHeaderAdapter.swift */,
+				CD887EE0254C00F700FBC140 /* OMLoadDataTask.h */,
+				CD887EE1254C00F700FBC140 /* KNetworkAccess.swift */,
+				CD887EE2254C00F700FBC140 /* KrakeResponse.swift */,
+				CD887EE3254C00F700FBC140 /* KNetworkManager.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		CD887EE8254C00F700FBC140 /* PrivacyManager */ = {
+			isa = PBXGroup;
+			children = (
+				CD887EE9254C00F700FBC140 /* OMPrivacyViewController.h */,
+				CD887EEA254C00F700FBC140 /* OMPrivacy.storyboard */,
+				CD887EEB254C00F700FBC140 /* OMPrivacyCollectionViewCell.m */,
+				CD887EEC254C00F700FBC140 /* OMPrivacyViewController.m */,
+				CD887EED254C00F700FBC140 /* OMPrivacyCollectionViewCell.h */,
+			);
+			path = PrivacyManager;
+			sourceTree = "<group>";
+		};
+		CD887EF2254C00F700FBC140 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CD887EF3254C00F700FBC140 /* NSString+OrchardMapping.h */,
+				CD887EF4254C00F700FBC140 /* Date+OM.swift */,
+				CD887EF5254C00F700FBC140 /* UserDefaults+Krake.swift */,
+				CD887EF6254C00F700FBC140 /* URLSessionConfiguration+OM.swift */,
+				CD887EF7254C00F700FBC140 /* Dictionary+OM.swift */,
+				CD887EF8254C00F700FBC140 /* HTTPCookie+OM.swift */,
+				CD887EF9254C00F700FBC140 /* NSString+OrchardMapping.m */,
+				CD887EFA254C00F700FBC140 /* UIViewController+OM.swift */,
+				CD887EFB254C00F700FBC140 /* UINavigationController+OM.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CD887EFC254C00F700FBC140 /* LoginManager */ = {
+			isa = PBXGroup;
+			children = (
+				CD887EFD254C00F700FBC140 /* KLoginTheme.swift */,
+				CD887EFE254C00F700FBC140 /* OCLoginViewController.m */,
+				CD887EFF254C00F700FBC140 /* KLogin.storyboard */,
+				CD887F00254C00F700FBC140 /* KInfoPlist+Login.swift */,
+				CD887F01254C00F700FBC140 /* LoginProviderProtocol.swift */,
+				CD887F02254C00F700FBC140 /* KLoginManager.swift */,
+				CD887F03254C00F700FBC140 /* OCLoginViewController.h */,
+			);
+			path = LoginManager;
+			sourceTree = "<group>";
+		};
+		CD887F06254C00F700FBC140 /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F07254C00F700FBC140 /* KMAroundMeCacheManager.swift */,
+				CD887F08254C00F700FBC140 /* KMAutoQueryDivideCacheManager.swift */,
+				CD887F09254C00F700FBC140 /* KRequestParameters.swift */,
+				CD887F0A254C00F700FBC140 /* OGLCoreDataMapper+Swift.swift */,
+				CD887F0B254C00F700FBC140 /* ManagedMappedContentItem.swift */,
+				CD887F0C254C00F700FBC140 /* NSManagedObjectModel+KCOrderedAccessorFix.m */,
+				CD887F0D254C00F700FBC140 /* OGLCoreDataMapper.h */,
+				CD887F0E254C00F700FBC140 /* OGLCoreDataMapper_OMPrivateMethods.h */,
+				CD887F0F254C00F700FBC140 /* NSManagedObjectModel+KCOrderedAccessorFix.h */,
+				CD887F10254C00F700FBC140 /* OMMapperCompletionBlock.h */,
+				CD887F11254C00F800FBC140 /* DisplayPathCache.swift */,
+				CD887F12254C00F800FBC140 /* OGLCoreDataMapper.m */,
+				CD887F13254C00F800FBC140 /* PseudoPathCache.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		CD887F18254C00F800FBC140 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F19254C00F800FBC140 /* ContentItemWithSocial.swift */,
+				CD887F1A254C00F800FBC140 /* UserProtocol.swift */,
+				CD887F1B254C00F800FBC140 /* AnswerRecordProtocol.swift */,
+				CD887F1C254C00F800FBC140 /* ContentItemWithUserPolicyAnswersRecord.swift */,
+				CD887F1D254C00F800FBC140 /* YoutubeVideoProtocol.swift */,
+				CD887F1E254C00F800FBC140 /* GameProtocol.swift */,
+				CD887F1F254C00F800FBC140 /* TaxonomyProtocol.swift */,
+				CD887F20254C00F800FBC140 /* ContentItemWithDescription.swift */,
+				CD887F21254C00F800FBC140 /* AnnotationProtocol.swift */,
+				CD887F22254C00F800FBC140 /* ContentItemWithCategories.swift */,
+				CD887F23254C00F800FBC140 /* PolicyProtocol.swift */,
+				CD887F24254C00F800FBC140 /* ContentItemWithUserReactions.swift */,
+				CD887F25254C00F800FBC140 /* GamePartProtocol.swift */,
+				CD887F26254C00F800FBC140 /* QuestionRecordProtocol.swift */,
+				CD887F27254C00F800FBC140 /* TermPartProtocol.swift */,
+				CD887F28254C00F800FBC140 /* ContentItemWithActivityPart.swift */,
+				CD887F29254C00F800FBC140 /* KOTPStopItem.swift */,
+				CD887F2A254C00F800FBC140 /* QuestionnaireProtocol.swift */,
+				CD887F2B254C00F800FBC140 /* ContentItemWithYoutubeVideo.swift */,
+				CD887F2C254C00F800FBC140 /* KMCacheManagerDelegate.swift */,
+				CD887F2D254C00F800FBC140 /* StopTimeProtocol.swift */,
+				CD887F2E254C00F800FBC140 /* FieldExternalProtocol.swift */,
+				CD887F2F254C00F800FBC140 /* UserPolicyAnswersRecordProtocol.swift */,
+				CD887F30254C00F800FBC140 /* ActivityPartProtocol.swift */,
+				CD887F31254C00F800FBC140 /* ContentItem.swift */,
+				CD887F32254C00F800FBC140 /* KeyValueCodingProtocol.swift */,
+				CD887F33254C00F800FBC140 /* MapPartProtocol.swift */,
+				CD887F34254C00F800FBC140 /* TweetsConfiguration.swift */,
+				CD887F35254C00F800FBC140 /* MediaPartProtocol.swift */,
+				CD887F36254C00F800FBC140 /* KrakeBeaconProtocol.swift */,
+				CD887F37254C00F800FBC140 /* QuestionnairePartProtocol.swift */,
+				CD887F38254C00F800FBC140 /* ContentItemWithContacts.swift */,
+				CD887F39254C00F800FBC140 /* PatternProtocol.swift */,
+				CD887F3A254C00F800FBC140 /* ContentItemWithGallery.swift */,
+				CD887F3B254C00F800FBC140 /* ShareProtocol.swift */,
+				CD887F3C254C00F800FBC140 /* ContentItemWithMapPart.swift */,
+				CD887F3D254C00F800FBC140 /* EnumerationFieldProtocol.swift */,
+				CD887F3E254C00F800FBC140 /* ContentItemWithShareLinkPart.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CD887F3F254C00F800FBC140 /* PuzzleGame */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F40254C00F800FBC140 /* PuzzleGenerator.swift */,
+				CD887F41254C00F800FBC140 /* PuzzleGame.xcassets */,
+				CD887F42254C00F800FBC140 /* Puzzle.swift */,
+				CD887F43254C00F800FBC140 /* GameViewController.swift */,
+				CD887F44254C00F800FBC140 /* TileView.swift */,
+				CD887F45254C00F800FBC140 /* GamePod.storyboard */,
+				CD887F46254C00F800FBC140 /* KPuzzleGameAssets.swift */,
+				CD887F47254C00F800FBC140 /* GameBoardViewController.swift */,
+			);
+			path = PuzzleGame;
+			sourceTree = "<group>";
+		};
+		CD887F48254C00F800FBC140 /* GoogleKit */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F49254C00F800FBC140 /* KInfoPlist+Google.swift */,
+				CD887F4A254C00F800FBC140 /* GoogleKit.swift */,
+				CD887F4B254C00F800FBC140 /* Bundle+Google.swift */,
+			);
+			path = GoogleKit;
+			sourceTree = "<group>";
+		};
+		CD887F4C254C00F800FBC140 /* content */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F4D254C00F800FBC140 /* KDetail.xib */,
+				CD887F4E254C00F800FBC140 /* KItemsCollectionViewController.xib */,
+				CD887F4F254C00F800FBC140 /* KStandardCollectionViewCell.xib */,
+				CD887F50254C00F800FBC140 /* Detail */,
+				CD887F61254C00F800FBC140 /* KNoElemCollectionViewCell.xib */,
+				CD887F62254C00F800FBC140 /* KEmptyCollectionView.xib */,
+				CD887F63254C00F800FBC140 /* ListMap */,
+				CD887F70254C00F800FBC140 /* KListMap.xib */,
+			);
+			path = content;
+			sourceTree = "<group>";
+		};
+		CD887F50254C00F800FBC140 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F51254C00F800FBC140 /* KDetailViewController.swift */,
+				CD887F52254C00F800FBC140 /* KButtonItem.swift */,
+				CD887F53254C00F800FBC140 /* KDetailPresenter.swift */,
+				CD887F54254C00F800FBC140 /* Subviews */,
+				CD887F5F254C00F800FBC140 /* KDetailViewControllerFactory.swift */,
+				CD887F60254C00F800FBC140 /* KDetail.storyboard */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		CD887F54254C00F800FBC140 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F55254C00F800FBC140 /* KDetailWebView.swift */,
+				CD887F56254C00F800FBC140 /* KCategoryImageView.swift */,
+				CD887F57254C00F800FBC140 /* KSocialView.swift */,
+				CD887F58254C00F800FBC140 /* KTitleLabel.swift */,
+				CD887F59254C00F800FBC140 /* KMapPlainButton.swift */,
+				CD887F5A254C00F800FBC140 /* KDetailHeaderView.swift */,
+				CD887F5B254C00F800FBC140 /* KMixedBarButton.swift */,
+				CD887F5C254C00F800FBC140 /* KMediaCollectionView.swift */,
+				CD887F5D254C00F800FBC140 /* KCategoryLabel.swift */,
+				CD887F5E254C00F800FBC140 /* KUserReactions.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		CD887F63254C00F800FBC140 /* ListMap */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F64254C00F800FBC140 /* KDefaultCollectionViewCell.swift */,
+				CD887F65254C00F800FBC140 /* KTabManager.swift */,
+				CD887F66254C00F800FBC140 /* KNoElementCell.swift */,
+				CD887F67254C00F800FBC140 /* KItemsCollectionViewDelegate.swift */,
+				CD887F68254C00F800FBC140 /* KItemsCollectionViewController.swift */,
+				CD887F69254C00F800FBC140 /* KListMapDelegate.swift */,
+				CD887F6A254C00F800FBC140 /* KSearchFilterManager.swift */,
+				CD887F6B254C00F800FBC140 /* KDateFilterManager.swift */,
+				CD887F6C254C00F800FBC140 /* KSegmentioThemeDefault.swift */,
+				CD887F6D254C00F800FBC140 /* KListMap.swift */,
+				CD887F6E254C00F800FBC140 /* KListMapOptions.swift */,
+				CD887F6F254C00F800FBC140 /* KTabAndCollectionViewItems.swift */,
+			);
+			path = ListMap;
+			sourceTree = "<group>";
+		};
+		CD887F71254C00F800FBC140 /* Policies */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F72254C00F800FBC140 /* Policies.storyboard */,
+				CD887F73254C00F800FBC140 /* Policies.swift */,
+			);
+			path = Policies;
+			sourceTree = "<group>";
+		};
+		CD887F74254C00F800FBC140 /* FacebookKit */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F75254C00F800FBC140 /* FacebookKit.swift */,
+			);
+			path = FacebookKit;
+			sourceTree = "<group>";
+		};
+		CD887F76254C00F800FBC140 /* TwitterKit */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F77254C00F800FBC140 /* TWTRTweet+Krake.swift */,
+				CD887F78254C00F800FBC140 /* TWTRTwitter+Krake.swift */,
+				CD887F79254C00F800FBC140 /* TwitterKit.swift */,
+				CD887F7A254C00F800FBC140 /* TWTRAPIClient+Krake.swift */,
+				CD887F7B254C00F800FBC140 /* KTWTRTweetView.swift */,
+			);
+			path = TwitterKit;
+			sourceTree = "<group>";
+		};
+		CD887F7C254C00F800FBC140 /* ContentManager */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F7D254C00F800FBC140 /* CategoryPreferences */,
+				CD887F81254C00F800FBC140 /* TakeMedias */,
+				CD887F84254C00F800FBC140 /* ContentModificationContainer.storyboard */,
+				CD887F85254C00F800FBC140 /* ContentModificationContainer.swift */,
+				CD887F86254C00F800FBC140 /* ContentManager.swift */,
+				CD887F87254C00F800FBC140 /* TakeInfo */,
+				CD887F8A254C00F800FBC140 /* Policies */,
+				CD887F8E254C00F800FBC140 /* MapInfo */,
+				CD887F91254C00F800FBC140 /* Field items */,
+				CD887F9F254C00F800FBC140 /* KContentItemAutocompleteTableViewController.swift */,
+			);
+			path = ContentManager;
+			sourceTree = "<group>";
+		};
+		CD887F7D254C00F800FBC140 /* CategoryPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F7E254C00F800FBC140 /* CategoryPreferencesViewController.swift */,
+				CD887F7F254C00F800FBC140 /* CategoryPreferencesViewController.xib */,
+				CD887F80254C00F800FBC140 /* CategoryPreferencesCellView.xib */,
+			);
+			path = CategoryPreferences;
+			sourceTree = "<group>";
+		};
+		CD887F81254C00F800FBC140 /* TakeMedias */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F82254C00F800FBC140 /* TakePhotoOrVideo.xib */,
+				CD887F83254C00F800FBC140 /* TakePhotoOrVideo.swift */,
+			);
+			path = TakeMedias;
+			sourceTree = "<group>";
+		};
+		CD887F87254C00F800FBC140 /* TakeInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F88254C00F800FBC140 /* TakeInfo.xib */,
+				CD887F89254C00F800FBC140 /* TakeInfo.swift */,
+			);
+			path = TakeInfo;
+			sourceTree = "<group>";
+		};
+		CD887F8A254C00F800FBC140 /* Policies */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F8B254C00F800FBC140 /* PoliciesRegistrationViewController.swift */,
+				CD887F8C254C00F800FBC140 /* PoliciesRegistration.xib */,
+				CD887F8D254C00F800FBC140 /* PolicyView.swift */,
+			);
+			path = Policies;
+			sourceTree = "<group>";
+		};
+		CD887F8E254C00F800FBC140 /* MapInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F8F254C00F800FBC140 /* MapInfo.swift */,
+				CD887F90254C00F800FBC140 /* MapInfo.xib */,
+			);
+			path = MapInfo;
+			sourceTree = "<group>";
+		};
+		CD887F91254C00F800FBC140 /* Field items */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F92254C00F800FBC140 /* Text picker */,
+				CD887F94254C00F800FBC140 /* Multiple choice picker */,
+				CD887F98254C00F800FBC140 /* Date picker */,
+				CD887F9B254C00F800FBC140 /* Bool picker */,
+				CD887F9E254C00F800FBC140 /* FieldItem.swift */,
+			);
+			path = "Field items";
+			sourceTree = "<group>";
+		};
+		CD887F92254C00F800FBC140 /* Text picker */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F93254C00F800FBC140 /* TextField.swift */,
+			);
+			path = "Text picker";
+			sourceTree = "<group>";
+		};
+		CD887F94254C00F800FBC140 /* Multiple choice picker */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F95254C00F800FBC140 /* DropDownTextField.swift */,
+				CD887F96254C00F800FBC140 /* DropDownTextPickerField.swift */,
+				CD887F97254C00F800FBC140 /* PopoverPickerField.swift */,
+			);
+			path = "Multiple choice picker";
+			sourceTree = "<group>";
+		};
+		CD887F98254C00F800FBC140 /* Date picker */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F99254C00F800FBC140 /* TakeInfoDateView.swift */,
+				CD887F9A254C00F800FBC140 /* DateTimePickerField.swift */,
+			);
+			path = "Date picker";
+			sourceTree = "<group>";
+		};
+		CD887F9B254C00F800FBC140 /* Bool picker */ = {
+			isa = PBXGroup;
+			children = (
+				CD887F9C254C00F800FBC140 /* UISwitchWithLabel.swift */,
+				CD887F9D254C00F800FBC140 /* SwitchField.swift */,
+			);
+			path = "Bool picker";
+			sourceTree = "<group>";
+		};
+		CD887FA0254C00F800FBC140 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				CD887FA1254C00F800FBC140 /* CLLocationCoordinate2D+Equatable.swift */,
+				CD887FA2254C00F800FBC140 /* UIView+Krake.swift */,
+				CD887FA3254C00F800FBC140 /* UIButton+Krake.swift */,
+				CD887FA4254C00F800FBC140 /* WWCalendarTimeSelector+Krake.swift */,
+				CD887FA5254C00F800FBC140 /* MBProgressHUD+Krake.swift */,
+				CD887FA6254C00F800FBC140 /* MKAnnotationView+Krake.swift */,
+				CD887FA7254C00F800FBC140 /* UIColor+Krake.swift */,
+				CD887FA8254C00F800FBC140 /* NSDate+Krake.swift */,
+				CD887FA9254C00F800FBC140 /* UIResponder+Krake.swift */,
+				CD887FAA254C00F800FBC140 /* UIImageView+Krake.swift */,
+				CD887FAB254C00F800FBC140 /* NSURL+Krake.swift */,
+				CD887FAC254C00F800FBC140 /* UIImage+Krake.swift */,
+				CD887FAD254C00F800FBC140 /* UIViewController+Krake.swift */,
+				CD887FAE254C00F800FBC140 /* UINavigationController+Krake.swift */,
+				CD887FAF254C00F800FBC140 /* MKMapItem+Krake.swift */,
+				CD887FB0254C00F800FBC140 /* MKMapView+Krake.swift */,
+				CD887FB1254C00F800FBC140 /* String+Krake.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		CD887FB3254C00F800FBC140 /* LinkedInKit */ = {
+			isa = PBXGroup;
+			children = (
+				CD887FB4254C00F800FBC140 /* LinkedInKit.swift */,
+			);
+			path = LinkedInKit;
+			sourceTree = "<group>";
+		};
+		CD887FB5254C00F800FBC140 /* InstagramKit */ = {
+			isa = PBXGroup;
+			children = (
+				CD887FB6254C00F800FBC140 /* InstagramKit.swift */,
+				CD887FB7254C00F800FBC140 /* InstagramKit.xcassets */,
+			);
+			path = InstagramKit;
+			sourceTree = "<group>";
+		};
+		CD887FB8254C00F800FBC140 /* AppleSignIn */ = {
+			isa = PBXGroup;
+			children = (
+				CD887FB9254C00F800FBC140 /* AppleSignIn.swift */,
 			);
 			path = AppleSignIn;
+			sourceTree = "<group>";
+		};
+		CD887FBA254C00F800FBC140 /* Beacons */ = {
+			isa = PBXGroup;
+			children = (
+				CD887FBB254C00F800FBC140 /* BeaconAdsLoader.swift */,
+				CD887FBC254C00F800FBC140 /* NearestBeaconManager.swift */,
+				CD887FBD254C00F800FBC140 /* KInfoPlist+Beacons.swift */,
+			);
+			path = Beacons;
+			sourceTree = "<group>";
+		};
+		CD887FBE254C00F800FBC140 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				CD887E7D254C00F700FBC140 /* KStrings.swift */,
+				CD887FBF254C00F800FBC140 /* OCLocalizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		CD887FC5254C00F800FBC140 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				CD887FC6254C00F800FBC140 /* AnalyticsCore.swift */,
+				CD887FC7254C00F800FBC140 /* KInfoPlist+Analytics.swift */,
+				CD887FC8254C00F800FBC140 /* KUserTracking.swift */,
+				CD887FC9254C00F800FBC140 /* Bundle+Analytics.swift */,
+				CD887FCA254C00F800FBC140 /* KDefaultAnalytics.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		CD887FCB254C00F800FBC140 /* Reportages */ = {
+			isa = PBXGroup;
+			children = (
+				CD887FCC254C00F800FBC140 /* Report.swift */,
+				CD887FCD254C00F800FBC140 /* KReportage.swift */,
+				CD887FCE254C00F800FBC140 /* KListReport.swift */,
+				CD887FCF254C00F800FBC140 /* CellReport.xib */,
+			);
+			path = Reportages;
+			sourceTree = "<group>";
+		};
+		CD887FD0254C00F800FBC140 /* AppUpdater */ = {
+			isa = PBXGroup;
+			children = (
+				CD887FD1254C00F800FBC140 /* KAutoUpdateManager.swift */,
+				CD887FD2254C00F800FBC140 /* KInfoPlist+AppUpdate.swift */,
+			);
+			path = AppUpdater;
 			sourceTree = "<group>";
 		};
 		CDBB7606219C7E8800122E7E = {
@@ -358,705 +1061,8 @@
 			children = (
 				CD55FAA8254AB0B000FC4BB1 /* swiftgen.yml */,
 				CDBB78B5219C7EFE00122E7E /* Krake.podspec */,
-				CDBB7611219C7E8800122E7E /* Krake */,
+				CD887E50254C00F700FBC140 /* Krake */,
 			);
-			sourceTree = "<group>";
-		};
-		CDBB7611219C7E8800122E7E /* Krake */ = {
-			isa = PBXGroup;
-			children = (
-				CDBABB9E23AA12FB009D4CB1 /* AppleSignIn */,
-				CDBB7721219C7EDB00122E7E /* Analytics */,
-				CDBB765A219C7EDA00122E7E /* AppUpdater */,
-				CDBB7695219C7EDA00122E7E /* Beacons */,
-				CDBB7707219C7EDB00122E7E /* Braintree */,
-				CDBB768A219C7EDA00122E7E /* Commons */,
-				CDBB762B219C7EDA00122E7E /* content */,
-				CDBB76AF219C7EDB00122E7E /* ContentManager */,
-				CDBB76E0219C7EDB00122E7E /* Core */,
-				CDBB770F219C7EDB00122E7E /* Extentions */,
-				CDBB7676219C7EDA00122E7E /* FacebookKit */,
-				CDBB76D2219C7EDB00122E7E /* GameQuiz */,
-				CDBB7690219C7EDA00122E7E /* GoogleKit */,
-				CDBB7694219C7EDA00122E7E /* Images.xcassets */,
-				CDBB7628219C7EDA00122E7E /* InstagramKit */,
-				CDBB7689219C7EDA00122E7E /* Krake.h */,
-				CDBB76AC219C7EDA00122E7E /* LinkedInKit */,
-				CDBB76A6219C7EDA00122E7E /* Localization */,
-				CDBB764F219C7EDA00122E7E /* Mappe */,
-				CDBB7727219C7EDB00122E7E /* Mapper */,
-				CDBB7625219C7EDA00122E7E /* oAuth */,
-				CDBB765D219C7EDA00122E7E /* OTP */,
-				CDBB76F6219C7EDB00122E7E /* Policies */,
-				CDBB7699219C7EDA00122E7E /* PostCard */,
-				CDBB769E219C7EDA00122E7E /* PuzzleGame */,
-				CDBB76FF219C7EDB00122E7E /* Questionnaires */,
-				CDBB76F9219C7EDB00122E7E /* Reportages */,
-				CDBB7709219C7EDB00122E7E /* TwitterKit */,
-				CDBB7679219C7EDA00122E7E /* Vimeo */,
-			);
-			path = Krake;
-			sourceTree = "<group>";
-		};
-		CDBB7625219C7EDA00122E7E /* oAuth */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7626219C7EDA00122E7E /* OAuth.swift */,
-				CDBB7627219C7EDA00122E7E /* OAuth.storyboard */,
-			);
-			path = oAuth;
-			sourceTree = "<group>";
-		};
-		CDBB7628219C7EDA00122E7E /* InstagramKit */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7629219C7EDA00122E7E /* InstagramKit.swift */,
-				CDBB762A219C7EDA00122E7E /* InstagramKit.xcassets */,
-			);
-			path = InstagramKit;
-			sourceTree = "<group>";
-		};
-		CDBB762B219C7EDA00122E7E /* content */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB762C219C7EDA00122E7E /* KDetail.xib */,
-				CDBB762D219C7EDA00122E7E /* KItemsCollectionViewController.xib */,
-				CDBB762E219C7EDA00122E7E /* KStandardCollectionViewCell.xib */,
-				CDBB7630219C7EDA00122E7E /* Detail */,
-				CDBB7641219C7EDA00122E7E /* KNoElemCollectionViewCell.xib */,
-				CDBB7642219C7EDA00122E7E /* KEmptyCollectionView.xib */,
-				CDBB7643219C7EDA00122E7E /* ListMap */,
-				CDBB764E219C7EDA00122E7E /* KListMap.xib */,
-			);
-			path = content;
-			sourceTree = "<group>";
-		};
-		CDBB7630219C7EDA00122E7E /* Detail */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7631219C7EDA00122E7E /* KDetailViewController.swift */,
-				CDBB7632219C7EDA00122E7E /* KButtonItem.swift */,
-				CDBB7633219C7EDA00122E7E /* KDetailPresenter.swift */,
-				CDBB7634219C7EDA00122E7E /* Subviews */,
-				CDBB763F219C7EDA00122E7E /* KDetailViewControllerFactory.swift */,
-				CDBB7640219C7EDA00122E7E /* KDetail.storyboard */,
-			);
-			path = Detail;
-			sourceTree = "<group>";
-		};
-		CDBB7634219C7EDA00122E7E /* Subviews */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7635219C7EDA00122E7E /* KDetailWebView.swift */,
-				CDBB7636219C7EDA00122E7E /* KCategoryImageView.swift */,
-				CDBB7637219C7EDA00122E7E /* KSocialView.swift */,
-				CDBB7638219C7EDA00122E7E /* KTitleLabel.swift */,
-				CDBB7639219C7EDA00122E7E /* KMapPlainButton.swift */,
-				CDBB763A219C7EDA00122E7E /* KDetailHeaderView.swift */,
-				CDBB763B219C7EDA00122E7E /* KMixedBarButton.swift */,
-				CDBB763C219C7EDA00122E7E /* KMediaCollectionView.swift */,
-				CDBB763D219C7EDA00122E7E /* KCategoryLabel.swift */,
-				CDBB763E219C7EDA00122E7E /* KUserReactions.swift */,
-			);
-			path = Subviews;
-			sourceTree = "<group>";
-		};
-		CDBB7643219C7EDA00122E7E /* ListMap */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7644219C7EDA00122E7E /* KDefaultCollectionViewCell.swift */,
-				CDBB7645219C7EDA00122E7E /* KTabManager.swift */,
-				CDBB7646219C7EDA00122E7E /* KItemsCollectionViewDelegate.swift */,
-				CDBB7647219C7EDA00122E7E /* KItemsCollectionViewController.swift */,
-				CDBB7648219C7EDA00122E7E /* KListMapDelegate.swift */,
-				CDBB7649219C7EDA00122E7E /* KSearchFilterManager.swift */,
-				CDBB764A219C7EDA00122E7E /* KDateFilterManager.swift */,
-				CDBB764B219C7EDA00122E7E /* KSegmentioThemeDefault.swift */,
-				CDBB764C219C7EDA00122E7E /* KListMap.swift */,
-				CDBB764D219C7EDA00122E7E /* KListMapOptions.swift */,
-				CD312223225C7DFA00DC06C8 /* KNoElementCell.swift */,
-				5D6D8BE022C34F7C00D72464 /* KTabAndCollectionViewItems.swift */,
-			);
-			path = ListMap;
-			sourceTree = "<group>";
-		};
-		CDBB764F219C7EDA00122E7E /* Mappe */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7650219C7EDA00122E7E /* KAnnotationView.swift */,
-				CDBB7651219C7EDA00122E7E /* KSearchPlace.swift */,
-				CDBB7652219C7EDA00122E7E /* KExtendedMapView.swift */,
-				CDBB7653219C7EDA00122E7E /* KUserLocation.swift */,
-				CDBB7654219C7EDA00122E7E /* Bundle+Location.swift */,
-				CDBB7655219C7EDA00122E7E /* KTermPinImageDownloader.swift */,
-				CDBB7656219C7EDA00122E7E /* TSClusteredAnnotationView.swift */,
-				CDBB7657219C7EDA00122E7E /* KSearch.storyboard */,
-				CDBB7658219C7EDA00122E7E /* KLocationManager.swift */,
-				CDBB7659219C7EDA00122E7E /* KInfoPlist+Location.swift */,
-			);
-			path = Mappe;
-			sourceTree = "<group>";
-		};
-		CDBB765A219C7EDA00122E7E /* AppUpdater */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB765B219C7EDA00122E7E /* KAutoUpdateManager.swift */,
-				CDBB765C219C7EDA00122E7E /* KInfoPlist+AppUpdate.swift */,
-			);
-			path = AppUpdater;
-			sourceTree = "<group>";
-		};
-		CDBB765D219C7EDA00122E7E /* OTP */ = {
-			isa = PBXGroup;
-			children = (
-				CD887CDF254B145000FBC140 /* KOTPStrings.swift */,
-				CD55FB4F254ABF3B00FC4BB1 /* KOTPAssets.swift */,
-				CDBB765E219C7EDA00122E7E /* KBusLine.swift */,
-				CDDA994922905720008B205B /* KBusTracker.swift */,
-				CDBB7673219C7EDA00122E7E /* KDurationFormatter.swift */,
-				CDBB766E219C7EDA00122E7E /* KInfoPlist+OTP.swift */,
-				CDBB7671219C7EDA00122E7E /* KOTPLoader.swift */,
-				CDBB766D219C7EDA00122E7E /* KOpenTripPlannerLoader.swift */,
-				CDBB7663219C7EDA00122E7E /* KOTPBasePublicTransportListMapViewController.swift */,
-				CDC4ADB022F338D30087D74A /* KOTPLocationManager.swift */,
-				CDBB7662219C7EDA00122E7E /* KOTPPreferences.swift */,
-				CDBB7660219C7EDA00122E7E /* KOTPRouterRectLoader.swift */,
-				CDBB7661219C7EDA00122E7E /* KOTPStopDetailViewController.swift */,
-				5D06849C2296E2FD00101D4C /* KOTPStopsInRouteViewController.swift */,
-				CDBB766A219C7EDA00122E7E /* KOTPStopsSearchInitializer.swift */,
-				CDBB7670219C7EDA00122E7E /* KOTPStopsViewController.swift */,
-				5D5FE48A229840660080E4E3 /* KOtpStopTimesDateHeader.swift */,
-				5D06849E2296E32400101D4C /* KOTPStopTimesViewController.swift */,
-				CDBB7675219C7EDA00122E7E /* KOTPTripPlanner.swift */,
-				CDBB7674219C7EDA00122E7E /* KTripPlannerProtocol.swift */,
-				CDBB7664219C7EDA00122E7E /* KTripPlannerResultCells.swift */,
-				CDBB7665219C7EDA00122E7E /* KTripPlannerResultsDisplayer.swift */,
-				CDBB7669219C7EDA00122E7E /* KTripPlannerSearchController.swift */,
-				CDBB7672219C7EDA00122E7E /* KTripPlanRequest.swift */,
-				CDBB766F219C7EDA00122E7E /* KTripPlanResult.swift */,
-				CDBB766C219C7EDA00122E7E /* KTripPlanTheme.swift */,
-				CDBB765F219C7EDA00122E7E /* KTripRouteMapDelegate.swift */,
-				CD4C001A2292E286009727A7 /* KVehicleAnnotation.swift */,
-				CDBB7667219C7EDA00122E7E /* MKCoordinateRegion+OTP.swift */,
-				5D5E17C52297ED17000851CC /* Number+OtpDate.swift */,
-				CDBB766B219C7EDA00122E7E /* OCOTP.xcassets */,
-				CDBB7668219C7EDA00122E7E /* OCOTPStoryboard.storyboard */,
-				5D1F63FD2296A81800B671FF /* RoutesTableViewController.swift */,
-				CD887CDE254B13A800FBC140 /* KOTPLocalizable.strings */,
-			);
-			path = OTP;
-			sourceTree = "<group>";
-		};
-		CDBB7676219C7EDA00122E7E /* FacebookKit */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7678219C7EDA00122E7E /* FacebookKit.swift */,
-			);
-			path = FacebookKit;
-			sourceTree = "<group>";
-		};
-		CDBB7679219C7EDA00122E7E /* Vimeo */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB767A219C7EDA00122E7E /* VimeoRequestSerializer+OldUpload.swift */,
-				CDBB767B219C7EDA00122E7E /* KrakeVimeoRequestSerializer.swift */,
-				CDBB767C219C7EDA00122E7E /* VimeoUploaderError.swift */,
-				CDBB767D219C7EDA00122E7E /* NSError+Vimeo.swift */,
-				CDBB767E219C7EDA00122E7E /* VimeoResponseSerializer.swift */,
-				CDBB767F219C7EDA00122E7E /* VimeoUploader.swift */,
-				CDBB7680219C7EDA00122E7E /* VimeoResponseSerializer+OldUpload.swift */,
-				CDBB7681219C7EDA00122E7E /* VimeoSessionManager.swift */,
-				CDBB7682219C7EDA00122E7E /* VimeoEnum.swift */,
-				CDBB7683219C7EDA00122E7E /* VimeoStreamingProvider.swift */,
-				CDBB7684219C7EDA00122E7E /* VimeoRequestSerializer.swift */,
-				CDBB7685219C7EDA00122E7E /* AVURLAsset+Vimeo.swift */,
-				CDBB7686219C7EDA00122E7E /* VimeoVideoUploadTask.swift */,
-				CDBB7687219C7EDA00122E7E /* VimeoConstants.swift */,
-				CDBB7688219C7EDA00122E7E /* VimeoSessionManager+OldUpload.swift */,
-			);
-			path = Vimeo;
-			sourceTree = "<group>";
-		};
-		CDBB768A219C7EDA00122E7E /* Commons */ = {
-			isa = PBXGroup;
-			children = (
-				CDBABBA123AA3329009D4CB1 /* KeychainItem.swift */,
-				CDBB768B219C7EDA00122E7E /* KConstants.swift */,
-				CDBB768C219C7EDA00122E7E /* String+KrakeCommons.swift */,
-				CDBB768D219C7EDA00122E7E /* KInfoPlist.swift */,
-				CDBB768E219C7EDA00122E7E /* Swift42.swift */,
-				CDBB768F219C7EDA00122E7E /* Bundle+KrakeCommons.swift */,
-			);
-			path = Commons;
-			sourceTree = "<group>";
-		};
-		CDBB7690219C7EDA00122E7E /* GoogleKit */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7691219C7EDA00122E7E /* KInfoPlist+Google.swift */,
-				CDBB7692219C7EDA00122E7E /* GoogleKit.swift */,
-				CDBB7693219C7EDA00122E7E /* Bundle+Google.swift */,
-			);
-			path = GoogleKit;
-			sourceTree = "<group>";
-		};
-		CDBB7695219C7EDA00122E7E /* Beacons */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7696219C7EDA00122E7E /* BeaconAdsLoader.swift */,
-				CDBB7697219C7EDA00122E7E /* NearestBeaconManager.swift */,
-				CDBB7698219C7EDA00122E7E /* KInfoPlist+Beacons.swift */,
-			);
-			path = Beacons;
-			sourceTree = "<group>";
-		};
-		CDBB7699219C7EDA00122E7E /* PostCard */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB769A219C7EDA00122E7E /* PostCardViewController.swift */,
-				CDBB769B219C7EDA00122E7E /* PostCardCollectionViewController.swift */,
-				CDBB769C219C7EDA00122E7E /* PostCard.swift */,
-				CDBB769D219C7EDA00122E7E /* PostCard.storyboard */,
-			);
-			path = PostCard;
-			sourceTree = "<group>";
-		};
-		CDBB769E219C7EDA00122E7E /* PuzzleGame */ = {
-			isa = PBXGroup;
-			children = (
-				CD55FB50254AC24900FC4BB1 /* KPuzzleGameAssets.swift */,
-				CDBB769F219C7EDA00122E7E /* PuzzleGenerator.swift */,
-				CDBB76A0219C7EDA00122E7E /* PuzzleGame.xcassets */,
-				CDBB76A1219C7EDA00122E7E /* Puzzle.swift */,
-				CDBB76A2219C7EDA00122E7E /* GameViewController.swift */,
-				CDBB76A3219C7EDA00122E7E /* TileView.swift */,
-				CDBB76A4219C7EDA00122E7E /* GamePod.storyboard */,
-				CDBB76A5219C7EDA00122E7E /* GameBoardViewController.swift */,
-			);
-			path = PuzzleGame;
-			sourceTree = "<group>";
-		};
-		CDBB76A6219C7EDA00122E7E /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-				CDC59C6F24DC0E3100533B9B /* OCLocalizable.strings */,
-				CDC59C7724DC255C00533B9B /* KConstants+KrakeLocalization.swift */,
-			);
-			path = Localization;
-			sourceTree = "<group>";
-		};
-		CDBB76AC219C7EDA00122E7E /* LinkedInKit */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB76AD219C7EDA00122E7E /* LinkedInKit.swift */,
-			);
-			path = LinkedInKit;
-			sourceTree = "<group>";
-		};
-		CDBB76AF219C7EDB00122E7E /* ContentManager */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB76B0219C7EDB00122E7E /* CategoryPreferences */,
-				CDBB76B4219C7EDB00122E7E /* TakeMedias */,
-				CDBB76B7219C7EDB00122E7E /* ContentModificationContainer.storyboard */,
-				CDBB76B8219C7EDB00122E7E /* ContentModificationContainer.swift */,
-				CDBB76B9219C7EDB00122E7E /* ContentManager.swift */,
-				CDBB76BA219C7EDB00122E7E /* TakeInfo */,
-				CDBB76BD219C7EDB00122E7E /* Policies */,
-				CDBB76C1219C7EDB00122E7E /* MapInfo */,
-				CDBB76C4219C7EDB00122E7E /* Field items */,
-				5D020459239AB4D5009C9C88 /* KContentItemAutocompleteTableViewController.swift */,
-			);
-			path = ContentManager;
-			sourceTree = "<group>";
-		};
-		CDBB76B0219C7EDB00122E7E /* CategoryPreferences */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB76B1219C7EDB00122E7E /* CategoryPreferencesViewController.swift */,
-				CDBB76B2219C7EDB00122E7E /* CategoryPreferencesViewController.xib */,
-				CDBB76B3219C7EDB00122E7E /* CategoryPreferencesCellView.xib */,
-			);
-			path = CategoryPreferences;
-			sourceTree = "<group>";
-		};
-		CDBB76B4219C7EDB00122E7E /* TakeMedias */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB76B5219C7EDB00122E7E /* TakePhotoOrVideo.xib */,
-				CDBB76B6219C7EDB00122E7E /* TakePhotoOrVideo.swift */,
-			);
-			path = TakeMedias;
-			sourceTree = "<group>";
-		};
-		CDBB76BA219C7EDB00122E7E /* TakeInfo */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB76BB219C7EDB00122E7E /* TakeInfo.xib */,
-				CDBB76BC219C7EDB00122E7E /* TakeInfo.swift */,
-			);
-			path = TakeInfo;
-			sourceTree = "<group>";
-		};
-		CDBB76BD219C7EDB00122E7E /* Policies */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB76BE219C7EDB00122E7E /* PoliciesRegistrationViewController.swift */,
-				CDBB76BF219C7EDB00122E7E /* PoliciesRegistration.xib */,
-				CDBB76C0219C7EDB00122E7E /* PolicyView.swift */,
-			);
-			path = Policies;
-			sourceTree = "<group>";
-		};
-		CDBB76C1219C7EDB00122E7E /* MapInfo */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB76C2219C7EDB00122E7E /* MapInfo.swift */,
-				CDBB76C3219C7EDB00122E7E /* MapInfo.xib */,
-			);
-			path = MapInfo;
-			sourceTree = "<group>";
-		};
-		CDBB76C4219C7EDB00122E7E /* Field items */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB76C5219C7EDB00122E7E /* Text picker */,
-				CDBB76C7219C7EDB00122E7E /* Multiple choice picker */,
-				CDBB76CB219C7EDB00122E7E /* Date picker */,
-				CDBB76CE219C7EDB00122E7E /* Bool picker */,
-				CDBB76D1219C7EDB00122E7E /* FieldItem.swift */,
-			);
-			path = "Field items";
-			sourceTree = "<group>";
-		};
-		CDBB76C5219C7EDB00122E7E /* Text picker */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB76C6219C7EDB00122E7E /* TextField.swift */,
-			);
-			path = "Text picker";
-			sourceTree = "<group>";
-		};
-		CDBB76C7219C7EDB00122E7E /* Multiple choice picker */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB76C8219C7EDB00122E7E /* DropDownTextField.swift */,
-				CDBB76C9219C7EDB00122E7E /* DropDownTextPickerField.swift */,
-				CDBB76CA219C7EDB00122E7E /* PopoverPickerField.swift */,
-			);
-			path = "Multiple choice picker";
-			sourceTree = "<group>";
-		};
-		CDBB76CB219C7EDB00122E7E /* Date picker */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB76CC219C7EDB00122E7E /* TakeInfoDateView.swift */,
-				CDBB76CD219C7EDB00122E7E /* DateTimePickerField.swift */,
-			);
-			path = "Date picker";
-			sourceTree = "<group>";
-		};
-		CDBB76CE219C7EDB00122E7E /* Bool picker */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB76CF219C7EDB00122E7E /* UISwitchWithLabel.swift */,
-				CDBB76D0219C7EDB00122E7E /* SwitchField.swift */,
-			);
-			path = "Bool picker";
-			sourceTree = "<group>";
-		};
-		CDBB76D2219C7EDB00122E7E /* GameQuiz */ = {
-			isa = PBXGroup;
-			children = (
-				CD55FB51254AC25500FC4BB1 /* KGameQuizAssets.swift */,
-				CDBB76D3219C7EDB00122E7E /* GameQuiz.xcassets */,
-				CDBB76D4219C7EDB00122E7E /* KGameQuizTheme.swift */,
-				CDBB76D5219C7EDB00122E7E /* SKBounceAnimation.m */,
-				CDBB76D6219C7EDB00122E7E /* KGameEndViewController.swift */,
-				CDBB76D7219C7EDB00122E7E /* LBClock.m */,
-				CDBB76D8219C7EDB00122E7E /* GameBoard.storyboard */,
-				CDBB76D9219C7EDB00122E7E /* SKBounceAnimation.h */,
-				CDBB76DA219C7EDB00122E7E /* LBClock.h */,
-				CDBB76DB219C7EDB00122E7E /* KGameStartViewController.swift */,
-				CDBB76DC219C7EDB00122E7E /* KMainGameViewController.swift */,
-				CDBB76DD219C7EDB00122E7E /* KGameQuiz.swift */,
-				CDBB76DE219C7EDB00122E7E /* KQuestionViewController.swift */,
-				CDBB76DF219C7EDB00122E7E /* KMainGameBoardViewController.swift */,
-			);
-			path = GameQuiz;
-			sourceTree = "<group>";
-		};
-		CDBB76E0219C7EDB00122E7E /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				CD55FABD254AB50A00FC4BB1 /* KAssets.swift */,
-				CD55FABE254AB50A00FC4BB1 /* KStrings.swift */,
-				CDBB76E1219C7EDB00122E7E /* KxMenu.m */,
-				CDBB76E2219C7EDB00122E7E /* KWebView.swift */,
-				CDBB76E3219C7EDB00122E7E /* KUserDisplayView.xib */,
-				CDBB76E4219C7EDB00122E7E /* KAppDelegate.swift */,
-				CDBB76E5219C7EDB00122E7E /* KDatePickerControllerViewController.swift */,
-				CDBB76E6219C7EDB00122E7E /* KGallery.swift */,
-				CDBB76E7219C7EDB00122E7E /* KMediaImageLoad.swift */,
-				CDBB76E8219C7EDB00122E7E /* KContactPicker.swift */,
-				CDBB76E9219C7EDB00122E7E /* KDateTimeSelector.swift */,
-				CDBB76EA219C7EDB00122E7E /* KUserDisplayView.swift */,
-				CDBB76EB219C7EDB00122E7E /* KxMenu.h */,
-				CDBB76EC219C7EDB00122E7E /* KScrollToTopButton.swift */,
-				CDBB76ED219C7EDB00122E7E /* KStoreKitManager.swift */,
-				CDBB76EE219C7EDB00122E7E /* KUtilityFunctions.swift */,
-				CDBB76EF219C7EDB00122E7E /* KShareManager.swift */,
-				CDBB76F0219C7EDB00122E7E /* Krake.swift */,
-				CDBB76F1219C7EDB00122E7E /* KAddressBook.swift */,
-				CDBB76F2219C7EDB00122E7E /* KPushManager.swift */,
-				CDBB76F3219C7EDB00122E7E /* KPaddingLabel.swift */,
-				CDBB76F4219C7EDB00122E7E /* KCalendar.swift */,
-				CDBB76F5219C7EDB00122E7E /* KStreamingProvider.swift */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		CDBB76F6219C7EDB00122E7E /* Policies */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB76F7219C7EDB00122E7E /* Policies.storyboard */,
-				CDBB76F8219C7EDB00122E7E /* Policies.swift */,
-			);
-			path = Policies;
-			sourceTree = "<group>";
-		};
-		CDBB76F9219C7EDB00122E7E /* Reportages */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB76FA219C7EDB00122E7E /* Report.swift */,
-				CDBB76FB219C7EDB00122E7E /* KReportage.swift */,
-				CDBB76FD219C7EDB00122E7E /* KListReport.swift */,
-				CDBB76FE219C7EDB00122E7E /* CellReport.xib */,
-			);
-			path = Reportages;
-			sourceTree = "<group>";
-		};
-		CDBB76FF219C7EDB00122E7E /* Questionnaires */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7700219C7EDB00122E7E /* KrakeQuestionnaires.storyboard */,
-				CDBB7701219C7EDB00122E7E /* KQuestionnaireTheme.swift */,
-				CDBB7702219C7EDB00122E7E /* KOpenAnswerStackView.swift */,
-				CDBB7703219C7EDB00122E7E /* KOpenAnswerStackView.xib */,
-				CDBB7704219C7EDB00122E7E /* KSingleOrMultiChoiceStackView.xib */,
-				CDBB7705219C7EDB00122E7E /* KQuestionnaires.swift */,
-				CDBB7706219C7EDB00122E7E /* KSingleOrMultiChoiceStackView.swift */,
-			);
-			path = Questionnaires;
-			sourceTree = "<group>";
-		};
-		CDBB7707219C7EDB00122E7E /* Braintree */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7708219C7EDB00122E7E /* KBTPaymentManager.swift */,
-			);
-			path = Braintree;
-			sourceTree = "<group>";
-		};
-		CDBB7709219C7EDB00122E7E /* TwitterKit */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB770A219C7EDB00122E7E /* TWTRTweet+Krake.swift */,
-				CDBB770B219C7EDB00122E7E /* TWTRTwitter+Krake.swift */,
-				CDBB770C219C7EDB00122E7E /* TwitterKit.swift */,
-				CDBB770D219C7EDB00122E7E /* TWTRAPIClient+Krake.swift */,
-				CDBB770E219C7EDB00122E7E /* KTWTRTweetView.swift */,
-			);
-			path = TwitterKit;
-			sourceTree = "<group>";
-		};
-		CDBB770F219C7EDB00122E7E /* Extentions */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7710219C7EDB00122E7E /* CLLocationCoordinate2D+Equatable.swift */,
-				CDBB7711219C7EDB00122E7E /* UIView+Krake.swift */,
-				CDBB7712219C7EDB00122E7E /* UIButton+Krake.swift */,
-				CDBB7713219C7EDB00122E7E /* WWCalendarTimeSelector+Krake.swift */,
-				CDBB7714219C7EDB00122E7E /* MBProgressHUD+Krake.swift */,
-				CDBB7715219C7EDB00122E7E /* MKAnnotationView+Krake.swift */,
-				CDBB7716219C7EDB00122E7E /* UIColor+Krake.swift */,
-				CDBB7717219C7EDB00122E7E /* NSDate+Krake.swift */,
-				CDBB7718219C7EDB00122E7E /* UIResponder+Krake.swift */,
-				CDBB7719219C7EDB00122E7E /* UIImageView+Krake.swift */,
-				CDBB771A219C7EDB00122E7E /* NSURL+Krake.swift */,
-				CDBB771B219C7EDB00122E7E /* UIImage+Krake.swift */,
-				CDBB771C219C7EDB00122E7E /* UIViewController+Krake.swift */,
-				CDBB771D219C7EDB00122E7E /* UINavigationController+Krake.swift */,
-				CDBB771E219C7EDB00122E7E /* MKMapItem+Krake.swift */,
-				CDBB771F219C7EDB00122E7E /* MKMapView+Krake.swift */,
-				CDBB7720219C7EDB00122E7E /* String+Krake.swift */,
-			);
-			path = Extentions;
-			sourceTree = "<group>";
-		};
-		CDBB7721219C7EDB00122E7E /* Analytics */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7722219C7EDB00122E7E /* AnalyticsCore.swift */,
-				CDBB7723219C7EDB00122E7E /* KInfoPlist+Analytics.swift */,
-				CDBB7724219C7EDB00122E7E /* KUserTracking.swift */,
-				CDBB7725219C7EDB00122E7E /* Bundle+Analytics.swift */,
-				CDBB7726219C7EDB00122E7E /* KDefaultAnalytics.swift */,
-			);
-			path = Analytics;
-			sourceTree = "<group>";
-		};
-		CDBB7727219C7EDB00122E7E /* Mapper */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7728219C7EDB00122E7E /* OMSystemInfo.h */,
-				CDBB7729219C7EDB00122E7E /* OGLAppDelegate.swift */,
-				CDBB772A219C7EDB00122E7E /* OGLMapperConfiguration.plist */,
-				CDBB772B219C7EDB00122E7E /* NetworkManager */,
-				CDBB7734219C7EDB00122E7E /* KAPIConstants.swift */,
-				CDBB7735219C7EDB00122E7E /* OMSettings.swift */,
-				CDBB7736219C7EDB00122E7E /* KMessageManager.swift */,
-				CDBB7737219C7EDB00122E7E /* OGLConfigurations.m */,
-				CDBB7738219C7EDB00122E7E /* PrivacyManager */,
-				CDBB773E219C7EDB00122E7E /* OrchardMapper.xcassets */,
-				CDBB773F219C7EDB00122E7E /* KResolutionAction.swift */,
-				CDBB7740219C7EDB00122E7E /* KParametersKeys.swift */,
-				CDBB7741219C7EDB00122E7E /* KErrorCode.swift */,
-				CDBB7742219C7EDB00122E7E /* Extensions */,
-				CDBB774E219C7EDB00122E7E /* LoginManager */,
-				CDBB7755219C7EDB00122E7E /* OMSystemInfo.m */,
-				CDBB7756219C7EDB00122E7E /* KCommonDisplayAlias.swift */,
-				CDBB7757219C7EDB00122E7E /* DataMapping */,
-				CDBB7763219C7EDB00122E7E /* OGLConstants.h */,
-				CDBB7764219C7EDB00122E7E /* Theme.swift */,
-				CDBB7765219C7EDB00122E7E /* OGLConfigurations.h */,
-				CDBB7766219C7EDB00122E7E /* Protocols */,
-			);
-			path = Mapper;
-			sourceTree = "<group>";
-		};
-		CDBB772B219C7EDB00122E7E /* NetworkManager */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB772C219C7EDB00122E7E /* OMLoadDataTask.m */,
-				CDBB772D219C7EDB00122E7E /* PolicyViewController.swift */,
-				CDBB772E219C7EDB00122E7E /* NSMutableDictionary+OGLParameters.m */,
-				CDBB772F219C7EDB00122E7E /* NSMutableDictionary+OGLParameters.h */,
-				CDBB7730219C7EDB00122E7E /* OMLoadDataTask.h */,
-				CDBB7731219C7EDB00122E7E /* KNetworkAccess.swift */,
-				CDBB7732219C7EDB00122E7E /* KrakeResponse.swift */,
-				CDBB7733219C7EDB00122E7E /* KNetworkManager.swift */,
-				5D3169DE235713D1000E1297 /* RequestHeaderAdapter.swift */,
-				5D873A7D2358500F002EBE3E /* URLConfigurationCookies.swift */,
-				CD05096C24B84A11005C793D /* KNetworkManager+SignalTrigger.swift */,
-			);
-			path = NetworkManager;
-			sourceTree = "<group>";
-		};
-		CDBB7738219C7EDB00122E7E /* PrivacyManager */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7739219C7EDB00122E7E /* OMPrivacyViewController.h */,
-				CDBB773A219C7EDB00122E7E /* OMPrivacy.storyboard */,
-				CDBB773B219C7EDB00122E7E /* OMPrivacyCollectionViewCell.m */,
-				CDBB773C219C7EDB00122E7E /* OMPrivacyViewController.m */,
-				CDBB773D219C7EDB00122E7E /* OMPrivacyCollectionViewCell.h */,
-			);
-			path = PrivacyManager;
-			sourceTree = "<group>";
-		};
-		CDBB7742219C7EDB00122E7E /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7743219C7EDB00122E7E /* NSString+OrchardMapping.h */,
-				CDBB7744219C7EDB00122E7E /* Date+OM.swift */,
-				CDBB7745219C7EDB00122E7E /* UserDefaults+Krake.swift */,
-				CDBB7747219C7EDB00122E7E /* URLSessionConfiguration+OM.swift */,
-				CDBB7748219C7EDB00122E7E /* Dictionary+OM.swift */,
-				CDBB7749219C7EDB00122E7E /* HTTPCookie+OM.swift */,
-				CDBB774A219C7EDB00122E7E /* NSString+OrchardMapping.m */,
-				CDBB774B219C7EDB00122E7E /* UIViewController+OM.swift */,
-				CDBB774C219C7EDB00122E7E /* UINavigationController+OM.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		CDBB774E219C7EDB00122E7E /* LoginManager */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB774F219C7EDB00122E7E /* OCLoginViewController.m */,
-				CDBB7750219C7EDB00122E7E /* KLogin.storyboard */,
-				CDBB7751219C7EDB00122E7E /* KInfoPlist+Login.swift */,
-				CDBB7752219C7EDB00122E7E /* KLoginManager.swift */,
-				CDBB7753219C7EDB00122E7E /* LoginProviderProtocol.swift */,
-				CDBB7754219C7EDB00122E7E /* OCLoginViewController.h */,
-			);
-			path = LoginManager;
-			sourceTree = "<group>";
-		};
-		CDBB7757219C7EDB00122E7E /* DataMapping */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7758219C7EDB00122E7E /* KMAroundMeCacheManager.swift */,
-				CDBB7759219C7EDB00122E7E /* KMAutoQueryDivideCacheManager.swift */,
-				CDBB775A219C7EDB00122E7E /* KRequestParameters.swift */,
-				CDBB775B219C7EDB00122E7E /* ManagedMappedContentItem.swift */,
-				CDBB775C219C7EDB00122E7E /* NSManagedObjectModel+KCOrderedAccessorFix.m */,
-				CDBB775D219C7EDB00122E7E /* OGLCoreDataMapper.h */,
-				CDBB775E219C7EDB00122E7E /* OGLCoreDataMapper_OMPrivateMethods.h */,
-				CDBB775F219C7EDB00122E7E /* NSManagedObjectModel+KCOrderedAccessorFix.h */,
-				CDBB7760219C7EDB00122E7E /* DisplayPathCache.swift */,
-				CDBB7761219C7EDB00122E7E /* OGLCoreDataMapper.m */,
-				5D7C0C6D2350BA14006760A9 /* OGLCoreDataMapper+Swift.swift */,
-				CDBB7762219C7EDB00122E7E /* PseudoPathCache.swift */,
-				5D4805E62350C8430080346A /* OMMapperCompletionBlock.h */,
-			);
-			path = DataMapping;
-			sourceTree = "<group>";
-		};
-		CDBB7766219C7EDB00122E7E /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				CDBB7767219C7EDB00122E7E /* ContentItemWithSocial.swift */,
-				CDBB7768219C7EDB00122E7E /* UserProtocol.swift */,
-				CDBB7769219C7EDB00122E7E /* AnswerRecordProtocol.swift */,
-				CDBB776A219C7EDB00122E7E /* ContentItemWithUserPolicyAnswersRecord.swift */,
-				CDBB776B219C7EDB00122E7E /* YoutubeVideoProtocol.swift */,
-				CDBB776C219C7EDB00122E7E /* GameProtocol.swift */,
-				CDBB776D219C7EDB00122E7E /* TaxonomyProtocol.swift */,
-				CDBB776E219C7EDB00122E7E /* ContentItemWithDescription.swift */,
-				CDBB776F219C7EDB00122E7E /* AnnotationProtocol.swift */,
-				CDBB7770219C7EDB00122E7E /* ContentItemWithCategories.swift */,
-				CDBB7771219C7EDB00122E7E /* PolicyProtocol.swift */,
-				CDBB7772219C7EDC00122E7E /* ContentItemWithUserReactions.swift */,
-				CDBB7773219C7EDC00122E7E /* GamePartProtocol.swift */,
-				CDBB7774219C7EDC00122E7E /* QuestionRecordProtocol.swift */,
-				CDBB7775219C7EDC00122E7E /* TermPartProtocol.swift */,
-				CDBB7776219C7EDC00122E7E /* ContentItemWithActivityPart.swift */,
-				CDBB7777219C7EDC00122E7E /* KOTPStopItem.swift */,
-				CDBB7778219C7EDC00122E7E /* QuestionnaireProtocol.swift */,
-				CDBB7779219C7EDC00122E7E /* ContentItemWithYoutubeVideo.swift */,
-				CDBB777A219C7EDC00122E7E /* KMCacheManagerDelegate.swift */,
-				CDBB777B219C7EDC00122E7E /* StopTimeProtocol.swift */,
-				CDBB777C219C7EDC00122E7E /* FieldExternalProtocol.swift */,
-				CDBB777D219C7EDC00122E7E /* UserPolicyAnswersRecordProtocol.swift */,
-				CDBB777E219C7EDC00122E7E /* ActivityPartProtocol.swift */,
-				CDBB777F219C7EDC00122E7E /* ContentItem.swift */,
-				CDBB7780219C7EDC00122E7E /* KeyValueCodingProtocol.swift */,
-				CDBB7781219C7EDC00122E7E /* MapPartProtocol.swift */,
-				CDBB7782219C7EDC00122E7E /* TweetsConfiguration.swift */,
-				CDBB7783219C7EDC00122E7E /* MediaPartProtocol.swift */,
-				CDBB7784219C7EDC00122E7E /* KrakeBeaconProtocol.swift */,
-				CDBB7785219C7EDC00122E7E /* QuestionnairePartProtocol.swift */,
-				CDBB7786219C7EDC00122E7E /* ContentItemWithContacts.swift */,
-				CDBB7787219C7EDC00122E7E /* PatternProtocol.swift */,
-				CDBB7788219C7EDC00122E7E /* ContentItemWithGallery.swift */,
-				CDBB7789219C7EDC00122E7E /* ShareProtocol.swift */,
-				CDBB778A219C7EDC00122E7E /* ContentItemWithMapPart.swift */,
-				CDBB778B219C7EDC00122E7E /* EnumerationFieldProtocol.swift */,
-				CDBB778C219C7EDC00122E7E /* ContentItemWithShareLinkPart.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1091,21 +1097,29 @@
 /* End PBXProject section */
 
 /* Begin PBXVariantGroup section */
-		CD887CDE254B13A800FBC140 /* KOTPLocalizable.strings */ = {
+		CD887E57254C00F700FBC140 /* KGameQuizLocalizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CD887CDD254B13A800FBC140 /* it */,
+				CD887E58254C00F700FBC140 /* it */,
+			);
+			name = KGameQuizLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		CD887EAB254C00F700FBC140 /* KOTPLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD887EAC254C00F700FBC140 /* it */,
 			);
 			name = KOTPLocalizable.strings;
 			sourceTree = "<group>";
 		};
-		CDC59C6F24DC0E3100533B9B /* OCLocalizable.strings */ = {
+		CD887FBF254C00F800FBC140 /* OCLocalizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CDC59C7024DC0E3100533B9B /* en */,
-				CDC59C7224DC0E3700533B9B /* fr */,
-				CDC59C7324DC0E3900533B9B /* it */,
-				CDC59C7424DC0E3C00533B9B /* ru */,
+				CD887FC0254C00F800FBC140 /* en */,
+				CD887FC1254C00F800FBC140 /* it */,
+				CD887FC2254C00F800FBC140 /* ru */,
+				CD887FC4254C00F800FBC140 /* fr */,
 			);
 			name = OCLocalizable.strings;
 			sourceTree = "<group>";

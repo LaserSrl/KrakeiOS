@@ -58,7 +58,7 @@ open class KListReportCell: CADRACSwippableCell {
             if let first = status.first {
                 reportStatus.layer.borderColor = first.backgroundColor.cgColor
                 reportStatusLabel.textColor = first.textColor
-                reportStatusLabel.text = KLocalization.localizable("Report.\(first.title.lowercased())")
+                reportStatusLabel.text = KLocalization.ocLocalizable("Report.\(first.title.lowercased())")
                 reportStatusView.isHidden = false
             } else {
                 reportStatusView.isHidden = true

@@ -61,7 +61,7 @@ NSString *const WIDGET_LIST_TYPE = @"WidgetList";
 #if __MAC_OS_X_VERSION_MAX_ALLOWED
         NSString *lang = @"it-IT";
 #else
-        NSString *lang = [KConstants currentLanguage];
+        NSString *lang = Core.language;
 #endif
         
         _language = lang;

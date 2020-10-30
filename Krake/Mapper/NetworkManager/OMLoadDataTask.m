@@ -100,7 +100,7 @@
             observingPrivacy = NO;
             
             [[KNetworkAccess sharedInstance] removeObserver:self forKeyPath:@"privacyStatus"];
-            self.completionBlock(nil, [[NSError alloc] initWithDomain:@"Privacy" code:OMPrivacyClose_Error_Code userInfo:@{NSLocalizedDescriptionKey: [@"undo_privacy" localizedString]}], YES);
+            self.completionBlock(nil, [[NSError alloc] initWithDomain:@"Privacy" code:OMPrivacyClose_Error_Code userInfo:@{NSLocalizedDescriptionKey: Policies.undoPrivacy}], YES);
         }
     }
 }

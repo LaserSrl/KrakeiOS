@@ -21,8 +21,6 @@
 
 - (BOOL)beginWithLowerCaseLetter;
 
-- (NSString*)localizedString;
-
 @end
 
 @interface NSObject (OrchardCovert)

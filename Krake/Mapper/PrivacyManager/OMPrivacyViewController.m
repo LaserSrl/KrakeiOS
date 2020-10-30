@@ -60,10 +60,10 @@
         self.pager.currentPage = 0;
         self.pager.pageIndicatorTintColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
     }
-    [self.nextButton setTitle:[@"next" localizedString] forState:UIControlStateNormal];
+    [self.nextButton setTitle:Commons.next forState:UIControlStateNormal];
     [[KTheme currentObjc] applyThemeToButton:self.nextButton style:ButtonStylePolicy];
     
-    [self.undoButton setTitle:[@"CLOSE" localizedString] forState:UIControlStateNormal];
+    [self.undoButton setTitle:Commons.close forState:UIControlStateNormal];
     [[KTheme currentObjc] applyThemeToButton:self.undoButton style:ButtonStylePolicy];
     
     

@@ -139,7 +139,7 @@
     [_switchFlag setOn:false];
     
     if ([self->policy[@"UserHaveToAccept"] integerValue] == 1)
-        _subtitleLabel.text = [@"required" localizedString];
+        _subtitleLabel.text = Policies.required;
     else
         _subtitleLabel.text = nil;
     
@@ -176,7 +176,7 @@
     [self.backButton setImage:[UIImage imageNamed:@"indietro" inBundle:[NSBundle bundleWithPath:bundlePath] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     self.backButton.alpha = 0.0;
     
-    self.loginWithLabel.text = [@"LOGIN_WITH" localizedString];
+    self.loginWithLabel.text = UserAccess.loginWith;
     
     if(!Login.canUserCancelLogin)
     {
@@ -198,18 +198,18 @@
     {
         [self loadRegisterData];
         
-        self.username.IBPlaceholder = NSLocalizedStringWithDefaultValue(@"e_mail", nil, [NSBundle mainBundle], [@"e_mail" localizedString], "");
-        self.usernameRegistration.IBPlaceholder = NSLocalizedStringWithDefaultValue(@"e_mail", nil, [NSBundle mainBundle], [@"e_mail" localizedString], "");
+        self.username.IBPlaceholder = NSLocalizedStringWithDefaultValue(@"e_mail", nil, [NSBundle mainBundle], Commons.eMail, "");
+        self.usernameRegistration.IBPlaceholder = NSLocalizedStringWithDefaultValue(@"e_mail", nil, [NSBundle mainBundle], Commons.eMail, "");
         if (Login.canUserRecoverPasswordWithSMS){
-            self.emailsmsTextField.IBPlaceholder = [@"placeholder_sms_or_mail_restore_password" localizedString];
+            self.emailsmsTextField.IBPlaceholder = UserAccess.placeholderSmsOrMailRestorePassword;
         }else{
-            self.emailsmsTextField.IBPlaceholder = [@"placeholder_mail_restore_password" localizedString];
+            self.emailsmsTextField.IBPlaceholder = UserAccess.placeholderMailRestorePassword;
         }
         
         if (Login.domainsAccepted.count > 0){
             for (EGFloatingTextField *domain in self.domains)
             {
-                domain.IBPlaceholder = NSLocalizedStringWithDefaultValue(@"domain", nil, [NSBundle mainBundle], [@"domain" localizedString], "");
+                domain.IBPlaceholder = NSLocalizedStringWithDefaultValue(@"domain", nil, [NSBundle mainBundle], UserAccess.domain, "");
                 UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
                 pickerView.showsSelectionIndicator = YES;
                 pickerView.dataSource = self;
@@ -244,24 +244,24 @@
                 [domain setHidden:true];
             }
         }
-        self.password.IBPlaceholder = [@"password" localizedString];
-        self.passwordRegistration.IBPlaceholder = [@"password" localizedString];
-        self.confirmRegistration.IBPlaceholder = [@"confirm_password" localizedString];
-        self.numberRegistration.IBPlaceholder = [@"phone_number" localizedString];
+        self.password.IBPlaceholder = UserAccess.password;
+        self.passwordRegistration.IBPlaceholder = UserAccess.password;
+        self.confirmRegistration.IBPlaceholder = UserAccess.confirmPassword;
+        self.numberRegistration.IBPlaceholder = UserAccess.phoneNumber;
 
-        self.registrationLabel.text = [@"Registration" localizedString];
+        self.registrationLabel.text = UserAccess.registration;
         
-        [self.lostPassword setTitle:[@"lost_pwd" localizedString] forState:UIControlStateNormal];
-        [self.registerButton setTitle:[@"Registration" localizedString] forState:UIControlStateNormal];
-        [self.loginButton setTitle:[@"login" localizedString] forState:UIControlStateNormal];
-        [self.registrationButton setTitle:[@"Register" localizedString] forState:UIControlStateNormal];
+        [self.lostPassword setTitle:UserAccess.lostPwd forState:UIControlStateNormal];
+        [self.registerButton setTitle:UserAccess.registration forState:UIControlStateNormal];
+        [self.loginButton setTitle:UserAccess.login forState:UIControlStateNormal];
+        [self.registrationButton setTitle:UserAccess.doRegistration forState:UIControlStateNormal];
 
-        self.lostPasswordLabel.text = [@"lost_pwd" localizedString];
+        self.lostPasswordLabel.text = UserAccess.lostPwd;
         
         if (!Login.userHaveToRegisterWithSMS){
             [self.numberRegistration setHidden:true];
         }
-        [self.recoverButton setTitle:[@"Recover_password" localizedString] forState:UIControlStateNormal];
+        [self.recoverButton setTitle:UserAccess.recoverPassword forState:UIControlStateNormal];
     }
     
     self.view.backgroundColor = [KTheme.login color:KLoginColorTypeBackground];
@@ -467,7 +467,7 @@
         }
         responseType[@"Password"] = self.passwordRegistration.text;
         responseType[@"ConfirmPassword"] = self.confirmRegistration.text;
-        responseType[@"Culture"] = [KConstants currentLanguage];
+        responseType[@"Culture"] = Core.language;
         [[KNetworkManager defaultManager:true checkHeaderResponse:true] krakeRegisterUser:responseType completion:^(BOOL success, NSDictionary * _Nullable response, NSError * _Nullable message) {
             if (success) {
                 [[NSUserDefaults standardUserDefaults] setStringAndSync:self.usernameRegistration.text forConstantKey:OMStringConstantKeyUserEmail];
@@ -498,7 +498,7 @@
         }];
     }else{
         [MBProgressHUD hideHUDForView:self.view animated:true];
-        [[KLoginManager shared] showMessage:[@"sms_not_valid" localizedString] withType:ModeError];
+        [[KLoginManager shared] showMessage:UserAccess.smsNotValid withType:ModeError];
     }
 }
 
@@ -614,22 +614,22 @@
             NSNumber *countryCode = [phoneUtil extractCountryCode:number nationalNumber:&nationalNumber];
             nationalNumber = [nationalNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
             mainParams = @{ @"phoneNumber" : @{@"internationalPrefix": [NSString stringWithFormat:@"%@", countryCode], @"phoneNumber" : nationalNumber}};
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:KInfoPlist.appName message:[NSString stringWithFormat:@"%@ +%@ %@", [@"check_your_number" localizedString], countryCode, nationalNumber] preferredStyle:UIAlertControllerStyleAlert];
-            [alert addAction:[UIAlertAction actionWithTitle:[@"Cancel" localizedString] style:UIAlertActionStyleCancel handler:nil]];
-            [alert addAction:[UIAlertAction actionWithTitle:[@"OK" localizedString] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:KInfoPlist.appName message:[NSString stringWithFormat:@"%@ +%@ %@", UserAccess.checkYourNumber, countryCode, nationalNumber] preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:Commons.cancel style:UIAlertActionStyleCancel handler:nil]];
+            [alert addAction:[UIAlertAction actionWithTitle:Commons.ok style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 if (self->mainParams){
                     [[KLoginManager shared] callRequestPasswordLostWithQueryString:@"RequestLostPasswordSmsSsl" params:[self->mainParams copy]];
                     self->mainParams = nil;
                     [self closeRegisterView:nil];
                 }else{
-                    [[KLoginManager shared] showMessage:[@"empty_field" localizedString] withType:ModeError];
+                    [[KLoginManager shared] showMessage:UserAccess.emptyField withType:ModeError];
                 }
             }]];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self presentViewController:alert animated:true completion:nil];
             });
         }else{
-            [[KLoginManager shared] showMessage:[@"sms_not_valid" localizedString] withType:ModeError];
+            [[KLoginManager shared] showMessage:UserAccess.smsNotValid withType:ModeError];
         }
     }
     

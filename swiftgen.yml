@@ -5,11 +5,12 @@ strings:
       - Localization/it.lproj
     outputs:
       - templateName: krake-swift5
-        output: Core/KStrings.swift
+        output: Localization/KStrings.swift
         params:
           publicAccess: true
           enumName: KLocalization
           resourceName: Localization
+          objcClass: true
   - inputs:
       - OTP/it.lproj
     outputs:
@@ -19,6 +20,15 @@ strings:
           publicAccess: true
           enumName: KOTPLocalization
           resourceName: OTP
+  - inputs:
+      - GameQuiz/it.lproj
+    outputs:
+      - templateName: krake-swift5
+        output: GameQuiz/KGameQuizStrings.swift
+        params:
+          publicAccess: true
+          enumName: KGameQuizLocalization
+          resourceName: GameQuiz
 xcassets:
     - inputs:
         - Images.xcassets

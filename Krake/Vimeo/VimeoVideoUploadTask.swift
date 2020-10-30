@@ -349,7 +349,7 @@ class VimeoVideoUploadTask: URLSessionTask {
             }
         }else{
             // Reporting a generic error.
-            manageError(generateError(.genericError, withDescription: "Generic error".localizedString()))
+            manageError(generateError(.genericError, withDescription: KLocalization.Error.genericError))
         }
     }
     

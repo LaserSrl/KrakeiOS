@@ -2,6 +2,11 @@
  Krake
  */
 
+//AppUpdate
+"AppUpdate.updateAvailable" = "Aggiornamento disponibile";
+"AppUpdate.updateAvailableMessage" = "Aggiornamento disponibile. Per continuare ad utilizzare l'App devi aggiornarla.";
+"AppUpdate.update" = "Aggiorna";
+
 //Calendar
 "Calendar.eventAdded" = "Evento aggiunto al calendario";
 
@@ -10,6 +15,9 @@
 "Commons.onLoading" = "Caricamento in corso...";
 "Commons.cancel" = "Annulla";
 "Commons.done" = "Conferma";
+"Commons.next" = "Avanti";
+"Commons.close"="Chiudi";
+"Commons.eMail" = "E-Mail";
 "Commons.all" = "Tutti";
 "Commons.no" = "No";
 "Commons.yes" = "Si";
@@ -52,30 +60,42 @@
 "Error.actionNotAuthorized" = "Azione non autorizzata";
 "Error.cantOpenThisUrl" = "Non è possibile aprire il seguente url %@";
 "Error.loadingOfUserInfoFailed" = "Errore di caricamento";
+"Error.invalidEntryPoint" = "Entry Point non valido";
 
 //Location
 "Location.location" = "Posizione";
 "Location.myLocation" = "La mia posizione";
 
-//Login
-"Login.loginWith" = "Accedi con";
-"Login.login" = "Accedi";
-"Login.register" = "Registrati";
-"Login.registration" = "Registrazione";
-"Login.recoverPassword" = "Recupera password";
-"Login.verificationMailMessage" = "Il tuo indirizzo di email é stato verificato";
-"Login.reset_pwd_message" = "Password dimenticata? Compila il form e riceverai un link per il reset della password.";
-"Login.reset_password_sended" = "Ti abbiamo appena inviato la tua nuova password.";
+//UserAccess
+"UserAccess.loginWith" = "Accedi con";
+"UserAccess.login" = "Accedi";
+"UserAccess.doRegistration" = "Registrati";
+"UserAccess.registration" = "Registrazione";
+"UserAccess.recoverPassword" = "Recupera password";
+"UserAccess.verificationMailMessage" = "Il tuo indirizzo di email é stato verificato";
+"UserAccess.reset_pwd_message" = "Password dimenticata? Compila il form e riceverai un link per il reset della password.";
+"UserAccess.reset_password_sended" = "Ti abbiamo appena inviato la tua nuova password.";
+"UserAccess.placeholder_sms_or_mail_restore_password" = "Numero di telefono o la E-Mail";
+"UserAccess.placeholder_mail_restore_password" = "E-Mail";
+"UserAccess.domain" = "Dominio";
+"UserAccess.password" = "Password";
+"UserAccess.confirm_password" = "Conferma la password";
+"UserAccess.phone_number" = "Numero di cellulare";
+"UserAccess.lost_pwd" = "Password dimenticata?";
+"UserAccess.sms_not_valid" = "Numero non valido";
+"UserAccess.check_your_number" = "Confermi di voler inviare la procedura di recupero password al seguente numero?\n\n";
+"UserAccess.empty_field" = "Campo non compilato";
 
 //Policies
 "Policies.required" = " * obbligatorio";
 "Policies.acceptTerm" = "Accetto i suddetti termini.";
+"Policies.confirmRead" = "Confermo di aver preso visione.";
 "Policies.managePolicy" = "Gestione policy";
 "Policies.undoPrivacy" = "Per procedere devi accettare l'informativa.";
-"Policies.commercialUse" = "Uso commerciale";
-"Policies.thirdParty" = "Cessione dati a terzi";
-"Policies.policies" = "Policy";
-"Policies.regulation" = "Regolamenti";
+"Policies.CommercialUse" = "Uso commerciale";
+"Policies.ThirdParty" = "Cessione dati a terzi";
+"Policies.Policy" = "Policy";
+"Policies.Regulation" = "Regolamenti";
 
 //PostCard
 "PostCard.yourMail" = "La tua e-mail";
@@ -125,11 +145,15 @@
 "Report.accepted" = "Accettato";
 "Report.rejected" = "Rifiutato";
 
+//Beacon
+"Beacon.notificationBody" = "Offerte nel reparto %@";
 
 
 
 
 
+
+//Da qui in avanti sono da controllare sembrano non essere mai usati
 
 "ERRORE_INVIO_SEGN" = "ERRORE: Non è stato possibile inviare la segnalazione.\n";
 "SEGN_SENDED" = "La tua segnalazione è stata inviata correttamente.\n";
@@ -148,30 +172,11 @@
 "Mappa" = "Mappa";
 
 
-
-
-
-"placeholder_sms_or_mail_restore_password" = "Numero di telefono o la E-Mail";
-"placeholder_mail_restore_password" = "E-Mail";
-
-"sms_not_valid" = "Numero non valido";
-"empty_field" = "Campo non compilato";
-"check_your_number" = "Confermi di voler inviare la procedura di recupero password al seguente numero?\n\n";
-
-"e_mail" = "E-Mail";
-"domain" = "Dominio";
-"password" = "Password";
-"confirm_password" = "Conferma la password";
-"phone_number" = "Numero di cellulare";
-"lost_pwd" = "Password dimenticata?";
-
-
 //RULES
 "ACCEPT"="Accetta";
 "DENY"="Nega";
 "UNDO" = "Annulla";
 "SAVE" = "Salva";
-"CLOSE"="Chiudi";
 
 "Lunedì" = "Lunedì";
 "Martedì" = "Martedì";
@@ -193,16 +198,12 @@
 "Novembre" = "Novembre";
 "Dicembre" = "Dicembre";
 
-//PRIVACY
-"next" = "Avanti";
-
 //SEGNALAZIONI
 "Devi scattare o scegliere una foto" = "Devi scattare o scegliere una foto";
 
 "ERRORE_GPS" = "Inserisci la tua posizione";
 "Bad location accuracy" = "Scarsa qualità del segnale GPS";
 "media_max_number_of_elem" = "Hai raggiunto il numero massimo di elementi multimediali. Prima di procedere con l'aggiunta di un nuovo elemento devi cancellarne uno.";
-
 
 //Reportage
 "Titolo" = "Titolo";
@@ -216,44 +217,6 @@
 "RELATED_FIELDS" = "Info generali";
 "CHOOSE_TAKE_PHOTO" = "Scegli o scatta una foto";
 
-//COMMON
-"invalid_entry_point" = "Entry Point non valido";
-
-
-
-/*
- TwitterKit
- */
-"error-data-tweets" = "Non ci sono tweet da visualizzare";
-"error-zero-tweets" = "Non ci sono tweet da visualizzare";
-"error-guest-session-tweets" = "Non ci sono tweet da visualizzare";
-"error-request-tweets" = "Non ci sono tweet da visualizzare";
-"error-download-config-tweets" = "Non ci sono tweet da visualizzare";
-
-
-/*
- GameQuiz
- */
-"insert_phone_number" = "inserisci il tuo numero";
-"sms_not_valid" = "Numero non valido";
-"check_your_number" = "Confermi di voler inviare il seguente numero?\n\n";
-"punti" = "punti";
-"totale" = "Totale";
-"ready" = "Sei pronto per iniziare la partita?";
-"r_u_ready" = "Sei pronto per continuare la partita?";
-"leave" = "Abbandona";
-"continua" = "Continua";
-"game_center_request" = "Game Center è richiesto per partecipare al quiz.";
-"game_center_login_now" = "Vuoi autenticarti adesso?";
-"contest_participate" = "I tuoi punti sono stati salvati correttamente.";
-"bravo" = "Bravo!";
-"ops" = "Ops!";
-"risposta_corretta" = "Risposta corretta.";
-"risposta_errata" = "Risposta errata.";
-"start" = "Inizia";
-"your_score_is" = "Il tuo punteggio è";
-"partecipate" = "Partecipa";
-"available_soon" = "Il gioco sarà disponibile dal";
 
 
 /*

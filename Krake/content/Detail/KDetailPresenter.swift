@@ -96,7 +96,7 @@ open class KDetailPresenterDefaultDelegate : NSObject, KDetailPresenterDelegate 
                     array.append(media)
                 }
                 if let email = shareElem.eMailValue {
-                    let media = KButtonItem(title: KLocalization.eMail,
+                    let media = KButtonItem(title: KLocalization.Commons.eMail,
                                             image: KAssets.Images.email.image,
                                            mediaUrl: "mailto:\(email)",
                                            showTitle: showTitles)

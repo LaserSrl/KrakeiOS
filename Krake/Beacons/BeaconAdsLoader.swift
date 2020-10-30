@@ -194,7 +194,7 @@ open class BeaconAdsLoader: NSObject, NearestBeaconManagerDelegate {
             }
             let notificationBody: String
             if let termName = currentKrakeBeacon?.termPart()?.name{
-                notificationBody = String(format: "Offerte nel reparto %@".localizedString(), termName)
+                notificationBody = KLocalization.Beacon.notificationBody(termName)
             }else{
                 notificationBody = currentKrakeBeacon?.testodellaNotificaValue ?? ""
             }

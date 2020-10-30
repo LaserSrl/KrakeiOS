@@ -251,7 +251,7 @@ open class SingleTransitDatasource: TransitsDatasource
 
                 cell.distanceLabel.text = distanceFormatter.string(fromDistance: CLLocationDistance(stepGroup.distance))
                 cell.instructionImage.image = KTripTheme.shared.imageFor(travelMode: stepGroup.travelMode)
-                cell.instructionLabel.text = KOTPLocalization.localizable("TravelMode.\(stepGroup.travelMode.rawValue.lowercased())")
+                cell.instructionLabel.text = KOTPLocalization.kotpLocalizable("TravelMode.\(stepGroup.travelMode.rawValue.lowercased())")
                 return cell
             }
             else if let transit = route.steps[indexPath.row] as? KTransitStep {

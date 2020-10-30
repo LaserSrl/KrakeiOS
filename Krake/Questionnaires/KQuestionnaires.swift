@@ -393,7 +393,7 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
                                     if let responseObj = responseObject as? [String : AnyObject],
                                         let response = KrakeResponse(object: responseObj){
                                         if response.success {
-                                            KMessageManager.showMessage(KLocalization.localizable("QUESTIONNAIRE.COMPLETED", true), type: .success)
+                                            KMessageManager.showMessage(KLocalization.ocLocalizable("QUESTIONNAIRE.COMPLETED"), type: .success)
                                             mySelf.questionnaireDelegate?.questionnaireViewController(mySelf, didSendQuestionnaire: mySelf.questionnaire!)
 
                                             if let classType = object_getClass(mySelf.questionnaire!) {
@@ -412,7 +412,7 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
                                             KMessageManager.showMessage(response.message, type: .error) //Programmata
                                         }
                                     }else{
-                                        KMessageManager.showMessage("QUESTIONNAIRE_ERROR".localizedString(true), type: .error)
+                                        KMessageManager.showMessage(KLocalization.Questionnaire.error, type: .error)
                                     }
 
                                 }

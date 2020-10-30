@@ -167,15 +167,12 @@ public enum KOTPLocalization {
 
 extension KOTPLocalization {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
-    let format = BundleToken.bundle.localizedString(forKey: key, value: nil, table: table)
+    let libLocalized = BundleToken.bundle.localizedString(forKey: key, value: nil, table: table)
+    let format = Bundle.main.localizedString(forKey: key, value: libLocalized, table: nil)
     return String(format: format, locale: Locale.current, arguments: args)
   }
-  public static func localizable(_ key: String, checkInApp: Bool = false, _ args: CVarArg...) -> String {
-    if checkInApp {
-      return Bundle.main.localizedString(forKey: key, value: tr("KOTPLocalizable", key, args), table: nil)
-    } else {
-      return tr("KOTPLocalizable", key, args)
-    }
+  public static func kotpLocalizable(_ key: String, _ args: CVarArg...) -> String {
+    return tr("KOTPLocalizable", key, args)
   }
 }
 
@@ -185,7 +182,7 @@ private final class BundleToken {
     #if SWIFT_PACKAGE
     return Bundle.module
     #else
-    return Bundle(for: BundleToken.self)
+    return Bundle(url: Bundle.main.url(forResource: "OTP", withExtension: "bundle")!)!
     #endif
   }()
 }

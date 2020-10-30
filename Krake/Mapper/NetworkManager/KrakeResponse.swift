@@ -19,7 +19,7 @@ public struct KrakeResponse{
         if let oggetto = object as? [String : AnyObject] ,let tmpSuccess = oggetto["Success"] as? Bool ?? oggetto["success"] as? Bool{
             success = tmpSuccess
             message = oggetto["Message"] as? String ?? oggetto["message"] as? String ?? KLocalization.Error.genericError
-            message = KLocalization.localizable(message)
+            message = KLocalization.ocLocalizable(message)
             errorCode = oggetto["ErrorCode"] as? Int ?? 0
             if let resAction = oggetto["ResolutionAction"] as? Int{
                 resolutionAction = resAction

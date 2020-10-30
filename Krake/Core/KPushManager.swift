@@ -45,7 +45,7 @@ open class KPushManager: NSObject{
         let wsURL = KInfoPlist.KrakePlist.path
 		let wsPath = wsURL.absoluteString
         if serializedToken != UserDefaults.standard.string(forConstantKey: .pushDeviceToken) ||
-            KConstants.currentLanguage != UserDefaults.standard.string(forConstantKey: .pushLanguage) ||
+            KLocalization.Core.language != UserDefaults.standard.string(forConstantKey: .pushLanguage) ||
             uuid != UserDefaults.standard.string(forConstantKey: .pushDeviceUUID) ||
             wsPath != UserDefaults.standard.string(forConstantKey: .pushURL) {
             
@@ -53,7 +53,7 @@ open class KPushManager: NSObject{
             let requestParameters : [String: Any] = [KParametersKeys.token : serializedToken,
                                                      KParametersKeys.device : "Apple",
                                                      KParametersKeys.UUID : uuid,
-                                                     KParametersKeys.language : KConstants.currentLanguage,
+                                                     KParametersKeys.language : KLocalization.Core.language,
                                                      KParametersKeys.produzione : !KConstants.isDebugMode]
             
             _ = httpClient.request(KAPIConstants.push,
@@ -62,7 +62,7 @@ open class KPushManager: NSObject{
                                    successCallback: { (task: KDataTask, object: Any?) in
                                     UserDefaults.standard.setStringAndSync(serializedToken, forConstantKey: .pushDeviceToken)
                                     UserDefaults.standard.setStringAndSync(uuid, forConstantKey: .pushDeviceUUID)
-                                    UserDefaults.standard.setStringAndSync(KConstants.currentLanguage, forConstantKey: .pushLanguage)
+                                    UserDefaults.standard.setStringAndSync(KLocalization.Core.language, forConstantKey: .pushLanguage)
                                     UserDefaults.standard.setStringAndSync(wsPath, forConstantKey: .pushURL)
                                     KLog("SetDevice completed")
                                    },

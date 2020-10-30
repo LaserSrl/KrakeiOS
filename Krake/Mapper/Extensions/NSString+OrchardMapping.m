@@ -97,11 +97,6 @@ static NSNumberFormatter *f;
     return name;
 }
 
--(NSString *)localizedString{
-    NSBundle *bundle = [NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"Localization" withExtension:@"bundle"]];
-    return [bundle localizedStringForKey:self value:nil table:@"OCLocalizable"];
-}
-
 @end
 
 @implementation NSObject (OrchardCovert)

@@ -165,7 +165,7 @@ open class KUserReactions: UIView, KDetailViewProtocol {
         let manager = KNetworkManager.default(true, true)
         _ = manager.request(KAPIConstants.userReactions,
                             method: .get,
-                            query: [URLQueryItem(name: "pageId", value: String(format: "%d",krakeContentIdentifier!.intValue)), URLQueryItem(name: KParametersKeys.language, value: KConstants.currentLanguage)],
+                            query: [URLQueryItem(name: "pageId", value: String(format: "%d",krakeContentIdentifier!.intValue)), URLQueryItem(name: KParametersKeys.language, value: KLocalization.Core.language)],
                             successCallback: { (task: KDataTask, object: Any?) in
             if let response = task.response,
                 let headers = response.allHeaderFields as? [String : String]{
@@ -210,7 +210,7 @@ open class KUserReactions: UIView, KDetailViewProtocol {
     fileprivate func sendReactionToKrake(_ reactionIdentifier: NSNumber){
         let manager = KNetworkManager.default(true)
 
-        let params =  [KParametersKeys.language : KConstants.currentLanguage,
+        let params =  [KParametersKeys.language : KLocalization.Core.language,
                        "pageId" : String(format: "%d",krakeContentIdentifier!.intValue),
                        "TypeId" : String(format: "%d",reactionIdentifier.intValue)]
 
@@ -280,8 +280,8 @@ open class KUserReactions: UIView, KDetailViewProtocol {
             }
             button?.isSelected = reaction.clicked
             button?.isEnabled = reactionAuthorized
-            button?.setTitle(String(format:stringFormat, reaction.quantity.intValue, KLocalization.localizable("Reactions.\(reaction.typeName)")), for: UIControl.State.normal)
-            button?.setTitle(String(format:stringFormat, reaction.quantity.intValue, KLocalization.localizable("Reactions.\(reaction.typeName)")), for: .selected)
+            button?.setTitle(String(format:stringFormat, reaction.quantity.intValue, KLocalization.ocLocalizable("Reactions.\(reaction.typeName)")), for: UIControl.State.normal)
+            button?.setTitle(String(format:stringFormat, reaction.quantity.intValue, KLocalization.ocLocalizable("Reactions.\(reaction.typeName)")), for: .selected)
             button?.titleLabel?.numberOfLines = 2
             button?.titleLabel?.textAlignment = .center
             button?.alignImageAndTitleVertically()

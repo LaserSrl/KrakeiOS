@@ -53,13 +53,13 @@
     NSMutableString *stringPrivacy = [[NSMutableString alloc] init];
     
     if ([elem.policyTextInfoPartPolicyType caseInsensitiveCompare:@"policy"] == NSOrderedSame){
-        [stringPrivacy appendString:[@"policy-term" localizedString]];
+        [stringPrivacy appendString:Policies.acceptTerm];
     }else if ([elem.policyTextInfoPartPolicyType caseInsensitiveCompare:@"regulation"] == NSOrderedSame){
-        [stringPrivacy appendString:[@"regulation-term" localizedString]];
+        [stringPrivacy appendString:Policies.confirmRead];
     }
     
     if (elem.policyTextInfoPartUserHaveToAccept.integerValue == 1)
-        [stringPrivacy appendString: [@"required" localizedString]];
+        [stringPrivacy appendString: Policies.required];
     
     
     

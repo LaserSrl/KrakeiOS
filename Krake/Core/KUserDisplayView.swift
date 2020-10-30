@@ -188,7 +188,7 @@ public class KUserDisplayView: UIView {
         else {
             userImageView.image = KTheme.current.placeholder(.people)
             logoutButton.hiddenAnimated = true
-            userNameLabel.text = KLocalization.Login.login
+            userNameLabel.text = KLocalization.UserAccess.login
         }
     }
 }

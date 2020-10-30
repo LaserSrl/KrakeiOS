@@ -157,7 +157,7 @@ public class KMainGameBoardViewController: UIViewController, UICollectionViewDat
                     }
                 })
             }else if state == 2{
-                var error = "available_soon".localizedString()
+                var error = KGameQuizLocalization.availableSoon
                 if let date = game.activityPartReference?.dateTimeStart{
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateStyle = .long

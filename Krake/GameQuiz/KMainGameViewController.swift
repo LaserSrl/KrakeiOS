@@ -117,11 +117,11 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1.0) { 
             let alert = UIAlertController(title: KInfoPlist.appName,
-                                          message: "r_u_ready".localizedString(), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "leave".localizedString(), style: .cancel, handler: { (action) in
+                                          message: KGameQuizLocalization.ruReady, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: KGameQuizLocalization.leave, style: .cancel, handler: { (action) in
                 self.closeGame(self)
             }))
-            alert.addAction(UIAlertAction(title: "continua".localizedString(), style: .default, handler: { (alert) in
+            alert.addAction(UIAlertAction(title: KGameQuizLocalization.continue, style: .default, handler: { (alert) in
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1.0, execute: { 
                     self.nextQuestion()
                 })
@@ -155,13 +155,13 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
         if localPlayer.isAuthenticated{
             sendPointsToGameCenter()
         }else{
-            let alert = UIAlertController(title: "game_center_request".localizedString(),
-                                           message: "game_center_login_now".localizedString(),
+            let alert = UIAlertController(title: KGameQuizLocalization.gameCenterRequest,
+                                          message: KGameQuizLocalization.gameCenterLoginNow,
                                            preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "UNDO".localizedString(),
+            alert.addAction(UIAlertAction(title: KGameQuizLocalization.undo,
                                           style: .cancel,
                                           handler: nil))
-            alert.addAction(UIAlertAction(title: "login".localizedString(),
+            alert.addAction(UIAlertAction(title: KGameQuizLocalization.login,
                                           style: .default,
                                           handler: { (action) in
                                             UIApplication.shared.open(URL(string: "gamecenter:")!)
@@ -183,7 +183,7 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
                 if let error = error {
                     KMessageManager.showMessage(error.localizedDescription, type: .error, layout: .tabView)
                 }else{
-                    KMessageManager.showMessage("contest_participate".localizedString(), type: .success, layout: .tabView)
+                    KMessageManager.showMessage(KGameQuizLocalization.contestParticipate, type: .success, layout: .tabView)
                 }
             })
             NotificationCenter.default.removeObserver(self)
@@ -196,12 +196,12 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
     
     func askForUserTelephone(){
         let alert = UIAlertController(title: KInfoPlist.appName,
-                                      message: "insert_phone_number".localizedString(),
+                                      message: KGameQuizLocalization.insertPhoneNumber,
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "UNDO".localizedString(),
+        alert.addAction(UIAlertAction(title: KGameQuizLocalization.undo,
                                       style: .cancel,
                                       handler: nil))
-        alert.addAction(UIAlertAction(title: "Ok".localizedString(),
+        alert.addAction(UIAlertAction(title: KGameQuizLocalization.ok,
                                       style: .default,
                                       handler: { (action) in
                                         let phoneUtil = NBPhoneNumberUtil()
@@ -221,9 +221,9 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
                                                     self.mainParams = "+" + (countryCode ?? 0).stringValue + (nationalNumber ?? "").replacingOccurrences(of: " ", with: "")
                                                     
                                                     let alert = UIAlertController(title: KInfoPlist.appName,
-                                                                                  message: String(format: "%@ +%@ %@", "check_your_number".localizedString(), (countryCode ?? 0).stringValue, (nationalNumber ?? "")), preferredStyle: .alert)
-                                                    alert.addAction(UIAlertAction(title: "UNDO".localizedString(), style: .cancel, handler: nil))
-                                                    alert.addAction(UIAlertAction(title: "Ok".localizedString(), style: .default, handler: { (action) in
+                                                                                  message: String(format: "%@ +%@ %@", KGameQuizLocalization.checkYourNumber, (countryCode ?? 0).stringValue, (nationalNumber ?? "")), preferredStyle: .alert)
+                                                    alert.addAction(UIAlertAction(title: KGameQuizLocalization.undo, style: .cancel, handler: nil))
+                                                    alert.addAction(UIAlertAction(title: KGameQuizLocalization.ok, style: .default, handler: { (action) in
                                                         UserDefaults.standard.setStringAndSync(self.mainParams!, forConstantKey: .userPhoneNumber)
                                                         self.sendGamePointsToWS(phoneNumber: self.mainParams!)
                                                         self.mainParams = nil
@@ -232,10 +232,10 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
                                                         self.present(alert, animated: true, completion: nil)
                                                     })
                                                 }else{
-                                                    KMessageManager.showMessage("sms_not_valid".localizedString(), type: .error, layout: .tabView)
+                                                    KMessageManager.showMessage(KGameQuizLocalization.smsNotValid, type: .error, layout: .tabView)
                                                 }
                                             }catch{
-                                                KMessageManager.showMessage("sms_not_valid".localizedString(), type: .error, layout: .tabView)
+                                                KMessageManager.showMessage(KGameQuizLocalization.smsNotValid, type: .error, layout: .tabView)
                                             }
                                         }
                                         
@@ -268,7 +268,7 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
                                             KMessageManager.showMessage(obj["Message"].string ?? "", type: .error, layout: .tabView)
                                         }
                                     }else{
-                                        KMessageManager.showMessage("Generic error".localizedString(), type: .error)
+                                        KMessageManager.showMessage(KGameQuizLocalization.Error.genericError, type: .error)
                                     }
             },
                                 failureCallback: { (task, error) in
@@ -276,7 +276,7 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
             })
             
         }else{
-            KMessageManager.showMessage("Non puoi partecipare perchè non hai effettuato l'accesso al GameCenter".localizedString(), type: .error, layout: .tabView)
+            KMessageManager.showMessage(KGameQuizLocalization.gameCenterNotLoggedIn, type: .error, layout: .tabView)
         }
     }
     
@@ -291,7 +291,7 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
         
         let partialPoint = coefPoint*diffTime
         if partialPoint > 0 {
-            partialPointLabel.text = String(format: "%.0f %@", partialPoint, "punti".localizedString())
+            partialPointLabel.text = String(format: "%.0f %@", partialPoint, KGameQuizLocalization.punti)
         }else{
             partialPointLabel.text = ""
             isValidTiming = false
@@ -366,7 +366,7 @@ class KMainGameViewController: UIViewController, GameControllerDelegate{
         let pointsAssigned = diffTime*coefPoint
         mainTimer?.invalidate()
         mainTimer = nil
-        partialPointLabel.text = String(format: "%.0f %@", pointsAssigned, "punti".localizedString())
+        partialPointLabel.text = String(format: "%.0f %@", pointsAssigned, KGameQuizLocalization.punti)
         if isCorrect{
             userPointsForAnswers.insert(pointsAssigned, at: indexQuestion)
             totalPoint = totalPoint + pointsAssigned

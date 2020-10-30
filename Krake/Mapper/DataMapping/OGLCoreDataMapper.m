@@ -203,7 +203,7 @@ static __strong id currentOGLCoreDataMapper_;
         else{
             // Calling the completion block on the main thread.
             dispatch_async(dispatch_get_main_queue(), ^{
-                loadDataTask.completionBlock(nil,[NSError errorWithDomain:KInfoPlist.appName code:0 userInfo:@{NSLocalizedDescriptionKey : [@"invalid_entry_point" localizedString]}],YES);
+                loadDataTask.completionBlock(nil,[NSError errorWithDomain:KInfoPlist.appName code:0 userInfo:@{NSLocalizedDescriptionKey : Error.invalidEntryPoint}],YES);
             });
         }
     }];

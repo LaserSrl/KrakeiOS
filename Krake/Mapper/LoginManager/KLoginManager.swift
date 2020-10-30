@@ -288,7 +288,7 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
         showProgressHUD()
         KNetworkManager.default(true).requestKrakeLostPassword(queryString, params: params) { [weak self](success, response, error) in
             if success {
-                self?.showMessage(KLocalization.Login.resetPasswordSended, withType: .success)
+                self?.showMessage(KLocalization.UserAccess.resetPasswordSended, withType: .success)
             }
             else {
                 self?.showMessage(error?.localizedDescription ?? KLocalization.Error.genericError, withType: .error)

@@ -226,7 +226,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
     
     public static func policiesRegistrationViewController(_ mapKeyPath: String! = ContentManagerKeys.USERPOLICYPART,
                                        coreDataKeyPath: String? = nil,
-                                       titolo: String! = KLocalization.Policies.policies,
+                                       titolo: String! = KLocalization.Policies.policy,
                                        type: PolicyType = .all) -> ContentModificationViewController{
         let vc = getViewController("PoliciesRegistration") as! PoliciesRegistrationViewController
         vc.title = titolo
@@ -278,7 +278,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
             }
         }
         params[ContentManagerKeys.CONTENT_TYPE] = contentTypeDefinition.contentType
-        params[ContentManagerKeys.LANGUAGE] = KConstants.currentLanguage
+        params[ContentManagerKeys.LANGUAGE] = KLocalization.Core.language
         
         for vc in  contentTypeDefinition.viewControllers{
             vc.params = params
@@ -342,7 +342,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
             
             _ = manager.request(KAPIConstants.contentExtension,
                                 method: .get,
-                                parameters: [ContentManagerKeys.LANGUAGE : KConstants.currentLanguage, ContentManagerKeys.CONTENT_TYPE : self.contentTypeDefinition.contentType],
+                                parameters: [ContentManagerKeys.LANGUAGE : KLocalization.Core.language, ContentManagerKeys.CONTENT_TYPE : self.contentTypeDefinition.contentType],
                                 successCallback: { [weak self](task, object) in
                 if object != nil{
                     self?.valuesContentType = object as? [String : AnyObject]
@@ -554,7 +554,7 @@ open class ContentModificationContainerViewController : UIViewController, UIPage
         _ = manager.request(KAPIConstants.contentExtension,
                             method: .post,
                             parameters: anyDict,
-                            query: [URLQueryItem(name: KParametersKeys.lang, value: KConstants.currentLanguage)],
+                            query: [URLQueryItem(name: KParametersKeys.lang, value: KLocalization.Core.language)],
                             successCallback: { [weak self] (task, responseObject) in
                                 if let mySelf = self{
                                     if let response = responseObject as? [String : AnyObject],
