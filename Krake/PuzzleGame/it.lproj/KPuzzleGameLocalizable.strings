@@ -6,6 +6,9 @@
   Copyright © 2020 Laser Srl. All rights reserved.
 */
 
+"yes" = "Si";
+"no" = "No";
+"ok" = "Ok";
 "ShowTilesQuestion" = "Vuoi vedere il numero delle tessere?";
 "ShowCompleteImageQuestion" = "Vuoi vedere l'immagine completa?";
 "Resume" = "Riprendi";

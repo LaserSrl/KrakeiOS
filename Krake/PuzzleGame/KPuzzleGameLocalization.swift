@@ -16,12 +16,18 @@ public enum KPuzzleGameLocalization {
   public static let congrats = KPuzzleGameLocalization.tr("KPuzzleGameLocalizable", "Congrats")
   /// Hai perso!
   public static let failedGame = KPuzzleGameLocalization.tr("KPuzzleGameLocalizable", "FailedGame")
+  /// No
+  public static let no = KPuzzleGameLocalization.tr("KPuzzleGameLocalizable", "no")
+  /// Ok
+  public static let ok = KPuzzleGameLocalization.tr("KPuzzleGameLocalizable", "ok")
   /// Riprendi
   public static let resume = KPuzzleGameLocalization.tr("KPuzzleGameLocalizable", "Resume")
   /// Vuoi vedere l'immagine completa?
   public static let showCompleteImageQuestion = KPuzzleGameLocalization.tr("KPuzzleGameLocalizable", "ShowCompleteImageQuestion")
   /// Vuoi vedere il numero delle tessere?
   public static let showTilesQuestion = KPuzzleGameLocalization.tr("KPuzzleGameLocalizable", "ShowTilesQuestion")
+  /// Si
+  public static let yes = KPuzzleGameLocalization.tr("KPuzzleGameLocalizable", "yes")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

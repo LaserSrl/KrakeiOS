@@ -147,7 +147,7 @@ open class GameBoardViewController: UIViewController, UIGestureRecognizerDelegat
         // Aggiunta dell'azione di conferma.
         alertController.addAction(
             UIAlertAction(
-                title: KGameQuizLocalization.yes,
+                title: KPuzzleGameLocalization.yes,
                 style: .default,
                 handler: { (_) in
                     self.isNumberVisible = true
@@ -158,7 +158,7 @@ open class GameBoardViewController: UIViewController, UIGestureRecognizerDelegat
         // Aggiunta dell'azione per cancellare l'alert.
         alertController.addAction(
             UIAlertAction(
-                title: KGameQuizLocalization.no,
+                title: KPuzzleGameLocalization.no,
                 style: .cancel,
                 handler: nil))
         present(alertController, animated: true, completion: nil)
@@ -173,7 +173,7 @@ open class GameBoardViewController: UIViewController, UIGestureRecognizerDelegat
         // Aggiunta dell'azione di conferma.
         alertController.addAction(
             UIAlertAction(
-                title: KGameQuizLocalization.yes,
+                title: KPuzzleGameLocalization.yes,
                 style: .default,
                 handler: { [unowned self] (_) in
                     // Disabilitazione temporanea del pulsante per la richiesta
@@ -200,7 +200,7 @@ open class GameBoardViewController: UIViewController, UIGestureRecognizerDelegat
         // Aggiunta dell'azione per cancellare l'alert.
         alertController.addAction(
             UIAlertAction(
-                title: KGameQuizLocalization.no,
+                title: KPuzzleGameLocalization.no,
                 style: .cancel,
                 handler: nil))
         // Presentazione dell'alert.
