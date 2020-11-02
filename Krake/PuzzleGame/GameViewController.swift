@@ -111,11 +111,11 @@ open class GameViewController: UIViewController, UITableViewDataSource, UITableV
             message: KPuzzleGameLocalization.closeGame,
             preferredStyle: .alert)
         alertController.addAction(
-            UIAlertAction(title: KLocalization.Commons.no,
+            UIAlertAction(title: KPuzzleGameLocalization.no,
                           style: .cancel,
                           handler: nil))
         alertController.addAction(
-            UIAlertAction(title: KLocalization.Commons.yes,
+            UIAlertAction(title: KPuzzleGameLocalization.yes,
                           style: .default,
                           handler: { (_) in self.dismiss() }))
         present(alertController, animated: true, completion: nil)

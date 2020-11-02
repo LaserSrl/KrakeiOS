@@ -156,7 +156,7 @@ Pod::Spec.new do |s|
     
     s.subspec 'PuzzleGame' do |os|
         os.source_files  = "PuzzleGame", "Krake/PuzzleGame/**/*.{swift}"
-        os.ios.resource_bundles = {'PuzzleGame' => ['Krake/PuzzleGame/*.{storyboard,xcassets}']}
+        os.ios.resource_bundles = {'PuzzleGame' => ['Krake/PuzzleGame/*.{storyboard,xcassets,lproj}']}
         os.dependency "Krake/Core"
     end
     
