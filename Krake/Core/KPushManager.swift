@@ -74,6 +74,13 @@ open class KPushManager: NSObject{
     }
     
     public static func showOrOpenPush(_ notification: [AnyHashable: Any], applicationState: UIApplication.State){
+        if var notification = notification as? [String : Any] {
+            if let aps = notification["aps"] as? [String : Any] {
+                notification = notification.merging(aps) { (current, _) in current }
+                notification.removeValue(forKey: "aps")
+            }
+            AnalyticsCore.shared?.log(event: "open_push_notification", parameters: notification)
+        }
         if let aps = notification["aps"] as? [AnyHashable: Any],
             let pushTitle = aps["alert"] as? String
         {
@@ -159,9 +166,12 @@ open class KPushManager: NSObject{
     fileprivate static func showDetailWithAlias(_ alias: String?, pathCache: DisplayPathCache?, userInfoNotification: [AnyHashable: Any]?){
         if let delegate = UIApplication.shared.delegate as? OGLAppDelegate{
             if alias != nil && !delegate.alreadyShownContentFromNotification(alias!, cache: pathCache, userInfoNotification: userInfoNotification){
-                var extras: [String : Any]? = nil
+                var extras = [String : Any]()
                 if let pushId = userInfoNotification?["Id"] as? NSNumber{
-                    extras = ["PushId" : pushId]
+                    extras["PushId"] = "\(pushId)"
+                }
+                if let message = (userInfoNotification?["aps"] as? [AnyHashable : Any])?["alert"] as? String{
+                    extras["PushMessage"] = message
                 }
                 if let vc = KDetailViewControllerFactory.factory.newDetailViewController(detailObject: pathCache?.cacheItems.firstObject as AnyObject?, endPoint: alias, analyticsExtras: extras)
                 {
