@@ -10,6 +10,8 @@
 #endif
 
 // Deprecated typealiases
+@available(*, deprecated, renamed: "ColorAsset.Color", message: "This typealias will be removed in SwiftGen 7.0")
+public typealias AssetColorTypeAlias = ColorAsset.Color
 @available(*, deprecated, renamed: "KImageAsset.Image", message: "This typealias will be removed in SwiftGen 7.0")
 public typealias AssetImageTypeAlias = KImageAsset.Image
 
@@ -19,6 +21,24 @@ public typealias AssetImageTypeAlias = KImageAsset.Image
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 public enum KAssets {
+  public enum Colors {
+    public static let alternate = ColorAsset(name: "alternate")
+    public static let background = ColorAsset(name: "background")
+    public static let `default` = ColorAsset(name: "default")
+    public static let headline = ColorAsset(name: "headline")
+    public static let normal = ColorAsset(name: "normal")
+    public static let popoverBackground = ColorAsset(name: "popoverBackground")
+    public static let popoverBorder = ColorAsset(name: "popoverBorder")
+    public static let popoverText = ColorAsset(name: "popoverText")
+    public static let selected = ColorAsset(name: "selected")
+    public static let subHeadline = ColorAsset(name: "subHeadline")
+    public static let subtitle = ColorAsset(name: "subtitle")
+    public static let textAlternate = ColorAsset(name: "textAlternate")
+    public static let textTint = ColorAsset(name: "textTint")
+    public static let tint = ColorAsset(name: "tint")
+    public static let title = ColorAsset(name: "title")
+    public static let userSelectablePin = ColorAsset(name: "userSelectablePin")
+  }
   public enum Images {
     public static let commercialUse = KImageAsset(name: "CommercialUse")
     public static let policy = KImageAsset(name: "Policy")
@@ -130,6 +150,42 @@ public enum KAssets {
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
 // MARK: - Implementation Details
+
+public final class ColorAsset {
+  public fileprivate(set) var name: String
+
+  #if os(macOS)
+  public typealias Color = NSColor
+  #elseif os(iOS) || os(tvOS) || os(watchOS)
+  public typealias Color = UIColor
+  #endif
+
+  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, macOS 10.13, *)
+  public private(set) lazy var color: Color = {
+    guard let color = Color(asset: self) else {
+      fatalError("Unable to load color asset named \(name).")
+    }
+    return color
+  }()
+
+  fileprivate init(name: String) {
+    self.name = name
+  }
+}
+
+public extension ColorAsset.Color {
+  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, macOS 10.13, *)
+  convenience init?(asset: ColorAsset) {
+    let bundle = BundleToken.bundle
+    #if os(iOS) || os(tvOS)
+    self.init(named: asset.name, in: bundle, compatibleWith: nil)
+    #elseif os(macOS)
+    self.init(named: NSColor.Name(asset.name), bundle: bundle)
+    #elseif os(watchOS)
+    self.init(named: asset.name)
+    #endif
+  }
+}
 
 public struct KImageAsset {
   public fileprivate(set) var name: String

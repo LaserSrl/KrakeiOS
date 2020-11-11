@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		CD0CDC1A255C22010035ABA7 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		CD55FAA8254AB0B000FC4BB1 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		CD887E52254C00F700FBC140 /* GameQuiz.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = GameQuiz.xcassets; sourceTree = "<group>"; };
 		CD887E53254C00F700FBC140 /* KGameQuizTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGameQuizTheme.swift; sourceTree = "<group>"; };
@@ -344,7 +345,7 @@
 		CD887FCF254C00F800FBC140 /* CellReport.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellReport.xib; sourceTree = "<group>"; };
 		CD887FD1254C00F800FBC140 /* KAutoUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAutoUpdateManager.swift; sourceTree = "<group>"; };
 		CD887FD2254C00F800FBC140 /* KInfoPlist+AppUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KInfoPlist+AppUpdate.swift"; sourceTree = "<group>"; };
-		CD8880AB254C198E00FBC140 /* it */ = {isa = PBXFileReference; name = it; path = it.lproj/KPuzzleGameLocalizable.strings; sourceTree = "<group>"; };
+		CD8880AB254C198E00FBC140 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/KPuzzleGameLocalizable.strings; sourceTree = "<group>"; };
 		CD8880AD254C19A000FBC140 /* KPuzzleGameLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPuzzleGameLocalization.swift; sourceTree = "<group>"; };
 		CD888124254C24D800FBC140 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/KOTPLocalizable.strings; sourceTree = "<group>"; };
 		CD888125254C2AA600FBC140 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/KGameQuizLocalizable.strings; sourceTree = "<group>"; };
@@ -369,6 +370,7 @@
 				CD887E51254C00F700FBC140 /* GameQuiz */,
 				CD887F48254C00F800FBC140 /* GoogleKit */,
 				CD887FB2254C00F800FBC140 /* Images.xcassets */,
+				CD0CDC1A255C22010035ABA7 /* Colors.xcassets */,
 				CD887FB5254C00F800FBC140 /* InstagramKit */,
 				CD887E93254C00F700FBC140 /* Krake.h */,
 				CD887FB3254C00F800FBC140 /* LinkedInKit */,

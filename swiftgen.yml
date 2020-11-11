@@ -41,6 +41,7 @@ strings:
 xcassets:
     - inputs:
         - Images.xcassets
+        - Colors.xcassets
         - Mapper/OrchardMapper.xcassets
       outputs:
         - templateName: krake-swift5

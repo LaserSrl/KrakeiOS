@@ -262,7 +262,7 @@ open class KMainTheme: NSObject, KThemeProtocol {
     }
     
     open func color(_ style: ColorStyle) -> UIColor{
-        return UIColor(named: style) ?? .black
+        return UIColor(named: style) ?? ColorAsset.Color(named: style.rawValue) ?? .black
     }
     
     open func reactionColor(_ style: ReactionColorStyle) -> UIColor {
