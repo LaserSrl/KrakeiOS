@@ -98,33 +98,89 @@ import SwiftMessages
                                    viewId: String? = nil,
                                    buttonTitle: String? = nil,
                                    buttonCompletion: (()->Void)? = nil){
+        var config = Config()
+        config.type = type
+        config.layout = layout
+        config.position = position
+        config.duration = duration
+        config.windowLevel = windowLevel
+        config.fromViewController = fromViewController
+        config.viewId = viewId
+        config.buttonTitle = buttonTitle
+        config.buttonCompletion = buttonCompletion
+        showMessage(subtitle,
+                    title: title,
+                    config: config)
         
-        var config = SwiftMessages.Config()
-        config.presentationStyle = convertPositionBlock(position)
-        config.preferredStatusBarStyle = fromViewController?.preferredStatusBarStyle ?? UIApplication.shared.delegate?.window??.rootViewController?.preferredStatusBarStyle
-        if let fromViewController = fromViewController {
-            config.presentationContext = SwiftMessages.PresentationContext.viewController(fromViewController)
+    }
+    
+    public static func showMessage(_ subtitle: String,
+                                   title: String =  KInfoPlist.appName,
+                                   config: KMessageManager.Config = KMessageManager.Config.default){
+        
+        var swiftMessageConfig = SwiftMessages.Config()
+        swiftMessageConfig.presentationStyle = convertPositionBlock(config.position)
+        swiftMessageConfig.preferredStatusBarStyle = config.fromViewController?.preferredStatusBarStyle ?? UIApplication.shared.delegate?.window??.rootViewController?.preferredStatusBarStyle
+        if let fromViewController = config.fromViewController {
+            swiftMessageConfig.presentationContext = SwiftMessages.PresentationContext.viewController(fromViewController)
         }else{
-            config.presentationContext = SwiftMessages.PresentationContext.window(windowLevel: windowLevel)
+            swiftMessageConfig.presentationContext = SwiftMessages.PresentationContext.window(windowLevel: config.windowLevel)
         }
-        config.duration = convertDurationBlock(duration)
+        swiftMessageConfig.duration = convertDurationBlock(config.duration)
         
-        SwiftMessages.show(config: config) {
-            let view = MessageView.viewFromNib(layout: convertLayoutBlock(layout))
-            view.configureTheme(convertModeBlock(type))
+        SwiftMessages.show(config: swiftMessageConfig) {
+            let view = MessageView.viewFromNib(layout: convertLayoutBlock(config.layout))
+            if let backgroundColor = config.backgroundColor,
+               let foregroundColor = config.foregroundColor {
+                view.configureTheme(backgroundColor: backgroundColor, foregroundColor: foregroundColor)
+            } else {
+                view.configureTheme(convertModeBlock(config.type))
+            }
             view.configureContent(title: title, body: subtitle)
-            view.button?.isHidden = buttonCompletion == nil // bottone aggiuntivo
-            view.button?.setTitle(buttonTitle, for: .normal)
-            if let viewId = viewId {
+            view.button?.isHidden = config.buttonCompletion == nil // bottone aggiuntivo
+            view.button?.setTitle(config.buttonTitle, for: .normal)
+            if let viewId = config.viewId {
                 view.id = viewId
             }
             view.buttonTapHandler = {(button) in
-                buttonCompletion?()
+                config.buttonCompletion?()
                 SwiftMessages.hideAll()
+            }
+            view.titleLabel?.numberOfLines = 0
+            if config.isLeftIconVisible {
+                if let image = config.leftIcon {
+                    view.iconImageView?.image = image
+                }
+            } else {
+                view.iconImageView?.isHidden = true
             }
             KTheme.current.applyTheme(toMessageView: view)
             return view
         }
+    }
+    
+    public struct Config {
+        
+        public static let `default` = Config()
+        
+        public init() {
+            
+        }
+        
+        public var type: KMessageManager.Mode = .message
+        public var layout: KMessageManager.Layout = .tabView
+        public var position: KMessageManager.Position = .top
+        public var duration: KMessageManager.Duration = .automatic
+        public var windowLevel: UIWindow.Level = .statusBar
+        public var fromViewController: UIViewController? = nil
+        public var viewId: String? = nil
+        public var buttonTitle: String? = nil
+        public var leftIcon: UIImage?
+        public var isLeftIconVisible: Bool = true
+        public var buttonCompletion: (()->Void)? = nil
+        public var backgroundColor: UIColor? = nil
+        public var foregroundColor: UIColor? = nil
+        
     }
     
 }
