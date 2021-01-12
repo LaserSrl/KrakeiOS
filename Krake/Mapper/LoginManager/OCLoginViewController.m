@@ -151,7 +151,7 @@
 -(void)changeValueSwitcher:(UISwitch*)switcher{
     for (NSMutableDictionary *policy in responseType[@"PolicyAnswers"]) {
         if ([self->policy[@"PolicyId"] longValue] == [policy[@"PolicyId"] longValue]) {
-            policy[@"PolicyAnswer"] = [NSNumber numberWithBool:switcher.on];
+            policy[@"PolicyAnswer"] = switcher.on ? @YES : @NO ;
         }
     }
 }
@@ -405,7 +405,7 @@
                 [policyAnswers addObject: [[NSMutableDictionary alloc] initWithDictionary: @{
                                             @"PolicyId": policy[@"PolicyId"],
                                             @"UserHaveToAccept": policy[@"UserHaveToAccept"],
-                                            @"PolicyAnswer": @(FALSE)
+                                            @"PolicyAnswer": @NO
                                             }]
                  ];
             }

@@ -135,7 +135,10 @@ extension URLSessionConfiguration {
     fileprivate func checkAndAddStoredCookie(_ cookie: HTTPCookie?) {
         if let cookie = cookie {
             if httpCookieStorage?.cookies?.filter({ (loopCookie) -> Bool in
-                loopCookie.name == cookie.name && loopCookie.domain == cookie.domain
+                if let cookieDate = cookie.expiresDate, let loopCookieDate = loopCookie.expiresDate {
+                    return loopCookie.name == cookie.name && loopCookie.domain == cookie.domain && cookieDate < loopCookieDate
+                }
+                return loopCookie.name == cookie.name && loopCookie.domain == cookie.domain
             }).first == nil {
                 httpCookieStorage?.setCookie(cookie)
                 KLog(String(format:"Setup: Cookie %@ aggiunto", cookie.name))

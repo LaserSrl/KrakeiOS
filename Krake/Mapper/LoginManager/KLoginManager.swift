@@ -251,6 +251,9 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
     
     @objc public func makeCompletion(_ success: Bool, response: [AnyHashable : Any]?, error: Error?){
         storeUserAdditionalInfos(with: response)
+        if let error = error{
+            showMessage(error.localizedDescription, withType: (error as? NSError)?.code == 1003 ? .message : .error)
+        }
         if success{
             if isKrakeLogged{
                 NotificationCenter.default.post(name: KLoginManager.UserLoggedIn, object: self, userInfo: response)
@@ -267,9 +270,6 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
             if !(mainNav?.presentedViewController == loginViewController){
                 presentLogin(completion: mainCompletion)
             }else{
-                if let error = error{
-                    showMessage(error.localizedDescription, withType: .error)
-                }
                 delegate?.loginCompleted(withStatus: success, roles: currentUser?.roles, serviceRegistrated: currentUser?.registeredServices, error: error?.localizedDescription)
                 mainCompletion?(success, currentUser?.registeredServices, currentUser?.roles, error)
             }
