@@ -42,6 +42,7 @@ public class KTabAndCollectionViewItems: UIViewController, KTabManagerDelegate {
             }
             itemsViewController.extras = itemsCollectionInfo.extras
             itemsViewController.collectionItemsDelegate = itemsViewControllerDelegate
+            addChild(itemsViewController)
         }
     }
 

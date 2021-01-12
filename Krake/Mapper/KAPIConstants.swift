@@ -28,4 +28,10 @@ open class KAPIConstants: NSObject
     public static let userVerifyNonce = "laser.orchard.usersextensions/akuseractions/ChallengeEmailApiSsl"
     public static let policiesList = "Policies/List"
     public static let externalTokenLogon = "AKExternal/TokenLogon"
+    
+    public struct UserExtensions {
+        public static let signInSSL = "Laser.Orchard.UsersExtensions/AKUserActions/SignInSsl"
+        public static let registerSSL = "Laser.Orchard.UsersExtensions/AKUserActions/RegisterSsl"
+        public static let getCleanRegistrationPoliciesSSL = "Laser.Orchard.UsersExtensions/AKUserActions/GetCleanRegistrationPoliciesSsl"
+    }
 }

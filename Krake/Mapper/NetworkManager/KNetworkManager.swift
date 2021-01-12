@@ -246,23 +246,21 @@ public class KDataTask: NSObject {
     {
 
         var extras = KParamaters()
-        extras["UUID"] = KConstants.uuid
+        extras[KParametersKeys.UUID] = KConstants.uuid
         params.forEach { (key: String, value: Any) in
             extras[key] = value
         }
 
         let request = KRequest()
         request.parameters = extras
+        request.method = .post
+        request.queryParameters.append(URLQueryItem(name:KParametersKeys.lang,value: KLocalization.Core.language))
         switch providerName {
         case KrakeAuthenticationProvider.orchard:
-            request.path = KAPIConstants.userExtensions + "/SignInSsl"
-            request.queryParameters.append(URLQueryItem(name:"Lang",value: KLocalization.Core.language))
-            request.method = .post
+            request.path = KAPIConstants.UserExtensions.signInSSL
         default:
             request.path = KAPIConstants.externalTokenLogon
-            request.queryParameters.append(URLQueryItem(name: KParametersKeys.language, value: KLocalization.Core.language))
             request.queryParameters.append(URLQueryItem(name: KParametersKeys.Login.provider, value: providerName))
-            request.method = .post
         }
 
         let success: (KDataTask, Any?) -> Void =
@@ -287,9 +285,9 @@ public class KDataTask: NSObject {
     @objc public func krakeRegisterUser(_ params: KParamaters,
                                         completion: @escaping KrakeAuthBlock) {
         let request = KRequest()
-        request.path = KAPIConstants.userExtensions + "/RegisterSsl"
-        request.queryParameters.append(URLQueryItem(name: "UUID", value: KConstants.uuid))
-        request.queryParameters.append(URLQueryItem(name: "Lang", value: KLocalization.Core.language))
+        request.path = KAPIConstants.UserExtensions.registerSSL
+        request.queryParameters.append(URLQueryItem(name: KParametersKeys.UUID, value: KConstants.uuid))
+        request.queryParameters.append(URLQueryItem(name: KParametersKeys.lang, value: KLocalization.Core.language))
         request.method = .post
         request.parameters = params
 
@@ -340,7 +338,7 @@ public class KDataTask: NSObject {
         request.method = .post
         request.parameters = params
         request.path = KAPIConstants.userExtensions + "/" + queryString
-        request.queryParameters.append(URLQueryItem(name: "Lang", value: KLocalization.Core.language))
+        request.queryParameters.append(URLQueryItem(name: KParametersKeys.lang, value: KLocalization.Core.language))
 
         _ = self.request(request,
                          callbackWrapperLevel: .none,
@@ -399,9 +397,9 @@ public class KDataTask: NSObject {
         _ error: Error?) -> Void){
 
         let request = KRequest()
-        request.path = KAPIConstants.userExtensions + "/GetCleanRegistrationPoliciesSsl"
+        request.path = KAPIConstants.UserExtensions.getCleanRegistrationPoliciesSSL
         request.method = .get
-        request.queryParameters = [URLQueryItem(name: "Lang", value: KLocalization.Core.language)]
+        request.queryParameters = [URLQueryItem(name: KParametersKeys.lang, value: KLocalization.Core.language)]
 
         _ = self.request(request,
                          callbackWrapperLevel: .none,
@@ -619,7 +617,7 @@ public class KDataTask: NSObject {
     }
 
     private func invalidateSessionCancelingTasks(_ cancelTask: Bool) {
-        //TODO: alamo fire verificare se ha senso chiamato così tanto spesso
+        //TODO: alamofire verificare se ha senso chiamato così tanto spesso
         if (cancelTask) {
             sessionManager.session.invalidateAndCancel()
         } else {
