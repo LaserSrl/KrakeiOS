@@ -241,9 +241,8 @@ open class KTabManager: NSObject{
                         self.delegate?.tabManager(self, didSelectTermPart: self.loadedCategories![selectedIndex])
                     }
                 }
-                else
+                else if let newTabBar = self.tabManagerOptions.tabs?[segmentIndex]
                 {
-                    let newTabBar = self.tabManagerOptions.tabs![segmentIndex]
                     if !newTabBar.loginRequired {
                         self.currentIndex = segmentIndex
                         self.delegate?.tabManager(self, didSelectTab: newTabBar)
