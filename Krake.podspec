@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name         = "Krake"
-    s.version      = "11.4.2"
+    s.version      = "11.4.3"
     s.summary      = "Laser mobile framework."
     s.homepage     = "https://www.laser-group.com"
 
