@@ -526,61 +526,13 @@ open class KItemsCollectionViewController: UICollectionViewController, UICollect
         if isViewLoaded
         {
             let currentPage = extras[REQUEST_PAGE_KEY] as? NSNumber ?? 0
-            let currentNumberOfSections = collectionView?.numberOfSections ?? 0
-            let datasourceNumberOfSection = numberOfSections(in: collectionView!)
-
-            if currentNumberOfSections > 0 && datasourceNumberOfSection == 1
-            {
-                let numberOfCurrentElements = collectionView(collectionView!, numberOfItemsInSection: 0)
-                let numberOfObjectsInCollectionView = collectionView?.numberOfItems(inSection: 0) ?? 0
-                let numberOfObjectsChanged = numberOfCurrentElements - numberOfObjectsInCollectionView
-
-                if numberOfObjectsChanged == 0 {
-                    if let items = collectionView?.indexPathsForVisibleItems, items.count > 0 {
-                        collectionView?.reloadItems(at: items)
-                        if currentPage.uintValue <= 1, let collectionV = collectionView, collectionView(collectionV, numberOfItemsInSection: 0) > 0 {
-                            collectionView?.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: false)
-                        }
-                    }
-                    else
-                    {
-                        collectionView?.reloadData()
-                    }
-                }
-                else
-                {
-                    collectionView?.performBatchUpdates({
-                        var indexPaths = [IndexPath]()
-                        if numberOfObjectsChanged > 0
-                        {
-                            for i in numberOfObjectsInCollectionView...(numberOfCurrentElements - 1)
-                            {
-                                indexPaths.append(IndexPath(row: i, section: 0))
-                            }
-                            self.collectionView?.insertItems(at: indexPaths)
-                        }
-                        else
-                        {
-                            for i in numberOfCurrentElements...(numberOfObjectsInCollectionView - 1)
-                            {
-                                indexPaths.append(IndexPath(row: i, section: 0))
-                            }
-                            self.collectionView?.deleteItems(at: indexPaths)
-                        }
-                    }, completion: { [weak self](finished) in
-                        guard let mySelf = self else { return }
-                        if let items = mySelf.collectionView?.indexPathsForVisibleItems, finished {
-                            mySelf.collectionView?.reloadItems(at: items)
-                        }
-                        if currentPage.uintValue <= 1, let collectView = mySelf.collectionView, mySelf.collectionView(collectView, numberOfItemsInSection: 0) > 0 {
-                            mySelf.collectionView?.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: false)
-                        }
-                    })
-                }
-            }
-            else
-            {
-                self.collectionView?.reloadData()
+            collectionView?.reloadData()
+            if let items = collectionView?.indexPathsForVisibleItems,
+               items.count > 0,
+               currentPage.uintValue <= 1,
+               let collectionV = collectionView,
+               collectionView(collectionV, numberOfItemsInSection: 0) > 0 {
+                collectionView?.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: false)
             }
         }
     }

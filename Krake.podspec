@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name         = "Krake"
-    s.version      = "11.4.3"
+    s.version      = "11.4.4"
     s.summary      = "Laser mobile framework."
     s.homepage     = "https://www.laser-group.com"
 
@@ -68,19 +68,19 @@ Pod::Spec.new do |s|
         os.dependency "Krake/Commons"
         
         #other
-        os.dependency 'Alamofire', '~> 5.3.0'
+        os.dependency 'Alamofire', '~> 5.4.0'
         os.dependency 'AlamofireNetworkActivityIndicator', '~> 3.1.0'
-        os.dependency "CryptoSwift", '1.3.2'
-        os.dependency "Firebase", '~> 7.0.0'
+        os.dependency "CryptoSwift", '~> 1.3.2'
+        os.dependency "Firebase", '~> 7.0'
         os.dependency "FirebaseCrashlytics"
         os.dependency "Firebase/Messaging"
         os.dependency "KNSemiModalViewController_hons82", '0.4.6'
         os.dependency "libPhoneNumber-iOS", '~> 0.9.15'
         os.dependency "MBProgressHUD", '1.2.0'
         os.dependency "NTPKit", '1.0.1'
-        os.dependency "SDWebImage", '~> 5.9.1'
+        os.dependency "SDWebImage", '~> 5.9'
         os.dependency "SwiftyJSON", '5.0.0'
-        os.dependency "SwiftMessages", '~> 8.0.2'
+        os.dependency "SwiftMessages", '~> 9.0'
         os.dependency "Cluster", '~> 3.0.3'
         os.dependency "Kml.swift", '0.3.2'
         os.dependency "Segmentio", '~> 4.1'
@@ -95,8 +95,8 @@ Pod::Spec.new do |s|
     s.subspec 'FacebookKit' do |os|
         os.source_files  = "FacebookKit", "Krake/FacebookKit/*.{h,m,swift}"
         os.dependency "Krake/Core"
-        os.dependency "FBSDKCoreKit", '~> 8.0.0'
-        os.dependency "FBSDKLoginKit", '~> 8.0.0'
+        os.dependency "FBSDKCoreKit", '~> 9.0'
+        os.dependency "FBSDKLoginKit", '~> 9.0'
     end
     
     s.subspec 'GameQuiz' do |os|
@@ -137,7 +137,7 @@ Pod::Spec.new do |s|
         os.frameworks  = "MapKit"
         os.ios.resource_bundles = { 'OTP' => ['Krake/OTP/*.{storyboard,xcassets,lproj}']}
         os.dependency "Krake/Core"
-        os.dependency "Polyline", '4.2.1'
+        os.dependency "Polyline", '~> 5.0'
         os.dependency "DateTimePicker", '~> 2.5.0'
         os.dependency "EVReflection", '5.10.1'
     end
