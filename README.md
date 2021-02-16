@@ -1,4 +1,4 @@
-# Kraken
+# Krake
 
 [![Version](https://img.shields.io/cocoapods/v/Krake.svg?style=flat)](http://cocoapods.org/pods/Krake)
 [![License](https://img.shields.io/cocoapods/l/Krake.svg?style=flat)](http://cocoapods.org/pods/Krake)
