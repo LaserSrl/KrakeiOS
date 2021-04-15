@@ -393,7 +393,7 @@ public class QuestionnaireViewController: UIViewController, NSFetchedResultsCont
                                     if let responseObj = responseObject as? [String : AnyObject],
                                         let response = KrakeResponse(object: responseObj){
                                         if response.success {
-                                            KMessageManager.showMessage(KLocalization.ocLocalizable("QUESTIONNAIRE.COMPLETED"), type: .success)
+                                            KMessageManager.showMessage(KLocalization.Questionnaire.completed, type: .success)
                                             mySelf.questionnaireDelegate?.questionnaireViewController(mySelf, didSendQuestionnaire: mySelf.questionnaire!)
 
                                             if let classType = object_getClass(mySelf.questionnaire!) {
