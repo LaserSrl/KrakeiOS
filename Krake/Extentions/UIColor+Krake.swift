@@ -30,7 +30,7 @@ extension UIColor{
     open class var alternate: UIColor { get{ return KTheme.current.color(.alternate)} }
     
     public convenience init?(named colorStyle: ColorStyle) {
-        self.init(named: colorStyle.rawValue)
+        self.init(named: colorStyle.value)
     }
 
     public convenience init(hexString: String) {
