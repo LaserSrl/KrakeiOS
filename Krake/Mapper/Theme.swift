@@ -71,10 +71,6 @@ import SwiftMessages
             }
         }
     }
-    
-    public init?(rawValue: String) {
-        return nil
-    }
 }
 
 @objc public enum ViewStyle: Int{
