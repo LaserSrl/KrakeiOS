@@ -251,8 +251,11 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
     
     @objc public func makeCompletion(_ success: Bool, response: [AnyHashable : Any]?, error: Error?){
         storeUserAdditionalInfos(with: response)
-        if let error = error{
-            showMessage(error.localizedDescription, withType: (error as? NSError)?.code == 1003 ? .message : .error, fromLoginVC: false)
+        if let error = error as? NSError {
+            showMessage(error.localizedDescription,
+                        withType: error.code == 1003 ? .message :
+                            (error.code == 0 ? .success : .error),
+                        fromLoginVC: !success)
         }
         if success{
             if isKrakeLogged{
