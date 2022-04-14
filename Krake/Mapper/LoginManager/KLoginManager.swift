@@ -281,12 +281,11 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
             AnalyticsCore.shared?.setUserInfoProperties()
             mainCompletion = nil
         }else{
-            let mainNav = UIApplication.shared.delegate?.window??.rootViewController
-            if !(mainNav?.presentedViewController == loginViewController){
+            if (loginViewController == nil) {
                 presentLogin(completion: mainCompletion)
-            }else{
+
+            } else {
                 delegate?.loginCompleted(withStatus: success, roles: currentUser?.roles, serviceRegistrated: currentUser?.registeredServices, error: error?.localizedDescription)
-                mainCompletion?(success, currentUser?.registeredServices, currentUser?.roles, error)
             }
         }
     }
