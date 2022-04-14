@@ -249,6 +249,9 @@
         self.confirmRegistration.IBPlaceholder = UserAccess.confirmPassword;
         self.numberRegistration.IBPlaceholder = UserAccess.phoneNumber;
 
+        self.password.canBeEmpty = false;
+        self.username.canBeEmpty = false;
+
         self.registrationLabel.text = UserAccess.registration;
         
         [self.lostPassword setTitle:UserAccess.lostPwd forState:UIControlStateNormal];
@@ -533,7 +536,9 @@
     }
     params[@"Password"] = self.password.text;
 
-    [[KLoginManager shared] objc_loginWith:[KrakeAuthenticationProvider orchard] params:params saveTokenParams: false];
+    if (![params[@"Username"] isEqualToString:@""] && ![params[@"Password"] isEqualToString:@""]) {
+        [[KLoginManager shared] objc_loginWith:[KrakeAuthenticationProvider orchard] params:params saveTokenParams: false];
+    }
 }
 
 -(IBAction)openRegisterView:(id)sender{
