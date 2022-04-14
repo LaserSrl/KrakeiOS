@@ -204,8 +204,20 @@ public typealias AuthRegistrationBlock = (_ loginSuccess : Bool, _ serviceRegist
             let story = UIStoryboard(name: "KLogin", bundle: bundle)
             loginViewController = story.instantiateViewController(withIdentifier: "KLoginViewController") as? OCLoginViewController
             loginViewController?.modalPresentationStyle = .formSheet
-            if let nav = UIApplication.shared.delegate?.window??.rootViewController, let loginViewController = loginViewController{
-                nav.present(loginViewController, animated: true, completion: {
+            if let nav = UIApplication.shared.delegate?.window??.rootViewController,
+                let loginViewController = loginViewController {
+
+                var vcWhoPresentLogin = nav
+                //find the last VC which can present the loginviewcontroller. Check presentedViewController.
+                if let nav = nav as? UINavigationController,
+                   let presented =  nav.viewControllers.last?.presentedViewController {
+                    vcWhoPresentLogin = presented
+
+                } else if let presented = nav.presentedViewController {
+                    vcWhoPresentLogin = presented
+                }
+
+                vcWhoPresentLogin.present(loginViewController, animated: true, completion: {
                     if self.loginIn {
                         self.showProgressHUD()
                     }
